@@ -1,6 +1,7 @@
 # VecLab
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmarcuspainter%2FVecLab%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/marcuspainter/VecLab)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmarcuspainter%2FVecLab%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/marcuspainter/VecLab)
 
 A real/complex vector library in Swift.
 
@@ -15,7 +16,7 @@ VecLab is a numeric library for real and complex vector operations and MATLAB-st
 
 ### Example Usage
 
-The libray includes an FFT function using Accelerate, but here an example creating a complex FFT using a recursive algorithm and its MATLAB equivalent:
+The libray includes an FFT function using Accelerate, but here is an example creating a complex FFT using a recursive algorithm and its MATLAB equivalent:
 
 ### Swift
 
