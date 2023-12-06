@@ -1,0 +1,13 @@
+included:
+  - Sources
+
+excluded:
+  - Tests
+
+disabled_rules:
+  - large_tuple
+  - identifier_name
+  - line_length
+  - shorthand_operator
+  - for_where
+
