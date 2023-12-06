@@ -13,7 +13,7 @@ VecLab is a numeric library for real and complex vector operations and MATLAB-st
 
 ### Example Usage
 
-The libray includes an FFT function using Accelerate, but here an example creating a complex FFT using a recursive algorithm and its MATLAB equivalent:
+The libray includes an FFT function using Accelerate, but here is an example creating a complex FFT using a recursive algorithm and its MATLAB equivalent:
 
 ### Swift
 
@@ -126,7 +126,7 @@ let t = [Double](0...<100)
 let s = [Double](1...100, 2)
 ```
 
-VecLib style using the `vector` function:
+VecLab style using the `vector` function:
 
 ```swift
 let t = vector(0..<100)
@@ -157,12 +157,13 @@ Overloaded operators for scalar and vectors.
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrap.|
 |Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mar2db, pol2cart, pow2db, rad2deg, sph2cart.|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nochoosek, perms, prevprime, primes.|
-|Exponents| exp, log, lo2, log10, nextpow2, sqrt.|
+|Exponents| exp, log, log2, log10, nextpow2, sqrt.|
 |FFT| dft, fft, fftshift, fftsymmetric, idft, ifft, ifftshift.|
 |Filter| filter.|
 |Integration| diff, gradient, trapz.|
 |Interpolation| interp1, interpft, sincresample.|
 |Modulo| ceil, fix, floor, mod, rem, round, trunc.|
+|Optimization| fminbnd, fminsearch.|
 |Power| pow.|
 |Random| agwn, rand, randn, rng.|
 |Smoothing| hampel, medfilt1.|

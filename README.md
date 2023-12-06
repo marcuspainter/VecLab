@@ -1,4 +1,6 @@
-# ``VecLab``
+# VecLab
+
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmarcuspainter%2FVecLab%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/marcuspainter/VecLab)
 
 A real/complex vector library in Swift.
 
@@ -126,7 +128,7 @@ let t = [Double](0...<100)
 let s = [Double](1...100, 2)
 ```
 
-VecLib style using the `vector` function:
+VecLab style using the `vector` function:
 
 ```swift
 let t = vector(0..<100)
@@ -157,12 +159,13 @@ Overloaded operators for scalar and vectors.
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrap.|
 |Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mar2db, pol2cart, pow2db, rad2deg, sph2cart.|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nochoosek, perms, prevprime, primes.|
-|Exponents| exp, log, lo2, log10, nextpow2, sqrt.|
+|Exponents| exp, log, log2, log10, nextpow2, sqrt.|
 |FFT| dft, fft, fftshift, fftsymmetric, idft, ifft, ifftshift.|
 |Filter| filter.|
 |Integration| diff, gradient, trapz.|
 |Interpolation| interp1, interpft, sincresample.|
 |Modulo| ceil, fix, floor, mod, rem, round, trunc.|
+|Optimization| fminbnd, fminsearch.|
 |Power| pow.|
 |Random| agwn, rand, randn, rng.|
 |Smoothing| hampel, medfilt1.|
