@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
-   version = "1.3">
+   LastUpgradeVersion = "1520"
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "VectorDSP"
-               BuildableName = "VectorDSP"
-               BlueprintName = "VectorDSP"
+               BlueprintIdentifier = "VecLab"
+               BuildableName = "VecLab"
+               BlueprintName = "VecLab"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "VectorDSPTests"
-               BuildableName = "VectorDSPTests"
-               BlueprintName = "VectorDSPTests"
+               BlueprintIdentifier = "VecLabTests"
+               BuildableName = "VecLabTests"
+               BlueprintName = "VecLabTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -41,22 +41,22 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "VectorDSPTests"
-               BuildableName = "VectorDSPTests"
-               BlueprintName = "VectorDSPTests"
+               BlueprintIdentifier = "VecLabTests"
+               BuildableName = "VecLabTests"
+               BlueprintName = "VecLabTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -75,9 +75,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "VectorDSP"
-            BuildableName = "VectorDSP"
-            BlueprintName = "VectorDSP"
+            BlueprintIdentifier = "VecLab"
+            BuildableName = "VecLab"
+            BlueprintName = "VecLab"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
