@@ -155,7 +155,7 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays|cat, circshift, flip, length, ones, padddata, repelem, resize, slice, trimdata, zeros.|
+|Arrays|cat, circshift, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros.|
 |Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sinc, sum.|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrap.|
 |Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mar2db, pol2cart, pow2db, rad2deg, sph2cart.|
