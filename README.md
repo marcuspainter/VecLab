@@ -158,7 +158,7 @@ Overloaded operators for scalar and vectors.
 |Arrays|cat, circshift, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros.|
 |Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sinc, sum.|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrap.|
-|Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mar2db, pol2cart, pow2db, rad2deg, sph2cart.|
+|Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mag2db, pol2cart, pow2db, rad2deg, sph2cart.|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nochoosek, perms, prevprime, primes.|
 |Exponents| exp, log, log2, log10, nextpow2, sqrt.|
 |FFT| dft, fft, fftshift, fftsymmetric, idft, ifft, ifftshift.|
@@ -175,4 +175,4 @@ Overloaded operators for scalar and vectors.
 |Statistics| histcounts, max, mean, median, min, mode, rms, stddev, variance.|
 |Timing| tic, toc, timeit.|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan.|
-|Window| blackman, blackmanharris, flattopwin, gausswin, hann, hamming, rectwin.|
+|Window| blackman, blackmanharris, flattopwin, gausswin, hann, hamming, tukeywin, rectwin.|
