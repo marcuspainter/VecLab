@@ -324,4 +324,20 @@ class WindowTests: XCTestCase {
         let expected: RealArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "rectwin failed")
     }
+    
+    func testTukeywin() throws {
+        let L = 8
+        let result: RealArray = tukeywin(L, r: 0.75)
+        let expected: RealArray = [
+            0,
+            0.317329487816803,
+            0.866525935914913,
+            1.000000000000000,
+            1.000000000000000,
+            0.866525935914913,
+            0.317329487816803,
+            0
+            ]
+        XCTAssertEqual(result, expected, accuracy: accuracy, "tukeywin failed")
+    }
 }

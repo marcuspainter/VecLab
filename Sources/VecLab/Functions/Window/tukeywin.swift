@@ -8,11 +8,15 @@
 import Foundation
 
 /// Tukey window.
+/// 
+///  r = 0, rectangular window
+///  r = 0.5, default
+///  r = 1.0, Hann window
 /// - Parameters:
 ///   - L: Window length.
-///  - alpha: Alpha parameter.
-/// - Returns: Tuckey window, returned as a vector.
-func tukeywin(_ L: Int, alpha r: Double) -> RealArray {
+///   - r: Cosine fraction parameter, default 0.5.
+/// - Returns: Tukey window, returned as a vector.
+public func tukeywin(_ L: Int, r: Double = 0.5) -> RealArray {
     guard L > 0 else {
         return []
     }
