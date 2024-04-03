@@ -8,7 +8,7 @@
 import Accelerate
 import Foundation
 
-/// FFT of complex array.
+/// Inverse FFT of complex array with complex result.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func ifft(_ x: ComplexArray) -> ComplexArray {

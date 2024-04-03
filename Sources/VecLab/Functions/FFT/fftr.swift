@@ -9,8 +9,8 @@ import Foundation
 import Accelerate
 
 
-/// FFT of complex array.
-/// - Parameter x: Complex array.
+/// FFT of real array.
+/// - Parameter x: Real array.
 /// - Returns: Complex array result.
 public func fftr(_ x: RealArray) -> ComplexArray {
 

@@ -8,9 +8,9 @@
 import Foundation
 import Accelerate
 
-/// FFT of complex array.
+/// Inverse FFT of complex array with real result.
 /// - Parameter x: Complex array.
-/// - Returns: Complex array result.
+/// - Returns: Real array result.
 public func ifftr(_ x: ComplexArray) -> RealArray {
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.0.count,
