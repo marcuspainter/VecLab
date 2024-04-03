@@ -25,7 +25,7 @@ class FFTTests: XCTestCase {
     func testFFTReal() throws {
         
         let realArrayA: RealArray = ([1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = fft(realArrayA)
+        let result: ComplexArray = fftr(realArrayA)
         let expected: ComplexArray =  ([10.0, -2.0, -2.0, -2.0], [0.0, 2.0, 0.0, -2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "fft failed")
     }
@@ -41,7 +41,7 @@ class FFTTests: XCTestCase {
     func testIFFTReal() throws {
         
         let complexArrayA: ComplexArray = ([10.0, -2.0, -2.0, -2.0], [0.0, 2.0, 0.0, -2.0])
-        let result: RealArray = ifft(complexArrayA)
+        let result: RealArray = ifftr(complexArrayA)
         let expected: RealArray =  ([1.0, 2.0, 3.0, 4.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "ifft failed")
     }

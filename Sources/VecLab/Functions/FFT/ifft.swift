@@ -28,24 +28,6 @@ public func ifft(_ x: ComplexArray) -> ComplexArray {
     return (splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
-/// FFT of complex array.
-/// - Parameter x: Complex array.
-/// - Returns: Complex array result.
-public func ifft(_ x: ComplexArray) -> RealArray {
-    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.0.count,
-                                                       direction: .inverse,
-                                                       transformType: .complexComplex,
-                                                       ofType: Real.self) else {
-        return ([Real](repeating: Real.nan, count: x.0.count))
-    }
-
-    var splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
-    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(x.0.count))
-
-    return splitComplexOutput.real
-}
-
 /*
  /// Inverse FFT of a array.
  /// - Parameter x: Real array.
