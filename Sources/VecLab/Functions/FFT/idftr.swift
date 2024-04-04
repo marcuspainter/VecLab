@@ -1,19 +1,19 @@
 //
-//  idft.swift
+//  File.swift
+//  
 //
-//
-//  Created by Marcus Painter on 15/09/2023.
+//  Created by Marcus Painter on 04/04/2024.
 //
 
 import Foundation
 
-/// Inverse DFT of complex array.
-/// - Parameter x:Complex array.
-/// - Returns: Complex array result.
-public func idft(_ x: ComplexArray) -> ComplexArray {
+/// Inverse DFT of complex array with real result.
+/// - Parameter x: Complex array.
+/// - Returns: Real array result.
+public func idftr(_ x: ComplexArray) -> RealArray {
     let n = length(x)
     if n == 1 {
-        return x
+        return []
     }
 
     // Init by copy
@@ -24,5 +24,5 @@ public func idft(_ x: ComplexArray) -> ComplexArray {
         let w = exp(omega * Real(p))
         (y.0[p], y.1[p]) = sum(x * w)
     }
-    return y / Real(n)
+    return y.0 / Real(n)
 }

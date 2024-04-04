@@ -18,7 +18,8 @@ import Foundation
 ///   - b: Real array.
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: RealArray) -> RealArray {
-    assertSameSize(a, b)
+    assert(a.count == b.count,
+           "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.", file: #file, line: #line)
     return vDSP.add(a, b)
 }
 
@@ -120,6 +121,7 @@ public func + (a: ComplexArray, b: RealArray) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
     let r = vDSP.add(b.0, a)
     return (r, b.1)
 }

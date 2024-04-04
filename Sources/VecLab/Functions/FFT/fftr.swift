@@ -8,7 +8,6 @@
 import Foundation
 import Accelerate
 
-
 /// FFT of real array.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.

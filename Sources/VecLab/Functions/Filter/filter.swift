@@ -13,7 +13,7 @@ import Foundation
 /// - Parameters:
 ///   - b: b coefficients.
 ///   - a: a coefficients.
-///   - x: Input signal.
+///   - x: Real input signal.
 /// - Returns: Filtered signal.
 public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray {
     let M = b.count
@@ -44,6 +44,18 @@ public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray 
     }
 
     return y
+}
+
+/// Direct Form II IIR filter.
+/// - Parameters:
+///   - b: b coefficients.
+///   - a: a coefficients.
+///   - x: Complex input signal.
+/// - Returns: Filtered complex signal.
+public func filter(_ b: RealArray, _ a: RealArray, _ x: ComplexArray) -> ComplexArray {
+    let yr = filter(b, a, x.0)
+    let yi = filter(b, a, x.1)
+    return (yr, yi)
 }
 
 /*

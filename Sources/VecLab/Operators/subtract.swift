@@ -102,6 +102,7 @@ public func - (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: RealArray) -> ComplexArray {
+    assertSameSize(a, b)
     return (a.0 - b, a.1)
 }
 

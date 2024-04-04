@@ -17,5 +17,6 @@ import Accelerate
 /// - Returns: The four quadrant inverse tangent in the closed interval of  [–π, π].
 public func atan2(_ x: RealArray, _ y: RealArray) -> RealArray {
     // return zip(x, y).map { atan2($0, $1) }
+    assertSameSize(x, y)
     return vForce.atan2(x: y, y: x)
 }

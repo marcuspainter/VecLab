@@ -66,6 +66,7 @@ public func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
 public func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
     return a * conj(b) // Overloaded
 }
 
