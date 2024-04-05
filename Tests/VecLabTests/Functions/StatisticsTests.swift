@@ -65,9 +65,9 @@ class StatisticsTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "max failed")
     }
 
-    func testMaxRealArrayIndex() throws {
+    func testMaxindexRealArrayIndex() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let (result, index) = max(realArrayA)
+        let (result, index) = maxindex(realArrayA)
         let expected: Real = 4.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "max failed")
         XCTAssertEqual(index, 3, "max failed")

@@ -169,7 +169,7 @@ Overloaded operators for scalar and vectors.
 |Smoothing| hampel, medfilt1.|
 |Space| freqspace, linspace, logspace.|
 |Special| besseli0.|
-|Statistics| histcounts, max, mean, median, min, mode, rms, stddev, variance.|
+|Statistics| histcounts, max, maxindex, mean, median, min, minindex, mode, rms, stddev, variance.|
 |Timing| tic, toc, timeit.|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan.|
 |Window| blackman, blackmanharris, flattopwin, gausswin, hann, hamming, rectwin.|
