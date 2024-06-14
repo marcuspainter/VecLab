@@ -7,7 +7,7 @@ A real/complex vector library in Swift.
 
 ## Overview
 
-VecLab is a numeric library for real and complex vector operations and MATLAB-style functions.
+VecLab is a numeric library for real and complex vector operations and NumPy and MATLAB-style functions.
 
 - Real and complex scalars and vectors.
 - Overloaded arithmetic operators.
@@ -16,7 +16,7 @@ VecLab is a numeric library for real and complex vector operations and MATLAB-st
 
 ### Example Usage
 
-The libray includes an FFT function using Accelerate, but here is an example creating a complex FFT using a recursive algorithm and its MATLAB equivalent:
+The libray includes an FFT function using Accelerate, but here is an example creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
 
 ### Swift
 
@@ -49,6 +49,29 @@ Here's a breakdown of the real and complex vector operations in the function:
 8. The result is the concatenation of the complex vector addition and subtraction of `u` and `v`.
 9. The recursion ends when there is one element in the input array. The fft of a single element is itself.
 
+### NumPy
+```python
+import numpy as np
+
+def fftx(x):
+    """
+    FFTX Fast Finite Fourier Transform.
+    """
+    n = len(x)
+    omega = np.exp(-2j * np.pi / n)
+    
+    if n % 2 == 0:
+        # Recursive divide and conquer
+        k = np.arange(n//2)
+        w = omega ** k
+        u = fftx(x[::2])
+        v = w * fftx(x[1::2])
+        y = np.concatenate([u + v, u - v])
+    else:
+        y = x
+    
+    return y
+```
 ### MATLAB
 
 ```matlab
