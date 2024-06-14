@@ -27,3 +27,28 @@ public func trapz(_ x: RealArray, _ y: RealArray) -> Real {
 
     return Q
 }
+
+/// Trapezoidal numerical integration.
+/// - Parameters:
+///   - a: x-coordinates.
+///   - y: y-coordinates.
+/// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
+public func trapz(_ a: [Double], step: Double) -> Real {
+    var c: Double = 0.0
+    var stepSize: Double = step
+    vDSP_vtrapzD(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))
+    return c;
+}
+
+/// Trapezoidal numerical integration.
+/// - Parameters:
+///   - a: x-coordinates.
+///   - y: y-coordinates.
+/// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
+public func trapz(_ a: [Float], step: Float) -> Float {
+    var c: Float = 0.0
+    var stepSize: Float = step
+    vDSP_vtrapz(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))
+    return c;
+}
+
