@@ -16,7 +16,7 @@ VecLab is a numeric library for real and complex vector operations and NumPy and
 
 ### Example Usage
 
-The libray includes an FFT function using Accelerate, but here is an example creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
+The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
 
 ### Swift
 
@@ -43,11 +43,11 @@ Here's a breakdown of the real and complex vector operations in the function:
 2. `omega` is a complex exponential number. `Real.i` is the imaginary unit *i*.
 3. Tests if the input `x` length is divisible by 2.
 4. `k` is a real vector from 0, 1, 2,... n/2-1.
-5. `w` is the complex vector of `omega` to power of vector `k`.
+5. `w` is the complex vector of `omega` to the power of vector `k`.
 6. `u` is the complex result of a recursive call with even `x`.
 7. `v` is the complex result of a recursive call with odd `x`.
 8. The result is the concatenation of the complex vector addition and subtraction of `u` and `v`.
-9. The recursion ends when there is one element in the input array. The fft of a single element is itself.
+9. The recursion ends when there is one element in the input array. The FFT of a single element is itself.
 
 ### NumPy
 ```python
@@ -112,7 +112,7 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
+Complex numbers are defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
 
 ```swift
 let c = (10.0, 2.0)
@@ -143,7 +143,7 @@ let c = exp(Real.i * 2 * Real.pi * phi)
 
 ### Ranges
 
-Ranges can be defined using the Swift `Range` or `ClosedRange` types, but with the addition of an optional `by` value. This has been implemented as an extension to the `Array` type.
+Ranges can be defined using the Swift `Range` or `ClosedRange` types but with the addition of an optional `by` value. This has been implemented as an extension to the `Array` type.
 
 Swift style:
 
