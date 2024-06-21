@@ -32,20 +32,48 @@ struct DefaultRNG: RandomNumberGenerator {
 
 // Internal singleton
 private struct GlobalRNG {
-    static var rng: RandomNumberGenerator = DefaultRNG(seed: UInt32(time(nil)))
+    nonisolated(unsafe) static private var _rng: RandomNumberGenerator = DefaultRNG(seed: UInt32(time(nil)))
+    
+    private static let lock = NSLock()
+ 
+    static var rng: RandomNumberGenerator {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return _rng
+        }
+        set {
+            lock.lock()
+            _rng = newValue
+            lock.unlock()
+        }
+    }
 
     static func rand() -> Real {
-        rng.rand()
+        self.lock.lock()
+        defer {  self.lock.unlock()}
+        let x = GlobalRNG._rng.rand()
+        return x
     }
 
     // Centralized normal distribution generation
     static func randn() -> Real {
+        self.lock.lock()
+        defer {  self.lock.unlock()}
         // Using the Box-Muller transform with rand() from the chosen RNG
-        let u1 = rng.rand()
-        let u2 = rng.rand()
+        let u1 = GlobalRNG._rng.rand()
+        let u2 = GlobalRNG._rng.rand()
 
         let z0 = Darwin.sqrt(-2.0 * log(u1)) * Darwin.cos(2 * .pi * u2)
         return z0
+    }
+    
+    static func rand(count: Int) -> RealArray {
+        return (0..<count).map { _ in GlobalRNG.rand() }
+    }
+    
+    static func randn(count: Int) -> RealArray {
+        return (0..<count).map { _ in GlobalRNG.randn() }
     }
 }
 
@@ -66,7 +94,7 @@ public func rand() -> Real {
 /// - Parameter count: The number of elements in the array.
 /// - Returns: A random number from the uniform distribution in the interval (0,1).
 public func rand(count: Int) -> RealArray {
-    return (0..<count).map { _ in GlobalRNG.rand() }
+    return GlobalRNG.rand(count: count)
 }
 
 /// Normally distributed random numbers.
@@ -79,8 +107,7 @@ public func randn() -> Real {
 /// - Parameter count: The number of elements in the array.
 /// - Returns: A random array from the standard normal distribution.
 public func randn(count: Int) -> RealArray {
-    // let y = RealArray(repeating: 0, count: n)
-    return (0..<count).map { _ in GlobalRNG.randn() }
+    return GlobalRNG.randn(count: count)
 }
 
 /// Control random number generator seed and algorithm.
@@ -91,7 +118,7 @@ public func randn(count: Int) -> RealArray {
 public func rng(seed: UInt32, generator: String = "Default") {
     switch generator {
     case "Default":
-        GlobalRNG.rng = DefaultRNG(seed: seed)
+            GlobalRNG.rng = DefaultRNG(seed: seed)
     // case "Another":
     //     GlobalRNG.rng = AnotherRNG(seed: seedValue)
     default:

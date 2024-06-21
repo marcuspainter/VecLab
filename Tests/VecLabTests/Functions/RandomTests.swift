@@ -17,7 +17,8 @@ class RandomTests: XCTestCase {
 
     // TODO: Some test
     func testRandn() throws {
-        let _: Real = randn()
+        let _ : Real = randn()
+        XCTAssert(true)
     }
 
     func testRandCount() throws {
@@ -32,7 +33,8 @@ class RandomTests: XCTestCase {
 
     // TODO: Some test
     func testRng() throws {
-        let _: UInt32 = rng()
+        let _ : UInt32 = rng()
+        XCTAssert(true)
     }
 
     func testRngSeed() throws {
