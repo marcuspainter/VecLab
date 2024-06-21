@@ -16,6 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Output XCode and Swift version
+      run: |
+        xcrun xcodebuild -version
+        xcrun swift --version
     - name: Build
       run: swift build -v
     - name: Run tests
