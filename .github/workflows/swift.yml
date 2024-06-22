@@ -15,11 +15,12 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - uses: swift-actions/setup-swift@v2
+      with:
+        swift-version: "5.10"
+    - name: Get swift version
+      run: swift --version # Swift 5.10
     - uses: actions/checkout@v4
-    - name: Output XCode and Swift version
-      run: |
-        xcrun xcodebuild -version
-        xcrun swift --version
     - name: Build
       run: swift build -v
     - name: Run tests
