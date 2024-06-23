@@ -36,8 +36,5 @@ Basic Functions
 - ``iterate(_:_:)-8sew6``
 - ``iterate(_:_:)-uxtp``
 
-- ``sinc(_:)-7kkhr``
-- ``sinc(_:)-dqww``
-
 - ``norm(_:)``
 

@@ -2,6 +2,19 @@
 
 Real and Complex Scalar and Vector Arithmetic Operators
 
+## Overview
+
+The operator functions are overloaded to allow any combination of scalars and vectors, including different left and right operand types.
+
+The Accelerate/vDSP framework is used for vector operations.
+
+#### Power
+The `**` operator is used for power operations. This is the operator equivalent of the <doc:Power> function.
+
+#### Complex Conjugate Multiply
+
+As a shorthand, complex types can use the conjugate multiply operators.
+
 ## Topics
 
 ### Add
