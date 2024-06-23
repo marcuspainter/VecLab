@@ -12,6 +12,8 @@ VecLab is a numeric library for real and complex vector operations and NumPy and
 - Basic Matlab-style functions.
 - Vectorized using vDSP.
 
+Full Documentation can be found on [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab)
+
 ### Example Usage
 
 The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
@@ -203,10 +205,12 @@ Overloaded operators for scalar and vectors.
 ### Essentials 
 - <doc:GettingStarted>
 
-### Creation
-- <doc:VectorCreation>
+### Vector Creation
+- <doc:RealCreation>
 - <doc:ComplexCreation>
-- <doc:VectorFunctions>
+
+### Operators
+- <doc:MathOperators>
 
 ### Functions
 - <doc:VectorFunctions>
@@ -230,7 +234,3 @@ Overloaded operators for scalar and vectors.
 - <doc:Timing>
 - <doc:Trigonometry>
 - <doc:Windows>
-
-### Operators
-- <doc:MathOperators>
-
