@@ -1,6 +1,6 @@
-# Complex Creation
+# Complex Vector Creation
 
-Complex Number Creation Functions
+Complex Vector Creation Functions
 
 ## Topics
 

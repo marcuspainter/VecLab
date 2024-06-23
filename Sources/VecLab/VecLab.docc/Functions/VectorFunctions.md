@@ -4,10 +4,6 @@ Vector Functions
 
 ## Topics
 
-### Vector Creation
-- ``zeros(_:)``
-- ``ones(_:)``
-
 ### Concatenation
 - ``cat(_:)-2narh``
 - ``cat(_:)-7d4rm``

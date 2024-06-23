@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Pad data by adding elements.
+/// Pad data array with zeros.
 public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
     let n = x.count
     var y = x
@@ -19,7 +19,7 @@ public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
     return y
 }
 
-/// Pad data by adding elements.
+/// Pad data array with zeros.
 public func paddata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
     let n = x.0.count
     var y = x
