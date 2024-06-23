@@ -1,6 +1,6 @@
 # Integration
 
-Integration and Differentiation
+Integration and differentiation.
 
 ## Topics
 

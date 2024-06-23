@@ -14,7 +14,7 @@ VecLab is a numeric library for real and complex vector operations and NumPy and
 - Basic Matlab-style functions.
 - Vectorized using vDSP.
 
-Full Documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab)
+Full documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab).
 
 ### Example Usage
 

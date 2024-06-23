@@ -1,6 +1,6 @@
 # Trigonometry
 
-Sine, Cosine, Tangent and Related Functions
+Sine, cosine, tangent and related functions.
 
 ## Topics
 

@@ -1,6 +1,6 @@
 # Basic Functions
 
-Basic Functions
+Basic functions.
 
 ## Topics
 

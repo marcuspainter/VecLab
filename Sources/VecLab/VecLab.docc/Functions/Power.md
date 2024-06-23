@@ -1,6 +1,26 @@
 # Power
 
-Power Functions
+Power exponentiation.
+
+## Overview
+
+Vector versions of power exponentiation function for real and complex numbers.
+
+### Examples
+
+The powers of 2 from  1 to 5 with using an array of exponents.
+
+```swift
+let n = [1.0, 2.0, 3.0, 4.0, 5.0]
+let y = pow(2, n)
+```
+
+Cube the values of an array using a scalar exponent of 3.
+
+```swift
+let x = [1.0, 2.0, 3.0, 4.0, 5.0]
+let y = pow(x, 3)
+```
 
 ## Topics
 

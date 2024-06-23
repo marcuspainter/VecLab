@@ -1,6 +1,6 @@
 # Real Vector Creation
 
-Vector Creation Functions
+Real vector creation.
 
 ## Topics
 

@@ -1,6 +1,6 @@
 # Special
 
-Special Functions
+Special functions.
 
 
 ## Topics

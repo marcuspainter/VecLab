@@ -1,6 +1,6 @@
 # Smoothing
 
-Smoothing Functions
+Smoothing functions.
 
 ## Topics
 

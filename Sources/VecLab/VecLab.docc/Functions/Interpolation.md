@@ -1,6 +1,6 @@
 # Interpolation
 
-Interpolation and Resampling
+Interpolation and resampling.
 
 ## Topics
 

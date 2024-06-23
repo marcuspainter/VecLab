@@ -1,6 +1,6 @@
 # Discrete
 
-Factors, Combinations and Permutations, and Prime Numbers
+Factors, combinations, permutations and prime numbers.
 
 ## Topics
 

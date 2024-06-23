@@ -1,6 +1,6 @@
 # Timing
 
-Timing Functions
+Timing Functions.
 
 ## Topics
 

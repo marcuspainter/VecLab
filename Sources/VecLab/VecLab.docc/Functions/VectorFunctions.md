@@ -1,6 +1,6 @@
 # Vector Functions
 
-Vector Functions
+Vector functions.
 
 ## Topics
 
