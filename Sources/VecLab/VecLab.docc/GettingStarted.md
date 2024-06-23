@@ -26,7 +26,7 @@ let a =  10.0
 let c: Double =  123
 ```
 
-A real number is refered by the typealias of `Real`. 
+A real number is referred by the typealias of `Real`. 
 
 ```swift
 let c: Real =  123.0
@@ -48,7 +48,7 @@ let c = (real: 1.0, imag:10.0)
 let d = (real: 1.0, imaginary:10.0)
 ```
 
-Tuple elments, the real and imaginary parts, can always the `.0` and `.1` properties regardless of any label.
+Tuple elements, the real and imaginary parts, can always the `.0` and `.1` properties regardless of any label.
 
 ```swift
 let complexNumber =  (r: 1.0, i: 0.0)
@@ -81,7 +81,7 @@ let a = [1.0, 2.0, 3.0]
 let b = [Double](repeating: 0.0, count: 10)
 ```
 
-It is prefered to use the typealiases of `Real` or `RealArray`.
+It is preferred to use the typealiases of `Real` or `RealArray`.
 
 ```swift
 let c = [Real](repeating: 0.0, count: 10)
@@ -132,7 +132,7 @@ let complexArray = (realArray, imagArray)
 
 Note that unlike a true Swift `Array`, a `ComplexArray` is a tuple and cannot use an index. 
 
-Creating a ComplexArrray can be longwinded:
+Creating a `ComplexArrray` can be longwinded:
 
 ```swift
 let realArray = RealArray(repeating: 0.0, count: 10)

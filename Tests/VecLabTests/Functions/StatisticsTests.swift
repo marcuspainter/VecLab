@@ -109,7 +109,7 @@ class StatisticsTests: XCTestCase {
 
     func testMinRealArrayIndex() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let (result, index) = min(realArrayA)
+        let (result, index) = minindex(realArrayA)
         let expected: Real = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "min failed")
         XCTAssertEqual(index, 0, "min failed")

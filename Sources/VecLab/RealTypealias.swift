@@ -31,3 +31,4 @@ public typealias Complex = (Real, Real)
 
 /// Type alias for a complex array as a tuple of two real arrays
 public typealias ComplexArray = (RealArray, RealArray)
+
