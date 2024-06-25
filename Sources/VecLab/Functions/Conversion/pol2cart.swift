@@ -24,9 +24,8 @@ public func pol2cart(_ theta: Real, _ rho: Real) -> (x: Real, y: Real) {
 ///   - phi: The polar or zenith angle, in radians.
 ///   - rho: The distance from the origin.
 /// - Returns: A tuple containing the x, y, and z Cartesian coordinates.
-public func pol2cart(_ theta: Real, _ phi: Real, _ rho: Real) -> (x: Real, y: Real, z: Real) {
-    let x = rho * sin(phi) * cos(theta)
-    let y = rho * sin(phi) * sin(theta)
-    let z = rho * cos(phi)
+public func pol2cart(_ theta: Real,  _ rho: Real, _ z: Real) -> (x: Real, y: Real, z: Real) {
+    let x = rho * cos(theta)
+    let y = rho * sin(theta)
     return (x, y, z)
 }
