@@ -38,6 +38,8 @@ func testAddComplexEquality() {
 }
 
 func XCTAssertEqual(_ expression1: ([Double], [Double]), _ expression2: ([Double], [Double]), accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+    
+    XCTAssert(expression1.0.count == expression2.0.count && expression1.1.count == expression2.1.count, "Not same size")
     XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
     XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
 }
