@@ -18,7 +18,52 @@ class ArrayTests: XCTestCase {
         let result = vector(count: count)
         XCTAssertEqual(result.count, count, "vector failed")
     }
+    
+    func testVectorIntArray() throws {
+        let intArray = [1, 2 , 3]
+        let result = vector(intArray)
+        let expected = [1.0, 2.0, 3.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
 
+    func testVectorFloatArray() throws {
+        let floatArray: [Float] = [1, 2 , 3]
+        let result = vector(floatArray)
+        let expected = [1.0, 2.0, 3.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
+    func testVectorDoubleArray() throws {
+        let doubleArray: [Double] = [1, 2 , 3]
+        let result = vector(doubleArray)
+        let expected = [1.0, 2.0, 3.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
+    func testVectorIntRange() throws {
+        let result = vector(1 ..< 5)
+        let expected = [1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
+    func testVectorRealRange() throws {
+        let result = vector(1.0 ..< 5.0)
+        let expected = [1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
+    func testVectorIntClosedRange() throws {
+        let result = vector(1 ... 5)
+        let expected = [1.0, 2.0, 3.0, 4.0, 5.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
+    func testVectorRealClosedRange() throws {
+        let result = vector(1.0 ..< 5.0)
+        let expected = [1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(result, expected, "vector failed")
+    }
+    
     func testVectorSizedReal() throws {
         let count: Int = 10
         let realArrayA: RealArray = [Real](repeating: 0, count: count)
@@ -155,6 +200,22 @@ class ArrayTests: XCTestCase {
         let result: Int = length(complexArrayA)
         let expected: Int = 2
         XCTAssertEqual(result, expected, "length failed")
+    }
+    
+    // MARK: ones
+    func testOnes() throws {
+        let count = 3
+        let result = ones(count)
+        let expected = [1.0, 1.0, 1.0]
+        XCTAssertEqual(result, expected, "ones failed")
+    }
+    
+    // MARK: zeros
+    func testZeros() throws {
+        let count = 3
+        let result = zeros(count)
+        let expected = [0.0, 0.0, 0.0]
+        XCTAssertEqual(result, expected, "ones failed")
     }
 
     // MARK: paddata

@@ -21,7 +21,7 @@ class ConversionTests: XCTestCase {
         let expected = (0.785398163397448, 1.414213562373095)
         XCTAssertEqual(result, expected, accuracy: accuracy, "cart2pol failed")
     }
-    
+
     func testCart2Pol3D() throws {
         let x = 1.0
         let y = 1.0
@@ -46,7 +46,7 @@ class ConversionTests: XCTestCase {
         let expected = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "db2mag failed")
     }
-    
+
     func testDb2magArray() throws {
         let db = [0.0, 0.0]
         let result = db2mag(db)
@@ -60,7 +60,7 @@ class ConversionTests: XCTestCase {
         let expected = 1.258925411794167
         XCTAssertEqual(result, expected, accuracy: accuracy, "db2pow failed")
     }
-    
+
     func testDb2powArray() throws {
         let db = [1.0, 1.0]
         let result = db2pow(db)
@@ -72,6 +72,13 @@ class ConversionTests: XCTestCase {
         let deg = 180.0
         let result = deg2rad(deg)
         let expected = Real.pi
+        XCTAssertEqual(result, expected, accuracy: accuracy, "deg2rad failed")
+    }
+
+    func testDeg2radArray() throws {
+        let deg = [180.0, 90.0]
+        let result = deg2rad(deg)
+        let expected = [Real.pi, Real.pi / 2]
         XCTAssertEqual(result, expected, accuracy: accuracy, "deg2rad failed")
     }
 
@@ -96,6 +103,15 @@ class ConversionTests: XCTestCase {
         let expected = (1.0, 1.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "pol2cart failed")
     }
+    
+    func testPol2cart3D() throws {
+        let theta = 0.785398163397448
+        let rho = 1.414213562373095
+        let z = 1.0
+        let result = pol2cart(theta, rho, z)
+        let expected = (1.0, 1.0, 1.0)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "pol2cart failed")
+    }
 
     func testPow2db() throws {
         let db = 1.258925411794167
@@ -103,7 +119,7 @@ class ConversionTests: XCTestCase {
         let expected = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "pow2db failed")
     }
-    
+
     func testPow2dbArray() throws {
         let db = [1.258925411794167, 1.258925411794167]
         let result = pow2db(db)
@@ -117,7 +133,7 @@ class ConversionTests: XCTestCase {
         let expected = 180.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "rad2deg failed")
     }
-    
+
     func testRad2degArray() throws {
         let rad = [Real.pi, Real.pi]
         let result = rad2deg(rad)

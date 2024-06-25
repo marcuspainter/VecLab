@@ -216,6 +216,13 @@ class FFTTests: XCTestCase {
     }
 
     // MARK: FFTX
+    
+    func testFFTXReal() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let result: ComplexArray = fftx(realArrayA)
+        let expected: ComplexArray = ([10.0, -2.0, -2.0, -2.0], [0.0, 2.0, 0.0, -2.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "fftx failed")
+    }
 
     func testFFTXComplex() throws {
         let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
