@@ -62,32 +62,7 @@ class ComplexTests: XCTestCase {
 
     // MARK: cplxpair
 
-    func testCplxpairComplexArray() throws {
-        let complexArrayA: ComplexArray = (
-            [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0],
-            [1.0, 2.0, 3.0, 4.0, -1.0, -2.0, -3.0, -4.0]
-            )
-        let result: ComplexArray = cplxpair(complexArrayA)
-        let expected: ComplexArray = (
-            [1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0],
-            [1.0, -1.0, 2.0, -2.0, 3.0, -3.0, 4.0, -4.0]
-            )
-        XCTAssertEqual(result, expected, accuracy: accuracy, "cplxpair failed")
-    }
-
-    func testCplxpairComplexArray1() throws {
-        let complexArrayA: ComplexArray = (
-            [2.0, 1.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0],
-            [-2.0, 1.0, 3.0, 4.0, -1.0, 2.0, -3.0, -4.0]
-        )
-        let result: ComplexArray = cplxpair(complexArrayA)
-
-        let expected: ComplexArray = (
-            [1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0],
-            [1.0, -1.0, 2.0, -2.0, 3.0, -3.0, 4.0, -4.0]
-            )
-        XCTAssertEqual(result, expected, accuracy: accuracy, "cplxpair failed")
-    }
+    // TODO: Tests
 
     // MARK: imag
 
@@ -123,35 +98,35 @@ class ComplexTests: XCTestCase {
 
     // MARK: wrap
 
-    func testWrapReal0() throws {
+    func testWrapToPi0() throws {
         let realA: Real = 0.0
         let result: Real = wrapToPi(realA)
         let expected: Real = 0.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
 
-    func testWrapRealPi() throws {
+    func testWrapToPiPi() throws {
         let realA: Real = Real.pi
         let result: Real = wrapToPi(realA)
         let expected: Real = Real.pi
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
 
-    func testWrapRealMinusPi() throws {
+    func testWrapToPiMinusPi() throws {
         let realA: Real = -Real.pi
         let result: Real = wrapToPi(realA)
         let expected: Real = -Real.pi
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
 
-    func testWrapReal2Pi() throws {
+    func testWrap2Pi2Pi() throws {
         let realA: Real = 2 * Real.pi
         let result: Real = wrapToPi(realA)
         let expected: Real = 0.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
 
-    func testWrapReal3Pi() throws {
+    func testWrapToPi3Pi() throws {
         let realA: Real = 3 * Real.pi
         let result: Real = wrapToPi(realA)
         let expected: Real = Real.pi

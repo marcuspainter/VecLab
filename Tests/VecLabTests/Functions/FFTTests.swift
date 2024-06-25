@@ -75,7 +75,7 @@ class FFTTests: XCTestCase {
         let realArrayA: RealArray = vector(1 ... 15)
         let result: ComplexArray = fftr(realArrayA)
         let expected: ComplexArray = ([1.2e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2,
-                                       -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2],
+                                       -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2],
                                       [
                                           0.0,
                                           35.284725821088408,
@@ -263,7 +263,7 @@ class FFTTests: XCTestCase {
         let realArrayA: RealArray = vector(1.0 ... 15.0)
         let result: ComplexArray = dftr(realArrayA)
         let expected: ComplexArray = ([1.2e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2,
-                                       -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2],
+                                       -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2, -0.075e2],
                                       [
                                           0.0,
                                           35.284725821088408,
