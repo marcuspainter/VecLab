@@ -30,7 +30,7 @@ public func any(_ x: RealArray) -> Bool {
 ///
 /// This function returns `true` if at least one element in the provided array is non-zero. It's a vectorized equivalent to MATLAB's `any()` function.
 ///
-/// - Parameter x: Comlex array.
+/// - Parameter x: Complex array.
 /// - Returns: `true` if any element is non-zero, otherwise `false`.
 ///
 /// # Example:
