@@ -8,6 +8,10 @@
 import Foundation
 
 /// Resize data by adding or removing elements.
+/// - Parameters:
+///   - x: Input array
+///   - m: Size.
+/// - Returns: Array of new size.
 public func resize(_ x: RealArray, _ m: Int) -> RealArray {
     let n = x.count
     var y = x
@@ -22,6 +26,10 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
 }
 
 /// Resize data by adding or removing elements.
+/// - Parameters:
+///   - x: Input array
+///   - m: Size.
+/// - Returns: Array of new size.
 public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
     let n = x.0.count
     var y = x

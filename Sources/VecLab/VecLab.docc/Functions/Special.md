@@ -2,7 +2,6 @@
 
 Special functions.
 
-
 ## Topics
 
 - ``besseli0(_:)``

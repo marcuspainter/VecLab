@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// Pad data array with zeros.
+/// Pad real array with zeros.
+/// - Parameters:
+///   - x: Input array.
+///   - m: Size.
+/// - Returns: Array padded to size m
 public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
     let n = x.count
     var y = x
@@ -19,7 +23,11 @@ public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
     return y
 }
 
-/// Pad data array with zeros.
+/// Pad complex array with zeros.
+/// - Parameters:
+///   - x: Input array.
+///   - m: Size.
+/// - Returns: Array padded to size m
 public func paddata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
     let n = x.0.count
     var y = x

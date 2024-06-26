@@ -1,14 +1,14 @@
 # Math Operators
 
-Real and complex ccalar and vector arithmetic operators.
+Real and complex scalar and vector arithmetic operators.
 
 ## Overview
 
-The operator functions are overloaded to allow any combination of scalars and vectors, including different left and right operand types.
+The operator functions are overloaded to allow the free mixing scalars and vectors, including different left and right operand types.
 
 The Accelerate framework is used for vector operations.
 
-#### Power
+#### Power Operator
 The `**` operator can be used for power operations. This is the operator equivalent of the <doc:Power> function.
 
 #### Complex Conjugate Multiply
