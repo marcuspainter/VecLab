@@ -1,6 +1,6 @@
 # Optimization
 
-Optimization Functions
+Optimization functions.
 
 ## Topics
 

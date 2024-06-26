@@ -1,6 +1,6 @@
-# Vector Creation
+# Real Vector Creation
 
-Vector Creation Functions
+Real vector creation.
 
 ## Topics
 
@@ -15,3 +15,7 @@ Vector Creation Functions
 - ``vector(_:_:)-f4yt``
 - ``vector(_:_:)-1eu48``
 - ``vector(_:_:)-1eu48``
+
+### Fill with Values
+- ``zeros(_:)``
+- ``ones(_:)``

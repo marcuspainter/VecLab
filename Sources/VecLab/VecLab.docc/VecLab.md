@@ -203,10 +203,12 @@ Overloaded operators for scalar and vectors.
 ### Essentials 
 - <doc:GettingStarted>
 
-### Creation
-- <doc:VectorCreation>
+### Vector Creation
+- <doc:RealCreation>
 - <doc:ComplexCreation>
-- <doc:VectorFunctions>
+
+### Operators
+- <doc:MathOperators>
 
 ### Functions
 - <doc:VectorFunctions>
@@ -230,7 +232,3 @@ Overloaded operators for scalar and vectors.
 - <doc:Timing>
 - <doc:Trigonometry>
 - <doc:Windows>
-
-### Operators
-- <doc:MathOperators>
-

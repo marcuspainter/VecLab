@@ -1,6 +1,6 @@
 # Statistics
 
-Max, Min, Mean, Median, Mode, Standard Deviation and Related Functions
+Max, min, mean, median, mode, standard deviation and related functions.
 
 ## Topics
 

@@ -1,6 +1,6 @@
 # Conversion
 
-Coordinate, Degrees and Radians, and Decibel Conversion
+Coordinate, degrees and radians, and decibel conversion.
 
 ## Topics
 

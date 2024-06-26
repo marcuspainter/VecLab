@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// Complex array iterator.
+/// Real array iterator.
+/// - Parameters:
+///   - x: Real array.
+///   - body: Closure to execute.
+/// - Returns: Output array.
 public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
     var y = RealArray(repeating: 0, count: x.count)
     for k in 0 ..< x.count {
@@ -16,7 +20,11 @@ public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
     return y
 }
 
-/// Complex array iterator with index.
+/// Real array iterator with index.
+/// - Parameters:
+///   - x: Real array.
+///   - body: Closure to execute.
+/// - Returns: Output array.
 public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
     var y = RealArray(repeating: 0, count: x.count)
     for k in 0 ..< x.count {
@@ -26,6 +34,10 @@ public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
 }
 
 /// Complex array iterator.
+/// - Parameters:
+///   - x: Real array.
+///   - body: Closure to execute.
+/// - Returns: Output array.
 public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
     var y = complex(sized: x)
     for k in 0 ..< x.0.count {
@@ -35,6 +47,10 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 }
 
 /// Complex array iterator with index.
+/// - Parameters:
+///   - x: Complex array.
+///   - body: Closure to execute.
+/// - Returns: Output array.
 public func iterate(_ x: ComplexArray, _ body: (Complex, Int) -> Complex) -> ComplexArray {
     var y = complex(sized: x)
     for k in 0 ..< x.0.count {

@@ -1,6 +1,6 @@
 # Basic Functions
 
-Basic Functions
+Basic functions.
 
 ## Topics
 
@@ -35,9 +35,6 @@ Basic Functions
 - ``iterate(_:_:)-3t7c2``
 - ``iterate(_:_:)-8sew6``
 - ``iterate(_:_:)-uxtp``
-
-- ``sinc(_:)-7kkhr``
-- ``sinc(_:)-dqww``
 
 - ``norm(_:)``
 

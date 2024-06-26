@@ -8,6 +8,11 @@
 import Foundation
 import Accelerate
 
+/// Interpolate using FFT. method  (Alternative)
+/// - Parameters:
+///   - X: Input array.
+///   - n: Factor.
+/// - Returns: Output array.
 public func interpft2(_ X: [Double], _ n: Int) -> [Double] {
     let N = X.count
     var fftX = [Double](repeating: 0.0, count: N)
@@ -62,6 +67,11 @@ public func interpft2(_ X: [Double], _ n: Int) -> [Double] {
     return adjustedFFT
 }
 
+/// Interpolate using FFT. method.
+/// - Parameters:
+///   - X: Input array.
+///   - n: Factor.
+/// - Returns: Output array.
 public func interpft(_ X: [Double], _ n: Int) -> [Double] {
     let N = X.count
     var fftX = [Double](repeating: 0.0, count: N)

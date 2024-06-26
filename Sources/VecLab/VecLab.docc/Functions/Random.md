@@ -1,6 +1,6 @@
 # Random
 
-Random Numbers and Gaussian White Noise
+Random numbers and Gaussian white noise.
 
 ## Topics
 

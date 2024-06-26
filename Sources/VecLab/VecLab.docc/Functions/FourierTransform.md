@@ -1,6 +1,6 @@
 # Fourier Transform
 
-Forward and Inverse FFT, DFT and FFT Shift
+FFT, DFT and FFT shift.
 
 ## Topics
 

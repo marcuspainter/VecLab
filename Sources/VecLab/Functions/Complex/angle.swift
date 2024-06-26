@@ -11,7 +11,6 @@ import Foundation
 // VECTORIZED
 
 /// Phase angle of a complex number.
-///
 /// - Parameter x:Complex number.
 /// - Returns: The phase angle in radians.
 public func angle(_ x: Complex) -> Real {
@@ -19,7 +18,6 @@ public func angle(_ x: Complex) -> Real {
 }
 
 /// Phase angles of a complex array.
-///
 /// - Parameter x:Complex array.
 /// - Returns: The phase angles in radians.
 public func angle(_ x: ComplexArray) -> RealArray {
