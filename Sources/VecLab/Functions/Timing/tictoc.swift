@@ -1,6 +1,6 @@
 //
 //  tictoc.swift
-//  
+//
 //
 //  Created by Marcus Painter on 11/09/2023.
 //
@@ -8,59 +8,118 @@
 import Foundation
 import Darwin
 
-/// Stopwatch.
-private struct MachTimer {
-    nonisolated(unsafe) private static var _startTime: UInt64 = 0
-    nonisolated(unsafe) private static var _timebaseInfo: mach_timebase_info_data_t = {
-        var info = mach_timebase_info_data_t()
-        _ = withUnsafeMutablePointer(to: &info) { mach_timebase_info($0) }
-        return info
-    }()
-    
-    private static let lock = NSLock()
 
-    static var startTime: UInt64 {
-        get {
-            lock.lock()
-            defer { lock.unlock() }
-            return _startTime
-        }
-        set {
-            lock.lock()
-            _startTime = newValue
-            lock.unlock()
-        }
-    }
-
-    static var timebaseInfo: mach_timebase_info_data_t {
-        lock.lock()
-        defer { lock.unlock() }
-        return _timebaseInfo
-    }
-}
 
 /// Start stopwatch timer.
 ///
 /// ``tic()`` works with the ``toc()`` function to measure elapsed time.
 public func tic() {
-    MachTimer.startTime = mach_absolute_time()
+    MachTimer.shared.start()
+    
+    // Alternative using Actor
+    //Task {
+    //    await MachTimerActor.shared.start()
+    //}
 }
 
 /// Read elapsed time from stopwatch timer.
 ///
 /// ``toc()`` reads the elapsed time since the stopwatch timer started by the ``tic()`` function.
 public func toc() {
-    let endTime = mach_absolute_time()
-    let elapsed = endTime - MachTimer.startTime
-    let nanoseconds = elapsed * UInt64(MachTimer.timebaseInfo.numer) / UInt64(MachTimer.timebaseInfo.denom)
-    let seconds = Double(nanoseconds) / 1_000_000_000.0  // Convert to seconds
+    let seconds = MachTimer.shared.stop()
     print("Elapsed time: \(seconds) seconds")
+    
+    // Alternative using Actor
+    //Task {
+    //    let seconds = await MachTimerActor.shared.stop()
+    //
+    //}
+
+}
+
+/// Stopwatch.
+private final class MachTimer: @unchecked Sendable {
+    public static let shared = MachTimer()
+    private let numer: UInt64
+    private let denom: UInt64
+    
+    private let lock = NSLock() // Manual locking
+    private var startTime: UInt64 = 0
+
+    private init() {
+        var info = mach_timebase_info(numer: 0, denom: 0)
+        let status = mach_timebase_info(&info)
+        if status == KERN_SUCCESS {
+            self.numer = UInt64(info.numer)
+            self.denom = UInt64(info.denom)
+        }
+        else {
+            self.numer = 0
+            self.denom = 0
+        }
+    }
+    
+    func start() {
+        let newStartTime = mach_absolute_time()
+        lock.lock()
+        self.startTime = newStartTime
+        lock.unlock()
+    }
+    
+    func stop() -> Double {
+        let stopTime = mach_absolute_time()
+        
+        lock.lock()
+        let lastStartTime = self.startTime
+        self.startTime = 0
+        lock.unlock()
+        
+        guard self.numer !=  0 && self.denom != 0 else { return Double.nan }
+        let elapsedTime = stopTime - lastStartTime
+        let nanoseconds = elapsedTime * (self.numer / self.denom)
+        let seconds = Double(nanoseconds) / 1_000_000_000.0  // Convert to seconds
+        return seconds
+    }
+    
+}
+
+/// Stopwatch actor.
+private actor MachTimerActor {
+    static let shared = MachTimerActor()
+    private let numer: UInt64
+    private let denom: UInt64
+    
+    private var startTime: UInt64 = 0
+
+    private init() {
+        var info = mach_timebase_info(numer: 0, denom: 0)
+        let status = mach_timebase_info(&info)
+        if status == KERN_SUCCESS {
+            self.numer = UInt64(info.numer)
+            self.denom = UInt64(info.denom)
+        } else {
+            fatalError("Failed to initialize MachTimer: mach_timebase_info returned \(status)")
+        }
+    }
+    
+    func start() {
+        self.startTime = mach_absolute_time()
+    }
+    
+    func stop() -> Double {
+        guard self.numer !=  0 && self.denom != 0 else { return Double.nan }
+        let stopTime = mach_absolute_time()
+        let elapsedTime = stopTime - startTime
+        let nanoseconds = elapsedTime * self.numer / self.denom
+        self.startTime = 0
+        return Double(nanoseconds) / 1_000_000_000.0  // Convert to seconds
+    }
 }
 
 /*
-// Example usage:
-tic()
-// ... some code that takes time ...
-let elapsedTime = toc()
-print("Elapsed time: \(elapsedTime) seconds")
-*/
+ // Example usage:
+ tic()
+ // ... some code that takes time ...
+ let elapsedTime = toc()
+ print("Elapsed time: \(elapsedTime) seconds")
+ */
