@@ -31,49 +31,48 @@ struct DefaultRNG: RandomNumberGenerator {
 }
 
 // Internal singleton
-private struct GlobalRNG {
-    nonisolated(unsafe) static private var _rng: RandomNumberGenerator = DefaultRNG(seed: UInt32(time(nil)))
+final class GlobalRNG: @unchecked Sendable {
+    public static let shared = GlobalRNG()
+    private var rng: RandomNumberGenerator = DefaultRNG(seed: UInt32(time(nil)))
+    private let lock = NSLock()
+
+    func setRNG(rng: RandomNumberGenerator) {
+        self.lock.lock()
+        self.rng = rng
+        self.lock.unlock()
+    }
     
-    private static let lock = NSLock()
- 
-    static var rng: RandomNumberGenerator {
-        get {
-            lock.lock()
-            defer { lock.unlock() }
-            return _rng
-        }
-        set {
-            lock.lock()
-            _rng = newValue
-            lock.unlock()
-        }
+    var seed: UInt32 {
+        self.lock.lock()
+        defer { self.lock.lock() }
+        return rng.seed
     }
 
-    static func rand() -> Real {
+    func rand() -> Real {
         self.lock.lock()
-        defer {  self.lock.unlock()}
-        let x = GlobalRNG._rng.rand()
+        let x = self.rng.rand()
+        self.lock.unlock()
         return x
     }
 
     // Centralized normal distribution generation
-    static func randn() -> Real {
+    func randn() -> Real {
         self.lock.lock()
         defer {  self.lock.unlock()}
         // Using the Box-Muller transform with rand() from the chosen RNG
-        let u1 = GlobalRNG._rng.rand()
-        let u2 = GlobalRNG._rng.rand()
+        let u1 = self.rng.rand()
+        let u2 = self.rng.rand()
 
-        let z0 = Darwin.sqrt(-2.0 * log(u1)) * Darwin.cos(2 * .pi * u2)
+        let z0 = Darwin.sqrt(-2.0 * Darwin.log(u1)) * Darwin.cos(2 * .pi * u2)
         return z0
     }
     
-    static func rand(count: Int) -> RealArray {
-        return (0..<count).map { _ in GlobalRNG.rand() }
+    func rand(count: Int) -> RealArray {
+        return (0..<count).map { _ in self.rand() }
     }
     
-    static func randn(count: Int) -> RealArray {
-        return (0..<count).map { _ in GlobalRNG.randn() }
+    func randn(count: Int) -> RealArray {
+        return (0..<count).map { _ in self.randn() }
     }
 }
 
@@ -87,27 +86,27 @@ private struct GlobalRNG {
 /// - ``rng(seed:generator:)``
 ///
 public func rand() -> Real {
-    return GlobalRNG.rand()
+    return GlobalRNG.shared.rand()
 }
 
 /// Uniformly distributed random numbers as an array.
 /// - Parameter count: The number of elements in the array.
 /// - Returns: A random number from the uniform distribution in the interval (0,1).
 public func rand(count: Int) -> RealArray {
-    return GlobalRNG.rand(count: count)
+    return GlobalRNG.shared.rand(count: count)
 }
 
 /// Normally distributed random numbers.
 /// - Returns: A random number from the standard normal distribution.
 public func randn() -> Real {
-    return GlobalRNG.randn()
+    return GlobalRNG.shared.randn()
 }
 
 /// Normally distributed random numbers as an array.
 /// - Parameter count: The number of elements in the array.
 /// - Returns: A random array from the standard normal distribution.
 public func randn(count: Int) -> RealArray {
-    return GlobalRNG.randn(count: count)
+    return GlobalRNG.shared.randn(count: count)
 }
 
 /// Control random number generator seed and algorithm.
@@ -118,7 +117,7 @@ public func randn(count: Int) -> RealArray {
 public func rng(seed: UInt32, generator: String = "Default") {
     switch generator {
     case "Default":
-            GlobalRNG.rng = DefaultRNG(seed: seed)
+            GlobalRNG.shared.setRNG(rng: DefaultRNG(seed: seed))
     // case "Another":
     //     GlobalRNG.rng = AnotherRNG(seed: seedValue)
     default:
@@ -130,5 +129,5 @@ public func rng(seed: UInt32, generator: String = "Default") {
 ///
 /// - Returns: Current seed of the random number generator.
 public func rng() -> UInt32 {
-    return GlobalRNG.rng.seed
+    return GlobalRNG.shared.seed
 }
