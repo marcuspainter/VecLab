@@ -24,11 +24,13 @@ class RandomTests: XCTestCase {
     func testRandCount() throws {
         let realArrayA: [Real] = rand(count: 10)
         XCTAssert(realArrayA.count == 10, "rand failed")
+        //print(realArrayA)
     }
 
     func testRandnCount() throws {
         let realArrayA: [Real] = randn(count: 10)
         XCTAssert(realArrayA.count == 10, "randn failed")
+        //print(realArrayA)
     }
 
     // TODO: Some test
