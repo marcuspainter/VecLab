@@ -44,7 +44,7 @@ final class GlobalRNG: @unchecked Sendable {
     
     var seed: UInt32 {
         self.lock.lock()
-        defer { self.lock.lock() }
+        defer { self.lock.unlock() }
         return rng.seed
     }
 
