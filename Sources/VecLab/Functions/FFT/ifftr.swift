@@ -9,6 +9,8 @@ import Foundation
 import Accelerate
 
 /// Inverse FFT of complex array with real result.
+///
+/// The FFT size can be any factor of 2, 3, and 5, not just a power of 2.
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func ifftr(_ x: ComplexArray) -> RealArray {

@@ -9,6 +9,8 @@ import Foundation
 import Accelerate
 
 /// FFT of real array.
+///
+/// /// The FFT size can be any factor of 2, 3, and 5, not just a power of 2.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
 public func fftr(_ x: RealArray) -> ComplexArray {

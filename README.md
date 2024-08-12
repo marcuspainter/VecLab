@@ -14,7 +14,7 @@ VecLab is a numeric library for real and complex vector operations and NumPy and
 - Basic Matlab-style functions.
 - Vectorized using vDSP.
 
-Full documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab).
+[Online Documentation](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab)
 
 ### Example Usage
 
@@ -110,7 +110,7 @@ Real numbers are `Double` types.
 
 ### Real Arrays
 
-Real arrays are just a normal Swift `Array` of `Double`.
+Real arrays are a normal Swift arrays of `[Double]`.
 
 ### Complex Numbers
 

@@ -10,6 +10,8 @@ import Foundation
 // https://uk.mathworks.com/company/newsletters/articles/faster-finite-fourier-transforms-matlab.html
 
 /// Recursive FFT of real array.
+///
+//// FFT size must be a power of 2.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
 public func fftx(_ x: RealArray) -> ComplexArray {

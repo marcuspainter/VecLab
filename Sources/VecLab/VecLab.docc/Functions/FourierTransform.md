@@ -2,8 +2,11 @@
 
 FFT, DFT and FFT shift.
 
-## Topics
+## Overview
 
+Note that `fft` and `ifft`  support lengths of factors of 2, 3 and 5.
+
+## Topics
 
 ### Fast Fourier Transform
 

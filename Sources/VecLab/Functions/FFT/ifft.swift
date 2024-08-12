@@ -9,6 +9,8 @@ import Accelerate
 import Foundation
 
 /// Inverse FFT of complex array with complex result.
+///
+/// The FFT size can be any factor of 2, 3, and 5, not just a power of 2.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func ifft(_ x: ComplexArray) -> ComplexArray {

@@ -9,6 +9,8 @@ import Accelerate
 import Foundation
 
 /// FFT of complex array.
+///
+/// The FFT size can be any factor of 2, 3, and 5, not just a power of 2.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func fft(_ x: ComplexArray) -> ComplexArray {

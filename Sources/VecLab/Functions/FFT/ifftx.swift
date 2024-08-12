@@ -8,6 +8,8 @@
 import Foundation
 
 /// Recursive inverse FFT of real array.
+///
+/// FFT size must be a power of 2.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
 public func ifftx(_ x: ComplexArray) -> ComplexArray {
