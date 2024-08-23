@@ -185,9 +185,23 @@ class DiscreteTests: XCTestCase {
         let expected: Real = 997.0
         XCTAssertEqual(result, expected, "prevprime failed")
     }
+    
+    func testPrevprime2() throws {
+        let result: Real = prevprime(2)
+        XCTAssert(result == 2, "prevprime failed")
+    }
+    func testPrevprime1() throws {
+        let result: Real = prevprime(1)
+        XCTAssert(result.isNaN, "prevprime failed")
+    }
 
     func testPrevprime0() throws {
         let result: Real = prevprime(0)
+        XCTAssert(result.isNaN, "prevprime failed")
+    }
+    
+    func testPrevprimeNegative() throws {
+        let result: Real = prevprime(-1)
         XCTAssert(result.isNaN, "prevprime failed")
     }
 

@@ -1,12 +1,8 @@
 # Vector Functions
 
-Vector Functions
+Vector functions.
 
 ## Topics
-
-### Vector Creation
-- ``zeros(_:)``
-- ``ones(_:)``
 
 ### Concatenation
 - ``cat(_:)-2narh``

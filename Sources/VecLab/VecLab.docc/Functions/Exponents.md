@@ -1,6 +1,6 @@
 # Exponents
 
-Exponents, Logarithms and Square Root 
+Exponents, logarithms and square root. 
 
 ## Topics
 

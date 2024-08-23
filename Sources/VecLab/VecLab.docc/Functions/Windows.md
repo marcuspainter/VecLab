@@ -1,6 +1,6 @@
 # Windows
 
-Hamming, Hann, Blackman, Blackman Harris, Flat Top, Gaussian , Kaiser, Tukey and Rectangle Windows
+Hamming, Hann, Blackman and related spectral windows.
 
 ## Topics
 

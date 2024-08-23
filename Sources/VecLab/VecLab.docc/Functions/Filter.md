@@ -1,6 +1,6 @@
 # Filter
 
-Filter Functions
+Filter functions.
 
 ## Topics
 

@@ -23,6 +23,11 @@ func complexConjugateMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Re
     return ( a * c + b * d, a * d - b * c )
 }
 
+/*
+ For the if branch: (x, y) = ((3, 4), (5, 2))
+ For the else branch: (x, y) = ((3, 4), (2, 5))
+ */
+
 func complexDivide(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     let a = x.0
     let b = x.1

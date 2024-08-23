@@ -8,7 +8,7 @@
 import Foundation
 import Accelerate
 
-/// Add white Gaussian noise to real signal.
+/// Add Gaussian white  noise to a real signal.
 ///
 /// This function uses the gaussian distributed random numbers using ``randn()``. For repeatable results,
 /// set the seed of the random number generator using ``rng(seed:generator:)``.
@@ -33,7 +33,7 @@ public func agwn(_ x: RealArray, _ snr: Real) -> (y: RealArray, noise: RealArray
     return (y, noise)
 }
 
-/// Add white Gaussian noise to a complex signal
+/// Add Gaussian white  noise to a complex signal
 ///
 /// This function uses the gaussian distributed random numbers using ``randn()``. For repeatable results,
 /// set the seed of the random number generator using ``rng(seed:generator:)``.

@@ -1,6 +1,6 @@
 # Modulo
 
-Modulo, Remainder, Rounding and Truncation
+Modulo, remainder, rounding and truncation.
 
 ## Topics
 

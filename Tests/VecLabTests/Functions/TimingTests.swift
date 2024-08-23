@@ -13,10 +13,15 @@ class TimingTests: XCTestCase {
     func testTicToc() throws {
 
         tic()
+        usleep(100)
+        toc()
+    }
+    
+    func testTimeti() throws {
+
         timeit {
             usleep(100)
         }
-        toc()
     }
 
 }

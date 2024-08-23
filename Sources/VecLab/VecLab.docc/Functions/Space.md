@@ -1,9 +1,9 @@
 # Space
 
-Linear, Logarithmic and Frequency Spaces
+Linear, logarithmic and frequency spaces.
 
 ## Topics
 
-- ``freqspace(_:_:)``
 - ``linspace(_:_:_:)``
 - ``logspace(_:_:_:)``
+- ``freqspace(_:_:)``

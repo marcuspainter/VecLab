@@ -18,5 +18,10 @@ public func cart2sph(_ x: Real, _ y: Real, _ z: Real) -> (azimuth: Real, elevati
     let r = sqrt(x * x + y * y + z * z)
     let azimuth = atan2(y, x)
     let elevation = atan2(z, sqrt(x * x + y * y))
+    
+    //let azimuth = atan2(y,x)
+    //let elevation = atan2(z,sqrt(x.^2 + y.^2))
+    //let r = sqrt(x.^2 + y.^2 + z.^2)
+    
     return (azimuth, elevation, r)
 }
