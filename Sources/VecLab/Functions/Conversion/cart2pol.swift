@@ -65,7 +65,7 @@ public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: 
     var zz = theta  // Zeros
 
     for k in 0 ..< n {
-        let coord = cart2sph(x[k], y[k], z[k])
+        let coord = cart2pol(x[k], y[k], z[k])
         theta[k] = coord.0
         rho[k] = coord.1
         zz[k] = coord.2
