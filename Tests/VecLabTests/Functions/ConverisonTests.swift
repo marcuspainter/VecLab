@@ -28,7 +28,10 @@ class ConversionTests: XCTestCase {
         let z = 1.0
         let result = cart2pol(x, y, z)
         let expected = (0.785398163397448, 1.414213562373095, 1.0)
-        XCTAssertEqual(result, expected, accuracy: accuracy, "cart2pol failed")
+        
+        XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "cart2pol failed")
+        XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "cart2pol failed")
+        XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "cart2pol failed")
     }
 
     func testCart2sph() throws {
@@ -37,20 +40,22 @@ class ConversionTests: XCTestCase {
         let z = 1.0
         let result = cart2sph(x, y, z)
         let expected = (0.785398163397448, 0.615479708670387, 1.732050807568877)
-        XCTAssertEqual(result, expected, accuracy: accuracy, "cart2sph failed")
+        XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "cart2sph failed")
+        XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "cart2sph failed")
+        XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "cart2sph failed")
     }
 
     func testDb2mag() throws {
-        let db = 0.0
+        let db = -6.020599913279624
         let result = db2mag(db)
-        let expected = 1.0
+        let expected = 0.5
         XCTAssertEqual(result, expected, accuracy: accuracy, "db2mag failed")
     }
 
     func testDb2magArray() throws {
-        let db = [0.0, 0.0]
+        let db = [0.0, 1.0,  -6.020599913279624]
         let result = db2mag(db)
-        let expected = [1.0, 1.0]
+        let expected = [1.0,  1.122018454301963, 0.5]
         XCTAssertEqual(result, expected, accuracy: accuracy, "db2mag failed")
     }
 
@@ -90,9 +95,9 @@ class ConversionTests: XCTestCase {
     }
 
     func testMag2dbArray() throws {
-        let mag = [1.0, 1.0]
+        let mag = [1.0, 0.5]
         let result = mag2db(mag)
-        let expected = [0.0, 0.0]
+        let expected = [0.0, -6.020599913279624]
         XCTAssertEqual(result, expected, accuracy: accuracy, "deg2rad failed")
     }
 
@@ -110,7 +115,9 @@ class ConversionTests: XCTestCase {
         let z = 1.0
         let result = pol2cart(theta, rho, z)
         let expected = (1.0, 1.0, 1.0)
-        XCTAssertEqual(result, expected, accuracy: accuracy, "pol2cart failed")
+        XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "pol2cart failed")
+        XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "pol2cart failed")
+        XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "pol2cart failed")
     }
 
     func testPow2db() throws {
@@ -148,6 +155,8 @@ class ConversionTests: XCTestCase {
 
         let result = sph2cart(azimuth, elevation, r)
         let expected = (1.0, 1.0, 1.0)
-        XCTAssertEqual(result, expected, accuracy: accuracy, "rad2deg failed")
+        XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "rad2deg failed")
+        XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "rad2deg failed")
+        XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "rad2deg failed")
     }
 }
