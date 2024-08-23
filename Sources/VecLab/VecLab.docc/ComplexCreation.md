@@ -9,3 +9,5 @@ Complex Number Creation Functions
 - ``complex(sized:)-1cuwk``
 - ``complex(_:_:)``
 - ``complex()``
+- ``complex(_:_:)-90aj9``
+- ``complex(_:_:)-1z7i3``

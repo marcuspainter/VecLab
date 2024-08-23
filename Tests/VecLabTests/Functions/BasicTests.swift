@@ -222,6 +222,19 @@ class BasicTests: XCTestCase {
         let expected: Complex = (10.0, 10.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "sum failed")
     }
+    
+    func testDot() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let result: Real = dot(realArrayA, realArrayA)
+        let expected: Real = 30.0
+    }
+    
+    func testDot2() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let realArrayB: RealArray = [5.0, 6.0, 7.0, 8.0]
+        let result: Real = dot(realArrayA, realArrayB)
+        let expected: Real = 70.0
+    }
 
 }
 

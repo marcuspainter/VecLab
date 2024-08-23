@@ -15,3 +15,7 @@ Vector Creation Functions
 - ``vector(_:_:)-f4yt``
 - ``vector(_:_:)-1eu48``
 - ``vector(_:_:)-1eu48``
+
+- ``arange(_:)``
+- ``arange(_:_:)``
+- ``arange(_:_:_:)``

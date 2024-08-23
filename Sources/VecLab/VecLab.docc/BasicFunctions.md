@@ -23,6 +23,10 @@ Basic Functions
 - ``cumsum(_:)-24pie``
 - ``prod(_:)-1y313``
 - ``prod(_:)-7j2to``
+- ``dot(_:_:)-3l35z``
+- ``dot(_:_:)-9w9hh``
+- ``dot(_:_:)-664wy``
+- ``dot(_:_:)-7oo9c``
 
 ### Miscellaneous
 
@@ -35,9 +39,6 @@ Basic Functions
 - ``iterate(_:_:)-3t7c2``
 - ``iterate(_:_:)-8sew6``
 - ``iterate(_:_:)-uxtp``
-
-- ``sinc(_:)-7kkhr``
-- ``sinc(_:)-dqww``
 
 - ``norm(_:)``
 
