@@ -63,10 +63,10 @@ public func pol2cart(_ theta: RealArray, _ rho: RealArray, _ z: RealArray) -> (x
     var zz = x  // Zeros
     
     for k in 0 ..< n {
-        let xyz = pol2cart(theta[k], rho[k], z[k])
-        x[k]  = xyz.0
-        y[k]  = xyz.1
-        zz[k] = xyz.2
+        let coord = pol2cart(theta[k], rho[k], z[k])
+        x[k]  = coord.0
+        y[k]  = coord.1
+        zz[k] = coord.2
     }
     return (x, y, zz)
 }
