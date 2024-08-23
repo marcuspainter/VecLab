@@ -38,5 +38,4 @@ let package = Package(
     ]
 )
 
-
 // https://www.polpiella.dev/version-specific-package-manifests
