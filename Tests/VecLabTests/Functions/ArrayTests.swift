@@ -64,6 +64,38 @@ class ArrayTests: XCTestCase {
     }
 
     // MARK: circshift
+    
+    func testCircshiftRealEmpty() throws {
+        let shift: Int = 2
+        let realArrayA: RealArray = []
+        let result: RealArray = circshift(realArrayA, shift)
+        let expected: RealArray = realArrayA
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+    
+    func testCircshiftComplexEmpty() throws {
+        let shift: Int = 2
+        let complexArrayA: ComplexArray = ([], [])
+        let result: ComplexArray = circshift(complexArrayA, shift)
+        let expected: ComplexArray = complexArrayA
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+    
+    func testCircshiftRealZero() throws {
+        let shift: Int = 0
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+        let result: RealArray = circshift(realArrayA, shift)
+        let expected: RealArray = realArrayA
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+    
+    func testCircshiftComplexZero() throws {
+        let shift: Int = 0
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        let result: ComplexArray = circshift(complexArrayA, shift)
+        let expected: ComplexArray = complexArrayA
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
 
     func testCircshiftRealArrayLeftEven() throws {
         let shift: Int = 2
