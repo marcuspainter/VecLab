@@ -85,7 +85,7 @@ public func pow(_ a: Real, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Complex, _ b: Real) -> Complex {
-    return complexRealPow(a, b)
+    return complexComplexRealPow(a, b)
 }
 
 /// Power.
@@ -94,7 +94,7 @@ public func pow(_ a: Complex, _ b: Real) -> Complex {
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Real, _ b: Complex) -> Complex {
-    return complexRealPow(a, b)
+    return complexRealComplexPow(a, b)
 }
 
 // MARK: Complex Array
