@@ -65,35 +65,51 @@ class ArrayTests: XCTestCase {
 
     // MARK: circshift
 
-    func testCircshiftRealArrayLeft() throws {
+    func testCircshiftRealArrayLeftEven() throws {
         let shift: Int = 2
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+        let result: RealArray = circshift(realArrayA, shift)
+        let expected: RealArray = [5.0, 6.0, 1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+    
+    func testCircshiftRealArrayLeftOdd() throws {
+        let shift: Int = 2
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0]
+        let result: RealArray = circshift(realArrayA, shift)
+        let expected: RealArray = [4.0, 5.0, 1.0, 2.0, 3.0]
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+
+    func testCircshiftComplexArrayLeftEven() throws {
+        let shift: Int = 2
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        let result: ComplexArray = circshift(complexArrayA, shift)
+        let expected: ComplexArray = ([5.0, 6.0, 1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 1.0, 2.0, 3.0, 4.0])
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+    
+    func testCircshiftComplexArrayLeftOdd() throws {
+        let shift: Int = 2
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0], [1.0, 2.0, 3.0, 4.0, 5.0])
+        let result: ComplexArray = circshift(complexArrayA, shift)
+        let expected: ComplexArray = ([4.0, 5.0, 1.0, 2.0, 3.0], [4.0, 5.0, 1.0, 2.0, 3.0])
+        XCTAssertEqual(result, expected, "circshift failed")
+    }
+
+    func testCircshiftRealArrayRight() throws {
+        let shift: Int = -2
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: RealArray = circshift(realArrayA, shift)
         let expected: RealArray = [3.0, 4.0, 1.0, 2.0]
         XCTAssertEqual(result, expected, "circshift failed")
     }
 
-    func testCircshiftComplexArrayLeft() throws {
-        let shift: Int = 2
+    func testCircshiftComplexArrayRight() throws {
+        let shift: Int = -2
         let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let result: ComplexArray = circshift(complexArrayA, shift)
         let expected: ComplexArray = ([3.0, 4.0, 1.0, 2.0], [3.0, 4.0, 1.0, 2.0])
-        XCTAssertEqual(result, expected, "circshift failed")
-    }
-
-    func testCircshiftRealArrayRight() throws {
-        let shift: Int = -1
-        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = circshift(realArrayA, shift)
-        let expected: RealArray = [2.0, 3.0, 4.0, 1.0]
-        XCTAssertEqual(result, expected, "circshift failed")
-    }
-
-    func testCircshiftComplexArrayRight() throws {
-        let shift: Int = -1
-        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = circshift(complexArrayA, shift)
-        let expected: ComplexArray = ([2.0, 3.0, 4.0, 1.0], [2.0, 3.0, 4.0, 1.0])
         XCTAssertEqual(result, expected, "circshift failed")
     }
 
@@ -369,6 +385,99 @@ class ArrayTests: XCTestCase {
         let result: ComplexArray = trimdata(complexArrayA, size)
         let expected: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         XCTAssertEqual(result, expected, "trimdata failed")
+    }
+    
+    func testFlipReal() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let result: RealArray = flip(realArrayA)
+        let expected: RealArray = [4.0, 3.0, 2.0, 1.0]
+        XCTAssertEqual(result, expected, "flip failed")
+    }
+    
+    func testFlipComplex() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: ComplexArray = flip(complexArrayA)
+        let expected: ComplexArray = ([4.0, 3.0, 2.0, 1.0], [4.0, 3.0, 2.0, 1.0])
+        XCTAssertEqual(result, expected, "flip failed")
+    }
+    
+    func testZeros() throws {
+        let n = 4
+        let result: RealArray = zeros(n)
+        let expected: RealArray = [0.0, 0.0, 0.0, 0.0]
+        XCTAssertEqual(result, expected, "zeros failed")
+    }
+
+    
+    func testOnes() throws {
+        let n = 4
+        let result: RealArray = ones(n)
+        let expected: RealArray = [1.0, 1.0, 1.0, 1.0]
+        XCTAssertEqual(result, expected, "ones failed")
+    }
+    
+    func testPaddataReal() throws {
+        let length = 4
+        let realArrayA: RealArray = [1.0, 2.0]
+        let result: RealArray = paddata(realArrayA, length)
+        let expected: RealArray = [1.0, 2.0, 0.0, 0.0]
+        XCTAssertEqual(result, expected, "paddata failed")
+    }
+    
+    func testPaddataComplex() throws {
+        let length = 4
+        let complexArrayA: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        let result: ComplexArray = paddata(complexArrayA, length)
+        let expected: ComplexArray = ([1.0, 2.0, 0.0, 0.0], [1.0, 2.0, 0.0, 0.0])
+        XCTAssertEqual(result, expected, "paddata failed")
+    }
+    
+    func testResizeRealBigger() throws {
+        let length = 4
+        let realArrayA: RealArray = [1.0, 2.0]
+        let result: RealArray = resize(realArrayA, length)
+        let expected: RealArray = [1.0, 2.0, 0.0, 0.0]
+        XCTAssertEqual(result, expected, "resize failed")
+    }
+    
+    func testResizeComplexBigger() throws {
+        let length = 4
+        let complexArrayA: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        let result: ComplexArray = resize(complexArrayA, length)
+        let expected: ComplexArray = ([1.0, 2.0, 0.0, 0.0], [1.0, 2.0, 0.0, 0.0])
+        XCTAssertEqual(result, expected, "resize failed")
+    }
+    
+    func testResizeRealSmaller() throws {
+        let length = 2
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let result: RealArray = resize(realArrayA, length)
+        let expected: RealArray = [1.0, 2.0]
+        XCTAssertEqual(result, expected, "resize failed")
+    }
+    
+    func testResizeComplexSmaller() throws {
+        let length = 2
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: ComplexArray = resize(complexArrayA, length)
+        let expected: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        XCTAssertEqual(result, expected, "resize failed")
+    }
+    
+    func testResizeRealSame() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let length = length(realArrayA)
+        let result: RealArray = resize(realArrayA, length)
+        let expected: RealArray = [1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(result, expected, "resize failed")
+    }
+    
+    func testResizeComplexSame() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let length = length(complexArrayA)
+        let result: ComplexArray = resize(complexArrayA, length)
+        let expected: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        XCTAssertEqual(result, expected, "resize failed")
     }
 
 }

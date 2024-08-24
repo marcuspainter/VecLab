@@ -24,6 +24,14 @@ class AddTests: XCTestCase {
         let result = a + b
         XCTAssertEqual(result, [3.0, 4.0, 5.0], "Real and real array addition failed")
     }
+    
+    // Test real array and real addition
+    func testAddRealArrayReal() {
+        let a: RealArray = [1.0, 2.0, 3.0]
+        let b: Real = 2.0
+        let result = a + b
+        XCTAssertEqual(result, [3.0, 4.0, 5.0], "Real array and real addition failed")
+    }
 
     // Test complex and complex addition
     func testAddComplex() {
