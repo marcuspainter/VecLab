@@ -19,3 +19,6 @@ Vector Creation Functions
 - ``arange(_:)``
 - ``arange(_:_:)``
 - ``arange(_:_:_:)``
+
+- ``zeros(_:)``
+- ``ones(_:)``
