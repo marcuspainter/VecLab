@@ -176,8 +176,8 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays| arange, cat, circshift, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
-|Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sinc, sum|
+|Arrays|arange, cat, circshift, dot, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
+|Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sum|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
 |Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nchoosek, perms, prevprime, primes|
@@ -192,7 +192,7 @@ Overloaded operators for scalar and vectors.
 |Random| agwn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|
 |Space| freqspace, linspace, logspace|
-|Special| besseli0|
+|Special| besseli0, sinc|
 |Statistics| histcounts, max, maxindex, mean, median, min, minindex, mode, rms, stddev, variance|
 |Timing| tic, toc, timeit|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
