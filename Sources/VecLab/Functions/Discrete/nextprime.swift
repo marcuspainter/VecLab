@@ -22,11 +22,13 @@ import Foundation
 /// print(nextPrime) // prints: 23
 /// ```
 public func nextprime(_ x: Int) -> Int {
+    let maxPrime = 2147483647
     var num = x
-    while true {
+    while num < maxPrime {
         if isprime(num) {
             return num
         }
         num += 1
     }
+    return maxPrime
 }
