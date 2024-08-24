@@ -24,5 +24,5 @@ public func abs(_ x: Complex) -> Real {
 /// - Returns: Real array of  magnitudes.
 public func abs(_ x: ComplexArray) -> RealArray {
     // return zip(x.0, x.1).map { sqrt($0 * $0 + $1 * $1) }
-    return vectorComplexAbs(x)
+    return vectorAbsComplexArray(x)
 }

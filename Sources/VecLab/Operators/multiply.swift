@@ -75,7 +75,7 @@ public func * (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the multiplication.
 public func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    return vectorComplexMultiply(a, b)
+    return vectorMultiplyComplexArray(a, b)
 }
 
 /// Multiplication.

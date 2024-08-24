@@ -22,7 +22,7 @@ class DivideTests: XCTestCase {
     var complexArrayB: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
     
     /*
-     Smith alofgiorytm
+     Smith algorithm
      For the if branch: (x, y) = ((3, 4), (5, 2))
      For the else branch: (x, y) = ((3, 4), (2, 5))
      */
@@ -94,7 +94,7 @@ class DivideTests: XCTestCase {
     }
 
     func testDivideRealArrayComplex() {
-        let result: ComplexArray = realArrayA / complexB
+        let result: ComplexArray = [1.0, 2.0] / ([1.0, 1.0], [1.0, 1.0])
         let expected: ComplexArray = ([0.5, 1.0], [-0.5, -1.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
@@ -112,7 +112,7 @@ class DivideTests: XCTestCase {
     }
 
     func testDivideRealComplexArray() {
-        let result: ComplexArray = realA / complexArrayB
+        let result: ComplexArray = 1.0 / ([1.0, 1.0], [1.0, 1.0])
         let expected: ComplexArray = ([0.5, 0.5], [-0.5, -0.5])
         XCTAssertEqual(result, expected, "Divide failed")
     }
