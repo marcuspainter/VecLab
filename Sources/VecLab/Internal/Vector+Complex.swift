@@ -14,7 +14,7 @@ import Foundation
 // fileprivate typealias RealFloatArray = [Float]
 
 func vectorComplexAngle(_ a: ([Double], [Double])) -> [Double] {
-    var c = createRealArray(sized: a.0)
+    var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvphasD(&A, 1, &C, 1, N)
     }
@@ -22,7 +22,7 @@ func vectorComplexAngle(_ a: ([Double], [Double])) -> [Double] {
 }
 
 func vectorComplexAngle(_ a: ([Float], [Float])) -> [Float] {
-    var c = createRealArray(sized: a.0)
+    var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvphas(&A, 1, &C, 1, N)
     }
@@ -30,7 +30,7 @@ func vectorComplexAngle(_ a: ([Float], [Float])) -> [Float] {
 }
 
 func vectorComplexAbs(_ a: ([Double], [Double])) -> [Double] {
-    var c = createRealArray(sized: a.0)
+    var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvabsD(&A, 1, &C, 1, N)
     }
@@ -38,7 +38,7 @@ func vectorComplexAbs(_ a: ([Double], [Double])) -> [Double] {
 }
 
 func vectorComplexAbs(_ a: ([Float], [Float])) -> [Float] {
-    var c = createRealArray(sized: a.0)
+    var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvabs(&A, 1, &C, 1, N)
     }
@@ -46,7 +46,7 @@ func vectorComplexAbs(_ a: ([Float], [Float])) -> [Float] {
 }
 
 func vectorComplexConjugate(_ a: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvconjD(&A, 1, &C, 1, N)
     }
@@ -54,7 +54,7 @@ func vectorComplexConjugate(_ a: ([Double], [Double])) -> ([Double], [Double]) {
 }
 
 func vectorComplexConjugate(_ a: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvconj(&A, 1, &C, 1, N)
     }
@@ -62,7 +62,7 @@ func vectorComplexConjugate(_ a: ([Float], [Float])) -> ([Float], [Float]) {
 }
 
 func vectorComplexAdd(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvaddD(&A, 1, &B, 1, &C, 1, N)
     }
@@ -70,7 +70,7 @@ func vectorComplexAdd(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> (
 }
 
 func vectorComplexAdd(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvadd(&A, 1, &B, 1, &C, 1, N)
     }
@@ -78,7 +78,7 @@ func vectorComplexAdd(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Flo
 }
 
 func vectorComplexSubtract(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvsubD(&A, 1, &B, 1, &C, 1, N)
     }
@@ -86,7 +86,7 @@ func vectorComplexSubtract(_ a: ([Double], [Double]), _ b: ([Double], [Double]))
 }
 
 func vectorComplexSubtract(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvsub(&A, 1, &B, 1, &C, 1, N)
     }
@@ -94,7 +94,7 @@ func vectorComplexSubtract(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> 
 }
 
 func vectorComplexMultiply(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply
         vDSP_zvmulD(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
@@ -103,7 +103,7 @@ func vectorComplexMultiply(_ a: ([Double], [Double]), _ b: ([Double], [Double]))
 }
 
 func vectorComplexMultiply(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
         vDSP_zvmul(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
@@ -112,7 +112,7 @@ func vectorComplexMultiply(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> 
 }
 
 func vectorComplexConjugateMultiply(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         // Conjugate multiply: -1
         let conjugateFlag = Int32(-1)
@@ -122,7 +122,7 @@ func vectorComplexConjugateMultiply(_ a: ([Double], [Double]), _ b: ([Double], [
 }
 
 func vectorComplexConjugateMultiply(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(-1) // Conjugate multiply: -1
         vDSP_zvmul(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
@@ -130,8 +130,8 @@ func vectorComplexConjugateMultiply(_ a: ([Float], [Float]), _ b: ([Float], [Flo
     return c
 }
 
-func vectorComplexDivide(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
-    var c = createComplexArray(sized: a)
+public func vectorComplexDivide(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvdivD(&A, 1, &B, 1, &C, 1, N)
     }
@@ -139,7 +139,7 @@ func vectorComplexDivide(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -
 }
 
 func vectorComplexDivide(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([Float], [Float]) {
-    var c = createComplexArray(sized: a)
+    var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvdiv(&A, 1, &B, 1, &C, 1, N)
     }
@@ -147,9 +147,9 @@ func vectorComplexDivide(_ a: ([Float], [Float]), _ b: ([Float], [Float])) -> ([
 }
 
 func vectorComplexLog(_ a: ([Double], [Double])) -> ([Double], [Double]) {
-    var angle = createRealArray(sized: a.0)
-    var mag = createRealArray(sized: a.0)
-    var logMag = createRealArray(sized: a.0)
+    var angle = a.0
+    var mag = a.0
+    var logMag = a.0
     withUnsafeParameters(a, &angle) { A, C, N in
         vDSP_zvphasD(&A, 1, &C, 1, N)
     }
@@ -164,9 +164,9 @@ func vectorComplexLog(_ a: ([Double], [Double])) -> ([Double], [Double]) {
 }
 
 func vectorComplexLog(_ a: ([Float], [Float])) -> ([Float], [Float]) {
-    var angle = createRealArray(sized: a.0)
-    var mag = createRealArray(sized: a.0)
-    var logMag = createRealArray(sized: a.0)
+    var angle = a.0
+    var mag = a.0
+    var logMag = a.0
 
     withUnsafeParameters(a, &angle) { A, C, N in
         vDSP_zvphas(&A, 1, &C, 1, N)
@@ -187,8 +187,8 @@ func vectorComplexExp(_ a: ([Double], [Double])) -> ([Double], [Double]) {
     let expReal = vForce.exp(a.0)
 
     // 2. Simultaneously calculate sine and cosine for each imaginary part
-    var cosImag = createRealArray(sized: a.0)
-    var sinImag = createRealArray(sized: a.0)
+    var cosImag = a.0
+    var sinImag = a.0
     vForce.sincos(a.1, sinResult: &sinImag, cosResult: &cosImag)
 
     // 3. Multiply results element-wise
@@ -203,8 +203,8 @@ func vectorComplexExp(_ a: ([Float], [Float])) -> ([Float], [Float]) {
     let expReal = vForce.exp(a.0)
 
     // 2. Simultaneously calculate sine and cosine for each imaginary part
-    var cosImag = createRealArray(sized: a.0)
-    var sinImag = createRealArray(sized: a.0)
+    var cosImag = a.0
+    var sinImag = a.0
     vForce.sincos(a.1, sinResult: &sinImag, cosResult: &cosImag)
 
     // 3. Multiply results element-wise
