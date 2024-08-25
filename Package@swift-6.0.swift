@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -25,7 +25,11 @@ let package = Package(
         .target(
             name: "VecLab",
             dependencies: [],
-            resources: [.copy("PrivacyInfo.xcprivacy")]
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            cSettings: [
+              .define("ACCELERATE_NEW_LAPACK"),
+              .define("ACCELERATE_LAPACK_ILP64") // optional
+        ]
         ),
         .testTarget(
             name: "VecLabTests",
@@ -34,9 +38,4 @@ let package = Package(
     ]
 )
 
-// Swift 5.10 StrictConcurrency
-for target in package.targets {
-    var settings = target.swiftSettings ?? []
-    settings.append(.enableExperimentalFeature("StrictConcurrency"))
-    target.swiftSettings = settings
-}
+// https://www.polpiella.dev/version-specific-package-manifests

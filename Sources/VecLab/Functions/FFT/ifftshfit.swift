@@ -13,7 +13,12 @@ import Foundation
 /// - Returns: Shifted array
 public func ifftshift(_ x: RealArray) -> RealArray {
     let n = x.count
-    let shift = n % 2 == 0 ? n / 2 : (n - 1) / 2
+    let shift: Int
+    if n % 2 == 0 {
+        shift = n / 2
+    } else {
+        shift = (n + 1) / 2
+    }
     return circshift(x, shift)
 }
 
@@ -22,7 +27,8 @@ public func ifftshift(_ x: RealArray) -> RealArray {
 ///   - x: Input array.
 /// - Returns: Shifted array
 public func ifftshift(_ x: ComplexArray) -> ComplexArray {
-    let n = x.0.count
-    let shift = n % 2 == 0 ? n / 2 : (n - 1) / 2
-    return circshift(x, shift)
+    let r = ifftshift(x.0)
+    let i = ifftshift(x.1)
+    
+    return (r,i)
 }

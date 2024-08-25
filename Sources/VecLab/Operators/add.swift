@@ -79,7 +79,7 @@ public func + (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    return vectorComplexAdd(a, b) // Not needed ???
+    return vectorAddComplexArray(a, b) // Not needed ???
 }
 
 /// Addition.

@@ -78,7 +78,7 @@ class RConjMultiplyTests: XCTestCase {
 
     func testRConjMultiplyComplexArrayComplexArray() {
         let result: ComplexArray = complexArrayA *~ complexArrayB
-        let expected: ComplexArray = ([2.0, 2.0], [0, 0, 0.0])
+        let expected: ComplexArray = ([2.0, 2.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Right conjugate multiply failed")
     }
 /*
@@ -108,13 +108,13 @@ class RConjMultiplyTests: XCTestCase {
 
     func testRConjMultiplyComplexArrayComplex() {
         let result: ComplexArray = complexArrayA *~ complexB
-        let expected: ComplexArray = ([2.0, 2.0], [0, 0, 0.0])
+        let expected: ComplexArray = ([2.0, 2.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Right conjugate multiply failed")
     }
 
     func testRConjMultiplyComplexComplexArray() {
         let result: ComplexArray = complexA *~ complexArrayB
-        let expected: ComplexArray = ([2.0, 2.0], [0, 0, 0.0])
+        let expected: ComplexArray = ([2.0, 2.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Right conjugate multiply failed")
     }
 

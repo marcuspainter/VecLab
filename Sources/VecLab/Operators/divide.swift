@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Accelerate
 import Foundation
+import Accelerate
 
 // MARK: Real Array
 
@@ -74,7 +74,7 @@ public func / (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    return vectorComplexDivide(a, b)
+    return vectorDivideComplexArrayComplexArray(a, b)
 }
 
 /// Division.
@@ -83,11 +83,7 @@ public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: Complex) -> ComplexArray {
-    var c = createComplexArray(count: a.0.count)
-    for k in 0 ..< a.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a.0[k], a.1[k]), (b.0, b.1))
-    }
-    return c
+    return vectorDivideComplexArrayComplex(a, b)
 }
 
 /// Division.
@@ -96,11 +92,7 @@ public func / (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the division.
 public func / (a: Complex, b: ComplexArray) -> ComplexArray {
-    var c = createComplexArray(count: b.0.count)
-    for k in 0 ..< b.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a.0, a.1), (b.0[k], b.1[k]))
-    }
-    return c
+    return vectorDivideComplexComplexArray(a, b)
 }
 
 /// Division.
@@ -120,12 +112,7 @@ public func / (a: ComplexArray, b: RealArray) -> ComplexArray {
 /// - Returns: The result of the division.
 public func / (a: RealArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    let i = createRealArray(sized: a)
-    var c = createComplexArray(sized: b)
-    for k in 0 ..< b.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a[k], i[k]), (b.0[k], b.1[k]))
-    }
-    return c
+    return vectorDivideRealArrayComplexArray(a, b)
 }
 
 /// Division.
@@ -134,7 +121,7 @@ public func / (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: Real) -> ComplexArray {
-    return (a.0 / b, a.1 / b)
+    return vectorDivideComplexArrayReal(a, b)
 }
 
 /// Division.
@@ -143,11 +130,7 @@ public func / (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the division.
 public func / (a: Real, b: ComplexArray) -> ComplexArray {
-    var c = createComplexArray(count: b.0.count)
-    for k in 0 ..< b.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a, Real(0)), (b.0[k], b.1[k]))
-    }
-    return c
+    return vectorDivideRealComplexArray(a, b)
 }
 
 /// Division.
@@ -156,11 +139,7 @@ public func / (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the division
 public func / (a: Complex, b: RealArray) -> ComplexArray {
-    var c = createComplexArray(count: b.count)
-    for k in 0 ..< b.count {
-        (c.0[k], c.1[k]) = complexDivide((a.0, a.1), (b[k], Real(0)))
-    }
-    return c
+    return vectorDivideComplexRealArray(a, b)
 }
 
 /// Division.
@@ -169,9 +148,5 @@ public func / (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the division.
 public func / (a: RealArray, b: Complex) -> ComplexArray {
-    var c = createComplexArray(count: a.count)
-    for k in 0 ..< a.count {
-        (c.0[k], c.1[k]) = complexDivide((a[k], Real(0)), (b.0, b.1))
-    }
-    return c
+    return vectorDivideRealArrayComplex(a, b)
 }

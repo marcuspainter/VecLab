@@ -161,6 +161,13 @@ class DiscreteTests: XCTestCase {
         let expected: Int = 2
         XCTAssertEqual(result, expected, "nextprime failed")
     }
+    
+    func testNextprimeMax() throws {
+        let maxPrime = 2147483647
+        let result: Int = nextprime(maxPrime - 2)
+        let expected: Int = maxPrime
+        XCTAssertEqual(result, expected, "nextprime failed")
+    }
 
     // MARK: nchoosek
 

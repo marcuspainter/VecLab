@@ -18,11 +18,11 @@ public func idftr(_ x: ComplexArray) -> RealArray {
 
     // Init by copy
     var y = x
-    let q = RealArray(0 ..< n)
-    let omega = 2 * Real.pi * Real.i * q / Real(n)
-    for p in 0 ..< x.0.count {
-        let w = exp(omega * Real(p))
-        (y.0[p], y.1[p]) = sum(x * w)
+    let k = RealArray(0 ..< n)
+    let omega = 2 * Real.pi * Real.i * k / Real(n)
+    for i in 0 ..< x.0.count {
+        let w = exp(omega * Real(i))
+        (y.0[i], y.1[i]) = sum(x * w)
     }
     return y.0 / Real(n)
 }

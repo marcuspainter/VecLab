@@ -38,7 +38,8 @@ func testAddComplexEquality() {
 }
 
 func XCTAssertEqual(_ expression1: ([Double], [Double]), _ expression2: ([Double], [Double]), accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
-    XCTAssert(expression1.0.count == expression2.0.count && expression1.0.count == expression2.0.count, "Array size mismatch: \(message())", file: file, line: line)
+    
+    XCTAssert(expression1.0.count == expression2.0.count && expression1.1.count == expression2.1.count, "Not same size")
     XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
     XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
 }
@@ -54,12 +55,6 @@ func XCTAssertEqual(_ expression1: [Double], _ expression2: [Double], accuracy: 
 func XCTAssertEqual(_ expression1: (Double, Double), _ expression2: (Double, Double), accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
     XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
-}
-
-func XCTAssertEqual(_ expression1: (Double, Double, Double), _ expression2: (Double, Double, Double), accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
-    XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
-    XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
-    XCTAssertEqual(expression1.2, expression2.2, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
 }
 
 func XCTAssertEqual(_ expression1: ([Float], [Float]), _ expression2: ([Float], [Float]), accuracy: Float = Float(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {

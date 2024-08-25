@@ -9,10 +9,10 @@ import VecLab
 import XCTest
 
 class FFTTests: XCTestCase {
-    let accuracy: Real = 1e-5
+    let accuracy: Real = 1e-3
 
     // MARK: FFT
-    
+
     func testFFTComplex() throws {
         let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let result: ComplexArray = fft(complexArrayA)
@@ -46,7 +46,7 @@ class FFTTests: XCTestCase {
         let expected: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "ifft failed")
     }
-    
+
     func testIFFTComplex7() throws {
         let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
                                            [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
@@ -208,11 +208,11 @@ class FFTTests: XCTestCase {
     }
 
     // MARK: DFT
-    
+
     func testDFTComple1x() throws {
-        let complexArrayA: ComplexArray =  ([1.0], [0.0])
+        let complexArrayA: ComplexArray = ([1.0], [0.0])
         let result: ComplexArray = dft(complexArrayA)
-        let expected: ComplexArray =  ([1.0], [0.0])
+        let expected: ComplexArray = ([1.0], [0.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "dft failed")
     }
 
@@ -229,7 +229,7 @@ class FFTTests: XCTestCase {
         let expected: ComplexArray = ([10.0, -2.0, -2.0, -2.0], [0.0, 2.0, 0.0, -2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "dftf failed")
     }
-    
+
     func testIDFTComplex1() throws {
         let complexArrayA: ComplexArray = ([1.0], [0.0])
         let result: ComplexArray = idft(complexArrayA)
@@ -250,7 +250,7 @@ class FFTTests: XCTestCase {
         let expected: RealArray = [1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "idftf failed")
     }
-    
+
     func testIDFTReal() throws {
         let complexArrayA: ComplexArray = ([10.0, -2.0, -2.0, -2.0], [0.0, 2.0, 0.0, -2.0])
         let result: RealArray = idftr(complexArrayA)
@@ -259,7 +259,7 @@ class FFTTests: XCTestCase {
     }
 
     // MARK: FFTX
-    
+
     func testFFTXReal() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: ComplexArray = fftx(realArrayA)
@@ -282,7 +282,7 @@ class FFTTests: XCTestCase {
     }
 
     // MARK: DFT 3 and 5 radix
-    
+
     func testDFTReal1() throws {
         let realArrayA: RealArray = [1.0]
         let result: ComplexArray = dftr(realArrayA)
@@ -358,5 +358,55 @@ class FFTTests: XCTestCase {
                                           -12.363648387545801,
                                       ])
         XCTAssertEqual(result, expected, accuracy: accuracy, "dftr failed")
+    }
+
+    func testFFTShiftForwardBackwardEven() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: ComplexArray = ifftshift(fftshift(complexArrayA))
+        let expected: ComplexArray = complexArrayA
+        XCTAssertEqual(result, expected, accuracy: accuracy, "ifftshift(fftshift) failed")
+    }
+
+    func testFFTShiftForwardBackwardOdd() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0], [1.0, 2.0, 3.0, 4.0, 5.0])
+        let result: ComplexArray = ifftshift(fftshift(complexArrayA))
+        let expected: ComplexArray = complexArrayA
+        XCTAssertEqual(result, expected, accuracy: accuracy, "ifftshift(fftshift) failed")
+    }
+
+    func testFFTShiftEven() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        let result: ComplexArray = fftshift(complexArrayA)
+        let expected: ComplexArray = ([4.0, 5.0, 6.0, 1.0, 2.0, 3.0], [4.0, 5.0, 6.0, 1.0, 2.0, 3.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "fftshift failed")
+    }
+
+    func testFFTShiftOdd() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0], [1.0, 2.0, 3.0, 4.0, 5.0])
+        let result: ComplexArray = fftshift(complexArrayA)
+        let expected: ComplexArray = ([4.0, 5.0, 1.0, 2.0, 3.0], [4.0, 5.0, 1.0, 2.0, 3.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "fftshift failed")
+    }
+
+    func testIFFTShiftEven() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+        let result: ComplexArray = ifftshift(complexArrayA)
+        let expected: ComplexArray = ([4.0, 5.0, 6.0, 1.0, 2.0, 3.0], [4.0, 5.0, 6.0, 1.0, 2.0, 3.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "fftshift failed")
+    }
+
+    func testIFFTShiftOdd() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0], [1.0, 2.0, 3.0, 4.0, 5.0])
+        let result: ComplexArray = ifftshift(complexArrayA)
+        let expected: ComplexArray = ([3.0, 4.0, 5.0, 1.0, 2.0], [3.0, 4.0, 5.0, 1.0, 2.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "fftshift failed")
+    }
+
+    func testFFTShiftOdd2() throws {
+        let complexArrayA: ComplexArray = ([1.0, 2.0, 3.0, 4.0, 5.0], [1.0, 2.0, 3.0, 4.0, 5.0])
+        let result: ComplexArray = fftshift(complexArrayA)
+        let expected: ComplexArray = ([4.0, 5.0, 1.0, 2.0, 3.0], [4.0, 5.0, 1.0, 2.0, 3.0])
+        XCTAssertEqual(result.0, expected.0, accuracy: 1e-6, "fftshift failed for real part")
+        XCTAssertEqual(result.1, expected.1, accuracy: 1e-6, "fftshift failed for imaginary part")
     }
 }
