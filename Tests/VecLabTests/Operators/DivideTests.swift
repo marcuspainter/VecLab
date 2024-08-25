@@ -26,12 +26,12 @@ class DivideTests: XCTestCase {
      For the if branch: (x, y) = ((3, 4), (5, 2))
      For the else branch: (x, y) = ((3, 4), (2, 5))
      */
-    var complexPath1A = (3.0, 4.0)
-    var complexPath1B = (5.0, 2.0)
-    var complexPath2A = (3.0, 4.0)
-    var complexPath2B = (2.0, 5.0)
-    var complexResultPath1 = (0.793103448275862, 0.482758620689655)
-    var complexResultPath2 = (0.896551724137931, -0.241379310344828)
+    var complexPath1A: Complex = (3.0, 4.0)
+    var complexPath1B: Complex = (5.0, 2.0)
+    var complexPath2A: Complex = (3.0, 4.0)
+    var complexPath2B: Complex = (2.0, 5.0)
+    var complexResultPath1: Complex = (0.793103448275862, 0.482758620689655)
+    var complexResultPath2: Complex = (0.896551724137931, -0.241379310344828)
 
     func testDivideRealReal() {
         let result: Real = realA / realB
