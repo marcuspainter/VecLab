@@ -123,6 +123,54 @@ func vectorMultiplyComplexArray(_ a: ([Float], [Float]), _ b: ([Float], [Float])
     return c
 }
 
+func vectorMultiplyComplexArrayComplex(_ a: ([Double], [Double]), _ b: (Double, Double)) -> ([Double], [Double]) {
+    var c = a
+    let b0 = [Double](repeating: b.0, count: a.0.count)
+    let b1 = [Double](repeating: b.1, count: a.0.count)
+    let bb = (b0, b1)
+    withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmulD(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+func vectorMultiplyComplexArrayComplex(_ a: ([Float], [Float]), _ b: (Float, Float)) -> ([Float], [Float]) {
+    var c = a
+    let b0 = [Float](repeating: b.0, count: a.0.count)
+    let b1 = [Float](repeating: b.1, count: a.0.count)
+    let bb = (b0, b1)
+    withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmul(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+func vectorMultiplyComplexComplexArray(_ a: (Double, Double), _ b: ([Double], [Double])) -> ([Double], [Double]) {
+    var c = b
+    let a0 = [Double](repeating: a.0, count: b.0.count)
+    let a1 = [Double](repeating: a.1, count: b.0.count)
+    let aa = (a0, a1)
+    withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmulD(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+func vectorMultiplyComplexComplexArray(_ a: (Float, Float), _ b: ([Float], [Float])) -> ([Float], [Float]) {
+    var c = b
+    let a0 = [Float](repeating: a.0, count: b.0.count)
+    let a1 = [Float](repeating: a.1, count: b.0.count)
+    let aa = (a0, a1)
+    withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmul(&A, 1, &B, 1, &C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
 // MARK: Conjugate Multiply
 
 func vectorConjugateMultiplyComplexArray(_ a: ([Double], [Double]), _ b: ([Double], [Double])) -> ([Double], [Double]) {
@@ -173,7 +221,6 @@ func vectorDivideComplexArrayReal(_ a: ([Float], [Float]), _ b: Float) -> ([Floa
     let i = vDSP.divide(a.1, b)
     return (r, i)
 }
-
 
 func vectorDivideRealComplexArray(_ a: Double, _ b: ([Double], [Double])) -> ([Double], [Double]) {
     var c = b
@@ -228,28 +275,20 @@ func vectorDivideRealArrayComplexArray(_ a: [Float], _ b: ([Float], [Float])) ->
 }
 
 func vectorDivideComplexRealArray(_ a: (Double, Double), _ b: [Double]) -> ([Double], [Double]) {
-    //var c = (b, b)
-    //let b1 = [Double](repeating: 0.0, count: b.count)
-    //let bb = (b, b1)
-    //withUnsafeParameters(a, bb, &c) { A, B, C, N in
-    //    vDSP_zvdivD(&B, 1, &A, 1, &C, 1, N)
-    //}
-    //return c
-    
     let r = vDSP.divide(a.0, b)
     let i = vDSP.divide(a.1, b)
     return (r, i)
 }
 
 func vectorDivideComplexRealArray(_ a: (Float, Float), _ b: [Float]) -> ([Float], [Float]) {
-    //var c = (b, b)
-    //let b1 = [Double](repeating: 0.0, count: b.count)
-    //let bb = (b, b1)
-    //withUnsafeParameters(a, bb, &c) { A, B, C, N in
+    // var c = (b, b)
+    // let b1 = [Double](repeating: 0.0, count: b.count)
+    // let bb = (b, b1)
+    // withUnsafeParameters(a, bb, &c) { A, B, C, N in
     //    vDSP_zvdivD(&B, 1, &A, 1, &C, 1, N)
-    //}
-    //return c
-    
+    // }
+    // return c
+
     let r = vDSP.divide(a.0, b)
     let i = vDSP.divide(a.1, b)
     return (r, i)
@@ -367,7 +406,6 @@ func vectorLogComplexArray(_ a: ([Float], [Float])) -> ([Float], [Float]) {
 // MARK: Exp
 
 func vectorExpComplexArray(_ a: ([Double], [Double])) -> ([Double], [Double]) {
-
     // 1. Calculate e^a for each real part
     let expReal = vForce.exp(a.0)
 

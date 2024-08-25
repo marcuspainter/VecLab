@@ -84,11 +84,7 @@ public func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
 public func * (a: ComplexArray, b: Complex) -> ComplexArray {
-    var c = a
-    for k in 0 ..< a.0.count {
-        (c.0[k], c.1[k]) = complexMultiply((a.0[k], a.1[k]), b)
-    }
-    return c
+    return vectorMultiplyComplexArrayComplex(a, b)
 }
 
 /// Multiplication.
@@ -97,11 +93,7 @@ public func * (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the multiplication.
 public func * (a: Complex, b: ComplexArray) -> ComplexArray {
-    var c = b
-    for k in 0 ..< b.0.count {
-        (c.0[k], c.1[k]) = complexMultiply(a, (b.0[k], b.1[k]))
-    }
-    return c
+    return vectorMultiplyComplexComplexArray(a, b)
 }
 
 /// Multiplication.
