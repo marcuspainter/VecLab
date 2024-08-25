@@ -283,6 +283,50 @@ func vectorDivideRealArrayComplex(_ a: [Float], _ b: (Float, Float)) -> ([Float]
     return c
 }
 
+func vectorDivideComplexArrayComplex(_ a: ([Double], [Double]), _ b: (Double, Double)) -> ([Double], [Double]) {
+    var c = a
+    let b0 = [Double](repeating: b.0, count: a.0.count)
+    let b1 = [Double](repeating: b.1, count: a.1.count)
+    let bb = (b0, b1)
+    withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        vDSP_zvdivD(&B, 1, &A, 1, &C, 1, N)
+    }
+    return c
+}
+
+func vectorDivideComplexArrayComplex(_ a: ([Float], [Float]), _ b: (Float, Float)) -> ([Float], [Float]) {
+    var c = a
+    let b0 = [Float](repeating: b.0, count: a.0.count)
+    let b1 = [Float](repeating: b.1, count: a.1.count)
+    let bb = (b0, b1)
+    withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        vDSP_zvdiv(&B, 1, &A, 1, &C, 1, N)
+    }
+    return c
+}
+
+func vectorDivideComplexComplexArray(_ a: (Double, Double), _ b: ([Double], [Double])) -> ([Double], [Double]) {
+    var c = b
+    let a0 = [Double](repeating: a.0, count: b.0.count)
+    let a1 = [Double](repeating: a.1, count: b.1.count)
+    let aa = (a0, a1)
+    withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        vDSP_zvdivD(&B, 1, &A, 1, &C, 1, N)
+    }
+    return c
+}
+
+func vectorDivideComplexComplexArray(_ a: (Float, Float), _ b: ([Float], [Float])) -> ([Float], [Float]) {
+    var c = b
+    let a0 = [Float](repeating: a.0, count: b.0.count)
+    let a1 = [Float](repeating: a.1, count: b.1.count)
+    let aa = (a0, a1)
+    withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        vDSP_zvdiv(&B, 1, &A, 1, &C, 1, N)
+    }
+    return c
+}
+
 // MARK: Log
 
 func vectorLogComplexArray(_ a: ([Double], [Double])) -> ([Double], [Double]) {

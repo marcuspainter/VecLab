@@ -83,11 +83,7 @@ public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: Complex) -> ComplexArray {
-    var c = a
-    for k in 0 ..< a.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a.0[k], a.1[k]), (b.0, b.1))
-    }
-    return c
+    return vectorDivideComplexArrayComplex(a, b)
 }
 
 /// Division.
@@ -96,11 +92,7 @@ public func / (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the division.
 public func / (a: Complex, b: ComplexArray) -> ComplexArray {
-    var c = b
-    for k in 0 ..< b.0.count {
-        (c.0[k], c.1[k]) = complexDivide((a.0, a.1), (b.0[k], b.1[k]))
-    }
-    return c
+    return vectorDivideComplexComplexArray(a, b)
 }
 
 /// Division.
