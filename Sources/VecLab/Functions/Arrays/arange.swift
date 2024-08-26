@@ -32,18 +32,16 @@ public func arange(_ start: Real, _ stop: Real) -> RealArray {
 public func arange(_ start: Real, _ stop: Real, _ step: Real) -> RealArray {
     let count = Int(ceil((stop - start) / step))
     var result = [Real](repeating: 0.0, count: count)
-    
+
     var value = start
     for i in 0..<count {
         result[i] = value
         value += step
     }
-    
+
     return result
 }
 
 // Case 1: Only 'stop' is provided, defaults are start = 0.0, step = 1.0
 // Case 2: 'start' and 'stop' are provided, default is step = 1.0
 // Case 3: 'start', 'stop', and 'step' are all provided
-
-

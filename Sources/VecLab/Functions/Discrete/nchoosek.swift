@@ -9,7 +9,8 @@ import Foundation
 
 /// Binomial coefficient.
 ///
-/// The function computes the binomial coefficient, often represented as \( \binom{n}{k} \), which signifies the number of ways to choose `k` items from a set of `n` items without repetition and without order.
+/// The function computes the binomial coefficient, often represented as \( \binom{n}{k} \), which signifies the number of ways to choose `k` items from 
+/// a set of `n` items without repetition and without order.
 ///
 /// - Parameters:
 ///   - n: The total number of items.

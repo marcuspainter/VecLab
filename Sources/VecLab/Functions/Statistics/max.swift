@@ -26,4 +26,3 @@ import Foundation
 public func max(_ x: RealArray) -> Real {
     return vDSP.maximum(x)
 }
-

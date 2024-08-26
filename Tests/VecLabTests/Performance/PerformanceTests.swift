@@ -30,7 +30,7 @@ final class PerformanceTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
             let x = randn(count: Int(2 ** 14))
-            let X = fftr(x)
+            let _ = fftr(x)
         }
     }
 
@@ -39,7 +39,7 @@ final class PerformanceTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
             let x = randn(count: Int(2 ** 14))
-            let X = fftx(x)
+            let _ = fftx(x)
         }
     }
 
@@ -51,7 +51,7 @@ final class PerformanceTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
 
-            let c = a * b
+            _ = a * b
         }
     }
 
@@ -63,7 +63,7 @@ final class PerformanceTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
 
-            let c = zip(a,b).map { $0 * $1 }
+            _ = zip(a,b).map { $0 * $1 }
         }
     }
     

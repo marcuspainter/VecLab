@@ -29,7 +29,6 @@ public func fftshift(_ x: RealArray) -> RealArray {
 public func fftshift(_ x: ComplexArray) -> ComplexArray {
     let r = fftshift(x.0)
     let i = fftshift(x.1)
-    
-    return (r,i)
-}
 
+    return (r, i)
+}

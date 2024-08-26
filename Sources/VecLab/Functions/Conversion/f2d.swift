@@ -20,7 +20,7 @@ public func f2d(_ f: [Float]) -> [Double] {
 /// Converts a single-precision complex vector to a double-precision complex vector.
 /// - Parameter d: The input vector.
 /// - Returns: The output vector.
-public func f2d(_ f: ([Float],[Float])) -> ([Double], [Double]) {
+public func f2d(_ f: ([Float], [Float])) -> ([Double], [Double]) {
     let n = f.0.count
     var d0 = [Double](repeating: 0, count: n)
     var d1 = d0

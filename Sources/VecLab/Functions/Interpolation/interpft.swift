@@ -53,7 +53,8 @@ public func interpft2(_ X: [Double], _ n: Int) -> [Double] {
 
     adjustedFFT.withUnsafeMutableBufferPointer { adjustedBuffer in
         imagAdjusted.withUnsafeMutableBufferPointer { imagAdjustedBuffer in
-            var splitComplexResult = DSPDoubleSplitComplex(realp: adjustedBuffer.baseAddress!, imagp: imagAdjustedBuffer.baseAddress!)
+            var splitComplexResult = DSPDoubleSplitComplex(realp: adjustedBuffer.baseAddress!,
+                                                           imagp: imagAdjustedBuffer.baseAddress!)
 
             // Inverse FFT
             vDSP_fft_zripD(vDSP_create_fftsetupD(vDSP_Length(log2(Double(n))), FFTRadix(kFFTRadix2))!,
@@ -81,8 +82,10 @@ public func interpft(_ X: [Double], _ n: Int) -> [Double] {
 
     fftX.withUnsafeMutableBufferPointer { fftXBuffer in
         imagX.withUnsafeMutableBufferPointer { imagXBuffer in
-            var splitComplexX = DSPDoubleSplitComplex(realp: fftXBuffer.baseAddress!, imagp: imagXBuffer.baseAddress!)
-            vDSP_fft_zripD(fftSetup!, &splitComplexX, 1, vDSP_Length(log2(Double(N))), FFTDirection(kFFTDirection_Forward))
+            var splitComplexX = DSPDoubleSplitComplex(realp: fftXBuffer.baseAddress!,
+                                                      imagp: imagXBuffer.baseAddress!)
+            vDSP_fft_zripD(fftSetup!, &splitComplexX, 1, vDSP_Length(log2(Double(N))),
+                           FFTDirection(kFFTDirection_Forward))
         }
     }
 
@@ -104,8 +107,10 @@ public func interpft(_ X: [Double], _ n: Int) -> [Double] {
     // Inverse FFT
     adjustedFFT.withUnsafeMutableBufferPointer { adjustedBuffer in
         imagAdjusted.withUnsafeMutableBufferPointer { imagAdjustedBuffer in
-            var splitComplexResult = DSPDoubleSplitComplex(realp: adjustedBuffer.baseAddress!, imagp: imagAdjustedBuffer.baseAddress!)
-            vDSP_fft_zripD(fftSetup!, &splitComplexResult, 1, vDSP_Length(log2(Double(n))), FFTDirection(kFFTDirection_Inverse))
+            var splitComplexResult = DSPDoubleSplitComplex(realp: adjustedBuffer.baseAddress!,
+                                                           imagp: imagAdjustedBuffer.baseAddress!)
+            vDSP_fft_zripD(fftSetup!, &splitComplexResult, 1, vDSP_Length(log2(Double(n))),
+                           FFTDirection(kFFTDirection_Inverse))
         }
     }
 
