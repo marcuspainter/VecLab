@@ -305,20 +305,6 @@ func vectorDivideRealComplexArray(_ a: Float, _ b: ([Float], [Float])) -> ([Floa
     return c
 }
 
-// -----------------
-
-func withUnsafeParameters(_ a: [Double],
-                          _ body: (UnsafePointer<Double>) -> Void) {
-    a.withUnsafeBufferPointer { bRealBuffer in
-        body(bRealBuffer.baseAddress!)
-    }
-}
-
-func zzz(_ a: UnsafePointer<Double>) {
-}
-
-// -----------------
-
 func vectorDivideComplexArrayRealArray(_ a: ([Double], [Double]), _ b: [Double]) -> ([Double], [Double]) {
     var c = a
     withUnsafeParameters(a, b, &c) { A, B, C, N in
