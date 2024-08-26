@@ -18,7 +18,7 @@ import Foundation
 func vectorAngleComplexArray(_ a: ([Double], [Double])) -> [Double] {
     var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
-        vDSP_zvphasD(&A, 1, &C, 1, N)
+        vDSP_zvphasD(&A, 1, C, 1, N)
     }
     return c
 }
@@ -26,7 +26,7 @@ func vectorAngleComplexArray(_ a: ([Double], [Double])) -> [Double] {
 func vectorAngleComplexArray(_ a: ([Float], [Float])) -> [Float] {
     var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
-        vDSP_zvphas(&A, 1, &C, 1, N)
+        vDSP_zvphas(&A, 1, C, 1, N)
     }
     return c
 }
@@ -36,7 +36,7 @@ func vectorAngleComplexArray(_ a: ([Float], [Float])) -> [Float] {
 func vectorAbsComplexArray(_ a: ([Double], [Double])) -> [Double] {
     var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
-        vDSP_zvabsD(&A, 1, &C, 1, N)
+        vDSP_zvabsD(&A, 1, C, 1, N)
     }
     return c
 }
@@ -44,7 +44,7 @@ func vectorAbsComplexArray(_ a: ([Double], [Double])) -> [Double] {
 func vectorAbsComplexArray(_ a: ([Float], [Float])) -> [Float] {
     var c = a.0
     withUnsafeParameters(a, &c) { A, C, N in
-        vDSP_zvabs(&A, 1, &C, 1, N)
+        vDSP_zvabs(&A, 1, C, 1, N)
     }
     return c
 }
@@ -244,13 +244,27 @@ func vectorDivideRealComplexArray(_ a: Float, _ b: ([Float], [Float])) -> ([Floa
     return c
 }
 
+
+
+
+func withUnsafeParameters( _ a:  [Double],
+                           _ body: (UnsafePointer<Double>) -> Void) {
+    a.withUnsafeBufferPointer { bRealBuffer in
+        body(bRealBuffer.baseAddress!)
+    }
+}
+
+func zzz(_ a: UnsafePointer<Double>) {
+    
+}
+
+
 func vectorDivideComplexArrayRealArray(_ a: ([Double], [Double]), _ b: [Double]) -> ([Double], [Double]) {
     var c = a
-    let b1 = [Double](repeating: 0.0, count: b.count)
-    let bb = (b, b1)
-    withUnsafeParameters(a, bb, &c) { A, B, C, N in
-        vDSP_zvdivD(&B, 1, &A, 1, &C, 1, N)
+    withUnsafeParameters(a, b, &c) { A, B, C, N in
+        vDSP_zrvdivD(&A, 1, B, 1, &C, 1, N)
     }
+    
     return c
 }
 
@@ -373,10 +387,10 @@ func vectorLogComplexArray(_ a: ([Double], [Double])) -> ([Double], [Double]) {
     var mag = a.0
     var logMag = a.0
     withUnsafeParameters(a, &angle) { A, C, N in
-        vDSP_zvphasD(&A, 1, &C, 1, N)
+        vDSP_zvphasD(&A, 1, C, 1, N)
     }
     withUnsafeParameters(a, &mag) { A, C, N in
-        vDSP_zvabsD(&A, 1, &C, 1, N)
+        vDSP_zvabsD(&A, 1, C, 1, N)
     }
 
     var n = Int32(a.0.count)
@@ -391,10 +405,10 @@ func vectorLogComplexArray(_ a: ([Float], [Float])) -> ([Float], [Float]) {
     var logMag = a.0
 
     withUnsafeParameters(a, &angle) { A, C, N in
-        vDSP_zvphas(&A, 1, &C, 1, N)
+        vDSP_zvphas(&A, 1, C, 1, N)
     }
     withUnsafeParameters(a, &mag) { A, C, N in
-        vDSP_zvabs(&A, 1, &C, 1, N)
+        vDSP_zvabs(&A, 1, C, 1, N)
     }
 
     var n = Int32(a.0.count)
