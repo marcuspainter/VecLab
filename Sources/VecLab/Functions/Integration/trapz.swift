@@ -37,7 +37,7 @@ public func trapz(_ a: [Double], step: Double) -> Double {
     var c: Double = 0.0
     var stepSize: Double = step
     vDSP_vtrapzD(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))
-    return c;
+    return c
 }
 
 /// Trapezoidal numerical integration.
@@ -49,6 +49,5 @@ public func trapz(_ a: [Float], step: Float) -> Float {
     var c: Float = 0.0
     var stepSize: Float = step
     vDSP_vtrapz(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))
-    return c;
+    return c
 }
-

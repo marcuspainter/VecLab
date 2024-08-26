@@ -15,6 +15,7 @@ Basic functions.
 - ``disp(_:)-28gi3``
 - ``disp(_:)-67je7``
 - ``disp(_:)-7myqd``
+- ``disp(_:)-3tmps``
 
 ### Sums and Products
 - ``sum(_:)-8ru5``

@@ -41,5 +41,51 @@ class FilterTests: XCTestCase {
 
         XCTAssertEqual(result, expected, accuracy: accuracy, "filter failed")
     }
+    
+    func testBiquad() throws {
+        let Q = sqrt(2) / 2
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        
+        let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
+        let aa: RealArray = [1.000000000000000, -1.979851542514359, 0.980052508206336]
+        
+        XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
+        XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
+    }
 
+    func testFreqz() throws {
+        let Q = sqrt(2) / 2
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        
+        let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
+        let aa: RealArray = [1.000000000000000, -1.979851542514359, 0.980052508206336]
+        
+        XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
+        XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
+        
+        let HH: ComplexArray = ([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+                  [0,  -0.588789505736948, -0.785673403249241, -0.482549328814426,-0.248410563593813])
+              
+        var H = freqz(b,a);
+        H = slice(H, 0 ..< 5)
+        XCTAssertEqual(H, HH, accuracy: accuracy, "freqz failed")
+    }
+    
+    func testFreqz2() throws {
+        let Q = sqrt(2) / 2
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        
+        let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
+        let aa: RealArray = [1.000000000000000, -1.979851542514359, 0.980052508206336]
+        
+        XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
+        XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
+        
+        let HH: ComplexArray = ([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+                  [0,  -0.588789505736948, -0.785673403249241, -0.482549328814426,-0.248410563593813])
+              
+        var H = freqz2(b,a);
+        H = slice(H, 0 ..< 5)
+        XCTAssertEqual(H, HH, accuracy: 1e-2, "freqz2 failed")
+    }
 }

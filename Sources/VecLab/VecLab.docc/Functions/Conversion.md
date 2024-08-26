@@ -36,3 +36,7 @@ Coordinate, degrees and radians, and decibel conversion.
 - ``db2mag(_:)-5ht3e``
 - ``db2pow(_:)-94hdb``
 - ``db2pow(_:)-7q50x``
+
+### Floating Point Conversion
+
+

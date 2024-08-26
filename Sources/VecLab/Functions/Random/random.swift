@@ -41,7 +41,7 @@ final class GlobalRNG: @unchecked Sendable {
         self.rng = rng
         self.lock.unlock()
     }
-    
+
     var seed: UInt32 {
         self.lock.lock()
         defer { self.lock.unlock() }
@@ -66,11 +66,11 @@ final class GlobalRNG: @unchecked Sendable {
         let z0 = Darwin.sqrt(-2.0 * Darwin.log(u1)) * Darwin.cos(2 * .pi * u2)
         return z0
     }
-    
+
     func rand(count: Int) -> RealArray {
         return (0..<count).map { _ in self.rand() }
     }
-    
+
     func randn(count: Int) -> RealArray {
         return (0..<count).map { _ in self.randn() }
     }

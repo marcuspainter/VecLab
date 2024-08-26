@@ -26,4 +26,3 @@ public func dftr(_ x: RealArray) -> ComplexArray {
     }
     return y
 }
-

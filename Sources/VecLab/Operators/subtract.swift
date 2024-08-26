@@ -75,7 +75,7 @@ public func - (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    return vectorSubtractComplexArray(a, b) // Vectorized
+    return vectorSubtractComplexArray(a, b)
 }
 
 /// Subtraction.
