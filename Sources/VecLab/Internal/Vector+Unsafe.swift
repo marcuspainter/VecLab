@@ -12,9 +12,9 @@ func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ b: ([Double], [Double]),
     _ c: inout ([Double], [Double]),
-    _ body: (inout DSPDoubleSplitComplex, 
-             inout DSPDoubleSplitComplex,
-             inout DSPDoubleSplitComplex,
+_ body: ( UnsafePointer<DSPDoubleSplitComplex>,
+          UnsafePointer<DSPDoubleSplitComplex>,
+          UnsafeMutablePointer<DSPDoubleSplitComplex>,
              vDSP_Length) -> Void) {
         
     a.0.withUnsafeBufferPointer { aRealBuffer in
@@ -43,7 +43,10 @@ func withUnsafeParameters(
     _ a: ([Float], [Float]),
     _ b: ([Float], [Float]),
     _ c: inout ([Float], [Float]),
-    _ body: (inout DSPSplitComplex, inout DSPSplitComplex, inout DSPSplitComplex, vDSP_Length) -> Void) {
+    _ body: (UnsafePointer<DSPSplitComplex>,
+             UnsafePointer<DSPSplitComplex>,
+             UnsafeMutablePointer<DSPSplitComplex>,
+             vDSP_Length) -> Void) {
         
     a.0.withUnsafeBufferPointer { aRealBuffer in
         a.1.withUnsafeBufferPointer { aImagBuffer in
@@ -71,9 +74,9 @@ func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ b:  [Double],
     _ c: inout ([Double], [Double]),
-    _ body: ( inout DSPDoubleSplitComplex, 
+    _ body: ( UnsafePointer<DSPDoubleSplitComplex>, 
               UnsafePointer<Double>,
-              inout DSPDoubleSplitComplex,
+              UnsafeMutablePointer<DSPDoubleSplitComplex>,
               vDSP_Length) -> Void) {
     
         a.0.withUnsafeBufferPointer { aRealBuffer in
@@ -103,7 +106,10 @@ func withUnsafeParameters(
     _ a: ([Float], [Float]),
     _ b:  [Float],
     _ c: inout ([Float], [Float]),
-    _ body: ( inout DSPSplitComplex, UnsafePointer<Float>, inout DSPSplitComplex, vDSP_Length) -> Void) {
+    _ body: ( UnsafePointer<DSPSplitComplex>,
+              UnsafePointer<Float>,
+              UnsafeMutablePointer<DSPSplitComplex>,
+              vDSP_Length) -> Void) {
         a.0.withUnsafeBufferPointer { aRealBuffer in
             a.1.withUnsafeBufferPointer { aImagBuffer in
                 b.withUnsafeBufferPointer { bRealBuffer in
@@ -130,7 +136,9 @@ func withUnsafeParameters(
 func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ c: inout ([Double], [Double]),
-    _ body: (inout DSPDoubleSplitComplex, inout DSPDoubleSplitComplex, vDSP_Length) -> Void) {
+    _ body: (UnsafePointer<DSPDoubleSplitComplex>,
+             UnsafeMutablePointer<DSPDoubleSplitComplex>,
+             vDSP_Length) -> Void) {
         
     a.0.withUnsafeBufferPointer { aRealBuffer in
         a.1.withUnsafeBufferPointer { aImagBuffer in
@@ -151,7 +159,9 @@ func withUnsafeParameters(
 func withUnsafeParameters(
     _ a: ([Float], [Float]),
     _ c: inout ([Float], [Float]),
-    _ body: (inout DSPSplitComplex, inout DSPSplitComplex, vDSP_Length) -> Void) {
+    _ body: (UnsafePointer<DSPSplitComplex>,
+             UnsafeMutablePointer<DSPSplitComplex>,
+             vDSP_Length) -> Void) {
         
     a.0.withUnsafeBufferPointer { aRealBuffer in
         a.1.withUnsafeBufferPointer { aImagBuffer in
@@ -172,7 +182,9 @@ func withUnsafeParameters(
 func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ c: inout [Double],
-    _ body: (inout DSPDoubleSplitComplex, UnsafeMutablePointer<Double>, vDSP_Length) -> Void) {
+    _ body: (UnsafePointer<DSPDoubleSplitComplex>, 
+             UnsafeMutablePointer<Double>,
+             vDSP_Length) -> Void) {
         
     a.0.withUnsafeBufferPointer { aRealBuffer in
         a.1.withUnsafeBufferPointer { aImagBuffer in
@@ -190,7 +202,10 @@ func withUnsafeParameters(
 func withUnsafeParameters(
     _ a: ([Float], [Float]),
     _ c: inout [Float],
-    _ body: (inout DSPSplitComplex, UnsafeMutablePointer<Float>, vDSP_Length) -> Void) {
+    _ body: (UnsafePointer<DSPSplitComplex>, 
+             UnsafeMutablePointer<Float>,
+             vDSP_Length) -> Void) {
+    
     a.0.withUnsafeBufferPointer { aRealBuffer in
         a.1.withUnsafeBufferPointer { aImagBuffer in
             c.withUnsafeMutableBufferPointer { cRealBuffer in
