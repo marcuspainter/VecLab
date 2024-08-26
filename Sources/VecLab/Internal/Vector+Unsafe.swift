@@ -12,7 +12,7 @@ func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ b: ([Double], [Double]),
     _ c: inout ([Double], [Double]),
-_ body: ( UnsafePointer<DSPDoubleSplitComplex>,
+    _ body: ( UnsafePointer<DSPDoubleSplitComplex>,
           UnsafePointer<DSPDoubleSplitComplex>,
           UnsafeMutablePointer<DSPDoubleSplitComplex>,
              vDSP_Length) -> Void) {
@@ -218,3 +218,58 @@ func withUnsafeParameters(
         }
     }
 }
+
+func withUnsafeParameters(
+    _ a: (Double, Double),
+    _ c: inout ([Double], [Double]),
+    _ body: ( UnsafePointer<DSPDoubleSplitComplex>,
+          UnsafeMutablePointer<DSPDoubleSplitComplex>,
+          vDSP_Length) -> Void) {
+    
+    let n = vDSP_Length(c.0.count)
+    withUnsafePointer(to: a.0) { aRealPointer in
+        withUnsafePointer(to: a.1) { aImagPointer in
+                
+            c.0.withUnsafeMutableBufferPointer { cRealBuffer in
+                c.1.withUnsafeMutableBufferPointer { cImagBuffer in
+
+                    var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealPointer),
+                                                  imagp: UnsafeMutablePointer(mutating: aImagPointer))
+
+                    var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
+                                                  imagp: cImagBuffer.baseAddress!)
+                   
+                    body(&A, &C, n)
+                }
+            }
+        }
+    }
+}
+
+func withUnsafeParameters(
+    _ a: (Float, Float),
+    _ c: inout ([Float], [Float]),
+    _ body: ( UnsafePointer<DSPSplitComplex>,
+          UnsafeMutablePointer<DSPSplitComplex>,
+          vDSP_Length) -> Void) {
+    
+    let n = vDSP_Length(c.0.count)
+    withUnsafePointer(to: a.0) { aRealPointer in
+        withUnsafePointer(to: a.1) { aImagPointer in
+                
+            c.0.withUnsafeMutableBufferPointer { cRealBuffer in
+                c.1.withUnsafeMutableBufferPointer { cImagBuffer in
+
+                    var A = DSPSplitComplex(realp: UnsafeMutablePointer(mutating: aRealPointer),
+                                                  imagp: UnsafeMutablePointer(mutating: aImagPointer))
+
+                    var C = DSPSplitComplex(realp: cRealBuffer.baseAddress!,
+                                                  imagp: cImagBuffer.baseAddress!)
+                   
+                    body(&A, &C, n)
+                }
+            }
+        }
+    }
+}
+

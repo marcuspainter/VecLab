@@ -155,7 +155,8 @@ public func + (a: Real, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: RealArray) -> ComplexArray {
     let r = vDSP.add(a.0, b)
-    let i = RealArray(repeating: Real(a.1), count: b.count)
+    var i = b
+    vectorFillRealArray(a.1, c: &i)
     return (r, i)
 }
 
@@ -166,6 +167,7 @@ public func + (a: Complex, b: RealArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: Complex) -> ComplexArray {
     let r = vDSP.add(b.0, a)
-    let i = RealArray(repeating: Real(b.1), count: a.count)
+    var i = a
+    vectorFillRealArray(b.1, c: &i)
     return (r, i)
 }
