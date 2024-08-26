@@ -7,7 +7,13 @@
 
 import Foundation
 
-public func freqz(_ b: RealArray, _ a: RealArray, N: Int = 512) -> ComplexArray {
+/// Transfer function for filter coefficients.
+/// - Parameters:
+///   - b: b coefficients.
+///   - a: a coefficients.
+///   - N: FFT Length.
+/// - Returns: Complex transfer function.
+public func freqz(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> ComplexArray {
     
     let bb = paddata(b, N*2)
     let aa = paddata(a, N*2)
@@ -16,7 +22,13 @@ public func freqz(_ b: RealArray, _ a: RealArray, N: Int = 512) -> ComplexArray 
     return HH
 }
 
-public func freqz2(_ b: RealArray, _ a: RealArray, N: Int = 512) -> ComplexArray {
+/// Transfer function for filter coefficients.
+/// - Parameters:
+///   - b: b coefficients.
+///   - a: a coefficients.
+///   - N: DFT Length.
+/// - Returns: Complex transfer function.
+public func freqz2(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> ComplexArray {
     
     // Define the frequency range
     let w = linspace(0, .pi, N) // 512 points between 0 and pi
