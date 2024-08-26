@@ -28,7 +28,7 @@ public enum BiquadType {
 ///   - dbGain: Gain (dB).
 ///   - type: ``BiquadType``
 /// - Returns: (b, a) coefficients as a tuple.
-public func biquad(f: Double, fs: Double, Q: Double, dbGain: Double, ftype: BiquadType) -> (b: [Double], a: [Double]) {
+public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) -> (b: [Real], a: [Real]) {
     // Fs = 48000
     // f0 = 1000
     // Q = sqrt(2)/2
