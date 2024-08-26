@@ -16,28 +16,28 @@ import Foundation
 // MARK: Clear
 
 func vectorClearRealArray(_ a: inout [Double]) {
-    vDSP_vclrD(&a, vDSP_Stride(1), vDSP_Length(a.count))
+    vDSP_vclrD(&a, 1, vDSP_Length(a.count))
 }
 
 func vectorClearComplexArray(_ a: inout [Float]) {
-    vDSP_vclr(&a, vDSP_Stride(1), vDSP_Length(a.count))
+    vDSP_vclr(&a, 1, vDSP_Length(a.count))
 }
 
 // MARK: Fill
 
 func vectorFillRealArray(_ a: Double, c: inout [Double]) {
     var aa = a
-    vDSP_vfillD(&aa, &c, vDSP_Stride(1), vDSP_Length(c.count))
+    vDSP_vfillD(&aa, &c, 1, vDSP_Length(c.count))
 }
 
 func vectorFillRealArray(_ a: Float, c: inout [Float]) {
     var aa = a
-    vDSP_vfill(&aa, &c, vDSP_Stride(1), vDSP_Length(c.count))
+    vDSP_vfill(&aa, &c, 1, vDSP_Length(c.count))
 }
 
 func vectorFillComplexArray(_ a: (Double, Double), c: inout ([Double], [Double])) {
     withUnsafeParameters(a, &c) { A, C, N in
-        vDSP_zvfillD(A, C, vDSP_Stride(1), N)
+        vDSP_zvfillD(A, C, 1, N)
     }
 }
 
@@ -177,9 +177,8 @@ func vectorMultiplyComplexArrayComplex(_ a: ([Double], [Double]), _ b: (Double, 
     var bi = b.1
 
     let n = vDSP_Length(a.0.count)
-    let stride = vDSP_Stride(1)
-    vDSP_vfillD(&br, &b0, stride, n)
-    vDSP_vfillD(&bi, &b1, stride, n)
+    vDSP_vfillD(&br, &b0, 1, n)
+    vDSP_vfillD(&bi, &b1, 1, n)
 
     let bb = (b0, b1)
     withUnsafeParameters(a, bb, &c) { A, B, C, N in
@@ -199,9 +198,8 @@ func vectorMultiplyComplexArrayComplex(_ a: ([Float], [Float]), _ b: (Float, Flo
     var bi = b.1
 
     let n = vDSP_Length(a.0.count)
-    let stride = vDSP_Stride(1)
-    vDSP_vfill(&br, &b0, stride, n)
-    vDSP_vfill(&bi, &b1, stride, n)
+    vDSP_vfill(&br, &b0, 1, n)
+    vDSP_vfill(&bi, &b1, 1, n)
     let bb = (b0, b1)
     withUnsafeParameters(a, bb, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
