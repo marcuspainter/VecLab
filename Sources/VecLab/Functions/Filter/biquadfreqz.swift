@@ -50,5 +50,4 @@ public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
 
 // https://dsp.stackexchange.com/questions/16885/how-do-i-manually-plot-the-frequency-response-of-a-bandpass-butterworth-filter-i/16911#16911
 // https://www.musicdsp.org/en/latest/Analysis/186-frequency-response-from-biquad-coefficients.html
-// from RBJ @ http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
