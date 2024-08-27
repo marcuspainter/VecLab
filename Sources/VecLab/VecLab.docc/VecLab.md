@@ -223,6 +223,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Interpolation>
 - <doc:Modulo>
 - <doc:Optimization>
+- <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
 - <doc:Smoothing>

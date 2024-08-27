@@ -261,8 +261,6 @@ class BasicTests: XCTestCase {
         let expected: Complex = (140.0, 0.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
-
-    
 }
 
 /*
