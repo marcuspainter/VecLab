@@ -15,4 +15,6 @@ Filter functions.
 ### Transfer Response
 - ``freqz(_:_:_:)``
 - ``freqz2(_:_:_:)``
+- ``biquadfreqz(_:_:)``
+- ``biquadmag(_:_:_:)``
 

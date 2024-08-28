@@ -210,6 +210,9 @@ Overloaded operators for scalar and vectors.
 ### Operators
 - <doc:MathOperators>
 
+### New
+- <doc:_New>
+
 ### Functions
 - <doc:VectorFunctions>
 - <doc:BasicFunctions>
@@ -223,6 +226,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Interpolation>
 - <doc:Modulo>
 - <doc:Optimization>
+- <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
 - <doc:Smoothing>

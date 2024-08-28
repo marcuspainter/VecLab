@@ -39,4 +39,7 @@ Coordinate, degrees and radians, and decibel conversion.
 
 ### Floating Point Conversion
 
-
+- ``f2d(_:)-23j9i``
+- ``f2d(_:)-5b0v6``
+- ``d2f(_:)-3s1lo``
+- ``d2f(_:)-86efh``
