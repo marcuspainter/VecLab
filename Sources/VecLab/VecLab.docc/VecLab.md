@@ -210,6 +210,9 @@ Overloaded operators for scalar and vectors.
 ### Operators
 - <doc:MathOperators>
 
+### New
+- <doc:_New>
+
 ### Functions
 - <doc:VectorFunctions>
 - <doc:BasicFunctions>
