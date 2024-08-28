@@ -94,7 +94,7 @@ class DivideTests: XCTestCase {
     }
 
     func testDivideRealArrayComplex() {
-        let result: ComplexArray = [1.0, 2.0] / ([1.0, 1.0], [1.0, 1.0])
+        let result: ComplexArray = realArrayA / complexA
         let expected: ComplexArray = ([0.5, 1.0], [-0.5, -1.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }

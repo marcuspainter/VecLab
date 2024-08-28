@@ -13,3 +13,11 @@ import Foundation
 public func zeros(_ count: Int) -> RealArray {
     return RealArray(repeating: 0, count: count)
 }
+
+/// Create an array of zeros.
+/// - Parameter count: Number of elements in the array.
+/// - Returns: A real array of length `count`.
+public func zeros(_ count: Real) -> RealArray {
+    return RealArray(repeating: 0, count: Int(count))
+}
+
