@@ -8,65 +8,46 @@
 import Foundation
 import Accelerate
 
+
 /// Interpolate using FFT. method  (Alternative)
 /// - Parameters:
 ///   - X: Input array.
 ///   - n: Factor.
 /// - Returns: Output array.
-public func interpft2(_ X: [Double], _ n: Int) -> [Double] {
-    let N = X.count
-    var fftX = [Double](repeating: 0.0, count: N)
-    var imagX = [Double](repeating: 0.0, count: N)
+public func interpft(_ xx: [Double], _ n: Int) -> [Double] {
+    let N = length(xx)
 
-    fftX.withUnsafeMutableBufferPointer { fftXBuffer in
-        imagX.withUnsafeMutableBufferPointer { imagXBuffer in
-            var splitComplexX = DSPDoubleSplitComplex(realp: fftXBuffer.baseAddress!, imagp: imagXBuffer.baseAddress!)
-
-            // Forward FFT
-            vDSP_fft_zripD(vDSP_create_fftsetupD(vDSP_Length(log2(Double(N))), FFTRadix(kFFTRadix2))!,
-                           &splitComplexX,
-                           1,
-                           vDSP_Length(log2(Double(N))),
-                           FFTDirection(kFFTDirection_Forward))
-        }
-    }
-
-    // Adjust size (either by zero-padding, truncating, and scaling if necessary)
-    var adjustedFFT: [Double]
-    var imagAdjusted: [Double]
-
-    if n > N {
-        adjustedFFT = fftX + [Double](repeating: 0.0, count: n - N)
-        imagAdjusted = imagX + [Double](repeating: 0.0, count: n - N)
+    // Upsample, odd length
+    if mod(length(xx),2) != 0 {
+        let U = Real(n)
+        let z = zeros(N * Int(U) - N)
+        let X = fftr(xx)
+        // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
+        let t1 = slice(X, 0 ..< ((N+1)/2) )
+        let t2 = (z, z)
+        let t3 = slice(X,(N+1)/2 ..< N)
+        let XX = U * cat(t1, t2, t3)
+        let x = ifftr(XX)
+        return x
     } else {
-        adjustedFFT = Array(fftX.prefix(n))
-        imagAdjusted = Array(imagX.prefix(n))
-
-        var adjustedFFTIn = Array(fftX.prefix(n))
-        var imagAdjustedIn = Array(imagX.prefix(n))
-
-        // Adjust magnitude for decimation
-        let scaleFactor = Double(N) / Double(n)
-        vDSP_vsmulD(&adjustedFFTIn, 1, [scaleFactor], &adjustedFFT, 1, vDSP_Length(n))
-        vDSP_vsmulD(&imagAdjustedIn, 1, [scaleFactor], &imagAdjusted, 1, vDSP_Length(n))
+        let U = Real(n)
+        let X = fftr(xx)
+        let z = zeros(N * Int(U) - N)
+        let t1 = slice(X, 0 ..< (N/2))
+        let t2 = ( [X.0[(N/2)+1]], [X.1[(N/2)+1]]) * 0.5
+        let t3 = (z, z)
+        let t4 = ( [X.0[N/2+1]], [X.1[N/2+1]]) * 0.5
+        let t5 = slice(X, N/2+1 ..< N)
+        // XX = U * [X(1:(N/2)) X((N/2)+1)/2 z X(N/2+1)/2 X(N/2+2:N)];  // Matlab
+        let XX = U * cat(t1, t2, t3, t4, t5)
+        let x = ifftr(XX)
+        return x
     }
-
-    adjustedFFT.withUnsafeMutableBufferPointer { adjustedBuffer in
-        imagAdjusted.withUnsafeMutableBufferPointer { imagAdjustedBuffer in
-            var splitComplexResult = DSPDoubleSplitComplex(realp: adjustedBuffer.baseAddress!,
-                                                           imagp: imagAdjustedBuffer.baseAddress!)
-
-            // Inverse FFT
-            vDSP_fft_zripD(vDSP_create_fftsetupD(vDSP_Length(log2(Double(n))), FFTRadix(kFFTRadix2))!,
-                           &splitComplexResult,
-                           1,
-                           vDSP_Length(log2(Double(n))),
-                           FFTDirection(kFFTDirection_Inverse))
-        }
-    }
-
-    return adjustedFFT
 }
+
+// % https://dsp.stackexchange.com/questions/14919/upsample-data-using-ffts-how-is-this-exactly-done
+
+/*
 
 /// Interpolate using FFT. method.
 /// - Parameters:
@@ -125,3 +106,4 @@ public func interpft(_ X: [Double], _ n: Int) -> [Double] {
 
     return newResult
 }
+*/
