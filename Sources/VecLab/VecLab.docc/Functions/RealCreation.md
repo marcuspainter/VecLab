@@ -20,5 +20,7 @@ Vector Creation Functions
 - ``arange(_:_:)``
 - ``arange(_:_:_:)``
 
-- ``zeros(_:)``
-- ``ones(_:)``
+- ``zeros(_:)-4trad``
+- ``zeros(_:)-4tpop``
+- ``ones(_:)-76nm9``
+- ``ones(_:)-76mol``

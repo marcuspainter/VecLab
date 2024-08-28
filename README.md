@@ -11,10 +11,11 @@ Compatible with Swift 6.0.
 
 VecLab is a Swift Package for real and complex vector operations with NumPy and MATLAB-style functions.
 
-- Real and complex scalars and vectors.
 - Overloaded arithmetic operators.
+- Mixed real and complex, scalars and vectors.
 - Basic MATLAB-style functions.
 - Vectorized using Accelerate and vDSP.
+- FFT of 2, 3 and 5 factors.
 
 Full documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab).
 
@@ -28,7 +29,7 @@ The library includes an FFT function using Accelerate, but here is an example of
 // FFTX Fast Finite Fourier Transform.
 public func fftx(_ x: ComplexArray) -> ComplexArray {
     let n = length(x) 
-    let omega = exp(-2 * Real.pi * Real.i / Real(n))
+    let omega = exp(-2 * Real.pi * 1.i / Real(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))
@@ -133,21 +134,32 @@ let complexArray = (realArray, imagArray)
 
 ### The Imaginary Unit
 
-The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi.
+The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi. Alternatives are 
+as a extension of Double, Float and Int or a tuple of real and imaginary parts.
+
+These are all equivalent to 10+10i:
 
 ```swift
-let c = 10 + Real.i
+let c1 = 10 + 10 * Real.i
+let c2 = 10 + 10.i
+let c3 = (10, 10) 
 ```
 It can be used in any expression. This a a complex exponential:
 
 ```swift
 let phi = 100.0
-let c = exp(Real.i * 2 * Real.pi * phi)
+let c1 = exp(Real.i * 2 * Real.pi * phi)
+let c2 = exp(1.i * 2 * Real.pi * phi)
+let c3 = exp(2.i * Real.pi * phi)
+let c4 = exp((0, 2) * Real.pi * phi)
+let c5 = exp((0, 2 * Real.pi) * phi)
+let c6 = exp((0, 2 * Real.pi * phi))
 ```
 
 ### Ranges
 
-Ranges can be defined using the Swift `Range` or `ClosedRange` types but with the addition of an optional `by` value. This has been implemented as an extension to the `Array` type.
+Ranges can be defined using the Swift `Range` or `ClosedRange` types but with the addition of an optional `by` value.
+This has been implemented as an extension to the `Array` type.
 
 Swift style:
 

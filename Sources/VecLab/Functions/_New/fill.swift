@@ -23,4 +23,3 @@ public func fill(_ c: RealArray, _ a: Real) {
 public func fill(_ c: ComplexArray, _ a: Complex) {
     fillComplexArray(c, a)
 }
-
