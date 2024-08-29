@@ -14,7 +14,11 @@ Modulo, remainder, rounding and truncation.
 
 ### Rounding and Truncation
 - ``ceil(_:)``
-- ``fix(_:)``
 - ``floor(_:)``
 - ``round(_:)``
 - ``trunc(_:)``
+- ``fix(_:)-3s87u``
+- ``fix(_:)-3shp4``
+
+- ``frac(_:)-7rrti``
+- ``frac(_:)-1kkxq``
