@@ -136,6 +136,12 @@ class ExtensionsTests: XCTestCase {
         let expected: Complex =  (0.0, 4.0)
         XCTAssertEqual(result, expected, "Tuple Imaginary unit failed")
     }
+    
+    func testImaginaryTupleMultiply() throws {
+        let result = (1.0, 1.0) * (2.0, 2.0)
+        let expected = (0.0, 4.0)
+        XCTAssertEqual(result, expected, "Tuple multiplication failed")
+    }
 }
 
 
