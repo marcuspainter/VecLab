@@ -78,7 +78,7 @@ func vectorClearComplexArray(_ c: ([Double],[Double])) {
     }
 }
 
-func vectorClear(_ c: [Float]) {
+func vectorClearRealArray(_ c: [Float]) {
     let n = c.count
     c.withUnsafeBufferPointer() { cRealBuffer in
         let C = UnsafeMutablePointer(mutating: cRealBuffer.baseAddress!)
@@ -86,7 +86,7 @@ func vectorClear(_ c: [Float]) {
     }
 }
 
-func vectorClear(_ c: ([Float],[Float])) {
+func vectorClearComplexArray(_ c: ([Float],[Float])) {
     let n = c.0.count
     c.0.withUnsafeBufferPointer() { cRealBuffer in
         c.1.withUnsafeBufferPointer() { cImagBuffer in

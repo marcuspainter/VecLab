@@ -67,12 +67,12 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) 
     // let alpha = sinW0*sinh( ln(2)/2 * BW * w0/sinW0 )     // case: BW
     // let alpha = sinW0/2 * sqrt( (A + 1/A)*(1/S - 1) + 2 ) // case: S
 
-    var b0 = 0.0
-    var b1 = 0.0
-    var b2 = 0.0
-    var a0 = 0.0
-    var a1 = 0.0
-    var a2 = 0.0
+    var b0 = Real(0.0)
+    var b1 = Real(0.0)
+    var b2 = Real(0.0)
+    var a0 = Real(0.0)
+    var a1 = Real(0.0)
+    var a2 = Real(0.0)
 
     switch ftype {
         case .lowpass:  // H(s) = 1 / (s^2 + s/Q + 1)
