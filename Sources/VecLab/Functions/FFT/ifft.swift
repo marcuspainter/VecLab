@@ -28,6 +28,11 @@ public func ifft(_ x: ComplexArray) -> ComplexArray {
     return (splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
+@available(*, unavailable, renamed: "ifftr", message: "Use ifftr for Real arrays")
+public func ifft(_ x: ComplexArray) -> RealArray {
+    return []
+}
+
 /*
  /// Inverse FFT of a array.
  /// - Parameter x: Real array.

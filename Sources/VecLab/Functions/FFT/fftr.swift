@@ -18,6 +18,7 @@ public func fftr(_ x: RealArray) -> ComplexArray {
                                                        direction: .forward,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
+        print("fftr failed")
         return ([Real](repeating: Real.nan, count: x.count),
                 [Real](repeating: Real.nan, count: x.count))
     }
