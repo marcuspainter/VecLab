@@ -58,7 +58,7 @@ public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     let n = x.count
     let m = y.count
     let resultSize = n + m - 1
-    var result = [Double](repeating: 0.0, count: resultSize)
+    var result = [Real](repeating: 0.0, count: resultSize)
     
     for i in 0..<n {
         for j in 0..<m {

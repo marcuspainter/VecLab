@@ -57,7 +57,7 @@ public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     let n = x.count
     let m = y.count
     let resultSize = n + m - 1
-    var result = [Double](repeating: 0.0, count: resultSize)
+    var result = [Real](repeating: 0.0, count: resultSize)
     
     // Brute-force convolution
     for i in 0..<n {
