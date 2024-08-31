@@ -81,7 +81,7 @@ final class PerformanceTests: XCTestCase {
             }
         }
     }
- */
+
     func testCat1() throws {
         let N = 100000
         let a = [Double](repeating: 1.0, count: N)
@@ -97,6 +97,8 @@ final class PerformanceTests: XCTestCase {
             let result = cat2(a, a, a)
         }
     }
+ */
+ 
 }
 
 
