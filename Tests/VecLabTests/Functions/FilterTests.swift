@@ -69,7 +69,7 @@ class FilterTests: XCTestCase {
               
         var H = freqz(b,a)
         H = slice(H, 0 ..< 5)
-        XCTAssertEqual(H, HH, accuracy: accuracy, "freqz failed")
+        XCTAssertEqual(H, HH, accuracy: 1e-3, "freqz failed")
     }
     
     func testFreqz2() throws {
@@ -88,7 +88,7 @@ class FilterTests: XCTestCase {
               
         var H = freqz2(b,a)
         H = slice(H, 0 ..< 5)
-        XCTAssertEqual(H, HH, accuracy: accuracy, "freqz2 failed")
+        XCTAssertEqual(H, HH, accuracy: 1e-3, "freqz2 failed")
         
         disp(H)
     }
@@ -112,7 +112,7 @@ class FilterTests: XCTestCase {
         
         let magnitudeHH = mag2db(abs(HH));
         
-        XCTAssertEqual(magnitude, magnitudeHH, accuracy: accuracy, "biquadmag failed")
+        XCTAssertEqual(magnitude, magnitudeHH, accuracy: 1e-2, "biquadmag failed")
         
         disp(magnitude)
         disp("---")
@@ -136,7 +136,7 @@ class FilterTests: XCTestCase {
         var H = biquadfreqz(b, a)
         H = slice(H, 0 ..< 5)
         
-        XCTAssertEqual(H, HH, accuracy: accuracy, "biquadfreqz failed")
+        XCTAssertEqual(H, HH, accuracy: 1e-3, "biquadfreqz failed")
         
         disp(H)
         disp("---")

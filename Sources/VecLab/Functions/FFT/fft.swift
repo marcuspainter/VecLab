@@ -26,6 +26,11 @@ public func fft(_ x: ComplexArray) -> ComplexArray {
     return (splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
+@available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
+public func fft(_ x: RealArray) -> ComplexArray {
+    return ([],[])
+}
+
 /*
 
  /// FFT of array.

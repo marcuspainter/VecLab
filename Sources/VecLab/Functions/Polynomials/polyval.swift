@@ -10,7 +10,7 @@ import Foundation
 
 /// Polynomial evaluation.
 /// - Parameters:
-///   - p:  Polynomial coefficients.
+///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: Real) -> Real {
@@ -24,7 +24,7 @@ public func polyval(_ p: RealArray, _ x: Real) -> Real {
 
 /// Polynomial evaluation.
 /// - Parameters:
-///   - p:  Polynomial coefficients.
+///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
@@ -40,7 +40,7 @@ public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: Complex) -> Complex {
     let n = length(p) // Get the number of coefficients
-    var y = (p[0], 0.0) // Initialize the result with the first coefficient
+    var y = (p[0], Real(0)) // Initialize the result with the first coefficient
 
     // Horner's method: Iterate over the coefficients
     for i in 1 ..< n {

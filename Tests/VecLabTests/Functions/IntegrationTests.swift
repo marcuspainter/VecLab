@@ -26,7 +26,7 @@ class IntegrationTests: XCTestCase {
     func testGradientRealArray() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: RealArray = gradient(realArrayA)
-        let expected: RealArray = [1.0, 1.0, 1.0, 1.0, 1.0]
+        let expected: RealArray = [1.0, 1.0, 1.0, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
     }
 

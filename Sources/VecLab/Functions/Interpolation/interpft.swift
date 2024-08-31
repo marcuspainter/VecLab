@@ -1,5 +1,5 @@
 //
-//  interpft2.swift
+//  interpft.swift
 //  
 //
 //  Created by Marcus Painter on 17/09/2023.
@@ -14,7 +14,7 @@ import Accelerate
 ///   - X: Input array.
 ///   - n: Factor.
 /// - Returns: Output array.
-public func interpft(_ xx: [Double], _ n: Int) -> [Double] {
+public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
     let N = length(xx)
 
     // Upsample, odd length

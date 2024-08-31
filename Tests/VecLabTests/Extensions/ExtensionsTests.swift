@@ -125,8 +125,14 @@ class ExtensionsTests: XCTestCase {
         XCTAssertEqual(result, expected, "Real Imaginary unit failed")
     }
     
-    func testImaginaryDoubleExtension() throws {
+    func testImaginaryIntExtension() throws {
         let result: Complex = (1+1.i) + (2+2.i)
+        let expected: Complex =  (3.0, 3.0)
+        XCTAssertEqual(result, expected, "Double Imaginary unit failed")
+    }
+    
+    func testImaginaryRealExtension() throws {
+        let result: Complex = (1+1.0.i) + (2+2.0.i)
         let expected: Complex =  (3.0, 3.0)
         XCTAssertEqual(result, expected, "Double Imaginary unit failed")
     }

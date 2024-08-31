@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "VecLab",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12)
+        .iOS(.v16),
+        .macOS(.v14)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -25,7 +25,11 @@ let package = Package(
         .target(
             name: "VecLab",
             dependencies: [],
-            resources: [.copy("PrivacyInfo.xcprivacy")]
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            cSettings: [
+              .define("ACCELERATE_NEW_LAPACK"),
+              .define("ACCELERATE_LAPACK_ILP64") // optional
+        ]
         ),
         .testTarget(
             name: "VecLabTests",

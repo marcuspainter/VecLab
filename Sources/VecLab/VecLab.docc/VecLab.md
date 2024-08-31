@@ -138,7 +138,7 @@ let c1 = 10 + 10 * Real.i
 let c2 = 10 + 10.i
 let c3 = (10, 10) 
 ```
-It can be used in any expression. This a a complex exponential:
+It can be used in any expression. This is a complex exponential:
 
 ```swift
 let phi = 100.0
@@ -213,6 +213,7 @@ Overloaded operators for scalar and vectors.
 
 ### Essentials 
 - <doc:GettingStarted>
+- <doc:ArrayConcatenation>
 
 ### Vector Creation
 - <doc:RealCreation>
