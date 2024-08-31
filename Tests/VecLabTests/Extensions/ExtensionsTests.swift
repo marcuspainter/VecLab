@@ -125,8 +125,14 @@ class ExtensionsTests: XCTestCase {
         XCTAssertEqual(result, expected, "Real Imaginary unit failed")
     }
     
-    func testImaginaryDoubleExtension() throws {
+    func testImaginaryIntExtension() throws {
         let result: Complex = (1+1.i) + (2+2.i)
+        let expected: Complex =  (3.0, 3.0)
+        XCTAssertEqual(result, expected, "Double Imaginary unit failed")
+    }
+    
+    func testImaginaryRealExtension() throws {
+        let result: Complex = (1+1.0.i) + (2+2.0.i)
         let expected: Complex =  (3.0, 3.0)
         XCTAssertEqual(result, expected, "Double Imaginary unit failed")
     }
@@ -136,12 +142,6 @@ class ExtensionsTests: XCTestCase {
         let expected: Complex =  (0.0, 4.0)
         XCTAssertEqual(result, expected, "Tuple Imaginary unit failed")
     }
-    
-    //func testImaginaryTupleMultiply() throws {
-    //    let result = (1.0, 1.0) * (2.0, 2.0)
-    //    let expected = (0.0, 4.0)
-    //    XCTAssertEqual(result, expected, "Tuple multiplication failed")
-    //}
 }
 
 

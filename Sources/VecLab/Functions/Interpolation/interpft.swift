@@ -1,5 +1,5 @@
 //
-//  interpft2.swift
+//  interpft.swift
 //  
 //
 //  Created by Marcus Painter on 17/09/2023.

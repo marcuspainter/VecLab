@@ -213,6 +213,7 @@ Overloaded operators for scalar and vectors.
 
 ### Essentials 
 - <doc:GettingStarted>
+- <doc:ArrayConcatenation>
 
 ### Vector Creation
 - <doc:RealCreation>

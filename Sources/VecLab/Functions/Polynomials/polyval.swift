@@ -10,7 +10,7 @@ import Foundation
 
 /// Polynomial evaluation.
 /// - Parameters:
-///   - p:  Polynomial coefficients.
+///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: Real) -> Real {
@@ -24,7 +24,7 @@ public func polyval(_ p: RealArray, _ x: Real) -> Real {
 
 /// Polynomial evaluation.
 /// - Parameters:
-///   - p:  Polynomial coefficients.
+///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
