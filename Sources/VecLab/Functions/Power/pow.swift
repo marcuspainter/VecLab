@@ -12,6 +12,24 @@ import Foundation
 
 /// Power.
 /// - Parameters:
+///   - a: Integer number.
+///   - b: Integer number.
+/// - Returns: Raises `a` to the power of `b`.
+public func pow(_ a: Int, _ b: Int) -> Real {
+    return Darwin.pow(Real(a), Real(b))
+}
+
+/// Power.
+/// - Parameters:
+///   - a: Integer number.
+///   - b: Real number.
+/// - Returns: Raises `a` to the power of `b`.
+public func pow(_ a: Int, _ b: Real) -> Real {
+    return Darwin.pow(Real(a), b)
+}
+
+/// Power.
+/// - Parameters:
 ///   - a: Real number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.

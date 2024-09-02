@@ -19,8 +19,27 @@ infix operator **: PowerPrecedence
 
 /// Power.
 /// - Parameters:
-///   - a: Real number.
+///   - a: Integer number.
+///   - b: Integer number.
+/// - Returns: Raises `a` to the power of `b`.
+@inlinable
+public func ** (_ a: Int, _ b: Int) -> Real {
+    return pow(a, b)
+}
+
+/// Power.
+/// - Parameters:
+///   - a: Integer number.
 ///   - b: Real number.
+/// - Returns: Raises `a` to the power of `b`.
+@inlinable
+public func ** (_ a: Int, _ b: Real) -> Real {
+    return pow(a, b)
+}
+/// Power.
+/// - Parameters:
+///   - a: Real number.
+///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
 public func ** (_ a: Real, _ b: Int) -> Real {
