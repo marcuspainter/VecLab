@@ -78,7 +78,7 @@ public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
 
 // https://uk.mathworks.com/matlabcentral/fileexchange/43967-circular-cross-correlation-using-fft
 
-
+/*
 func autocorr(a: [Float]) -> [Float] {
 let filterLen = a.count
 let resultLen = filterLen * 2 - 1
@@ -99,3 +99,4 @@ return result
 }
 
 // https://stackoverflow.com/questions/37175618/vdsp-conv-occasionally-returns-nans
+*/
