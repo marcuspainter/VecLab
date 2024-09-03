@@ -48,7 +48,9 @@ print(perms(numbers))
 
 // The algorithm to get the next lexicographic permutation is as follows:
 
-// Find the largest index i such that array[i] < array[i+1]. If no such index exists, the permutation is the last permutation. Find the largest index j greater than i such that array[i] < array[j]. Swap the value of array[i] with that of array[j]. Reverse the sub-array array[i+1 ... end].
+// Find the largest index i such that array[i] < array[i+1]. If no such index exists, the permutation is the 
+// last permutation. Find the largest index j greater than i such that array[i] < array[j]. Swap the value of array[i]
+// with that of array[j]. Reverse the sub-array array[i+1 ... end].
 
 /*
  

@@ -7,6 +7,8 @@ Vector functions.
 ### Concatenation
 - ``cat(_:)-2narh``
 - ``cat(_:)-7d4rm``
+- ``cat(_:)-1jof2``
+- ``cat(_:)-73wm``
 
 ### Circular Shift
 - ``circshift(_:_:)-6pyy5``

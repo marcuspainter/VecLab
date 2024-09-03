@@ -28,6 +28,6 @@ public func exp(_ x: Complex) -> Complex {
 /// Exponential of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The exponential of `x`.
-public func exp(_ a: ComplexArray) -> ComplexArray {
-    return vectorComplexExp(a)
+public func exp(_ x: ComplexArray) -> ComplexArray {
+    return vectorExpComplexArray(x)
 }

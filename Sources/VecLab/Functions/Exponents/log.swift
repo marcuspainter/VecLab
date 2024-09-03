@@ -29,5 +29,5 @@ public func log(_ x: Complex) -> Complex {
 /// - Parameter a: Complex array.
 /// - Returns: The natural logarithm of `x`.
 public func log(_ x: ComplexArray) -> ComplexArray {
-    return vectorComplexLog(x)
+    return vectorLogComplexArray(x)
 }

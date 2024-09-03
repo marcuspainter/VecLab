@@ -7,11 +7,17 @@ Coordinate, degrees and radians, and decibel conversion.
 ### Coordinate Conversion
 
 - ``cart2pol(_:_:)``
-- ``cart2pol(_:_:_:)``
-- ``cart2sph(_:_:_:)``
-- ``pol2cart(_:_:)``
-- ``pol2cart(_:_:_:)``
-- ``sph2cart(_:_:_:)``
+- ``cart2pol(_:_:_:)-3wmn0``
+- ``cart2pol(_:_:_:)-3yi56``
+- ``cart2pol(_:_:_:)-5vkxf``
+- ``cart2sph(_:_:_:)-6i7uh``
+- ``cart2sph(_:_:_:)-5gd1k``
+- ``pol2cart(_:_:)-113z5``
+- ``pol2cart(_:_:)-9uxrq``
+- ``pol2cart(_:_:_:)-9cdm3``
+- ``pol2cart(_:_:_:)-1hun1``
+- ``sph2cart(_:_:_:)-5756v``
+- ``sph2cart(_:_:_:)-9gcit``
 
 ### Degrees and Radians
 
@@ -30,3 +36,10 @@ Coordinate, degrees and radians, and decibel conversion.
 - ``db2mag(_:)-5ht3e``
 - ``db2pow(_:)-94hdb``
 - ``db2pow(_:)-7q50x``
+
+### Floating Point Conversion
+
+- ``f2d(_:)-23j9i``
+- ``f2d(_:)-5b0v6``
+- ``d2f(_:)-3s1lo``
+- ``d2f(_:)-86efh``

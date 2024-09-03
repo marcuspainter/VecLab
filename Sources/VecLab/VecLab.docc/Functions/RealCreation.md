@@ -1,6 +1,6 @@
-# Real Vector Creation
+# Vector Creation
 
-Real vector creation.
+Vector Creation Functions
 
 ## Topics
 
@@ -16,6 +16,11 @@ Real vector creation.
 - ``vector(_:_:)-1eu48``
 - ``vector(_:_:)-1eu48``
 
-### Fill with Values
-- ``zeros(_:)``
-- ``ones(_:)``
+- ``arange(_:)``
+- ``arange(_:_:)``
+- ``arange(_:_:_:)``
+
+- ``zeros(_:)-4trad``
+- ``zeros(_:)-4tpop``
+- ``ones(_:)-76nm9``
+- ``ones(_:)-76mol``

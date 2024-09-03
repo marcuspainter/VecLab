@@ -1,3 +1,4 @@
+
 //
 //  ModuloTests.swift
 //
@@ -107,6 +108,22 @@ class ModuloTests: XCTestCase {
         let result: RealArray = trunc(realArrayA)
         let expected: RealArray = [-2.0, -2.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 2.0, 2.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "trunc failed")
+    }
+    
+    // MARK: frac
+    
+    func testFracReal() throws {
+        let realA: Real = -2.9
+        let result: Real = frac(realA)
+        let expected: Real = -0.9
+        XCTAssertEqual(result, expected, accuracy: accuracy, "frac failed")
+    }
+    
+    func testFracRealArray() throws {
+        let realArrayA: RealArray = [-2.1,  -2.0, -1.9, -1.5, -1.0, 0.0, 1.0, 1.5, 1.9, 2.0, 2.1]
+        let result: RealArray = frac(realArrayA)
+        let expected: RealArray =   [ -0.1,  0.0, -0.9, -0.5,  0.0, 0.0, 0.0, 0.5, 0.9, 0.0, 0.1]
+        XCTAssertEqual(result, expected, accuracy: accuracy, "frac failed")
     }
 
 }

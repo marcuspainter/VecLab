@@ -5,12 +5,13 @@ A real/complex vector library in Swift.
 
 ## Overview
 
-VecLab is a numeric library for real and complex vector operations and NumPy and MATLAB-style functions.
+VecLab is a Swift Package for real and complex vector operations with NumPy and MATLAB-style functions.
 
-- Real and complex scalars and vectors.
 - Overloaded arithmetic operators.
-- Basic Matlab-style functions.
-- Vectorized using vDSP.
+- Mixed real and complex, scalars and vectors.
+- Basic MATLAB-style functions.
+- Vectorized using Accelerate and vDSP.
+- FFT of 2, 3 and 5 factors.
 
  [Online Documentation](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab)
 
@@ -129,16 +130,26 @@ let complexArray = (realArray, imagArray)
 
 ### The Imaginary Unit
 
-The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi.
+The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi. Alternatives are 
+as a extension of Double, Float and Int or a tuple of real and imaginary parts.
+
+These are all equivalent to 10+10i:
 
 ```swift
-let c = 10 + Real.i
+let c1 = 10 + 10 * Real.i
+let c2 = 10 + 10.i
+let c3 = (10, 10) 
 ```
-It can be used in any expression. This a a complex exponential:
+It can be used in any expression. This is a complex exponential:
 
 ```swift
 let phi = 100.0
-let c = exp(Real.i * 2 * Real.pi * phi)
+let c1 = exp(Real.i * 2 * Real.pi * phi)
+let c2 = exp(1.i * 2 * Real.pi * phi)
+let c3 = exp(2.i * Real.pi * phi)
+let c4 = exp((0, 2) * Real.pi * phi)
+let c5 = exp((0, 2 * Real.pi) * phi)
+let c6 = exp((0, 2 * Real.pi * phi))
 ```
 
 ### Ranges
@@ -178,14 +189,14 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays|cat, circshift, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
-|Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sinc, sum|
+|Arrays|arange, cat, circshift, dot, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
+|Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sum|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
-|Conversion| cart2pol, cart2sph, db2mag, db2pow, deg2rad, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
+|Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nchoosek, perms, prevprime, primes|
 |Exponents| exp, log, log2, log10, nextpow2, sqrt|
 |FFT| dft, dftr, fft, fftr, fftshift, fftsymmetric, idft, idftr, ifft, ifftr, ifftshift|
-|Filter| filter|
+|Filter| biquad, freqz, filter|
 |Integration| diff, gradient, trapz|
 |Interpolation| interp1, interpft, sincresample|
 |Modulo| ceil, fix, floor, mod, rem, round, trunc|
@@ -194,7 +205,7 @@ Overloaded operators for scalar and vectors.
 |Random| agwn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|
 |Space| freqspace, linspace, logspace|
-|Special| besseli0|
+|Special| besseli0, sinc|
 |Statistics| histcounts, max, maxindex, mean, median, min, minindex, mode, rms, stddev, variance|
 |Timing| tic, toc, timeit|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
@@ -204,6 +215,7 @@ Overloaded operators for scalar and vectors.
 
 ### Essentials 
 - <doc:GettingStarted>
+- <doc:ArrayConcatenation>
 
 ### Vector Creation
 - <doc:RealCreation>
@@ -211,6 +223,9 @@ Overloaded operators for scalar and vectors.
 
 ### Operators
 - <doc:MathOperators>
+
+### New
+- <doc:_New>
 
 ### Functions
 - <doc:VectorFunctions>
@@ -225,6 +240,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Interpolation>
 - <doc:Modulo>
 - <doc:Optimization>
+- <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
 - <doc:Smoothing>

@@ -38,7 +38,7 @@ public func *~ (a: Real, b: Complex) -> Complex {
 public func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
     var c = createComplexArray(count: a.0.count)
-    c = vectorComplexConjugateMultiply(b, a)
+    c = vectorConjugateMultiplyComplexArray(b, a)
     return c
 }
 

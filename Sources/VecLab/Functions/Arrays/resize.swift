@@ -14,6 +14,7 @@ import Foundation
 /// - Returns: Array of new size.
 public func resize(_ x: RealArray, _ m: Int) -> RealArray {
     let n = x.count
+    guard m != n else { return x }
     var y = x
     if m < n {
         return slice(x, 0 ..< m)
@@ -32,6 +33,7 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
 /// - Returns: Array of new size.
 public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
     let n = x.0.count
+    guard m != n else { return x }
     var y = x
     if m < n {
         return slice(x, 0 ..< m)

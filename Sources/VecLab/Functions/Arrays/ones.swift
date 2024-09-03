@@ -13,3 +13,11 @@ import Foundation
 public func ones(_ count: Int) -> RealArray {
     return RealArray(repeating: 1.0, count: count)
 }
+
+/// Create an array of ones.
+/// - Parameter count: Number of elements in the array.
+/// - Returns: A real array of length `count`.
+public func ones(_ count: Real) -> RealArray {
+    return RealArray(repeating: 1.0, count: Int(count))
+}
+

@@ -29,6 +29,16 @@ public func complex(count: Int) -> ComplexArray {
     return createComplexArray(count: count)
 }
 
+/// Create a complex array from  real and imaginary arrays.
+/// - Parameters:
+///   - real: Real array.
+///   - imag: Imaginary array.
+/// - Returns: A complex array.
+public func complex(_ real: RealArray, _ imag: RealArray) -> ComplexArray {
+    assertSameSize(real, imag)
+    return (real, imag)
+}
+
 /// Create a complex array of the same size of a complex array.
 /// - Parameter sized: Complex array.
 /// - Returns: A complex array the same size as the complex array.

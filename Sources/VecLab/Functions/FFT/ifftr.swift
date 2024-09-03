@@ -19,6 +19,7 @@ public func ifftr(_ x: ComplexArray) -> RealArray {
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
+        print("ifftr failed")
         return ([Real](repeating: Real.nan, count: x.0.count))
     }
 

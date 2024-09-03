@@ -10,7 +10,7 @@ import Foundation
 /// Repeat a real number.
 /// - Parameters:
 ///   - x: A real number.
-///   - n:Number of repetitions.
+///   - n: Number of repetitions.
 /// - Returns: Repeated array.
 public func repelem(_ x: Real, _ n: Int) -> RealArray {
     let xarray = [x]
@@ -28,7 +28,7 @@ public func repelem(_ x: Real, _ n: Int) -> RealArray {
 /// Repeat a real array.
 /// - Parameters:
 ///   - x: A real array.
-///   - n:Number of repetitions.
+///   - n: Number of repetitions.
 /// - Returns: Repeated array.
 public func repelem(_ x: RealArray, _ n: Int) -> RealArray {
     guard n > 1 else {
