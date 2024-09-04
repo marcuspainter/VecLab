@@ -12,7 +12,6 @@ import Accelerate
 
 /// Base 10 logarithm of a real  array.
 public func log10(_ x: RealArray) -> RealArray {
-    // return x.map { log10($0) }
     return vForce.log10(x)
 }
 

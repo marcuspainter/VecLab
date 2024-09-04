@@ -21,7 +21,6 @@ public func rad2deg(_ rad: Real) -> Real {
 /// - Parameter rad: Angles in radians.
 /// - Returns: Angles in degrees.
 public func rad2deg(_ rad: RealArray) -> RealArray {
-    // return rad.map { rad2deg($0) }
     let scale = Real(180.0 / .pi)
     return vDSP.multiply(scale, rad)
 }

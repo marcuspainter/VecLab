@@ -20,4 +20,3 @@ public func ones(_ count: Int) -> RealArray {
 public func ones(_ count: Real) -> RealArray {
     return RealArray(repeating: 1.0, count: Int(count))
 }
-

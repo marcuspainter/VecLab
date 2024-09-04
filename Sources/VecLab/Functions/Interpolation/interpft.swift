@@ -8,7 +8,6 @@
 import Foundation
 import Accelerate
 
-
 /// Interpolate using FFT. method  (Alternative)
 /// - Parameters:
 ///   - X: Input array.
@@ -18,14 +17,14 @@ public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
     let N = length(xx)
 
     // Upsample, odd length
-    if mod(length(xx),2) != 0 {
+    if mod(length(xx), 2) != 0 {
         let U = Real(n)
         let z = zeros(N * Int(U) - N)
         let X = fftr(xx)
         // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
         let t1 = slice(X, 0 ..< ((N+1)/2) )
         let t2 = (z, z)
-        let t3 = slice(X,(N+1)/2 ..< N)
+        let t3 = slice(X, (N+1)/2 ..< N)
         let XX = U * cat(t1, t2, t3)
         let x = ifftr(XX)
         return x

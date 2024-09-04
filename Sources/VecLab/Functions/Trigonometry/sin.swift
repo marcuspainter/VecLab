@@ -14,7 +14,6 @@ import Accelerate
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
 public func sin(_ x: RealArray) -> RealArray {
-    // return x.map { sin($0) }
     return vForce.sin(x)
 }
 

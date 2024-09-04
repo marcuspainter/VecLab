@@ -21,17 +21,17 @@ public func frac(_ x: Real) -> Real {
 /// - Parameter x: Input array.
 /// - Returns: The fractional part array.
 public func frac(_ x: RealArray) -> RealArray {
-    //var c = x
-    //vectorFrac(x, &c)
+    // var c = x
+    // vectorFrac(x, &c)
     // vDSP uses truncate for fractional part !!!
     let c = vDSP.trunc(x)
     return c
 }
 
-func vectorFrac(_ x: [Double],_ c: inout [Double]) {
+func vectorFrac(_ x: [Double], _ c: inout [Double]) {
     vDSP_vfracD(x, 1, &c, 1, vDSP_Length(x.count))
 }
 
-func vectorFrac(_ x: [Float],_ c: inout [Float]) {
+func vectorFrac(_ x: [Float], _ c: inout [Float]) {
     vDSP_vfrac(x, 1, &c, 1, vDSP_Length(x.count))
 }

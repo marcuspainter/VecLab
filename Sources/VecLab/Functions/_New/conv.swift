@@ -19,12 +19,12 @@ public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
     let fftN = nextpow2(N)
     let xx = paddata(x, fftN)
     let yy = paddata(y, fftN)
-    
+
     let A = fftr(xx)
     let B = fftr(yy)
 
     let C = A * B
-    
+
     var z = ifftr(C)
     z = slice(z, 0 ..< N)
     return z
@@ -41,12 +41,12 @@ public func conv(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let fftN = nextpow2(N)
     let xx = paddata(x, fftN)
     let yy = paddata(y, fftN)
-    
+
     let A = fft(xx)
     let B = fft(yy)
 
     let C = A * B
-    
+
     var z = ifft(C)
     z = slice(z, 0 ..< N)
     return z
@@ -58,13 +58,13 @@ public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     let m = y.count
     let resultSize = n + m - 1
     var result = [Real](repeating: 0.0, count: resultSize)
-    
+
     // Brute-force convolution
     for i in 0..<n {
         for j in 0..<m {
             result[i + j] += x[i] * y[j]
         }
     }
-    
+
     return result
 }

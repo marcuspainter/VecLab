@@ -21,7 +21,6 @@ public func mag2db(_ mag: Real) -> Real {
 /// - Parameter mag: Magnitude values.
 /// - Returns: Values in decibels.
 public func mag2db(_ mag: RealArray) -> RealArray {
-    // return mag.map { mag2db($0) }
     var db = RealArray(repeating: 0, count: mag.count)
     vDSP.convert(amplitude: mag, toDecibels: &db, zeroReference: 1.0)
     return db

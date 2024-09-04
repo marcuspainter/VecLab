@@ -19,7 +19,6 @@ public extension Float {
     var i: Complex { (Real(0), Real(self)) }
 }
 
-
 public extension Double {
     /// The complex imaginary unit i, where i = sqrt(-1).
     var i: Complex { (Real(0), Real(self)) }
@@ -41,7 +40,6 @@ public extension Float {
     /// The complex imaginary unit i, where i = sqrt(-1).
     var j: Complex { (Real(0), Real(self)) }
 }
-
 
 public extension Double {
     /// The complex imaginary unit i, where i = sqrt(-1).

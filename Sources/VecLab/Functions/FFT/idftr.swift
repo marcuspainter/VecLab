@@ -12,7 +12,7 @@ import Foundation
 /// - Returns: Real array result.
 public func idftr(_ x: ComplexArray) -> RealArray {
     let n = length(x)
-    
+
     // Init by copy
     var y = x
     let k = RealArray(0 ..< n)
