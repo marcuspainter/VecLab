@@ -16,14 +16,12 @@ import Accelerate
 ///
 /// - Parameter A: Input array of real numbers.
 /// - Returns: The standard deviation of the values in the array.
-///
-/// # Example:
-/// ```
-/// let dataPoints: RealArray = [2.0, 4.0, 4.0, 4.0, 5.0, 5.0, 7.0, 9.0]
-/// let stddevValue = stddev(dataPoints)
-/// print(stddevValue) //  2.138089935299395
-/// ```
-public func stddev(_ A: RealArray) -> Real {
+public func stddev(_ A: RealDoubleArray) -> RealDouble {
+    let varianceValue = variance(A)
+    return Darwin.sqrt(varianceValue)
+}
+
+public func stddev(_ A: RealFloatArray) -> RealFloat {
     let varianceValue = variance(A)
     return Darwin.sqrt(varianceValue)
 }

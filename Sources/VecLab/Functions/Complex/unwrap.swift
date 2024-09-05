@@ -16,10 +16,10 @@ import Foundation
 ///   - phase: Phase angles in radians.
 ///   - tol: Tolerance.
 /// - Returns: The unwrapped phase.
-public func unwrap(_ phase: RealArray, tol: Real = .pi) -> RealArray {
+public func unwrap(_ phase: RealDoubleArray, tol: RealDouble = .pi) -> RealDoubleArray {
     guard !phase.isEmpty else { return [] }
 
-    var unwrapped = [Real](repeating: 0.0, count: phase.count)
+    var unwrapped = [RealDouble](repeating: 0.0, count: phase.count)
     unwrapped[0] = phase[0]
 
     for i in 1 ..< phase.count {
@@ -34,6 +34,37 @@ public func unwrap(_ phase: RealArray, tol: Real = .pi) -> RealArray {
 
     return unwrapped
 }
+
+// MARK: Float
+
+/// Unwrap phase angles.
+///
+/// Unwraps radian phase angles. Whenever the jump between consecutive angles is greater than
+/// or equal to π radians, unwrap shifts the angles by adding multiples of ±2π until the jump is less than π.
+///
+/// - Parameters:
+///   - phase: Phase angles in radians.
+///   - tol: Tolerance.
+/// - Returns: The unwrapped phase.
+public func unwrap(_ phase: RealFloatArray, tol: RealFloat = .pi) -> RealFloatArray {
+    guard !phase.isEmpty else { return [] }
+
+    var unwrapped = [RealFloat](repeating: 0.0, count: phase.count)
+    unwrapped[0] = phase[0]
+
+    for i in 1 ..< phase.count {
+        var delta: RealFloat = phase[i] - phase[i - 1]
+
+        if abs(delta) > tol {
+            delta = mod(delta + tol, 2 * tol) - tol
+        }
+
+        unwrapped[i] = unwrapped[i - 1] + delta
+    }
+
+    return unwrapped
+}
+
 
 /*
  func unwrap2(_ phase: RealArray) -> RealArray {

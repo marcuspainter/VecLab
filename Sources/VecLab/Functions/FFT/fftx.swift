@@ -12,9 +12,9 @@ import Foundation
 /// Recursive FFT of real array.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
-public func fftx(_ x: RealArray) -> ComplexArray {
+public func fftx(_ x: RealDoubleArray) -> ComplexDoubleArray {
     let n = length(x)
-    let omega = exp(-2 * Real.pi * Real.i / Real(n))
+    let omega = exp(-2 * Double.pi * Double.i / Double(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))
@@ -30,9 +30,9 @@ public func fftx(_ x: RealArray) -> ComplexArray {
 /// Recursive FFT of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
-public func fftx(_ x: ComplexArray) -> ComplexArray {
+public func fftx(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
     let n = length(x)
-    let omega = exp(-2 * Real.pi * Real.i / Real(n))
+    let omega = exp(-2 * Double.pi * Double.i / Double(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))

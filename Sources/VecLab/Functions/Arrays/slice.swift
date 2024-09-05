@@ -15,7 +15,7 @@ import Foundation
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: RealArray, _ range: Range<Int>, _ by: Int = 1) -> RealArray {
+public func slice(_ x: RealDoubleArray, _ range: Range<Int>, _ by: Int = 1) -> RealDoubleArray {
     if by == 1 {
         return Array(x[range])
     } else {
@@ -30,7 +30,7 @@ public func slice(_ x: RealArray, _ range: Range<Int>, _ by: Int = 1) -> RealArr
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: ComplexArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexArray {
+public func slice(_ x: ComplexDoubleArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexDoubleArray {
     if by == 1 {
         return (Array(x.0[range]), Array(x.1[range]))
     } else {
@@ -49,7 +49,7 @@ public func slice(_ x: ComplexArray, _ range: Range<Int>, _ by: Int = 1) -> Comp
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: RealArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> RealArray {
+public func slice(_ x: RealDoubleArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> RealDoubleArray {
     if by == 1 {
         return Array(x[range])
     } else {
@@ -64,7 +64,7 @@ public func slice(_ x: RealArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> R
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: ComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexArray {
+public func slice(_ x: ComplexDoubleArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexDoubleArray {
     if by == 1 {
         return (Array(x.0[range]), Array(x.1[range]))
     } else {
@@ -74,3 +74,72 @@ public func slice(_ x: ComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -
         return (r, i)
     }
 }
+
+// MARK: Float
+
+// Extract a range from an array.
+/// - Parameters:
+///   - x: The array.
+///   - range:Index range.
+///   - by: The index step size.
+/// - Returns: The sub array.
+public func slice(_ x: RealFloatArray, _ range: Range<Int>, _ by: Int = 1) -> RealFloatArray {
+    if by == 1 {
+        return Array(x[range])
+    } else {
+        let strideRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
+        return strideRange.map { x[$0] }
+    }
+}
+
+/// Extract a range from a complex array.
+/// - Parameters:
+///   - x: The array.
+///   - range:Index range.
+///   - by: The index step size.
+/// - Returns: The sub array.
+public func slice(_ x: ComplexFloatArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexFloatArray {
+    if by == 1 {
+        return (Array(x.0[range]), Array(x.1[range]))
+    } else {
+        let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
+        let r = indexRange.map { x.0[$0] }
+        let i = indexRange.map { x.1[$0] }
+        return (r, i)
+    }
+}
+
+// MARK: Closed range (...) to
+
+/// Extract a closed range from a real array.
+/// - Parameters:
+///   - x: The array.
+///   - range:Index range.
+///   - by: The index step size.
+/// - Returns: The sub array.
+public func slice(_ x: RealFloatArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> RealFloatArray {
+    if by == 1 {
+        return Array(x[range])
+    } else {
+        let strideRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
+        return strideRange.map { x[$0] }
+    }
+}
+
+/// Extract a closed range from a complex array.
+/// - Parameters:
+///   - x: The array.
+///   - range:Index range.
+///   - by: The index step size.
+/// - Returns: The sub array.
+public func slice(_ x: ComplexFloatArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexFloatArray {
+    if by == 1 {
+        return (Array(x.0[range]), Array(x.1[range]))
+    } else {
+        let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
+        let r = indexRange.map { x.0[$0] }
+        let i = indexRange.map { x.1[$0] }
+        return (r, i)
+    }
+}
+

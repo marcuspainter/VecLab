@@ -9,8 +9,8 @@ import Foundation
 
 /// Create a complex number.
 /// - Returns: A complex number initialized to 0 + 0i.
-public func complex() -> Complex {
-    return (Real(0), Real(0))
+public func complex() -> ComplexDouble {
+    return (Double(0), Double(0))
 }
 
 /// Create a complex number.
@@ -18,14 +18,14 @@ public func complex() -> Complex {
 ///   - a: Real part.
 ///   - b: Imaginary part.
 /// - Returns: A complex number  a + bi.
-public func complex(_ a: Real, _ b: Real) -> Complex {
+public func complex(_ a: RealDouble, _ b: RealDouble) -> ComplexDouble {
     return (a, b)
 }
 
 /// Create a complex array.
 /// - Parameter count: Number of elements in the array.
 /// - Returns: A complex array of length `count`,  initialized to 0 + 0i.
-public func complex(count: Int) -> ComplexArray {
+public func complex(count: Int) -> ComplexDoubleArray {
     return createComplexArray(count: count)
 }
 
@@ -34,7 +34,7 @@ public func complex(count: Int) -> ComplexArray {
 ///   - real: Real array.
 ///   - imag: Imaginary array.
 /// - Returns: A complex array.
-public func complex(_ real: RealArray, _ imag: RealArray) -> ComplexArray {
+public func complex(_ real: RealDoubleArray, _ imag: RealDoubleArray) -> ComplexDoubleArray {
     assertSameSize(real, imag)
     return (real, imag)
 }
@@ -42,13 +42,13 @@ public func complex(_ real: RealArray, _ imag: RealArray) -> ComplexArray {
 /// Create a complex array of the same size of a complex array.
 /// - Parameter sized: Complex array.
 /// - Returns: A complex array the same size as the complex array.
-public func complex(sized: ComplexArray) -> ComplexArray {
+public func complex(sized: ComplexDoubleArray) -> ComplexDoubleArray {
     return createComplexArray(count: sized.0.count)
 }
 
 /// Create a complex array of the same size of a real array.
 /// - Parameter sized: Complex array.
 /// - Returns: A complex array the same size as real  array.
-public func complex(sized: RealArray) -> ComplexArray {
+public func complex(sized: RealDoubleArray) -> ComplexDoubleArray {
     return createComplexArray(count: sized.count)
 }

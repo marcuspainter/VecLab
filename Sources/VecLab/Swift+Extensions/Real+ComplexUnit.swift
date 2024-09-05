@@ -9,46 +9,28 @@ import Foundation
 
 // MARK: i
 
-public extension Real {
+public extension Double {
     /// The complex imaginary unit i, where i = sqrt(-1).
-    static var i: Complex { (Real(0), Real(1)) }
+    static var i: ComplexDouble { (Double(0), Double(1)) }
 }
 
 public extension Float {
     /// The complex imaginary unit i, where i = sqrt(-1).
-    var i: Complex { (Real(0), Real(self)) }
+    static var i: ComplexFloat{ (Float(0), Float(1)) }
 }
-
 
 public extension Double {
     /// The complex imaginary unit i, where i = sqrt(-1).
-    var i: Complex { (Real(0), Real(self)) }
-}
-
-public extension Int {
-    /// The complex imaginary unit i, where i = sqrt(-1).
-    var i: Complex { (Real(0), Real(self)) }
-}
-
-// MARK: j
-
-public extension Real {
-    /// The complex imaginary unit i, where i = sqrt(-1).
-    static var j: Complex { (Real(0), Real(1)) }
+    var i: ComplexDouble { (Double(0), self) }
 }
 
 public extension Float {
     /// The complex imaginary unit i, where i = sqrt(-1).
-    var j: Complex { (Real(0), Real(self)) }
-}
-
-
-public extension Double {
-    /// The complex imaginary unit i, where i = sqrt(-1).
-    var j: Complex { (Real(0), Real(self)) }
+    var i: ComplexFloat { (Float(0), self) }
 }
 
 public extension Int {
     /// The complex imaginary unit i, where i = sqrt(-1).
-    var j: Complex { (Real(0), Real(self)) }
+    var i: ComplexDouble { (Double(0), Double(self)) }
 }
+

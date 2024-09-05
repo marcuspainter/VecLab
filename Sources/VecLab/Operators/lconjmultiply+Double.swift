@@ -1,5 +1,5 @@
 //
-//  lconjmultiply.swift
+//  lconjmultiply+Double.swift
 //
 //
 //  Created by Marcus Painter on 08/09/2023.
@@ -19,7 +19,7 @@ infix operator ~*: MultiplicationPrecedence
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: Complex, b: Complex) -> Complex {
+public func ~* (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
     return complexConjugateMultiply(b, a)
 }
 
@@ -28,7 +28,7 @@ public func ~* (a: Complex, b: Complex) -> Complex {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: Complex, b: Real) -> Complex {
+public func ~* (a: ComplexDouble, b: RealDouble) -> ComplexDouble {
     return conj(a) * b
 }
 
@@ -37,7 +37,7 @@ public func ~* (a: Complex, b: Real) -> Complex {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+public func ~* (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return vectorConjugateMultiplyComplexArray(a, b)
 }
@@ -47,7 +47,7 @@ public func ~* (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: ComplexArray, b: Complex) -> ComplexArray {
+public func ~* (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     return conj(a) * b
 }
 
@@ -56,7 +56,7 @@ public func ~* (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: Complex, b: ComplexArray) -> ComplexArray {
+public func ~* (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return conj(a) * b
 }
 
@@ -65,7 +65,7 @@ public func ~* (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real  array.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: ComplexArray, b: RealArray) -> ComplexArray {
+public func ~* (a: ComplexDoubleArray, b: RealDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return conj(a) * b
 }
@@ -75,7 +75,7 @@ public func ~* (a: ComplexArray, b: RealArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real  number.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: ComplexArray, b: Real) -> ComplexArray {
+public func ~* (a: ComplexDoubleArray, b: RealDouble) -> ComplexDoubleArray {
     return conj(a) * b
 }
 
@@ -84,35 +84,35 @@ public func ~* (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real  array.
 /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-public func ~* (a: Complex, b: RealArray) -> ComplexArray {
+public func ~* (a: ComplexDouble, b: RealDoubleArray) -> ComplexDoubleArray {
     return conj(a) * b
 }
 
 /*
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func ~*(_ a: Real, _ b: Real) -> Real {
+ public func ~*(_ a: RealDouble, _ b: RealDouble) -> RealDouble {
      return a * b
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func ~*(a: Real, b: Complex) -> Complex {
+ public func ~*(a: RealDouble, b: ComplexDouble) -> ComplexDouble {
      return b * a
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func ~* (a: RealArray, b: ComplexArray) -> ComplexArray {
+ public func ~* (a: RealDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
      assertSameSize(a, b)
      return b * a
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func ~* (a: Real, b: ComplexArray) -> ComplexArray {
+ public func ~* (a: RealDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
      return b * a
  }
 
  // No effect
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func ~* (a: RealArray, b: Complex) -> ComplexArray {
+ public func ~* (a: RealDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
      return (a * b.0, a * b.1)
  }
   */

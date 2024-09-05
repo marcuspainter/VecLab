@@ -11,17 +11,36 @@ import Accelerate
 /// DFT of real array.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
-public func dftr(_ x: RealArray) -> ComplexArray {
+public func dftr(_ x: RealDoubleArray) -> ComplexDoubleArray {
     let n = length(x)
     if n == 1 {
-        return (x, [Real(0)])
+        return (x, [Double(0)])
     }
 
-    var y = complex(sized: x)
-    let k = RealArray(0..<n)
-    let omega = -2 * Real.pi * Real.i * k  / Real(n)
+    var y = (x, x)
+    let k = RealDoubleArray(0..<n)
+    let omega = -2 * Double.pi * Double.i * k  / Double(n)
     for i in 0..<x.count {
-        let w = exp(omega * Real(i))
+        let w = exp(omega * Double(i))
+        (y.0[i], y.1[i]) = sum(x * w)
+    }
+    return y
+}
+
+/// DFT of real array.
+/// - Parameter x: Real array.
+/// - Returns: Complex array result.
+public func dftr(_ x: RealFloatArray) -> ComplexFloatArray {
+    let n = length(x)
+    if n == 1 {
+        return (x, [Float(0)])
+    }
+
+    var y = (x,x)
+    let k = RealFloatArray(0..<n)
+    let omega = -2 * Real.pi * Real.i * k  / Float(n)
+    for i in 0..<x.count {
+        let w = exp(omega * Float(i))
         (y.0[i], y.1[i]) = sum(x * w)
     }
     return y

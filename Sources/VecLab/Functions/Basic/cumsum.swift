@@ -12,9 +12,9 @@ import Foundation
 /// Cumulative sum of array.
 /// - Parameter x: Input array.
 /// - Returns: The cumulative sum of the array.
-public func cumsum(_ x: RealArray) -> RealArray {
-    var result = RealArray(repeating: 0, count: x.count)
-    var sum = Real(0)
+public func cumsum(_ x: RealDoubleArray) -> RealDoubleArray {
+    var result = x
+    var sum = Double(0)
     for k in 0 ..< x.count {
         sum += x[k]
         result[k] = sum
@@ -25,9 +25,9 @@ public func cumsum(_ x: RealArray) -> RealArray {
 /// Cumulative sum of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The cumulative sum of the array.
-public func cumsum(_ x: ComplexArray) -> ComplexArray {
-    var c = complex(sized: x)
-    var sum = complex()
+public func cumsum(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
+    var c = x
+    var sum = (Double(0.0), Double(0.0))
     for k in 0 ..< x.0.count {
         sum.0 += x.0[k]
         sum.1 += x.1[k]
@@ -36,3 +36,34 @@ public func cumsum(_ x: ComplexArray) -> ComplexArray {
     }
     return c
 }
+
+// MARK: Float
+
+/// Cumulative sum of array.
+/// - Parameter x: Input array.
+/// - Returns: The cumulative sum of the array.
+public func cumsum(_ x: RealFloatArray) -> RealFloatArray {
+    var result = x
+    var sum = RealFloat(0)
+    for k in 0 ..< x.count {
+        sum += x[k]
+        result[k] = sum
+    }
+    return result
+}
+
+/// Cumulative sum of complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The cumulative sum of the array.
+public func cumsum(_ x: ComplexFloatArray) -> ComplexFloatArray {
+    var c = x
+    var sum = (Float(0), Float(0))
+    for k in 0 ..< x.0.count {
+        sum.0 += x.0[k]
+        sum.1 += x.1[k]
+        c.0[k] = sum.0
+        c.1[k] = sum.1
+    }
+    return c
+}
+

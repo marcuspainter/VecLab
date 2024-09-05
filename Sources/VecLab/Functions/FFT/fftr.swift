@@ -11,18 +11,38 @@ import Accelerate
 /// FFT of real array.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
-public func fftr(_ x: RealArray) -> ComplexArray {
+public func fftr(_ x: RealDoubleArray) -> ComplexDoubleArray {
 
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
-                                                       ofType: Real.self) else {
+                                                       ofType: Double.self) else {
         print("fftr failed")
-        return ([Real](repeating: Real.nan, count: x.count),
-                [Real](repeating: Real.nan, count: x.count))
+        return ([RealDouble](repeating: Double.nan, count: x.count),
+                [RealDouble](repeating: Double.nan, count: x.count))
     }
-    let zeros = [Real](repeating: 0.0, count: x.count)
+    let zeros = [RealDouble](repeating: 0.0, count: x.count)
+    let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
+
+    return (splitComplexOutput.real, splitComplexOutput.imaginary)
+}
+
+/// FFT of real array.
+/// - Parameter x: Real array.
+/// - Returns: Complex array result.
+public func fftr(_ x: RealFloatArray) -> ComplexFloatArray {
+
+    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
+                                                       count: x.count,
+                                                       direction: .forward,
+                                                       transformType: .complexComplex,
+                                                       ofType: Float.self) else {
+        print("fftr failed")
+        return ([RealFloat](repeating: Float.nan, count: x.count),
+                [RealFloat](repeating: Float.nan, count: x.count))
+    }
+    let zeros = [RealFloat](repeating: 0.0, count: x.count)
     let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
 
     return (splitComplexOutput.real, splitComplexOutput.imaginary)

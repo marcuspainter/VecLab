@@ -11,7 +11,7 @@ import Foundation
 /// - Parameter x: Real array.
 /// - Returns: The length of the array.
 @inlinable
-public func length(_ x: RealArray) -> Int {
+public func length(_ x: RealDoubleArray) -> Int {
     return x.count
 }
 
@@ -19,7 +19,24 @@ public func length(_ x: RealArray) -> Int {
 /// - Parameter x: Complex array.
 /// - Returns: The length of the array.
 @inlinable
-public func length(_ x: ComplexArray) -> Int {
+public func length(_ x: ComplexDoubleArray) -> Int {
+    assert(x.0.count == x.1.count,"Complex array sizes do not match: r:\(x.0.count) i:\(x.1.count)")
+    return x.0.count
+}
+
+/// Length of a real array.
+/// - Parameter x: Real array.
+/// - Returns: The length of the array.
+@inlinable
+public func length(_ x: RealFloatArray) -> Int {
+    return x.count
+}
+
+/// Length of a complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The length of the array.
+@inlinable
+public func length(_ x: ComplexFloatArray) -> Int {
     assert(x.0.count == x.1.count,"Complex array sizes do not match: r:\(x.0.count) i:\(x.1.count)")
     return x.0.count
 }

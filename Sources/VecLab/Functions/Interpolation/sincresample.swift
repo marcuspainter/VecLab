@@ -13,27 +13,27 @@ import Foundation
 ///   - r: Resampling factor.
 ///   - beta: Beta value of kaiser window.
 /// - Returns: Resampled output.
-public func sincresample(_ x: RealArray, _ r: Real, _ beta: Real) -> RealArray {
+public func sincresample(_ x: RealDoubleArray, _ r: RealDouble, _ beta: RealDouble) -> RealDoubleArray {
     let N = x.count
     let M = Int(round(Real(N) * r))
 
-    var y = RealArray(repeating: 0.0, count: M)
+    var y = [Double](repeating: 0.0, count: M)
     let W = Int(round(Real(N)/2))
 
     for m in 0..<M {
-        let t = Real(m) / r
+        let t = Double(m) / r
         let nStart = max(0, Int(t) - W)
         let nEnd = min(N, Int(t) + W)
 
         for n in nStart..<nEnd {
-            y[m] += x[n] * sinc(t - Real(n)) * kaiserWindow(Real(n - Int(t) + W + 1), Real(2*W+1), beta)
+            y[m] += x[n] * sinc(t - Double(n)) * kaiserWindow(Real(n - Int(t) + W + 1), Double(2*W+1), beta)
         }
     }
 
     return y
 }
 
-func kaiserWindow(_ n: Real, _ M: Real, _ beta: Real) -> Real {
+func kaiserWindow(_ n: RealDouble, _ M: RealDouble, _ beta: RealDouble) -> RealDouble {
     let alpha = (2 * n) / (M - 1) - 1
     return besseli0(beta * sqrt(1 - alpha*alpha)) / besseli0(beta)
 }

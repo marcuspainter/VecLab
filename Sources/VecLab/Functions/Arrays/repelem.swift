@@ -12,7 +12,7 @@ import Foundation
 ///   - x: A real number.
 ///   - n: Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: Real, _ n: Int) -> RealArray {
+public func repelem(_ x: RealDouble, _ n: Int) -> RealDoubleArray {
     let xarray = [x]
     guard n > 1 else {
         return xarray
@@ -30,7 +30,7 @@ public func repelem(_ x: Real, _ n: Int) -> RealArray {
 ///   - x: A real array.
 ///   - n: Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: RealArray, _ n: Int) -> RealArray {
+public func repelem(_ x: RealDoubleArray, _ n: Int) -> RealDoubleArray {
     guard n > 1 else {
         return x
     }
@@ -46,7 +46,7 @@ public func repelem(_ x: RealArray, _ n: Int) -> RealArray {
 ///   - x:A complex number.
 ///   - n:Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
+public func repelem(_ x: ComplexDouble, _ n: Int) -> ComplexDoubleArray {
     let xarray = ([x.0], [x.1])
     guard n > 1 else {
         return xarray
@@ -65,7 +65,7 @@ public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
 ///   - x: A complex array.
 ///   - n:Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
+public func repelem(_ x: ComplexDoubleArray, _ n: Int) -> ComplexDoubleArray {
     guard n > 1 else {
         return x
     }
@@ -76,3 +76,76 @@ public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
     }
     return y
 }
+
+// MARK: Float
+
+/// Repeat a real number.
+/// - Parameters:
+///   - x: A real number.
+///   - n: Number of repetitions.
+/// - Returns: Repeated array.
+public func repelem(_ x: RealFloat, _ n: Int) -> RealFloatArray {
+    let xarray = [Float(x)]
+    guard n > 1 else {
+        return xarray
+    }
+
+    var y = xarray
+    for _ in 2 ... n {
+        y.append(contentsOf: xarray)
+    }
+    return y
+}
+
+/// Repeat a real array.
+/// - Parameters:
+///   - x: A real array.
+///   - n: Number of repetitions.
+/// - Returns: Repeated array.
+public func repelem(_ x: RealFloatArray, _ n: Int) -> RealFloatArray {
+    guard n > 1 else {
+        return x
+    }
+    var y = x
+    for _ in 2 ... n {
+        y.append(contentsOf: x)
+    }
+    return y
+}
+
+/// Repeat a complex number.
+/// - Parameters:
+///   - x:A complex number.
+///   - n:Number of repetitions.
+/// - Returns: Repeated array.
+public func repelem(_ x: ComplexFloat, _ n: Int) -> ComplexFloatArray {
+    let xarray = ([x.0], [x.1])
+    guard n > 1 else {
+        return xarray
+    }
+
+    var y = xarray
+    for _ in 2 ... n {
+        y.0.append(contentsOf: xarray.0)
+        y.1.append(contentsOf: xarray.1)
+    }
+    return y
+}
+
+/// Repeat a complex array.
+/// - Parameters:
+///   - x: A complex array.
+///   - n:Number of repetitions.
+/// - Returns: Repeated array.
+public func repelem(_ x: ComplexFloatArray, _ n: Int) -> ComplexFloatArray {
+    guard n > 1 else {
+        return x
+    }
+    var y = x
+    for _ in 2 ... n {
+        y.0.append(contentsOf: x.0)
+        y.1.append(contentsOf: x.1)
+    }
+    return y
+}
+

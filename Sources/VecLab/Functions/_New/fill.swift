@@ -12,7 +12,7 @@ import Foundation
 /// - Parameters:
 ///   - c: Array.
 ///   - a: Value.
-public func fill(_ c: RealArray, _ a: Real) {
+public func fill(_ c: RealDoubleArray, _ a: RealDouble) {
     fillRealArray(c, a)
 }
 
@@ -20,6 +20,6 @@ public func fill(_ c: RealArray, _ a: Real) {
 /// - Parameters:
 ///   - c: Array.
 ///   - a: Value.
-public func fill(_ c: ComplexArray, _ a: Complex) {
+public func fill(_ c: ComplexDoubleArray, _ a: ComplexDouble) {
     fillComplexArray(c, a)
 }

@@ -6,11 +6,20 @@
 
 import Foundation
 
-public extension Array where Element == Real {
+public extension Array where Element == Double {
 
     /// Initalize an array with zeros.
     /// - Parameter count: Number of elements
     init(count: Int) {
-        self = RealArray(repeating: Real(0), count: count)
+        self = RealDoubleArray(repeating: Double(0), count: count)
+    }
+}
+
+public extension Array where Element == Float {
+
+    /// Initalize an array with zeros.
+    /// - Parameter count: Number of elements
+    init(count: Int) {
+        self = RealFloatArray(repeating: Float(0), count: count)
     }
 }

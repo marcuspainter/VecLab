@@ -10,7 +10,30 @@ import Foundation
 /// Make conjugate symmetric.
 /// - Parameter x: Complex  array.
 /// - Returns: Conjugate symmetric array.
-public func fftsymmetric(_ x: ComplexArray) -> ComplexArray {
+public func fftsymmetric(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
+    var y = x
+    let n = x.0.count
+    if n % 2 == 0 {
+        // Even
+        let n2 = n / 2      // Nyquist
+        for k in 1 ..< n2 {
+            y.0[n2 + k] = y.0[n2 - k]
+            y.1[n2 + k] = -y.1[n2 - k]
+        }
+    } else {
+        let n2 = (n + 1) / 2
+        for k in 0 ..< n2 - 1 {
+            y.0[n2 + k] = y.0[n2 - k - 1]
+            y.1[n2 + k] = -y.1[n2 - k - 1]
+        }
+    }
+    return y
+}
+
+/// Make conjugate symmetric.
+/// - Parameter x: Complex  array.
+/// - Returns: Conjugate symmetric array.
+public func fftsymmetric(_ x: ComplexFloatArray) -> ComplexFloatArray {
     var y = x
     let n = x.0.count
     if n % 2 == 0 {

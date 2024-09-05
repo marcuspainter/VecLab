@@ -1,5 +1,5 @@
 //
-//  rconjmultiply.swift
+//  rconjmultiply+Double.swift
 //
 //
 //  Created by Marcus Painter on 08/09/2023.
@@ -17,7 +17,7 @@ infix operator *~: MultiplicationPrecedence
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: Complex, b: Complex) -> Complex {
+public func *~ (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
     return complexConjugateMultiply(b, a)
 }
 
@@ -26,7 +26,7 @@ public func *~ (a: Complex, b: Complex) -> Complex {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: Real, b: Complex) -> Complex {
+public func *~ (a: RealDouble, b: ComplexDouble) -> ComplexDouble {
     return a * conj(b) // Overloaded
 }
 
@@ -35,10 +35,9 @@ public func *~ (a: Real, b: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+public func *~ (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
-    var c = createComplexArray(count: a.0.count)
-    c = vectorConjugateMultiplyComplexArray(b, a)
+    let c = vectorConjugateMultiplyComplexArray(b, a)
     return c
 }
 
@@ -47,7 +46,7 @@ public func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
+public func *~ (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     return a * conj(b) // Overloaded
 }
 
@@ -56,7 +55,7 @@ public func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Complex array
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
+public func *~ (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return a * conj(b) // Overloaded
 }
 
@@ -65,7 +64,7 @@ public func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
+public func *~ (a: RealDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return a * conj(b) // Overloaded
 }
@@ -75,7 +74,7 @@ public func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: Real, b: ComplexArray) -> ComplexArray {
+public func *~ (a: RealDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return a * conj(b) // Overloaded
 }
 
@@ -84,35 +83,35 @@ public func *~ (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-public func *~ (a: RealArray, b: Complex) -> ComplexArray {
+public func *~ (a: RealDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     return a * conj(b) // Overloaded
 }
 
 /*
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func *~(_ a: Real, _ b: Real) -> Real {
+ public func *~(_ a: RealDouble, _ b: RealDouble) -> RealDouble {
      return a * b
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func *~(a: Real, b: Complex) -> Complex {
+ public func *~(a: RealDouble, b: ComplexDouble) -> ComplexDouble {
      return b * a
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
+ public func *~ (a: RealDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
      assertSameSize(a, b)
      return b * a
  }
 
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func *~ (a: Real, b: ComplexArray) -> ComplexArray {
+ public func *~ (a: RealDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
      return b * a
  }
 
  // No effect
  //@available(*, unavailable, message: "LHS is not complex. Check type or use *")
- public func *~ (a: RealArray, b: Complex) -> ComplexArray {
+ public func *~ (a: RealDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
      return (a * b.0, a * b.1)
  }
   */

@@ -26,12 +26,6 @@ class PowerTests: XCTestCase {
     var intA: Int = 2
     var intB: Int = 2
     
-    func testPowerIntInt() {
-        let result: Real = intA ** intB
-        let expected: Real = 4.0
-        XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
-    }
-
     func testPowerIntReal() {
         let result: Real = intA ** realB
         let expected: Real = 2.0

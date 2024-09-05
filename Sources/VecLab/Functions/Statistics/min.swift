@@ -14,14 +14,14 @@ import Accelerate
 ///
 /// - Parameter x: Input array of real numbers.
 /// - Returns: The minimum value present in the array.
+public func min(_ x: RealDoubleArray) -> RealDouble {
+    return vDSP.minimum(x)
+}
+
+/// Minimum value of an array.
 ///
-/// # Example:
-/// ```
-/// let dataPoints: RealArray = [1.2, 3.5, 2.9, 4.1, 3.8]
-/// let minValue = min(dataPoints)
-/// print(minValue)  // prints: 1.2
-/// ```
-///
-public func min(_ x: RealArray) -> Real {
+/// - Parameter x: Input array of real numbers.
+/// - Returns: The minimum value present in the array.
+public func min(_ x: RealFloatArray) -> RealFloat {
     return vDSP.minimum(x)
 }

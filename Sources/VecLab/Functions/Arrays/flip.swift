@@ -13,7 +13,7 @@ import Foundation
 /// Flip order of array.
 /// - Parameter x: Input array.
 /// - Returns: Flipped array with elements reversed.
-public func flip(_ x: RealArray) -> RealArray {
+public func flip(_ x: RealDoubleArray) -> RealDoubleArray {
     // Copy
     var y = x
     // Inplace reverse
@@ -24,7 +24,32 @@ public func flip(_ x: RealArray) -> RealArray {
 /// Flip order of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Flipped array with elements reversed.
-public func flip(_ x: ComplexArray) -> ComplexArray {
+public func flip(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
+    // Copy
+    var y = x
+    // Inplace reverse
+    vDSP.reverse(&y.0)
+    vDSP.reverse(&y.1)
+    return y
+}
+
+// MARK: Float
+
+/// Flip order of array.
+/// - Parameter x: Input array.
+/// - Returns: Flipped array with elements reversed.
+public func flip(_ x: RealFloatArray) -> RealFloatArray {
+    // Copy
+    var y = x
+    // Inplace reverse
+    vDSP.reverse(&y)
+    return y
+}
+
+/// Flip order of complex array.
+/// - Parameter x: Complex array.
+/// - Returns: Flipped array with elements reversed.
+public func flip(_ x: ComplexFloatArray) -> ComplexFloatArray {
     // Copy
     var y = x
     // Inplace reverse

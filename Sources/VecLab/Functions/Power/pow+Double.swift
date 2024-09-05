@@ -1,5 +1,5 @@
 //
-//  pow.swift
+//  pow+Double.swift
 //
 //
 //  Created by Marcus Painter on 09/09/2023.
@@ -8,24 +8,15 @@
 import Accelerate
 import Foundation
 
-// NOT VECTORIZED !!!!
 
-/// Power.
-/// - Parameters:
-///   - a: Integer number.
-///   - b: Integer number.
-/// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Int, _ b: Int) -> Real {
-    return Darwin.pow(Real(a), Real(b))
-}
 
 /// Power.
 /// - Parameters:
 ///   - a: Integer number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Int, _ b: Real) -> Real {
-    return Darwin.pow(Real(a), b)
+public func pow(_ a: Int, _ b: RealDouble) -> RealDouble {
+    return Darwin.pow(RealDouble(a), b)
 }
 
 /// Power.
@@ -33,8 +24,8 @@ public func pow(_ a: Int, _ b: Real) -> Real {
 ///   - a: Real number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Real, _ b: Int) -> Real {
-    return Darwin.pow(a, Real(b))
+public func pow(_ a: RealDouble, _ b: Int) -> RealDouble {
+    return Darwin.pow(a, RealDouble(b))
 }
 
 /// Power.
@@ -42,8 +33,8 @@ public func pow(_ a: Real, _ b: Int) -> Real {
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: RealArray, _ b: Int) -> RealArray {
-    return pow(a, Real(b))
+public func pow(_ a: RealDoubleArray, _ b: Int) -> RealDoubleArray {
+    return pow(a, RealDouble(b))
 }
 
 /// Power.
@@ -51,8 +42,8 @@ public func pow(_ a: RealArray, _ b: Int) -> RealArray {
 ///   - a: Complex number.
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Complex, _ b: Int) -> Complex {
-    return pow(a, Real(b))
+public func pow(_ a: ComplexDouble, _ b: Int) -> ComplexDouble {
+    return pow(a, RealDouble(b))
 }
 
 /*
@@ -61,8 +52,8 @@ public func pow(_ a: Complex, _ b: Int) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: Int) -> ComplexArray {
-    return pow(a, Real(b))
+public func pow(_ a: ComplexDoubleArray, _ b: Int) -> ComplexDoubleArray {
+    return pow(a, RealDouble(b))
 }
 */
 
@@ -73,7 +64,7 @@ public func pow(_ a: ComplexArray, _ b: Int) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
+public func pow(_ a: RealDoubleArray, _ b: RealDoubleArray) -> RealDoubleArray {
     return vectorPowReal(a, b)
 }
 
@@ -82,7 +73,7 @@ public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
 ///   - a: Real array.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: RealArray, _ b: Real) -> RealArray {
+public func pow(_ a: RealDoubleArray, _ b: RealDouble) -> RealDoubleArray {
     return vectorPowReal(a, b)
 }
 
@@ -91,7 +82,7 @@ public func pow(_ a: RealArray, _ b: Real) -> RealArray {
 ///   - a: Real number.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Real, _ b: RealArray) -> RealArray {
+public func pow(_ a: RealDouble, _ b: RealDoubleArray) -> RealDoubleArray {
     return vectorPowReal(a, b)
 }
 
@@ -102,7 +93,7 @@ public func pow(_ a: Real, _ b: RealArray) -> RealArray {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-public func pow(_ a: Complex, _ b: Real) -> Complex {
+public func pow(_ a: ComplexDouble, _ b: RealDouble) -> ComplexDouble {
     return complexComplexRealPow(a, b)
 }
 
@@ -111,7 +102,7 @@ public func pow(_ a: Complex, _ b: Real) -> Complex {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: Real, _ b: Complex) -> Complex {
+public func pow(_ a: RealDouble, _ b: ComplexDouble) -> ComplexDouble {
     return complexRealComplexPow(a, b)
 }
 
@@ -133,12 +124,12 @@ public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+public func pow(_ a: ComplexDoubleArray, _ b: RealDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
-    var r = RealArray(repeating: 0, count: a.0.count)
-    var i = RealArray(repeating: 0, count: a.1.count)
+    var r = RealDoubleArray(repeating: 0, count: a.0.count)
+    var i = RealDoubleArray(repeating: 0, count: a.1.count)
     for k in 0 ..< a.0.count {
-        (r[k], i[k]) = pow(Complex(a.0[k], a.1[k]), b[k])
+        (r[k], i[k]) = pow(ComplexDouble(a.0[k], a.1[k]), b[k])
     }
     return (r, i)
 }
@@ -148,12 +139,12 @@ public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
+public func pow(_ a: RealDoubleArray, _ b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
-    var r = RealArray(repeating: 0, count: b.0.count)
-    var i = RealArray(repeating: 0, count: b.1.count)
+    var r = RealDoubleArray(repeating: 0, count: b.0.count)
+    var i = RealDoubleArray(repeating: 0, count: b.1.count)
     for k in 0 ..< b.0.count {
-        (r[k], i[k]) = pow(a[k], Complex(b.0[k], b.1[k]))
+        (r[k], i[k]) = pow(a[k], ComplexDouble(b.0[k], b.1[k]))
     }
     return (r, i)
 }
@@ -163,9 +154,9 @@ public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
-    var r = RealArray(repeating: 0, count: a.count)
-    var i = RealArray(repeating: 0, count: a.count)
+public func pow(_ a: RealDoubleArray, _ b: ComplexDouble) -> ComplexDoubleArray {
+    var r = RealDoubleArray(repeating: 0, count: a.count)
+    var i = RealDoubleArray(repeating: 0, count: a.count)
     for k in 0 ..< a.count {
         (r[k], i[k]) = pow(a[k], b)
     }
@@ -177,9 +168,9 @@ public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
-    var r = RealArray(repeating: 0, count: b.count)
-    var i = RealArray(repeating: 0, count: b.count)
+public func pow(_ a: ComplexDouble, _ b: RealDoubleArray) -> ComplexDoubleArray {
+    var r = RealDoubleArray(repeating: 0, count: b.count)
+    var i = RealDoubleArray(repeating: 0, count: b.count)
     for k in 0 ..< b.count {
         (r[k], i[k]) = pow(a, b[k])
     }
@@ -191,11 +182,11 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
-    var r = RealArray(repeating: 0, count: a.0.count)
-    var i = RealArray(repeating: 0, count: a.1.count)
+public func pow(_ a: ComplexDoubleArray, _ b: RealDouble) -> ComplexDoubleArray {
+    var r = RealDoubleArray(repeating: 0, count: a.0.count)
+    var i = RealDoubleArray(repeating: 0, count: a.1.count)
     for k in 0 ..< a.0.count {
-        (r[k], i[k]) = pow(Complex(a.0[k], a.1[k]), b)
+        (r[k], i[k]) = pow(ComplexDouble(a.0[k], a.1[k]), b)
     }
     return (r, i)
 }
@@ -205,11 +196,12 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
-    var r = RealArray(repeating: 0, count: b.0.count)
-    var i = RealArray(repeating: 0, count: b.1.count)
+public func pow(_ a: RealDouble, _ b: ComplexDoubleArray) -> ComplexDoubleArray {
+    var r = RealDoubleArray(repeating: 0, count: b.0.count)
+    var i = RealDoubleArray(repeating: 0, count: b.1.count)
     for k in 0 ..< b.0.count {
-        (r[k], i[k]) = pow(a, Complex(b.0[k], b.1[k]))
+        (r[k], i[k]) = pow(a, ComplexDouble(b.0[k], b.1[k]))
     }
     return (r, i)
 }
+

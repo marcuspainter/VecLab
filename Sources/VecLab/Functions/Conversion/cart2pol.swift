@@ -12,7 +12,7 @@ import Foundation
 ///   - x: The x-coordinate.
 ///   - y: The y-coordinate.
 /// - Returns: A tuple containing the angle theta in radians and the radial distance rho from the origin.
-public func cart2pol(_ x: Real, _ y: Real) -> (theta: Real, rho: Real) {
+public func cart2pol(_ x: RealDouble, _ y: RealDouble) -> (theta: RealDouble, rho: RealDouble) {
     let theta = Darwin.atan2(y, x)
     let rho = Darwin.sqrt(x * x + y * y)
     return (theta, rho)
@@ -23,11 +23,11 @@ public func cart2pol(_ x: Real, _ y: Real) -> (theta: Real, rho: Real) {
 ///   - x: The x-coordinate.
 ///   - y: The y-coordinate.
 /// - Returns: A tuple containing the arrays angle theta in radians and the radial distance rho from the origin.
-public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: RealArray, rho: RealArray) {
+public func cart2pol(_ x: RealDoubleArray, _ y: RealDoubleArray, _ z: RealDoubleArray) -> (theta: RealDoubleArray, rho: RealDoubleArray) {
     let n = x.count
     assert(y.count == n && z.count == n,
            "Arrays must be the same size, x: \(x.count), y: \(y.count), z: \(z.count) ")
-    var theta = [Real](repeating: Real(0), count: n)
+    var theta = [Double](repeating: 0.0, count: n)
     var rho = theta // Zeros
 
     for k in 0 ..< n {
@@ -44,7 +44,7 @@ public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: 
 ///   - y: The y-coordinate.
 ///   - z: The z-coordinate.
 /// - Returns: A tuple containing the angle theta in radians and the radial distance rho from the origin and the radial height.
-public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real, z: Real) {
+public func cart2pol(_ x: RealDouble, _ y: RealDouble, _ z: RealDouble) -> (theta: RealDouble, rho: RealDouble, z: RealDouble) {
     let theta = Darwin.atan2(y, x)
     let rho = Darwin.sqrt(x * x + y * y)
     return (theta, rho, z)
@@ -56,12 +56,12 @@ public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real
 ///   - y: The y-coordinate.
 ///   - z: The z-coordinate.
 /// - Returns: A tuple containing an array of the angle theta in radians and the radial distance rho from the origin and the radial height.
-public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray)
-        -> (theta: RealArray, rho: RealArray, z: RealArray) {
+public func cart2pol(_ x: RealDoubleArray, _ y: RealDoubleArray, _ z: RealDoubleArray)
+        -> (theta: RealDoubleArray, rho: RealDoubleArray, z: RealDoubleArray) {
     let n = x.count
     assert(y.count == n && z.count == n,
            "Arrays must be the same size, x: \(x.count), y: \(y.count), z: \(z.count) ")
-    var theta = [Real](repeating: Real(0), count: n)
+            var theta = [Double](repeating: 0.0, count: n)
     var rho = theta // Zeros
     var zz = theta  // Zeros
 

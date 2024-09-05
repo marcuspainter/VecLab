@@ -19,7 +19,7 @@ import Foundation
 /// ```
 /// public typealias Real = Float
 /// ```
-
+/*
 /// Type alias for `Double` or `Float`
 public typealias Real = Double
 
@@ -31,3 +31,18 @@ public typealias Complex = (Real, Real)
 
 /// Type alias for a complex array as a tuple of two real arrays
 public typealias ComplexArray = (RealArray, RealArray)
+*/
+// MARK : New
+
+public typealias RealDouble = Double
+public typealias RealFloat = Double
+
+public typealias ComplexDouble = (Double, Double)
+public typealias ComplexFloat = (Float, Float)
+
+public typealias RealDoubleArray = [Double]
+public typealias ComplexDoubleArray = ([Double], [Double])
+
+public typealias RealFloatArray = [Float]
+public typealias ComplexFloatArray = ([Float], [Float])
+

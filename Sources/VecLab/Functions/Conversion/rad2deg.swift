@@ -13,15 +13,14 @@ import Accelerate
 /// Convert angle from radians to degrees.
 /// - Parameter rad: Angle in radians.
 /// - Returns: Angle in degrees.
-public func rad2deg(_ rad: Real) -> Real {
+public func rad2deg(_ rad: RealDouble) -> RealDouble {
     return rad * (180.0 / .pi)
 }
 
 /// Convert angle from radians to degrees for an array.
 /// - Parameter rad: Angles in radians.
 /// - Returns: Angles in degrees.
-public func rad2deg(_ rad: RealArray) -> RealArray {
-    // return rad.map { rad2deg($0) }
-    let scale = Real(180.0 / .pi)
+public func rad2deg(_ rad: RealDoubleArray) -> RealDoubleArray {
+    let scale = Double(180.0 / .pi)
     return vDSP.multiply(scale, rad)
 }

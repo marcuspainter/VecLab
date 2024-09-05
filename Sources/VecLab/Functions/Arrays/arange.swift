@@ -10,7 +10,7 @@ import Foundation
 /// Return evenly spaced values within a given interval.
 /// - Parameter stop: Real value.
 /// - Returns: The array.
-public func arange(_ stop: Real) -> RealArray {
+public func arange(_ stop: RealDouble) -> RealDoubleArray {
     return arange(0.0, stop, 1.0)
 }
 
@@ -19,7 +19,7 @@ public func arange(_ stop: Real) -> RealArray {
 ///   - start: Real value.
 ///   - stop: Real value.
 /// - Returns: The array.
-public func arange(_ start: Real, _ stop: Real) -> RealArray {
+public func arange(_ start: RealDouble, _ stop: RealDouble) -> RealDoubleArray {
     return arange(start, stop, 1.0)
 }
 
@@ -29,9 +29,9 @@ public func arange(_ start: Real, _ stop: Real) -> RealArray {
 ///   - stop: Real value.
 ///   - step: Real value.
 /// - Returns: The array.
-public func arange(_ start: Real, _ stop: Real, _ step: Real) -> RealArray {
+public func arange(_ start: RealDouble, _ stop: RealDouble, _ step: RealDouble) -> RealDoubleArray {
     let count = Int(ceil((stop - start) / step))
-    var result = [Real](repeating: 0.0, count: count)
+    var result = [RealDouble](repeating: 0.0, count: count)
 
     var value = start
     for i in 0..<count {

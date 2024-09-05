@@ -11,25 +11,51 @@ import Foundation
 /// Inverse FFT of complex array with complex result.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
-public func ifft(_ x: ComplexArray) -> ComplexArray {
+public func ifft(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.0.count,
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
-                                                       ofType: Real.self) else {
-        return ([Real](repeating: Real.nan, count: x.0.count),
-                [Real](repeating: Real.nan, count: x.0.count))
+                                                       ofType: Double.self) else {
+        return ([Double](repeating: Double.nan, count: x.0.count),
+                [Double](repeating: Double.nan, count: x.0.count))
     }
 
     var splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
-    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(x.0.count))
-    splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Real(x.0.count))
+    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Double(x.0.count))
+    splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Double(x.0.count))
 
     return (splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "ifftr", message: "Use ifftr for Real arrays")
-public func ifft(_ x: ComplexArray) -> RealArray {
+public func ifft(_ x: ComplexDoubleArray) -> RealDoubleArray {
+    return []
+}
+
+
+/// Inverse FFT of complex array with complex result.
+/// - Parameter x: Complex array.
+/// - Returns: Complex array result.
+public func ifft(_ x: ComplexFloatArray) -> ComplexFloatArray {
+    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
+                                                       count: x.0.count,
+                                                       direction: .inverse,
+                                                       transformType: .complexComplex,
+                                                       ofType: Float.self) else {
+        return ([Float](repeating: Float.nan, count: x.0.count),
+                [Float](repeating: Float.nan, count: x.0.count))
+    }
+
+    var splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
+    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Float(x.0.count))
+    splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Float(x.0.count))
+
+    return (splitComplexOutput.real, splitComplexOutput.imaginary)
+}
+
+@available(*, unavailable, renamed: "ifftr", message: "Use ifftr for Real arrays")
+public func ifft(_ x: ComplexFloatArray) -> RealFloatArray {
     return []
 }
 

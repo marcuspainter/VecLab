@@ -21,8 +21,15 @@ import Foundation
 /// let maxValue = max(dataPoints)
 /// print(maxValue)  // prints: 4.1
 /// ```
-///
 
-public func max(_ x: RealArray) -> Real {
+public func max(_ x: RealDoubleArray) -> RealDouble {
+    return vDSP.maximum(x)
+}
+
+/// Maximum value of an array.
+///
+/// - Parameter x: Input array of real numbers.
+/// - Returns: The maximum value present in the array.
+public func max(_ x: RealFloatArray) -> RealFloat {
     return vDSP.maximum(x)
 }

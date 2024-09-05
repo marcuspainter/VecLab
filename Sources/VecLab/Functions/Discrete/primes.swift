@@ -21,7 +21,7 @@ import Foundation
 /// let primeNumbers = primes(limit)
 /// print(primeNumbers) // prints: [2.0, 3.0, 5.0, 7.0]
 /// ```
-public func primes(_ x: Real) -> RealArray {
+public func primes(_ x: RealDouble) -> RealDoubleArray {
     let n = floor(x)
     let intN = Int(n)
 
@@ -31,7 +31,7 @@ public func primes(_ x: Real) -> RealArray {
     isPrime[0] = false
     isPrime[1] = false
 
-    for i in 2...Int(sqrt(Real(n))) {
+    for i in 2...Int(sqrt(Double(n))) {
         if isPrime[i] {
             for j in stride(from: i*i, to: intN + 1, by: i) {
                 isPrime[j] = false
@@ -39,6 +39,6 @@ public func primes(_ x: Real) -> RealArray {
         }
     }
 
-    let primesList = isPrime.enumerated().compactMap { $1 ? Real($0) : nil }
+    let primesList = isPrime.enumerated().compactMap { $1 ? Double($0) : nil }
     return primesList
 }

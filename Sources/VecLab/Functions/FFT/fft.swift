@@ -11,14 +11,14 @@ import Foundation
 /// FFT of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
-public func fft(_ x: ComplexArray) -> ComplexArray {
+public func fft(_ x: ComplexDoubleArray) -> ComplexDoubleArray {
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.0.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
-                                                       ofType: Real.self) else {
-        return ([Real](repeating: Real.nan, count: x.0.count),
-                [Real](repeating: Real.nan, count: x.0.count))
+                                                       ofType: Double.self) else {
+        return ([Double](repeating: Double.nan, count: x.0.count),
+                [Double](repeating: Double.nan, count: x.0.count))
     }
 
     let splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
@@ -27,7 +27,30 @@ public func fft(_ x: ComplexArray) -> ComplexArray {
 }
 
 @available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
-public func fft(_ x: RealArray) -> ComplexArray {
+public func fft(_ x: RealDoubleArray) -> ComplexDoubleArray {
+    return ([],[])
+}
+
+/// FFT of complex array.
+/// - Parameter x: Complex array.
+/// - Returns: Complex array result.
+public func fft(_ x: ComplexFloatArray) -> ComplexFloatArray {
+    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
+                                                       count: x.0.count,
+                                                       direction: .forward,
+                                                       transformType: .complexComplex,
+                                                       ofType: Float.self) else {
+        return ([Float](repeating: Float.nan, count: x.0.count),
+                [Float](repeating: Float.nan, count: x.0.count))
+    }
+
+    let splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
+
+    return (splitComplexOutput.real, splitComplexOutput.imaginary)
+}
+
+@available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
+public func fft(_ x: RealFloatArray) -> ComplexFloatArray {
     return ([],[])
 }
 

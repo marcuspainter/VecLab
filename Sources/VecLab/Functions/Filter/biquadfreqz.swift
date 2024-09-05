@@ -12,7 +12,7 @@ import Foundation
 ///   - b: b coefficients.
 ///   - a: a coefficients.
 /// - Returns: Complex transfer function.
-public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
+public func biquadfreqz(_ b: RealDoubleArray, _ a: RealDoubleArray) -> ComplexDoubleArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
@@ -21,7 +21,7 @@ public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
     let a2 = a[2]
     
     let N = 512
-    let w = vector(0 ... N-1) * (.pi / Real(N))
+    let w = vector(0 ... N-1) * (.pi / Double(N))
 
     // Compute trigonometric terms
     let sin_half_w = sin(w / 2)

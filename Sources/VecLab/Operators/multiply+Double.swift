@@ -1,5 +1,5 @@
 //
-//  multiply.swift
+//  multiply+Double.swift
 //
 //
 //  Created by Marcus Painter on 09/09/2023.
@@ -13,7 +13,7 @@ import Foundation
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The result of the multiplication.
-public func * (a: RealArray, b: RealArray) -> RealArray {
+public func * (a: RealDoubleArray, b: RealDoubleArray) -> RealDoubleArray {
     assertSameSize(a, b)
     return vDSP.multiply(a, b)
 }
@@ -23,7 +23,7 @@ public func * (a: RealArray, b: RealArray) -> RealArray {
 ///   - a: Real array.
 ///   - b: Real number.
 /// - Returns: The result of the multiplication.
-public func * (a: RealArray, b: Real) -> RealArray {
+public func * (a: RealDoubleArray, b: RealDouble) -> RealDoubleArray {
     return vDSP.multiply(b, a)
 }
 
@@ -32,7 +32,7 @@ public func * (a: RealArray, b: Real) -> RealArray {
 ///   - a: Real.
 ///   - b: Real array.
 /// - Returns: The result of the multiplication.
-public func * (a: Real, b: RealArray) -> RealArray {
+public func * (a: RealDouble, b: RealDoubleArray) -> RealDoubleArray {
     return vDSP.multiply(a, b)
 }
 
@@ -41,7 +41,7 @@ public func * (a: Real, b: RealArray) -> RealArray {
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
-public func * (a: Complex, b: Complex) -> Complex {
+public func * (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
     return (a.0 * b.0 - a.1 * b.1, a.0 * b.1 + a.1 * b.0)
 }
 
@@ -50,7 +50,7 @@ public func * (a: Complex, b: Complex) -> Complex {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the multiplication.
-public func * (a: Complex, b: Real) -> Complex {
+public func * (a: ComplexDouble, b: RealDouble) -> ComplexDouble {
     return (a.0 * b, a.1 * b)
 }
 
@@ -59,7 +59,7 @@ public func * (a: Complex, b: Real) -> Complex {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
-public func * (a: Real, b: Complex) -> Complex {
+public func * (a: RealDouble, b: ComplexDouble) -> ComplexDouble {
     return b * a
 }
 
@@ -70,7 +70,7 @@ public func * (a: Real, b: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: The result of the multiplication.
-public func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+public func * (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return vectorMultiplyComplexArray(a, b)
 }
@@ -80,7 +80,7 @@ public func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
-public func * (a: ComplexArray, b: Complex) -> ComplexArray {
+public func * (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     return vectorMultiplyComplexArrayComplex(a, b)
 }
 
@@ -89,7 +89,7 @@ public func * (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Complex array.
 /// - Returns: The result of the multiplication.
-public func * (a: Complex, b: ComplexArray) -> ComplexArray {
+public func * (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return vectorMultiplyComplexComplexArray(a, b)
 }
 
@@ -98,7 +98,7 @@ public func * (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The result of the multiplication.
-public func * (a: ComplexArray, b: RealArray) -> ComplexArray {
+public func * (a: ComplexDoubleArray, b: RealDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return vectorMultiplyComplexArrayRealArray(a, b)
 }
@@ -108,7 +108,7 @@ public func * (a: ComplexArray, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: The result of the multiplication.
-public func * (a: RealArray, b: ComplexArray) -> ComplexArray {
+public func * (a: RealDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return vectorMultiplyComplexArrayRealArray(b, a)
 }
@@ -118,7 +118,7 @@ public func * (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: The result of the multiplication.
-public func * (a: ComplexArray, b: Real) -> ComplexArray {
+public func * (a: ComplexDoubleArray, b: RealDouble) -> ComplexDoubleArray {
     let r = vDSP.multiply(b, a.0)
     let i = vDSP.multiply(b, a.1)
     return (r, i)
@@ -129,7 +129,7 @@ public func * (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: The result of the multiplication.
-public func * (a: Real, b: ComplexArray) -> ComplexArray {
+public func * (a: RealDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     let r = vDSP.multiply(a, b.0)
     let i = vDSP.multiply(a, b.1)
     return (r, i)
@@ -140,7 +140,7 @@ public func * (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: The result of the multiplication.
-public func * (a: Complex, b: RealArray) -> ComplexArray {
+public func * (a: ComplexDouble, b: RealDoubleArray) -> ComplexDoubleArray {
     let r = vDSP.multiply(a.0, b)
     let i = vDSP.multiply(a.1, b)
     return (r, i)
@@ -151,7 +151,7 @@ public func * (a: Complex, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
-public func * (a: RealArray, b: Complex) -> ComplexArray {
+public func * (a: RealDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     let r = vDSP.multiply(b.0, a)
     let i = vDSP.multiply(b.1, a)
     return (r, i)

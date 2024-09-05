@@ -6,26 +6,50 @@
 
 import Foundation
 
-public extension Array where Element == Real {
+public extension Array where Element == Double {
     // Open range (..<) to
     init(_ range: Range<Int>, _ strideValue: Int = 1) {
         let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
-        self = stridedValues.map { Real($0) }
+        self = stridedValues.map { Double($0) }
     }
 
     init(_ range: Range<Real>, _ strideValue: Real = 1) {
         let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
-        self = stridedValues.map { Real($0) }
+        self = stridedValues.map { Double($0) }
     }
 
     // Closed range (...) through
     init(_ range: ClosedRange<Real>, _ strideValue: Real = 1) {
         let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
-        self = stridedValues.map { Real($0) }
+        self = stridedValues.map { Double($0) }
     }
 
     init(_ range: ClosedRange<Int>, _ strideValue: Int = 1) {
         let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
-        self = stridedValues.map { Real($0) }
+        self = stridedValues.map { Double($0) }
+    }
+}
+
+public extension Array where Element == Float {
+    // Open range (..<) to
+    init(_ range: Range<Int>, _ strideValue: Int = 1) {
+        let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
+        self = stridedValues.map { Float($0) }
+    }
+
+    init(_ range: Range<Real>, _ strideValue: Real = 1) {
+        let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
+        self = stridedValues.map { Float($0) }
+    }
+
+    // Closed range (...) through
+    init(_ range: ClosedRange<Real>, _ strideValue: Real = 1) {
+        let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
+        self = stridedValues.map { Float($0) }
+    }
+
+    init(_ range: ClosedRange<Int>, _ strideValue: Int = 1) {
+        let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
+        self = stridedValues.map { Float($0) }
     }
 }

@@ -10,16 +10,16 @@ import Foundation
 // https://en.wikipedia.org/wiki/Golden-section_search
 
 /// Find minimum of single-variable function on fixed interval.
-public func fminbnd(_ f: @escaping (Real) -> Real, x1: Real, x2: Real, tol: Real = 1e-5) -> Real {
+public func fminbnd(_ f: @escaping (RealDouble) -> RealDouble, x1: RealDouble, x2: RealDouble, tol: RealDouble = 1e-5) -> RealDouble {
     let (a, b) = gss(f: f, a: x1, b: x2, tol: tol)
     return (a + b) / 2
 }
 
 /// Golden section search.
-func gss(f: @escaping (Real) -> Real, a: Real, b: Real, tol: Real = 1e-5) -> (Real, Real) {
+func gss(f: @escaping (RealDouble) -> RealDouble, a: RealDouble, b: RealDouble, tol: RealDouble = 1e-5) -> (RealDouble, RealDouble) {
 
-    let invphi: Real = (sqrt(5) - 1) / 2  // 1 / phi
-    let invphi2: Real = (3 - sqrt(5)) / 2  // 1 / phi^2
+    let invphi: Double = (sqrt(5) - 1) / 2  // 1 / phi
+    let invphi2: Double = (3 - sqrt(5)) / 2  // 1 / phi^2
 
     var a = min(a, b)
     var b = max(a, b)
@@ -62,25 +62,4 @@ func gss(f: @escaping (Real) -> Real, a: Real, b: Real, tol: Real = 1e-5) -> (Re
     }
 }
 
-/*
 
-// Binary
-func binsearch(fun: @escaping (Real) -> Real, x1: Real, x2: Real, tolerance: Real = 1e-6) -> Real {
-    var a = x1
-    var b = x2
-    while abs(b - a) > tolerance {
-        let mid1 = a + (b - a) / 4
-        let mid2 = b - (b - a) / 4
-
-        let fmid1 = fun(mid1)
-        let fmid2 = fun(mid2)
-
-        if fmid1 < fmid2 {
-            b = mid2
-        } else {
-            a = mid1
-        }
-    }
-    return (a + b) / 2.0
-}
-*/

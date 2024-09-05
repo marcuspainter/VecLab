@@ -15,7 +15,7 @@ import Foundation
 ///   - x: Array.
 ///   - y: Array.
 /// - Returns: The cross correlation result.
-public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
+public func xcorr(_ x: RealDoubleArray, _ y: RealDoubleArray) -> RealDoubleArray {
     let N = length(x) + length(y) - 1
     //let M = max(x.count, y.count)
     let M = nextpow2(N)
@@ -44,7 +44,7 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
 /// - Parameters:
 ///   - x: Array.
 /// - Returns: The autocorrelation.
-public func xcorr(_ x: RealArray) -> RealArray {
+public func xcorr(_ x: RealDoubleArray) -> RealDoubleArray {
     xcorr(x, x)
 }
 
@@ -54,11 +54,11 @@ public func xcorr(_ x: RealArray) -> RealArray {
 /// - Parameters:
 ///   - x: Array.
 /// - Returns: The cross correlation result.
-public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
+public func xcorrSimple(_ x: RealDoubleArray, _ y: RealDoubleArray) -> RealDoubleArray {
     let n = x.count
     let m = y.count
     let resultSize = n + m - 1
-    var result = [Real](repeating: 0.0, count: resultSize)
+    var result = [Double](repeating: 0.0, count: resultSize)
     
     for i in 0..<n {
         for j in 0..<m {

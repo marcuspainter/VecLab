@@ -12,7 +12,7 @@ import Accelerate
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The real dot product of a and b.
-public func dot(_ a: RealArray, _ b: RealArray) -> Real {
+public func dot(_ a: RealDoubleArray, _ b: RealDoubleArray) -> RealDouble {
     assertSameSize(a, b)
     return dotReal(a, b)
 }
@@ -47,7 +47,7 @@ private func dotReal(_ a: [Float], _ b: [Float]) -> Float {
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
+public func dot(_ a: ComplexDoubleArray, _ b: ComplexDoubleArray) -> ComplexDouble {
     let c = a *~ b
     let dotSum = sum(c)
     return dotSum
@@ -63,7 +63,7 @@ public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
+public func dot(_ a: RealDoubleArray, _ b: ComplexDoubleArray) -> ComplexDouble {
     let c = a * b
     let dotSum = sum(c)
     return dotSum
@@ -79,8 +79,69 @@ public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: ComplexArray, _ b: RealArray) -> Complex {
+public func dot(_ a: ComplexDoubleArray, _ b: RealDoubleArray) -> ComplexDouble {
     let c = a ~* b
     let dotSum = sum(c)
     return dotSum
 }
+
+// MARK: Float
+
+/// Dot product.
+/// - Parameters:
+///   - a: Real array.
+///   - b: Real array.
+/// - Returns: The real dot product of a and b.
+public func dot(_ a: RealFloatArray, _ b: RealFloatArray) -> RealFloat {
+    assertSameSize(a, b)
+    return dotReal(a, b)
+}
+
+/// Dot product.
+///
+/// The complex dot product is defined as:
+///
+/// dot(a,b) = sum( a \* conj(b))
+///
+/// - Parameters:
+///   - a: Real array.
+///   - b: Real array.
+/// - Returns: The complex dot product of a and b.
+public func dot(_ a: ComplexFloatArray, _ b: ComplexFloatArray) -> ComplexFloat {
+    let c = a *~ b
+    let dotSum = sum(c)
+    return dotSum
+}
+
+/// Dot product.
+///
+/// The complex dot product is defined as:
+///
+/// dot(a,b) = sum( a \* conj(b))
+///
+/// - Parameters:
+///   - a: Real array.
+///   - b: Real array.
+/// - Returns: The complex dot product of a and b.
+public func dot(_ a: RealFloatArray, _ b: ComplexFloatArray) -> ComplexFloat {
+    let c = a * b
+    let dotSum = sum(c)
+    return dotSum
+}
+
+/// Dot product.
+///
+/// The complex dot product is defined as:
+///
+/// dot(a,b) = sum( a \* conj(b))
+///
+/// - Parameters:
+///   - a: Complex array.
+///   - b: Real array.
+/// - Returns: The complex dot product of a and b.
+public func dot(_ a: ComplexFloatArray, _ b: RealFloatArray) -> ComplexFloat {
+    let c = a ~* b
+    let dotSum = sum(c)
+    return dotSum
+}
+

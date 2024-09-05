@@ -14,7 +14,7 @@ import Accelerate
 ///
 /// - Parameter x:Complex number.
 /// - Returns: Real value of  magnitudes.
-public func abs(_ x: Complex) -> Real {
+public func abs(_ x: ComplexDouble) -> RealDouble {
     return sqrt(x.0 * x.0 + x.1 * x.1)
 }
 
@@ -22,7 +22,25 @@ public func abs(_ x: Complex) -> Real {
 ///
 /// - Parameter x:Complex array.
 /// - Returns: Real array of  magnitudes.
-public func abs(_ x: ComplexArray) -> RealArray {
+public func abs(_ x: ComplexDoubleArray) -> RealDoubleArray {
     // return zip(x.0, x.1).map { sqrt($0 * $0 + $1 * $1) }
+    return vectorAbsComplexArray(x)
+}
+
+// MARK: Float
+
+/// Magnitude  of a complex number.
+///
+/// - Parameter x:Complex number.
+/// - Returns: Real value of  magnitudes.
+public func abs(_ x: ComplexFloat) -> RealFloat {
+    return sqrt(x.0 * x.0 + x.1 * x.1)
+}
+
+/// Magnitudes  of a complex array.
+///
+/// - Parameter x:Complex array.
+/// - Returns: Real array of  magnitudes.
+public func abs(_ x: ComplexFloatArray) -> RealFloatArray {
     return vectorAbsComplexArray(x)
 }

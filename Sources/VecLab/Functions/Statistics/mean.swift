@@ -14,13 +14,14 @@ import Accelerate
 ///
 /// - Parameter x: Input array of real numbers.
 /// - Returns: The mean value of the array.
+public func mean(_ x: RealDoubleArray) -> RealDouble {
+    return vDSP.mean(x)
+}
+
+/// Average (mean) value of an array.
 ///
-/// # Example:
-/// ```
-/// let dataPoints: RealArray = [1.2, 3.5, 2.9, 4.1, 3.8]
-/// let averageValue = mean(dataPoints)
-/// print(averageValue)  // prints the average value of the data points
-/// ```
-public func mean(_ x: RealArray) -> Real {
+/// - Parameter x: Input array of real numbers.
+/// - Returns: The mean value of the array.
+public func mean(_ x: RealFloatArray) -> RealFloat {
     return vDSP.mean(x)
 }

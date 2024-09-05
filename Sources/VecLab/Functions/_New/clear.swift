@@ -11,13 +11,13 @@ import Foundation
 /// Fills a real array with zeros in place.
 /// - Parameters:
 ///   - c: Array.
-public func clear(_ c: RealArray) {
+public func clear(_ c: RealDoubleArray) {
     vectorClearRealArray(c)
 }
 
 /// Fills a complex array with zeros in place.
 /// - Parameters:
 ///   - c: Array.
-public func clear(_ c: ComplexArray) {
+public func clear(_ c: ComplexDoubleArray) {
     vectorClearComplexArray(c)
 }

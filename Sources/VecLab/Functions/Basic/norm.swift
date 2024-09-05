@@ -13,7 +13,17 @@ import Foundation
 /// This norm is also called the 2-norm, vector magnitude, or Euclidean length.
 /// - Parameter x: Input array.
 /// - Returns: The 2-norm or magnitude of the array.
-public func norm(_ x: RealArray) -> Real {
+public func norm(_ x: RealDoubleArray) -> RealDouble {
+    let sum = vDSP.sumOfSquares(x)
+    return Darwin.sqrt(sum)
+}
+
+/// Euclidean norm of array.
+///
+/// This norm is also called the 2-norm, vector magnitude, or Euclidean length.
+/// - Parameter x: Input array.
+/// - Returns: The 2-norm or magnitude of the array.
+public func norm(_ x: RealFloatArray) -> RealFloat {
     let sum = vDSP.sumOfSquares(x)
     return Darwin.sqrt(sum)
 }

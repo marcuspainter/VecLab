@@ -1,31 +1,14 @@
 //
-//  power.swift
+//  pow+Float.swift
 //
 //
-//  Created by Marcus Painter on 06/09/2023.
+//  Created by Marcus Painter on 04/09/2024.
 //
 
 import Accelerate
 import Foundation
 
-precedencegroup PowerPrecedence {
-    higherThan: MultiplicationPrecedence
-    associativity: left // Matlab 2**3**4 = 4096
-}
-
-infix operator **: PowerPrecedence
-
 // MARK: Int
-
-/// Power.
-/// - Parameters:
-///   - a: Integer number.
-///   - b: Integer number.
-/// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Int, _ b: Int) -> Real {
-    return pow(a, b)
-}
 
 /// Power.
 /// - Parameters:
@@ -33,7 +16,7 @@ public func ** (_ a: Int, _ b: Int) -> Real {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Int, _ b: Real) -> Real {
+public func ** (_ a: Int, _ b: RealFloat) -> RealFloat {
     return pow(a, b)
 }
 /// Power.
@@ -42,7 +25,7 @@ public func ** (_ a: Int, _ b: Real) -> Real {
 ///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Real, _ b: Int) -> Real {
+public func ** (_ a: RealFloat, _ b: Int) -> RealFloat {
     return pow(a, b)
 }
 
@@ -52,7 +35,7 @@ public func ** (_ a: Real, _ b: Int) -> Real {
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: RealArray, _ b: Int) -> RealArray {
+public func ** (_ a: RealFloatArray, _ b: Int) -> RealFloatArray {
     return pow(a, b)
 }
 
@@ -62,7 +45,7 @@ public func ** (_ a: RealArray, _ b: Int) -> RealArray {
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Complex, _ b: Int) -> Complex {
+public func ** (_ a: ComplexFloat, _ b: Int) -> ComplexFloat {
     return pow(a, b)
 }
 
@@ -73,7 +56,7 @@ public func ** (_ a: Complex, _ b: Int) -> Complex {
  ///   - b: Integer.
  /// - Returns: Raises `a` to the power of `b`.
  @inlinable
- public func ** (_ a: ComplexArray, _ b: Int) -> ComplexArray {
+ public func ** (_ a: ComplexFloatArray, _ b: Int) -> ComplexFloatArray {
      return pow(a, b)
  }
  */
@@ -86,7 +69,7 @@ public func ** (_ a: Complex, _ b: Int) -> Complex {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Real, _ b: Real) -> Real {
+public func ** (_ a: RealFloat, _ b: RealFloat) -> RealFloat {
     return pow(a, b)
 }
 
@@ -98,7 +81,7 @@ public func ** (_ a: Real, _ b: Real) -> Real {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: RealArray, _ b: RealArray) -> RealArray {
+public func ** (_ a: RealFloatArray, _ b: RealFloatArray) -> RealFloatArray {
     return pow(a, b)
 }
 
@@ -108,7 +91,7 @@ public func ** (_ a: RealArray, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: RealArray, _ b: Real) -> RealArray {
+public func ** (_ a: RealFloatArray, _ b: RealFloat) -> RealFloatArray {
     return pow(a, b)
 }
 
@@ -118,7 +101,7 @@ public func ** (_ a: RealArray, _ b: Real) -> RealArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Real, _ b: RealArray) -> RealArray {
+public func ** (_ a: RealFloat, _ b: RealFloatArray) -> RealFloatArray {
     return pow(a, b)
 }
 
@@ -130,7 +113,7 @@ public func ** (_ a: Real, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Complex, _ b: Real) -> Complex {
+public func ** (_ a: ComplexFloat, _ b: RealFloat) -> ComplexFloat {
     return pow(a, b)
 }
 
@@ -140,7 +123,7 @@ public func ** (_ a: Complex, _ b: Real) -> Complex {
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of 'b'
 @inlinable
-public func ** (_ a: Real, _ b: Complex) -> Complex {
+public func ** (_ a: RealFloat, _ b: ComplexFloat) -> ComplexFloat {
     return pow(a, b)
 }
 
@@ -153,7 +136,7 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
  ///   - b: Complex array
  /// - Returns: Raises `a` to the power of 'b'
  @available(*, unavailable, message: "Not implemented")
- public func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+ public func ** (_ a: ComplexFloatArray, _ b: ComplexFloatArray) -> ComplexFloatArray {
      return ([], [])
  }
  */
@@ -164,7 +147,7 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+public func ** (_ a: ComplexFloatArray, _ b: RealFloatArray) -> ComplexFloatArray {
     return pow(a, b)
 }
 
@@ -174,7 +157,7 @@ public func ** (_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
+public func ** (_ a: RealFloatArray, _ b: ComplexFloatArray) -> ComplexFloatArray {
     return pow(a, b)
 }
 
@@ -184,7 +167,7 @@ public func ** (_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: RealArray, _ b: Complex) -> ComplexArray {
+public func ** (_ a: RealFloatArray, _ b: ComplexFloat) -> ComplexFloatArray {
     return pow(a, b)
 }
 
@@ -194,7 +177,7 @@ public func ** (_ a: RealArray, _ b: Complex) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Complex, _ b: RealArray) -> ComplexArray {
+public func ** (_ a: ComplexFloat, _ b: RealFloatArray) -> ComplexFloatArray {
     return pow(a, b)
 }
 
@@ -204,7 +187,7 @@ public func ** (_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: ComplexArray, _ b: Real) -> ComplexArray {
+public func ** (_ a: ComplexFloatArray, _ b: RealFloat) -> ComplexFloatArray {
     return pow(a, b)
 }
 
@@ -214,6 +197,6 @@ public func ** (_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Real, _ b: ComplexArray) -> ComplexArray {
+public func ** (_ a: RealFloat, _ b: ComplexFloatArray) -> ComplexFloatArray {
     return pow(a, b)
 }

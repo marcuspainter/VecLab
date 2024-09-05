@@ -1,5 +1,5 @@
 //
-//  divide.swift
+//  divide+Float.swift
 //
 //
 //  Created by Marcus Painter on 09/09/2023.
@@ -15,7 +15,7 @@ import Accelerate
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The result of the division.
-public func / (a: RealArray, b: RealArray) -> RealArray {
+public func / (a: RealFloatArray, b: RealFloatArray) -> RealFloatArray {
     assertSameSize(a, b)
     return vDSP.divide(a, b)
 }
@@ -25,7 +25,7 @@ public func / (a: RealArray, b: RealArray) -> RealArray {
 ///   - a: Real array.
 ///   - b: Real number.
 /// - Returns: The result of the division.
-public func / (a: RealArray, b: Real) -> RealArray {
+public func / (a: RealFloatArray, b: RealFloat) -> RealFloatArray {
     return vDSP.divide(a, b)
 }
 
@@ -34,7 +34,7 @@ public func / (a: RealArray, b: Real) -> RealArray {
 ///   - a: Real number
 ///   - b: Real array
 /// - Returns: The result of the division
-public func / (a: Real, b: RealArray) -> RealArray {
+public func / (a: RealFloat, b: RealFloatArray) -> RealFloatArray {
     return vDSP.divide(a, b)
 }
 
@@ -45,7 +45,7 @@ public func / (a: Real, b: RealArray) -> RealArray {
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: The result of the division
-public func / (a: Complex, b: Complex) -> Complex {
+public func / (a: ComplexFloat, b: ComplexFloat) -> ComplexFloat {
     return complexDivide(a, b)
 }
 
@@ -54,7 +54,7 @@ public func / (a: Complex, b: Complex) -> Complex {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the division.
-public func / (a: Complex, b: Real) -> Complex {
+public func / (a: ComplexFloat, b: RealFloat) -> ComplexFloat {
     return (a.0 / b, a.1 / b)
 }
 
@@ -63,7 +63,7 @@ public func / (a: Complex, b: Real) -> Complex {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the division.
-public func / (a: Real, b: Complex) -> Complex {
+public func / (a: RealFloat, b: ComplexFloat) -> ComplexFloat {
     return complexDivide((a, 0), b)
 }
 
@@ -72,7 +72,7 @@ public func / (a: Real, b: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: The result of the division.
-public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+public func / (a: ComplexFloatArray, b: ComplexFloatArray) -> ComplexFloatArray {
     assertSameSize(a, b)
     return vectorDivideComplexArray(a, b)
 }
@@ -82,7 +82,7 @@ public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Complex number.
 /// - Returns: The result of the division.
-public func / (a: ComplexArray, b: Complex) -> ComplexArray {
+public func / (a: ComplexFloatArray, b: ComplexFloat) -> ComplexFloatArray {
     return vectorDivideComplexArrayComplex(a, b)
 }
 
@@ -91,7 +91,7 @@ public func / (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Complex array.
 /// - Returns: The result of the division.
-public func / (a: Complex, b: ComplexArray) -> ComplexArray {
+public func / (a: ComplexFloat, b: ComplexFloatArray) -> ComplexFloatArray {
     return vectorDivideComplexComplexArray(a, b)
 }
 
@@ -100,7 +100,7 @@ public func / (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The result of the division.
-public func / (a: ComplexArray, b: RealArray) -> ComplexArray {
+public func / (a: ComplexFloatArray, b: RealFloatArray) -> ComplexFloatArray {
     assertSameSize(a, b)
     return vectorDivideComplexArrayRealArray(a, b)
 }
@@ -110,7 +110,7 @@ public func / (a: ComplexArray, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: The result of the division.
-public func / (a: RealArray, b: ComplexArray) -> ComplexArray {
+public func / (a: RealFloatArray, b: ComplexFloatArray) -> ComplexFloatArray {
     assertSameSize(a, b)
     return vectorDivideRealArrayComplexArray(a, b)
 }
@@ -120,7 +120,7 @@ public func / (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: The result of the division.
-public func / (a: ComplexArray, b: Real) -> ComplexArray {
+public func / (a: ComplexFloatArray, b: RealFloat) -> ComplexFloatArray {
     return vectorDivideComplexArrayReal(a, b)
 }
 
@@ -129,7 +129,7 @@ public func / (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: The result of the division.
-public func / (a: Real, b: ComplexArray) -> ComplexArray {
+public func / (a: RealFloat, b: ComplexFloatArray) -> ComplexFloatArray {
     return vectorDivideRealComplexArray(a, b)
 }
 
@@ -138,7 +138,7 @@ public func / (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: The result of the division
-public func / (a: Complex, b: RealArray) -> ComplexArray {
+public func / (a: ComplexFloat, b: RealFloatArray) -> ComplexFloatArray {
     return vectorDivideComplexRealArray(a, b)
 }
 
@@ -147,6 +147,6 @@ public func / (a: Complex, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: The result of the division.
-public func / (a: RealArray, b: Complex) -> ComplexArray {
+public func / (a: RealFloatArray, b: ComplexFloat) -> ComplexFloatArray {
     return vectorDivideRealArrayComplex(a, b)
 }

@@ -24,13 +24,13 @@ import Foundation
 /// let fact = factorial(number)
 /// print(fact) // prints: 120
 /// ```
-public func factorial(_ n: Int) -> Real {
-    if n < 0 { return Real.nan }  // Return NaN for negative numbers
+public func factorial(_ n: Int) -> RealDouble {
+    if n < 0 { return Double.nan }  // Return NaN for negative numbers
     if n <= 1 { return 1.0 }        // Return 1.0 for 0! and 1!
 
     var product = 1
     for i in 2...n {
         product *= i
     }
-    return Real(product)
+    return Double(product)
 }

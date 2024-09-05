@@ -35,17 +35,17 @@ func createComplexArray(sized a: ([Float], [Float]) ) -> ([Float], [Float]) {
     return (r, i)
 }
 
-func createRealArray(repeating x: Real, count: Int) -> RealArray {
-    let r = RealArray(repeating: x, count: count)
+func createRealArray(repeating x: RealDouble, count: Int) -> RealDoubleArray {
+    let r = RealDoubleArray(repeating: x, count: count)
     return r
 }
 
-func createComplexArray(count: Int) -> ComplexArray {
-    return createComplexArray(repeating: (Real(0.0), Real(0.0)), count: count)
+func createComplexArray(count: Int) -> ComplexDoubleArray {
+    return createComplexArray(repeating: (Double(0.0), Double(0.0)), count: count)
  }
 
-func createComplexArray(repeating x: Complex, count: Int) -> ComplexArray {
-    let r = RealArray(repeating: x.0, count: count)
-    let i = RealArray(repeating: x.1, count: count)
+func createComplexArray(repeating x: ComplexDouble, count: Int) -> ComplexDoubleArray {
+    let r = RealDoubleArray(repeating: x.0, count: count)
+    let i = RealDoubleArray(repeating: x.1, count: count)
     return (r, i)
 }

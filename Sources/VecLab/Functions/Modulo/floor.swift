@@ -10,6 +10,6 @@ import Foundation
 /// Round towards negative infinity
 /// - Parameter x: Input array.
 /// - Returns: The rounded array.
-public func floor(_ x: RealArray) -> RealArray {
+public func floor(_ x: RealDoubleArray) -> RealDoubleArray {
     return x.map { floor($0) }
 }

@@ -13,12 +13,12 @@ import Accelerate
 ///   - x: x-coordinates.
 ///   - y: y-coordinates.
 /// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
-public func trapz(_ x: RealArray, _ y: RealArray) -> Real {
+public func trapz(_ x: RealDoubleArray, _ y: RealDoubleArray) -> RealDouble {
     guard x.count == y.count else {
         fatalError("X and Y must have the same length")
     }
 
-    var Q = Real(0.0)
+    var Q = Double(0.0)
     for i in 1..<x.count {
         let dx = x[i] - x[i-1]
         let avgY = (y[i] + y[i-1]) / 2
@@ -51,3 +51,28 @@ public func trapz(_ a: [Float], step: Float) -> Float {
     vDSP_vtrapz(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))
     return c
 }
+
+// MARK: Float
+
+/// Trapezoidal numerical integration.
+/// - Parameters:
+///   - x: x-coordinates.
+///   - y: y-coordinates.
+/// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
+public func trapz(_ x: RealFloatArray, _ y: RealFloatArray) -> RealFloat {
+    guard x.count == y.count else {
+        fatalError("X and Y must have the same length")
+    }
+
+    var Q = Float(0.0)
+    for i in 1..<x.count {
+        let dx = x[i] - x[i-1]
+        let avgY = (y[i] + y[i-1]) / 2
+        Q += dx * avgY
+    }
+
+    return Q
+}
+
+
+

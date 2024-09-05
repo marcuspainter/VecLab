@@ -1,5 +1,5 @@
 //
-//  subtract.swift
+//  subtract+Double.swift
 //
 //
 //  Created by Marcus Painter on 09/09/2023.
@@ -15,7 +15,7 @@ import Foundation
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: The result of the subtraction.
-public func - (a: RealArray, b: RealArray) -> RealArray {
+public func - (a: RealDoubleArray, b: RealDoubleArray) -> RealDoubleArray {
     return vDSP.subtract(a, b)
 }
 
@@ -24,7 +24,7 @@ public func - (a: RealArray, b: RealArray) -> RealArray {
 ///   - a: Real array.
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
-public func - (a: RealArray, b: Real) -> RealArray {
+public func - (a: RealDoubleArray, b: RealDouble) -> RealDoubleArray {
     let minusb = -b
     return vDSP.add(minusb, a)
 }
@@ -34,7 +34,7 @@ public func - (a: RealArray, b: Real) -> RealArray {
 ///   - a: Real number.
 ///   - b: Real array.
 /// - Returns: The result of the subtraction
-public func - (a: Real, b: RealArray) -> RealArray {
+public func - (a: RealDouble, b: RealDoubleArray) -> RealDoubleArray {
     let minusb = -b
     return vDSP.add(a, minusb)
 }
@@ -46,7 +46,7 @@ public func - (a: Real, b: RealArray) -> RealArray {
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
-public func - (a: Complex, b: Complex) -> Complex {
+public func - (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
     return (a.0 - b.0, a.1 - b.1)
 }
 
@@ -55,16 +55,16 @@ public func - (a: Complex, b: Complex) -> Complex {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
-public func - (a: Complex, b: Real) -> Complex {
+public func - (a: ComplexDouble, b: RealDouble) -> ComplexDouble {
     return (a.0 - b, a.1)
 }
 
 /// Subtraction.
 /// - Parameters:
-///   - a: Real number.
+///   - a: RealDouble number.
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
-public func - (a: Real, b: Complex) -> Complex {
+public func - (a: RealDouble, b: ComplexDouble) -> ComplexDouble {
     return (a - b.0, -b.1)
 }
 
@@ -73,7 +73,7 @@ public func - (a: Real, b: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction.
-public func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+public func - (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return vectorSubtractComplexArray(a, b)
 }
@@ -83,7 +83,7 @@ public func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
-public func - (a: ComplexArray, b: Complex) -> ComplexArray {
+public func - (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     return (a.0 - b.0, a.1 - b.1)
 }
 
@@ -92,7 +92,7 @@ public func - (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction.
-public func - (a: Complex, b: ComplexArray) -> ComplexArray {
+public func - (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return b - a
 }
 
@@ -101,7 +101,7 @@ public func - (a: Complex, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The result of the subtraction.
-public func - (a: ComplexArray, b: RealArray) -> ComplexArray {
+public func - (a: ComplexDoubleArray, b: RealDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return (a.0 - b, a.1)
 }
@@ -111,7 +111,7 @@ public func - (a: ComplexArray, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction.
-public func - (a: RealArray, b: ComplexArray) -> ComplexArray {
+public func - (a: RealDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
     assertSameSize(a, b)
     return b - a
 }
@@ -121,7 +121,7 @@ public func - (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
-public func - (a: ComplexArray, b: Real) -> ComplexArray {
+public func - (a: ComplexDoubleArray, b: RealDouble) -> ComplexDoubleArray {
     return (a.0 - b, a.1)
 }
 
@@ -130,7 +130,7 @@ public func - (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction
-public func - (a: Real, b: ComplexArray) -> ComplexArray {
+public func - (a: RealDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
     return (a - b.0, b.1)
 }
 
@@ -139,9 +139,9 @@ public func - (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: The result of the subtraction
-public func - (a: Complex, b: RealArray) -> ComplexArray {
+public func - (a: ComplexDouble, b: RealDoubleArray) -> ComplexDoubleArray {
     let r = a.0 - b
-    let i = RealArray(repeating: Real(a.1), count: b.count)
+    let i = RealDoubleArray(repeating: RealDouble(a.1), count: b.count)
     return (r, i)
 }
 
@@ -150,8 +150,8 @@ public func - (a: Complex, b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction
-public func - (a: RealArray, b: Complex) -> ComplexArray {
+public func - (a: RealDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
     let r = a - b.0
-    let i = RealArray(repeating: -Real(b.1), count: a.count)
+    let i = RealDoubleArray(repeating: -RealDouble(b.1), count: a.count)
     return (r, i)
 }

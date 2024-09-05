@@ -12,7 +12,7 @@ import Foundation
 ///   - x: Input array
 ///   - m: Size.
 /// - Returns: Array of new size.
-public func resize(_ x: RealArray, _ m: Int) -> RealArray {
+public func resize(_ x: RealDoubleArray, _ m: Int) -> RealDoubleArray {
     let n = x.count
     guard m != n else { return x }
     var y = x
@@ -20,7 +20,7 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
         return slice(x, 0 ..< m)
     } else {
         let zeroCount = m - n
-        let zeros = RealArray(repeating: 0, count: zeroCount)
+        let zeros = RealDoubleArray(repeating: 0, count: zeroCount)
         y.append(contentsOf: zeros)
     }
     return y
@@ -31,7 +31,7 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
 ///   - x: Input array
 ///   - m: Size.
 /// - Returns: Array of new size.
-public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
+public func resize(_ x: ComplexDoubleArray, _ m: Int) -> ComplexDoubleArray {
     let n = x.0.count
     guard m != n else { return x }
     var y = x
@@ -39,9 +39,51 @@ public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
         return slice(x, 0 ..< m)
     } else {
         let zeroCount = m - n
-        let zeros = RealArray(repeating: 0, count: zeroCount)
+        let zeros = RealDoubleArray(repeating: 0, count: zeroCount)
         y.0.append(contentsOf: zeros)
         y.1.append(contentsOf: zeros)
     }
     return y
 }
+
+// MARK: Float
+
+/// Resize data by adding or removing elements.
+/// - Parameters:
+///   - x: Input array
+///   - m: Size.
+/// - Returns: Array of new size.
+public func resize(_ x: RealFloatArray, _ m: Int) -> RealFloatArray {
+    let n = x.count
+    guard m != n else { return x }
+    var y = x
+    if m < n {
+        return slice(x, 0 ..< m)
+    } else {
+        let zeroCount = m - n
+        let zeros = RealFloatArray(repeating: 0, count: zeroCount)
+        y.append(contentsOf: zeros)
+    }
+    return y
+}
+
+/// Resize data by adding or removing elements.
+/// - Parameters:
+///   - x: Input array
+///   - m: Size.
+/// - Returns: Array of new size.
+public func resize(_ x: ComplexFloatArray, _ m: Int) -> ComplexFloatArray {
+    let n = x.0.count
+    guard m != n else { return x }
+    var y = x
+    if m < n {
+        return slice(x, 0 ..< m)
+    } else {
+        let zeroCount = m - n
+        let zeros = RealFloatArray(repeating: 0, count: zeroCount)
+        y.0.append(contentsOf: zeros)
+        y.1.append(contentsOf: zeros)
+    }
+    return y
+}
+

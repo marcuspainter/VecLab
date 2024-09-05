@@ -12,6 +12,14 @@ import Foundation
 ///
 /// - Parameter x:Real array.
 /// - Returns: Absolute values.
-public func abs(_ x: RealArray) -> RealArray {
+public func abs(_ x: RealDoubleArray) -> RealDoubleArray {
+    return vDSP.absolute(x)
+}
+
+/// Absolute values of real array.
+///
+/// - Parameter x:Real array.
+/// - Returns: Absolute values.
+public func abs(_ x: RealFloatArray) -> RealFloatArray {
     return vDSP.absolute(x)
 }

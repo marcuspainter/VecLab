@@ -21,12 +21,12 @@ import Foundation
 /// let previousPrime = prevprime(number)
 /// print(previousPrime) // prints: 19.0
 /// ```
-public func prevprime(_ n: Real) -> Real {
-    guard n >= 2 else { return Real.nan }
+public func prevprime(_ n: RealDouble) -> RealDouble {
+    guard n >= 2 else { return Double.nan }
     var num = Int(n)
     while num >= 2 {
         if isprime(num) {
-            return Real(num)
+            return Double(num)
         }
         num -= 1
     }

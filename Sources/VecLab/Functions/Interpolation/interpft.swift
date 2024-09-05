@@ -14,12 +14,12 @@ import Accelerate
 ///   - X: Input array.
 ///   - n: Factor.
 /// - Returns: Output array.
-public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
+public func interpft(_ xx: RealDoubleArray, _ n: Int) -> RealDoubleArray {
     let N = length(xx)
 
     // Upsample, odd length
     if mod(length(xx),2) != 0 {
-        let U = Real(n)
+        let U = Double(n)
         let z = zeros(N * Int(U) - N)
         let X = fftr(xx)
         // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
@@ -30,7 +30,7 @@ public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
         let x = ifftr(XX)
         return x
     } else {
-        let U = Real(n)
+        let U = Double(n)
         let X = fftr(xx)
         let z = zeros(N * Int(U) - N)
         let t1 = slice(X, 0 ..< (N/2))
@@ -46,6 +46,47 @@ public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
 }
 
 // % https://dsp.stackexchange.com/questions/14919/upsample-data-using-ffts-how-is-this-exactly-done
+
+// MARK: Float
+
+
+/// Interpolate using FFT. method  (Alternative)
+/// - Parameters:
+///   - X: Input array.
+///   - n: Factor.
+/// - Returns: Output array.
+public func interpft(_ xx: RealFloatArray, _ n: Int) -> RealFloatArray {
+    let N = length(xx)
+
+    // Upsample, odd length
+    if mod(length(xx),2) != 0 {
+        let U = Float(n)
+        let z = zerosf(N * Int(U) - N)
+        let X = fftr(xx)
+        // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
+        let t1 = slice(X, 0 ..< ((N+1)/2) )
+        let t2 = (z, z)
+        let t3 = slice(X,(N+1)/2 ..< N)
+        let XX = U * cat(t1, t2, t3)
+        let x = ifftr(XX)
+        return x
+    } else {
+        let U = Float(n)
+        let X = fftr(xx)
+        let z = zerosf(N * Int(U) - N)
+        let t1 = slice(X, 0 ..< (N/2))
+        let t2 = ( [X.0[(N/2)+1]], [X.1[(N/2)+1]]) * 0.5
+        let t3 = (z, z)
+        let t4 = ( [X.0[N/2+1]], [X.1[N/2+1]]) * 0.5
+        let t5 = slice(X, N/2+1 ..< N)
+        // XX = U * [X(1:(N/2)) X((N/2)+1)/2 z X(N/2+1)/2 X(N/2+2:N)];  // Matlab
+        let XX = U * cat(t1, t2, t3, t4, t5)
+        let x = ifftr(XX)
+        return x
+    }
+}
+
+
 
 /*
 

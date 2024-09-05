@@ -13,7 +13,7 @@ import Foundation
 ///   - x: Real array.
 ///   - y: Real array
 /// - Returns: The result of the convolution.
-public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
+public func conv(_ x: RealDoubleArray, _ y: RealDoubleArray) -> RealDoubleArray {
 
     let N = length(x) + length(y) - 1
     let fftN = nextpow2(N)
@@ -35,7 +35,7 @@ public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
 ///   - x: Complex array.
 ///   - y: Complex array
 /// - Returns: The result of the convolution.
-public func conv(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+public func conv(_ x: ComplexDoubleArray, _ y: ComplexDoubleArray) -> ComplexDoubleArray {
 
     let N = length(x) + length(y) - 1
     let fftN = nextpow2(N)
@@ -52,12 +52,12 @@ public func conv(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     return z
 }
 
-public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
+public func convSimple(_ x: RealDoubleArray, _ y: RealDoubleArray) -> RealDoubleArray {
     // The resulting convolution array will have a size of (x.count + y.count - 1)
     let n = x.count
     let m = y.count
     let resultSize = n + m - 1
-    var result = [Real](repeating: 0.0, count: resultSize)
+    var result = [Double](repeating: 0.0, count: resultSize)
     
     // Brute-force convolution
     for i in 0..<n {
