@@ -15,13 +15,13 @@ import Foundation
 ///   - a: a coefficients.
 ///   - x: Real input signal.
 /// - Returns: Filtered signal.
-public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray {
+public func filter(_ b: RealDoubleArray, _ a: RealDoubleArray, _ x: RealDoubleArray) -> RealDoubleArray {
     let M = b.count
     let L = a.count
     let N = x.count
 
-    var w = RealArray(repeating: 0.0, count: max(M, L))
-    var y = RealArray(repeating: 0.0, count: N)
+    var w = [Double](repeating: 0.0, count: max(M, L))
+    var y = [Double](repeating: 0.0, count: N)
 
     for n in 0..<N {
         // Compute w[0]
@@ -52,7 +52,7 @@ public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray 
 ///   - a: a coefficients.
 ///   - x: Complex input signal.
 /// - Returns: Filtered complex signal.
-public func filter(_ b: RealArray, _ a: RealArray, _ x: ComplexArray) -> ComplexArray {
+public func filter(_ b: RealDoubleArray, _ a: RealDoubleArray, _ x: ComplexDoubleArray) -> ComplexDoubleArray {
     let yr = filter(b, a, x.0)
     let yi = filter(b, a, x.1)
     return (yr, yi)

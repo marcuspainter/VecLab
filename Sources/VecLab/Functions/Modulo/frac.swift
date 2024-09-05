@@ -12,7 +12,7 @@ import simd
 ///  Fractional part of number.
 /// - Parameter x: Input array.
 /// - Returns: The fractional part array.
-public func frac(_ x: Real) -> Real {
+public func frac(_ x: RealDouble) -> RealDouble {
     let absx = abs(x)
     return sign(x) * (absx - floor(absx))
 }
@@ -20,7 +20,7 @@ public func frac(_ x: Real) -> Real {
 ///  Fractional part of number.
 /// - Parameter x: Input array.
 /// - Returns: The fractional part array.
-public func frac(_ x: RealArray) -> RealArray {
+public func frac(_ x: RealDoubleArray) -> RealDoubleArray {
     //var c = x
     //vectorFrac(x, &c)
     // vDSP uses truncate for fractional part !!!

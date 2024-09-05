@@ -10,6 +10,6 @@ import Foundation
 /// Round number to nearest integer.
 /// - Parameter x: Input array.
 /// - Returns: The rounded array.
-public func round(_ x: RealArray) -> RealArray {
+public func round(_ x: RealDoubleArray) -> RealDoubleArray {
     return x.map { round($0) }
 }

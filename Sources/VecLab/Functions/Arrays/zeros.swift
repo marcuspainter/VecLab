@@ -17,6 +17,6 @@ public func zeros(_ count: Int) -> RealDoubleArray {
 /// Create an array of zeros.
 /// - Parameter count: Number of elements in the array.
 /// - Returns: A real array of length `count`.
-public func zeros(_ count: Real) -> RealDoubleArray {
+public func zeros(_ count: RealDouble) -> RealDoubleArray {
     return RealDoubleArray(repeating: 0, count: Int(count))
 }

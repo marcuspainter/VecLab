@@ -15,10 +15,10 @@ import Foundation
 /// - Returns: Resampled output.
 public func sincresample(_ x: RealDoubleArray, _ r: RealDouble, _ beta: RealDouble) -> RealDoubleArray {
     let N = x.count
-    let M = Int(round(Real(N) * r))
+    let M = Int(round(Double(N) * r))
 
     var y = [Double](repeating: 0.0, count: M)
-    let W = Int(round(Real(N)/2))
+    let W = Int(round(Double(N)/2))
 
     for m in 0..<M {
         let t = Double(m) / r
@@ -26,7 +26,7 @@ public func sincresample(_ x: RealDoubleArray, _ r: RealDouble, _ beta: RealDoub
         let nEnd = min(N, Int(t) + W)
 
         for n in nStart..<nEnd {
-            y[m] += x[n] * sinc(t - Double(n)) * kaiserWindow(Real(n - Int(t) + W + 1), Double(2*W+1), beta)
+            y[m] += x[n] * sinc(t - Double(n)) * kaiserWindow(Double(n - Int(t) + W + 1), Double(2*W+1), beta)
         }
     }
 

@@ -11,6 +11,6 @@ import Accelerate
 /// Round towards positive infinity.
 /// - Parameter x: Input array.
 /// - Returns: The rounded array.
-public func ceil(_ x: RealArray) -> RealArray {
+public func ceil(_ x: RealDoubleArray) -> RealDoubleArray {
     return x.map { ceil($0) }
 }

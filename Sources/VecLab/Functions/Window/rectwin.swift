@@ -11,7 +11,7 @@ import Foundation
 /// - Parameters:
 ///   - L: Window length.
 /// - Returns: Rectangular window, returned as a vector.
-public func rectwin(_ L: Int) -> RealArray {
+public func rectwin(_ L: Int) -> RealDoubleArray {
     guard L > 0 else { return [] }
-    return RealArray(repeating: 1, count: L)
+    return [Double](repeating: 1, count: L)
 }

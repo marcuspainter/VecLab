@@ -35,7 +35,7 @@ public typealias ComplexArray = (RealArray, RealArray)
 // MARK : New
 
 public typealias RealDouble = Double
-public typealias RealFloat = Double
+public typealias RealFloat = Float
 
 public typealias ComplexDouble = (Double, Double)
 public typealias ComplexFloat = (Float, Float)

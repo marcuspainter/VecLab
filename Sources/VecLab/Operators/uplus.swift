@@ -10,20 +10,20 @@ import Foundation
 /// Unary plus.
 /// - Parameter a: Real array.
 /// - Returns: The result of +a.
-public prefix func + (a: RealArray) -> RealArray {
+public prefix func + (a: RealDoubleArray) -> RealDoubleArray {
     return a
 }
 
 /// Unary plus.
 /// - Parameter a: Complex number.
 /// - Returns: The result of +a.
-public prefix func + (a: Complex) -> Complex {
+public prefix func + (a: ComplexDouble) -> ComplexDouble {
     return a
 }
 
 /// Unary plus.
 /// - Parameter a: Complex array.
 /// - Returns: The result of +a.
-public prefix func + (a: ComplexArray) -> ComplexArray {
+public prefix func + (a: ComplexDoubleArray) -> ComplexDoubleArray {
     return a
 }

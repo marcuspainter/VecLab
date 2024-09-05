@@ -38,7 +38,7 @@ public func dftr(_ x: RealFloatArray) -> ComplexFloatArray {
 
     var y = (x,x)
     let k = RealFloatArray(0..<n)
-    let omega = -2 * Real.pi * Real.i * k  / Float(n)
+    let omega = -2 * Float.pi * Float.i * k  / Float(n)
     for i in 0..<x.count {
         let w = exp(omega * Float(i))
         (y.0[i], y.1[i]) = sum(x * w)

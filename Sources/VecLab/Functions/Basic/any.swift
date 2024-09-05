@@ -21,8 +21,8 @@ import Foundation
 /// let result = any(dataSet)
 /// print(result)  // prints: true
 /// ```
-public func any(_ x: RealArray) -> Bool {
-    let absx: RealArray = vDSP.absolute(x)
+public func any(_ x: RealDoubleArray) -> Bool {
+    let absx = vDSP.absolute(x)
     return vDSP.sum(absx) > 0
 }
 
@@ -32,13 +32,6 @@ public func any(_ x: RealArray) -> Bool {
 ///
 /// - Parameter x: Complex array.
 /// - Returns: `true` if any element is non-zero, otherwise `false`.
-///
-/// # Example:
-/// ```
-/// let dataSet: ComplexArray = ([0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 1.5, 0.0])
-/// let result = any(dataSet)
-/// print(result)  // prints: true
-/// ```
-public func any(_ x: ComplexArray) -> Bool {
+public func any(_ x: ComplexDoubleArray) -> Bool {
     return any(x.0) || any(x.0)
 }

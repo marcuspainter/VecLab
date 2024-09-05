@@ -82,7 +82,7 @@ func autoBinWidth(data: RealDoubleArray) -> RealDouble {
 ///
 /// - Parameter data: Array of input data values.
 /// - Returns: A tuple with the first value being an array (`counts`) detailing the number of data points in each bin, and the second value (`edges`) being an array representing the edges of each bin.
-public func histcounts(_ data: RealArray) -> (counts: [Int], edges: RealArray) {
+public func histcounts(_ data: RealFloatArray) -> (counts: [Int], edges: RealFloatArray) {
     let binWidth = autoBinWidth(data: data)
     let bins = Int((data.max()! - data.min()!) / binWidth)
     return histcounts(data, bins: bins)
@@ -103,7 +103,7 @@ public func histcounts(_ data: RealFloatArray, bins: Int) -> (counts: [Int], edg
     let maxVal = data.max()!
 
     // Calculate bin width
-    let binWidth = (maxVal - minVal) / Real(bins)
+    let binWidth = (maxVal - minVal) / Float(bins)
 
     // Define bin edges
     var binEdges = RealFloatArray(repeating: 0.0, count: bins + 1)
@@ -140,5 +140,5 @@ func autoBinWidth(data: RealFloatArray) -> RealFloat {
     // Calculate bin width using the Freedman-Diaconis rule
     let binWidth = 2.0 * IQR / pow(Float(N), 1.0/3.0)
 
-    return binWidth
+    return Float(binWidth)
 }

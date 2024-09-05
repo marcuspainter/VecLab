@@ -38,7 +38,7 @@ public func idft(_ x: ComplexFloatArray) -> ComplexFloatArray {
 
     // Init by copy
     var y = x
-    let q = RealArray(0 ..< n)
+    let q = RealFloatArray(0 ..< n)
     let omega = 2 * Float.pi * Float.i * q / Float(n)
     for p in 0 ..< x.0.count {
         let w = exp(omega * Float(p))

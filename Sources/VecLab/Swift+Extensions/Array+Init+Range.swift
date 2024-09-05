@@ -13,13 +13,13 @@ public extension Array where Element == Double {
         self = stridedValues.map { Double($0) }
     }
 
-    init(_ range: Range<Real>, _ strideValue: Real = 1) {
+    init(_ range: Range<RealDouble>, _ strideValue: RealDouble = 1) {
         let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
         self = stridedValues.map { Double($0) }
     }
 
     // Closed range (...) through
-    init(_ range: ClosedRange<Real>, _ strideValue: Real = 1) {
+    init(_ range: ClosedRange<RealDouble>, _ strideValue: RealDouble = 1) {
         let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
         self = stridedValues.map { Double($0) }
     }
@@ -37,13 +37,13 @@ public extension Array where Element == Float {
         self = stridedValues.map { Float($0) }
     }
 
-    init(_ range: Range<Real>, _ strideValue: Real = 1) {
+    init(_ range: Range<RealFloat>, _ strideValue: RealFloat = 1) {
         let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
         self = stridedValues.map { Float($0) }
     }
 
     // Closed range (...) through
-    init(_ range: ClosedRange<Real>, _ strideValue: Real = 1) {
+    init(_ range: ClosedRange<RealFloat>, _ strideValue: RealFloat = 1) {
         let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
         self = stridedValues.map { Float($0) }
     }

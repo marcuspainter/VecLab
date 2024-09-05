@@ -12,6 +12,6 @@ import Foundation
 ///  Swift equivalent of  .fix().
 /// - Parameter x: Input array.
 /// - Returns: The rounded array.
-public func trunc(_ x: RealArray) -> RealArray {
+public func trunc(_ x: RealDoubleArray) -> RealDoubleArray {
     return x.map { trunc($0) }
 }

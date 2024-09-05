@@ -117,7 +117,7 @@ public func fminsearch(fun: @escaping (RealFloatArray) -> RealFloat, x0: RealFlo
         let xLow = vertices.first!
         let xHigh = vertices.last!
 
-        var centroid = RealArray(repeating: 0.0, count: n)
+        var centroid = RealFloatArray(repeating: 0.0, count: n)
         for i in 0..<n {
             for j in 0..<n {
                 centroid[j] += vertices[i][j]
@@ -125,7 +125,7 @@ public func fminsearch(fun: @escaping (RealFloatArray) -> RealFloat, x0: RealFlo
         }
 
         for i in 0..<n {
-            centroid[i] /= Real(n)
+            centroid[i] /= Float(n)
         }
 
         let xReflected = centroid + alpha * (centroid - xHigh)

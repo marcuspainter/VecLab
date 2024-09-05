@@ -15,18 +15,18 @@ import Foundation
 ///   - L: Window length.
 ///   - type: Window sampling type.
 /// - Returns: Hamming window, returned as a vector.
-public func hamming(_ L: Int, type: WindowType = .symmetric) -> RealArray {
+public func hamming(_ L: Int, type: WindowType = .symmetric) -> RealDoubleArray {
     guard L > 0 else { return [] }
 
-    let a0: Real = 0.54
-    let a1: Real = 0.46
+    let a0: Double = 0.54
+    let a1: Double = 0.46
 
     let denominator = (type == .symmetric) ? (L - 1) : (L)
-    let piDen = .pi / Real(denominator)
+    let piDen = Double.pi / Double(denominator)
     let s1 = 2 * piDen
 
     return (0..<L).map { n in
-        let k = Real(n)
+        let k = Double(n)
         return a0 - a1 * cos(s1 * k)
     }
 }

@@ -15,11 +15,11 @@ import Foundation
 ///   - L: Window length.
 ///   - alpha:Width factor alpha.
 /// - Returns: Gaussian window, returned as a vector.
-public func gausswin(_ L: Int, alpha: Real = 2.5) -> RealArray {
+public func gausswin(_ L: Int, alpha: RealDouble = 2.5) -> RealDoubleArray {
     guard L > 0 else { return [] }
 
-    let midPoint = Real(L - 1) / 2.0
-    let nValues = (0..<L).map { Real($0) - midPoint }
+    let midPoint = Double(L - 1) / 2.0
+    let nValues = (0..<L).map { Double($0) - midPoint }
 
     return nValues.map { n in
         exp(-0.5 * pow(alpha * n / midPoint, 2))
