@@ -7,6 +7,7 @@
 
 import Foundation
 
+/*
 /// Type alias for floating point numbers.
 ///
 /// The library can set to use `Double` or  `Float` using this type alias.
@@ -19,7 +20,7 @@ import Foundation
 /// ```
 /// public typealias Real = Float
 /// ```
-/*
+
 /// Type alias for `Double` or `Float`
 public typealias Real = Double
 
@@ -32,6 +33,7 @@ public typealias Complex = (Real, Real)
 /// Type alias for a complex array as a tuple of two real arrays
 public typealias ComplexArray = (RealArray, RealArray)
 */
+
 // MARK : New
 
 public typealias RealDouble = Double

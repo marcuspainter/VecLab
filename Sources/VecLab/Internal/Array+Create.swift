@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 func createRealArray(count: Int ) -> [Double] {
     return [Double](repeating: 0, count: count)
 }
