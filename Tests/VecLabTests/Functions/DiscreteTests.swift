@@ -39,27 +39,27 @@ class DiscreteTests: XCTestCase {
     // MARK: Factorial
 
     func testFactorial5() throws {
-        let result: Real = factorial(5)
-        let expected: Real = 120.0
+        let result: RealDouble = factorial(5)
+        let expected: RealDouble = 120.0
         XCTAssertEqual(result, expected, "factorial failed")
     }
 
     func testFactorial1() throws {
-        let result: Real = factorial(1)
-        let expected: Real = 1.0
+        let result: RealDouble = factorial(1)
+        let expected: RealDouble = 1.0
         XCTAssertEqual(result, expected, "factorial failed")
     }
 
     func testFactorial0() throws {
-        let result: Real = factorial(1)
-        let expected: Real = 1.0
+        let result: RealDouble = factorial(1)
+        let expected: RealDouble = 1.0
         XCTAssertEqual(result, expected, "factorial failed")
     }
 
     // TODO: Fix
     func testFactorialMinus1() throws {
         _ = factorial(-1)
-        let expected = Real.nan
+        let expected = Double.nan
         XCTAssert(expected.isNaN, "factorial failed")
     }
 
@@ -188,41 +188,41 @@ class DiscreteTests: XCTestCase {
     // MARK: prevprime
 
     func testPrevprime() throws {
-        let result: Real = prevprime(1000)
-        let expected: Real = 997.0
+        let result: RealDouble = prevprime(1000)
+        let expected: RealDouble = 997.0
         XCTAssertEqual(result, expected, "prevprime failed")
     }
     
     func testPrevprime2() throws {
-        let result: Real = prevprime(2)
+        let result: RealDouble = prevprime(2)
         XCTAssert(result == 2, "prevprime failed")
     }
     func testPrevprime1() throws {
-        let result: Real = prevprime(1)
+        let result: RealDouble = prevprime(1)
         XCTAssert(result.isNaN, "prevprime failed")
     }
 
     func testPrevprime0() throws {
-        let result: Real = prevprime(0)
+        let result: RealDouble = prevprime(0)
         XCTAssert(result.isNaN, "prevprime failed")
     }
     
     func testPrevprimeNegative() throws {
-        let result: Real = prevprime(-1)
+        let result: RealDouble = prevprime(-1)
         XCTAssert(result.isNaN, "prevprime failed")
     }
 
     // MARK: primes
 
     func testPrimes10() throws {
-        let result: RealArray = primes(10)
-        let expected: RealArray = [2.0, 3.0, 5.0, 7.0]
+        let result: RealDoubleArray = primes(10)
+        let expected: RealDoubleArray = [2.0, 3.0, 5.0, 7.0]
         XCTAssertEqual(result, expected, "primes failed")
     }
 
     func testPrimes0() throws {
-        let result: RealArray = primes(0)
-        let expected: RealArray = []
+        let result: RealDoubleArray = primes(0)
+        let expected: RealDoubleArray = []
         XCTAssertEqual(result, expected, "primes failed")
     }
 }

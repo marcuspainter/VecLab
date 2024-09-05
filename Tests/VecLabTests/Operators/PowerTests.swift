@@ -11,138 +11,138 @@ import VecLab
 
 class PowerTests: XCTestCase {
 
-    let accuracy: Real = 1e-6
+    let accuracy: RealDouble = 1e-6
 
-    var realA: Real = 1.0
-    var realArrayA: RealArray = [1.0, 2.0]
-    var complexA: Complex = (1.0, 1.0)
-    var complexArrayA: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
+    var realA: RealDouble = 1.0
+    var realArrayA: RealDoubleArray = [1.0, 2.0]
+    var complexA: ComplexDouble = (1.0, 1.0)
+    var complexArrayA: ComplexDoubleArray = ([1.0, 1.0], [1.0, 1.0])
 
-    var realB: Real = 1.0
-    var realArrayB: RealArray = [1.0, 2.0]
-    var complexB: Complex = (1.0, 1.0)
-    var complexArrayB: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
+    var realB: RealDouble = 1.0
+    var realArrayB: RealDoubleArray = [1.0, 2.0]
+    var complexB: ComplexDouble = (1.0, 1.0)
+    var complexArrayB: ComplexDoubleArray = ([1.0, 1.0], [1.0, 1.0])
 
     var intA: Int = 2
     var intB: Int = 2
     
     func testPowerIntReal() {
-        let result: Real = intA ** realB
-        let expected: Real = 2.0
+        let result: RealDouble = intA ** realB
+        let expected: RealDouble = 2.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
     
     func testPowerRealInt() {
-        let result: Real = realA ** intB
-        let expected: Real = 1.0
+        let result: RealDouble = realA ** intB
+        let expected: RealDouble = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayInt() {
-        let result: RealArray = realArrayA ** intB
-        let expected: RealArray = [1.0, 4]
+        let result: RealDoubleArray = realArrayA ** intB
+        let expected: RealDoubleArray = [1.0, 4]
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerComplexInt() {
-        let result: Complex = complexA ** intB
-        let expected: Complex = (0.0, 2.0)
+        let result: ComplexDouble = complexA ** intB
+        let expected: ComplexDouble = (0.0, 2.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealReal() {
-        let result: Real = realA ** realB
-        let expected: Real = 1.0
+        let result: RealDouble = realA ** realB
+        let expected: RealDouble = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayRealArray() {
-        let result: RealArray = realArrayA ** realArrayB
-        let expected: RealArray = [1.0, 4.0]
+        let result: RealDoubleArray = realArrayA ** realArrayB
+        let expected: RealDoubleArray = [1.0, 4.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayReal() {
-        let result: RealArray = realArrayA ** realB
-        let expected: RealArray = [1.0, 2.0]
+        let result: RealDoubleArray = realArrayA ** realB
+        let expected: RealDoubleArray = [1.0, 2.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealRealArray() {
-        let result: RealArray = realA ** realArrayB
-        let expected: RealArray = [1.0, 1.0]
+        let result: RealDoubleArray = realA ** realArrayB
+        let expected: RealDoubleArray = [1.0, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 /*
     func testPowerComplexComplex() {
-        let result: Complex = complexA ** complexB
-        let expected: Complex = (0.273957253830, 0.583700758759)
+        let result: ComplexDouble = complexA ** complexB
+        let expected: ComplexDouble = (0.273957253830, 0.583700758759)
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 */
     func testPowerComplexReal() {
-        let result: Complex = complexA ** realB
-        let expected: Complex = (1.0, 1.0)
+        let result: ComplexDouble = complexA ** realB
+        let expected: ComplexDouble = (1.0, 1.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealComplex() {
-        let result: Complex = realA ** complexB
-        let expected: Complex = (1.0, 0.0)
+        let result: ComplexDouble = realA ** complexB
+        let expected: ComplexDouble = (1.0, 0.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerComplexRealArray() {
-        let result: ComplexArray = complexA ** realArrayB
-        let expected: ComplexArray = ([1.0, 0.0], [1.0, 2.0])
+        let result: ComplexDoubleArray = complexA ** realArrayB
+        let expected: ComplexDoubleArray = ([1.0, 0.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayComplex() {
-        let result: ComplexArray = realArrayA ** complexB
-        let expected: ComplexArray = ([1.0, 1.538477802728], [0.0, 1.277922552627])
+        let result: ComplexDoubleArray = realArrayA ** complexB
+        let expected: ComplexDoubleArray = ([1.0, 1.538477802728], [0.0, 1.277922552627])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 /*
     func testPowerComplexArrayComplexArray() {
-        let result: ComplexArray = complexArrayA ** complexArrayB
-        let expected: ComplexArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+        let result: ComplexDoubleArray = complexArrayA ** complexArrayB
+        let expected: ComplexDoubleArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "Power failed")
     }
 */
     func testPowerComplexArrayReal() {
-        let result: ComplexArray = complexArrayA ** realB
-        let expected: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
+        let result: ComplexDoubleArray = complexArrayA ** realB
+        let expected: ComplexDoubleArray = ([1.0, 1.0], [1.0, 1.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealComplexArray() {
-        let result: ComplexArray = realA ** complexArrayB
-        let expected: ComplexArray = ([1.0, 1.0], [0.0, 0.0])
+        let result: ComplexDoubleArray = realA ** complexArrayB
+        let expected: ComplexDoubleArray = ([1.0, 1.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerComplexArrayRealArray() {
-        let result: ComplexArray = complexArrayA ** realArrayB
-        let expected: ComplexArray = ([1.0, 0.0], [1.0, 2.0])
+        let result: ComplexDoubleArray = complexArrayA ** realArrayB
+        let expected: ComplexDoubleArray = ([1.0, 0.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayComplexArray() {
-        let result: ComplexArray = realArrayA ** complexArrayB
-        let expected: ComplexArray = ([1.0, 1.538477802728], [0.0, 1.277922552627])
+        let result: ComplexDoubleArray = realArrayA ** complexArrayB
+        let expected: ComplexDoubleArray = ([1.0, 1.538477802728], [0.0, 1.277922552627])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 /*
     func testPowerComplexArrayComplex() {
-        let result: ComplexArray = complexArrayA ** complexB
-        let expected: ComplexArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+        let result: ComplexDoubleArray = complexArrayA ** complexB
+        let expected: ComplexDoubleArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerComplexComplexArray() {
-        let result: ComplexArray = complexA ** complexArrayB
-        let expected: ComplexArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+        let result: ComplexDoubleArray = complexA ** complexArrayB
+        let expected: ComplexDoubleArray = ([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
  */

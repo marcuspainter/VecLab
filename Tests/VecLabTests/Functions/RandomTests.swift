@@ -11,24 +11,24 @@ import VecLab
 class RandomTests: XCTestCase {
 
     func testRand() throws {
-        let realA: Real = rand()
+        let realA: RealDouble = rand()
         XCTAssert(realA >= -1.0 && realA <= 1.0, "rand failed")
     }
 
     // TODO: Some test
     func testRandn() throws {
-        let _ : Real = randn()
+        let _ : RealDouble = randn()
         XCTAssert(true)
     }
 
     func testRandCount() throws {
-        let realArrayA: [Real] = rand(count: 10)
+        let realArrayA: [RealDouble] = rand(count: 10)
         XCTAssert(realArrayA.count == 10, "rand failed")
         //print(realArrayA)
     }
 
     func testRandnCount() throws {
-        let realArrayA: [Real] = randn(count: 10)
+        let realArrayA: [RealDouble] = randn(count: 10)
         XCTAssert(realArrayA.count == 10, "randn failed")
         //print(realArrayA)
     }

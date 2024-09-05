@@ -26,18 +26,18 @@ class InterpolationTests: XCTestCase {
     // MARK: interpft
  /*
     func testInterpftRealArray() throws {
-        let realArrayA: RealArray =  [1.0, -1.0, 1.0, -1.0]
-        let result: RealArray = interpft(realArrayA, 8)
-        let expected: RealArray = [1.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.0, 0.0]
+        let realArrayA: RealDoubleArray =  [1.0, -1.0, 1.0, -1.0]
+        let result: RealDoubleArray = interpft(realArrayA, 8)
+        let expected: RealDoubleArray = [1.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.0, 0.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "interpft failed")
     }
 */
     // MARK: sincresample
 /*
     func testSincresampleRealArray() throws {
-        let realArrayA: RealArray = [-2.1, -2.0, -1.9, -1.5, -1.0, 0.0, 1.0, 1.5, 1.9, 2.0, 2.1]
-        let result: RealArray = interp1(realArrayA)
-        let expected: RealArray = [-2.0, -2.0, -1.0, -1.0, -1.0, 0.0, 1.0, 2.0, 2.0, 2.0, 3.0]
+        let realArrayA: RealDoubleArray = [-2.1, -2.0, -1.9, -1.5, -1.0, 0.0, 1.0, 1.5, 1.9, 2.0, 2.1]
+        let result: RealDoubleArray = interp1(realArrayA)
+        let expected: RealDoubleArray = [-2.0, -2.0, -1.0, -1.0, -1.0, 0.0, 1.0, 2.0, 2.0, 2.0, 3.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "sincresample failed")
     }
   */

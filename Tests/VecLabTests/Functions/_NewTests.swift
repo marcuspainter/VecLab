@@ -15,23 +15,23 @@ class NewTests: XCTestCase {
     let accuracy = 1e-6
     
     func testFillRealArray() throws {
-        let c: RealArray = [1 ,2, 3, 4, 5]
-        let a: Real = 999.0
+        let c: RealDoubleArray = [1 ,2, 3, 4, 5]
+        let a: RealDouble = 999.0
         fill(c, a)
-        let expected: RealArray = [999, 999, 999, 999, 999]
+        let expected: RealDoubleArray = [999, 999, 999, 999, 999]
         XCTAssertEqual(c, expected, "fill failed")
     }
     
     func testFillComplexDArray() throws {
-        let c: ComplexArray = ([1 ,2, 3, 4, 5], [1, 2, 3, 4, 5])
-        let a: Complex = (999.0, 777.0)
+        let c: ComplexDoubleArray = ([1 ,2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let a: ComplexDouble = (999.0, 777.0)
         fill(c, a)
-        let expected: ComplexArray = ([999, 999, 999, 999, 999], [777, 777, 777, 777, 777])
+        let expected: ComplexDoubleArray = ([999, 999, 999, 999, 999], [777, 777, 777, 777, 777])
         XCTAssertEqual(c, expected, "fill failed")
     }
   /*
     func testXcorrRealArray() throws {
-        let a: RealArray = [1 ,2, 3, 4]
+        let a: RealDoubleArray = [1 ,2, 3, 4]
         let result = xcorr(a)
         let expected = [4.0, 11.0, 20.0, 30.0, 20.0, 11.0, 4.0]
    
@@ -39,8 +39,8 @@ class NewTests: XCTestCase {
     }
     
     func testXcorrRealArrayRealArray() throws {
-        let a: RealArray = [1 ,2, 3, 4]
-        let b: RealArray = [5 ,6, 7, 8]
+        let a: RealDoubleArray = [1 ,2, 3, 4]
+        let b: RealDoubleArray = [5 ,6, 7, 8]
         var result = xcorr(a, b)
         let expected = [8.0, 23.0, 44.0, 70.0, 56.0, 39.0, 20.0]
         
@@ -60,8 +60,8 @@ class NewTests: XCTestCase {
     }
     
     func testXcorrRealArrayRealArray2() throws {
-        let a: RealArray = [1, 2, 3,  4,  5,  6]
-        let b: RealArray = [7, 8, 9, 10, 11, 12]
+        let a: RealDoubleArray = [1, 2, 3,  4,  5,  6]
+        let b: RealDoubleArray = [7, 8, 9, 10, 11, 12]
         var result = xcorr(a, b)
 
         disp(result)
@@ -82,8 +82,8 @@ class NewTests: XCTestCase {
     }
 */
     func testConvRealArrayRealArray() throws {
-        let a: RealArray = [1.0, 0.0, 1.0]
-        let b: RealArray = [2.0, 7.0]
+        let a: RealDoubleArray = [1.0, 0.0, 1.0]
+        let b: RealDoubleArray = [2.0, 7.0]
         let result = conv(a, b)
         let expected = [2.0, 7.0, 2.0, 7.0]
         
@@ -91,15 +91,15 @@ class NewTests: XCTestCase {
     }
     
     func testConv() throws {
-        let a: RealArray = [1.0, 0.0, 1.0]
-        let b: RealArray = [2.0, 7.0]
+        let a: RealDoubleArray = [1.0, 0.0, 1.0]
+        let b: RealDoubleArray = [2.0, 7.0]
         let c = vDSP.convolve(a, withKernel: b)
         print(c)
     }
     
     func testConvSimple() throws {
-        let a: RealArray = [1.0, 0.0, 1.0]
-        let b: RealArray = [2.0, 7.0]
+        let a: RealDoubleArray = [1.0, 0.0, 1.0]
+        let b: RealDoubleArray = [2.0, 7.0]
         let result = convSimple(a, b)
         
         disp(result)
@@ -109,8 +109,8 @@ class NewTests: XCTestCase {
     }
     
     func testXcorrSimple() throws {
-        let a: RealArray = [1 ,2, 3, 4]
-        let b: RealArray = [5 ,6, 7, 8]
+        let a: RealDoubleArray = [1 ,2, 3, 4]
+        let b: RealDoubleArray = [5 ,6, 7, 8]
         let result = xcorrSimple(a, b)
         let expected = [8.0, 23.0, 44.0, 70.0, 56.0, 39.0, 20.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorrSimple failed")
