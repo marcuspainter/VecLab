@@ -131,7 +131,7 @@ public func - (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction
 public func - (a: Real, b: ComplexArray) -> ComplexArray {
-    return (a - b.0, b.1)
+    return (a - b.0, -b.1)
 }
 
 /// Subtraction.
