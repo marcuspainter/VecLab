@@ -20,4 +20,3 @@ public func zeros(_ count: Int) -> RealArray {
 public func zeros(_ count: Real) -> RealArray {
     return RealArray(repeating: 0, count: Int(count))
 }
-

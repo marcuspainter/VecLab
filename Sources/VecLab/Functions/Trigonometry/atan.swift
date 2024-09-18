@@ -14,6 +14,5 @@ import Accelerate
 /// - Parameter x:Tangent of angle.
 /// - Returns: Inverse tangent of x in the interval  [-π/2, π/2].
 public func atan(_ x: RealArray) -> RealArray {
-    // return x.map { atan($0) }
     return vForce.atan(x)
 }

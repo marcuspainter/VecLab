@@ -19,7 +19,7 @@ public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
     let a0 = a[0]
     let a1 = a[1]
     let a2 = a[2]
-    
+
     let N = 512
     let w = vector(0 ... N-1) * (.pi / Real(N))
 
@@ -44,7 +44,7 @@ public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
     let num = (num_re, num_im)
     let den = (den_re, den_im)
     let H = num / den
-    
+
     return H
 }
 

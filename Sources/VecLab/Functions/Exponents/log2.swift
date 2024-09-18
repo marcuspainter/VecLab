@@ -14,7 +14,6 @@ import Accelerate
 /// - Parameter a: Real number.
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: RealArray) -> RealArray {
-    // return x.map { log2($0) }
     return vForce.log2(x)
 }
 

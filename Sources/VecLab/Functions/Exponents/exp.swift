@@ -14,7 +14,6 @@ import Accelerate
 /// - Parameter x: Real array.
 /// - Returns: The exponential of `x`.
 public func exp(_ x: RealArray) -> RealArray {
-    // return x.map { log($0) }
     return vForce.exp(x)
 }
 

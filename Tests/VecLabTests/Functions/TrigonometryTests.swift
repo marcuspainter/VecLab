@@ -21,7 +21,21 @@ class TrigonometryTests: XCTestCase {
         let expected: RealArray = [0.0, 0.5, 1.0, 1.5]
         XCTAssertEqual(result, expected, accuracy: accuracy, "acos failed")
     }
-
+    
+    func testAcosComplex() throws {
+        let complexX: Complex = (2.0, 2.0)
+        let result: Complex = acos(complexX)
+        let expected: Complex = (0.816547182096851, -1.734324521487967)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "acos failed")
+    }
+    
+    func testAcosComplexArray() throws {
+        let complexArrayX: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        let result: ComplexArray = acos(complexArrayX)
+        let expected: ComplexArray = ([0.904556894302381, 0.816547182096851], [-1.061275061905036, -1.734324521487967])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "acos failed")
+    }
+    
     // MARK: asin
 
     func testAsinRealArray() throws {
@@ -29,6 +43,32 @@ class TrigonometryTests: XCTestCase {
         let result: RealArray = asin(realArrayX)
         let expected: RealArray = [0.0, 0.5, 1.0, 1.5]
         XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
+    }
+    
+    func testAsinComplex() throws {
+        let complexX: Complex = (2.0, 2.0)
+        let result: Complex = asin(complexX)
+        let expected: Complex = (754.249144698046e-003, 1.73432452148797e+000)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
+    }
+    
+    func testAsinComplexArray() throws {
+        let complexArrayX: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        let result: ComplexArray = asin(complexArrayX)
+        let expected: ComplexArray = ([666.239432492515e-003, 754.249144698046e-003], [1.06127506190504e+000, 1.73432452148797e+000])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
+        
+/*
+        let x = complexArrayX
+        let z = -Real.i * log(Real.i * x + sqrt(1.0 - x * x))
+        disp(z)
+        let t1 = x * x
+        disp("---")
+        disp(t1)
+        let t2 = 1.0 - t1
+        disp("---")
+        disp(t2)
+ */
     }
 
     // MARK: atan

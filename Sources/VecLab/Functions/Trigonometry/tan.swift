@@ -14,7 +14,6 @@ import Foundation
 /// - Parameter x: Angle in radians.
 /// - Returns: The tangent of the angles.
 public func tan(_ x: RealArray) -> RealArray {
-    // return x.map { tan($0) }
     return vForce.tan(x)
 }
 

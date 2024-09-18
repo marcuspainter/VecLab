@@ -28,7 +28,7 @@ public func fft(_ x: ComplexArray) -> ComplexArray {
 
 @available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
 public func fft(_ x: RealArray) -> ComplexArray {
-    return ([],[])
+    return ([], [])
 }
 
 /*

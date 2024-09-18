@@ -21,6 +21,5 @@ public func angle(_ x: Complex) -> Real {
 /// - Parameter x:Complex array.
 /// - Returns: The phase angles in radians.
 public func angle(_ x: ComplexArray) -> RealArray {
-    // return zip(x.0, x.1).map { atan2($1, $0) }
     return vectorAngleComplexArray(x)
 }

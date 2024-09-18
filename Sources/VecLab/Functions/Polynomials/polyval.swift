@@ -28,7 +28,6 @@ public func polyval(_ p: RealArray, _ x: Real) -> Real {
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
-    // return x.map { polyval(p, $0)}
     return vDSP.evaluatePolynomial(usingCoefficients: p,
                                    withVariables: x)
 }

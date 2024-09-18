@@ -77,7 +77,7 @@ class SubtractTests: XCTestCase {
         let a: Real = 2.0
         let b: ComplexArray = ([1.0, 2.0], [2.0, 3.0])
         let result = a - b
-        XCTAssertEqual(result, ([1.0, 0.0], [2.0, 3.0]), "Real and complex array subtraction failed")
+        XCTAssertEqual(result, ([1.0, 0.0], [-2.0, -3.0]), "Real and complex array subtraction failed")
     }
 
     func testSubtractComplexRealArray() {
