@@ -79,6 +79,20 @@ class TrigonometryTests: XCTestCase {
         let expected: RealArray =  [0.0, 0.5, 1.0, 1.5]
         XCTAssertEqual(result, expected, accuracy: accuracy, "atan failed")
     }
+    
+    func testAtansComplex() throws {
+        let complexX: Complex = (2.0, 2.0)
+        let result: Complex = atan(complexX)
+        let expected: Complex = (1.311223269671635, 0.238877861256859)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "atan failed")
+    }
+    
+    func testAtanComplexArray() throws {
+        let complexArrayX: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+        let result: ComplexArray = atan(complexArrayX)
+        let expected: ComplexArray = ([1.017221967897851, 1.311223269671635], [0.402359478108525, 0.238877861256859])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "atan failed")
+    }
 
     // MARK: atan2
 
