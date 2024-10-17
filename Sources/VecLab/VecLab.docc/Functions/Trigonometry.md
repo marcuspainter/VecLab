@@ -13,7 +13,13 @@ Sine, cosine, tangent and related functions.
 - ``tan(_:)-4ktgp``
 - ``tan(_:)-5oqep``
 - ``tan(_:)-1hvzv``
-- ``acos(_:)``
-- ``asin(_:)``
-- ``atan(_:)``
+- ``acos(_:)-81spn``
+- ``acos(_:)-3loic``
+- ``acos(_:)-7m283``
+- ``asin(_:)-293wz``
+- ``asin(_:)-7osu8``
+- ``asin(_:)-42sbe``
+- ``atan(_:)-8gt3w``
+- ``atan(_:)-trgh``
+- ``atan(_:)-7kxce``
 - ``atan2(_:_:)``
