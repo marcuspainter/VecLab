@@ -16,6 +16,7 @@ import Foundation
 /// - Parameters:
 ///   - x: Input data array.
 ///   - k: Half-width of the window (number of elements on each side of the center element).
+///   - padding: Padding.
 /// - Returns: Filtered data array.
 public func medfilt1(_ x: RealArray, k: Int = 3, padding: String = "zeropad") -> RealArray {
     switch padding {

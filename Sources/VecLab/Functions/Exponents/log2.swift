@@ -11,7 +11,7 @@ import Accelerate
 // NOT VECTORIZED
 
 /// Base 2 logarithm of a real array.
-/// - Parameter a: Real number.
+/// - Parameter x: Real number.
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: RealArray) -> RealArray {
     return vForce.log2(x)
@@ -28,7 +28,7 @@ public func log2(_ a: Complex) -> Complex {
 
 /// Base 2 logarithm of a complex array.
 /// - Returns: The base 2 logarithm of `x`.
-/// - Parameter a: Complex array.
+/// - Parameter x: Complex array.
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: ComplexArray) -> ComplexArray {
     var r = RealArray(repeating: 0, count: x.0.count)

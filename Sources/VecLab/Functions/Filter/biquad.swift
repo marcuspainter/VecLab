@@ -35,7 +35,7 @@ public enum BiquadType {
 ///   - fs: Sample rate (Hz).
 ///   - Q: Quality factor.
 ///   - dbGain: Gain (dB).
-///   - type: Filter type.
+///   - ftype: Filter type.
 /// - Returns: (b, a) coefficients as a tuple.
 public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) -> (b: [Real], a: [Real]) {
     // Fs = 48000
