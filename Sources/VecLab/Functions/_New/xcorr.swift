@@ -53,6 +53,7 @@ public func xcorr(_ x: RealArray) -> RealArray {
 /// The result is of length 2N-1.
 /// - Parameters:
 ///   - x: Array.
+///   - y: Array.
 /// - Returns: The cross correlation result.
 public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     let n = x.count
