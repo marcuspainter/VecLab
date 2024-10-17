@@ -25,7 +25,7 @@ let package = Package(
         .target(
             name: "VecLab",
             dependencies: [],
-            resources: [.copy("PrivacyInfo.xcprivacy")],
+            resources: [.process("Resources")],
             cSettings: [
               .define("ACCELERATE_NEW_LAPACK"),
               .define("ACCELERATE_LAPACK_ILP64") // optional
