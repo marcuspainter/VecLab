@@ -21,7 +21,8 @@ public func cart2pol(_ x: Real, _ y: Real) -> (theta: Real, rho: Real) {
 /// Converts Cartesian coordinates to polar or cylindrical.
 /// - Parameters:
 ///   - x: The x-coordinate.
-///   - y: The y-coordinate.
+///   - y: The y-coordinate
+///   - z: The z-coordinate
 /// - Returns: A tuple containing the arrays angle theta in radians and the radial distance rho from the origin.
 public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: RealArray, rho: RealArray) {
     let n = x.count

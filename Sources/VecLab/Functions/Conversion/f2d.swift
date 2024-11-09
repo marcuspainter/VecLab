@@ -9,7 +9,7 @@ import Accelerate
 import Foundation
 
 /// Converts a single-precision vector to a double-precision vector.
-/// - Parameter d: The input vector.
+/// - Parameter f: The input vector.
 /// - Returns: The output vector.
 public func f2d(_ f: [Float]) -> [Double] {
     var d = [Double](repeating: 0, count: f.count)
@@ -18,7 +18,7 @@ public func f2d(_ f: [Float]) -> [Double] {
 }
 
 /// Converts a single-precision complex vector to a double-precision complex vector.
-/// - Parameter d: The input vector.
+/// - Parameter f: The input vector.
 /// - Returns: The output vector.
 public func f2d(_ f: ([Float], [Float])) -> ([Double], [Double]) {
     let n = f.0.count
