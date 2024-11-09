@@ -9,43 +9,67 @@ import Foundation
 import Accelerate
 
 func vectorPowReal(_ a: [Double], _ b: [Double]) -> [Double] {
-    var c = vForce.log(a)
-    // Vector-vector multiply
-    c = vDSP.multiply(c, b)
-    return vForce.exp(c)
+    var c = a
+     c.withUnsafeMutableBufferPointer { cPtr in
+         a.withUnsafeBufferPointer { aPtr in
+             vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
+         }
+     }
+     return c
 }
 
 func vectorPowReal(_ a: [Float], _ b: [Float]) -> [Float] {
-    var c = vForce.log(a)
-    // Vector-vector multiply
-    c = vDSP.multiply(c, b)
-    return vForce.exp(c)
+    var c = a
+     c.withUnsafeMutableBufferPointer { cPtr in
+         a.withUnsafeBufferPointer { aPtr in
+             vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
+         }
+     }
+     return c
 }
 
 func vectorPowReal(_ a: [Double], _ b: Double) -> [Double] {
-    var c = vForce.log(a)
-    // Scalar-vector multiply
-    c = vDSP.multiply(b, c)
-    return vForce.exp(c)
+    var c = a
+    var bb = [Double](repeating: b, count: a.count)
+     c.withUnsafeMutableBufferPointer { cPtr in
+         a.withUnsafeBufferPointer { aPtr in
+             vForce.pow(bases: aPtr, exponents: bb, result: &cPtr)
+         }
+     }
+     return c
 }
 
 func vectorPowReal(_ a: [Float], _ b: Float) -> [Float] {
-    var c = vForce.log(a)
-    // Scalar-vector multiply
-    c = vDSP.multiply(b, c)
-    return vForce.exp(c)
+    var c = a
+    var bb = [Float](repeating: b, count: a.count)
+     c.withUnsafeMutableBufferPointer { cPtr in
+         a.withUnsafeBufferPointer { aPtr in
+             vForce.pow(bases: aPtr, exponents: bb, result: &cPtr)
+         }
+     }
+    return c
 }
 
 func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
-    let c = Darwin.log(a)
-    // Scalar-vector multiply
-    let d = vDSP.multiply(c, b)
-    return vForce.exp(d)
+    var c = b
+    var aa = [Double](repeating: a, count: b.count)
+    c.withUnsafeMutableBufferPointer { cPtr in
+        aa.withUnsafeBufferPointer { aPtr in
+            vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
+        }
+    }
+    
+    return c
 }
 
 func vectorPowReal(_ a: Float, _ b: [Float]) -> [Float] {
-    let c = Darwin.log(a)
-    // Scalar-vector multiply
-    let d = vDSP.multiply(c, b)
-    return vForce.exp(d)
+    var c = b
+    var aa = [Float](repeating: a, count: b.count)
+    c.withUnsafeMutableBufferPointer { cPtr in
+        aa.withUnsafeBufferPointer { aPtr in
+            vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
+        }
+    }
+    
+    return c
 }
