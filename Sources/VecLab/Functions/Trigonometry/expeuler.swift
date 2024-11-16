@@ -10,7 +10,7 @@ import Accelerate
 /// Returns a complex array from angles by Euler
 /// - Parameter x: Angles in radians
 /// - Returns: Complex array of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
-public func exp2(x: RealArray) -> ComplexArray {
+public func expeuler(_ x: RealArray) -> ComplexArray {
     var angles = x
     // Copy initialization
     var cosines = angles
@@ -24,6 +24,6 @@ public func exp2(x: RealArray) -> ComplexArray {
 /// Returns a complex number from angle by Euler
 /// - Parameter x: Angle in radians
 /// - Returns: Complex number of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
-public func exp2(x: Real) -> Complex {
+public func expeuler(_ x: Real) -> Complex {
     return (Darwin.cos(x), Darwin.sin(x))
 }
