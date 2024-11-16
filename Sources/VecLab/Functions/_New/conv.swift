@@ -16,7 +16,7 @@ import Foundation
 public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
 
     let N = length(x) + length(y) - 1
-    let fftN = nextpow2(N)
+    let fftN = Int(2 ** nextpow2(N))
     let xx = paddata(x, fftN)
     let yy = paddata(y, fftN)
 

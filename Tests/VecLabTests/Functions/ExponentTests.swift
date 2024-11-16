@@ -110,7 +110,7 @@ class ExponentTests: XCTestCase {
 
     func testNextpow2() throws {
         let result: Int = nextpow2(3000)
-        let expected: Int = 4096
+        let expected: Int = 12
         XCTAssertEqual(result, expected, "nextpow2 failed")
     }
 
