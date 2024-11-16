@@ -18,7 +18,7 @@ import Foundation
 public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     let N = length(x) + length(y) - 1
     // let M = max(x.count, y.count)
-    let M = nextpow2(N)
+    let M = Int(2 ** nextpow2(N))
 
     let xx = paddata(x, M)
     let yy = paddata(y, M)
