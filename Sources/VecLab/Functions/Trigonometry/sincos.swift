@@ -11,7 +11,7 @@ import Accelerate
 /// Sine and  cosine of array in radians.
 /// - Parameter x: Angles in radians.
 /// - Returns: sin(x) and cos(x) as array tuple
-public func sincos(x: RealArray) -> (RealArray, RealArray) {
+public func sincos(_ x: RealArray) -> (RealArray, RealArray) {
     var angles = x
     // Copy initialization
     var cosines = angles
@@ -21,6 +21,6 @@ public func sincos(x: RealArray) -> (RealArray, RealArray) {
     return (sines, cosines)
 }
 
-public func sincos(x: Real) -> Complex {
+public func sincos(_ x: Real) -> Complex {
     return (Darwin.sin(x), Darwin.cos(x))
 }
