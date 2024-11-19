@@ -12,7 +12,7 @@
 ///   - factor: Downsampling factor.
 ///   - phase: Starting offset. Default = 0.
 /// - Returns: Real array of the first (or phase) sample and then every nth samples.
-public func downsample(_ input: [Double], factor: Int, phase: Int = 0) -> [Double] {
+public func downsample(_ input: [Double], _ factor: Int, _ phase: Int = 0) -> [Double] {
     guard factor > 0 else { return input }
     let adjustedPhase = phase % factor // Ensure phase is within 0..(factor-1)
     let outputSize = (input.count - adjustedPhase + factor - 1) / factor // ceil((input.count - phase) / factor)
