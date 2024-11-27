@@ -21,7 +21,7 @@ import Foundation
 /// ```
 
 /// Type alias for `Double` or `Float`
-public typealias Real = Float
+public typealias Real = Double
 
 /// Type alias for an array of real numbers
 public typealias RealArray = [Real]
