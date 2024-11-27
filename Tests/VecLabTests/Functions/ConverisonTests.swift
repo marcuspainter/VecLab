@@ -159,4 +159,24 @@ class ConversionTests: XCTestCase {
         XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "rad2deg failed")
         XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "rad2deg failed")
     }
+    
+    func testFreq2bin() throws {
+        let f: Real = 100.0
+        let N: Int = 1024
+        let fs: Real = 48000.0
+
+        let result: Int = freq2bin(f: f, N: N, fs: fs)
+        let expected: Real = 2.0
+        XCTAssertEqual(Real(result), expected, accuracy: accuracy, "freq2bin failed")
+    }
+    
+    func testBin2freq() throws {
+        let bin: Int = 2
+        let N: Int = 1024
+        let fs: Real = 48000.0
+
+        let result: Real = bin2freq(bin: bin, N: N, fs: fs)
+        let expected: Real = 93.75
+        XCTAssertEqual(result, expected, accuracy: accuracy, "bin2freq failed")
+    }
 }
