@@ -49,7 +49,6 @@ func XCTAssertEqual(_ expression1: [Double], _ expression2: [Double], accuracy: 
         XCTFail("Size mismatch: \(expression1.count) is not equal to \(expression2.count). \(message())", file: file, line: line)
     }
 
-    
     for (index, (value1, value2)) in zip(expression1, expression2).enumerated() {
         if abs(value1 - value2) > accuracy {
             XCTFail("Element \(index) mismatch: \(value1) is not equal to \(value2). \(message())", file: file, line: line)

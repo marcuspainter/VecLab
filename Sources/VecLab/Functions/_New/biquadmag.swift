@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  biquadmag.swift
 //  
 //
 //  Created by Marcus Painter on 28/08/2024.
@@ -50,7 +50,6 @@ public func biquadmag(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> RealArr
 // https://www.musicdsp.org/en/latest/Analysis/186-frequency-response-from-biquad-coefficients.html
 // http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
-
 
 public func biquadmag2(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> RealArray {
     let b0 = b[0]

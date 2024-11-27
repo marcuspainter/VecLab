@@ -25,3 +25,8 @@ Exponents, logarithms and square root.
 - ``sqrt(_:)-oqp6``
 - ``sqrt(_:)-2vdwv``
 - ``sqrt(_:)-8a9gf``
+
+### Complex Euler
+
+- ``expeuler(_:)-vbtc``
+- ``expeuler(_:)-xcv``

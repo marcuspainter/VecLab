@@ -165,7 +165,6 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) 
 
     return (b, a)
 }
-
 // https://www.musicdsp.org/en/latest/_downloads/2a80aec3df7303b2245e13650e70457b/biquad.c
 // https://github.com/libaudioverse/libaudioverse/blob/master/audio%20eq%20cookbook.txt
 

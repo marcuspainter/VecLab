@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Marcus Painter on 29/08/2024.
 //
@@ -14,41 +14,27 @@ import Foundation
 ///   - y: Real array
 /// - Returns: The result of the convolution.
 public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
-
     let N = length(x) + length(y) - 1
-    let fftN = nextpow2(N)
-    let xx = paddata(x, fftN)
-    let yy = paddata(y, fftN)
+    let M = Int(2 ** nextpow2(N))
 
-    let A = fftr(xx)
-    let B = fftr(yy)
+    // Zero pad both signals to length M
+    let xx = paddata(x, M)
+    let yy = paddata(y, M)
 
-    let C = A * B
+    // Perform FFT on both signals
+    let X = fftr(xx)
+    let Y = fftr(yy)
 
-    var z = ifftr(C)
-    z = slice(z, 0 ..< N)
-    return z
-}
+    // Multiply in frequency domain
+    // Note: For convolution, we don't take the conjugate like in xcorr
+    let Z = X * Y
 
-/// Convolution.
-/// - Parameters:
-///   - x: Complex array.
-///   - y: Complex array
-/// - Returns: The result of the convolution.
-public func conv(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+    // Perform inverse FFT
+    var z = ifftr(Z)
 
-    let N = length(x) + length(y) - 1
-    let fftN = nextpow2(N)
-    let xx = paddata(x, fftN)
-    let yy = paddata(y, fftN)
+    // Take only the first N points (valid convolution length)
+    z = Array(z[0 ..< N])
 
-    let A = fft(xx)
-    let B = fft(yy)
-
-    let C = A * B
-
-    var z = ifft(C)
-    z = slice(z, 0 ..< N)
     return z
 }
 
@@ -60,11 +46,30 @@ public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     var result = [Real](repeating: 0.0, count: resultSize)
 
     // Brute-force convolution
-    for i in 0..<n {
-        for j in 0..<m {
+    for i in 0 ..< n {
+        for j in 0 ..< m {
             result[i + j] += x[i] * y[j]
         }
     }
 
     return result
 }
+
+// signal = [1, 2, 3, 4, 5, 6, 7, 8]
+// filter = [10, 20, 30]
+// correlationResult = [140.0, 200.0, 260.0, 320.0, 380.0, 440.0]
+// convolutionResult = [100.0, 160.0, 220.0, 280.0, 340.0, 400.0].
+
+/*
+
+ >> conv(x,x)
+
+ ans =
+
+      1     4    10    20    35    56    84   120   147   164   170   164   145   112    64
+
+  ans =
+
+      10    40   100   160   220   280   340   400   370   240
+
+ */

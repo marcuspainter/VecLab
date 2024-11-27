@@ -17,5 +17,5 @@ public func nextpow2(_ n: Int) -> Int {
     guard n > 0 else {
         return 0
     }
-    return Int(pow(2, ceil(log2(Double(n)))))
+    return Int(ceil(log2(Double(n))))
 }
