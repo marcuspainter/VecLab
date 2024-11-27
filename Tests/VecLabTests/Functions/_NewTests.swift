@@ -76,12 +76,13 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
 
+    /*
     func testConv() throws {
         let a: RealArray = [1.0, 0.0, 1.0]
         let b: RealArray = [2.0, 7.0]
         let c: RealArray = vDSP.convolve(a, withKernel: b)
     }
-
+*/
     func testConvSimple() throws {
         let a: RealArray = [1.0, 0.0, 1.0]
         let b: RealArray = [2.0, 7.0]
