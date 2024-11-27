@@ -13,8 +13,8 @@ import Accelerate
 public func expeuler(_ x: RealArray) -> ComplexArray {
     var angles = x
     // Copy initialization
-    var cosines = angles
-    var sines = angles
+    var cosines = RealArray(repeating: 0.0, count: x.count)
+    var sines = cosines
     var n = Int32(x.count)
     vvsincos(&sines, &cosines, &angles, &n)
 
