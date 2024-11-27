@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Marcus Painter on 29/08/2024.
 //
@@ -46,8 +46,8 @@ public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     var result = [Real](repeating: 0.0, count: resultSize)
 
     // Brute-force convolution
-    for i in 0..<n {
-        for j in 0..<m {
+    for i in 0 ..< n {
+        for j in 0 ..< m {
             result[i + j] += x[i] * y[j]
         }
     }
