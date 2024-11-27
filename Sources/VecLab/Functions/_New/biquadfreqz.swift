@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  biquadfreqz.swift
 //
 //
 //  Created by Marcus Painter on 27/08/2024.
@@ -12,7 +12,7 @@ import Foundation
 ///   - b: b coefficients.
 ///   - a: a coefficients.
 /// - Returns: Complex transfer function.
-public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
+public func biquadfreqz(_ b: RealArray, _ a: RealArray, _ n: Int = 512) -> ComplexArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
@@ -20,7 +20,7 @@ public func biquadfreqz(_ b: RealArray, _ a: RealArray) -> ComplexArray {
     let a1 = a[1]
     let a2 = a[2]
 
-    let N = 512
+    let N = n
     let w = vector(0 ... N-1) * (.pi / Real(N))
 
     // Compute trigonometric terms
