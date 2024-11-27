@@ -11,14 +11,7 @@ import Accelerate
 /// - Parameter x: Angles in radians
 /// - Returns: Complex array of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
 public func expeuler(_ x: RealArray) -> ComplexArray {
-    var angles = x
-    // Copy initialization
-    var cosines = RealArray(repeating: 0.0, count: x.count)
-    var sines = cosines
-    var n = Int32(x.count)
-    vvsincos(&sines, &cosines, &angles, &n)
-
-    return (cosines, sines)
+    return expeulerArray(x)
 }
 
 /// Returns a complex number from angle by Euler
@@ -26,4 +19,26 @@ public func expeuler(_ x: RealArray) -> ComplexArray {
 /// - Returns: Complex number of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
 public func expeuler(_ x: Real) -> Complex {
     return (Darwin.cos(x), Darwin.sin(x))
+}
+
+private func expeulerArray(_ x: [Double]) -> ([Double], [Double]) {
+    var angles = x
+    // Copy initialization
+    var cosines = angles
+    var sines = angles
+    var n = Int32(x.count)
+    vvsincos(&sines, &cosines, &angles, &n)
+
+    return (cosines, sines)
+}
+
+private func expeulerArray(_ x: [Float]) -> ([Float], [Float]) {
+    var angles = x
+    // Copy initialization
+    var cosines = angles
+    var sines = angles
+    var n = Int32(x.count)
+    vvsincosf(&sines, &cosines, &angles, &n)
+
+    return (cosines, sines)
 }

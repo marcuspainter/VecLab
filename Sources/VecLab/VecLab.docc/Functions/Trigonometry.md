@@ -23,3 +23,5 @@ Sine, cosine, tangent and related functions.
 - ``atan(_:)-trgh``
 - ``atan(_:)-7kxce``
 - ``atan2(_:_:)``
+- ``sincos(_:)-72gl1``
+- ``sincos(_:)-9l7cp``
