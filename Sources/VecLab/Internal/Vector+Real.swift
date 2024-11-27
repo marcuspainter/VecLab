@@ -58,7 +58,7 @@ func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
             vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
         }
     }
-    
+
     return c
 }
 
@@ -70,6 +70,6 @@ func vectorPowReal(_ a: Float, _ b: [Float]) -> [Float] {
             vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
         }
     }
-    
+
     return c
 }

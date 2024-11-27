@@ -52,18 +52,18 @@ public func arange(_ start: Int, _ stop: Int, _ step: Int = 1) -> [Int] {
     guard step != 0 else {
         fatalError("Step cannot be zero.")
     }
-    
+
     // Calculate the number of elements
     let length = max(0, (stop - start + (step > 0 ? step - 1 : step + 1)) / step)
-    
+
     var result = [Int](repeating: 0, count: length)
     var current = start
-    
+
     for i in 0..<length {
         result[i] = current
         current += step
     }
-    
+
     return result
 }
 
