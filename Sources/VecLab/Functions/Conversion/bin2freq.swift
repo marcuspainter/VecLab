@@ -17,5 +17,5 @@ public func bin2freq(bin: Int, N: Int, fs: Real = 48000.0) -> Real {
     // Ensure the bin index is within the valid range
     let clampedBin = max(0, min(bin, N - 1))
     // Calculate the frequency
-    return Real(clampedBin) * fs / Double(N)
+    return Real(clampedBin) * fs / Real(N)
 }
