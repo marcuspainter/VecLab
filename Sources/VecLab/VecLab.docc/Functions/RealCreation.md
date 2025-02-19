@@ -16,8 +16,10 @@ Vector Creation Functions
 - ``vector(_:_:)-1eu48``
 - ``vector(_:_:)-1eu48``
 
-- ``arange(_:)``
-- ``arange(_:_:)``
+- ``arange(_:)-7z09e``
+- ``arange(_:)-7z3xw``
+- ``arange(_:_:)-8l1k8``
+- ``arange(_:_:)-hrqg``
 - ``arange(_:_:_:)-39qok``
 - ``arange(_:_:_:)-3tu4v``
 
