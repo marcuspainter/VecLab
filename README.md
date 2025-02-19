@@ -207,7 +207,7 @@ Overloaded operators for scalar and vectors.
 |Modulo| ceil, fix, floor, mod, rem, round, trunc|
 |Optimization| fminbnd, fminsearch|
 |Power| pow|
-|Random| agwn, rand, randn, rng|
+|Random| awgn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|
 |Space| freqspace, linspace, logspace|
 |Special| besseli0, sinc|

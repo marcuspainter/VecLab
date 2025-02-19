@@ -13,9 +13,6 @@ New functions.
 - ``xcorr(_:)``
 - ``xcorr(_:_:)``
 - ``xcorrSimple(_:_:)``
-- ``conv(_:_:)-4zvm8``
-- ``conv(_:_:)-4n6ig``
-- ``convSimple(_:_:)``
 
 ### Resample
 

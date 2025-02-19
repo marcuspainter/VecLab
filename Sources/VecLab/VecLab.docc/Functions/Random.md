@@ -1,6 +1,6 @@
 # Random
 
-Random numbers and Gaussian white noise.
+Random numbers and white Gaussian noise.
 
 ## Topics
 
@@ -15,5 +15,5 @@ Random numbers and Gaussian white noise.
 
 ### Gaussian White Noise
 
-- ``agwn(_:_:)-64c9a``
-- ``agwn(_:_:)-9fps7``
+- ``awgn(_:_:)-5i6cj``
+- ``awgn(_:_:)-6g4l5``

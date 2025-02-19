@@ -18,7 +18,8 @@ Vector Creation Functions
 
 - ``arange(_:)``
 - ``arange(_:_:)``
-- ``arange(_:_:_:)``
+- ``arange(_:_:_:)-39qok``
+- ``arange(_:_:_:)-3tu4v``
 
 - ``zeros(_:)-4trad``
 - ``zeros(_:)-4tpop``
