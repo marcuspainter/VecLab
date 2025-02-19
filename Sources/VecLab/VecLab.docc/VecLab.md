@@ -200,7 +200,7 @@ Overloaded operators for scalar and vectors.
 |Modulo| ceil, fix, floor, mod, rem, round, trunc|
 |Optimization| fminbnd, fminsearch|
 |Power| pow|
-|Random| agwn, rand, randn, rng|
+|Random| awgn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|
 |Space| freqspace, linspace, logspace|
 |Special| besseli0, sinc|
@@ -208,6 +208,7 @@ Overloaded operators for scalar and vectors.
 |Timing| tic, toc, timeit|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
 |Window| blackman, blackmanharris, flattopwin, gausswin, hamming, hann, kaiser, tukeywin, rectwin|
+
 
 ## Topics
 

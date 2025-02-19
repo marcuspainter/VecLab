@@ -10,7 +10,7 @@ import Accelerate
 
 /// Interpolate using FFT. method  (Alternative)
 /// - Parameters:
-///   - X: Input array.
+///   - xx: Input array.
 ///   - n: Factor.
 /// - Returns: Output array.
 public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {

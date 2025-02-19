@@ -31,7 +31,7 @@ public func trapz(_ x: RealArray, _ y: RealArray) -> Real {
 /// Trapezoidal numerical integration.
 /// - Parameters:
 ///   - a: x-coordinates.
-///   - y: y-coordinates.
+///   - step: <#parameter description#>
 /// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
 public func trapz(_ a: [Double], step: Double) -> Double {
     var c: Double = 0.0
@@ -43,7 +43,7 @@ public func trapz(_ a: [Double], step: Double) -> Double {
 /// Trapezoidal numerical integration.
 /// - Parameters:
 ///   - a: x-coordinates.
-///   - y: y-coordinates.
+///   - step: <#parameter description#>
 /// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
 public func trapz(_ a: [Float], step: Float) -> Float {
     var c: Float = 0.0

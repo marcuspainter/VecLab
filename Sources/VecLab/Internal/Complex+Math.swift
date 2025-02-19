@@ -17,12 +17,8 @@ func complexMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     return (a * c - b * d, a * d + b * c)
 }
 
-func complexMultiply(_ a: Real, _ b: Real, _ c: Real, _ d: Real, _ r: inout Real, _ i: inout Real) {
-    r = a * c - b * d
-    i = a * d + b * c
-}
-
 // MARK: ConjugateMultiply
+
 
 func complexConjugateMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     let a = x.0
@@ -30,11 +26,6 @@ func complexConjugateMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Re
     let c = y.0
     let d = y.1
     return (a * c + b * d, a * d - b * c)
-}
-
-func complexConjugateMultiply(_ a: Real, _ b: Real, _ c: Real, _ d: Real, _ r: inout Real, _ i: inout Real) {
-    r = a * c + b * d
-    i = a * d - b * c
 }
 
 // MARK: Divide
@@ -64,20 +55,6 @@ func complexDivide(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
         f = (b * r - a) / den
     }
     return (e, f)
-}
-
-func complexDivide(_ a: Real, _ b: Real, _ c: Real, _ d: Real, _ e: inout Real, _ f: inout Real) {
-    if abs(d) <= abs(c) {
-        let r = d / c
-        let den = c + d * r
-        e = (a + b * r) / den
-        f = (b - a * r) / den
-    } else {
-        let r = c / d
-        let den = c * r + d
-        e = (a * r + b) / den
-        f = (b * r - a) / den
-    }
 }
 
 // MARK: Sqrt
@@ -111,24 +88,12 @@ func complexExp(_ x: (Real, Real)) -> (Real, Real) {
     return (r * Darwin.cos(angle), r * Darwin.sin(angle))
 }
 
-func complexExp(_ a: Real, _ b: Real, _ e: inout Real, _ f: inout Real) {
-    let r = Darwin.exp(a)
-    let angle = b
-    e = r * Darwin.cos(angle)
-    f = r * Darwin.sin(angle)
-}
-
 // MARK: Log
 
 func complexLog(_ x: (Real, Real)) -> (Real, Real) {
     let r = Darwin.log(complexAbs(x))
     let i = complexAngle(x)
     return (r, i)
-}
-
-func complexLog(_ a: Real, _ b: Real, _ r: inout Real, _ i: inout Real) {
-    r = Darwin.log(complexAbs(a, b))
-    i = complexAngle(a, b)
 }
 
 // MARK: Abs

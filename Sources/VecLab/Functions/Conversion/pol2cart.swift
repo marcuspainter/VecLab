@@ -40,8 +40,8 @@ public func pol2cart(_ theta: RealArray, _ rho: RealArray) -> (x: RealArray, y: 
 /// Converts 3D polar coordinates to Cartesian.
 /// - Parameters:
 ///   - theta: The azimuthal angle, in radians.
-///   - phi: The polar or zenith angle, in radians.
 ///   - rho: The distance from the origin.
+///   - z: Elevation coordinate.
 /// - Returns: A tuple containing the x, y, and z Cartesian coordinates.
 public func pol2cart(_ theta: Real, _ rho: Real, _ z: Real) -> (x: Real, y: Real, z: Real) {
     let x = rho * cos(theta)
@@ -52,8 +52,8 @@ public func pol2cart(_ theta: Real, _ rho: Real, _ z: Real) -> (x: Real, y: Real
 /// Converts 3D polar coordinates to Cartesian.
 /// - Parameters:
 ///   - theta: The azimuthal angle, in radians.
-///   - phi: The polar or zenith angle, in radians.
 ///   - rho: The distance from the origin.
+///   - z: Elevation coordinate.
 /// - Returns: A tuple containing arrays of  x, y, and z Cartesian coordinates.
 public func pol2cart(_ theta: RealArray, _ rho: RealArray, _ z: RealArray)
         -> (x: RealArray, y: RealArray, z: RealArray) {
