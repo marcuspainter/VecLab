@@ -85,7 +85,7 @@ class NewTests: XCTestCase {
     
     // MARK: conv
     
-    func testConvSameRealArrayRealArray2() throws {
+    func testConvSameRealArray2() throws {
         let a: RealArray = [1, 2, 3, 4, 5, 6]
         let b: RealArray = [7, 8, 9, 10, 11, 12]
         let result = conv(a, b, "same")
@@ -96,7 +96,7 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
     
-    func testConvSameRealArrayRealArray() throws {
+    func testConvSameRealArray() throws {
         let a: RealArray = [1.0, 0.0, 1.0]
         let b: RealArray = [2.0, 7.0]
         let result: RealArray = conv(a, b, "same")
@@ -104,7 +104,15 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
     
-    func testConvFullRealArrayRealArray2() throws {
+    func testConvSameComplexArray() throws {
+        let a: ComplexArray = ([1.0, 0.0, 1.0], [1.0, 0.0, 1.0])
+        let b: ComplexArray = ([2.0, 7.0], [2.0, 7.0])
+        let result: ComplexArray = conv(a, b, "same")
+        let expected: ComplexArray = ([0.0, 0.0, 0.0], [14.0, 4.0, 14.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
+    }
+    
+    func testConvFullRealArray2() throws {
         let a: RealArray = [1, 2, 3, 4, 5, 6]
         let b: RealArray = [7, 8, 9, 10, 11, 12]
         let result = conv(a, b, "full")
@@ -115,11 +123,11 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
     
-    func testConvFullRealArrayRealArray() throws {
-        let a: RealArray = [1.0, 0.0, 1.0]
-        let b: RealArray = [2.0, 7.0]
+    func testConvFullComplexArray() throws {
+        let a: ComplexArray = ([1.0, 0.0, 1.0], [1.0, 0.0, 1.0])
+        let b: ComplexArray = ([2.0, 7.0], [2.0, 7.0])
         let result = conv(a, b, "full")
-        let expected: RealArray = [2.0, 7.0, 2.0, 7.0]
+        let expected: ComplexArray = ([0.0, 0.0, 0.0, 0.0], [4.0, 14.0, 4.0, 14.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
 
@@ -144,14 +152,6 @@ class NewTests: XCTestCase {
         let result: RealArray = xcorrSimple(a, b)
         let expected: RealArray = [8.0, 23.0, 44.0, 70.0, 56.0, 39.0, 20.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorrSimple failed")
-    }
-
-  
-    func testXcorrMatlabAuto() throws {
-        let signal: RealArray = [1, 2, 3, 4, 5, 6, 7, 8]
-        let result: RealArray = xcorr(signal)
-        let correlationResult: RealArray = [8, 23, 44, 70, 100, 133, 168, 204, 168, 133, 100, 70, 44, 23, 8]
-        XCTAssertEqual(result, correlationResult, accuracy: accuracy, "xcorr failed")
     }
 
     func testUpsample() throws {

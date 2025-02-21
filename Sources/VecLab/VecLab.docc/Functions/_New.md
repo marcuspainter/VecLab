@@ -11,12 +11,19 @@ New functions.
 - ``fill(_:_:)-81ija``
 - ``fill(_:_:)-2cft``
 
-### Convolution and Correlation
 
-- ``xcorr(_:)``
-- ``xcorr(_:_:)``
+### Cross-correlation
+
+- ``xcorr(_:)-93vrh``
+- ``xcorr(_:)-7l8ag``
+- ``xcorr(_:_:)-3w31h``
+- ``xcorr(_:_:)-1euir``
 - ``xcorrSimple(_:_:)``
-- ``conv(_:_:_:)``
+
+### Convolution 
+
+- ``conv(_:_:_:)-30aff``
+- ``conv(_:_:_:)-8e0jx``
 - ``convSimple(_:_:)``
 
 ### Resample
