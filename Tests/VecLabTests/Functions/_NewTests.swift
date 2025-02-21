@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NewTests.swift
 //
 //
 //  Created by Marcus Painter on 28/08/2024.
@@ -28,8 +28,19 @@ class NewTests: XCTestCase {
         let expected: ComplexArray = ([999, 999, 999, 999, 999], [777, 777, 777, 777, 777])
         XCTAssertEqual(c, expected, "fill failed")
     }
+    
+    // MARK: xcorr
+    
+    func testXcorrRealArrayCross() throws {
+        let a: RealArray = [1, 2, 3, 4]
+        let b: RealArray = [5, 6, 7, 8]
+        let result: RealArray = xcorr(a, b)
+        let expected: RealArray = [8.0, 23.0, 44.0, 70.0, 56.0, 39.0, 20.0]
+        
+        XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
+    }
 
-    func testXcorrRealArray() throws {
+    func testXcorrRealArrayAuto() throws {
         let a: RealArray = [1, 2, 3, 4]
         let result: RealArray = xcorr(a)
         let expected: RealArray = [4.0, 11.0, 20.0, 30.0, 20.0, 11.0, 4.0]
@@ -37,46 +48,82 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
     }
     
-    // TODO: Fix tests
-    /*
-
-    func testXcorrRealArrayRealArray() throws {
-        let a: RealArray = [1, 2, 3, 4]
-        let b: RealArray = [5, 6, 7, 8]
-        var result: RealArray = xcorr(a, b)
-        let expected: RealArray = [8.0, 23.0, 44.0, 70.0, 56.0, 39.0, 20.0]
-
-        XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
-    }
-
-
-
     func testXcorrRealArrayRealArray2() throws {
         let a: RealArray = [1, 2, 3, 4, 5, 6]
         let b: RealArray = [7, 8, 9, 10, 11, 12]
-        var result: RealArray = xcorr(a, b)
+        let result: RealArray = xcorr(a, b)
         let expected: RealArray = [12.0, 35.0, 68.0, 110.0, 160.0, 217.0, 190.0, 158.0, 122.0, 83.0, 42.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
     }
-
-    func testConvRealArrayRealArray2() throws {
-        let a: RealArray = [1, 2, 3, 4, 5, 6]
-        let b: RealArray = [7, 8, 9, 10, 11, 12]
-        var result = conv(a, b)
-        let expected: RealArray = [7, 22, 46, 80, 125, 182, 190, 184, 163, 126, 72]
+    
+    func testXcorrComplexArrayCross() throws {
+        let a: ComplexArray = ([1, 2, 3, 4], [1, 2, 3, 4])
+        let b: ComplexArray = ([5, 6, 7, 8], [5, 6, 7, 8])
+        let result: ComplexArray = xcorr(a, b)
+        let expected: ComplexArray =
+        ( [16.0, 46.0, 88.0, 140.0, 112.0, 78.0, 40.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
     }
-*/
+
+    func testXcorrComplexArrayAuto() throws {
+        let a: ComplexArray = ([1, 2, 3, 4], [1, 2, 3, 4])
+        let result: ComplexArray = xcorr(a)
+        let expected: ComplexArray = ([8.0, 22.0, 40.0, 60.0, 40.0, 22.0, 8.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+
+        XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
+    }
     
-    func testConvRealArrayRealArray() throws {
+    func testXcorrComplexArray2() throws {
+        let a: ComplexArray = ([1, 2, 3, 4, 5, 6],[1, 2, 3, 4, 5, 6])
+        let b: ComplexArray = ([7, 8, 9, 10, 11, 12], [7, 8, 9, 10, 11, 12])
+        let result: ComplexArray = xcorr(a, b)
+        let expected: ComplexArray = ([24.0, 70.0, 136.0, 220.0, 320.0, 434.0, 380.0, 316.0, 244.0, 166.0, 84.0],
+                                      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
+    }
+    
+    // MARK: conv
+    
+    func testConvSameRealArrayRealArray2() throws {
+        let a: RealArray = [1, 2, 3, 4, 5, 6]
+        let b: RealArray = [7, 8, 9, 10, 11, 12]
+        let result = conv(a, b, "same")
+        let expected: RealArray = [80.0, 125.0, 182.0, 190.0, 184.0, 163.0]
+        
+        print(result)
+        
+        XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
+    }
+    
+    func testConvSameRealArrayRealArray() throws {
         let a: RealArray = [1.0, 0.0, 1.0]
         let b: RealArray = [2.0, 7.0]
-        let result: RealArray = conv(a, b)
+        let result: RealArray = conv(a, b, "same")
+        let expected: RealArray = [7.0, 2.0, 7.0]
+        XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
+    }
+    
+    func testConvFullRealArrayRealArray2() throws {
+        let a: RealArray = [1, 2, 3, 4, 5, 6]
+        let b: RealArray = [7, 8, 9, 10, 11, 12]
+        let result = conv(a, b, "full")
+        let expected: RealArray = [7.0, 22.0, 46.0, 80.0, 125.0, 182.0, 190.0, 184.0, 163.0, 126.0, 72.0]
+        
+        print(result)
+        
+        XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
+    }
+    
+    func testConvFullRealArrayRealArray() throws {
+        let a: RealArray = [1.0, 0.0, 1.0]
+        let b: RealArray = [2.0, 7.0]
+        let result = conv(a, b, "full")
         let expected: RealArray = [2.0, 7.0, 2.0, 7.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "conv failed")
     }
 
-    /*
+/*
     func testConv() throws {
         let a: RealArray = [1.0, 0.0, 1.0]
         let b: RealArray = [2.0, 7.0]
@@ -99,41 +146,14 @@ class NewTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorrSimple failed")
     }
 
-    /*
+  
     func testXcorrMatlabAuto() throws {
         let signal: RealArray = [1, 2, 3, 4, 5, 6, 7, 8]
-        let result: RealArray = xcorr(signal, signal)
+        let result: RealArray = xcorr(signal)
         let correlationResult: RealArray = [8, 23, 44, 70, 100, 133, 168, 204, 168, 133, 100, 70, 44, 23, 8]
         XCTAssertEqual(result, correlationResult, accuracy: accuracy, "xcorr failed")
     }
 
-    // TODO: Fix
-
-    func testXcorrMatlabCross() throws {
-        let signal: RealArray = [1, 2, 3, 4, 5, 6, 7, 8]
-        let filter: RealArray = [10, 20, 30]
-        let result: RealArray = xcorr(signal, filter)
-        let correlationResult: RealArray = [0, 0, 0, 0, 0, 30, 80, 140, 200, 260, 320, 380, 440, 230, 80]
-        XCTAssertEqual(result, correlationResult, accuracy: accuracy, "xcorr failed")
-        disp(correlationResult)
-    }
-
-    func testConvMatlabAuto() throws {
-        let signal: RealArray = [1, 2, 3, 4, 5, 6, 7, 8]
-        let result: RealArray = conv(signal, signal)
-        let correlationResult: RealArray = [1, 4, 10, 20, 35, 56, 84, 120, 147, 164, 170, 164, 145, 112, 64]
-        XCTAssertEqual(result, correlationResult, accuracy: accuracy, "xcorr failed")
-    }
-
-    func testConvMatlabCross() throws {
-        let signal: RealArray = [1, 2, 3, 4, 5, 6, 7, 8]
-        let filter: RealArray = [10, 20, 30]
-        let result: RealArray = conv(signal, filter)
-        let correlationResult: RealArray = [10, 40, 100, 160, 220, 280, 340, 400, 370, 240]
-        XCTAssertEqual(result, correlationResult, accuracy: accuracy, "xcorr failed")
-    }
-*/
-     
     func testUpsample() throws {
         let signal: RealArray = [1, 2, 3]
         let result: RealArray = upsample(signal, 3)

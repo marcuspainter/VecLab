@@ -8,46 +8,91 @@
 import Accelerate
 import Foundation
 
-/// Cross correlation of  two signal vectors.
+/// Cross correlation of two real signal vectors.
 /// - Parameters:
-///   - x: Array.
-///   - y: Array.
+///   - x: Real array.
+///   - y: Real array.
 /// - Returns: The cross correlation result.
 public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
-    let N = length(x) + length(y) - 1
-    let M = Int(2 ** nextpow2(N))
-
-    // Zero pad both signals to length M
-    let xx = paddata(x, M)
-    let yy = paddata(y, M)
-
-    // Perform FFT on both signals
-    let X = fftr(xx)
-    let Y = fftr(yy)
-
-    // Multiply in frequency domain
-    // Note: For correlation, we take the conjugate
-    let Z = X *~ Y
-
-    // Perform inverse FFT
-    var z = ifftr(Z)
-
-    // Shift
-    z = fftshift(z)
-
-    // Take only the last N points
-    z = Array(z[1 ..< length(z)])
-
-    return z
+    let nx = length(x)
+    let ny = length(y)
+    let n  = nx + ny - 1  // Full cross-correlation length
+    
+    // Use power-of-2 FFT size
+    let N = Int(2.0 ** nextpow2(n))
+    
+    // Zero-pad inputs
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+    
+    // FFT-based cross-correlation (note conjugation on y)
+    let A = fftr(a)
+    let B = fftr(b)
+    let C = A *~ B
+    let full_c = ifftr(C)
+    
+    // Correct circular shift to align with MATLAB xcorr
+    // MATLAB's xcorr lags go from -(nv-1) to (nu-1)
+    // Zero-lag should be at index nv in a 1-based system
+    let shift_amount = ny - 1
+    var c = circshift(full_c, shift_amount)
+    
+    // Trim extra values
+    c = Array(c[0 ..< n])
+    return c
 }
 
-/// Autocorrelation of  a signal vector.
+/// Cross correlation of two complex signal vectors.
+/// - Parameters:
+///   - x: Complex array.
+///   - y: Complex array.
+/// - Returns: The cross correlation result.
+public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+    let nx = length(x)
+    let ny = length(y)
+    let n  = nx + ny - 1  // Full cross-correlation length
+    
+    // Use power-of-2 FFT size
+    let N = Int(2.0 ** nextpow2(n))
+    
+    // Zero-pad inputs
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+    
+    // FFT-based cross-correlation (note conjugation on y)
+    let A = fft(a)
+    let B = fft(b)
+    let C = A *~ B
+    let full_c = ifft(C)
+    
+    // Correct circular shift to align with MATLAB xcorr
+    // MATLAB's xcorr lags go from -(nv-1) to (nu-1)
+    // Zero-lag should be at index nv in a 1-based system
+    let shift_amount = ny - 1
+    var c = circshift(full_c, shift_amount)
+    
+    // Trim extra values
+    c = trimdata(c, n)
+    return c
+}
+
+/// Autocorrelation of a real signal vector.
 ///
 /// The result is of length 2N-1.
 /// - Parameters:
-///   - x: Array.
+///   - x: real array.
 /// - Returns: The autocorrelation.
 public func xcorr(_ x: RealArray) -> RealArray {
+    xcorr(x, x)
+}
+
+/// Autocorrelation of a complex signal vector.
+///
+/// The result is of length 2N-1.
+/// - Parameters:
+///   - x: real array.
+/// - Returns: The autocorrelation.
+public func xcorr(_ x: ComplexArray) -> ComplexArray {
     xcorr(x, x)
 }
 

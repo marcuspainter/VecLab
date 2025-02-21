@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  conv.swift
 //
 //
 //  Created by Marcus Painter on 29/08/2024.
@@ -12,31 +12,191 @@ import Foundation
 /// - Parameters:
 ///   - x: Real array.
 ///   - y: Real array
+///   - shape: "same" or "full"
 /// - Returns: The result of the convolution.
-public func conv(_ x: RealArray, _ y: RealArray) -> RealArray {
-    let N = length(x) + length(y) - 1
-    let M = Int(2 ** nextpow2(N))
-
-    // Zero pad both signals to length M
-    let xx = paddata(x, M)
-    let yy = paddata(y, M)
-
-    // Perform FFT on both signals
-    let X = fftr(xx)
-    let Y = fftr(yy)
-
-    // Multiply in frequency domain
-    // Note: For convolution, we don't take the conjugate like in xcorr
-    let Z = X * Y
-
-    // Perform inverse FFT
-    var z = ifftr(Z)
-
-    // Take only the first N points (valid convolution length)
-    z = Array(z[0 ..< N])
-
-    return z
+public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> RealArray {
+    switch shape {
+        case "same":
+            return convsame(x,y)
+        case "full":
+            return convfull(x,y)
+        default:
+            assert(false, "conv shape must be \"same\" or \"full\"")
+    }
 }
+
+/// Convolution "same".
+/// - Parameters:
+///   - x: Real array.
+///   - y: Real array
+/// - Returns: The result of the convolution.
+private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
+    let nx = length(x)
+    let ny = length(y)
+    let n = nx + ny - 1  // Full convolution length
+
+    // Ensure FFT size is a power of 2
+    let N = Int(2 ** nextpow2(n))
+
+    // Zero-pad inputs
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+
+    // Compute FFT convolution
+    let A = fftr(a)
+    let B = fftr(b)
+    let C = A * B
+    let full_c = ifftr(C) // Full convolution result
+
+    // Extract the "same" portion
+    let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
+    let end_idx = start_idx + nx - 1   // Ensure length(u) output
+
+    let c = slice(full_c, start_idx ... end_idx)
+    return c
+}
+
+/// Convolution "full".
+/// - Parameters:
+///   - x: Real array.
+///   - y: Real array
+/// - Returns: The result of the convolution.
+private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
+    let n = length(x) + length(y) - 1 // Result length
+
+    // Simulate using power of 2 fft only
+    let N = Int(2 ** nextpow2(n))
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+
+    let A = fftr(a)
+    let B = fftr(b)
+
+    let C = A * B
+    var c = ifftr(C)
+
+    c = Array(c[0 ..< n]) // Trim to correct length
+    return c
+}
+
+/// Convolution.
+/// - Parameters:
+///   - x: Complex array.
+///   - y: Complex array
+///   - shape: "same" or "full"
+/// - Returns: The result of the convolution.
+public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same") -> ComplexArray {
+    switch shape {
+        case "same":
+            return convsame(x,y)
+        case "full":
+            return convfull(x,y)
+        default:
+            assert(false, "conv shape must be \"same\" or \"full\"")
+    }
+}
+
+/// Convolution "same".
+/// - Parameters:
+///   - x: Complex array.
+///   - y: Complex array
+/// - Returns: The result of the convolution.
+private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+    let nx = length(x)
+    let ny = length(y)
+    let n = nx + ny - 1  // Full convolution length
+
+    // Ensure FFT size is a power of 2
+    let N = Int(2 ** nextpow2(n))
+
+    // Zero-pad inputs
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+
+    // Compute FFT convolution
+    let A = fft(a)
+    let B = fft(b)
+    let C = A * B
+    let full_c = ifft(C) // Full convolution result
+
+    // Extract the "same" portion
+    let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
+    let end_idx = start_idx + nx - 1   // Ensure length(u) output
+
+    let c = slice(full_c, start_idx ... end_idx)
+    return c
+}
+
+/// Convolution "full".
+/// - Parameters:
+///   - x: Complex array.
+///   - y: Complex array
+/// - Returns: The result of the convolution.
+private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+    let n = length(x) + length(y) - 1 // Result length
+
+    // Simulate using power of 2 fft only
+    let N = Int(2 ** nextpow2(n))
+    let a = paddata(x, N)
+    let b = paddata(y, N)
+
+    let A = fft(a)
+    let B = fft(b)
+
+    let C = A * B
+    var c = ifft(C)
+
+    c = trimdata(c, n) // Trim to correct length
+    return c
+}
+
+
+/*
+ function c = myconvsame(u, v)
+     nu = length(u);
+     nv = length(v);
+     n = nu + nv - 1;  % Full convolution length
+
+     % Ensure FFT size is a power of 2
+     N = 2^nextpow2(n);
+     assert(log2(N) == round(log2(N)), 'FFT size must be power of 2');
+
+     % Zero-pad inputs
+     a = paddata(u, N);
+     b = paddata(v, N);
+
+     % Compute FFT convolution
+     A = fft(a, N);
+     B = fft(b, N);
+     C = A .* B;
+     full_c = real(ifft(C));  % Full convolution result
+
+     % Extract the "same" portion
+     start_idx = floor(nv / 2) + 1;  % Corrected center alignment
+     end_idx = start_idx + nu - 1;   % Ensure length(u) output
+
+     c = full_c(start_idx:end_idx);
+ end
+
+ function c = myconvfull(u,v)
+ n = length(u) + length(v) - 1; % Result length
+
+ % Simulate using power of 2 fft only
+ N = 2^nextpow2(n);
+ a = paddata(u, N);
+ b = paddata(v, N);
+
+ A = fft(a,N);
+ B = fft(b,N);
+
+ C = A .* B;
+ c = real(ifft(C));
+
+ c = c(1:n); % Trim to correct length
+
+ end
+ 
+ */
 
 public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     // The resulting convolution array will have a size of (x.count + y.count - 1)
@@ -71,5 +231,7 @@ public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
   ans =
 
       10    40   100   160   220   280   340   400   370   240
+ 
+
 
  */
