@@ -192,7 +192,7 @@ Overloaded operators for scalar and vectors.
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
 |Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nchoosek, perms, prevprime, primes|
-|Exponents| exp, log, log2, log10, nextpow2, sqrt|
+|Exponents| exp, expi, log, log2, log10, nextpow2, sqrt|
 |FFT| dft, dftr, fft, fftr, fftshift, fftsymmetric, idft, idftr, ifft, ifftr, ifftshift|
 |Filter| biquad, freqz, filter|
 |Integration| diff, gradient, trapz|
