@@ -34,6 +34,12 @@ Vector functions.
 - ``slice(_:_:_:)-9vpbz``
 - ``slice(_:_:_:)-rt8``
 
+### Vector Gather
+- ``gather(_:_:)-80qyh``
+- ``gather(_:_:)-6jpve``
+- ``gather(_:_:)-2ivzx``
+- ``gather(_:_:)-9ef1j``
+
 ### Resize
 - ``resize(_:_:)-3zvg1``
 - ``resize(_:_:)-7wpjk``
