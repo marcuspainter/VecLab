@@ -27,5 +27,5 @@ Exponents, logarithms and square root.
 
 ### Complex Euler
 
-- ``expi(_:)-27hmf
-- ``expi(_:)-8hf8v
+- ``expi(_:)-27hmf``
+- ``expi(_:)-8hf8v``
