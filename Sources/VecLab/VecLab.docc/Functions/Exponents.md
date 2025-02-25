@@ -19,7 +19,6 @@ Exponents, logarithms and square root.
 - ``log10(_:)-9qv4x``
 - ``log10(_:)-5asxs``
 - ``log10(_:)-6csto``
-- ``nextpow2(_:)``
 
 ### Square Root
 - ``sqrt(_:)-oqp6``
@@ -28,5 +27,5 @@ Exponents, logarithms and square root.
 
 ### Complex Euler
 
-- ``expeuler(_:)-vbtc``
-- ``expeuler(_:)-xcv``
+- ``expi(_:)-27hmf``
+- ``expi(_:)-8hf8v``

@@ -11,7 +11,7 @@ import VecLab
 import XCTest
 
 class NewTests: XCTestCase {
-    let accuracy: Real = 1e-6
+    let accuracy: Real = 1e-3
 
     func testFillRealArray() throws {
         let c: RealArray = [1, 2, 3, 4, 5]

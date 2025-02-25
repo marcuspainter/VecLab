@@ -511,14 +511,14 @@ class ArrayTests: XCTestCase {
     }
 
     func testArangeStop() throws {
-        let n = 5.0
+        let n: Real = 5.0
         let result: RealArray = arange(n)
         let expected: RealArray = [0.0, 1.0, 2.0, 3.0, 4.0]
         XCTAssertEqual(result, expected, "arange failed")
     }
 
     func testArangeStartStop() throws {
-        let n = 5.0
+        let n: Real = 5.0
         let result: RealArray = arange(1.0, n)
         let expected: RealArray = [1.0, 2.0, 3.0, 4.0]
         XCTAssertEqual(result, expected, "arange failed")
@@ -584,10 +584,10 @@ class ArrayTests: XCTestCase {
     // MARK: - Precision Tests
 
     func testFloatingPointPrecision() {
-        let result = arange(0.0, 1.0, 0.1)
+        let result: RealArray = arange(0.0, 1.0, 0.1)
         XCTAssertEqual(result.count, 10)
         for (i, value) in result.enumerated() {
-            XCTAssertEqual(value, Double(i) * 0.1, accuracy: 1e-10)
+            XCTAssertEqual(value, Real(i) * 0.1, accuracy: 1e-10)
         }
     }
 
@@ -610,11 +610,11 @@ class ArrayTests: XCTestCase {
     // MARK: - Type Conversion Tests
 
     func testIntToRealConversion() {
-        let intResult = arange(0, 5)
-        let realResult = arange(0.0, 5.0, 1.0)
+        let intResult: RealArray = arange(0, 5)
+        let realResult: RealArray = arange(0.0, 5.0, 1.0)
         XCTAssertEqual(intResult.count, realResult.count)
         for (i, r) in zip(intResult, realResult) {
-            XCTAssertEqual(Double(i), r, accuracy: 1e-10)
+            XCTAssertEqual(Real(i), r, accuracy: 1e-10)
         }
     }
 }

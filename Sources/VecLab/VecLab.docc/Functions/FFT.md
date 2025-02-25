@@ -32,3 +32,5 @@ FFT, DFT and FFT shift.
 - ``fftx(_:)-97i6w``
 - ``fftx(_:)-44cyx``
 - ``ifftx(_:)``
+
+- ``nextpow2(_:)``
