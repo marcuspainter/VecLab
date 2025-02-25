@@ -617,6 +617,43 @@ class ArrayTests: XCTestCase {
             XCTAssertEqual(Real(i), r, accuracy: 1e-10)
         }
     }
+    
+    // MARK: - Gather
+    
+    func testGatherRealArrayRealIndices() {
+        let a = arange(0.0, 10.0)
+        let indices = [2.0,4.0,6.0,8.0]
+        let result = gather(a, indices)
+        let expected = [2.0,4.0,6.0,8.0]
+        XCTAssertEqual(result, expected, "gather failed")
+    }
+    
+    func testGatherRealArrayIntIndices() {
+        let a = arange(0.0, 10.0)
+        let indices = [2,4,6,8]
+        let result = gather(a, indices)
+        let expected = [2.0,4.0,6.0,8.0]
+        XCTAssertEqual(result, expected, "gather failed")
+    }
+    
+    func testGatherComplexArrayRealIndices() {
+        let a = arange(0.0, 10.0)
+        let b = (a,a)
+        let indices = [2.0,4.0,6.0,8.0]
+        let result = gather(b, indices)
+        let expected = ([2.0,4.0,6.0,8.0], [2.0,4.0,6.0,8.0])
+        XCTAssertEqual(result, expected, "gather failed")
+    }
+    
+    func testGatherComplexArrayIntIndices() {
+        let a = arange(0.0, 10.0)
+        let b = (a,a)
+        let indices = [2,4,6,8]
+        let result = gather(b, indices)
+        let expected = ([2.0,4.0,6.0,8.0], [2.0,4.0,6.0,8.0])
+        XCTAssertEqual(result, expected, "gather failed")
+    }
+    
 }
 
 // Helper enum for error cases
