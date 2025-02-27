@@ -10,7 +10,7 @@ import Foundation
 
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
-    associativity: left // Matlab 2**3**4 = 4096
+    associativity: left // Uses Matlab convention: 2**2**3 Matlab = 64, Python = 256
 }
 
 infix operator **: PowerPrecedence
