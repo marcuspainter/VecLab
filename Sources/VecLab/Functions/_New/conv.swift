@@ -22,6 +22,7 @@ public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> Re
             return convfull(x,y)
         default:
             assert(false, "conv shape must be \"same\" or \"full\"")
+            return []
     }
 }
 
@@ -93,6 +94,7 @@ public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same")
             return convfull(x,y)
         default:
             assert(false, "conv shape must be \"same\" or \"full\"")
+            return ([],[])
     }
 }
 
