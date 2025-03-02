@@ -8,7 +8,8 @@
 import XCTest
 import VecLab
 
-final class PrecedenceTests: XCTestCase {
+final class
+PrecedenceTests: XCTestCase {
     
     let accuracy: Real = 1e-6
     
