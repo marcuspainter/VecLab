@@ -15,7 +15,7 @@ import Foundation
 ///   - a: a coefficients.
 ///   - x: Real input signal.
 /// - Returns: Filtered signal.
-public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray {
+public func filter(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     let M = b.count
     let L = a.count
     let N = x.count
@@ -52,9 +52,9 @@ public func filter(_ b: RealArray, _ a: RealArray, _ x: RealArray) -> RealArray 
 ///   - a: a coefficients.
 ///   - x: Complex input signal.
 /// - Returns: Filtered complex signal.
-public func filter(_ b: RealArray, _ a: RealArray, _ x: ComplexArray) -> ComplexArray {
-    let yr = filter(b, a, x.0)
-    let yi = filter(b, a, x.1)
+public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray {
+    let yr = filter(b: b, a: a, x: x.0)
+    let yi = filter(b: b, a: a, x: x.1)
     return (yr, yi)
 }
 

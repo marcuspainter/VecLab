@@ -18,7 +18,7 @@ class FilterTests: XCTestCase {
         let realArrayA: RealArray = [1.000000000000000, -0.000000000000000, 0.171572875253810]
         let realArrayB: RealArray = [0.292893218813452, 0.585786437626905, 0.292893218813452]
         let realArrayX: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
-        let result: RealArray = filter(realArrayB, realArrayA, realArrayX)
+        let result: RealArray = filter(b: realArrayB, a: realArrayA, x: realArrayX)
         let expected: RealArray = [
            0.292893218813452,
            1.171572875253810,
@@ -36,7 +36,7 @@ class FilterTests: XCTestCase {
         let realArrayA: RealArray = [1]
         let realArrayB: RealArray = [0, 0, 1]
         let realArrayX: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
-        let result: RealArray = filter(realArrayB, realArrayA, realArrayX)
+        let result: RealArray = filter(b: realArrayB, a: realArrayA, x: realArrayX)
         let expected: RealArray = [0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
 
         XCTAssertEqual(result, expected, accuracy: accuracy, "filter failed")
@@ -67,7 +67,7 @@ class FilterTests: XCTestCase {
             ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
-        var H = freqz(b,a)
+        var H = freqz(b: b,a: a)
         H = slice(H, 0 ..< 5)
         XCTAssertEqual(H, HH, accuracy: 1e-3, "freqz failed")
     }
@@ -86,7 +86,7 @@ class FilterTests: XCTestCase {
             ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
-        var H = freqz2(b,a)
+        var H = freqz2(b: b,a: a)
         H = slice(H, 0 ..< 5)
         XCTAssertEqual(H, HH, accuracy: 1e-3, "freqz2 failed")
         
@@ -107,7 +107,7 @@ class FilterTests: XCTestCase {
             ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
-        var magnitude = biquadmag(b, a)
+        var magnitude = biquadmag(b: b, a: a)
         magnitude = slice(magnitude, 0 ..< 5)
         
         let magnitudeHH = mag2db(abs(HH));
@@ -133,7 +133,7 @@ class FilterTests: XCTestCase {
             ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
-        var H = biquadfreqz(b, a)
+        var H = biquadfreqz(b: b, a: a)
         H = slice(H, 0 ..< 5)
         
         XCTAssertEqual(H, HH, accuracy: 1e-3, "biquadfreqz failed")

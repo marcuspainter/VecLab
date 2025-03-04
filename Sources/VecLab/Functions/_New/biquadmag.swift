@@ -13,7 +13,7 @@ import Foundation
 ///   - a: a coefficients.
 ///   - N: FFT Length.
 /// - Returns: Complex transfer function.
-public func biquadmag(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> RealArray {
+public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
@@ -51,7 +51,7 @@ public func biquadmag(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> RealArr
 // http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
 
-public func biquadmag2(_ b: RealArray, _ a: RealArray, _ N: Int = 512) -> RealArray {
+public func biquadmag2(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
