@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 23/02/2025.
 //
 
-/// Equality.
+/// Tests for equality.
 /// - Parameters:
 ///   - a: Real array.
 ///   - b: Real array.
@@ -15,7 +15,7 @@ public func == (a: RealArray, b: RealArray) -> Bool {
     return zip(a, b).allSatisfy { $0 == $1 }
 }
 
-/// Equality.
+/// Tests for equality.
 /// - Parameters:
 ///   - a: Complex array.
 ///   - b: Complex array.

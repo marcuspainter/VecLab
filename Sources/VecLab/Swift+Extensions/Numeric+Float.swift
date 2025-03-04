@@ -8,12 +8,12 @@
 import Foundation
 
 public extension Double {
-    /// Converts a `Double` to f`Float`.
+    /// Converts `Double` to f`Float`.
     var f: Float { Float(self) }
 }
 
 public extension Float {
-    /// Converts a `Float` to `Float`
+    /// Convert a `Float` to `Float`
     var f: Float { self }
 }
 
