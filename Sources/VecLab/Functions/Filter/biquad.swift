@@ -47,7 +47,6 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) 
     var f0 = f
 
     var A = sqrt( pow(10, dbGain/20) )
-    // A = 10^(dbGain/40)     // (for peaking and shelving EQ filters only)
 
     if ftype == .lowshelf {
         A = sqrt( pow(10, dbGain/40) )
@@ -76,7 +75,7 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) 
 
     switch ftype {
         case .lowpass:  // H(s) = 1 / (s^2 + s/Q + 1)
-
+            
             b0 =  (1 - cosW0)/2
             b1 =   1 - cosW0
             b2 =  (1 - cosW0)/2
