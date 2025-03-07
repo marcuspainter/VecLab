@@ -19,7 +19,6 @@ func complexMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
 
 // MARK: ConjugateMultiply
 
-
 func complexConjugateMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     let a = x.0
     let b = x.1

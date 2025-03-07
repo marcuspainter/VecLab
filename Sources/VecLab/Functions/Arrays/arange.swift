@@ -49,14 +49,14 @@ public func arange(_ start: Real, _ stop: Real, _ step: Real) -> RealArray {
     guard step != 0 else {
         fatalError("Step cannot be zero.")
     }
-    
+
     if (step > 0 && start >= stop) || (step < 0 && start <= stop) {
         return []
     }
-    
+
     let count = Int(ceil((stop - start) / step))
     var result = [Real](repeating: 0.0, count: count)
-    
+
     for i in 0..<count {
         let value = start + (Real(i) * step)
         if (step > 0 && value >= stop) || (step < 0 && value <= stop) {
@@ -64,7 +64,7 @@ public func arange(_ start: Real, _ stop: Real, _ step: Real) -> RealArray {
         }
         result[i] = value
     }
-    
+
     return result
 }
 
@@ -78,14 +78,14 @@ public func arange(_ start: Int, _ stop: Int, _ step: Int = 1) -> [Int] {
     guard step != 0 else {
         fatalError("Step cannot be zero.")
     }
-    
+
     if (step > 0 && start >= stop) || (step < 0 && start <= stop) {
         return []
     }
-    
+
     let count = Int(ceil(Double(stop - start) / Double(step)))
     var result = [Int](repeating: 0, count: count)
-    
+
     for i in 0..<count {
         let value = start + (i * step)
         if (step > 0 && value >= stop) || (step < 0 && value <= stop) {
@@ -93,6 +93,6 @@ public func arange(_ start: Int, _ stop: Int, _ step: Int = 1) -> [Int] {
         }
         result[i] = value
     }
-    
+
     return result
 }

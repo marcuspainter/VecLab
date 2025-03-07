@@ -17,9 +17,9 @@ import Foundation
 public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> RealArray {
     switch shape {
         case "same":
-            return convsame(x,y)
+            return convsame(x, y)
         case "full":
-            return convfull(x,y)
+            return convfull(x, y)
         default:
             assert(false, "conv shape must be \"same\" or \"full\"")
             return []
@@ -89,12 +89,12 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same") -> ComplexArray {
     switch shape {
         case "same":
-            return convsame(x,y)
+            return convsame(x, y)
         case "full":
-            return convfull(x,y)
+            return convfull(x, y)
         default:
             assert(false, "conv shape must be \"same\" or \"full\"")
-            return ([],[])
+            return ([], [])
     }
 }
 
@@ -151,7 +151,6 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     c = trimdata(c, n) // Trim to correct length
     return c
 }
-
 
 /*
  function c = myconvsame(u, v)
