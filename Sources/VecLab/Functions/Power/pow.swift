@@ -213,3 +213,39 @@ public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
     }
     return (r, i)
 }
+
+/// Power.
+/// - Parameters:
+///   - a: Complex number.
+///   - b: Complex number.
+/// - Returns: Raises `a` to the power of `b
+public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
+    let (a, b) = base
+    let (c, d) = exponent
+
+    // Convert base to polar form
+    let r = hypot(a, b)
+    let theta = atan2(b, a)
+
+    // Compute power using exponentiation formula:
+    // (r e^(iθ))^(c + di) = r^c * e^(-dθ) * e^(i(d ln r + cθ))
+    let newR = pow(r, c) * exp(-d * theta)
+    let newTheta = d * log(r) + c * theta
+
+    return (newR * cos(newTheta), newR * sin(newTheta))
+}
+
+/// Power.
+/// - Parameters:
+///   - a: Complex number.
+///   - b: Complex number.
+/// - Returns: Raises `a` to the power of `b
+public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+    var r = RealArray(repeating: 0, count: a.0.count)
+    var i = RealArray(repeating: 0, count: a.1.count)
+    for k in 0 ..< a.0.count {
+        (r[k], i[k]) = pow(Complex(a.0[k], a.1[k]), Complex(b.0[k], b.1[k]))
+    }
+    
+    return (r, i)
+}

@@ -146,18 +146,16 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
 
 // MARK: Complex Array
 
-/*
+
  /// Power
  /// - Parameters:
  ///   - a: Complex array
  ///   - b: Complex array
  /// - Returns: Raises `a` to the power of 'b'
- @available(*, unavailable, message: "Not implemented")
  public func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-     return ([], [])
+     return pow(a, b)
  }
- */
-
+ 
 /// Power.
 /// - Parameters:
 ///   - a: Complex array.
