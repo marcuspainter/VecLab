@@ -21,6 +21,7 @@ public func conj(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The complex conjugate of `x`.
 public func conj(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     let i = vDSP.negative(x.1)
     return (x.0, i)
  }

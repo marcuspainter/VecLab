@@ -48,6 +48,7 @@ private func dotReal(_ a: [Float], _ b: [Float]) -> Float {
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
 public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
+    assertSameSize(a, b)
     let c = a *~ b
     let dotSum = sum(c)
     return dotSum
@@ -64,6 +65,7 @@ public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
 public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
+    assertSameSize(a, b)
     let c = a * b
     let dotSum = sum(c)
     return dotSum
@@ -80,6 +82,7 @@ public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
 public func dot(_ a: ComplexArray, _ b: RealArray) -> Complex {
+    assertSameSize(a, b)
     let c = a ~* b
     let dotSum = sum(c)
     return dotSum

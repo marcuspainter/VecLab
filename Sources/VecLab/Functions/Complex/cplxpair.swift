@@ -14,6 +14,7 @@ import Foundation
 ///   - tol: tolerance.
 /// - Returns:An array of sorted pairs
 public func cplxpair(_ A: ComplexArray, tol: Real = 1e-6) -> ComplexArray {
+    assertSameSize(A)
     // Ensure that a one-element array returns itself.
     guard A.0.count > 1 else { return ([A.0.first!], [A.1.first!]) }
 

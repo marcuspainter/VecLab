@@ -39,5 +39,6 @@ public func any(_ x: RealArray) -> Bool {
 /// print(result)  // prints: true
 /// ```
 public func any(_ x: ComplexArray) -> Bool {
+    assertSameSize(x)
     return any(x.0) || any(x.1)
 }

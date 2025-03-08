@@ -55,5 +55,6 @@ public func sign(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array..
 /// - Returns: Sign of number.
 public func sign(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     return x / abs(x) // Overloaded
 }
