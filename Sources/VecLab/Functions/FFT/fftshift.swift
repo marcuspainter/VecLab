@@ -27,6 +27,7 @@ public func fftshift(_ x: RealArray) -> RealArray {
 ///   - x: Input array.
 /// - Returns: Shifted array
 public func fftshift(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     let r = fftshift(x.0)
     let i = fftshift(x.1)
 
