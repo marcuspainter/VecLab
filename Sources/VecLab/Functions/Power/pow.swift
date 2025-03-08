@@ -55,17 +55,6 @@ public func pow(_ a: Complex, _ b: Int) -> Complex {
     return pow(a, Real(b))
 }
 
-/*
-/// Power.
-/// - Parameters:
-///   - a: Complex array.
-///   - b: Complex array.
-/// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: Int) -> ComplexArray {
-    return pow(a, Real(b))
-}
-*/
-
 // MARK: Real Array
 
 /// Power.
@@ -74,6 +63,7 @@ public func pow(_ a: ComplexArray, _ b: Int) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
+    assertSameSize(a, b)
     return vectorPowReal(a, b)
 }
 
@@ -116,17 +106,6 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 }
 
 // MARK: Complex Array
-
-/*
-/// Power
-/// - Parameters:
-///   - a: Complex array
-///   - b: Complex array
-/// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    return ([], [])
-}
-*/
 
 /// Power.
 /// - Parameters:
@@ -192,6 +171,7 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
+    assertSameSize(a)
     var r = RealArray(repeating: 0, count: a.0.count)
     var i = RealArray(repeating: 0, count: a.1.count)
     for k in 0 ..< a.0.count {
@@ -206,6 +186,7 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     var r = RealArray(repeating: 0, count: b.0.count)
     var i = RealArray(repeating: 0, count: b.1.count)
     for k in 0 ..< b.0.count {
@@ -237,10 +218,11 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
 
 /// Power.
 /// - Parameters:
-///   - a: Complex number.
-///   - b: Complex number.
+///   - a: Complex array.
+///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b
 public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
     var r = RealArray(repeating: 0, count: a.0.count)
     var i = RealArray(repeating: 0, count: a.1.count)
     for k in 0 ..< a.0.count {
