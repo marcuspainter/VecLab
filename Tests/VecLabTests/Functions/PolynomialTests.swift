@@ -55,4 +55,12 @@ class PolynomialTests: XCTestCase {
         
         XCTAssertEqual(result, expected, accuracy: accuracy, "polyval failed")
     }
+    
+    func testRoots() throws {
+        
+        let polynomial = [1.0, -5.0, 6.0]  // x^2 - 5x + 6
+        let polyRoots = roots(coefficients: polynomial)
+        print("Roots: \(polyRoots)")  // Should be approximately [(3.0, 0.0), (2.0, 0.0)]
+
+    }
 }
