@@ -40,14 +40,14 @@ public func gamma(_ x: Double) -> Double {
        -0.00000000000000000023,
         0.00000000000000000002
     ]
-    
+
     let y = x - 1.0
     var sum = a.last!
-    
+
     for n in (0..<(a.count - 1)).reversed() {
         sum = sum * y + a[n]
     }
-    
+
     return 1.0 / sum
 }
 
@@ -60,7 +60,7 @@ public func gamma(_ z: Complex) -> Complex {
         771.32342877765313, -176.61502916214059, 12.507343278686905,
         -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
     ]
-    
+
     // Reflection formula
     if z.0 < 0.5 {
         return (.pi, 0.0) / (sin((.pi, 0.0) * z) * gamma((1.0, 0.0) - z))
@@ -74,5 +74,3 @@ public func gamma(_ z: Complex) -> Complex {
         return sqrt((2 * .pi, 0.0)) * pow(t, zz + 0.5) * exp(-t) * x
     }
 }
-
-

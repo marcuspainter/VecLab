@@ -246,6 +246,6 @@ public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
     for k in 0 ..< a.0.count {
         (r[k], i[k]) = pow(Complex(a.0[k], a.1[k]), Complex(b.0[k], b.1[k]))
     }
-    
+
     return (r, i)
 }

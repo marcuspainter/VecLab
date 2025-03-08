@@ -41,6 +41,3 @@ public func any(_ x: RealArray) -> Bool {
 public func any(_ x: ComplexArray) -> Bool {
     return any(x.0) || any(x.1)
 }
-
-
-

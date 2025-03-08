@@ -146,7 +146,6 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
 
 // MARK: Complex Array
 
-
  /// Power
  /// - Parameters:
  ///   - a: Complex array
@@ -155,7 +154,7 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
  public func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
      return pow(a, b)
  }
- 
+
 /// Power.
 /// - Parameters:
 ///   - a: Complex array.
