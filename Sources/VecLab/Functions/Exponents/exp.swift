@@ -28,5 +28,6 @@ public func exp(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The exponential of `x`.
 public func exp(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     return vectorExpComplexArray(x)
 }

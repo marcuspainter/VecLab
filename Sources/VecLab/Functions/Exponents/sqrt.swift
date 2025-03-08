@@ -30,6 +30,7 @@ public func sqrt(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The complex square roots.
 public func sqrt(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     var r = RealArray(repeating: 0, count: x.0.count)
     var i = RealArray(repeating: 0, count: x.1.count)
     for k in 0 ..< x.0.count {

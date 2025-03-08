@@ -24,6 +24,7 @@ public func log10(_ a: Complex) -> Complex {
 
 /// Base 10 logarithm of a complex array.
 public func log10(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     var r = RealArray(repeating: 0, count: x.0.count)
     var i = RealArray(repeating: 0, count: x.1.count)
     for k in 0 ..< x.0.count {
