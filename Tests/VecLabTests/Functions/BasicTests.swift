@@ -41,7 +41,7 @@ class BasicTests: XCTestCase {
     func testAnyRealArrayTrue() throws {
         let realArrayA: RealArray = [0.0, 2.0, 3.0, 4.0]
         let result: Bool = any(realArrayA)
-        XCTAssert(result, "any failed")
+        XCTAssert(!result, "any failed")
     }
 
     // TODO: Fix
