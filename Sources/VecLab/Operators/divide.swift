@@ -83,6 +83,7 @@ public func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: Complex) -> ComplexArray {
+    assertSameSize(a)
     return vectorDivideComplexArrayComplex(a, b)
 }
 
@@ -92,6 +93,7 @@ public func / (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the division.
 public func / (a: Complex, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return vectorDivideComplexComplexArray(a, b)
 }
 
@@ -121,6 +123,7 @@ public func / (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: The result of the division.
 public func / (a: ComplexArray, b: Real) -> ComplexArray {
+    assertSameSize(a)
     return vectorDivideComplexArrayReal(a, b)
 }
 
@@ -130,6 +133,7 @@ public func / (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the division.
 public func / (a: Real, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return vectorDivideRealComplexArray(a, b)
 }
 

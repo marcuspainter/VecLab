@@ -88,6 +88,7 @@ public func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: Complex) -> ComplexArray {
+    assertSameSize(a)
     let r = vDSP.add(b.0, a.0)
     let i = vDSP.add(b.1, a.1)
     return (r, i)
@@ -99,6 +100,7 @@ public func + (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     let r = vDSP.add(a.0, b.0)
     let i = vDSP.add(a.1, b.1)
     return (r, i)
@@ -132,6 +134,7 @@ public func + (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Real.
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: Real) -> ComplexArray {
+    assertSameSize(a)
     let r = vDSP.add(b, a.0)
     return (r, a.1)
 }
@@ -142,6 +145,7 @@ public func + (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the addition.
 public func + (a: Real, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     let r = vDSP.add(a, b.0)
     return (r, b.1)
 }

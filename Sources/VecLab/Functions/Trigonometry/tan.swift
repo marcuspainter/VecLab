@@ -33,6 +33,7 @@ public func tan(_ x: Complex) -> Complex {
 /// - Parameter x: Angle in radians.
 /// - Returns: The tangent of the angles.
 public func tan(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     // Compute 2x and 2y
     let twoX = vDSP.multiply(2.0, x.0)
     let twoY = vDSP.multiply(2.0, x.1)

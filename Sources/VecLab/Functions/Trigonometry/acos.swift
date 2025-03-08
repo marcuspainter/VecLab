@@ -27,5 +27,6 @@ public func acos(_ x: Complex) -> Complex {
 /// - Parameter x: Sine of angles.
 /// - Returns: Inverse sin of x in the interval [0, π].
 public func acos(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     return -Real.i * log(x + Real.i * sqrt(1.0 - x * x))
 }
