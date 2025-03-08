@@ -10,7 +10,6 @@ import Foundation
 /// Length of a real array.
 /// - Parameter x: Real array.
 /// - Returns: The length of the array.
-@inlinable
 public func length(_ x: RealArray) -> Int {
     return x.count
 }
@@ -18,8 +17,7 @@ public func length(_ x: RealArray) -> Int {
 /// Length of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The length of the array.
-@inlinable
 public func length(_ x: ComplexArray) -> Int {
-    assert(x.0.count == x.1.count, "Complex array sizes do not match: r:\(x.0.count) i:\(x.1.count)")
+    assertSameSize(x)
     return x.0.count
 }

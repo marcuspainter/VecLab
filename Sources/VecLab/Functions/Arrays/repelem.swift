@@ -66,6 +66,7 @@ public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
 ///   - n:Number of repetitions.
 /// - Returns: Repeated array.
 public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
+    assertSameSize(x)
     guard n > 1 else {
         return x
     }

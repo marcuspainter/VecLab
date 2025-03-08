@@ -25,6 +25,7 @@ public func flip(_ x: RealArray) -> RealArray {
 /// - Parameter x: Complex array.
 /// - Returns: Flipped array with elements reversed.
 public func flip(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     // Copy
     var y = x
     // Inplace reverse
