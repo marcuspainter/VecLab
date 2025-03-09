@@ -8,14 +8,14 @@
 import Foundation
 
 /// Real part of a complex number.
-/// - Parameter a: Complex number.
+/// - Parameter x: Complex number.
 /// - Returns: The real part.
 public func real(_ x: Complex) -> Real {
     return x.0
 }
 
 /// Real parts of a complex array.
-/// - Parameter a: Complex array.
+/// - Parameter x: Complex array.
 /// - Returns: A real array of real part of a complex array.
 public func real(_ x: ComplexArray) -> RealArray {
     assertSameSize(x)

@@ -197,8 +197,8 @@ public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
 
 /// Power.
 /// - Parameters:
-///   - a: Complex number.
-///   - b: Complex number.
+///   - base: Complex number.
+///   - exponent: Complex number.
 /// - Returns: Raises `a` to the power of `b
 public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
     let (a, b) = base

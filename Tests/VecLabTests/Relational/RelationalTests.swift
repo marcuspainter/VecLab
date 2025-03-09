@@ -8,7 +8,7 @@
 import VecLab
 import XCTest
 
-class RelationTests: XCTestCase {
+class RelationalTests: XCTestCase {
     // Test real number equals
     func testEqualsRealArrayTrue() {
         let a: RealArray = [1.0, 2.0, 3.0]
@@ -54,5 +54,7 @@ class RelationTests: XCTestCase {
         XCTAssertEqual(result, false, "Complex equals failed")
     }
 
+    
+    
 }
 

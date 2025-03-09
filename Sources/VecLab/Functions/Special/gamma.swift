@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Gamma function.
+/// - Parameter x: Input value
+/// - Returns: Returns the gamma function.
 public func gamma(_ x: Double) -> Double {
     let a: [Double] = [
         1.00000000000000000000,
@@ -53,6 +56,9 @@ public func gamma(_ x: Double) -> Double {
 
 // https://rosettacode.org/wiki/Gamma_function#C#
 
+/// Gamma function.
+/// - Parameter z: Complex input value
+/// - Returns: Returns the gamma function.
 public func gamma(_ z: Complex) -> Complex {
     let g = 7
     let p: [Double] = [
@@ -73,4 +79,23 @@ public func gamma(_ z: Complex) -> Complex {
         let t: Complex = zz + Real(g) + 0.5
         return sqrt((2 * .pi, 0.0)) * pow(t, zz + 0.5) * exp(-t) * x
     }
+}
+
+/// Gamma function.
+/// - Parameter z: Complex input value
+/// - Returns: Returns the gamma function evaluated at the elements of x.
+public func gamma(_ z: RealArray) -> RealArray {
+    return z.map { gamma($0) }
+}
+
+/// Gamma function.
+/// - Parameter z: Complex input value
+/// - Returns: Returns the gamma function evaluated at the elements of x.
+public func gamma(_ z: ComplexArray) -> ComplexArray {
+    assertSameSize(z)
+    var result = complex(sized: z)
+    for k in 0..<result.0.count {
+        (result.0[k], result.1[k]) = gamma((z.0[k], z.1[k]))
+    }
+    return result
 }

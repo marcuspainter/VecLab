@@ -243,6 +243,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
+- <doc:Relational>
 - <doc:Smoothing>
 - <doc:Space>
 - <doc:Special>

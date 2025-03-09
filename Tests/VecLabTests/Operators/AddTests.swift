@@ -138,4 +138,11 @@ class AddTests: XCTestCase {
             XCTAssertThrowsError(try assertSameSize(a, b), "assertSameSize did not throw an error for different size arrays")
         }
      */
+    
+    /*
+    func testAddBad() {
+        let a = ([1,2],[0,0,0]) + 1
+        disp(a)
+    }
+     */
 }
