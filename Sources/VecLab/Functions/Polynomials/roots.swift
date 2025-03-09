@@ -4,13 +4,14 @@
 //
 //  Created by Marcus Painter on 08/03/2025.
 //
+
 import Accelerate
 
 /// Finds the roots of a polynomial with real coefficients.
 /// - Parameter coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - Returns: Array of complex values representing the roots of the polynomial
-@available(iOS 16.4, *)
+//@available(iOS 16.4, *)
 public func roots(coefficients: RealArray) -> ComplexArray {
     // Handle special cases
     if coefficients.isEmpty {
@@ -58,22 +59,21 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     // Prepare variables for eigenvalue computation
     var jobVL = "N".utf8CString[0] // Don't compute left eigenvectors
     var jobVR = "N".utf8CString[0] // Don't compute right eigenvectors
-    var N = Int(n)
-    var ldA = Int(n)
+    var N = __LAPACK_int(n)
+    var ldA = __LAPACK_int(n)
     var wR = [Double](repeating: 0.0, count: n) // Real parts of eigenvalues
     var wI = [Double](repeating: 0.0, count: n) // Imaginary parts of eigenvalues
     var VL = [Double](repeating: 0.0, count: 1) // Left eigenvectors (not used)
-    var ldVL = Int(1)
+    var ldVL = __LAPACK_int(1)
     var VR = [Double](repeating: 0.0, count: 1) // Right eigenvectors (not used)
-    var ldVR = Int(1)
-    var workSize = Int(4 * n) // Size of work array
+    var ldVR = __LAPACK_int(1)
+    var workSize = __LAPACK_int(4 * n) // Size of work array
     var work = [Double](repeating: 0.0, count: Int(workSize))
-    var info = Int(0)
+    var info = __LAPACK_int(0)
 
     // Call LAPACK's dgeev to compute eigenvalues
     dgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
     
-
     // Check if computation was successful
     if info != 0 {
         print("Error: dgeev returned info = \(info)")

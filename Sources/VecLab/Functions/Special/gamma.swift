@@ -93,7 +93,7 @@ public func gamma(_ z: RealArray) -> RealArray {
 /// - Returns: Returns the gamma function evaluated at the elements of x.
 public func gamma(_ z: ComplexArray) -> ComplexArray {
     assertSameSize(z)
-    var result = complex(sized: z)
+    var result = z
     for k in 0..<result.0.count {
         (result.0[k], result.1[k]) = gamma((z.0[k], z.1[k]))
     }
