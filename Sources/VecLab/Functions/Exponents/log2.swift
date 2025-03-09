@@ -32,10 +32,10 @@ public func log2(_ a: Complex) -> Complex {
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    var r = RealArray(repeating: 0, count: x.0.count)
-    var i = RealArray(repeating: 0, count: x.1.count)
+    var real = RealArray(repeating: 0, count: x.0.count)
+    var imag = RealArray(repeating: 0, count: x.1.count)
     for k in 0 ..< x.0.count {
-        (r[k], i[k]) = log2(Complex(x.0[k], x.1[k]))
+        (real[k], imag[k]) = log2(Complex(x.0[k], x.1[k]))
     }
-    return (r, i)
+    return (real, imag)
 }

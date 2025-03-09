@@ -135,8 +135,8 @@ public func + (a: RealArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: Real) -> ComplexArray {
     assertSameSize(a)
-    let r = vDSP.add(b, a.0)
-    return (r, a.1)
+    let real = vDSP.add(b, a.0)
+    return (real, a.1)
 }
 
 /// Addition.
@@ -146,8 +146,8 @@ public func + (a: ComplexArray, b: Real) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: Real, b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
-    let r = vDSP.add(a, b.0)
-    return (r, b.1)
+    let real = vDSP.add(a, b.0)
+    return (real, b.1)
 }
 
 // MARK: Complex & Real Array
@@ -158,10 +158,10 @@ public func + (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: RealArray) -> ComplexArray {
-    let r = vDSP.add(a.0, b)
-    var i = b
-    vectorFillRealArray(a.1, c: &i)
-    return (r, i)
+    let real = vDSP.add(a.0, b)
+    var imag = b
+    vectorFillRealArray(a.1, c: &imag)
+    return (real, imag)
 }
 
 /// Addition.
@@ -170,8 +170,8 @@ public func + (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: Complex) -> ComplexArray {
-    let r = vDSP.add(b.0, a)
-    var i = a
-    vectorFillRealArray(b.1, c: &i)
-    return (r, i)
+    let real = vDSP.add(b.0, a)
+    var imag = a
+    vectorFillRealArray(b.1, c: &imag)
+    return (real, imag)
 }
