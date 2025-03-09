@@ -8,7 +8,7 @@
 /// Set all array elements to a real scalar.
 ///- Parameters:
 ///   - x: Real array.
-///   - value: Resal scalar.
+///   - value: Real scalar.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, value: Real) -> RealArray {
     return [Real](repeating: value, count: x.count)
@@ -27,12 +27,24 @@ public func setindex(_ x: ComplexArray, value: Complex) -> ComplexArray {
 
 // MARK:
 
+/// Set array element to a complex scalar.
+/// - Parameters:
+///   - x: Real array.
+///   - index: Integer index.
+///   - value: Real scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: RealArray, index: Int, value: Real) -> RealArray {
     var result = x
     result[index] = value
     return result
 }
 
+/// Set array element to a complex scalar.
+/// - Parameters:
+///   - x: Complex array.
+///   - index: Integer index.
+///   - value: Complex scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, index: Int, value: Complex) -> ComplexArray {
     var result = x
     result.0[index] = value.0
@@ -42,6 +54,12 @@ public func setindex(_ x: ComplexArray, index: Int, value: Complex) -> ComplexAr
 
 // MARK:
 
+/// Set array element to a real scalar.
+/// - Parameters:
+///   - x: Real array.
+///   - index: Real index.
+///   - value: Real scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: RealArray, index: Real, value: Real) -> RealArray {
     var result = x
     let targetIndex = Int(index)
@@ -49,6 +67,12 @@ public func setindex(_ x: RealArray, index: Real, value: Real) -> RealArray {
     return result
 }
 
+/// Set array element to a real scalar.
+/// - Parameters:
+///   - x: Complex array.
+///   - index: Real index.
+///   - value: Complex scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, index: Real, value: Complex) -> ComplexArray {
     var result = x
     let targetIndex = Int(index)
@@ -61,9 +85,9 @@ public func setindex(_ x: ComplexArray, index: Real, value: Complex) -> ComplexA
 
 /// Set array elements by indices to a scalar.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Array of integer indices.
-///   - value: Scalar.
+///   - x: Real array.
+///   - indices: Integer indices.
+///   - value: Real scalar.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, indices: [Int], value: Real) -> RealArray {
     var result = x
@@ -76,9 +100,9 @@ public func setindex(_ x: RealArray, indices: [Int], value: Real) -> RealArray {
 
 /// Set array elements by indices to a scalar.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Array of integer indices.
-///   - value: Scalar.
+///   - x: Complex array.
+///   - indices: Integer indices.
+///   - value: Complex scalar.
 /// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, indices: [Int], value: Complex) -> ComplexArray {
     var result = x
@@ -92,9 +116,9 @@ public func setindex(_ x: ComplexArray, indices: [Int], value: Complex) -> Compl
 
 /// Set array elements by indices to a scalar.
 /// - Parameters:
-///   - x: Target array.
+///   - x: Complex array.
 ///   - indices: Array of real indices.
-///   - value: Scalar.
+///   - value: Complex scalar.
 /// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, indices: RealArray, value: Complex) -> ComplexArray {
     var result = x
@@ -109,10 +133,10 @@ public func setindex(_ x: ComplexArray, indices: RealArray, value: Complex) -> C
 
 // MARK:
 
-/// Set array elements by indices to a scalar.
+/// Set array elements by indices to an array.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Array of real indices.
+///   - x: Real array.
+///   - indices: Array of integer indices.
 ///   - values: Array of values.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, indices: [Int], values: RealArray) -> RealArray {
@@ -127,11 +151,11 @@ public func setindex(_ x: RealArray, indices: [Int], values: RealArray) -> RealA
     return result
 }
 
-/// Set array elements by indices to a scalar.
+/// Set array elements by indices to an array.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Array of real indices.
-///   - values: Array of values.
+///   - x: Complex array.
+///   - indices: Array of integer indices.
+///   - values: Array of complex values.
 /// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, indices: [Int], values: ComplexArray) -> ComplexArray {
     guard indices.count == values.0.count else {
@@ -150,9 +174,9 @@ public func setindex(_ x: ComplexArray, indices: [Int], values: ComplexArray) ->
 
 /// Set array elements by indices to an array.
 /// - Parameters:
-///   - x: Target array.
+///   - x: Real array.
 ///   - indices: Array of real indices.
-///   - values: Array of values.
+///   - values: Array of real values.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, indices: RealArray, values: RealArray) -> RealArray {
     guard indices.count == values.count else {
@@ -168,9 +192,9 @@ public func setindex(_ x: RealArray, indices: RealArray, values: RealArray) -> R
 
 /// Set array elements by indices to an array.
 /// - Parameters:
-///   - x: Target array.
+///   - x: Complex array.
 ///   - indices: Array of real indices.
-///   - values: Array of values.
+///   - values: Array of complex values.
 /// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, indices: RealArray, values: ComplexArray) -> ComplexArray {
     guard indices.count == values.0.count else {
@@ -190,10 +214,10 @@ public func setindex(_ x: ComplexArray, indices: RealArray, values: ComplexArray
 
 /// Set array elements by indices to a array by indices.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Target indices..
+///   - x: Real array.
+///   - indices: Target indices.
 ///   - values: Source array of values.
-///   - valueIndices: Source indicies.
+///   - valueIndices: Source indices.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, indices: [Int], values: RealArray, valueIndices: [Int]) -> RealArray {
     guard indices.count == valueIndices.count else {
@@ -210,8 +234,8 @@ public func setindex(_ x: RealArray, indices: [Int], values: RealArray, valueInd
 
 /// Set array elements by indices to a array by indices.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Target indices..
+///   - x: Complex array.
+///   - indices: Target indices.
 ///   - values: Source array of values.
 ///   - valueIndices: Source indicies.
 /// - Returns: Modified array.
@@ -233,9 +257,9 @@ public func setindex(_ x: ComplexArray, indices: [Int], values: ComplexArray, va
 
 /// Set array elements by indices to a array by indices.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Target indices..
-///   - values: Source array of values.
+///   - x: Real array.
+///   - indices: Target indices.
+///   - values: Source array of real values.
 ///   - valueIndices: Source indicies.
 /// - Returns: Modified array.
 public func setindex(_ x: RealArray, indices: RealArray, values: RealArray, valueIndices: RealArray) -> RealArray {
@@ -254,8 +278,8 @@ public func setindex(_ x: RealArray, indices: RealArray, values: RealArray, valu
 
 /// Set array elements by indices to a array by indices.
 /// - Parameters:
-///   - x: Target array.
-///   - indices: Target indices..
+///   - x: Complex array.
+///   - indices: Target indices.
 ///   - values: Source array of values.
 ///   - valueIndices: Source indicies.
 /// - Returns: Modified array.
