@@ -1,6 +1,6 @@
 # Index
 
-Integration and differentiation.
+Indexing functions.
 
 ## Topics
 

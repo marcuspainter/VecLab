@@ -55,6 +55,7 @@ class PolynomialTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "polyval failed")
     }
 
+    @available(iOS 16.4, *)
     func testRoots() throws {
         let polynomial = [1.0, -5.0, 6.0] // x^2 - 5x + 6
         let result = roots(coefficients: polynomial)
