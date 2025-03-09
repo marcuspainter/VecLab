@@ -5,20 +5,20 @@
 //  Created by Marcus Painter on 09/03/2025.
 //
 
-/// Set all array elements to a scalar.
-/// - **Parameters**:
-///   - x: Target array.
-///   - value: Scalar.
-/// - **Returns**: Modified array.
+/// Set all array elements to a real scalar.
+///- Parameters:
+///   - x: Real array.
+///   - value: Resal scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: RealArray, value: Real) -> RealArray {
     return [Real](repeating: value, count: x.count)
 }
 
-/// Set all array elements to a scalar.
-/// - **Parameters**:
-///   - x: Target array.
-///   - value: Scalar.
-/// - **Returns**: Modified array.
+/// Set all array elements to a complex scalar.
+/// - Parameters:
+///   - x: Complex array.
+///   - value: Complex scalar.
+/// - Returns: Modified array.
 public func setindex(_ x: ComplexArray, value: Complex) -> ComplexArray {
     let real = [Real](repeating: value.0, count: x.0.count)
     let imag = [Real](repeating: value.1, count: x.1.count)
