@@ -11,6 +11,7 @@ import Foundation
 /// - Parameter x: Complex  array.
 /// - Returns: Conjugate symmetric array.
 public func fftsymmetric(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     var y = x
     let n = x.0.count
     if n % 2 == 0 {

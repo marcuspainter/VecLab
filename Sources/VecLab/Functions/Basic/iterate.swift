@@ -39,6 +39,7 @@ public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
 ///   - body: Closure to execute.
 /// - Returns: Output array.
 public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
+    assertSameSize(x)
     var y = complex(sized: x)
     for k in 0 ..< x.0.count {
         (y.0[k], y.1[k]) = body((x.0[k], x.1[k]))
@@ -52,6 +53,7 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 ///   - body: Closure to execute.
 /// - Returns: Output array.
 public func iterate(_ x: ComplexArray, _ body: (Complex, Int) -> Complex) -> ComplexArray {
+    assertSameSize(x)
     var y = complex(sized: x)
     for k in 0 ..< x.0.count {
         (y.0[k], y.1[k]) = body((x.0[k], x.1[k]), k)

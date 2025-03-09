@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  idftr.swift
+//
 //
 //  Created by Marcus Painter on 04/04/2024.
 //
@@ -11,6 +11,7 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func idftr(_ x: ComplexArray) -> RealArray {
+    assertSameSize(x)
     let n = length(x)
 
     // Init by copy

@@ -12,6 +12,7 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func fft(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.0.count,
                                                        direction: .forward,

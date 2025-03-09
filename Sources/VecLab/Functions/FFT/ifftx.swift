@@ -11,6 +11,7 @@ import Foundation
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
 public func ifftx(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     let n = length(x)
     let invN = 1.0 / Real(n)
     let omega = exp(2 * Real.pi * Real.i / Real(n)) // IFFT +i

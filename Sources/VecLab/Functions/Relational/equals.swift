@@ -10,8 +10,10 @@
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: true or false.
-public func == (a: RealArray, b: RealArray) -> Bool {
+public func ==(a: RealArray, b: RealArray) -> Bool {
     assertSameSize(a, b)
+    // Check if the arrays have the same count and the same elements
+    guard a.count == b.count else { return false }
     return zip(a, b).allSatisfy { $0 == $1 }
 }
 
@@ -22,5 +24,5 @@ public func == (a: RealArray, b: RealArray) -> Bool {
 /// - Returns: true or false.
 public func == (a: ComplexArray, b: ComplexArray) -> Bool {
     assertSameSize(a, b)
-    return zip(a.0, b.1).allSatisfy { $0 == $1 }
+    return zip(a.0, b.0).allSatisfy { $0 == $1 } && zip(a.1, b.1).allSatisfy { $0 == $1 }
 }

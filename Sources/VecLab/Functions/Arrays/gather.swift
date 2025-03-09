@@ -20,6 +20,7 @@ public func gather(_ x: RealArray, _ indices: RealArray) -> RealArray {
 ///   - indices: Array of indices.
 /// - Returns: Array of selected elements.
 public func gather(_ x: ComplexArray, _ indices: RealArray) -> ComplexArray {
+    assertSameSize(x)
     let r = gather(x.0, indices)
     let i = gather(x.1, indices)
     return (r, i)
@@ -40,6 +41,7 @@ public func gather(_ x: RealArray, _ indices: [Int]) -> RealArray {
 ///   - indices: Array of indices.
 /// - Returns: Array of selected elements.
 public func gather(_ x: ComplexArray, _ indices: [Int]) -> ComplexArray {
+    assertSameSize(x)
     let r = gather(x.0, indices)
     let i = gather(x.1, indices)
     return (r, i)

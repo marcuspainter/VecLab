@@ -48,6 +48,7 @@ public func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
 public func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
+    assertSameSize(a)
     return a * conj(b) // Overloaded
 }
 
@@ -57,6 +58,7 @@ public func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
 public func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return a * conj(b) // Overloaded
 }
 
@@ -76,6 +78,7 @@ public func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
 public func *~ (a: Real, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return a * conj(b) // Overloaded
 }
 

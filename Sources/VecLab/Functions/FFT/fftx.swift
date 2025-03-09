@@ -31,6 +31,7 @@ public func fftx(_ x: RealArray) -> ComplexArray {
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func fftx(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     let n = length(x)
     let omega = exp(-2 * Real.pi * Real.i / Real(n))
     if rem(n, 2) == 0 {

@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  ifftr.swift
+//
 //
 //  Created by Marcus Painter on 03/04/2024.
 //
@@ -12,6 +12,7 @@ import Accelerate
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func ifftr(_ x: ComplexArray) -> RealArray {
+    assertSameSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.0.count,
                                                        direction: .inverse,

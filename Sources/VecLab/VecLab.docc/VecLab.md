@@ -236,6 +236,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Exponents>
 - <doc:Filter>
 - <doc:FFT>
+- <doc:Index>
 - <doc:Integration>
 - <doc:Interpolation>
 - <doc:Modulo>
@@ -243,6 +244,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
+- <doc:Relational>
 - <doc:Smoothing>
 - <doc:Space>
 - <doc:Special>

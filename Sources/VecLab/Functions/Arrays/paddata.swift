@@ -29,6 +29,7 @@ public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
 ///   - m: Size.
 /// - Returns: Array padded to size m
 public func paddata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
+    assertSameSize(x)
     let n = x.0.count
     var y = x
     if m > n {

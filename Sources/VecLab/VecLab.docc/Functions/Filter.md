@@ -6,15 +6,15 @@ Filter functions.
 
 ### Filter
 
-- ``filter(_:_:_:)-4azrb``
-- ``filter(_:_:_:)-3tfxw``
+- ``filter(b:a:x:)-5e25y``
+- ``filter(b:a:x:)-3s8ml``
 
 ### Biquad Filter
-- ``biquad(f:fs:Q:dbGain:ftype:)``
+- ``biquad(f:fs:Q:dbGain:type:)``
 
 ### Transfer Response
-- ``freqz(_:_:_:)``
-- ``freqz2(_:_:_:)``
-- ``biquadfreqz(_:_:_:)``
-- ``biquadmag(_:_:_:)``
+- ``freqz(b:a:N:)``
+- ``freqz2(b:a:N:)``
+- ``biquadfreqz(b:a:n:)``
+- ``biquadmag(b:a:N:)``
 

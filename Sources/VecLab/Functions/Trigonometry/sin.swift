@@ -28,6 +28,7 @@ public func sin(_ x: Complex) -> Complex {
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
 public func sin(_ x: ComplexArray) -> ComplexArray {
+    assertSameSize(x)
     var r = RealArray(repeating: 0, count: x.0.count)
     var i = RealArray(repeating: 0, count: x.1.count)
     let coshx = vForce.cosh(x.1)

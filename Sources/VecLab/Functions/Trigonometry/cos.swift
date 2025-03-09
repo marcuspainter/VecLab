@@ -29,14 +29,15 @@ public func cos(_ x: Complex) -> Complex {
 /// - Parameter x: Angle in radians.
 /// - Returns: The cosine of the angles.
 public func cos(_ x: ComplexArray) -> ComplexArray {
-    var r = RealArray(repeating: 0, count: x.0.count)
-    var i = RealArray(repeating: 0, count: x.1.count)
+    assertSameSize(x)
+    var real = RealArray(repeating: 0, count: x.0.count)
+    var imag = RealArray(repeating: 0, count: x.1.count)
     let coshx = vForce.cosh(x.1)
     let sinhx = vForce.sinh(x.1)
-    r = vForce.cos(x.0)
-    i = vForce.sin(x.0)
-    i = vDSP.negative(i)
-    r = vDSP.multiply(r, coshx) //  cosx0 * coshx1
-    i = vDSP.multiply(i, sinhx) // -sinx0 * sinhx1
-    return (r, i)
+    real = vForce.cos(x.0)
+    imag = vForce.sin(x.0)
+    imag = vDSP.negative(imag)
+    real = vDSP.multiply(real, coshx) //  cosx0 * coshx1
+    imag = vDSP.multiply(imag, sinhx) // -sinx0 * sinhx1
+    return (real, imag)
 }

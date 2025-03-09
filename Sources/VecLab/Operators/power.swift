@@ -36,6 +36,7 @@ public func ** (_ a: Int, _ b: Int) -> Real {
 public func ** (_ a: Int, _ b: Real) -> Real {
     return pow(a, b)
 }
+
 /// Power.
 /// - Parameters:
 ///   - a: Real number.
@@ -136,6 +137,15 @@ public func ** (_ a: Complex, _ b: Real) -> Complex {
 
 /// Power.
 /// - Parameters:
+///   - a: Complex number.
+///   - b: Complex number.
+/// - Returns: Raises `a` to the power of `b`.
+public func ** (_ a: Complex, _ b: Complex) -> Complex {
+    return pow(a, b)
+}
+
+/// Power.
+/// - Parameters:
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of 'b'
@@ -146,25 +156,23 @@ public func ** (_ a: Real, _ b: Complex) -> Complex {
 
 // MARK: Complex Array
 
-/*
- /// Power
- /// - Parameters:
- ///   - a: Complex array
- ///   - b: Complex array
- /// - Returns: Raises `a` to the power of 'b'
- @available(*, unavailable, message: "Not implemented")
- public func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-     return ([], [])
- }
- */
+/// Power
+/// - Parameters:
+///   - a: Complex array
+///   - b: Complex array
+/// - Returns: Raises `a` to the power of 'b'
+public func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
+    return pow(a, b)
+}
 
 /// Power.
 /// - Parameters:
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+    assertSameSize(a, b)
     return pow(a, b)
 }
 
@@ -173,8 +181,8 @@ public func ** (_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
     return pow(a, b)
 }
 
@@ -183,7 +191,6 @@ public func ** (_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: RealArray, _ b: Complex) -> ComplexArray {
     return pow(a, b)
 }
@@ -193,7 +200,6 @@ public func ** (_ a: RealArray, _ b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: Complex, _ b: RealArray) -> ComplexArray {
     return pow(a, b)
 }
@@ -203,8 +209,8 @@ public func ** (_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: ComplexArray, _ b: Real) -> ComplexArray {
+    assertSameSize(a)
     return pow(a, b)
 }
 
@@ -213,7 +219,7 @@ public func ** (_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
 public func ** (_ a: Real, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return pow(a, b)
 }

@@ -22,8 +22,7 @@ import Foundation
 /// print(result)  // prints: true
 /// ```
 public func any(_ x: RealArray) -> Bool {
-    let absx: RealArray = vDSP.absolute(x)
-    return vDSP.sum(absx) > 0
+    return x.allSatisfy { $0 != 0 }
 }
 
 /// Determines if any element of a complex array is non-zero.
@@ -40,5 +39,6 @@ public func any(_ x: RealArray) -> Bool {
 /// print(result)  // prints: true
 /// ```
 public func any(_ x: ComplexArray) -> Bool {
-    return any(x.0) || any(x.0)
+    assertSameSize(x)
+    return any(x.0) || any(x.1)
 }

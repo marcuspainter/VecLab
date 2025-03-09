@@ -22,10 +22,7 @@ import Foundation
 /// print(result)  // prints: true
 /// ```
 public func all(_ x: RealArray) -> Bool {
-    let absx = vDSP.absolute(x)
-    let sumabsx = vDSP.sum(absx)
-    let thresholded = vDSP.threshold(absx, to: 0, with: .zeroFill)
-    return vDSP.sum(thresholded) == sumabsx && sumabsx != 0.0
+    return x.contains { $0 != 0.0 }
 }
 
 /// Determines if all elements of a complex array are non-zero.
@@ -42,5 +39,6 @@ public func all(_ x: RealArray) -> Bool {
 /// print(result)  // prints: false
 /// ```
 public func all(_ x: ComplexArray) -> Bool {
+    assertSameSize(x)
     return all(x.0) && all(x.1)
 }

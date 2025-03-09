@@ -21,8 +21,7 @@ public func db2mag(_ db: Real) -> Real {
 /// - Parameter db: Value in decibels.
 /// - Returns: The magnitude value.
 public func db2mag(_ db: RealArray) -> RealArray {
-    var result = RealArray(repeating: 0, count: db.count)
     let scaleFactor = Real(log(10.0) / 20.0)
-    result = vDSP.multiply(scaleFactor, db)
+    let result = vDSP.multiply(scaleFactor, db)
     return vForce.exp(result)
 }

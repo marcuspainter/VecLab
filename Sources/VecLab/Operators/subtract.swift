@@ -16,6 +16,7 @@ import Foundation
 ///   - b: Real array.
 /// - Returns: The result of the subtraction.
 public func - (a: RealArray, b: RealArray) -> RealArray {
+    assertSameSize(a, b)
     return vDSP.subtract(a, b)
 }
 
@@ -84,6 +85,7 @@ public func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: Complex) -> ComplexArray {
+    assertSameSize(a)
     return (a.0 - b.0, a.1 - b.1)
 }
 
@@ -93,6 +95,7 @@ public func - (a: ComplexArray, b: Complex) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction.
 public func - (a: Complex, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return b - a
 }
 
@@ -122,6 +125,7 @@ public func - (a: RealArray, b: ComplexArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: Real) -> ComplexArray {
+    assertSameSize(a)
     return (a.0 - b, a.1)
 }
 
@@ -131,6 +135,7 @@ public func - (a: ComplexArray, b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: The result of the subtraction
 public func - (a: Real, b: ComplexArray) -> ComplexArray {
+    assertSameSize(b)
     return (a - b.0, -b.1)
 }
 

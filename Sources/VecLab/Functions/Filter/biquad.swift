@@ -35,16 +35,16 @@ public enum BiquadType {
 ///   - fs: Sample rate (Hz).
 ///   - Q: Quality factor.
 ///   - dbGain: Gain (dB).
-///   - ftype: Filter type.
+///   - type: Filter type.
 /// - Returns: (b, a) coefficients as a tuple.
-public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) -> (b: [Real], a: [Real]) {
+public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: [Real], a: [Real]) {
     // Fs = 48000
     // f0 = 1000
     // Q = sqrt(2)/2
     // dbGain = 15
     // type = .notch
 
-    var f0 = f
+    let f0 = f
 
     let A = sqrt( pow(10, dbGain/20) )
 
@@ -63,9 +63,9 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, ftype: BiquadType) 
     var a1 = Real(0.0)
     var a2 = Real(0.0)
 
-    switch ftype {
+    switch type {
         case .lowpass:  // H(s) = 1 / (s^2 + s/Q + 1)
-            
+
             b0 =  (1 - cosW0)/2
             b1 =   1 - cosW0
             b2 =  (1 - cosW0)/2

@@ -31,6 +31,7 @@ public func slice(_ x: RealArray, _ range: Range<Int>, _ by: Int = 1) -> RealArr
 ///   - by: The index step size.
 /// - Returns: The sub array.
 public func slice(_ x: ComplexArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexArray {
+    assertSameSize(x)
     if by == 1 {
         return (Array(x.0[range]), Array(x.1[range]))
     } else {
@@ -65,6 +66,7 @@ public func slice(_ x: RealArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> R
 ///   - by: The index step size.
 /// - Returns: The sub array.
 public func slice(_ x: ComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexArray {
+    assertSameSize(x)
     if by == 1 {
         return (Array(x.0[range]), Array(x.1[range]))
     } else {

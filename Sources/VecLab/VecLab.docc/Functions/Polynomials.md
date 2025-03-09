@@ -10,3 +10,5 @@ Polynomial functions.
 - ``polyval(_:_:)-6p3hg``
 - ``polyval(_:_:)-97tf9``
 - ``polyval(_:_:)-908kk``
+
+- ``roots(coefficients:)``

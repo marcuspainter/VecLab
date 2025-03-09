@@ -44,7 +44,7 @@ class FilterTests: XCTestCase {
     
     func testBiquad() throws {
         let Q = sqrt(2) / 2
-        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
         let aa: RealArray = [1.000000000000000,   -1.979851542514359,    0.980052508206336]
@@ -55,7 +55,7 @@ class FilterTests: XCTestCase {
 
     func testFreqz() throws {
         let Q = sqrt(2) / 2
-        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
         let aa: RealArray = [1.000000000000000,   -1.979851542514359,    0.980052508206336]
@@ -74,7 +74,7 @@ class FilterTests: XCTestCase {
     
     func testFreqz2() throws {
         let Q = sqrt(2) / 2
-        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
         let aa: RealArray = [1.000000000000000,   -1.979851542514359,    0.980052508206336]
@@ -95,7 +95,7 @@ class FilterTests: XCTestCase {
     
     func testBiquadmag() throws {
         let Q = sqrt(2) / 2
-        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
         let aa: RealArray = [1.000000000000000,   -1.979851542514359,    0.980052508206336]
@@ -121,7 +121,7 @@ class FilterTests: XCTestCase {
     
     func testBiquadfreqz() throws {
         let Q = sqrt(2) / 2
-        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, ftype: .lowpass)
+        let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
         let aa: RealArray = [1.000000000000000,   -1.979851542514359,    0.980052508206336]

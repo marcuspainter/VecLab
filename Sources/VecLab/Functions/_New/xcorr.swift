@@ -17,26 +17,26 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     let nx = length(x)
     let ny = length(y)
     let n  = nx + ny - 1  // Full cross-correlation length
-    
+
     // Use power-of-2 FFT size
     let N = Int(2.0 ** nextpow2(n))
-    
+
     // Zero-pad inputs
     let a = paddata(x, N)
     let b = paddata(y, N)
-    
+
     // FFT-based cross-correlation (note conjugation on y)
     let A = fftr(a)
     let B = fftr(b)
     let C = A *~ B
     let full_c = ifftr(C)
-    
+
     // Correct circular shift to align with MATLAB xcorr
     // MATLAB's xcorr lags go from -(nv-1) to (nu-1)
     // Zero-lag should be at index nv in a 1-based system
     let shift_amount = ny - 1
     var c = circshift(full_c, shift_amount)
-    
+
     // Trim extra values
     c = Array(c[0 ..< n])
     return c
@@ -51,26 +51,26 @@ public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let nx = length(x)
     let ny = length(y)
     let n  = nx + ny - 1  // Full cross-correlation length
-    
+
     // Use power-of-2 FFT size
     let N = Int(2.0 ** nextpow2(n))
-    
+
     // Zero-pad inputs
     let a = paddata(x, N)
     let b = paddata(y, N)
-    
+
     // FFT-based cross-correlation (note conjugation on y)
     let A = fft(a)
     let B = fft(b)
     let C = A *~ B
     let full_c = ifft(C)
-    
+
     // Correct circular shift to align with MATLAB xcorr
     // MATLAB's xcorr lags go from -(nv-1) to (nu-1)
     // Zero-lag should be at index nv in a 1-based system
     let shift_amount = ny - 1
     var c = circshift(full_c, shift_amount)
-    
+
     // Trim extra values
     c = trimdata(c, n)
     return c
