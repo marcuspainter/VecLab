@@ -140,6 +140,7 @@ As a shorthand, complex types can use the conjugate multiply operators.
 - ``**(_:_:)-70xkl``
 - ``**(_:_:)-7ivqe``
 - ``**(_:_:)-9g29d``
+- ``**(_:_:)-4u3du``
 
 ### Unary Plus
 

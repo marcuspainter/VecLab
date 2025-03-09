@@ -20,32 +20,3 @@ public func find(_ x: ComplexArray, predicate: (Complex) -> Bool) -> ComplexArra
     }
     return result
 }
-
-/*
- 
- b = [1,2,3]
- a = a[b]
- 
- a[b] = b
- 
- a = getindex(a, indices)
- 
- a = setindex(a, indices, b)
- 
- */
-
-func getindex(a: RealArray, indices: Real) -> RealArray {
-    return []
-}
-
-func getindex(a: RealArray, indices: RealArray) -> RealArray {
-    return []
-}
-
-func settindex(a: RealArray, indices: Real, b: Real) -> RealArray {
-    return []
-}
-
-func setindex(a: RealArray, indices: RealArray, b: RealArray) -> RealArray {
-    return []
-}
