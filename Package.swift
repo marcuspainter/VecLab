@@ -1,12 +1,15 @@
 // swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
+// swift-tools-version:5.9
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
 
 let package = Package(
     name: "VecLab",
     platforms: [
-        .iOS(.v16),
+        .iOS("16.4"), // LAPACK
         .macOS(.v14)
     ],
     products: [
@@ -26,10 +29,9 @@ let package = Package(
             name: "VecLab",
             dependencies: [],
             resources: [.process("Resources")],
-            cSettings: [
-              .define("ACCELERATE_NEW_LAPACK"),
-              .define("ACCELERATE_LAPACK_ILP64") // optional
-        ]
+            cSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
+            cxxSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
+            linkerSettings: [.linkedFramework("Accelerate")]
         ),
         .testTarget(
             name: "VecLabTests",
