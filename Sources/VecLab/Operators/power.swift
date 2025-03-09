@@ -137,6 +137,15 @@ public func ** (_ a: Complex, _ b: Real) -> Complex {
 
 /// Power.
 /// - Parameters:
+///   - a: Complex number.
+///   - b: Complex number.
+/// - Returns: Raises `a` to the power of `b`.
+public func ** (_ a: Complex, _ b: Complex) -> Complex {
+    return pow(a, b)
+}
+
+/// Power.
+/// - Parameters:
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of 'b'
