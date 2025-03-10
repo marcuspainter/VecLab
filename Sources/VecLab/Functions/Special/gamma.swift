@@ -10,8 +10,8 @@ import Foundation
 /// Gamma function.
 /// - Parameter x: Input value
 /// - Returns: Returns the gamma function.
-public func gamma(_ x: Double) -> Double {
-    let a: [Double] = [
+public func gamma(_ x: Real) -> Real {
+    let a: [Real] = [
         1.00000000000000000000,
         0.57721566490153286061,
        -0.65587807152025388108,
@@ -61,7 +61,7 @@ public func gamma(_ x: Double) -> Double {
 /// - Returns: Returns the gamma function.
 public func gamma(_ z: Complex) -> Complex {
     let g = 7
-    let p: [Double] = [
+    let p: [Real] = [
         0.99999999999980993, 676.5203681218851, -1259.1392167224028,
         771.32342877765313, -176.61502916214059, 12.507343278686905,
         -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7

@@ -56,10 +56,10 @@ class PolynomialTests: XCTestCase {
     }
 
     func testRoots() throws {
-        let polynomial = [1.0, -5.0, 6.0] // x^2 - 5x + 6
-        let result = roots(coefficients: polynomial)
+        let polynomial: RealArray = [1.0, -5.0, 6.0] // x^2 - 5x + 6
+        let result: ComplexArray = roots(coefficients: polynomial)
         let expected: ComplexArray = ([3.0, 2.0], [0.0, 0.0])
         print("Roots: \(result)") // Should be approximately [(3.0, 0.0), (2.0, 0.0)]
-        XCTAssertEqual(result, expected, accuracy: accuracy, "polyval failed")
+        XCTAssertEqual(result, expected, accuracy: accuracy, "roots failed")
     }
 }
