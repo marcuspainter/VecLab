@@ -5,68 +5,68 @@
 //  Created by Marcus Painter on 09/03/2025.
 //
 
-/// Get new array element at index.
+/// Get a real array element at index.
 /// - Parameters:
 ///   - x: Input array.
-///   - index: Array of indices.
-/// - Returns: Array.
+///   - index: Integer index.
+/// - Returns: Array element.
 public func getindex(_ x: RealArray, index: Int) -> Real {
     return x[index]
 }
 
-/// Get new array from indices.
+/// Get a complex array element at index.
 /// - Parameters:
-///   - x: Input array.
-///   - index: Array of indices.
-/// - Returns: Array.
+///   - x: Complex array.
+///   - index: Integer index.
+/// - Returns: Array element.
 public func getindex(_ x: ComplexArray, index: Int) -> Complex {
     return (x.0[index], x.1[index])
 }
 
 // MARK:
 
-/// Get new array from indices.
+/// Get a real array element at index.
 /// - Parameters:
-///   - x: Input array.
-///   - index: Array of indices.
-/// - Returns: Array.
+///   - x: Real array.
+///   - index: Real index.
+/// - Returns: Array element.
 public func getindex(_ x: RealArray, index: Real) -> Real {
     return x[Int(index)]
 }
 
-/// Get new array from indices.
+/// Get a complex array element at index.
 /// - Parameters:
-///   - x: Input array.
-///   - index: Array of indices.
-/// - Returns: Array.
+///   - x: Complex array.
+///   - index: Real index.
+/// - Returns: Array element.
 public func getindex(_ x: ComplexArray, index: Real) -> Complex {
     return (x.0[Int(index)], x.1[Int(index)])
 }
 
 // MARK:
 
-/// Get new array from indices.
+/// Get a real array from indices.
 /// - Parameters:
-///   - x: Input array.
-///   - indices: Array of indices.
+///   - x: Real array.
+///   - indices: Array of integer indices.
 /// - Returns: Array.
 public func getindex(_ x: RealArray, indices: [Int]) -> RealArray {
     return indices.map { x[$0] }
 }
 
-/// Get new array from indices.
+/// Get a real array from indices.
 /// - Parameters:
-///   - x: Input array.
-///   - indices: Array of indices.
+///   - x: Real array.
+///   - indices: Array of real indices.
 /// - Returns: Array.
-public func getindex(_ x: RealArray, indices: RealArray) -> RealArray{
+public func getindex(_ x: RealArray, indices: RealArray) -> RealArray {
     return indices.map { x[Int($0)] }
 }
 
-/// Get new array from indices.
+/// Get a complex array from indices.
 /// - Parameters:
-///   - x: Input array.
-///   - indices: Array of indices.
+///   - x: Complex array.
+///   - indices: Array of integer indices.
 /// - Returns: Array.
 public func getindex(_ x: ComplexArray, indices: [Int]) -> ComplexArray {
     let real = indices.map { x.0[$0] }
@@ -74,10 +74,10 @@ public func getindex(_ x: ComplexArray, indices: [Int]) -> ComplexArray {
     return (real, imag)
 }
 
-/// Get new array from indices.
+/// Get a complex array from indices.
 /// - Parameters:
-///   - x: Input array.
-///   - indices: Array of indices.
+///   - x: Complex array.
+///   - indices: Array of real indices.
 /// - Returns: Array.
 public func getindex(_ x: ComplexArray, indices: RealArray) -> ComplexArray {
     let real = indices.map { x.0[Int($0)] }
