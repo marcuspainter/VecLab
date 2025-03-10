@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 09/03/2025.
 //
 
-/// Get  a real array element at index.
+/// Get a real array element at index.
 /// - Parameters:
 ///   - x: Input array.
 ///   - index: Integer index.
@@ -14,7 +14,7 @@ public func getindex(_ x: RealArray, index: Int) -> Real {
     return x[index]
 }
 
-/// Get  a complex array element at index.
+/// Get a complex array element at index.
 /// - Parameters:
 ///   - x: Complex array.
 ///   - index: Integer index.
@@ -25,7 +25,7 @@ public func getindex(_ x: ComplexArray, index: Int) -> Complex {
 
 // MARK:
 
-/// Get  a real array element at index.
+/// Get a real array element at index.
 /// - Parameters:
 ///   - x: Real array.
 ///   - index: Real index.
@@ -34,7 +34,7 @@ public func getindex(_ x: RealArray, index: Real) -> Real {
     return x[Int(index)]
 }
 
-/// Get  a complex array element at index.
+/// Get a complex array element at index.
 /// - Parameters:
 ///   - x: Complex array.
 ///   - index: Real index.
@@ -59,7 +59,7 @@ public func getindex(_ x: RealArray, indices: [Int]) -> RealArray {
 ///   - x: Real array.
 ///   - indices: Array of real indices.
 /// - Returns: Array.
-public func getindex(_ x: RealArray, indices: RealArray) -> RealArray{
+public func getindex(_ x: RealArray, indices: RealArray) -> RealArray {
     return indices.map { x[Int($0)] }
 }
 

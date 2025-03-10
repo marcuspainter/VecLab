@@ -6,7 +6,7 @@
 //
 
 /// Set all array elements to a real scalar.
-///- Parameters:
+/// - Parameters:
 ///   - x: Real array.
 ///   - value: Real scalar.
 /// - Returns: Modified array.
