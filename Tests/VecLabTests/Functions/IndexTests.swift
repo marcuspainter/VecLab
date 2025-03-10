@@ -12,7 +12,7 @@ class IndexTests: XCTestCase {
     
     func testSetindex2() {
         // Example usage
-        let a0: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
+        let a0: [Real] = [0, 0, 0, 0, 0, 0, 0, 0]
         let indices1: [Int] = [0, 2] // 0-based indices (equivalent to MATLAB's [1,3])
         let indices2: [Int] = [4, 6] // 0-based indices (equivalent to MATLAB's [5,7])
         
@@ -20,8 +20,8 @@ class IndexTests: XCTestCase {
         
         print(ttt)
         
-        let b: [Double] = [10, 20, 30, 40, 50, 60, 70, 80]
-        let c: [Double] = [19, 29]
+        let b: RealArray = [10, 20, 30, 40, 50, 60, 70, 80]
+        let c: RealArray = [19, 29]
         
         _ = setindex(a0, value: 1.0)
         

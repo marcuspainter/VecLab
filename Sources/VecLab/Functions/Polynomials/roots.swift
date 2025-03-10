@@ -44,7 +44,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     let n = p.count - 1
 
     // Create the companion matrix (column-major order for LAPACK)
-    var A = [Double](repeating: 0.0, count: n * n)
+    var A = [Real](repeating: 0.0, count: n * n)
 
     // Set the subdiagonal to ones: diag(ones(n-1,1),-1)
     for i in 0 ..< (n - 1) {
@@ -56,6 +56,40 @@ public func roots(coefficients: RealArray) -> ComplexArray {
         A[i * n] = -p[i + 1] / p[0]
     }
 
+    // Prepare variables for eigenvalue computation
+    var wR = [Real](repeating: 0.0, count: n) // Real parts of eigenvalues
+    var wI = [Real](repeating: 0.0, count: n) // Imaginary parts of eigenvalues
+
+    // Call LAPACK's dgeev to compute eigenvalues
+    //sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
+
+    (wR, wI) = eigenvalues(&A, n)
+    
+    // Convert eigenvalues to complex number tuples
+    var result = [(Real, Real)]()
+    for i in 0 ..< n {
+        result.append((wR[i], wI[i]))
+    }
+
+    // If we had leading zeros, add them as roots
+    if startIndex > 0 {
+        for _ in 0 ..< startIndex {
+            result.append((0.0, 0.0))
+        }
+    }
+
+    // Convert to complex array
+
+    var complexArray: ComplexArray = ([], [])
+    for k in 0 ..< result.count {
+        complexArray.0.append(result[k].0)
+        complexArray.1.append(result[k].1)
+    }
+
+    return complexArray
+}
+
+fileprivate func eigenvalues(_ A: inout [Double], _ n: Int) -> ([Double], [Double]) {
     // Prepare variables for eigenvalue computation
     var jobVL = "N".utf8CString[0] // Don't compute left eigenvectors
     var jobVR = "N".utf8CString[0] // Don't compute right eigenvectors
@@ -79,29 +113,36 @@ public func roots(coefficients: RealArray) -> ComplexArray {
         print("Error: dgeev returned info = \(info)")
         return ([], [])
     }
+    
+    return (wR, wI)
+}
 
-    // Convert eigenvalues to complex number tuples
-    var result = [(Double, Double)]()
-    for i in 0 ..< n {
-        result.append((wR[i], wI[i]))
+fileprivate func eigenvalues(_ A: inout [Float], _ n: Int) -> ([Float], [Float]) {
+    // Prepare variables for eigenvalue computation
+    var jobVL = "N".utf8CString[0] // Don't compute left eigenvectors
+    var jobVR = "N".utf8CString[0] // Don't compute right eigenvectors
+    var N = __LAPACK_int(n)
+    var ldA = __LAPACK_int(n)
+    var wR = [Float](repeating: 0.0, count: n) // Real parts of eigenvalues
+    var wI = [Float](repeating: 0.0, count: n) // Imaginary parts of eigenvalues
+    var VL = [Float](repeating: 0.0, count: 1) // Left eigenvectors (not used)
+    var ldVL = __LAPACK_int(1)
+    var VR = [Float](repeating: 0.0, count: 1) // Right eigenvectors (not used)
+    var ldVR = __LAPACK_int(1)
+    var workSize = __LAPACK_int(4 * n) // Size of work array
+    var work = [Float](repeating: 0.0, count: Int(workSize))
+    var info = __LAPACK_int(0)
+
+    // Call LAPACK's sgeev to compute eigenvalues
+    sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
+    
+    // Check if computation was successful
+    if info != 0 {
+        print("Error: sgeev returned info = \(info)")
+        return ([], [])
     }
-
-    // If we had leading zeros, add them as roots
-    if startIndex > 0 {
-        for _ in 0 ..< startIndex {
-            result.append((0.0, 0.0))
-        }
-    }
-
-    // Convert to complex array
-
-    var complexArray: ComplexArray = ([], [])
-    for k in 0 ..< result.count {
-        complexArray.0.append(result[k].0)
-        complexArray.1.append(result[k].1)
-    }
-
-    return complexArray
+    
+    return (wR, wI)
 }
 
 // Example usage:
