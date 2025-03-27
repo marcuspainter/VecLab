@@ -215,6 +215,7 @@ Overloaded operators for scalar and vectors.
 ### Essentials 
 - <doc:GettingStarted>
 - <doc:ArrayConcatenation>
+- <doc:ArrayIndexing>
 - <doc:FourierTransform>
 
 ### Vector Creation

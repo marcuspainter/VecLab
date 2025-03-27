@@ -181,4 +181,50 @@ class NewTests: XCTestCase {
         let expected: RealArray = [2, 5, 8]
         XCTAssertEqual(result, expected, accuracy: accuracy, "downsample failed")
     }
+    
+    func testFindpeaks() throws {
+        let y = [0.0, 1.0, 2.0, 1.0, 3.0, 4.0, 3.0, 2.0, 5.0, 2.0]
+        // Find peaks with height >= 3.0
+        let (peaks1, locations1) = findpeaks(y)
+        print(locations1)
+        let expectedPeaks: RealArray = [2.0, 4.0, 5.0]
+        let expectedLocations: [Int] = [2, 5, 8]
+        XCTAssertEqual(peaks1, expectedPeaks, accuracy: accuracy, "findpeaks failed")
+        XCTAssertEqual(locations1, expectedLocations, "findpeaks failed")
+    }
+    
+    func testFindpeaksMinPeakHeight() throws {
+        let y = [0.0, 1.0, 2.0, 1.0, 3.0, 4.0, 3.0, 2.0, 5.0, 2.0]
+        // Find peaks with height >= 3.0
+        let (peaks1, locations1) = findpeaks(y, minPeakHeight: 4.0)
+        print(locations1)
+        let expectedPeaks: RealArray = [4.0, 5.0]
+        let expectedLocations: [Int] = [5, 8]
+        XCTAssertEqual(peaks1, expectedPeaks, accuracy: accuracy, "findpeaks failed")
+        XCTAssertEqual(locations1, expectedLocations, "findpeaks failed")
+    }
+    
+    func testFindpeaksTreshold() throws {
+        let y = [0.0, 1.0, 2.0, 1.0, 3.0, 4.0, 3.0, 2.0, 5.0, 2.0]
+        // Find peaks with height >= 3.0
+        let (peaks1, locations1) = findpeaks(y, threshold: 2.0)
+        print(peaks1)
+        print(locations1)
+        let expectedPeaks: RealArray = [5.0]
+        let expectedLocations: [Int] = [8]
+        XCTAssertEqual(peaks1, expectedPeaks, accuracy: accuracy, "findpeaks failed")
+        XCTAssertEqual(locations1, expectedLocations, "findpeaks failed")
+    }
 }
+
+// Usage example:
+// let y = [0.0, 1.0, 2.0, 1.0, 3.0, 4.0, 3.0, 2.0, 5.0, 2.0]
+//
+// // Find peaks with height >= 3.0
+// let (peaks1, locations1) = findPeaks(in: y, minPeakHeight: 3.0)
+//
+// // Find peaks that exceed neighbors by at least 1.0
+// let (peaks2, locations2) = findPeaks(in: y, threshold: 1.0)
+//
+// // Find peaks with height >= 3.0 that exceed neighbors by at least 1.0
+// let (peaks3, locations3) = findPeaks(in: y, minPeakHeight: 3.0, threshold: 1.0)

@@ -29,4 +29,25 @@ class SpecialTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "gamma failed")
     }
     
+    func testErf() throws {
+        let result: Real = VecLab.erf(1.0)
+        print(result)
+        let expected: Real = 0.842700792949715
+        XCTAssertEqual(result, expected, accuracy: accuracy, "erf failed")
+    }
+    
+    func testErfAccelerate() throws {
+        let result: Real = _math.erf(1.0)
+        print(result)
+        let expected: Real = 0.842700792949715
+        XCTAssertEqual(result, expected, accuracy: accuracy, "erf failed")
+    }
+    
+    func testErfinv() throws {
+        let result: Real = erfinv(0.842700792949715)
+        print(result)
+        let expected: Real = 1.0
+        XCTAssertEqual(result, expected, accuracy: accuracy, "erfinv failed")
+    }
+    
 }

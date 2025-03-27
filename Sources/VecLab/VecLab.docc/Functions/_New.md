@@ -42,3 +42,6 @@ New functions.
 - ``bin2freq(bin:N:fs:)``
 - ``freq2bin(f:N:fs:)``
 
+### Peaks
+
+- ``findpeaks()``
