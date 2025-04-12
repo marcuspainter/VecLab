@@ -13,8 +13,8 @@ Factors, combinations, permutations and prime numbers.
 ### Combinations and Permutations
 
 - ``factorial(_:)``
-- ``nchoosek(_:_:)-346v8``
-- ``nchoosek(_:_:)-6c4te``
+- ``nchoosek(_:_:)->Int``
+- ``nchoosek(_:_:)->[[T]]``
 - ``perms(_:)``
 
 ### Prime Numbers

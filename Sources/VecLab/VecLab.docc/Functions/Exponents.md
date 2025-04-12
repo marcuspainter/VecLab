@@ -5,27 +5,27 @@ Exponents, logarithms and square root.
 ## Topics
 
 ### Exponents
-- ``exp(_:)-jetc``
-- ``exp(_:)-62uop``
-- ``exp(_:)-6orow``
+- ``exp(_:)->RealArray``
+- ``exp(_:)->Complex``
+- ``exp(_:)->ComplexArray``
 
 ### Logarithms
-- ``log(_:)-5rlfq``
-- ``log(_:)-4k1wa``
-- ``log(_:)-6b18``
-- ``log2(_:)-47qvp``
-- ``log2(_:)-1afel``
-- ``log2(_:)-4zn0c``
-- ``log10(_:)-9qv4x``
-- ``log10(_:)-5asxs``
-- ``log10(_:)-6csto``
+- ``log(_:)->RealArray``
+- ``log(_:)->Complex``
+- ``log(_:)->ComplexArray``
+- ``log2(_:)->RealArray``
+- ``log2(_:)->Complex``
+- ``log2(_:)->ComplexArray``
+- ``log10(_:)->RealArray``
+- ``log10(_:)->Complex``
+- ``log10(_:)->ComplexArray``
 
 ### Square Root
-- ``sqrt(_:)-oqp6``
-- ``sqrt(_:)-2vdwv``
-- ``sqrt(_:)-8a9gf``
+- ``sqrt(_:)->RealArray``
+- ``sqrt(_:)->Complex``
+- ``sqrt(_:)->ComplexArray``
 
 ### Complex Euler
 
-- ``expi(_:)-27hmf``
-- ``expi(_:)-8hf8v``
+- ``expi(_:)->Complex``
+- ``expi(_:)->ComplexArray``

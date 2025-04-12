@@ -39,7 +39,7 @@ Coordinate, degrees and radians, and decibel conversion.
 
 ### Floating Point Conversion
 
-- ``f2d(_:)``
-- ``f2d(_:)``
-- ``d2f(_:)``
-- ``d2f(_:)``
+- ``f2d(_:)->[Double]``
+- ``f2d(_:)->ComplexDoubleArray``
+- ``d2f(_:)->[Float]``
+- ``d2f(_:)->ComplexFloatArray``

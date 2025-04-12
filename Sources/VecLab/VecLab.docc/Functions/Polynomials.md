@@ -4,11 +4,11 @@ Polynomial functions.
 
 ## Topics
 
-- ``polyval(_:_:)-2kknr``
-- ``polyval(_:_:)-9rhyr``
-- ``polyval(_:_:)-9x0iz``
-- ``polyval(_:_:)-6p3hg``
-- ``polyval(_:_:)-97tf9``
-- ``polyval(_:_:)-908kk``
+- ``polyval(_:_:)->Real``
+- ``polyval(_:_:)->RealArray``
+- ``polyval(_:_:)-(RealArray,Complex)``
+- ``polyval(_:_:)-(RealArray,ComplexArray)``
+- ``polyval(_:_:)-(ComplexArray,Complex)``
+- ``polyval(_:_:)-(ComplexArray,ComplexArray)``
 
 - ``roots(coefficients:)``

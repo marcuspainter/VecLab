@@ -11,6 +11,6 @@ Integration and differentiation.
 
 ### Integration
 
-- ``trapz(_:step:)-5dt26``
-- ``trapz(_:step:)-i5ta``
+- ``trapz(_:step:)->Double``
+- ``trapz(_:step:)->Float``
 - ``trapz(_:_:)``

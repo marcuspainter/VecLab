@@ -24,22 +24,22 @@ let y = pow(x, 3)
 
 ## Topics
 
-- ``pow(_:_:)-2erl9``
-- ``pow(_:_:)-8527z``
-- ``pow(_:_:)-7tfw4``
-- ``pow(_:_:)-7mln4``
-- ``pow(_:_:)-4120p``
-- ``pow(_:_:)-34u4z``
-- ``pow(_:_:)-6kwk7``
-- ``pow(_:_:)-7lb47``
-- ``pow(_:_:)-6nb5f``
-- ``pow(_:_:)-74zt0``
-- ``pow(_:_:)-3saoq``
-- ``pow(_:_:)-9z6dt``
-- ``pow(_:_:)-802gs``
-- ``pow(_:_:)-2rlei``
-- ``pow(_:_:)-9w6fe``
-- ``pow(_:_:)-9e7y9``
-- ``pow(_:_:)-3erbn``
-- ``pow(_:_:)-3u2h8``
-
+- ``pow(_:_:)-(Int,Int)``
+- ``pow(_:_:)-(Int,Real)``
+- ``pow(_:_:)-(Real,Int)``
+- ``pow(_:_:)-(Real,Real)``
+- ``pow(_:_:)-(RealArray,Int)``
+- ``pow(_:_:)-(Real,Complex)``
+- ``pow(_:_:)-(Complex,Real)``
+- ``pow(_:_:)-(Complex,Int)``
+- ``pow(_:_:)-(Complex,Complex)``
+- ``pow(_:_:)-(Real,RealArray)``
+- ``pow(_:_:)-(RealArray,Real)``
+- ``pow(_:_:)-(RealArray,RealArray)``
+- ``pow(_:_:)-(RealArray,Complex)``
+- ``pow(_:_:)-(RealArray,ComplexArray)``
+- ``pow(_:_:)-(Complex,RealArray``
+- ``pow(_:_:)-(Real,ComplexArray)``
+- ``pow(_:_:)-(ComplexArray,Real)``
+- ``pow(_:_:)-(ComplexArray,RealArray)``
+- ``pow(_:_:)-(ComplexArray,ComplexArray)``
