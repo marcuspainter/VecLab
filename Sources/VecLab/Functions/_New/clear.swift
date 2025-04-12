@@ -19,5 +19,6 @@ public func clear(_ c: RealArray) {
 /// - Parameters:
 ///   - c: Array.
 public func clear(_ c: ComplexArray) {
-    vectorClearComplexArray(c)
+    vectorClearRealArray(c.real)
+    vectorClearRealArray(c.imag)
 }

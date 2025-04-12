@@ -94,7 +94,7 @@ public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same")
             return convfull(x, y)
         default:
             assert(false, "conv shape must be \"same\" or \"full\"")
-            return ([], [])
+            return ComplexArray()
     }
 }
 

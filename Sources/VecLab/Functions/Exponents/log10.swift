@@ -19,16 +19,15 @@ public func log10(_ x: RealArray) -> RealArray {
 public func log10(_ a: Complex) -> Complex {
     let naturalLog = complexLog(a)
     let ln10: Real = Darwin.log(10.0)
-    return (naturalLog.0 / ln10, naturalLog.1 / ln10)
+    return Complex(naturalLog.real / ln10, naturalLog.imag / ln10)
 }
 
 /// Base 10 logarithm of a complex array.
 public func log10(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    var real = RealArray(repeating: 0, count: x.0.count)
-    var imag = RealArray(repeating: 0, count: x.1.count)
-    for k in 0 ..< x.0.count {
-        (real[k], imag[k]) = log10(Complex(x.0[k], x.1[k]))
+    var c = ComplexArray(count: x.count)
+    for k in 0 ..< x.count {
+        c[k] = log10(x[k])
     }
-    return (real, imag)
+    return c
 }

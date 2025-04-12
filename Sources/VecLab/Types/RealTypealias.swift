@@ -26,8 +26,8 @@ public typealias Real = Double
 /// Type alias for an array of real numbers
 public typealias RealArray = [Real]
 
-/// Type alias for a complex number as a tuple of two real numbers
-public typealias Complex = (Real, Real)
+/// Type alias for a complex number
+public typealias Complex = ComplexDouble
 
-/// Type alias for a complex array as a tuple of two real arrays
-public typealias ComplexArray = (RealArray, RealArray)
+/// Type alias for a complex array
+public typealias ComplexArray = ComplexDoubleArray

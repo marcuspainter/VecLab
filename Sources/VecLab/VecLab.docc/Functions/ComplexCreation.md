@@ -5,8 +5,8 @@ Complex vector creation functions.
 ## Topics
 
 - ``complex(count:)``
-- ``complex(sized:)-8yez3``
-- ``complex(sized:)-1cuwk``
-- ``complex(_:_:)-90aj9``
-- ``complex(_:_:)-1z7i3``
+- ``complex(sized:)-(RealArray)``
+- ``complex(sized:)-(ComplexArray)``
+- ``complex(_:_:)->Complex``
+- ``complex(_:_:)->ComplexArray``
 - ``complex()``

@@ -23,7 +23,7 @@ public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
         let X = fftr(xx)
         // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
         let t1 = slice(X, 0 ..< ((N+1)/2) )
-        let t2 = (z, z)
+        let t2 = ComplexArray(z, z)
         let t3 = slice(X, (N+1)/2 ..< N)
         let XX = U * cat(t1, t2, t3)
         let x = ifftr(XX)
@@ -33,9 +33,9 @@ public func interpft(_ xx: RealArray, _ n: Int) -> RealArray {
         let X = fftr(xx)
         let z = zeros(N * Int(U) - N)
         let t1 = slice(X, 0 ..< (N/2))
-        let t2 = ( [X.0[(N/2)+1]], [X.1[(N/2)+1]]) * 0.5
-        let t3 = (z, z)
-        let t4 = ( [X.0[N/2+1]], [X.1[N/2+1]]) * 0.5
+        let t2 = ComplexArray( [X.real[N/2+1]], [X.imag[N/2+1]]) * 0.5
+        let t3 = ComplexArray(z, z)
+        let t4 = ComplexArray( [X.real[N/2+1]], [X.imag[N/2+1]]) * 0.5
         let t5 = slice(X, N/2+1 ..< N)
         // XX = U * [X(1:(N/2)) X((N/2)+1)/2 z X(N/2+1)/2 X(N/2+2:N)];  // Matlab
         let XX = U * cat(t1, t2, t3, t4, t5)

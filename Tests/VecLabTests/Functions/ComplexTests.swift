@@ -15,14 +15,14 @@ class ComplexTests: XCTestCase {
     // MARK: abs
 
     func testAbsComplex() throws {
-        let complexA: Complex = (3.0, 4.0)
+        let complexA: Complex = Complex(3.0, 4.0)
         let result: Real = abs(complexA)
         let expected: Real = 5.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
     }
 
     func testAbsComplexArray() throws {
-        let complexArrayA: ComplexArray = ([3.0, 5.0], [4.0, 12.0])
+        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
         let result: RealArray = abs(complexArrayA)
         let expected: RealArray = [5.0, 13.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
@@ -31,14 +31,14 @@ class ComplexTests: XCTestCase {
     // MARK: angle
 
     func testAngleComplex() throws {
-        let complexA: Complex = (3.0, 4.0)
+        let complexA: Complex = Complex(3.0, 4.0)
         let result: Real = angle(complexA)
         let expected: Real = 0.927295218001612
         XCTAssertEqual(result, expected, accuracy: accuracy, "angle failed")
     }
 
     func testAngleComplexArray() throws {
-        let complexArrayA: ComplexArray = ([3.0, 5.0], [4.0, 12.0])
+        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
         let result: RealArray = angle(complexArrayA)
         let expected: RealArray = [0.927295218001612, 1.176005207095135]
         XCTAssertEqual(result, expected, accuracy: accuracy, "angle failed")
@@ -47,16 +47,16 @@ class ComplexTests: XCTestCase {
     // MARK: conj
 
     func testConjComplex() throws {
-        let complexA: Complex = (3.0, 4.0)
+        let complexA: Complex = Complex(3.0, 4.0)
         let result: Complex = conj(complexA)
-        let expected: Complex = (3.0, -4.0)
+        let expected: Complex = Complex(3.0, -4.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "conj failed")
     }
 
     func testConjComplexArray() throws {
-        let complexArrayA: ComplexArray = ([3.0, 5.0], [4.0, 12.0])
+        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
         let result: ComplexArray = conj(complexArrayA)
-        let expected: ComplexArray = ([3.0, 5.0], [-4.0, -12.0])
+        let expected: ComplexArray = ComplexArray([3.0, 5.0], [-4.0, -12.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "conj failed")
     }
 
@@ -67,14 +67,14 @@ class ComplexTests: XCTestCase {
     // MARK: imag
 
     func testImagComplex() throws {
-        let complexA: Complex = (3.0, 4.0)
+        let complexA: Complex = Complex(3.0, 4.0)
         let result: Real = imag(complexA)
         let expected: Real = 4.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "imag failed")
     }
 
     func testImagComplexArray() throws {
-        let complexArrayA: ComplexArray = ([3.0, 5.0], [4.0, 12.0])
+        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
         let result: RealArray = imag(complexArrayA)
         let expected: RealArray = [4.0, 12.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "imag failed")
@@ -83,14 +83,14 @@ class ComplexTests: XCTestCase {
     // MARK: real
 
     func testRealComplex() throws {
-        let complexA: Complex = (3.0, 4.0)
+        let complexA: Complex = Complex(3.0, 4.0)
         let result: Real = real(complexA)
         let expected: Real = 3.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "real failed")
     }
 
     func testRealComplexArray() throws {
-        let complexArrayA: ComplexArray = ([3.0, 5.0], [4.0, 12.0])
+        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
         let result: RealArray = real(complexArrayA)
         let expected: RealArray = [3.0, 5.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "real failed")

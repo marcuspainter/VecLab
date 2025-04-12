@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 16/11/2024.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Sine and  cosine of array in radians.
 /// - Parameter x: Angles in radians.
@@ -15,7 +15,7 @@ public func sincos(_ x: RealArray) -> (RealArray, RealArray) {
     return sincosArray(x)
 }
 
-public func sincos(_ x: Real) -> Complex {
+public func sincos(_ x: Real) -> (Real, Real) {
     return (Darwin.sin(x), Darwin.cos(x))
 }
 

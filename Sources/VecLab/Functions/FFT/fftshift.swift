@@ -28,8 +28,8 @@ public func fftshift(_ x: RealArray) -> RealArray {
 /// - Returns: Shifted array
 public func fftshift(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    let r = fftshift(x.0)
-    let i = fftshift(x.1)
+    let real = fftshift(x.real)
+    let imag = fftshift(x.imag)
 
-    return (r, i)
+    return ComplexArray(real, imag)
 }

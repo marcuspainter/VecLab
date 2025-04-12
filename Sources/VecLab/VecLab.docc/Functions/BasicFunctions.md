@@ -5,41 +5,41 @@ Basic functions.
 ## Topics
 
 ### Absolute Value and Sign
-- ``abs(_:)-5rhu3``
-- ``sign(_:)-2t249``
-- ``sign(_:)-85xxo``
-- ``sign(_:)-2ffo1``
-- ``sign(_:)-5rksg``
+- ``abs(_:)->Real``
+- ``sign(_:)->Real``
+- ``sign(_:)->RealArray``
+- ``sign(_:)->Complex``
+- ``sign(_:)->ComplexArray``
 
 ### Print and Display
-- ``disp(_:)-28gi3``
-- ``disp(_:)-67je7``
-- ``disp(_:)-7myqd``
-- ``disp(_:)-3tmps``
+- ``disp(_:)-()``
+- ``disp(_:)-(RealArray)``
+- ``disp(_:)-(ComplexArray)``
+- ``disp(_:)-(ArraySlice<Real>)``
 
 ### Sums and Products
-- ``sum(_:)-8ru5``
-- ``sum(_:)-8qyqj``
-- ``cumsum(_:)-3lbri``
-- ``cumsum(_:)-24pie``
-- ``prod(_:)-1y313``
-- ``prod(_:)-7j2to``
-- ``dot(_:_:)-3l35z``
-- ``dot(_:_:)-9w9hh``
-- ``dot(_:_:)-664wy``
-- ``dot(_:_:)-7oo9c``
+- ``sum(_:)->Real``
+- ``sum(_:)->Complex``
+- ``cumsum(_:)->RealArray``
+- ``cumsum(_:)->RealArray``
+- ``prod(_:)->Real``
+- ``prod(_:)->Complex``
+- ``dot(_:_:)->Real``
+- ``dot(_:_:)-(RealArray,ComplexArray)``
+- ``dot(_:_:)-(ComplexArray,RealArray)``
+- ``dot(_:_:)-(ComplexArray,ComplexArray)``
 
 ### Miscellaneous
 
-- ``all(_:)-6ng02``
-- ``all(_:)-4gqjj``
-- ``any(_:)-b8ms``
-- ``any(_:)-3v1s3``
+- ``all(_:)-(RealArray)``
+- ``all(_:)-(RealArray)``
+- ``any(_:)-(RealArray)``
+- ``any(_:)-(ComplexArray)``
 
-- ``iterate(_:_:)-95uuh``
-- ``iterate(_:_:)-3t7c2``
-- ``iterate(_:_:)-8sew6``
-- ``iterate(_:_:)-uxtp``
+- ``iterate(_:_:)-(_,(Real)->Real)``
+- ``iterate(_:_:)-(_,(Real,Int)->Real)``
+- ``iterate(_:_:)-(_,(Complex)->Complex)``
+- ``iterate(_:_:)-(_,(Complex,Int)->Complex)``
 
 - ``norm(_:)``
 

@@ -54,17 +54,9 @@ public func filter(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 /// - Returns: Filtered complex signal.
 public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    let yr = filter(b: b, a: a, x: x.0)
-    let yi = filter(b: b, a: a, x: x.1)
-    return (yr, yi)
+    let yr = filter(b: b, a: a, x: x.real)
+    let yi = filter(b: b, a: a, x: x.imag)
+    return ComplexArray(yr, yi)
 }
 
-/*
-// Test the function
-let b: [Double] = [0, 0, 1]
-let a: [Double] = [1]
-let x: [Double] = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
 
-let y = filter(b: b, a: a, x: x)
-print(y)
-*/

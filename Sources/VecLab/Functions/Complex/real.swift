@@ -11,7 +11,7 @@ import Foundation
 /// - Parameter x: Complex number.
 /// - Returns: The real part.
 public func real(_ x: Complex) -> Real {
-    return x.0
+    return x.real
 }
 
 /// Real parts of a complex array.
@@ -19,5 +19,5 @@ public func real(_ x: Complex) -> Real {
 /// - Returns: A real array of real part of a complex array.
 public func real(_ x: ComplexArray) -> RealArray {
     assertSameSize(x)
-    return x.0
+    return x.real
 }

@@ -48,8 +48,8 @@ public func freqz2(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
             denominator = denominator + a[k] * exp(-Real.i * w[i] * Real(k))
         }
         let HH = numerator / denominator
-        H.0[i] = HH.0
-        H.1[i] = HH.1
+        H.real[i] = HH.real
+        H.imag[i] = HH.imag
     }
     return H
 }

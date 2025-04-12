@@ -37,8 +37,7 @@ public func *~ (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
 public func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    var c = createComplexArray(count: a.0.count)
-    c = vectorConjugateMultiplyComplexArray(b, a)
+    let c = vectorConjugateMultiplyComplexArray(b, a)
     return c
 }
 

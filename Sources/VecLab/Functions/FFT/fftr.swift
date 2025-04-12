@@ -19,11 +19,11 @@ public func fftr(_ x: RealArray) -> ComplexArray {
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
         print("fftr failed")
-        return ([Real](repeating: Real.nan, count: x.count),
+        return ComplexArray([Real](repeating: Real.nan, count: x.count),
                 [Real](repeating: Real.nan, count: x.count))
     }
     let zeros = [Real](repeating: 0.0, count: x.count)
     let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
 
-    return (splitComplexOutput.real, splitComplexOutput.imaginary)
+    return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }

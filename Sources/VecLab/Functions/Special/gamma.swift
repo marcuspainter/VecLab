@@ -68,16 +68,16 @@ public func gamma(_ z: Complex) -> Complex {
     ]
 
     // Reflection formula
-    if z.0 < 0.5 {
-        return (.pi, 0.0) / (sin((.pi, 0.0) * z) * gamma((1.0, 0.0) - z))
+    if z.real < 0.5 {
+        return Complex(.pi, 0.0) / (sin(Complex(.pi, 0.0) * z) * gamma(Complex(1.0, 0.0) - z))
     } else {
         let zz: Complex = z - 1.0
-        var x: Complex = (p[0], 0.0)
+        var x: Complex = Complex(p[0], 0.0)
         for i in 1..<(g + 2) {
             x = x + p[i] / (zz + Real(i))
         }
         let t: Complex = zz + Real(g) + 0.5
-        return sqrt((2 * .pi, 0.0)) * pow(t, zz + 0.5) * exp(-t) * x
+        return sqrt(Complex(2 * .pi, 0.0)) * pow(t, zz + 0.5) * exp(-t) * x
     }
 }
 
@@ -94,8 +94,8 @@ public func gamma(_ z: RealArray) -> RealArray {
 public func gamma(_ z: ComplexArray) -> ComplexArray {
     assertSameSize(z)
     var result = z
-    for k in 0..<result.0.count {
-        (result.0[k], result.1[k]) = gamma((z.0[k], z.1[k]))
+    for k in 0..<result.count {
+        result[k] = gamma(z[k])
     }
     return result
 }

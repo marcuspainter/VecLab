@@ -19,12 +19,12 @@ func fillRealArray(_ c: [Double], _ a: Double) {
     }
 }
 
-func fillComplexArray(_ c: ([Double], [Double]), _ a: (Double, Double) ) {
-    let n = c.0.count
-    var aa0 = a.0
-    var aa1 = a.1
-    c.0.withUnsafeBufferPointer { cRealBuffer in
-        c.1.withUnsafeBufferPointer { cImagBuffer in
+func fillComplexArray(_ c: ComplexArray, _ a: Complex) {
+    let n = c.count
+    var aa0 = a.real
+    var aa1 = a.imag
+    c.real.withUnsafeBufferPointer { cRealBuffer in
+        c.imag.withUnsafeBufferPointer { cImagBuffer in
             let C0 = UnsafeMutablePointer(mutating: cRealBuffer.baseAddress!)
             let C1 = UnsafeMutablePointer(mutating: cImagBuffer.baseAddress!)
             vDSP_vfillD(&aa0, C0, 1, vDSP_Length(n))
@@ -42,7 +42,7 @@ func fillRealArray(_ c: [Float], _ a: Float) {
     }
 }
 
-func fillComplexArray(_ c: ([Float], [Float]), _ a: (Float, Float) ) {
+func fillComplexArray(_ c: ([Float], [Float]), _ a: (Float, Float)) {
     let n = c.0.count
     var aa0 = a.0
     var aa1 = a.1
@@ -58,7 +58,7 @@ func fillComplexArray(_ c: ([Float], [Float]), _ a: (Float, Float) ) {
 
 // MARK: Clear
 
-func vectorClearRealArray(_ c: [Double]) {
+func vectorClearRealArray(_ c: RealArray) {
     let n = c.count
     c.withUnsafeBufferPointer { cRealBuffer in
         let C = UnsafeMutablePointer(mutating: cRealBuffer.baseAddress!)

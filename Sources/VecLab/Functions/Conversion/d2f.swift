@@ -20,11 +20,11 @@ public func d2f(_ d: [Double]) -> [Float] {
 /// Converts a double-precision complex vector to a single-precision complex vector.
 /// - Parameter d: The input vector.
 /// - Returns: The output vector.
-public func d2f(_ d: ([Double], [Double])) -> ([Float], [Float]) {
-    let n = d.0.count
+public func d2f(_ d: ComplexDoubleArray) -> ComplexFloatArray {
+    let n = d.count
     var f0 = [Float](repeating: 0, count: n)
     var f1 = f0
-    vDSP_vdpsp(d.0, 1, &f0, 1, vDSP_Length(n))
-    vDSP_vdpsp(d.1, 1, &f1, 1, vDSP_Length(n))
-    return (f0, f1)
+    vDSP_vdpsp(d.real, 1, &f0, 1, vDSP_Length(n))
+    vDSP_vdpsp(d.imag, 1, &f1, 1, vDSP_Length(n))
+    return ComplexFloatArray(f0, f1)
 }

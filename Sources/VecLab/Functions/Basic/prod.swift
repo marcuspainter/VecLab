@@ -11,7 +11,7 @@ import Foundation
 /// - Parameter x: Input array.
 /// - Returns: The product of the array.
 public func prod(_ x: RealArray) -> Real {
-    var product = Real(x[0])
+    var product = x[0]
     for k in 1 ..< x.count {
         product *= x[k]
     }
@@ -23,9 +23,9 @@ public func prod(_ x: RealArray) -> Real {
 /// - Returns: The product of the array.
 public func prod(_ x: ComplexArray) -> Complex {
     assertSameSize(x)
-    var product = Complex(x.0[0], x.1[0])
-    for k in 1 ..< x.0.count {
-        product = complexMultiply((product.0, product.1), (x.0[k], x.1[k]))
+    var product = x[0]
+    for k in 1 ..< x.count {
+        product = product * x[k]
     }
     return product
 }

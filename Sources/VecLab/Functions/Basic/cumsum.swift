@@ -29,11 +29,11 @@ public func cumsum(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
     var c = x
     var sum = complex()
-    for k in 0 ..< x.0.count {
-        sum.0 += x.0[k]
-        sum.1 += x.1[k]
-        c.0[k] = sum.0
-        c.1[k] = sum.1
+    for k in 0 ..< x.count {
+        sum.real += x.real[k]
+        sum.imag += x.imag[k]
+        c.real[k] = sum.real
+        c.imag[k] = sum.imag
     }
     return c
 }

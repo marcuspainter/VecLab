@@ -14,16 +14,16 @@ import Accelerate
 public func ifftr(_ x: ComplexArray) -> RealArray {
     assertSameSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.0.count,
+                                                       count: x.count,
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
         print("ifftr failed")
-        return ([Real](repeating: Real.nan, count: x.0.count))
+        return ([Real](repeating: Real.nan, count: x.count))
     }
 
-    var splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
-    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(x.0.count))
+    var splitComplexOutput = dft.transform(real: x.real, imaginary: x.imag)
+    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(x.count))
 
     return splitComplexOutput.real
 }

@@ -1,12 +1,12 @@
 //
 //  conj.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 // VECTORIZED
 
@@ -14,7 +14,7 @@ import Accelerate
 /// - Parameter x: Complex number.
 /// - Returns: The complex conjugate of `x`.
 public func conj(_ x: Complex) -> Complex {
-    return (x.0, -x.1)
+    return Complex(x.real, -x.imag)
 }
 
 /// Complex conjugates of a complex array.
@@ -22,8 +22,8 @@ public func conj(_ x: Complex) -> Complex {
 /// - Returns: The complex conjugate of `x`.
 public func conj(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    let i = vDSP.negative(x.1)
-    return (x.0, i)
- }
+    let i = vDSP.negative(x.imag)
+    return ComplexArray(x.real, i)
+}
 
 // Not implemented for reals

@@ -23,9 +23,9 @@ public func dft(_ x: ComplexArray) -> ComplexArray {
     var y = x
     let q = RealArray(0..<n)
     let omega = -2 * Real.pi * Real.i * q  / Real(n)
-    for p in 0..<x.0.count {
+    for p in 0..<x.count {
         let w = exp(omega * Real(p))
-        (y.0[p], y.1[p]) = sum(x * w)
+        y[p] = sum(x * w)
     }
     return y
 }

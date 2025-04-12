@@ -11,14 +11,14 @@ import Accelerate
 /// - Parameter x: Angles in radians
 /// - Returns: Complex array of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
 public func expi(_ x: RealArray) -> ComplexArray {
-    return complexEulerArray(x)
+    return ComplexArray(complexEulerArray(x))
 }
 
 /// Returns a complex number from angle by Euler
 /// - Parameter x: Angle in radians
 /// - Returns: Complex number of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
 public func expi(_ x: Real) -> Complex {
-    return (Darwin.cos(x), Darwin.sin(x))
+    return Complex(Darwin.cos(x), Darwin.sin(x))
 }
 
 // MARK: Private

@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 // MARK: Real Array
 
@@ -55,7 +55,7 @@ public func / (a: Complex, b: Complex) -> Complex {
 ///   - b: Real number.
 /// - Returns: The result of the division.
 public func / (a: Complex, b: Real) -> Complex {
-    return (a.0 / b, a.1 / b)
+    return Complex(a.real / b, a.imag / b)
 }
 
 /// Division.
@@ -64,7 +64,7 @@ public func / (a: Complex, b: Real) -> Complex {
 ///   - b: Complex number.
 /// - Returns: The result of the division.
 public func / (a: Real, b: Complex) -> Complex {
-    return complexDivide((a, 0), b)
+    return complexDivide(Complex(a, 0), b)
 }
 
 /// Division.

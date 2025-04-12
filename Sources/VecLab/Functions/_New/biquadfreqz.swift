@@ -42,8 +42,8 @@ public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArra
     let den_im =     -a1 * sin_w - a2 * sin_2w  // Corrected sign
 
     // Compute the complex frequency response
-    let num = (num_re, num_im)
-    let den = (den_re, den_im)
+    let num = ComplexArray(num_re, num_im)
+    let den = ComplexArray(den_re, den_im)
     let H = num / den
 
     return H

@@ -42,7 +42,7 @@ public func * (a: Real, b: RealArray) -> RealArray {
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
 public func * (a: Complex, b: Complex) -> Complex {
-    return (a.0 * b.0 - a.1 * b.1, a.0 * b.1 + a.1 * b.0)
+    return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
 }
 
 /// Multiplication.
@@ -51,7 +51,7 @@ public func * (a: Complex, b: Complex) -> Complex {
 ///   - b: Real number.
 /// - Returns: The result of the multiplication.
 public func * (a: Complex, b: Real) -> Complex {
-    return (a.0 * b, a.1 * b)
+    return Complex(a.real * b, a.imag * b)
 }
 
 /// Multiplication.
@@ -122,9 +122,9 @@ public func * (a: RealArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the multiplication.
 public func * (a: ComplexArray, b: Real) -> ComplexArray {
     assertSameSize(a)
-    let r = vDSP.multiply(b, a.0)
-    let i = vDSP.multiply(b, a.1)
-    return (r, i)
+    let r = vDSP.multiply(b, a.real)
+    let i = vDSP.multiply(b, a.imag)
+    return ComplexArray(r, i)
 }
 
 /// Multiplication.
@@ -134,9 +134,9 @@ public func * (a: ComplexArray, b: Real) -> ComplexArray {
 /// - Returns: The result of the multiplication.
 public func * (a: Real, b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
-    let r = vDSP.multiply(a, b.0)
-    let i = vDSP.multiply(a, b.1)
-    return (r, i)
+    let r = vDSP.multiply(a, b.real)
+    let i = vDSP.multiply(a, b.imag)
+    return ComplexArray(r, i)
 }
 
 /// Multiplication.
@@ -145,9 +145,9 @@ public func * (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the multiplication.
 public func * (a: Complex, b: RealArray) -> ComplexArray {
-    let r = vDSP.multiply(a.0, b)
-    let i = vDSP.multiply(a.1, b)
-    return (r, i)
+    let r = vDSP.multiply(a.real, b)
+    let i = vDSP.multiply(a.imag, b)
+    return ComplexArray(r, i)
 }
 
 /// Multiplication.
@@ -156,7 +156,7 @@ public func * (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
 public func * (a: RealArray, b: Complex) -> ComplexArray {
-    let r = vDSP.multiply(b.0, a)
-    let i = vDSP.multiply(b.1, a)
-    return (r, i)
+    let r = vDSP.multiply(b.real, a)
+    let i = vDSP.multiply(b.imag, a)
+    return ComplexArray(r, i)
 }

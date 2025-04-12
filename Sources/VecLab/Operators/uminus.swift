@@ -21,14 +21,14 @@ public prefix func - (a: RealArray) -> RealArray {
 /// - Parameter a: Complex number.
 /// - Returns: The result of -a.
 public prefix func - (a: Complex) -> Complex {
-    return (-a.0, -a.1)
+    return Complex(-a.real, -a.imag)
 }
 
 /// Unary minus.
 /// - Parameter a: Complex array.
 /// - Returns: The result of -a.
 public prefix func - (a: ComplexArray) -> ComplexArray {
-    let r = vDSP.negative(a.0)
-    let i = vDSP.negative(a.1)
-    return (r, i)
+    let r = vDSP.negative(a.real)
+    let i = vDSP.negative(a.imag)
+    return ComplexArray(r, i)
 }

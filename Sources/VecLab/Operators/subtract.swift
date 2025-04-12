@@ -48,7 +48,7 @@ public func - (a: Real, b: RealArray) -> RealArray {
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
 public func - (a: Complex, b: Complex) -> Complex {
-    return (a.0 - b.0, a.1 - b.1)
+    return Complex(a.real - b.real, a.imag - b.imag)
 }
 
 /// Subtraction.
@@ -57,7 +57,7 @@ public func - (a: Complex, b: Complex) -> Complex {
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
 public func - (a: Complex, b: Real) -> Complex {
-    return (a.0 - b, a.1)
+    return Complex(a.real - b, a.imag)
 }
 
 /// Subtraction.
@@ -66,7 +66,7 @@ public func - (a: Complex, b: Real) -> Complex {
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
 public func - (a: Real, b: Complex) -> Complex {
-    return (a - b.0, -b.1)
+    return Complex(a - b.real, -b.imag)
 }
 
 /// Subtraction.
@@ -86,7 +86,7 @@ public func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: Complex) -> ComplexArray {
     assertSameSize(a)
-    return (a.0 - b.0, a.1 - b.1)
+    return ComplexArray(a.real - b.real, a.imag - b.imag)
 }
 
 /// Subtraction.
@@ -106,7 +106,7 @@ public func - (a: Complex, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: RealArray) -> ComplexArray {
     assertSameSize(a, b)
-    return (a.0 - b, a.1)
+    return ComplexArray(a.real - b, a.imag)
 }
 
 /// Subtraction.
@@ -126,7 +126,7 @@ public func - (a: RealArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the subtraction.
 public func - (a: ComplexArray, b: Real) -> ComplexArray {
     assertSameSize(a)
-    return (a.0 - b, a.1)
+    return ComplexArray(a.real - b, a.imag)
 }
 
 /// Subtraction.
@@ -136,7 +136,7 @@ public func - (a: ComplexArray, b: Real) -> ComplexArray {
 /// - Returns: The result of the subtraction
 public func - (a: Real, b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
-    return (a - b.0, -b.1)
+    return ComplexArray(a - b.real, -b.imag)
 }
 
 /// Subtraction.
@@ -145,9 +145,9 @@ public func - (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the subtraction
 public func - (a: Complex, b: RealArray) -> ComplexArray {
-    let r = a.0 - b
-    let i = RealArray(repeating: Real(a.1), count: b.count)
-    return (r, i)
+    let r = a.real - b
+    let i = RealArray(repeating: Real(a.imag), count: b.count)
+    return ComplexArray(r, i)
 }
 
 /// Subtraction.
@@ -156,7 +156,7 @@ public func - (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction
 public func - (a: RealArray, b: Complex) -> ComplexArray {
-    let r = a - b.0
-    let i = RealArray(repeating: -Real(b.1), count: a.count)
-    return (r, i)
+    let r = a - b.real
+    let i = RealArray(repeating: -Real(b.imag), count: a.count)
+    return ComplexArray(r, i)
 }

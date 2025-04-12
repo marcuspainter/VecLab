@@ -40,5 +40,5 @@ public func all(_ x: RealArray) -> Bool {
 /// ```
 public func all(_ x: ComplexArray) -> Bool {
     assertSameSize(x)
-    return all(x.0) && all(x.1)
+    return all(x.real) && all(x.imag)
 }

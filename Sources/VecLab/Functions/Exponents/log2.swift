@@ -23,7 +23,7 @@ public func log2(_ x: RealArray) -> RealArray {
 public func log2(_ a: Complex) -> Complex {
     let naturalLog = complexLog(a)
     let ln2: Real = Darwin.log(2.0)
-    return (naturalLog.0 / ln2, naturalLog.1 / ln2)
+    return Complex(naturalLog.real / ln2, naturalLog.imag / ln2)
 }
 
 /// Base 2 logarithm of a complex array.
@@ -32,10 +32,9 @@ public func log2(_ a: Complex) -> Complex {
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    var real = RealArray(repeating: 0, count: x.0.count)
-    var imag = RealArray(repeating: 0, count: x.1.count)
-    for k in 0 ..< x.0.count {
-        (real[k], imag[k]) = log2(Complex(x.0[k], x.1[k]))
+    var c =  ComplexArray(count: x.count)
+    for k in 0 ..< x.count {
+        c[k] = log2(x[k])
     }
-    return (real, imag)
+    return c
 }

@@ -11,7 +11,7 @@ import Foundation
 /// - Parameter x: Complex number.
 /// - Returns: The imaginary part of a complex number as a real number.
 public func imag(_ x: Complex) -> Real {
-    return x.1
+    return x.imag
 }
 
 /// Imaginary parts of a complex array.
@@ -19,5 +19,5 @@ public func imag(_ x: Complex) -> Real {
 /// - Returns: A real array of imaginary part of a complex array.
 public func imag(_ x: ComplexArray) -> RealArray {
     assertSameSize(x)
-    return x.1
+    return x.imag
 }

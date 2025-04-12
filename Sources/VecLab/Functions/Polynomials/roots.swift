@@ -15,11 +15,11 @@ import Accelerate
 public func roots(coefficients: RealArray) -> ComplexArray {
     // Handle special cases
     if coefficients.isEmpty {
-        return ([], [])
+        return ComplexArray()
     }
 
     if coefficients.count == 1 {
-        return ([], []) // Constant polynomial has no roots
+        return ComplexArray() // Constant polynomial has no roots
     }
 
     // Find the index of the first non-zero coefficient
@@ -30,7 +30,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // If all coefficients are zero, return empty array
     if startIndex == coefficients.count {
-        return ([], [])
+        return ComplexArray()
     }
 
     // Get normalized coefficients (divide by leading coefficient)
@@ -38,7 +38,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // Handle special case for linear polynomial
     if p.count == 2 {
-        return ([-p[1] / p[0]], [0.0])
+        return ComplexArray([-p[1] / p[0]], [0.0])
     }
 
     let n = p.count - 1
@@ -80,10 +80,10 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // Convert to complex array
 
-    var complexArray: ComplexArray = ([], [])
+    var complexArray = ComplexArray()
     for k in 0 ..< result.count {
-        complexArray.0.append(result[k].0)
-        complexArray.1.append(result[k].1)
+        complexArray.real.append(result[k].0)
+        complexArray.imag.append(result[k].1)
     }
 
     return complexArray

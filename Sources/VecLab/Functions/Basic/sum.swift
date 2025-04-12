@@ -22,5 +22,5 @@ public func sum(_ x: RealArray) -> Real {
 /// - Returns: The sum of the array.
 public func sum(_ x: ComplexArray) -> Complex {
     assertSameSize(x)
-    return (vDSP.sum(x.0), vDSP.sum(x.1))
+    return Complex(vDSP.sum(x.real), vDSP.sum(x.imag))
 }

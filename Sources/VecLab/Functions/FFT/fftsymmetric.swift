@@ -13,19 +13,19 @@ import Foundation
 public func fftsymmetric(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
     var y = x
-    let n = x.0.count
+    let n = x.count
     if n % 2 == 0 {
         // Even
         let n2 = n / 2      // Nyquist
         for k in 1 ..< n2 {
-            y.0[n2 + k] = y.0[n2 - k]
-            y.1[n2 + k] = -y.1[n2 - k]
+            y.real[n2 + k] = y.real[n2 - k]
+            y.imag[n2 + k] = -y.imag[n2 - k]
         }
     } else {
         let n2 = (n + 1) / 2
         for k in 0 ..< n2 - 1 {
-            y.0[n2 + k] = y.0[n2 - k - 1]
-            y.1[n2 + k] = -y.1[n2 - k - 1]
+            y.real[n2 + k] = y.real[n2 - k - 1]
+            y.imag[n2 + k] = -y.imag[n2 - k - 1]
         }
     }
     return y

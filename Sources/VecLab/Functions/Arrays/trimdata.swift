@@ -27,7 +27,7 @@ public func trimdata(_ x: RealArray, _ m: Int) -> RealArray {
 /// - Returns: Trimmed array.
 public func trimdata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
     assertSameSize(x)
-    let n = x.0.count
+    let n = x.count
     if m < n {
         return slice(x, 0 ..< m)
     }

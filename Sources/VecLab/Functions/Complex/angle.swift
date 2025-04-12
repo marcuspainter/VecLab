@@ -14,7 +14,7 @@ import Foundation
 /// - Parameter x:Complex number.
 /// - Returns: The phase angle in radians.
 public func angle(_ x: Complex) -> Real {
-    return atan2(x.1, x.0)
+    return atan2(x.imag, x.real)
 }
 
 /// Phase angles of a complex array.

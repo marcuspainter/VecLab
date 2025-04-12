@@ -92,5 +92,5 @@ public func vector(sized: RealArray) -> RealArray {
 /// - Parameter sized: Complex array.
 /// - Returns: A real array the same size as the complex array.
 public func vector(sized: ComplexArray) -> RealArray {
-    return RealArray(repeating: 0, count: sized.0.count)
+    return RealArray(repeating: 0, count: sized.count)
 }

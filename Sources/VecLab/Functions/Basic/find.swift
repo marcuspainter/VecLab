@@ -10,12 +10,12 @@ public func find(_ x: RealArray, predicate: (Real) -> Bool) -> RealArray {
 }
 
 public func find(_ x: ComplexArray, predicate: (Complex) -> Bool) -> ComplexArray {
-    var result: ComplexArray = ([], [])
-    for k in 0 ..< x.0.count {
-        let z = (x.0[k], x.1[k])
+    var result = ComplexArray()
+    for k in 0 ..< x.count {
+        let z = Complex(x.real[k], x.imag[k])
         if predicate(z) {
-            result.0.append(z.0)
-            result.1.append(z.1)
+            result.real.append(z.real)
+            result.imag.append(z.imag)
         }
     }
     return result

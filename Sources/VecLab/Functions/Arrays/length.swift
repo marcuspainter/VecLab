@@ -19,5 +19,5 @@ public func length(_ x: RealArray) -> Int {
 /// - Returns: The length of the array.
 public func length(_ x: ComplexArray) -> Int {
     assertSameSize(x)
-    return x.0.count
+    return x.count
 }

@@ -49,7 +49,7 @@ public func + (a: Real, b: RealArray) -> RealArray {
 ///   - b: Complex number.
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: Complex) -> Complex {
-    return (a.0 + b.0, a.1 + b.1)
+    return Complex(a.real + b.real, a.imag + b.imag)
 }
 
 /// Addition.
@@ -58,7 +58,7 @@ public func + (a: Complex, b: Complex) -> Complex {
 ///   - b: Real number.
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: Real) -> Complex {
-    return (a.0 + b, a.1)
+    return Complex(a.real + b, a.imag)
 }
 
 /// Addition.
@@ -79,7 +79,8 @@ public func + (a: Real, b: Complex) -> Complex {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    return vectorAddComplexArray(a, b) // Not needed ???
+    let result = vectorAddComplexArray(a, b) // Not needed ???
+    return result
 }
 
 /// Addition.
@@ -89,9 +90,9 @@ public func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: Complex) -> ComplexArray {
     assertSameSize(a)
-    let r = vDSP.add(b.0, a.0)
-    let i = vDSP.add(b.1, a.1)
-    return (r, i)
+    let r = vDSP.add(b.real, a.real)
+    let i = vDSP.add(b.imag, a.imag)
+    return ComplexArray(r, i)
 }
 
 /// Addition.
@@ -101,9 +102,9 @@ public func + (a: ComplexArray, b: Complex) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
-    let r = vDSP.add(a.0, b.0)
-    let i = vDSP.add(a.1, b.1)
-    return (r, i)
+    let r = vDSP.add(a.real, b.real)
+    let i = vDSP.add(a.imag, b.imag)
+    return ComplexArray(r, i)
 }
 
 /// Addition.
@@ -113,8 +114,8 @@ public func + (a: Complex, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: RealArray) -> ComplexArray {
     assertSameSize(a, b)
-    let r = vDSP.add(a.0, b)
-    return (r, a.1)
+    let r = vDSP.add(a.real, b)
+    return ComplexArray(r, a.imag)
 }
 
 /// Addition.
@@ -124,8 +125,8 @@ public func + (a: ComplexArray, b: RealArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: ComplexArray) -> ComplexArray {
     assertSameSize(a, b)
-    let r = vDSP.add(b.0, a)
-    return (r, b.1)
+    let r = vDSP.add(b.real, a)
+    return ComplexArray(r, b.imag)
 }
 
 /// Addition.
@@ -135,8 +136,8 @@ public func + (a: RealArray, b: ComplexArray) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: ComplexArray, b: Real) -> ComplexArray {
     assertSameSize(a)
-    let real = vDSP.add(b, a.0)
-    return (real, a.1)
+    let real = vDSP.add(b, a.real)
+    return ComplexArray(real, a.imag)
 }
 
 /// Addition.
@@ -146,8 +147,8 @@ public func + (a: ComplexArray, b: Real) -> ComplexArray {
 /// - Returns: The result of the addition.
 public func + (a: Real, b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
-    let real = vDSP.add(a, b.0)
-    return (real, b.1)
+    let real = vDSP.add(a, b.real)
+    return ComplexArray(real, b.imag)
 }
 
 // MARK: Complex & Real Array
@@ -158,10 +159,10 @@ public func + (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the addition.
 public func + (a: Complex, b: RealArray) -> ComplexArray {
-    let real = vDSP.add(a.0, b)
+    let real = vDSP.add(a.real, b)
     var imag = b
-    vectorFillRealArray(a.1, c: &imag)
-    return (real, imag)
+    vectorFillRealArray(a.imag, c: &imag)
+    return ComplexArray(real, imag)
 }
 
 /// Addition.
@@ -170,8 +171,8 @@ public func + (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the addition.
 public func + (a: RealArray, b: Complex) -> ComplexArray {
-    let real = vDSP.add(b.0, a)
+    let real = vDSP.add(b.real, a)
     var imag = a
-    vectorFillRealArray(b.1, c: &imag)
-    return (real, imag)
+    vectorFillRealArray(b.imag, c: &imag)
+    return ComplexArray(real, imag)
 }
