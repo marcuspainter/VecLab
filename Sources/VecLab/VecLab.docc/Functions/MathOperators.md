@@ -49,10 +49,10 @@ As a shorthand, complex types can use the conjugate multiply operators.
 
 ### Subtract
 
-- ``-(_:_:)-(Real,Complex)``
+- ``-(_:_:)-(Complex,Complex)``
 - ``-(_:_:)-(Complex,Real)``
-- ``-(_:_:)``
-- ``-(_:_:)``
+- ``-(_:_:)-(Complex,Complex)``
+- ``-(_:_:)-(Complex,Complex)``
 - ``-(_:_:)``
 - ``-(_:_:)``
 - ``-(_:_:)``

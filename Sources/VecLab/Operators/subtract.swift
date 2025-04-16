@@ -8,8 +8,6 @@
 import Accelerate
 import Foundation
 
-// NOT VECTORIZED
-
 /// Subtraction.
 /// - Parameters:
 ///   - a: Real array.

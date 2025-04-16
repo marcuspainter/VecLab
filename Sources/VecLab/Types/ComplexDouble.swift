@@ -6,18 +6,20 @@
 //
 
 /// Complex number
-public struct ComplexDouble {
-
+public struct ComplexDouble: Equatable, Hashable, Codable, CustomStringConvertible, Sendable {
+    
+    /// Real part.
     public var real: Double
+    /// Imaginary part.
     public var imag: Double
-
+    
     /// Initialize a complex number with zero.
     public init() {
-        self.real = 0.0
-        self.imag = 0.0
+        self.real = 0
+        self.imag = 0
     }
-
-    /// Initialize a complex number with real and imaginary parts.
+    
+    /// Initialize a complex number.
     /// - Parameters:
     ///   - real: Real part.
     ///   - imag: Imaginary part.
@@ -25,24 +27,13 @@ public struct ComplexDouble {
         self.real = real
         self.imag = imag
     }
-}
 
-extension ComplexDouble: CustomStringConvertible {
-
-    /// Text of complex number.
+    /// String of complex value.
     public var description: String {
-        return "(\(real) \(imag)i)"
-    }
-}
-
-extension ComplexDouble: Equatable {
-
-    /// Tests for equality.
-    /// - Parameters:
-    ///   - lhs: A value to compare.
-    ///   - rhs: Another value to compare.
-    /// - Returns: Returns a Boolean value indicating whether two values are equal.
-    static public func == (lhs: ComplexDouble, rhs: ComplexDouble) -> Bool {
-        return lhs.real == rhs.real && lhs.imag == rhs.imag
+        if imag >= 0 {
+            return "\(real) + \(imag)i"
+        } else {
+            return "\(real) - \(abs(imag))i"
+        }
     }
 }

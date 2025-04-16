@@ -37,7 +37,7 @@ New functions.
 - ``peak2peak(_:)``
 - ``paprdb(_:)``
 
-### Bin Frequency
+### FFT Bin Frequency
 
 - ``bin2freq(bin:N:fs:)``
 - ``freq2bin(f:N:fs:)``

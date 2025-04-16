@@ -10,6 +10,6 @@ public extension Array where Element == Real {
     /// Initalize an array with zeros.
     /// - Parameter count: Number of elements
     init(count: Int) {
-        self = RealArray(repeating: Real(0), count: count)
+        self = [Element](repeating: 0, count: count)
     }
 }

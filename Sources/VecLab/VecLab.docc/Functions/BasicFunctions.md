@@ -5,7 +5,7 @@ Basic functions.
 ## Topics
 
 ### Absolute Value and Sign
-- ``abs(_:)->Real``
+- ``abs(_:)-(RealArray)``
 - ``sign(_:)->Real``
 - ``sign(_:)->RealArray``
 - ``sign(_:)->Complex``
@@ -21,7 +21,7 @@ Basic functions.
 - ``sum(_:)->Real``
 - ``sum(_:)->Complex``
 - ``cumsum(_:)->RealArray``
-- ``cumsum(_:)->RealArray``
+- ``cumsum(_:)->ComplexArray``
 - ``prod(_:)->Real``
 - ``prod(_:)->Complex``
 - ``dot(_:_:)->Real``

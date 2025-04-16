@@ -21,7 +21,7 @@ a(indices1) = 1
 a = a0;
 a(indices1) = c
 
-% Set indices to indcies of vector
+% Set indices to indices of vector
 a = a0;
 a(indices2) = b(indices1)
 ```

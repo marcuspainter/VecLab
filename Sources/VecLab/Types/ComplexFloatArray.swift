@@ -1,13 +1,13 @@
 //
-//  ComplexDoubleArray 2.swift
+//  ComplexFloatArray 2.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 12/04/2025.
 //
 
-
+// https://itwenty.me/posts/04-swift-collections/
 //
-//  ComplexDoubleArray.swift
+//  ComplexFloatArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/04/2025.
@@ -15,192 +15,292 @@
 
 // https://itwenty.me/posts/04-swift-collections/
 
-/// Array of complex numbers stored in split form
-public struct ComplexFloatArray {
+/// Complex array implementation using split real/imaginary arrays
+public struct ComplexFloatArray: Collection, MutableCollection, RangeReplaceableCollection,
+    BidirectionalCollection, RandomAccessCollection,
+    Equatable, Hashable, Codable, CustomStringConvertible,
+    ExpressibleByArrayLiteral, Sendable {
+    // MARK: - Storage
+
+    
+    ///  Array of real values.
     public var real: [Float]
+    /// Array of imaginmary values.
     public var imag: [Float]
 
-    /// Initialize with empty arrays
+    // MARK: - Initializers
+
+    /// Initialize an empty complex array.
     public init() {
-        self.real = []
-        self.imag = []
+        real = []
+        imag = []
     }
 
-    /// Initialize a complex array with zeros.
-    /// - Parameters:
-    ///   - count: Number of elements.
-    public init(count: Int) {
-        self.real = [Float](repeating: 0.0, count: count)
-        self.imag = [Float](repeating: 0.0, count: count)
-    }
-
-    /// Initialize a complex array from real and imaginary arrays.
+    /// Initialize  a complex array from real and imaginary arrays.
     /// - Parameters:
     ///   - real: Real array.
     ///   - imag: Imaginary array.
     public init(_ real: [Float], _ imag: [Float]) {
-        guard real.count == imag.count else {
-            fatalError("Real and imaginary arrays must have the same length")
-        }
         self.real = real
         self.imag = imag
     }
-
-    /// Initialize with array of complex numbers.
-    /// - Parameter complexNumbers: An array of complex numbers.
-    public init(_ complexNumbers: [ComplexFloat]) {
-        self.real = complexNumbers.map { $0.real }
-        self.imag = complexNumbers.map { $0.imag }
+    
+    /// Initialize a complex array of length count.
+    /// - Parameter count: Number of elements.
+    public init(count: Int) {
+        real = [Float](repeating: 0, count: count)
+        imag = [Float](repeating: 0, count: count)
     }
 
-    /// Initialize a complex array from a tuple of real and imaginary arrays.
-    /// - Parameter tuple: Input tuple.
-    public init(_ tuple: ([Float], [Float])) {
-        assert(tuple.0.count == tuple.1.count, "Real and imaginary arrays must have the same length")
-        self.real = tuple.0
-        self.imag = tuple.1
+    ///  Initialize a complex array from a collection.
+    public init<C: Collection>(_ elements: C) where C.Element == ComplexFloat {
+        real = elements.map { $0.real }
+        imag = elements.map { $0.imag }
     }
 
-    /// Number of elements in the array
-    public var count: Int {
-        return real.count
+    /// Initialize a complex array from complex numbers..
+    public init(arrayLiteral elements: ComplexFloat...) {
+        self.init(elements)
     }
 
-    /// Access a single complex element by index
-    public subscript(index: Int) -> ComplexFloat {
-        get {
-            precondition(index >= 0 && index < count, "Index out of range")
-            return ComplexFloat(real[index], imag[index])
-        }
-        set {
-            precondition(index >= 0 && index < count, "Index out of range")
-            real[index] = newValue.real
-            imag[index] = newValue.imag
-        }
-    }
+    // MARK: - Collection Protocol Requirements
 
-    /// Access a range of complex elements (like arr[1...5])
-    public subscript(bounds: Range<Int>) -> ComplexFloatArray {
-        get {
-            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            return ComplexFloatArray(
-            Array(real[bounds]),
-            Array(imag[bounds])
-            )
-        }
-        set {
-            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            precondition(bounds.count == newValue.count, "Replacement array must have the same count as the range")
-
-            for (offset, i) in bounds.enumerated() {
-                real[i] = newValue.real[offset]
-                imag[i] = newValue.imag[offset]
-            }
-        }
-    }
-
-    /// Access a range of complex elements with ClosedRange (like arr[1...5])
-    public subscript(bounds: ClosedRange<Int>) -> ComplexFloatArray {
-        get {
-            return self[bounds.lowerBound..<(bounds.upperBound + 1)]
-        }
-        set {
-            self[bounds.lowerBound..<(bounds.upperBound + 1)] = newValue
-        }
-    }
-
-    /// Access complex elements using an array of indices (like arr[[1,3,5]])
-    public subscript(indices: [Int]) -> ComplexFloatArray {
-        get {
-            // Verify all indices are in bounds
-            for idx in indices {
-                precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
-            }
-
-            var resultReal: [Float] = []
-            var resultImag: [Float] = []
-
-            for idx in indices {
-                resultReal.append(real[idx])
-                resultImag.append(imag[idx])
-            }
-
-            return ComplexFloatArray(resultReal, resultImag)
-        }
-        set {
-            // Verify all indices are in bounds
-            for idx in indices {
-                precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
-            }
-
-            precondition(indices.count == newValue.count, "Replacement array must have the same count as the indices array")
-
-            for (offset, idx) in indices.enumerated() {
-                real[idx] = newValue.real[offset]
-                imag[idx] = newValue.imag[offset]
-            }
-        }
-    }
-
-    /// Append a complex number to the array
-    public mutating func append(_ complex: ComplexFloat) {
-        real.append(complex.real)
-        imag.append(complex.imag)
-    }
-
-    /// Append contents of another complex array
-    public mutating func append(contentsOf array: ComplexFloatArray) {
-        real.append(contentsOf: array.real)
-        imag.append(contentsOf: array.imag)
-    }
-
-    /// Remove element at index
-    @discardableResult
-    public mutating func remove(at index: Int) -> ComplexFloat {
-        precondition(index >= 0 && index < count, "Index out of range")
-        let removed = ComplexFloat(real.remove(at: index), imag.remove(at: index))
-        return removed
-    }
-}
-
-// Make ComplexDoubleArray conform to Collection protocol
-extension ComplexFloatArray: Collection {
-    public typealias Index = Int
     public typealias Element = ComplexFloat
+    public typealias Index = Int
+    public typealias SubSequence = ComplexFloatArray
+    public typealias Indices = Range<Int>
 
-    public var startIndex: Int {
-        return 0
-    }
+    /// Start index.
+    public var startIndex: Int { return 0 }
+    /// End index.
+    public var endIndex: Int { return real.count }
+    /// Array of indices.
+    public var indices: Indices { return startIndex ..< endIndex }
+    /// Number of elements.
+    public var count: Int { return real.count }
+    /// Tests if array is empty.
+    public var isEmpty: Bool { return real.isEmpty }
 
-    public var endIndex: Int {
-        return count
-    }
+    /// Index after.
+    /// - Parameter i: An index.
+    /// - Returns: The index after.
+    public func index(after i: Int) -> Int { return i + 1 }
+    /// Index before.
+    /// - Parameter i: An Index.
+    /// - Returns: The index before.
+    public func index(before i: Int) -> Int { return i - 1 }
+    public func formIndex(after i: inout Int) { i += 1 }
+    public func formIndex(before i: inout Int) { i -= 1 }
 
-    public func index(after i: Int) -> Int {
-        return i + 1
-    }
-}
-
-// Conforms to Equatable protocol
-extension ComplexFloatArray: Equatable {
-    /// Compares for equality.
+    /// Distance between indices
     /// - Parameters:
-    ///   - lhs: A value to compare.
-    ///   - rhs: Another value to compare.
-    /// - Returns: Returns a Boolean value indicating whether two values are equal.
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        guard lhs.count == rhs.count else {
-            return false
-        }
+    ///   - start: Start index.
+    ///   - end: End Index.
+    /// - Returns: The distance.
+    public func distance(from start: Int, to end: Int) -> Int {
+        return end - start
+    }
 
-        var result = true
-        for k in 0 ..< lhs.count {
-            if lhs[k] != rhs[k] {
-                result = false
-                break
+    public func index(_ i: Int, offsetBy distance: Int) -> Int {
+        return i + distance
+    }
+
+    public func index(_ i: Int, offsetBy distance: Int, limitedBy limit: Int) -> Int? {
+        let n = i + distance
+        return (distance > 0 && n > limit) || (distance < 0 && n < limit) ? nil : n
+    }
+
+    // MARK: - Sequence Protocol
+    
+    /// Iterator for ComplexFloatArray.
+    public struct Iterator: IteratorProtocol {
+        private let array: ComplexFloatArray
+        private var currentIndex: Int
+        
+        /// Intialize with array.
+        /// - Parameter array: A complex array to iterate.
+        init(_ array: ComplexFloatArray) {
+            self.array = array
+            currentIndex = array.startIndex
+        }
+        
+        /// Gets the next complex number.
+        /// - Returns: The next complex number.
+        public mutating func next() -> ComplexFloat? {
+            guard currentIndex < array.endIndex else { return nil }
+            let element = array[currentIndex]
+            currentIndex = array.index(after: currentIndex)
+            return element
+        }
+    }
+
+    /// Create an iterator..
+    public func makeIterator() -> Iterator {
+        return Iterator(self)
+    }
+
+    // MARK: - RangeReplaceableCollection
+    
+    /// Replace a subrange of a complex array.
+    /// - Parameters:
+    ///   - subrange: Index subrange.
+    ///   - newElements: Replacement complex numbers.
+    public mutating func replaceSubrange<C: Collection>(_ subrange: Range<Int>, with newElements: C)
+        where C.Element == ComplexFloat {
+            
+        precondition(subrange.lowerBound >= 0 && subrange.upperBound <= count, "Range out of bounds")
+
+        let newReals = newElements.map { $0.real }
+        let newImags = newElements.map { $0.imag }
+
+        real.replaceSubrange(subrange, with: newReals)
+        imag.replaceSubrange(subrange, with: newImags)
+    }
+
+    // MARK: - Subscripts
+
+    public subscript(position: Int) -> ComplexFloat {
+        get {
+            precondition(position >= 0 && position < count, "Index out of range")
+            return ComplexFloat(real[position], imag[position])
+        }
+        set {
+            precondition(position >= 0 && position < count, "Index out of range")
+            real[position] = newValue.real
+            imag[position] = newValue.imag
+        }
+    }
+
+    public subscript(bounds: Range<Int>) -> SubSequence {
+        get {
+            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
+            var slice = ComplexFloatArray()
+            slice.real = Array(real[bounds])
+            slice.imag = Array(imag[bounds])
+            return slice
+        }
+        set {
+            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
+            precondition(newValue.count == bounds.count, "Replacement array must be same size as range")
+
+            real.replaceSubrange(bounds, with: newValue.real)
+            imag.replaceSubrange(bounds, with: newValue.imag)
+        }
+    }
+
+    public subscript(bounds: ClosedRange<Int>) -> SubSequence {
+        get {
+            return self[bounds.lowerBound ..< (bounds.upperBound + 1)]
+        }
+        set {
+            self[bounds.lowerBound ..< (bounds.upperBound + 1)] = newValue
+        }
+    }
+
+    public subscript(bounds: PartialRangeFrom<Int>) -> SubSequence {
+        get {
+            return self[bounds.lowerBound ..< endIndex]
+        }
+        set {
+            self[bounds.lowerBound ..< endIndex] = newValue
+        }
+    }
+
+    public subscript(bounds: PartialRangeUpTo<Int>) -> SubSequence {
+        get {
+            return self[0 ..< bounds.upperBound]
+        }
+        set {
+            self[0 ..< bounds.upperBound] = newValue
+        }
+    }
+
+    public subscript(bounds: PartialRangeThrough<Int>) -> SubSequence {
+        get {
+            return self[0 ... bounds.upperBound]
+        }
+        set {
+            self[0 ... bounds.upperBound] = newValue
+        }
+    }
+
+    // MARK: - Additional Convenience Methods
+    
+    /// Append a complex number.
+    /// - Parameter element: A complex number.
+    public mutating func append(_ element: ComplexFloat) {
+        real.append(element.real)
+        imag.append(element.imag)
+    }
+    
+    /// Append a complex array.
+    /// - Parameter newElements: A complex array.
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == ComplexFloat {
+        let newValues = Array(newElements)
+        real.append(contentsOf: newValues.map { $0.real })
+        imag.append(contentsOf: newValues.map { $0.imag })
+    }
+    
+    /// Insert a complex array.
+    /// - Parameters:
+    ///   - element: A complex number.
+    ///   - index: Index insertion point.
+    public mutating func insert(_ element: ComplexFloat, at index: Int) {
+        precondition(index >= 0 && index <= count, "Index out of range for insertion")
+        real.insert(element.real, at: index)
+        imag.insert(element.imag, at: index)
+    }
+    
+    /// Remove a complex number.
+    /// - Parameter index: Index of item.
+    /// - Returns: Removed item.
+    public mutating func remove(at index: Int) -> ComplexFloat {
+        precondition(index >= 0 && index < count, "Index out of range for removal")
+        let complexValue = ComplexFloat(real[index], imag[index])
+        real.remove(at: index)
+        imag.remove(at: index)
+        return complexValue
+    }
+    
+    /// Remove a range of complex numbers
+    /// - Parameter bounds: A range of indices.
+    public mutating func removeSubrange(_ bounds: Range<Int>) {
+        precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds for removal")
+        real.removeSubrange(bounds)
+        imag.removeSubrange(bounds)
+    }
+
+    // MARK: - CustomStringConvertible
+    
+    /// String of complex value
+    public var description: String {
+        var result = "["
+        for i in 0 ..< count {
+            if i > 0 { result += ", " }
+            if imag[i] >= 0 {
+                result += "\(real[i]) + \(imag[i])i"
+            } else {
+                result += "\(real[i]) - \(abs(imag[i]))i"
             }
         }
+        result += "]"
         return result
     }
 
+    // MARK: - Equatable
+    
+    /// Compares for equality.
+    /// - Parameters:
+    ///   - lhs: A complex array.
+    ///   - rhs: Another complex array.
+    /// - Returns: True or false.
+    public static func == (lhs: ComplexFloatArray, rhs: ComplexFloatArray) -> Bool {
+        return lhs.real == rhs.real && lhs.imag == rhs.imag
+    }
+
+    // MARK: - Hashable
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(real)
+        hasher.combine(imag)
+    }
 }

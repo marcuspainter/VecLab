@@ -7,6 +7,18 @@ A real/complex vector library in Swift.
 
 Compatible with Swift 6.0.
 
+## New Version
+
+After using VecLab so a while, I have decided to make a major change to the way Complex arrays.
+
+
+Complex Type
+
+ComplexArray
+
+
+
+
 ## Overview
 
 VecLab is a Swift Package for real and complex vector operations with NumPy and MATLAB-style functions.
