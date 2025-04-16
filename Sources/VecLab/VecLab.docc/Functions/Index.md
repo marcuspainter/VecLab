@@ -1,6 +1,0 @@
-# Index
-
-Indexing functions.
-
-## Topics
-

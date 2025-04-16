@@ -7,20 +7,7 @@
 
 import Foundation
 
-/// Type alias for floating point numbers.
-///
-/// The library can set to use `Double` or  `Float` using this type alias.
-///
-/// Example:
-///
-/// ```
-/// public typealias Real = Double
-/// ```
-/// ```
-/// public typealias Real = Float
-/// ```
-
-/// Type alias for `Double` or `Float`
+/// Type alias for `Double`
 public typealias Real = Double
 
 /// Type alias for an array of real numbers

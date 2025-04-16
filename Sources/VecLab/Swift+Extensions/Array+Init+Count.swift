@@ -6,7 +6,7 @@
 
 import Foundation
 
-public extension Array where Element == Real {
+public extension Array where Element == Double {
     /// Initalize an array with zeros.
     /// - Parameter count: Number of elements
     init(count: Int) {

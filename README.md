@@ -115,8 +115,8 @@ The library works with existing Swift types, using only arrays and tuples. For c
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = (Real, Real)
-public typealias ComplexArray = ([Real], [Real])
+public typealias Complex = ComplexDouble
+public typealias ComplexArray = ComplexDoubleArray
 ```
 
 ### Real Numbers
@@ -132,7 +132,12 @@ Real arrays are just a normal Swift `Array` of `Double`.
 Complex numbers are defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
 
 ```swift
-let c = (10.0, 2.0)
+public struct ComplexDouble: Equatable, Hashable, Codable, CustomStringConvertible, Sendable {
+    /// Real part.
+    public var real: Double
+    /// Imaginary part.
+    public var imag: Double
+}
 ```
 ### Complex Arrays
 
@@ -154,7 +159,7 @@ These are all equivalent to 10+10i:
 ```swift
 let c1 = 10 + 10 * Real.i
 let c2 = 10 + 10.i
-let c3 = (10, 10) 
+let c3 = Complex(10, 10) 
 ```
 It can be used in any expression. This is a complex exponential:
 

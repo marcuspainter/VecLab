@@ -48,48 +48,6 @@ Here's a breakdown of the real and complex vector operations in the function:
 8. The result is the concatenation of the complex vector addition and subtraction of `u` and `v`.
 9. The recursion ends when there is one element in the input array. The FFT of a single element is itself.
 
-### NumPy
-```python
-import numpy as np
-
-def fftx(x):
-    """
-    FFTX Fast Finite Fourier Transform.
-    """
-    n = len(x)
-    omega = np.exp(-2j * np.pi / n)
-    
-    if n % 2 == 0:
-        # Recursive divide and conquer
-        k = np.arange(n//2)
-        w = omega ** k
-        u = fftx(x[::2])
-        v = w * fftx(x[1::2])
-        y = np.concatenate([u + v, u - v])
-    else:
-        y = x
-    
-    return y
-```
-### MATLAB
-
-```matlab
-function y = fftx(x)
-% FFTX Fast Finite Fourier Transform.
-n = length(x);
-omega = exp(-2*pi*i/n);
-if rem(n,2) == 0
-    % Recursive divide and conquer.
-    k = (0:n/2-1)';
-    w = omega.^k;
-    u = fftx(x(1:2:n-1));
-    v = w.*fftx(x(2:2:n));
-    y = [u+v; u-v];
-else
-    y = x
-end
-```
-
 ### Library Convention
 
 The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from this type.
@@ -111,10 +69,10 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers are defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
+Complex numbers are defined as a struct `Complex` 
 
 ```swift
-let c = (10.0, 2.0)
+let c = Complex(10.0, 2.0)
 ```
 ### Complex Arrays
 
@@ -136,7 +94,7 @@ These are all equivalent to 10+10i:
 ```swift
 let c1 = 10 + 10 * Real.i
 let c2 = 10 + 10.i
-let c3 = (10, 10) 
+let c3 = Complex(10, 10)
 ```
 It can be used in any expression. This is a complex exponential:
 
@@ -220,7 +178,6 @@ Overloaded operators for scalar and vectors.
 
 ### Vector Creation
 - <doc:RealCreation>
-- <doc:ComplexCreation>
 
 ### Operators
 - <doc:MathOperators>
@@ -237,7 +194,6 @@ Overloaded operators for scalar and vectors.
 - <doc:Exponents>
 - <doc:Filter>
 - <doc:FFT>
-- <doc:Index>
 - <doc:Integration>
 - <doc:Interpolation>
 - <doc:Modulo>
@@ -245,7 +201,6 @@ Overloaded operators for scalar and vectors.
 - <doc:Polynomials>
 - <doc:Power>
 - <doc:Random>
-- <doc:Relational>
 - <doc:Smoothing>
 - <doc:Space>
 - <doc:Special>

@@ -30,10 +30,8 @@ public func cumsum(_ x: ComplexArray) -> ComplexArray {
     var c = x
     var sum = Complex()
     for k in 0 ..< x.count {
-        sum.real += x.real[k]
-        sum.imag += x.imag[k]
-        c.real[k] = sum.real
-        c.imag[k] = sum.imag
+        sum = sum + x[k]
+        c[k] = sum
     }
     return c
 }

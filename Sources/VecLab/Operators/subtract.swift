@@ -143,9 +143,9 @@ public func - (a: Real, b: ComplexArray) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: The result of the subtraction
 public func - (a: Complex, b: RealArray) -> ComplexArray {
-    let r = a.real - b
-    let i = RealArray(repeating: Real(a.imag), count: b.count)
-    return ComplexArray(r, i)
+    let real = a.real - b
+    let imag = RealArray(repeating: Real(a.imag), count: b.count)
+    return ComplexArray(real, imag)
 }
 
 /// Subtraction.
@@ -154,7 +154,7 @@ public func - (a: Complex, b: RealArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction
 public func - (a: RealArray, b: Complex) -> ComplexArray {
-    let r = a - b.real
-    let i = RealArray(repeating: -Real(b.imag), count: a.count)
-    return ComplexArray(r, i)
+    let real = a - b.real
+    let imag = RealArray(repeating: -Real(b.imag), count: a.count)
+    return ComplexArray(real, imag)
 }

@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: Multiply
 
+/*
 func complexMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     let a = x.0
     let b = x.1
@@ -16,6 +17,7 @@ func complexMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
     let d = y.1
     return (a * c - b * d, a * d + b * c)
 }
+*/
 
 // MARK: ConjugateMultiply
 

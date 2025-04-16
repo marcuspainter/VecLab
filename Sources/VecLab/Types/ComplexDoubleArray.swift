@@ -33,6 +33,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     ///   - real: Real array.
     ///   - imag: Imaginary array.
     public init(_ real: [Double], _ imag: [Double]) {
+        assertSameSize(real, imag)
         self.real = real
         self.imag = imag
     }
@@ -44,7 +45,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         imag = [Double](repeating: 0, count: count)
     }
     
-    ///  Initialize a complex array from a collection.
+    /// Initialize a complex array from a collection.
     public init<C: Collection>(_ elements: C) where C.Element == ComplexDouble {
         real = elements.map { $0.real }
         imag = elements.map { $0.imag }

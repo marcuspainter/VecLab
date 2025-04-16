@@ -6,7 +6,7 @@
 
 import Foundation
 
-public extension Array where Element == Real {
+public extension Array where Element == Double {
     /// Initialize a real array with an integer open range.
     /// - Parameters:
     ///   - range: Open integer range.
@@ -20,7 +20,7 @@ public extension Array where Element == Real {
     /// - Parameters:
     ///   - range: Open real range.
     ///   - step: Step value, default = 1.
-    init(_ range: Range<Element>, _ step: Element = 1) {
+    init(_ range: Range<Double>, _ step: Double = 1) {
         let strideValue = stride(from: range.lowerBound, to: range.upperBound, by: step)
         self = strideValue.map { $0 }
     }
@@ -29,7 +29,7 @@ public extension Array where Element == Real {
     /// - Parameters:
     ///   - range: Closed real range.
     ///   - step: Step value, default = 1.
-    init(_ range: ClosedRange<Element>, _ step: Element = 1) {
+    init(_ range: ClosedRange<Double>, _ step: Double = 1) {
         let strideValue = stride(from: range.lowerBound, through: range.upperBound, by: step)
         self = strideValue.map { ($0) }
     }
@@ -37,7 +37,7 @@ public extension Array where Element == Real {
     /// Initialize a real array with a real closed range.
     /// - Parameters:
     ///   - range: Closed integer range.
-    ///   - strideValue: Stride value, default = 1.
+    ///   - step: Stride value, default = 1.
     init(_ range: ClosedRange<Int>, _ step: Int = 1) {
         let strideValue = stride(from: range.lowerBound, through: range.upperBound, by: step)
         self = strideValue.map { Element($0) }

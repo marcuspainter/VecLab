@@ -28,7 +28,7 @@ public prefix func - (a: Complex) -> Complex {
 /// - Parameter a: Complex array.
 /// - Returns: The result of -a.
 public prefix func - (a: ComplexArray) -> ComplexArray {
-    let r = vDSP.negative(a.real)
-    let i = vDSP.negative(a.imag)
-    return ComplexArray(r, i)
+    let real = vDSP.negative(a.real)
+    let imag = vDSP.negative(a.imag)
+    return ComplexArray(real, imag)
 }
