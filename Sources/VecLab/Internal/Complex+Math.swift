@@ -9,15 +9,13 @@ import Foundation
 
 // MARK: Multiply
 
-/*
-func complexMultiply(_ x: (Real, Real), _ y: (Real, Real)) -> (Real, Real) {
-    let a = x.0
-    let b = x.1
-    let c = y.0
-    let d = y.1
-    return (a * c - b * d, a * d + b * c)
+func complexMultiply(_ x: Complex, _ y: Complex) -> Complex {
+    let a = x.real
+    let b = x.imag
+    let c = y.real
+    let d = y.imag
+    return Complex(a * c - b * d, a * d + b * c)
 }
-*/
 
 // MARK: ConjugateMultiply
 
@@ -28,6 +26,7 @@ func complexConjugateMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let d = y.imag
     return Complex(a * c + b * d, a * d - b * c)
 }
+
 
 // MARK: Divide
 
