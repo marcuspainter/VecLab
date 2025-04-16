@@ -17,7 +17,7 @@ public func dftr(_ x: RealArray) -> ComplexArray {
         return ComplexArray(x, [Real(0)])
     }
 
-    var y = complex(sized: x)
+    var y = ComplexArray(count: x.count)
     let k = RealArray(0..<n)
     let omega = -2 * Real.pi * Real.i * k  / Real(n)
     for i in 0..<x.count {

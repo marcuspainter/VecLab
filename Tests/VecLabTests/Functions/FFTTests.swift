@@ -19,7 +19,7 @@ class FFTTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([10.0, -4.0, -2.0, 0.0], [10.0, 0.0, -2.0, -4.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "fft failed")
 
-        _ = idft(complex(count: 10))
+        _ = idft(ComplexArray(count: 10))
     }
 
     func testFFTComplex7() throws {
@@ -30,7 +30,7 @@ class FFTTests: XCTestCase {
                                                   [.nan, .nan, .nan, .nan, .nan, .nan, .nan])
         XCTAssertEqual(result, expected, accuracy: accuracy, "fft failed")
 
-        _ = idft(complex(count: 10))
+        _ = idft(ComplexArray(count: 10))
     }
 
     func testFFTReal() throws {
@@ -55,7 +55,7 @@ class FFTTests: XCTestCase {
                                                   [.nan, .nan, .nan, .nan, .nan, .nan, .nan])
         XCTAssertEqual(result, expected, accuracy: accuracy, "ifft failed")
 
-        _ = idft(complex(count: 10))
+        _ = idft(ComplexArray(count: 10))
     }
 
     func testIFFTReal() throws {

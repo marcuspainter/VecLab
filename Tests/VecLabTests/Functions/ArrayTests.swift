@@ -37,7 +37,7 @@ class ArrayTests: XCTestCase {
     func testComplexSizedReal() throws {
         let count: Int = 10
         let realArrayA: RealArray = [Real](repeating: 0, count: count)
-        let result: ComplexArray = complex(sized: realArrayA)
+        let result: ComplexArray = ComplexArray(count: realArrayA.count)
         XCTAssertEqual(result.count, count, "complex failed")
         XCTAssertEqual(result.count, count, "complex failed")
     }
@@ -147,27 +147,27 @@ class ArrayTests: XCTestCase {
     // MARK: complex
 
     func testComplex() throws {
-        let result: Complex = complex()
+        let result: Complex = Complex()
         let expected: Complex = Complex(0.0, 0.0)
         XCTAssertEqual(result, expected, "complex failed")
     }
 
     func testComplexRealImag() throws {
-        let result: Complex = complex(1.0, 2.0)
+        let result: Complex = Complex(1.0, 2.0)
         let expected: Complex = Complex(1.0, 2.0)
         XCTAssertEqual(result, expected, "complex failed")
     }
 
     func testComplexCount() throws {
         let count: Int = 10
-        let result: ComplexArray = complex(count: count)
+        let result: ComplexArray = ComplexArray(count: count)
         let expectedCount: Int = 10
         XCTAssertEqual(result.count, expectedCount, "complex failed")
     }
 
     func testComplexSized() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0], [3.0, 4.0])
-        let result = complex(sized: complexArrayA)
+        let result = ComplexArray(count: complexArrayA.count)
         let expectedCount: Int = 2
         XCTAssertEqual(result.count, expectedCount, "complex failed")
     }

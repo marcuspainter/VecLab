@@ -28,7 +28,7 @@ public func cumsum(_ x: RealArray) -> RealArray {
 public func cumsum(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
     var c = x
-    var sum = complex()
+    var sum = Complex()
     for k in 0 ..< x.count {
         sum.real += x.real[k]
         sum.imag += x.imag[k]

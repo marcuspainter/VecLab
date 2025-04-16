@@ -34,13 +34,13 @@ public func freqz2(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
     let w = vector(0 ... N - 1) * (.pi / Real(N))
 
     // Initialize the frequency response
-    var H = complex(count: N)
+    var H = ComplexArray(count: N)
 
     // Compute the frequency response H(e^jw)
     for i in 0 ..< length(w) {
         // Evaluate the numerator and denominator polynomials at e^(-j*w[i])
-        var numerator = complex()
-        var denominator = complex()
+        var numerator = Complex()
+        var denominator = Complex()
         for k in 0 ..< length(b) {
             numerator = numerator + b[k] * exp(-Real.i * w[i] * Real(k))
         }
