@@ -8,6 +8,56 @@
 import Foundation
 import Darwin
 
+import Foundation
+
+/// Start stopwatch timer.
+///
+/// ``tic()`` works with the ``toc()`` function to measure elapsed time.
+public func tic() {
+    Task {
+        await SwiftTimerActor.shared.start()
+    }
+}
+
+/// Read elapsed time from stopwatch timer.
+///
+/// ``toc()`` reads the elapsed time since the stopwatch timer started by the ``tic()`` function.
+public func toc() {
+    Task {
+        let seconds = await SwiftTimerActor.shared.stop()
+        print("Elapsed time: \(seconds) seconds")
+    }
+}
+
+/// Stopwatch actor using Swift's Clock API.
+///
+/// Using actor automatically handles thread safety without needing `@unchecked Sendable`.
+private actor SwiftTimerActor {
+    static let shared = SwiftTimerActor()
+    private let clock = ContinuousClock()
+    
+    private var startInstant: ContinuousClock.Instant?
+    
+    private init() {}
+    
+    func start() {
+        self.startInstant = clock.now
+    }
+    
+    func stop() -> Double {
+        let stopInstant = clock.now
+        
+        guard let lastStartInstant = self.startInstant else {
+            return Double.nan
+        }
+        self.startInstant = nil
+        
+        let duration = stopInstant - lastStartInstant
+        return Double(duration.components.seconds) + Double(duration.components.attoseconds) / 1e18
+    }
+}
+
+/*
 /// Start stopwatch timer.
 ///
 /// ``tic()`` works with the ``toc()`` function to measure elapsed time.
@@ -112,7 +162,8 @@ private actor MachTimerActor {
         return Double(nanoseconds) / 1_000_000_000.0  // Convert to seconds
     }
 }
-
+*/
+ 
 /*
  // Example usage:
  tic()
