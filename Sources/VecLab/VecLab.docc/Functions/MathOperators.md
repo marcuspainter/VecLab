@@ -49,7 +49,7 @@ As a shorthand, complex types can use the conjugate multiply operators.
 
 ### Subtract
 
-- ``-(_:_:)-(Complex,Complex)``
+- ``-(_:_:)-(Complex,Complex)->Complex``
 - ``-(_:_:)-(Complex,Real)``
 - ``-(_:_:)-(Complex,Complex)``
 - ``-(_:_:)-(Complex,Complex)``
@@ -152,6 +152,6 @@ As a shorthand, complex types can use the conjugate multiply operators.
 
 ### Unary Minus
 
-- ``-(_:)->RealArray``
-- ``-(_:)->Complex``
-- ``-(_:)->ComplexArrray``
+- ``-(_:)-(RealArray)``
+- ``-(_:)-(Complex)``
+- ``-(_:)-(ComplexArray)``

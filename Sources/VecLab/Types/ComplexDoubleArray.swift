@@ -37,6 +37,18 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         self.imag = imag
     }
     
+    /// Initialize from real array only (zeros for imaginary)
+    public init(realOnly: [Double]) {
+        real = realOnly
+        imag = [Double](repeating: 0, count: realOnly.count)
+    }
+    
+    /// Initialize with a single complex value repeated
+    public init(repeating value: ComplexDouble, count: Int) {
+        real = [Double](repeating: value.real, count: count)
+        imag = [Double](repeating: value.imag, count: count)
+    }
+    
     /// Initialize a complex array of length count.
     /// - Parameter count: Number of elements.
     public init(count: Int) {
@@ -53,6 +65,11 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     /// Initialize a complex array from complex numbers.
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
+    }
+    
+    public mutating func reserveCapacity(_ minimumCapacity: Int) {
+        real.reserveCapacity(minimumCapacity)
+        imag.reserveCapacity(minimumCapacity)
     }
 
     // MARK: - Collection Protocol Requirements

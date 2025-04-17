@@ -10,8 +10,8 @@ import Foundation
 /// Resize data by adding or removing elements.
 /// - Parameters:
 ///   - x: Input array
-///   - m: Size.
-/// - Returns: Array of new size.
+///   - m: Length.
+/// - Returns: Array of new length.
 public func resize(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     guard m != n else { return x }
@@ -29,8 +29,8 @@ public func resize(_ x: RealArray, length m: Int) -> RealArray {
 /// Resize data by adding or removing elements.
 /// - Parameters:
 ///   - x: Input array
-///   - m: Size.
-/// - Returns: Array of new size.
+///   - m: Length.
+/// - Returns: Array of new length m.
 public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
     assertSameSize(x)
     let n = x.count
@@ -40,9 +40,8 @@ public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
         return slice(x, 0 ..< m)
     } else {
         let zeroCount = m - n
-        let zeros = RealArray(repeating: 0, count: zeroCount)
-        y.real.append(contentsOf: zeros)
-        y.imag.append(contentsOf: zeros)
+        let zeros = ComplexArray(count: zeroCount)
+        y.append(contentsOf: zeros)
     }
     return y
 }

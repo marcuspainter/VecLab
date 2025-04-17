@@ -10,8 +10,8 @@ import Foundation
 /// Pad real array with zeros.
 /// - Parameters:
 ///   - x: Input array.
-///   - m: Size.
-/// - Returns: Array padded to size m
+///   - m: Length..
+/// - Returns: Array padded to length m.
 public func paddata(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     var y = x
@@ -26,8 +26,8 @@ public func paddata(_ x: RealArray, length m: Int) -> RealArray {
 /// Pad complex array with zeros.
 /// - Parameters:
 ///   - x: Input array.
-///   - m: Size.
-/// - Returns: Array padded to size m
+///   - m: Length.
+/// - Returns: Array padded to length m.
 public func paddata(_ x: ComplexArray, length m: Int) -> ComplexArray {
     assertSameSize(x)
     let n = x.count

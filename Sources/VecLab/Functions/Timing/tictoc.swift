@@ -6,9 +6,6 @@
 //
 
 import Foundation
-import Darwin
-
-import Foundation
 
 /// Start stopwatch timer.
 ///

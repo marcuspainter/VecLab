@@ -42,7 +42,7 @@ Vector functions.
 
 ### Resize
 - ``resize(_:length:)->RealArray``
-- ``resize(_:length)->ComplexArray``
+- ``resize(_:length:)->ComplexArray``
 
 ### Padding and Trimming
 - ``paddata(_:length:)->RealArray``

@@ -27,7 +27,6 @@ let y = pow(x, 3)
 - ``pow(_:_:)-(Int,Int)``
 - ``pow(_:_:)-(Int,Real)``
 - ``pow(_:_:)-(Real,Int)``
-- ``pow(_:_:)-(Real,Real)``
 - ``pow(_:_:)-(RealArray,Int)``
 - ``pow(_:_:)-(Real,Complex)``
 - ``pow(_:_:)-(Complex,Real)``

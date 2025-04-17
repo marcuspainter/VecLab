@@ -168,10 +168,6 @@ let phi = 100.0
 let c1 = exp(Real.i * 2 * Real.pi * phi)
 let c2 = exp(1.i * 2 * Real.pi * phi)
 let c3 = exp(2.i * Real.pi * phi)
-let c4 = exp((0, 2) * Real.pi * phi)
-let c5 = exp((0, 2 * Real.pi) * phi)
-let c6 = exp((0, 2 * Real.pi * phi))
-```
 
 ### Ranges
 
