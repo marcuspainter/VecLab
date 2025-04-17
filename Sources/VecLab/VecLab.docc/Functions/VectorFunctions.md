@@ -41,12 +41,12 @@ Vector functions.
 - ``gather(_:_:)-(ComplexArray,RealArray)``
 
 ### Resize
-- ``resize(_:_:)->RealArray``
-- ``resize(_:_:)->ComplexArray``
+- ``resize(_:length:)->RealArray``
+- ``resize(_:length)->ComplexArray``
 
 ### Padding and Trimming
-- ``paddata(_:_:)->RealArray``
-- ``paddata(_:_:)->ComplexArray``
-- ``trimdata(_:_:)->RealArray``
-- ``trimdata(_:_:)->ComplexArray``
+- ``paddata(_:length:)->RealArray``
+- ``paddata(_:length:)->ComplexArray``
+- ``trimdata(_:length:)->RealArray``
+- ``trimdata(_:length:)->ComplexArray``
 
