@@ -40,8 +40,8 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
     let N = Int(2 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // Compute FFT convolution
     let A = fftr(a)
@@ -67,8 +67,8 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     let A = fftr(a)
     let B = fftr(b)
@@ -112,8 +112,8 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let N = Int(2 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // Compute FFT convolution
     let A = fft(a)
@@ -139,8 +139,8 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     let A = fft(a)
     let B = fft(b)
@@ -148,7 +148,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let C = A * B
     var c = ifft(C)
 
-    c = trimdata(c, n) // Trim to correct length
+    c = trimdata(c, length: n) // Trim to correct length
     return c
 }
 

@@ -22,8 +22,8 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     let N = Int(2.0 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // FFT-based cross-correlation (note conjugation on y)
     let A = fftr(a)
@@ -56,8 +56,8 @@ public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let N = Int(2.0 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // FFT-based cross-correlation (note conjugation on y)
     let A = fft(a)
@@ -72,7 +72,7 @@ public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     var c = circshift(full_c, shift_amount)
 
     // Trim extra values
-    c = trimdata(c, n)
+    c = trimdata(c, length: n)
     return c
 }
 

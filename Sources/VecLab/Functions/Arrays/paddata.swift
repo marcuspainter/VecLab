@@ -12,7 +12,7 @@ import Foundation
 ///   - x: Input array.
 ///   - m: Size.
 /// - Returns: Array padded to size m
-public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
+public func paddata(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     var y = x
     if m > n {
@@ -28,7 +28,7 @@ public func paddata(_ x: RealArray, _ m: Int) -> RealArray {
 ///   - x: Input array.
 ///   - m: Size.
 /// - Returns: Array padded to size m
-public func paddata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
+public func paddata(_ x: ComplexArray, length m: Int) -> ComplexArray {
     assertSameSize(x)
     let n = x.count
     var y = x

@@ -12,7 +12,7 @@ import Foundation
 ///   - x: Input array
 ///   - m: Size.
 /// - Returns: Array of new size.
-public func resize(_ x: RealArray, _ m: Int) -> RealArray {
+public func resize(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     guard m != n else { return x }
     var y = x
@@ -31,7 +31,7 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
 ///   - x: Input array
 ///   - m: Size.
 /// - Returns: Array of new size.
-public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
+public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
     assertSameSize(x)
     let n = x.count
     guard m != n else { return x }

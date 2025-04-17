@@ -12,7 +12,7 @@ import Foundation
 ///   - x: Real array.
 ///   - m: New size.
 /// - Returns: Trimmed array.
-public func trimdata(_ x: RealArray, _ m: Int) -> RealArray {
+public func trimdata(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     if m < n {
         return slice(x, 0 ..< m)
@@ -25,7 +25,7 @@ public func trimdata(_ x: RealArray, _ m: Int) -> RealArray {
 ///   - x: Complex array.
 ///   - m: New size.
 /// - Returns: Trimmed array.
-public func trimdata(_ x: ComplexArray, _ m: Int) -> ComplexArray {
+public func trimdata(_ x: ComplexArray, length m: Int) -> ComplexArray {
     assertSameSize(x)
     let n = x.count
     if m < n {

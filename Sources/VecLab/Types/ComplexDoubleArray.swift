@@ -120,14 +120,14 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         private let array: ComplexDoubleArray
         private var currentIndex: Int
         
-        /// Intialize with array.
+        /// Intialize with another array.
         /// - Parameter array: A complex array to iterate.
         init(_ array: ComplexDoubleArray) {
             self.array = array
             currentIndex = array.startIndex
         }
         
-        /// Gets the next complex number.
+        /// Returns the next complex number.
         /// - Returns: The next complex number.
         public mutating func next() -> ComplexDouble? {
             guard currentIndex < array.endIndex else { return nil }

@@ -14,8 +14,8 @@ import Foundation
 ///   - N: FFT Length.
 /// - Returns: Complex transfer function.
 public func freqz(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
-    let bb = paddata(b, N * 2)
-    let aa = paddata(a, N * 2)
+    let bb = paddata(b, length: N * 2)
+    let aa = paddata(a, length: N * 2)
     let H = fftr(bb) / fftr(aa)
     let HH = slice(H, 0 ..< N)
     return HH
