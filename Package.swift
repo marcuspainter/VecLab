@@ -24,6 +24,13 @@ let package = Package(
             resources: [.process("Resources")],
             cSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
             cxxSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
+            swiftSettings: [
+                .define("STRICT_CONCURRENCY"),
+                .unsafeFlags([
+                    "-Xfrontend", "-strict-concurrency=complete",
+                    "-Xfrontend", "-enable-actor-data-race-checks",
+                ])
+            ],
             linkerSettings: [.linkedFramework("Accelerate")]
         ),
         .testTarget(
