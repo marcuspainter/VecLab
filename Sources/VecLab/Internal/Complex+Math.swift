@@ -27,7 +27,6 @@ func complexConjugateMultiply(_ x: Complex, _ y: Complex) -> Complex {
     return Complex(a * c + b * d, a * d - b * c)
 }
 
-
 // MARK: Divide
 
 /*

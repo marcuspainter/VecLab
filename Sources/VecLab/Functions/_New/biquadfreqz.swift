@@ -11,7 +11,7 @@ import Foundation
 /// - Parameters:
 ///   - b: b coefficients.
 ///   - a: a coefficients.
-///   - n: FFT size..
+///   - n: FFT size.
 /// - Returns: Complex transfer function.
 public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArray {
     let b0 = b[0]

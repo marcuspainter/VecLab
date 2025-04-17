@@ -14,10 +14,9 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     ExpressibleByArrayLiteral, Sendable {
     // MARK: - Storage
 
-    
-    ///  Array of real values.
+    /// Array of real values.
     public var real: [Double]
-    /// Array of imaginmary values.
+    /// Array of imaginary values.
     public var imag: [Double]
 
     // MARK: - Initializers
@@ -51,7 +50,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         imag = elements.map { $0.imag }
     }
 
-    /// Initialize a complex array from complex numbers..
+    /// Initialize a complex array from complex numbers.
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
     }
@@ -63,29 +62,38 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     public typealias SubSequence = ComplexDoubleArray
     public typealias Indices = Range<Int>
 
-    /// Start index.
+    /// The position of the first element in a nonempty array.
     public var startIndex: Int { return 0 }
-    /// End index.
+        
+    /// An array's “past the end” position—that is, the position one greater than the last valid subscript argument.
     public var endIndex: Int { return real.count }
-    /// Array of indices.
+    
+    /// The indices that are valid for subscripting the collection, in ascending order.
     public var indices: Indices { return startIndex ..< endIndex }
+    
     /// Number of elements.
     public var count: Int { return real.count }
+    
     /// Tests if array is empty.
     public var isEmpty: Bool { return real.isEmpty }
 
-    /// Index after.
+    /// Returns the position immediately after the given index.
     /// - Parameter i: An index.
     /// - Returns: The index after.
     public func index(after i: Int) -> Int { return i + 1 }
-    /// Index before.
+        
+    /// Returns the position immediately before the given index.
     /// - Parameter i: An Index.
     /// - Returns: The index before.
     public func index(before i: Int) -> Int { return i - 1 }
+    
+    /// Returns the position immediately before the given index.
     public func formIndex(after i: inout Int) { i += 1 }
+    
+    /// Replaces the given index with its predecessor.
     public func formIndex(before i: inout Int) { i -= 1 }
 
-    /// Distance between indices
+    ///  Returns the distance between two indices.
     /// - Parameters:
     ///   - start: Start index.
     ///   - end: End Index.
@@ -94,10 +102,12 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         return end - start
     }
 
+    /// Returns an index that is the specified distance from the given index.
     public func index(_ i: Int, offsetBy distance: Int) -> Int {
         return i + distance
     }
 
+    /// Returns an index that is the specified distance from the given index, unless that distance is beyond a given limiting index.
     public func index(_ i: Int, offsetBy distance: Int, limitedBy limit: Int) -> Int? {
         let n = i + distance
         return (distance > 0 && n > limit) || (distance < 0 && n < limit) ? nil : n
@@ -127,7 +137,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         }
     }
 
-    /// Create an iterator..
+    /// Create an iterator.
     public func makeIterator() -> Iterator {
         return Iterator(self)
     }

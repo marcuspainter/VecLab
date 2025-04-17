@@ -58,7 +58,7 @@ public struct ComplexFloatArray: Collection, MutableCollection, RangeReplaceable
         imag = elements.map { $0.imag }
     }
 
-    /// Initialize a complex array from complex numbers..
+    /// Initialize a complex array from complex numbers.
     public init(arrayLiteral elements: ComplexFloat...) {
         self.init(elements)
     }
@@ -134,7 +134,7 @@ public struct ComplexFloatArray: Collection, MutableCollection, RangeReplaceable
         }
     }
 
-    /// Create an iterator..
+    /// Create an iterator.
     public func makeIterator() -> Iterator {
         return Iterator(self)
     }
