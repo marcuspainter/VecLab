@@ -10,7 +10,7 @@ import XCTest
 import VecLab
 
 class PowerTests: XCTestCase {
-/*
+
     let accuracy: Real = 1e-6
 
     var realA: Real = 1.0
@@ -79,13 +79,13 @@ class PowerTests: XCTestCase {
         let expected: RealArray = [1.0, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
-/*
+
     func testPowerComplexComplex() {
         let result: Complex = complexA ** complexB
-        let expected: Complex = (0.273957253830, 0.583700758759)
+        let expected: Complex = Complex(0.273957253830, 0.583700758759)
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
-*/
+    
     func testPowerComplexReal() {
         let result: Complex = complexA ** realB
         let expected: Complex = Complex(1.0, 1.0)
@@ -139,7 +139,6 @@ class PowerTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 1.538477802728], [0.0, 1.277922552627])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
- */
 
 /*
     func testPowerComplexArrayComplex() {

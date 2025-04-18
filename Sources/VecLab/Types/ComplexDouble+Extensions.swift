@@ -211,6 +211,16 @@ extension ComplexDouble {
     }
 }
 
+/// Complex unary
+extension ComplexDouble {
+    /// Unary minus.
+    /// - Parameter a: Complex number.
+    /// - Returns: The result of -a.
+    public static prefix func - (a: Complex) -> Complex {
+        return Complex(-a.real, -a.imag)
+    }
+}
+
 /*
 extension ComplexDouble: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int) {

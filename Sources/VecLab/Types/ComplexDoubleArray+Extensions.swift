@@ -237,7 +237,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         let real = vDSP.add(b.real, a.real)
         let imag = vDSP.add(b.imag, a.imag)
-        return ComplexArray(real, imag)
+        return ComplexDoubleArray(real, imag)
     }
     
     /// Complex addition.
@@ -249,7 +249,7 @@ extension ComplexDoubleArray {
         assertSameSize(b)
         let real = vDSP.add(a.real, b.real)
         let imag = vDSP.add(a.imag, b.imag)
-        return ComplexArray(real, imag)
+        return ComplexDoubleArray(real, imag)
     }
     
     /// Complex subtraction.
@@ -259,7 +259,7 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
     public static func - (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
         assertSameSize(a)
-        return ComplexArray(a.real - b.real, a.imag - b.imag)
+        return ComplexDoubleArray(a.real - b.real, a.imag - b.imag)
     }
    
     /// Complex subtraction.
@@ -312,4 +312,17 @@ extension ComplexDoubleArray {
         return vectorDivideComplexComplexArray(a, b)
     }
 }
+
+/// Complex unary
+extension ComplexDoubleArray {
+    /// Unary minus.
+    /// - Parameter a: Complex array.
+    /// - Returns: The result of -a.
+    public static prefix func - (a: ComplexDoubleArray) -> ComplexDoubleArray {
+        let real = vDSP.negative(a.real)
+        let imag = vDSP.negative(a.imag)
+        return ComplexDoubleArray(real, imag)
+    }
+}
+
 

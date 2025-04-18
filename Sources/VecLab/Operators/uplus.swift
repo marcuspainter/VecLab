@@ -7,6 +7,7 @@
 
 import Foundation
 
+/*
 /// Unary plus.
 /// - Parameter a: Real array.
 /// - Returns: The result of +a.
@@ -27,3 +28,4 @@ public prefix func + (a: Complex) -> Complex {
 public prefix func + (a: ComplexArray) -> ComplexArray {
     return a
 }
+*/

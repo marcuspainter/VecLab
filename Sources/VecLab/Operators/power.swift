@@ -22,50 +22,50 @@ infix operator **: PowerPrecedence
 ///   - a: Integer number.
 ///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Int, _ b: Int) -> Real {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Int, _ b: Int) -> Real {
+//    return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Integer number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Int, _ b: Real) -> Real {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Int, _ b: Real) -> Real {
+//   return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Real number.
 ///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Real, _ b: Int) -> Real {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Real, _ b: Int) -> Real {
+//    return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Real number.
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: RealArray, _ b: Int) -> RealArray {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: RealArray, _ b: Int) -> RealArray {
+//    return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Complex number.
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Complex, _ b: Int) -> Complex {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Complex, _ b: Int) -> Complex {
+//    return pow(a, b)
+//}
 
 /*
  /// Power.
@@ -86,10 +86,10 @@ public func ** (_ a: Complex, _ b: Int) -> Complex {
 ///   - a: Real number.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Real, _ b: Real) -> Real {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Real, _ b: Real) -> Real {
+//    return pow(a, b)
+//}
 
 // MARK: Real Array
 
@@ -98,31 +98,32 @@ public func ** (_ a: Real, _ b: Real) -> Real {
 ///   - a: Real array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: RealArray, _ b: RealArray) -> RealArray {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: RealArray, _ b: RealArray) -> RealArray {
+//    return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Real array.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: RealArray, _ b: Real) -> RealArray {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: RealArray, _ b: Real) -> RealArray {
+//    return pow(a, b)
+//}
 
 /// Power.
 /// - Parameters:
 ///   - a: Real number.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
-@inlinable
-public func ** (_ a: Real, _ b: RealArray) -> RealArray {
-    return pow(a, b)
-}
+//@inlinable
+//public func ** (_ a: Real, _ b: RealArray) -> RealArray {
+//    return pow(a, b)
+//}
 
+/*
 // MARK: Complex
 
 /// Power.
@@ -134,16 +135,16 @@ public func ** (_ a: Real, _ b: RealArray) -> RealArray {
 public func ** (_ a: Complex, _ b: Real) -> Complex {
     return pow(a, b)
 }
-
+*/
 /// Power.
 /// - Parameters:
 ///   - a: Complex number.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`.
-public func ** (_ a: Complex, _ b: Complex) -> Complex {
-    return pow(a, b)
-}
-
+//public func ** (_ a: Complex, _ b: Complex) -> Complex {
+//    return pow(a, b)
+//}
+/*
 /// Power.
 /// - Parameters:
 ///   - a: Real number.
@@ -222,4 +223,4 @@ public func ** (_ a: ComplexArray, _ b: Real) -> ComplexArray {
 public func ** (_ a: Real, _ b: ComplexArray) -> ComplexArray {
     assertSameSize(b)
     return pow(a, b)
-}
+}*/

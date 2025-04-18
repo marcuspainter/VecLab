@@ -43,76 +43,76 @@ extension Array where Element == Double {
 
 extension Array where Element == Double {
     
-    /// Double addition.
+    /// Real addition.
     /// - Parameters:
-    ///   - a: Double array.
-    ///   - b: Double number.
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the addition.
     public static func + (a: [Double], b: Double) -> [Double] {
         return vDSP.add(b, a)
     }
     
-    /// Double addition.
+    /// Real addition.
     /// - Parameters:
-    ///   - a: Double number.
-    ///   - b: Double array.
+    ///   - a: Real number.
+    ///   - b: Real array.
     /// - Returns: The result of the addition.
     public static func + (a: Double, b: [Double]) -> [Double] {
         return vDSP.add(a, b)
     }
     
-    /// Double subtraction.
+    /// Real subtraction.
     /// - Parameters:
-    ///   - a: Double array.
-    ///   - b: Double number.
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the subtraction.
     public static func - (a: [Double], b: Double) -> [Double] {
         let minusb = -b
         return vDSP.add(minusb, a)
     }
 
-    /// Double subtraction.
+    /// Real subtraction.
     /// - Parameters:
-    ///   - a: Double number.
-    ///   - b: Double array.
+    ///   - a: Real number.
+    ///   - b: Real array.
     /// - Returns: The result of the subtraction
     public static func - (a: Double, b: [Double]) -> [Double] {
         let minusb = -b
         return vDSP.add(a, minusb)
     }
     
-    /// Multiplication.
+    /// Real multiplication.
     /// - Parameters:
-    ///   - a: Double array.
+    ///   - a: Real array.
     ///   - b: Double number.
     /// - Returns: The result of the multiplication.
     public static func * (a: [Double], b: Double) -> [Double] {
         return vDSP.multiply(b, a)
     }
 
-    /// Multiplication.
+    /// Real multiplication.
     /// - Parameters:
-    ///   - a: Double number..
-    ///   - b: Double array.
+    ///   - a: Real number..
+    ///   - b: Real array.
     /// - Returns: The result of the multiplication.
     public static func * (a: Double, b: [Double]) -> [Double] {
         return vDSP.multiply(a, b)
     }
     
-    /// Double division.
+    /// Real division.
     /// - Parameters:
-    ///   - a: Double array.
-    ///   - b: Double array.
+    ///   - a: Real array.
+    ///   - b: Real array.
     /// - Returns: The result of the division.
     public static func / (a: [Double], b: [Double]) -> [Double] {
         assertSameSize(a, b)
         return vDSP.divide(a, b)
     }
 
-    /// Double division.
+    /// Real division.
     /// - Parameters:
-    ///   - a: Double array.
-    ///   - b: Double number.
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the division.
     public static func / (a: [Double], b: Double) -> [Double] {
         return vDSP.divide(a, b)
@@ -120,10 +120,20 @@ extension Array where Element == Double {
 
     /// Double division.
     /// - Parameters:
-    ///   - a: Double number
-    ///   - b: Double array
+    ///   - a: Real number
+    ///   - b: Real array
     /// - Returns: The result of the division
     public static func / (a: Double, b: [Double]) -> [Double] {
         return vDSP.divide(a, b)
+    }
+}
+
+extension Array where Element == Double {
+    
+    /// Unary minus.
+    /// - Parameter a: Real array.
+    /// - Returns: The result of -a
+    public static prefix func - (a: RealArray) -> RealArray {
+        return vDSP.negative(a)
     }
 }
