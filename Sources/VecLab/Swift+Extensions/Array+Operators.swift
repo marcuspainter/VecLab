@@ -10,7 +10,7 @@ public extension Array where Element == Double {
     ///
     /// - Warning: This does not append arrays.
     ///  Use the 'append()' or 'cat()' functions.
-    static func += (lhs: inout [Element], rhs: [Element]) {
+    static func += (lhs: inout [Double], rhs: [Double]) {
         lhs = lhs + rhs
     }
 }

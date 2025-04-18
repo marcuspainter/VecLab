@@ -13,8 +13,10 @@ extension ComplexDoubleArray {
     // This extension includes only the range subscripts that need to be modified
     // to ensure a consistent validation pattern across all array operations
     
+    // Returns concrete type ComplexDoubleArray not SubSequence
+    
     /// Access a range of complex elements
-    public subscript(bounds: Range<Int>) -> SubSequence {
+    public subscript(bounds: Range<Int>) -> ComplexDoubleArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
             var slice = ComplexDoubleArray()
@@ -37,7 +39,7 @@ extension ComplexDoubleArray {
     }
     
     /// Access a closed range of complex elements
-    public subscript(bounds: ClosedRange<Int>) -> SubSequence {
+    public subscript(bounds: ClosedRange<Int>) -> ComplexDoubleArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
             return self[bounds.lowerBound..<(bounds.upperBound + 1)]
@@ -58,7 +60,7 @@ extension ComplexDoubleArray {
     }
     
     /// Access a partial range from lower bound
-    public subscript(bounds: PartialRangeFrom<Int>) -> SubSequence {
+    public subscript(bounds: PartialRangeFrom<Int>) -> ComplexDoubleArray {
         get {
             precondition(bounds.lowerBound >= 0, "Lower bound must be non-negative")
             precondition(bounds.lowerBound < count, "Lower bound out of range")
@@ -81,7 +83,7 @@ extension ComplexDoubleArray {
     }
     
     /// Access a partial range up to upper bound
-    public subscript(bounds: PartialRangeUpTo<Int>) -> SubSequence {
+    public subscript(bounds: PartialRangeUpTo<Int>) -> ComplexDoubleArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound <= count, "Upper bound out of range")
@@ -104,7 +106,7 @@ extension ComplexDoubleArray {
     }
     
     /// Access a partial range through upper bound
-    public subscript(bounds: PartialRangeThrough<Int>) -> SubSequence {
+    public subscript(bounds: PartialRangeThrough<Int>) -> ComplexDoubleArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound < count, "Upper bound out of range")
