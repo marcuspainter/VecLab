@@ -25,3 +25,13 @@ a(indices1) = c
 a = a0;
 a(indices2) = b(indices1)
 ```
+
+|Syntax|Type|Description|
+|---|---|---|
+|`a[i]`|`subscript(index: Int)`|Access a single element|
+|`a[m..<n]`|`subscript(bounds: Range<Int>`)|Half-open range|
+|`a[m...n]`|`subscript(bounds: ClosedRange<Int>)`|Closed range|
+|`a[..<n]`|`subscript(bounds: PartialRangeUpTo<Int>)`|From start up to (excl. `n`)|
+|`a[...n]`|`subscript(bounds: PartialRangeThrough<Int>)`|From start through `n`|
+|`a[m...]`|`subscript(bounds: PartialRangeFrom<Int>)`|From `m` through end|
+|`a[...]`|`subscript(bounds: PartialRangeFrom<Int>)`|With `m = startIndex`|

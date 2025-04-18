@@ -10,8 +10,8 @@ final class VecLabTests: XCTestCase {
         // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
         
         //var a = ComplexArray(count: 10)
-        var a = RealArray(repeating: 1.0, count: 10)
-        a[0...,2] = a[0..., 1]
+        var a = RealArray(0 ... 9)
+        a[0...,2] = a[0..., 2]
         
         print(a[0..., 2])
     }

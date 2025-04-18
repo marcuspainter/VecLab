@@ -6,10 +6,16 @@
 //
 
 /// Complex number
-public struct ComplexDouble: Equatable, Hashable, Codable, CustomStringConvertible, Sendable {
+public struct ComplexDouble:
+        Equatable,
+        Hashable,
+        Codable,
+        CustomStringConvertible,
+        Sendable {
     
     /// Real part.
     public var real: Double
+    
     /// Imaginary part.
     public var imag: Double
     

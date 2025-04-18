@@ -18,24 +18,29 @@ extension Array where Element == Double {
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new array with the stepped values
     public subscript(range: ClosedRange<Int>, step: Int) -> [Double] {
-        precondition(step != 0, "Step cannot be zero")
-        precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
-        
-        var result = [Double]()
-        
-        if step > 0 {
-            let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
-            for index in indices {
-                result.append(self[index])
+        get {
+            precondition(step != 0, "Step cannot be zero")
+            precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
+            
+            var result = [Double]()
+            
+            if step > 0 {
+                let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
+                for index in indices {
+                    result.append(self[index])
+                }
+            } else {
+                let indices = [Int](stride(from: range.upperBound, through: range.lowerBound, by: step))
+                for index in indices {
+                    result.append(self[index])
+                }
             }
-        } else {
-            let indices = [Int](stride(from: range.upperBound, through: range.lowerBound, by: step))
-            for index in indices {
-                result.append(self[index])
-            }
+            
+            return result
         }
-        
-        return result
+        set {
+            setValues(in: range, step: step, to: newValue)
+        }
     }
     
     /// Access elements from a half-open range with a step value

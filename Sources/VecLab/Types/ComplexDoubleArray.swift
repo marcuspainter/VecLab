@@ -7,15 +7,24 @@
 
 // https://itwenty.me/posts/04-swift-collections/
 
-//// Complex array implementation using split real/imaginary arrays
-public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceableCollection,
-    BidirectionalCollection, RandomAccessCollection,
-    Equatable, Hashable, Codable, CustomStringConvertible,
-    ExpressibleByArrayLiteral, Sendable {
+/// Complex array implementation using split real/imaginary arrays
+public struct ComplexDoubleArray:
+        Collection,
+        MutableCollection,
+        RangeReplaceableCollection,
+        BidirectionalCollection,
+        RandomAccessCollection,
+        Equatable,
+        Hashable,
+        Codable,
+        CustomStringConvertible,
+        ExpressibleByArrayLiteral,
+        Sendable {
     // MARK: - Storage
 
     /// Array of real values.
     public var real: [Double]
+    
     /// Array of imaginary values.
     public var imag: [Double]
 
@@ -56,17 +65,25 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         imag = [Double](repeating: 0, count: count)
     }
     
-    /// Initialize a complex array from a collection.
+    /*
     public init<C: Collection>(_ elements: C) where C.Element == ComplexDouble {
+    */
+    
+    /// Initialize a complex array from a collection.
+    /// - Parameter elements: A complex array.
+    public init(_ elements: ComplexDoubleArray) {
         real = elements.map { $0.real }
         imag = elements.map { $0.imag }
     }
 
     /// Initialize a complex array from complex numbers.
+    /// - Parameter elements: Literal array of complex numbers.
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
     }
     
+    /// Reserve stroage capacity of array.
+    /// - Parameter minimumCapacity: The minimum capacity.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         real.reserveCapacity(minimumCapacity)
         imag.reserveCapacity(minimumCapacity)
@@ -120,11 +137,20 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     }
 
     /// Returns an index that is the specified distance from the given index.
+    /// - Parameters:
+    ///   - i: Index.
+    ///   - distance: The offset distance.
+    /// - Returns: The index.
     public func index(_ i: Int, offsetBy distance: Int) -> Int {
         return i + distance
     }
 
     /// Returns an index that is the specified distance from the given index, unless that distance is beyond a given limiting index.
+    /// - Parameters:
+    ///   - i: Index/
+    ///   - distance: Offset distance.
+    ///   - limit: Limit.
+    /// - Returns: The index.
     public func index(_ i: Int, offsetBy distance: Int, limitedBy limit: Int) -> Int? {
         let n = i + distance
         return (distance > 0 && n > limit) || (distance < 0 && n < limit) ? nil : n
@@ -177,7 +203,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         real.replaceSubrange(subrange, with: newReals)
         imag.replaceSubrange(subrange, with: newImags)
     }
-
+    
     // MARK: - Subscripts
 
     public subscript(position: Int) -> ComplexDouble {
@@ -200,10 +226,12 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         real.append(element.real)
         imag.append(element.imag)
     }
-    
+/*
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == ComplexDouble {
+*/
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == ComplexDouble {
+    public mutating func append(contentsOf newElements: ComplexDoubleArray) {
         let newValues = Array(newElements)
         real.append(contentsOf: newValues.map { $0.real })
         imag.append(contentsOf: newValues.map { $0.imag })

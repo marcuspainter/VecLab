@@ -9,15 +9,15 @@ extension ComplexDoubleArray {
     // static func += <S: Sequence>(lhs: inout MyCollection<Element>, rhs: S) where S.Element == Element {
     // }
 
-    static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
+    public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs + rhs
     }
     
-    static func += (lhs: inout ComplexDoubleArray, rhs: [Double]) {
+    public static func += (lhs: inout ComplexDoubleArray, rhs: [Double]) {
         lhs = lhs + rhs
     }
     
-    static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
+    public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
         lhs = lhs + rhs
     }
 }
