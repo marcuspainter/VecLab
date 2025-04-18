@@ -7,7 +7,7 @@
 
 // https://itwenty.me/posts/04-swift-collections/
 
-/// Complex array implementation using split real/imaginary arrays
+//// Complex array implementation using split real/imaginary arrays
 public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceableCollection,
     BidirectionalCollection, RandomAccessCollection,
     Equatable, Hashable, Codable, CustomStringConvertible,
@@ -82,7 +82,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     /// The position of the first element in a nonempty array.
     public var startIndex: Int { return 0 }
         
-    /// An array's “past the end” position—that is, the position one greater than the last valid subscript argument.
+    /// An array's "past the end" position—that is, the position one greater than the last valid subscript argument.
     public var endIndex: Int { return real.count }
     
     /// The indices that are valid for subscripting the collection, in ascending order.
@@ -149,6 +149,7 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
         public mutating func next() -> ComplexDouble? {
             guard currentIndex < array.endIndex else { return nil }
             let element = array[currentIndex]
+            // Could just increment currentIndex, but this uses stricter implementation.
             currentIndex = array.index(after: currentIndex)
             return element
         }
@@ -188,59 +189,6 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
             precondition(position >= 0 && position < count, "Index out of range")
             real[position] = newValue.real
             imag[position] = newValue.imag
-        }
-    }
-
-    public subscript(bounds: Range<Int>) -> SubSequence {
-        get {
-            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            var slice = ComplexDoubleArray()
-            slice.real = Array(real[bounds])
-            slice.imag = Array(imag[bounds])
-            return slice
-        }
-        set {
-            precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            precondition(newValue.count == bounds.count, "Replacement array must be same size as range")
-
-            real.replaceSubrange(bounds, with: newValue.real)
-            imag.replaceSubrange(bounds, with: newValue.imag)
-        }
-    }
-
-    public subscript(bounds: ClosedRange<Int>) -> SubSequence {
-        get {
-            return self[bounds.lowerBound ..< (bounds.upperBound + 1)]
-        }
-        set {
-            self[bounds.lowerBound ..< (bounds.upperBound + 1)] = newValue
-        }
-    }
-
-    public subscript(bounds: PartialRangeFrom<Int>) -> SubSequence {
-        get {
-            return self[bounds.lowerBound ..< endIndex]
-        }
-        set {
-            self[bounds.lowerBound ..< endIndex] = newValue
-        }
-    }
-
-    public subscript(bounds: PartialRangeUpTo<Int>) -> SubSequence {
-        get {
-            return self[0 ..< bounds.upperBound]
-        }
-        set {
-            self[0 ..< bounds.upperBound] = newValue
-        }
-    }
-
-    public subscript(bounds: PartialRangeThrough<Int>) -> SubSequence {
-        get {
-            return self[0 ... bounds.upperBound]
-        }
-        set {
-            self[0 ... bounds.upperBound] = newValue
         }
     }
 
@@ -322,5 +270,39 @@ public struct ComplexDoubleArray: Collection, MutableCollection, RangeReplaceabl
     public func hash(into hasher: inout Hasher) {
         hasher.combine(real)
         hasher.combine(imag)
+    }
+}
+
+// Function to assert that two arrays have the same size
+private func assertSameSize<T, U>(_ lhs: [T], _ rhs: [U]) {
+    precondition(lhs.count == rhs.count, "Arrays must have the same size: \(lhs.count) vs \(rhs.count)")
+}
+
+// Extension to add range-to-range replacement
+extension ComplexDoubleArray {
+    /// Replace a range with elements from another array's range
+    /// - Parameters:
+    ///   - bounds: The range in this array to replace
+    ///   - source: The source array to take elements from
+    ///   - sourceBounds: The range in the source array
+    /// - Returns: true if successful, false if sizes don't match
+    @discardableResult
+    public mutating func replaceRange<R1: RangeExpression, R2: RangeExpression>(
+        _ bounds: R1,
+        from source: ComplexDoubleArray,
+        range sourceBounds: R2
+    ) -> Bool where R1.Bound == Int, R2.Bound == Int {
+        
+        let thisRange = bounds.relative(to: indices)
+        let sourceRange = sourceBounds.relative(to: source.indices)
+        
+        if thisRange.count != sourceRange.count {
+            print("ERROR: Source range size must match destination range size: \(thisRange.count) vs \(sourceRange.count)")
+            return false
+        }
+        
+        let sourceSlice = source[sourceRange]
+        self[thisRange] = sourceSlice
+        return true
     }
 }
