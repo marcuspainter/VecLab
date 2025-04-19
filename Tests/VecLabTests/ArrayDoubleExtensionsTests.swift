@@ -7,7 +7,7 @@
 
 
 import XCTest
-@testable import VecLab  // Replace with your actual module name
+import VecLab  // Replace with your actual module name
 
 final class ArrayDoubleExtensionsTests: XCTestCase {
     

@@ -7,7 +7,7 @@
 
 
 import XCTest
-@testable import VecLab
+import VecLab
 
 // Uncomment to check error
 
