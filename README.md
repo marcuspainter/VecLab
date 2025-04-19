@@ -40,14 +40,14 @@ The library includes an FFT function using Accelerate, but here is an example of
 ```swift
 // FFTX Fast Finite Fourier Transform.
 public func fftx(_ x: ComplexArray) -> ComplexArray {
-    let n = length(x) 
-    let omega = exp(-2 * Real.pi * 1.i / Real(n))
+    let n = length(x)
+    let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))
         let w = omega ** k
-        let u = fftx(slice(x, 0 ..< n - 1, 2))
-        let v = w * fftx(slice(x, 1 ..< n, 2))
+        let u = fftx(x[0 ..< n - 1, 2])
+        let v = w * fftx(x[1 ..< n, 2])
         return cat(u + v, u - v)
     } else {
         return x
