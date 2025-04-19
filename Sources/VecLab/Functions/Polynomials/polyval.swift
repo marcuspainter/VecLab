@@ -13,7 +13,7 @@ import Foundation
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: Real) -> Real {
+public func polyval(coefficients p: RealArray, points x: Real) -> Real {
     let y = vDSP.evaluatePolynomial(usingCoefficients: p,
                                     withVariables: [x])
     if y.count != 1 {
@@ -27,7 +27,7 @@ public func polyval(_ p: RealArray, _ x: Real) -> Real {
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
+public func polyval(coefficients p: RealArray, points x: RealArray) -> RealArray {
     return vDSP.evaluatePolynomial(usingCoefficients: p,
                                    withVariables: x)
 }
@@ -37,7 +37,7 @@ public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
 ///   - p:  Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: Complex) -> Complex {
+public func polyval(coefficients p: RealArray, points x: Complex) -> Complex {
     let n = length(p) // Get the number of coefficients
     var y = Complex(p[0], Real(0)) // Initialize the result with the first coefficient
 
@@ -53,9 +53,9 @@ public func polyval(_ p: RealArray, _ x: Complex) -> Complex {
 ///   - p:  Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: ComplexArray) -> ComplexArray {
+public func polyval(coefficients p: RealArray, points x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    return iterate(x) { polyval(p, $0) }
+    return iterate(x) { polyval(coefficients: p, points: $0) }
 }
 
 /// Polynomial evaluation.
@@ -63,7 +63,7 @@ public func polyval(_ p: RealArray, _ x: ComplexArray) -> ComplexArray {
 ///   - p:  Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: ComplexArray, _ x: Complex) -> Complex {
+public func polyval(coefficients p: ComplexArray, points x: Complex) -> Complex {
     assertSameSize(p)
     let n = length(p) // Get the number of coefficients
     var y = Complex(p.real[0], p.imag[0]) // Initialize the result with the first coefficient
@@ -80,8 +80,8 @@ public func polyval(_ p: ComplexArray, _ x: Complex) -> Complex {
 ///   - p:  Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: ComplexArray, _ x: ComplexArray) -> ComplexArray {
+public func polyval(_coefficients p: ComplexArray, points x: ComplexArray) -> ComplexArray {
     assertSameSize(p)
     assertSameSize(x)
-    return iterate(x) { polyval(p, $0) }
+    return iterate(x) { polyval(coefficients: p, points: $0) }
 }
