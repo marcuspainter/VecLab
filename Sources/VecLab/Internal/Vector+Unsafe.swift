@@ -7,11 +7,11 @@
 
 import Accelerate
 import Foundation
-
+/*
 func withUnsafeParameters(
     _ a: ComplexArray,
     _ b: ComplexArray,
-    _ c: inout  ComplexArray,
+    _ c: inout ComplexArray,
     _ body: (UnsafePointer<DSPDoubleSplitComplex>,
              UnsafePointer<DSPDoubleSplitComplex>,
              UnsafeMutablePointer<DSPDoubleSplitComplex>,
@@ -91,6 +91,7 @@ func withUnsafeParameters(
     }
 }
 
+ 
 func withUnsafeParameters(
     _ a: ComplexArray,
     _ c: inout RealArray,
@@ -109,7 +110,9 @@ func withUnsafeParameters(
         }
     }
 }
+ */
 
+/*
 // MARK: Tuples
 
 func withUnsafeParameters(
@@ -240,3 +243,5 @@ func withUnsafeParameters(
     }
 }
 
+
+*/

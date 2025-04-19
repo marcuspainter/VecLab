@@ -7,6 +7,9 @@
 
 // https://itwenty.me/posts/04-swift-collections/
 
+import Foundation
+import Accelerate
+
 /// Complex array implementation using split real/imaginary arrays
 public struct ComplexDoubleArray:
         Collection,
@@ -23,12 +26,12 @@ public struct ComplexDoubleArray:
     // MARK: - Storage
 
     /// Array of real values.
-    public var real: [Double]
-    //public private(set) var real: [Double]
+    //public var real: [Double]
+    public private(set) var real: [Double]
 
-    /// Array of imaginary valu
-    public var imag: [Double]
-    //public private(set) var imag: [Double]
+    /// Array of imaginary values.
+    //public var imag: [Double]
+    public private(set) var imag: [Double]
 
     // MARK: - Initializers
 
@@ -458,6 +461,111 @@ extension ComplexDoubleArray {
             }
 
             self[fullRange] = newValue
+        }
+    }
+}
+
+extension ComplexDoubleArray {
+    
+     public static func withUnsafeParameters(
+        _ a: ComplexArray,
+        _ b: ComplexArray,
+        _ c: inout ComplexArray,
+        _ body: (UnsafePointer<DSPDoubleSplitComplex>,
+                 UnsafePointer<DSPDoubleSplitComplex>,
+                 UnsafeMutablePointer<DSPDoubleSplitComplex>,
+                 vDSP_Length) -> Void) {
+        a.real.withUnsafeBufferPointer { aRealBuffer in
+            a.imag.withUnsafeBufferPointer { aImagBuffer in
+                b.real.withUnsafeBufferPointer { bRealBuffer in
+                    b.imag.withUnsafeBufferPointer { bImagBuffer in
+                        c.real.withUnsafeMutableBufferPointer { cRealBuffer in
+                            c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
+                                var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                                              imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                                var B = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: bRealBuffer.baseAddress!),
+                                                              imagp: UnsafeMutablePointer(mutating: bImagBuffer.baseAddress!))
+                                var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
+                                                              imagp: cImagBuffer.baseAddress!)
+                                let n = vDSP_Length(a.count)
+                                body(&A, &B, &C, n)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public static func withUnsafeParameters(
+        _ a: ComplexArray,
+        _ b: RealArray,
+        _ c: inout ComplexArray,
+        _ body: (UnsafePointer<DSPDoubleSplitComplex>,
+                 UnsafePointer<Double>,
+                 UnsafeMutablePointer<DSPDoubleSplitComplex>,
+                 vDSP_Length) -> Void) {
+        a.real.withUnsafeBufferPointer { aRealBuffer in
+            a.imag.withUnsafeBufferPointer { aImagBuffer in
+                b.withUnsafeBufferPointer { bRealBuffer in
+                    c.real.withUnsafeMutableBufferPointer { cRealBuffer in
+                        c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
+
+                            var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                                          imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+
+                            let B = bRealBuffer.baseAddress!
+
+                            var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
+                                                          imagp: cImagBuffer.baseAddress!)
+
+                            let n = vDSP_Length(a.count)
+                            body(&A, B, &C, n)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public static func withUnsafeParameters(
+        _ a: ComplexArray,
+        _ c: inout ComplexArray,
+        _ body: (UnsafePointer<DSPDoubleSplitComplex>,
+                 UnsafeMutablePointer<DSPDoubleSplitComplex>,
+                 vDSP_Length) -> Void) {
+        a.real.withUnsafeBufferPointer { aRealBuffer in
+            a.imag.withUnsafeBufferPointer { aImagBuffer in
+                c.real.withUnsafeMutableBufferPointer { cRealBuffer in
+                    c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
+                        var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                                      imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                        var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
+                                                      imagp: cImagBuffer.baseAddress!)
+                        let n = vDSP_Length(a.count)
+                        body(&A, &C, n)
+                    }
+                }
+            }
+        }
+    }
+    
+    public static func withUnsafeParameters(
+        _ a: ComplexArray,
+        _ c: inout RealArray,
+        _ body: (UnsafePointer<DSPDoubleSplitComplex>,
+                 UnsafeMutablePointer<Double>,
+                 vDSP_Length) -> Void) {
+        a.real.withUnsafeBufferPointer { aRealBuffer in
+            a.imag.withUnsafeBufferPointer { aImagBuffer in
+                c.withUnsafeMutableBufferPointer { cRealBuffer in
+                    var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                                  imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                    let C = cRealBuffer.baseAddress!
+                    let n = vDSP_Length(a.count)
+                    body(&A, C, n)
+                }
+            }
         }
     }
 }
