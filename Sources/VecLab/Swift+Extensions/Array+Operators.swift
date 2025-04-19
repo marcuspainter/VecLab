@@ -9,7 +9,7 @@ public extension Array where Element == Double {
     /// Mathematical addition of `Double` array.
     ///
     /// - Warning: This does not append arrays.
-    ///  Use the 'append()' or 'cat()' functions.
+    ///  Use the `append()` or `cat()` functions.
     static func += (lhs: inout [Double], rhs: [Double]) {
         lhs = lhs + rhs
     }

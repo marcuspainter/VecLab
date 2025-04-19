@@ -6,7 +6,7 @@
 //
 
 /// Convolution type
-public enum ConvType {
+public enum ConvolutionType {
     case full
     case same
 }

@@ -17,6 +17,8 @@ public func dot(_ a: RealArray, _ b: RealArray) -> Real {
     return dotReal(a, b)
 }
 
+// MARK: Private
+
 private func dotReal(_ a: [Double], _ b: [Double]) -> Double {
     var c: Double = 0.0
     let n = a.count

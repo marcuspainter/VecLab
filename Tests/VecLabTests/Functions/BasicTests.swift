@@ -22,36 +22,6 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
     }
 
-    // MARK: all
-
-    func testAllRealArrayTrue() throws {
-        let realArrayA: RealArray = [0.0, 2.0, 3.0, 4.0]
-        let result: Bool = all(realArrayA)
-        XCTAssert(result, "all failed")
-    }
-
-    func testAllRealArrayFalse() throws {
-        let realArrayA: RealArray = [0.0, 0.0, 0.0, 0.0]
-        let result: Bool = all(realArrayA)
-        XCTAssert(!result, "all failed")
-    }
-
-    // MARK: any
-
-    func testAnyRealArrayTrue() throws {
-        let realArrayA: RealArray = [0.0, 2.0, 3.0, 4.0]
-        let result: Bool = any(realArrayA)
-        XCTAssert(!result, "any failed")
-    }
-
-    // TODO: Fix
-/*
-    func testAnyRealArrayFalse() throws {
-        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: Bool = any(realArrayA)
-        XCTAssert(!result, "any failed")
-    }
-*/
     // MARK: cumsum
 
     func testCumsumRealArray() throws {

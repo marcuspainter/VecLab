@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-/// Biquad filter type
+/// Biquad filter type.
 public enum BiquadType {
     /// Low pass.
     case lowpass

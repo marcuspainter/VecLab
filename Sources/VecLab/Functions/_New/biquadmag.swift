@@ -51,6 +51,7 @@ public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
 // http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
 
+/*
 public func biquadmag2(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
     let b0 = b[0]
     let b1 = b[1]
@@ -79,3 +80,4 @@ public func biquadmag2(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
 
     return H2
 }
+*/

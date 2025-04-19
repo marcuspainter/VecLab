@@ -25,6 +25,12 @@ Exponents, logarithms and square root.
 - ``sqrt(_:)->Complex``
 - ``sqrt(_:)->ComplexArray``
 
+### Hypotenuse
+- ``hypot(_:_:)->Real``
+- ``hypot(_:_:)->(RealArray)``
+- ``hypot(_:_:)->(Complex)``
+- ``hypot(_:_:)->(ComplexArray)``
+
 ### Complex Euler
 
 - ``expi(_:)->Complex``

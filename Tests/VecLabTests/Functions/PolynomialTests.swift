@@ -25,7 +25,7 @@ class PolynomialTests: XCTestCase {
     func testPolyvalRealArrayComplex() throws {
         let p: RealArray = [3, 2, 1]
         let x: Complex = Complex(5, 5)
-        let result: Complex = polyval(coefficients: p, points: x)
+        let result: Complex = polyval(coefficients: p, point: x)
         let expected: Complex = Complex(11, 160)
 
         disp(result)

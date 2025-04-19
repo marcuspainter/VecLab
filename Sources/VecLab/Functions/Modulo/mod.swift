@@ -9,7 +9,7 @@ import Foundation
 
 /// Remainder after division (modulo operation).
 ///
-/// Returns the remainder after division of  'a' by `m`, where `a` is the dividend and `m` is the divisor.
+/// Returns the remainder after division of  `a` by `m`, where `a` is the dividend and `m` is the divisor.
 /// This function is often called the modulo operation, which can be expressed as `b = a - m.*floor(a./m)`.
 ///
 /// The mod function follows the convention that `mod(a,0)` returns `a`.
@@ -26,7 +26,7 @@ public func mod(_ a: Int, _ b: Int) -> Int {
 
 /// Remainder after division (modulo operation).
 ///
-/// Returns the remainder after division of 'a' by `m`, where `a` is the dividend and `m` is the divisor.
+/// Returns the remainder after division of `a` by `m`, where `a` is the dividend and `m` is the divisor.
 /// This function is often called the modulo operation, which can be expressed as `b = a - m.*floor(a./m)`.
 ///
 /// The mod function follows the convention that `mod(a,0)` returns `a`.
@@ -43,7 +43,7 @@ public func mod(_ a: Real, _ b: Real) -> Real {
 
 /// Remainder after division (modulo operation).
 ///
-/// Returns the remainder after division of 'a' by `m`, where `a` is the dividend and `m` is the divisor.
+/// Returns the remainder after division of `a` by `m`, where `a` is the dividend and `m` is the divisor.
 /// This function is often called the modulo operation, which can be expressed as `b = a - m.*floor(a./m)`.
 ///
 /// The mod function follows the convention that `mod(a,0)` returns `a`.

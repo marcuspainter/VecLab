@@ -11,7 +11,7 @@ import Foundation
 
 /* Use _math.erf() */
 
-public func erf2(_ x: Double) -> Double {
+func erf2(_ x: Double) -> Double {
     // Constants for approximation
     let a1 =  0.254829592
     let a2 = -0.284496736
@@ -31,7 +31,7 @@ public func erf2(_ x: Double) -> Double {
     return sign * y
 }
 
-public func erf(_ x: Double) -> Double {
+func erf(_ x: Double) -> Double {
     // Handle special cases
     if x == 0.0 {
         return 0.0
@@ -56,3 +56,4 @@ public func erf(_ x: Double) -> Double {
     // Apply sign based on input
     return isNegative ? -result : result
 }
+

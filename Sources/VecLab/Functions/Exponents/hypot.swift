@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Hypotenuse of a right triangle.
+/// Square root of sum of squares (hypotenuse).
 /// - Parameters:
 ///   - a: Real number.
 ///   - b: Real number.
@@ -25,7 +25,7 @@ public func hypot(_ a: Real, _ b: Real) -> Real {
     return result
 }
 
-/// Hypotenuse of a right triangle.
+/// Square root of sum of squares (hypotenuse).
 /// - Parameters:
 ///   - a: Real array.
 ///   - b: Real array.
@@ -36,7 +36,7 @@ public func hypot(_ a: RealArray, _ b: RealArray) -> RealArray {
     return result
 }
 
-/// Hypotenuse of a right triangle.
+/// Square root of sum of squares (hypotenuse).
 /// - Parameters:
 ///   - a: Real number.
 ///   - b: Real number.
@@ -54,7 +54,7 @@ public func hypot(_ a: Complex, _ b: Complex) -> Complex {
     return result
 }
 
-/// Hypotenuse of a right triangle.
+/// Square root of sum of squares (hypotenuse)
 /// - Parameters:
 ///   - a: Complex  array.
 ///   - b: Complex array.
@@ -64,7 +64,6 @@ public func hypot(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
     let result = zip(a, b).map { hypot($0, $1) }
     return ComplexArray(result)
 }
-
 
 /*
  

@@ -4,14 +4,17 @@ Basic functions.
 
 ## Topics
 
-### Absolute Value and Sign
+### Absolute Value
 - ``abs(_:)-(RealArray)``
+
+### Sign
 - ``sign(_:)->Real``
 - ``sign(_:)->RealArray``
 - ``sign(_:)->Complex``
 - ``sign(_:)->ComplexArray``
 
 ### Print and Display
+- ``disp(_:)-(Any)``
 - ``disp(_:)-(RealArray)``
 - ``disp(_:)-(ComplexArray)``
 - ``disp(_:)-(ArraySlice<Real>)``
@@ -29,11 +32,6 @@ Basic functions.
 - ``dot(_:_:)-(ComplexArray,ComplexArray)``
 
 ### Miscellaneous
-
-- ``all(_:)-(RealArray)``
-- ``all(_:)-(RealArray)``
-- ``any(_:)-(RealArray)``
-- ``any(_:)-(ComplexArray)``
 
 - ``iterate(_:_:)-(_,(Real)->Real)``
 - ``iterate(_:_:)-(_,(Real,Int)->Real)``

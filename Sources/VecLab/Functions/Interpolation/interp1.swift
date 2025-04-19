@@ -20,7 +20,7 @@ import Foundation
 ///
 /// - Note: The `x` array is expected to be sorted in increasing order. If a value in `xi` is outside the bounds of `x`,
 ///  it will be extrapolated using the nearest `y` value.
-public func interp1(x: [Double], y: [Double], xi: [Double]) -> [Double] {
+public func interp1(x: RealArray, y: RealArray, xi: RealArray) -> RealArray {
     var yi = [Double](repeating: 0.0, count: xi.count)
 
     for (i, xiValue) in xi.enumerated() {
