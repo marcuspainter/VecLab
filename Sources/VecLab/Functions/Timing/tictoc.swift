@@ -22,7 +22,8 @@ public func tic() {
 public func toc() {
     Task {
         let seconds = await SwiftTimerActor.shared.stop()
-        print("Elapsed time: \(seconds) seconds")
+        let ms = seconds * 1000
+        print("Elapsed time: \(seconds) seconds (\(ms) ms)")
     }
 }
 
