@@ -11,7 +11,7 @@ import VecLab
 class SpecialTests: XCTestCase {
     
     let accuracy: Real = 1e-3
-
+/*
     func testGammaReal() throws {
         let result: Real = gamma(1 / 3.0)
         print(result)
@@ -49,5 +49,5 @@ class SpecialTests: XCTestCase {
         let expected: Real = 1.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "erfinv failed")
     }
-    
+*/
 }

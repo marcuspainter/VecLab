@@ -8,12 +8,14 @@
 import Accelerate
 import Foundation
 
+/*
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
     associativity: left // Uses Matlab convention: 2**2**3 Matlab = 64, Python = 256
 }
+*/
 
-infix operator **: PowerPrecedence
+//infix operator **: PowerPrecedence
 
 // MARK: Int
 
