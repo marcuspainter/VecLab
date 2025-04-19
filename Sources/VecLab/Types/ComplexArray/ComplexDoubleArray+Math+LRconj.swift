@@ -9,7 +9,7 @@ import Accelerate
 
 /// Complex left conjugate multiply
 extension ComplexDoubleArray {
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -19,7 +19,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return vectorConjugateMultiplyComplexArray(a, b)
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -29,7 +29,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return conj(a) * b
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -39,7 +39,7 @@ extension ComplexDoubleArray {
         assertSameSize(b)
         return conj(a) * b
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -49,7 +49,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return conj(a) * b
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -63,7 +63,7 @@ extension ComplexDoubleArray {
 
 /// Complex right conjugate multiply
 extension ComplexDoubleArray {
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -74,7 +74,7 @@ extension ComplexDoubleArray {
         let c = vectorConjugateMultiplyComplexArray(b, a)
         return c
     }
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -84,7 +84,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return a * conj(b) // Overloaded
     }
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -94,7 +94,7 @@ extension ComplexDoubleArray {
         assertSameSize(b)
         return a * conj(b) // Overloaded
     }
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Real array.
@@ -104,7 +104,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return a * conj(b) // Overloaded
     }
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Real number.

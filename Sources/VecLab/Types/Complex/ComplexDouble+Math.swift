@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble: ComplexArithmetic {
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
@@ -16,7 +16,7 @@ extension ComplexDouble: ComplexArithmetic {
     public static func + (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real + b.real, a.imag + b.imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex number.
@@ -26,7 +26,7 @@ extension ComplexDouble: ComplexArithmetic {
     public static func - (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real - b.real, a.imag - b.imag)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -36,7 +36,7 @@ extension ComplexDouble: ComplexArithmetic {
     public static func * (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.

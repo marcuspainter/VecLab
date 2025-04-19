@@ -12,19 +12,19 @@ public struct ComplexDouble:
         Codable,
         CustomStringConvertible,
         Sendable {
-    
+
     /// Real part.
     public var real: Double
-    
+
     /// Imaginary part.
     public var imag: Double
-    
+
     /// Initialize a complex number with zero.
     public init() {
         self.real = 0
         self.imag = 0
     }
-    
+
     /// Initialize a complex number.
     /// - Parameters:
     ///   - real: Real part.

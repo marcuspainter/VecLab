@@ -20,7 +20,7 @@ extension ComplexDoubleArray {
         let imag = vDSP.add(b.imag, a.imag)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
@@ -32,7 +32,7 @@ extension ComplexDoubleArray {
         let imag = vDSP.add(a.imag, b.imag)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex array.
@@ -42,7 +42,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return ComplexDoubleArray(a.real - b.real, a.imag - b.imag)
     }
-   
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex number.
@@ -52,7 +52,7 @@ extension ComplexDoubleArray {
         assertSameSize(b)
         return b - a
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex array.
@@ -62,7 +62,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return vectorMultiplyComplexArrayComplex(a, b)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -72,7 +72,7 @@ extension ComplexDoubleArray {
         assertSameSize(b)
         return vectorMultiplyComplexComplexArray(a, b)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex array.
@@ -82,7 +82,7 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         return vectorDivideComplexArrayComplex(a, b)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.

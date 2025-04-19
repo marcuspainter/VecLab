@@ -8,7 +8,7 @@
 import Accelerate
 
 extension ComplexDoubleArray: ComplexArithmetic {
-    
+
     /// Complex array addition.
     /// - Parameters:
     ///   - a: Complex array.
@@ -19,7 +19,7 @@ extension ComplexDoubleArray: ComplexArithmetic {
         let result = vectorAddComplexArray(a, b) // Not needed ???
         return result
     }
-    
+
     /// Complex array subtraction.
     /// - Parameters:
     ///   - a: Complex array.
@@ -29,7 +29,7 @@ extension ComplexDoubleArray: ComplexArithmetic {
         assertSameSize(a, b)
         return vectorSubtractComplexArray(a, b)
     }
-    
+
     /// Complex array multiplication.
     /// - Parameters:
     ///   - a: Complex array.
@@ -39,7 +39,7 @@ extension ComplexDoubleArray: ComplexArithmetic {
         assertSameSize(a, b)
         return vectorMultiplyComplexArray(a, b)
     }
-    
+
     /// Complex array division.
     /// - Parameters:
     ///   - a: Complex array..

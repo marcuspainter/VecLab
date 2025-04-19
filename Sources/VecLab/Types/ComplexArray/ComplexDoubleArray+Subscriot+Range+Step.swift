@@ -17,12 +17,12 @@ func test() {
 
 // Extension to provide stepping functionality for ComplexDoubleArray
 extension ComplexDoubleArray {
-    
+
     // Helper method to verify that real and imag arrays have the same size
     private func verifySizes() {
         precondition(real.count == imag.count, "Internal error: real and imaginary arrays must have the same size")
     }
-    
+
     /// Access elements from a closed range with a step value
     /// - Parameters:
     ///   - range: The range of indices to access
@@ -33,9 +33,9 @@ extension ComplexDoubleArray {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
             verifySizes()
-            
+
             var result = ComplexDoubleArray()
-            
+
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
                 for index in indices {
@@ -47,7 +47,7 @@ extension ComplexDoubleArray {
                     result.append(self[index])
                 }
             }
-            
+
             result.verifySizes()
             return result
         }
@@ -55,7 +55,7 @@ extension ComplexDoubleArray {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a half-open range with a step value
     /// - Parameters:
     ///   - range: The range of indices to access
@@ -66,9 +66,9 @@ extension ComplexDoubleArray {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
             verifySizes()
-            
+
             var result = ComplexDoubleArray()
-            
+
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
                 for index in indices {
@@ -81,7 +81,7 @@ extension ComplexDoubleArray {
                     result.append(self[index])
                 }
             }
-            
+
             result.verifySizes()
             return result
         }
@@ -89,7 +89,7 @@ extension ComplexDoubleArray {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (from) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from lowerBound to the end)
@@ -101,7 +101,7 @@ extension ComplexDoubleArray {
             precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
             precondition(range.lowerBound < count, "Lower bound out of range")
             verifySizes()
-            
+
             if step > 0 {
                 return self[range.lowerBound..<count, step]
             } else {
@@ -113,7 +113,7 @@ extension ComplexDoubleArray {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (through) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from start through upperBound)
@@ -125,14 +125,14 @@ extension ComplexDoubleArray {
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
             precondition(range.upperBound < count, "Upper bound out of range")
             verifySizes()
-            
+
             return self[0...range.upperBound, step]
         }
         set {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (up to) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from start up to upperBound)
@@ -144,7 +144,7 @@ extension ComplexDoubleArray {
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
             precondition(range.upperBound <= count, "Upper bound out of range")
             verifySizes()
-            
+
             if step > 0 {
                 return self[0..<range.upperBound, step]
             } else {
@@ -161,7 +161,7 @@ extension ComplexDoubleArray {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Set elements in a closed range with a step value
     /// - Parameters:
     ///   - range: The range of indices to set
@@ -172,26 +172,26 @@ extension ComplexDoubleArray {
         precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
         verifySizes()
         newValues.verifySizes()
-        
+
         let indices: [Int]
         if step > 0 {
             indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
         } else {
             indices = [Int](stride(from: range.upperBound, through: range.lowerBound, by: step))
         }
-        
+
         if indices.count != newValues.count {
             print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
             return
         }
-        
+
         for (i, index) in indices.enumerated() {
             self[index] = newValues[i]
         }
-        
+
         verifySizes()
     }
-    
+
     /// Set elements in a half-open range with a step value
     /// - Parameters:
     ///   - range: The range of indices to set
@@ -202,7 +202,7 @@ extension ComplexDoubleArray {
         precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
         verifySizes()
         newValues.verifySizes()
-        
+
         let indices: [Int]
         if step > 0 {
             indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
@@ -212,19 +212,19 @@ extension ComplexDoubleArray {
         } else {
             indices = []
         }
-        
+
         if indices.count != newValues.count {
             print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
             return
         }
-        
+
         for (i, index) in indices.enumerated() {
             self[index] = newValues[i]
         }
-        
+
         verifySizes()
     }
-    
+
     /// Set elements in a partial range (from) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from lowerBound to the end)
@@ -235,14 +235,14 @@ extension ComplexDoubleArray {
         precondition(range.lowerBound < count, "Lower bound out of range")
         verifySizes()
         newValues.verifySizes()
-        
+
         if step > 0 {
             setValues(in: range.lowerBound..<count, step: step, to: newValues)
         } else {
             setValues(in: range.lowerBound...count-1, step: step, to: newValues)
         }
     }
-    
+
     /// Set elements in a partial range (through) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from start through upperBound)
@@ -253,10 +253,10 @@ extension ComplexDoubleArray {
         precondition(range.upperBound < count, "Upper bound out of range")
         verifySizes()
         newValues.verifySizes()
-        
+
         setValues(in: 0...range.upperBound, step: step, to: newValues)
     }
-    
+
     /// Set elements in a partial range (up to) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from start up to upperBound)
@@ -267,7 +267,7 @@ extension ComplexDoubleArray {
         precondition(range.upperBound <= count, "Upper bound out of range")
         verifySizes()
         newValues.verifySizes()
-        
+
         if step > 0 {
             setValues(in: 0..<range.upperBound, step: step, to: newValues)
         } else if range.upperBound > 0 {

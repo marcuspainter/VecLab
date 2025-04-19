@@ -8,5 +8,5 @@
 import os.log
 
 public enum VecLab {
-    
+
 }

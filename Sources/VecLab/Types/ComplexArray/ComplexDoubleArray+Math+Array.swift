@@ -9,7 +9,7 @@ import Accelerate
 
 /// [Double] extensions
 extension ComplexDoubleArray {
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex array.
@@ -20,7 +20,7 @@ extension ComplexDoubleArray {
         let real = vDSP.add(a.real, b)
         return ComplexDoubleArray(real, a.imag)
     }
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Real array.
@@ -31,7 +31,7 @@ extension ComplexDoubleArray {
         let real = vDSP.add(b.real, a)
         return ComplexDoubleArray(real, b.imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex array.
@@ -41,7 +41,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return ComplexDoubleArray(a.real - b, a.imag)
     }
-   
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Real array.
@@ -51,7 +51,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return b - a
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex array.
@@ -61,7 +61,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return vectorMultiplyComplexArrayRealArray(a, b)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Real array.
@@ -71,7 +71,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return vectorMultiplyComplexArrayRealArray(b, a)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex array.
@@ -81,7 +81,7 @@ extension ComplexDoubleArray {
         assertSameSize(a, b)
         return vectorDivideComplexArrayRealArray(a, b)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Real array.

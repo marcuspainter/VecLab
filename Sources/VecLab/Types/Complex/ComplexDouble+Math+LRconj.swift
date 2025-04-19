@@ -1,4 +1,3 @@
-
 //
 //  ComplexDouble+Math+Lconj.swift
 //  VecLab
@@ -8,7 +7,7 @@
 
 /// Complex left conjugate multiply
 extension ComplexDouble {
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -17,7 +16,7 @@ extension ComplexDouble {
     public static func ~* (a: Complex, b: Complex) -> Complex {
         return complexConjugateMultiply(b, a)
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -26,7 +25,7 @@ extension ComplexDouble {
     public static func ~* (a: Complex, b: Real) -> Complex {
         return conj(a) * b
     }
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -35,12 +34,12 @@ extension ComplexDouble {
     public static func ~* (a: Complex, b: RealArray) -> ComplexArray {
         return conj(a) * b
     }
-    
+
 }
 
 /// Complex right conjugate multiply
 extension ComplexDouble {
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -49,7 +48,7 @@ extension ComplexDouble {
     public static func *~ (a: Complex, b: Complex) -> Complex {
         return complexConjugateMultiply(b, a)
     }
-    
+
     /// Right conjugate multiply
     /// - Parameters:
     ///   - a: Real number.
@@ -58,7 +57,7 @@ extension ComplexDouble {
     public static func *~ (a: Real, b: Complex) -> Complex {
         return a * conj(b) // Overloaded
     }
-    
+
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Real array.

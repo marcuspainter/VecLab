@@ -24,7 +24,7 @@ public struct ComplexDoubleArray:
 
     /// Array of real values.
     public var real: [Double]
-    
+
     /// Array of imaginary values.
     public var imag: [Double]
 
@@ -45,30 +45,30 @@ public struct ComplexDoubleArray:
         self.real = real
         self.imag = imag
     }
-    
+
     /// Initialize from real array only (zeros for imaginary)
     public init(realOnly: [Double]) {
         real = realOnly
         imag = [Double](repeating: 0, count: realOnly.count)
     }
-    
+
     /// Initialize with a single complex value repeated
     public init(repeating value: ComplexDouble, count: Int) {
         real = [Double](repeating: value.real, count: count)
         imag = [Double](repeating: value.imag, count: count)
     }
-    
+
     /// Initialize a complex array of length count.
     /// - Parameter count: Number of elements.
     public init(count: Int) {
         real = [Double](repeating: 0, count: count)
         imag = [Double](repeating: 0, count: count)
     }
-    
+
     /*
     public init<C: Collection>(_ elements: C) where C.Element == ComplexDouble {
     */
-    
+
     /// Initialize a complex array from a collection.
     /// - Parameter elements: A complex array.
     public init(_ elements: ComplexDoubleArray) {
@@ -81,7 +81,7 @@ public struct ComplexDoubleArray:
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
     }
-    
+
     /// Reserve stroage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
@@ -98,16 +98,16 @@ public struct ComplexDoubleArray:
 
     /// The position of the first element in a nonempty array.
     public var startIndex: Int { return 0 }
-        
+
     /// An array's "past the end" position—that is, the position one greater than the last valid subscript argument.
     public var endIndex: Int { return real.count }
-    
+
     /// The indices that are valid for subscripting the collection, in ascending order.
     public var indices: Indices { return startIndex ..< endIndex }
-    
+
     /// Number of elements.
     public var count: Int { return real.count }
-    
+
     /// Tests if array is empty.
     public var isEmpty: Bool { return real.isEmpty }
 
@@ -115,15 +115,15 @@ public struct ComplexDoubleArray:
     /// - Parameter i: An index.
     /// - Returns: The index after.
     public func index(after i: Int) -> Int { return i + 1 }
-        
+
     /// Returns the position immediately before the given index.
     /// - Parameter i: An Index.
     /// - Returns: The index before.
     public func index(before i: Int) -> Int { return i - 1 }
-    
+
     /// Returns the position immediately before the given index.
     public func formIndex(after i: inout Int) { i += 1 }
-    
+
     /// Replaces the given index with its predecessor.
     public func formIndex(before i: inout Int) { i -= 1 }
 
@@ -157,19 +157,19 @@ public struct ComplexDoubleArray:
     }
 
     // MARK: - Sequence Protocol
-    
+
     /// Iterator for ComplexDoubleArray.
     public struct Iterator: IteratorProtocol {
         private let array: ComplexDoubleArray
         private var currentIndex: Int
-        
+
         /// Intialize with another array.
         /// - Parameter array: A complex array to iterate.
         init(_ array: ComplexDoubleArray) {
             self.array = array
             currentIndex = array.startIndex
         }
-        
+
         /// Returns the next complex number.
         /// - Returns: The next complex number.
         public mutating func next() -> ComplexDouble? {
@@ -187,14 +187,14 @@ public struct ComplexDoubleArray:
     }
 
     // MARK: - RangeReplaceableCollection
-    
+
     /// Replace a subrange of a complex array.
     /// - Parameters:
     ///   - subrange: Index subrange.
     ///   - newElements: Replacement complex numbers.
     public mutating func replaceSubrange<C: Collection>(_ subrange: Range<Int>, with newElements: C)
         where C.Element == ComplexDouble {
-            
+
         precondition(subrange.lowerBound >= 0 && subrange.upperBound <= count, "Range out of bounds")
 
         let newReals = newElements.map { $0.real }
@@ -203,7 +203,7 @@ public struct ComplexDoubleArray:
         real.replaceSubrange(subrange, with: newReals)
         imag.replaceSubrange(subrange, with: newImags)
     }
-    
+
     // MARK: - Subscripts
 
     public subscript(position: Int) -> ComplexDouble {
@@ -219,7 +219,7 @@ public struct ComplexDoubleArray:
     }
 
     // MARK: - Additional Convenience Methods
-    
+
     /// Append a complex number.
     /// - Parameter element: A complex number.
     public mutating func append(_ element: ComplexDouble) {
@@ -236,7 +236,7 @@ public struct ComplexDoubleArray:
         real.append(contentsOf: newValues.map { $0.real })
         imag.append(contentsOf: newValues.map { $0.imag })
     }
-    
+
     /// Insert a complex array.
     /// - Parameters:
     ///   - element: A complex number.
@@ -246,7 +246,7 @@ public struct ComplexDoubleArray:
         real.insert(element.real, at: index)
         imag.insert(element.imag, at: index)
     }
-    
+
     /// Removes a complex number.
     /// - Parameter index: Index of item.
     /// - Returns: Removed item.
@@ -257,7 +257,7 @@ public struct ComplexDoubleArray:
         imag.remove(at: index)
         return complexValue
     }
-    
+
     /// Remove a range of complex numbers
     /// - Parameter bounds: A range of indices.
     public mutating func removeSubrange(_ bounds: Range<Int>) {
@@ -267,7 +267,7 @@ public struct ComplexDoubleArray:
     }
 
     // MARK: - CustomStringConvertible
-    
+
     /// String of complex value
     public var description: String {
         var result = "["
@@ -284,7 +284,7 @@ public struct ComplexDoubleArray:
     }
 
     // MARK: - Equatable
-    
+
     /// Compares for equality.
     /// - Parameters:
     ///   - lhs: A complex array.
@@ -320,15 +320,15 @@ extension ComplexDoubleArray {
         from source: ComplexDoubleArray,
         range sourceBounds: R2
     ) -> Bool where R1.Bound == Int, R2.Bound == Int {
-        
+
         let thisRange = bounds.relative(to: indices)
         let sourceRange = sourceBounds.relative(to: source.indices)
-        
+
         if thisRange.count != sourceRange.count {
             print("ERROR: Source range size must match destination range size: \(thisRange.count) vs \(sourceRange.count)")
             return false
         }
-        
+
         let sourceSlice = source[sourceRange]
         self[thisRange] = sourceSlice
         return true

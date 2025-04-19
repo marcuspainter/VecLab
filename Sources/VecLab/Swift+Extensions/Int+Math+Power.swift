@@ -6,7 +6,7 @@
 //
 
 extension Int {
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Integer number.

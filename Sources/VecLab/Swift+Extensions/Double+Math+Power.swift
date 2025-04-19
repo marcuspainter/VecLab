@@ -9,7 +9,7 @@ import Accelerate
 import Foundation
 
 extension Double {
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Integer number.
@@ -18,7 +18,7 @@ extension Double {
     public static func ** (_ a: Int, _ b: Double) -> Double {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Real number.
@@ -28,7 +28,7 @@ extension Double {
     public static func ** (_ a: Double, _ b: Int) -> Double {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Real number.

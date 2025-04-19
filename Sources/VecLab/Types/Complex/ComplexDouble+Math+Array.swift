@@ -10,7 +10,7 @@ import Accelerate
 
 /// Complex  extensions
 extension ComplexDouble {
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
@@ -22,7 +22,7 @@ extension ComplexDouble {
         vectorFillRealArray(a.imag, c: &imag)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Real number.
@@ -34,7 +34,7 @@ extension ComplexDouble {
         vectorFillRealArray(b.imag, c: &imag)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex number.
@@ -45,7 +45,7 @@ extension ComplexDouble {
         let imag = RealArray(repeating: Real(a.imag), count: b.count)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Real number.
@@ -56,7 +56,7 @@ extension ComplexDouble {
         let imag = RealArray(repeating: -Real(b.imag), count: a.count)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -67,7 +67,7 @@ extension ComplexDouble {
         let imag = vDSP.multiply(a.imag, b)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Real number.
@@ -78,7 +78,7 @@ extension ComplexDouble {
         let imag = vDSP.multiply(b.imag, a)
         return ComplexDoubleArray(real, imag)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.
@@ -87,7 +87,7 @@ extension ComplexDouble {
     public static func / (a: ComplexDouble, b: [Double]) -> ComplexDoubleArray {
         return vectorDivideComplexRealArray(a, b)
     }
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Real number.

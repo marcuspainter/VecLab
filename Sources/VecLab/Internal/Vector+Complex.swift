@@ -384,7 +384,7 @@ func vectorDivideRealArrayComplex(_ a: [Float], _ b: (Float, Float)) -> ([Float]
     return c
 }
 
-func vectorDivideComplexArrayComplex(_ a: ComplexArray, _ b: Complex) ->  ComplexArray {
+func vectorDivideComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
     var c = a
     let b0 = [Double](repeating: b.real, count: a.count)
     let b1 = [Double](repeating: b.imag, count: a.count)

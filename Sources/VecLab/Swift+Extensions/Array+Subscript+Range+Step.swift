@@ -7,11 +7,9 @@
 
 import Foundation
 
-import Foundation
-
 // Extension to provide stepping functionality for Double arrays
 extension Array where Element == Double {
-    
+
     /// Access elements from a closed range with a step value
     /// - Parameters:
     ///   - range: The range of indices to access
@@ -21,9 +19,9 @@ extension Array where Element == Double {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
-            
+
             var result = [Double]()
-            
+
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
                 for index in indices {
@@ -35,14 +33,14 @@ extension Array where Element == Double {
                     result.append(self[index])
                 }
             }
-            
+
             return result
         }
         set {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a half-open range with a step value
     /// - Parameters:
     ///   - range: The range of indices to access
@@ -52,9 +50,9 @@ extension Array where Element == Double {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
-            
+
             var result = [Double]()
-            
+
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
                 for index in indices {
@@ -67,14 +65,14 @@ extension Array where Element == Double {
                     result.append(self[index])
                 }
             }
-            
+
             return result
         }
         set {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (from) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from lowerBound to the end)
@@ -85,7 +83,7 @@ extension Array where Element == Double {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
             precondition(range.lowerBound < count, "Lower bound out of range")
-            
+
             if step > 0 {
                 return self[range.lowerBound..<count, step]
             } else {
@@ -97,7 +95,7 @@ extension Array where Element == Double {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (through) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from start through upperBound)
@@ -108,14 +106,14 @@ extension Array where Element == Double {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
             precondition(range.upperBound < count, "Upper bound out of range")
-            
+
             return self[0...range.upperBound, step]
         }
         set {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Access elements from a partial range (up to) with a step value
     /// - Parameters:
     ///   - range: The range of indices to access (from start up to upperBound)
@@ -126,7 +124,7 @@ extension Array where Element == Double {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
             precondition(range.upperBound <= count, "Upper bound out of range")
-            
+
             if step > 0 {
                 return self[0..<range.upperBound, step]
             } else {
@@ -143,7 +141,7 @@ extension Array where Element == Double {
             setValues(in: range, step: step, to: newValue)
         }
     }
-    
+
     /// Set elements in a closed range with a step value
     /// - Parameters:
     ///   - range: The range of indices to set
@@ -152,24 +150,24 @@ extension Array where Element == Double {
     mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: [Double]) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
-        
+
         let indices: [Int]
         if step > 0 {
             indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
         } else {
             indices = [Int](stride(from: range.upperBound, through: range.lowerBound, by: step))
         }
-        
+
         if indices.count != newValues.count {
             print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
             return
         }
-        
+
         for (i, index) in indices.enumerated() {
             self[index] = newValues[i]
         }
     }
-    
+
     /// Set elements in a half-open range with a step value
     /// - Parameters:
     ///   - range: The range of indices to set
@@ -178,7 +176,7 @@ extension Array where Element == Double {
     mutating func setValues(in range: Range<Int>, step: Int, to newValues: [Double]) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
-        
+
         let indices: [Int]
         if step > 0 {
             indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
@@ -188,17 +186,17 @@ extension Array where Element == Double {
         } else {
             indices = []
         }
-        
+
         if indices.count != newValues.count {
             print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
             return
         }
-        
+
         for (i, index) in indices.enumerated() {
             self[index] = newValues[i]
         }
     }
-    
+
     /// Set elements in a partial range (from) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from lowerBound to the end)
@@ -207,14 +205,14 @@ extension Array where Element == Double {
     mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: [Double]) {
         precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
         precondition(range.lowerBound < count, "Lower bound out of range")
-        
+
         if step > 0 {
             setValues(in: range.lowerBound..<count, step: step, to: newValues)
         } else {
             setValues(in: range.lowerBound...count-1, step: step, to: newValues)
         }
     }
-    
+
     /// Set elements in a partial range (through) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from start through upperBound)
@@ -223,10 +221,10 @@ extension Array where Element == Double {
     mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: [Double]) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound < count, "Upper bound out of range")
-        
+
         setValues(in: 0...range.upperBound, step: step, to: newValues)
     }
-    
+
     /// Set elements in a partial range (up to) with a step value
     /// - Parameters:
     ///   - range: The range of indices to set (from start up to upperBound)
@@ -235,7 +233,7 @@ extension Array where Element == Double {
     mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: [Double]) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound <= count, "Upper bound out of range")
-        
+
         if step > 0 {
             setValues(in: 0..<range.upperBound, step: step, to: newValues)
         } else if range.upperBound > 0 {

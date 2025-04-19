@@ -112,7 +112,6 @@ func withUnsafeParameters(
 
 // MARK: Tuples
 
-
 func withUnsafeParameters(
     _ a: ([Double], [Double]),
     _ b: ([Double], [Double]),

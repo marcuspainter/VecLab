@@ -17,7 +17,7 @@ extension ComplexDoubleArray {
             for (offset, idx) in indices.enumerated() {
                 slice[offset] = self[idx]
             }
-            
+
             return slice
         }
         set {

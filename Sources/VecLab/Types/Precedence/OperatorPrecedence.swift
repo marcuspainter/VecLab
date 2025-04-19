@@ -9,7 +9,7 @@
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
     associativity: left     // Matlab
-    //associativity: right    // NumPy
+    // associativity: right    // NumPy
 }
 
 /// Power

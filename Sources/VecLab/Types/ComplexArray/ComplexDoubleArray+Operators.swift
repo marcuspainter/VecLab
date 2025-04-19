@@ -12,13 +12,12 @@ extension ComplexDoubleArray {
     public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs + rhs
     }
-    
+
     public static func += (lhs: inout ComplexDoubleArray, rhs: [Double]) {
         lhs = lhs + rhs
     }
-    
+
     public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
         lhs = lhs + rhs
     }
 }
-

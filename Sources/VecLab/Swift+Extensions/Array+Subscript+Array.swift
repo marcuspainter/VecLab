@@ -30,4 +30,3 @@ extension Array where Element == Real {
         }
     }
 }
-

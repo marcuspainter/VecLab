@@ -8,7 +8,7 @@
 import Accelerate
 
 extension Array where Element == Double {
-    
+
     /// Real Power.
     /// - Parameters:
     ///   - a: Real array.
@@ -17,7 +17,7 @@ extension Array where Element == Double {
     public static func ** (_ a: [Double], _ b: [Double]) -> [Double] {
         return pow(a, b)
     }
-    
+
     /// Real Power.
     /// - Parameters:
     ///   - a: Real array.
@@ -26,7 +26,7 @@ extension Array where Element == Double {
     public static func ** (_ a: [Double], _ b: Double) -> [Double] {
         return pow(a, b)
     }
-    
+
     /// Real Power.
     /// - Parameters:
     ///   - a: Real number.
@@ -35,7 +35,7 @@ extension Array where Element == Double {
     public static func ** (_ a: Double, _ b: [Double]) -> [Double] {
         return pow(a, b)
     }
-    
+
     /// Real Power.
     /// - Parameters:
     ///   - a: Real number.

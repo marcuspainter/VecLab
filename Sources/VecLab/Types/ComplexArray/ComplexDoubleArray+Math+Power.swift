@@ -7,7 +7,7 @@
 
 /// Complex power.
 extension ComplexDoubleArray {
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Complex number.
@@ -16,7 +16,7 @@ extension ComplexDoubleArray {
     public static func ** (_ a: ComplexDoubleArray, _ b: ComplexDoubleArray) -> ComplexDoubleArray {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Complex number.
@@ -25,7 +25,7 @@ extension ComplexDoubleArray {
     public static func ** (_ a: ComplexDoubleArray, _ b: Double) -> ComplexDoubleArray {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Real number.
@@ -34,7 +34,7 @@ extension ComplexDoubleArray {
     public static func ** (_ a: Double, _ b: ComplexDoubleArray) -> ComplexDoubleArray {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Real number.
@@ -43,7 +43,7 @@ extension ComplexDoubleArray {
     public static func ** (_ a: ComplexDoubleArray, _ b: [Double]) -> ComplexDoubleArray {
         return pow(a, b)
     }
-    
+
     /// Power.
     /// - Parameters:
     ///   - a: Real number.
@@ -52,5 +52,5 @@ extension ComplexDoubleArray {
     public static func ** (_ a: [Double], _ b: ComplexDoubleArray) -> ComplexDoubleArray {
         return pow(a, b)
     }
-    
+
 }

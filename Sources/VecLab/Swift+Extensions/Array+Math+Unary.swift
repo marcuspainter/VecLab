@@ -8,7 +8,7 @@
 import Accelerate
 
 extension Array where Element == Double {
-    
+
     /// Unary minus.
     /// - Parameter a: Real array.
     /// - Returns: The result of -a

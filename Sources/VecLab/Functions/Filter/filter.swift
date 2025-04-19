@@ -58,5 +58,3 @@ public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray 
     let yi = filter(b: b, a: a, x: x.imag)
     return ComplexArray(yr, yi)
 }
-
-

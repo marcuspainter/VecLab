@@ -8,7 +8,7 @@
 import Accelerate
 
 extension Array where Element == Double {
-    
+
     /// Real addition.
     /// - Parameters:
     ///   - a: Real array.
@@ -17,7 +17,7 @@ extension Array where Element == Double {
     public static func + (a: [Double], b: Double) -> [Double] {
         return vDSP.add(b, a)
     }
-    
+
     /// Real addition.
     /// - Parameters:
     ///   - a: Real number.
@@ -26,7 +26,7 @@ extension Array where Element == Double {
     public static func + (a: Double, b: [Double]) -> [Double] {
         return vDSP.add(a, b)
     }
-    
+
     /// Real subtraction.
     /// - Parameters:
     ///   - a: Real array.
@@ -46,7 +46,7 @@ extension Array where Element == Double {
         let minusb = -b
         return vDSP.add(a, minusb)
     }
-    
+
     /// Real multiplication.
     /// - Parameters:
     ///   - a: Real array.
@@ -64,7 +64,7 @@ extension Array where Element == Double {
     public static func * (a: Double, b: [Double]) -> [Double] {
         return vDSP.multiply(a, b)
     }
-    
+
     /// Real division.
     /// - Parameters:
     ///   - a: Real array.

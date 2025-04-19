@@ -32,23 +32,23 @@ public func toc() {
 private actor SwiftTimerActor {
     static let shared = SwiftTimerActor()
     private let clock = ContinuousClock()
-    
+
     private var startInstant: ContinuousClock.Instant?
-    
+
     private init() {}
-    
+
     func start() {
         self.startInstant = clock.now
     }
-    
+
     func stop() -> Double {
         let stopInstant = clock.now
-        
+
         guard let lastStartInstant = self.startInstant else {
             return Double.nan
         }
         self.startInstant = nil
-        
+
         let duration = stopInstant - lastStartInstant
         return Double(duration.components.seconds) + Double(duration.components.attoseconds) / 1e18
     }
@@ -160,7 +160,7 @@ private actor MachTimerActor {
     }
 }
 */
- 
+
 /*
  // Example usage:
  tic()

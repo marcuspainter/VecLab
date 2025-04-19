@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: Multiply
 
+@inlinable
 func complexMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let a = x.real
     let b = x.imag
@@ -19,6 +20,7 @@ func complexMultiply(_ x: Complex, _ y: Complex) -> Complex {
 
 // MARK: ConjugateMultiply
 
+@inlinable
 func complexConjugateMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let a = x.real
     let b = x.imag
