@@ -9,6 +9,12 @@
 import XCTest
 @testable import VecLab
 
+// Uncomment to check error
+
+/*
+/Users/marcuspainter/Swift6/VecLab/Tests/VecLabTests/ConcurrencyCheckTests.swift:26:27 Sending 'sharedState' risks causing data races
+*/
+
 /*
 final class ConcurrencyCheckTests: XCTestCase {
     
@@ -21,7 +27,7 @@ final class ConcurrencyCheckTests: XCTestCase {
         let sharedState = UnsafeSharedState()
         
         // Create multiple tasks that access the shared state without proper synchronization
-        async let task1 = Task {
+        async let task1 = Task { // <-- ERROR HERE
             for _ in 0..<1000 {
                 sharedState.value += 1
             }
@@ -43,4 +49,5 @@ final class ConcurrencyCheckTests: XCTestCase {
         XCTAssertTrue(result1 > 0 && result2 > 0)
     }
 }
+
 */
