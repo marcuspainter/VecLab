@@ -33,7 +33,7 @@ public func trapz(_ x: RealArray, _ y: RealArray) -> Real {
 ///   - a: x-coordinates.
 ///   - step: Step.
 /// - Returns: Integrates `y` with respect to the coordinates or scalar spacing specified by `x`.
-public func trapz(_ a: [Double], step: Double) -> Double {
+public func trapz(_ a: RealArray, step: Real) -> Real {
     var c: Double = 0.0
     var stepSize: Double = step
     vDSP_vtrapzD(a, 1, &stepSize, &c, 1, vDSP_Length(a.count))

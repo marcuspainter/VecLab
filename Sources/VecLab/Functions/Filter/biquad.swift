@@ -15,7 +15,7 @@ import Foundation
 ///   - dbGain: Gain (dB).
 ///   - type: Filter type.
 /// - Returns: (b, a) coefficients as a tuple.
-public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: [Real], a: [Real]) {
+public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: RealArray, a: RealArray) {
     // Fs = 48000
     // f0 = 1000
     // Q = sqrt(2)/2

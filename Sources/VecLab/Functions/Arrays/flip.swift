@@ -11,7 +11,7 @@ import Foundation
 // VECTORIZED
 
 /// Flip order of array.
-/// - Parameter x: Input array.
+/// - Parameter x: Real array.
 /// - Returns: Flipped array with elements reversed.
 public func flip(_ x: RealArray) -> RealArray {
     // Copy

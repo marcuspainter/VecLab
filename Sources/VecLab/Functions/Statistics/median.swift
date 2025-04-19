@@ -13,18 +13,6 @@ import Foundation
 ///
 /// - Parameter data: Input array of real numbers.
 /// - Returns: The median value of the array.
-///
-/// #### Example:
-/// ```
-/// let dataSet1: [Real] = [1.2, 3.5, 2.9, 4.1, 3.8]
-/// let medianValue1 = median(dataSet1)
-/// print(medianValue1)  // prints: 3.5
-///
-/// let dataSet2: [Real] = [1.2, 3.5, 2.9, 3.8]
-/// let medianValue2 = median(dataSet2)
-/// print(medianValue2)  // prints: 3.65 (average of 3.5 and 3.8)
-/// ```
-///
 public func median(_ data: RealArray) -> Real {
     let sortedData = data.sorted()
     let middle = sortedData.count / 2

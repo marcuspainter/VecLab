@@ -18,13 +18,6 @@ import Accelerate
 ///
 /// - Parameter A: Input array of real numbers.
 /// - Returns: The variance of the values in the array.
-///
-/// # Example:
-/// ```
-/// let dataPoints: [Real] = [1.0, 2.0, 3.0, 4.0, 5.0]
-/// let varianceValue = variance(dataPoints)
-/// print(varianceValue)  // 2.5
-/// ```
 public func variance(_ A: RealArray) -> Real {
     let N = Double(A.count)
     let meanA = vDSP.mean(A)
