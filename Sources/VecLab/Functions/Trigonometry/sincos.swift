@@ -29,12 +29,3 @@ private func sincosArray(_ x: [Double]) -> ([Double], [Double]) {
     return (sines, cosines)
 }
 
-private func sincosArray(_ x: [Float]) -> ([Float], [Float]) {
-    var angles = x
-    // Copy initialization
-    var cosines = angles
-    var sines = angles
-    var n = Int32(x.count)
-    vvsincosf(&sines, &cosines, &angles, &n)
-    return (sines, cosines)
-}

@@ -20,7 +20,7 @@ public func dft(_ x: ComplexArray) -> ComplexArray {
     }
 
     // Init by copy
-    var y = x
+    var y = ComplexArray(repeating: .zero, count: x.count)
     let q = RealArray(0..<n)
     let omega = -2 * Real.pi * Real.i * q  / Real(n)
     for p in 0..<x.count {

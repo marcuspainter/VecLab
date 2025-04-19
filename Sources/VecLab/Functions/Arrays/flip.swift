@@ -27,9 +27,11 @@ public func flip(_ x: RealArray) -> RealArray {
 public func flip(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
     // Copy
-    var y = x
+    var yreal = x.real
+    var yimag = x.imag
+    
     // Inplace reverse
-    vDSP.reverse(&y.real)
-    vDSP.reverse(&y.imag)
-    return y
+    vDSP.reverse(&yreal)
+    vDSP.reverse(&yimag)
+    return ComplexArray(yreal, yimag)
 }

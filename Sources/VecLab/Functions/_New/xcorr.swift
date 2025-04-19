@@ -128,18 +128,18 @@ public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
 // https://uk.mathworks.com/matlabcentral/fileexchange/43967-circular-cross-correlation-using-fft
 
 /*
- func autocorr(a: [Float]) -> [Float] {
+ func autocorr(a: [Double]) -> [Double] {
  let filterLen = a.count
  let resultLen = filterLen * 2 - 1
  let signalLen = ((filterLen + 3) & 0xFFFFFFFC) + resultLen
 
- let padding1 = [Float](repeating: 0.0, count: a.count - 1)
- let padding2 = [Float]( repeating: 0.0, count: (signalLen - padding1.count - a.count))
+ let padding1 = [Double](repeating: 0.0, count: a.count - 1)
+ let padding2 = [Double]( repeating: 0.0, count: (signalLen - padding1.count - a.count))
  let signal = padding1 + a + padding2
 
  var result = [Float](repeating: 0.0, count: resultLen)
 
- vDSP_conv(signal, 1, a, 1, &result, 1, UInt(resultLen), UInt(filterLen))
+ vDSP_convD(signal, 1, a, 1, &result, 1, UInt(resultLen), UInt(filterLen))
 
  // Remove the first n-1 values which are just mirrored from the end so that [0] always has the autocorrelation.
  result.removeFirst(filterLen - 1)
