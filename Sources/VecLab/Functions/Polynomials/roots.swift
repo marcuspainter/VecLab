@@ -82,8 +82,8 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     var complexArray = ComplexArray()
     for k in 0 ..< result.count {
-        complexArray.real.append(result[k].0)
-        complexArray.imag.append(result[k].1)
+        let item = Complex(result[k].0, result[k].1)
+        complexArray.append(item)
     }
 
     return complexArray

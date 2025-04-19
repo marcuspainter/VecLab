@@ -18,14 +18,12 @@ public func fftsymmetric(_ x: ComplexArray) -> ComplexArray {
         // Even
         let n2 = n / 2      // Nyquist
         for k in 1 ..< n2 {
-            y.real[n2 + k] = y.real[n2 - k]
-            y.imag[n2 + k] = -y.imag[n2 - k]
+            y[n2 + k] = y[n2 - k]
         }
     } else {
         let n2 = (n + 1) / 2
         for k in 0 ..< n2 - 1 {
-            y.real[n2 + k] = y.real[n2 - k - 1]
-            y.imag[n2 + k] = -y.imag[n2 - k - 1]
+            y[n2 + k] = y[n2 - k - 1]
         }
     }
     return y
