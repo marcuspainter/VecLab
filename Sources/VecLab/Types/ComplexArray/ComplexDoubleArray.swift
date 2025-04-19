@@ -232,9 +232,8 @@ public struct ComplexDoubleArray:
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
     public mutating func append(contentsOf newElements: ComplexDoubleArray) {
-        let newValues = Array(newElements)
-        real.append(contentsOf: newValues.map { $0.real })
-        imag.append(contentsOf: newValues.map { $0.imag })
+        real.append(contentsOf: newElements.real)
+        imag.append(contentsOf: newElements.imag)
     }
 
     /// Insert a complex array.

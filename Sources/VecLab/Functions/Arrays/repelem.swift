@@ -54,8 +54,7 @@ public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
 
     var y = xarray
     for _ in 2 ... n {
-        y.real.append(contentsOf: xarray.real)
-        y.imag.append(contentsOf: xarray.imag)
+        y.append(contentsOf: xarray)
     }
     return y
 }
@@ -72,8 +71,7 @@ public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
     }
     var y = x
     for _ in 2 ... n {
-        y.real.append(contentsOf: x.real)
-        y.imag.append(contentsOf: x.imag)
+        y.append(contentsOf: x)
     }
     return y
 }

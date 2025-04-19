@@ -38,8 +38,7 @@ public func cat(_ arrays: [RealArray]) -> RealArray {
 public func cat(_ arrays: ComplexArray...) -> ComplexArray {
     var newArray = ComplexArray()
     for array in arrays {
-        newArray.real.append(contentsOf: array.real)
-        newArray.imag.append(contentsOf: array.imag)
+        newArray.append(contentsOf: array)
     }
     return newArray
 }
@@ -49,8 +48,7 @@ public func cat(_ arrays: ComplexArray...) -> ComplexArray {
 public func cat(_ arrays: [ComplexArray]) -> ComplexArray {
     var newArray = ComplexArray()
     for array in arrays {
-        newArray.real.append(contentsOf: array.real)
-        newArray.imag.append(contentsOf: array.imag)
+        newArray.append(contentsOf: array)
     }
     return newArray
 }

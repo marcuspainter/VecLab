@@ -34,9 +34,8 @@ public func paddata(_ x: ComplexArray, length m: Int) -> ComplexArray {
     var y = x
     if m > n {
         let zeroCount = m - n
-        let zeros = RealArray(repeating: 0, count: zeroCount)
-        y.real.append(contentsOf: zeros)
-        y.imag.append(contentsOf: zeros)
+        let zeros = ComplexArray(count: zeroCount)
+        y.append(contentsOf: zeros)
     }
     return y
 }
