@@ -27,16 +27,6 @@ private func dotReal(_ a: [Double], _ b: [Double]) -> Double {
     return c
 }
 
-private func dotReal(_ a: [Float], _ b: [Float]) -> Float {
-    var c: Float = 0.0
-    let n = a.count
-    vDSP_dotpr(a, 1,
-                b, 1,
-                &c,
-                vDSP_Length(n))
-    return c
-}
-
 /// Dot product.
 ///
 /// The complex dot product is defined as:

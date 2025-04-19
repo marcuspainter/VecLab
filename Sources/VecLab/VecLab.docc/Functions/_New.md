@@ -44,4 +44,4 @@ New functions.
 
 ### Peaks
 
-- ``findpeaks()``
+- ``findpeaks(_:minPeakHeight:threshold:)``

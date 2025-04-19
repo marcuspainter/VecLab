@@ -87,9 +87,9 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
     // Test the size validation during assignment
     func testRangeSubscriptsSizeValidation() {
         // Redirect standard output to capture error messages
-        let pipe = Pipe()
-        let originalStdout = FileHandle.standardOutput
-       // FileHandle.standardOutput = pipe
+        //let pipe = Pipe()
+        //let originalStdout = FileHandle.standardOutput
+        //FileHandle.standardOutput = pipe
         
         var array = ComplexDoubleArray([
             ComplexDouble(1, 1), 

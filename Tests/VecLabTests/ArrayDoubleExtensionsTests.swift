@@ -64,9 +64,9 @@ final class ArrayDoubleExtensionsTests: XCTestCase {
     // Test the size validation during assignment
     func testRangeSubscriptsSizeValidation() {
         // Redirect standard output to capture error messages
-        let pipe = Pipe()
-        let originalStdout = FileHandle.standardOutput
-      //  FileHandle.standardOutput = pipe
+        //let pipe = Pipe()
+        //let originalStdout = FileHandle.standardOutput
+        //FileHandle.standardOutput = pipe
         
         var array = [1.0, 2.0, 3.0, 4.0, 5.0]
         

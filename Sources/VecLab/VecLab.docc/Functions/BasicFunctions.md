@@ -12,7 +12,6 @@ Basic functions.
 - ``sign(_:)->ComplexArray``
 
 ### Print and Display
-- ``disp(_:)-()``
 - ``disp(_:)-(RealArray)``
 - ``disp(_:)-(ComplexArray)``
 - ``disp(_:)-(ArraySlice<Real>)``
