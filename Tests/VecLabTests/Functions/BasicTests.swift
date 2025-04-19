@@ -233,9 +233,3 @@ class BasicTests: XCTestCase {
     }
 }
 
-/*
- [0.0, 0.0, 0.0, 0.0]
-
- any(): Returns true if at least one element is non-zero.
- all(): Returns true if all elements are non-zero.
- */
