@@ -22,20 +22,21 @@ The library includes an FFT function using Accelerate, but here is an example of
 ```swift
 // FFTX Fast Finite Fourier Transform.
 public func fftx(_ x: ComplexArray) -> ComplexArray {
-    let n = length(x) 
-    let omega = exp(-2 * Real.pi * Real.i / Real(n))
+    let n = length(x)
+    let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))
         let w = omega ** k
-        let u = fftx(slice(x, 0 ..< n - 1, 2))
-        let v = w * fftx(slice(x, 1 ..< n, 2))
+        let u = fftx(x[0 ..< n - 1, 2])
+        let v = w * fftx(x[1 ..< n, 2])
         return cat(u + v, u - v)
     } else {
         return x
     }
 }
 ```
+
 Here's a breakdown of the real and complex vector operations in the function:
 
 1. `x` is the complex input array.
@@ -103,9 +104,6 @@ let phi = 100.0
 let c1 = exp(Real.i * 2 * Real.pi * phi)
 let c2 = exp(1.i * 2 * Real.pi * phi)
 let c3 = exp(2.i * Real.pi * phi)
-let c4 = exp((0, 2) * Real.pi * phi)
-let c5 = exp((0, 2 * Real.pi) * phi)
-let c6 = exp((0, 2 * Real.pi * phi))
 ```
 
 ### Ranges
@@ -145,7 +143,7 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays|arange, cat, circshift, dot, flip, gather, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
+|Arrays| arange, cat, circshift, dot, flip, gather, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
 |Basic| abs, cumsum, disp, iterate, norm, prod, sign, sum|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
 |Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
