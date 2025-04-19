@@ -27,6 +27,17 @@ public func hypot(_ a: Real, _ b: Real) -> Real {
 
 /// Hypotenuse of a right triangle.
 /// - Parameters:
+///   - a: Real array.
+///   - b: Real array.
+/// - Returns: Returns the hypotenuse of a right triangle with side lengths of  `a`and `b`.
+public func hypot(_ a: RealArray, _ b: RealArray) -> RealArray {
+    assertSameSize(a, b)
+    let result = zip(a, b).map { hypot($0, $1) }
+    return result
+}
+
+/// Hypotenuse of a right triangle.
+/// - Parameters:
 ///   - a: Real number.
 ///   - b: Real number.
 /// - Returns: Returns the hypotenuse of a right triangle with side lengths of  `a`and `b`.
@@ -42,6 +53,18 @@ public func hypot(_ a: Complex, _ b: Complex) -> Complex {
     }
     return result
 }
+
+/// Hypotenuse of a right triangle.
+/// - Parameters:
+///   - a: Complex  array.
+///   - b: Complex array.
+/// - Returns: Returns the hypotenuse of a right triangle with side lengths of  `a`and `b`.
+public func hypot(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+    assertSameSize(a, b)
+    let result = zip(a, b).map { hypot($0, $1) }
+    return ComplexArray(result)
+}
+
 
 /*
  
