@@ -23,12 +23,12 @@ final class VecLabTests: XCTestCase {
         tic()
         let X = fft(z)
         toc()
-       // disp(X)
+        //disp(X)
         tic()
         let XX = fftx2(z)
         toc()
         print("---")
-     //   disp(XX - X)
+       //disp(XX)
         
     }
 }
@@ -60,5 +60,20 @@ public func fftx2(_ x: ComplexArray) -> ComplexArray {
         return cat(u + v, u - v)
     } else {
         return x
+    }
+}
+
+public func fftx2(_ x: [Double]) -> ComplexArray {
+    let n = length(x)
+    let omega = exp(-2.i * .pi / Double(n))
+    if rem(n, 2) == 0 {
+        // Recursive divide and conquer.
+        let k = vector(0 ... (n / 2 - 1))
+        let w = omega ** k
+        let u = fftx2(x[0 ..< n - 1, 2])
+        let v = w * fftx2(x[1 ..< n, 2])
+        return cat(u + v, u - v)
+    } else {
+        return ComplexArray(realOnly: x)
     }
 }

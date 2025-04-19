@@ -54,10 +54,15 @@ class TrigonometryTests: XCTestCase {
     
     func testAsinComplexArray() throws {
         let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
+        let save = ComplexArray(complexArrayX)
         let result: ComplexArray = asin(complexArrayX)
+        
+        XCTAssertEqual(save, complexArrayX,"Oops!")
+        
         let expected: ComplexArray = ComplexArray([666.239432492515e-003, 754.249144698046e-003], [1.06127506190504e+000, 1.73432452148797e+000])
         XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
-        
+  
+
 /*
         let x = complexArrayX
         let z = -Real.i * log(Real.i * x + sqrt(1.0 - x * x))
