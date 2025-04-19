@@ -27,6 +27,7 @@ Vector functions.
 - ``repelem(_:_:)-(RealArray,_)``
 - ``repelem(_:_:)-(Complex,_)``
 - ``repelem(_:_:)-(Complex,_)``
+- ``repelem(_:_:)-(ComplexArray,_)``
 
 ### Vector Slice
 - ``slice(_:_:_:)-(RealArray,Range<Int>,_)``

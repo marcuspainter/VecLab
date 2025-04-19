@@ -14,6 +14,6 @@ Max, min, mean, median, mode, standard deviation and related functions.
 - ``minindex(_:)``
 - ``mode(_:)``
 - ``rms(_:)-(RealArray)``
-- ``rms(_:)-(RealArray)``
+- ``rms(_:)-(ComplexArray)``
 - ``stddev(_:)``
 - ``variance(_:)``

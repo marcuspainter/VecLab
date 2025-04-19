@@ -7,7 +7,7 @@
 
 import Accelerate
 
-/// [Double]  extensions
+/// [Double] extensions
 extension ComplexDoubleArray {
     
     /// Complex addition.

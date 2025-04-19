@@ -29,5 +29,4 @@ public func asin(_ x: Complex) -> Complex {
 public func asin(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
     return -Real.i * log(Real.i * x + sqrt(1.0 - x * x))
-    // return iterate(x) { asin($0) }
 }
