@@ -10,6 +10,7 @@ import Foundation
 /// Imaginary part of a complex number.
 /// - Parameter x: Complex number.
 /// - Returns: The imaginary part of a complex number as a real number.
+@inlinable
 public func imag(_ x: Complex) -> Real {
     return x.imag
 }

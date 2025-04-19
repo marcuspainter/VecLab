@@ -10,6 +10,7 @@ import Foundation
 /// Real part of a complex number.
 /// - Parameter x: Complex number.
 /// - Returns: The real part.
+@inlinable
 public func real(_ x: Complex) -> Real {
     return x.real
 }

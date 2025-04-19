@@ -12,6 +12,7 @@ import Accelerate
 ///
 /// - Parameter x:Complex number.
 /// - Returns: Real value of  magnitudes.
+@inlinable
 public func abs(_ x: Complex) -> Real {
     return sqrt(x.real * x.real + x.imag * x.imag)
 }

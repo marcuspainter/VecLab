@@ -13,6 +13,7 @@ import Foundation
 /// Complex conjugate of a complex number.
 /// - Parameter x: Complex number.
 /// - Returns: The complex conjugate of `x`.
+@inlinable
 public func conj(_ x: Complex) -> Complex {
     return Complex(x.real, -x.imag)
 }
@@ -22,8 +23,8 @@ public func conj(_ x: Complex) -> Complex {
 /// - Returns: The complex conjugate of `x`.
 public func conj(_ x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    let i = vDSP.negative(x.imag)
-    return ComplexArray(x.real, i)
+    let imag = vDSP.negative(x.imag)
+    return ComplexArray(x.real, imag)
 }
 
 // Not implemented for reals
