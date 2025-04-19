@@ -5,6 +5,8 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
+import os.log
+
 public enum VecLab {
     
 }
