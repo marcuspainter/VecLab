@@ -1,5 +1,5 @@
 //
-//  Array+subscript.swift
+//  DoubleArray+subscript.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/04/2025.
