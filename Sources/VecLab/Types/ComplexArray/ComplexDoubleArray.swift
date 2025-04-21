@@ -12,25 +12,24 @@ import Accelerate
 
 /// Complex array implementation using split real/imaginary arrays
 public struct ComplexDoubleArray:
-        Collection,
-        MutableCollection,
-        RangeReplaceableCollection,
-        BidirectionalCollection,
-        RandomAccessCollection,
-        Equatable,
-        Hashable,
-        Codable,
-        CustomStringConvertible,
-        ExpressibleByArrayLiteral,
-        Sendable {
+    Collection,
+    BidirectionalCollection,
+    RandomAccessCollection,
+    MutableCollection,
+    RangeReplaceableCollection,
+    Equatable,
+    Hashable,
+    Codable,
+    Sendable,
+    CustomStringConvertible,
+    ExpressibleByArrayLiteral {
+    
     // MARK: - Storage
 
     /// Array of real values.
-    //public var real: [Double]
     public private(set) var real: [Double]
 
     /// Array of imaginary values.
-    //public var imag: [Double]
     public private(set) var imag: [Double]
 
     // MARK: - Initializers
@@ -107,90 +106,6 @@ public struct ComplexDoubleArray:
     /// An array's "past the end" position—that is, the position one greater than the last valid subscript argument.
     public var endIndex: Int { return real.count }
 
-    /// The indices that are valid for subscripting the collection, in ascending order.
-    public var indices: Indices { return startIndex ..< endIndex }
-
-    /// Number of elements.
-    public var count: Int { return real.count }
-
-    /// Tests if array is empty.
-    public var isEmpty: Bool { return real.isEmpty }
-
-    /// Returns the position immediately after the given index.
-    /// - Parameter i: An index.
-    /// - Returns: The index after.
-    public func index(after i: Int) -> Int { return i + 1 }
-
-    /// Returns the position immediately before the given index.
-    /// - Parameter i: An Index.
-    /// - Returns: The index before.
-    public func index(before i: Int) -> Int { return i - 1 }
-
-    /// Returns the position immediately before the given index.
-    public func formIndex(after i: inout Int) { i += 1 }
-
-    /// Replaces the given index with its predecessor.
-    public func formIndex(before i: inout Int) { i -= 1 }
-
-    ///  Returns the distance between two indices.
-    /// - Parameters:
-    ///   - start: Start index.
-    ///   - end: End Index.
-    /// - Returns: The distance.
-    public func distance(from start: Int, to end: Int) -> Int {
-        return end - start
-    }
-
-    /// Returns an index that is the specified distance from the given index.
-    /// - Parameters:
-    ///   - i: Index.
-    ///   - distance: The offset distance.
-    /// - Returns: The index.
-    public func index(_ i: Int, offsetBy distance: Int) -> Int {
-        return i + distance
-    }
-
-    /// Returns an index that is the specified distance from the given index, unless that distance is beyond a given limiting index.
-    /// - Parameters:
-    ///   - i: Index/
-    ///   - distance: Offset distance.
-    ///   - limit: Limit.
-    /// - Returns: The index.
-    public func index(_ i: Int, offsetBy distance: Int, limitedBy limit: Int) -> Int? {
-        let n = i + distance
-        return (distance > 0 && n > limit) || (distance < 0 && n < limit) ? nil : n
-    }
-
-    // MARK: - Sequence Protocol
-
-    /// Iterator for ComplexDoubleArray.
-    public struct Iterator: IteratorProtocol {
-        private let array: ComplexDoubleArray
-        private var currentIndex: Int
-
-        /// Intialize with another array.
-        /// - Parameter array: A complex array to iterate.
-        init(_ array: ComplexDoubleArray) {
-            self.array = array
-            currentIndex = array.startIndex
-        }
-
-        /// Returns the next complex number.
-        /// - Returns: The next complex number.
-        public mutating func next() -> ComplexDouble? {
-            guard currentIndex < array.endIndex else { return nil }
-            let element = array[currentIndex]
-            // Could just increment currentIndex, but this uses stricter implementation.
-            currentIndex = array.index(after: currentIndex)
-            return element
-        }
-    }
-
-    /// Create an iterator.
-    public func makeIterator() -> Iterator {
-        return Iterator(self)
-    }
-
     // MARK: - RangeReplaceableCollection
 
     /// Replace a subrange of a complex array.
@@ -201,6 +116,8 @@ public struct ComplexDoubleArray:
         where C.Element == ComplexDouble {
 
         precondition(subrange.lowerBound >= 0 && subrange.upperBound <= count, "Range out of bounds")
+        precondition(subrange.count == newElements.count,
+                                 "Replacement size must match range size: \(subrange.count) vs \(newElements.count)")
 
         let newReals = newElements.map { $0.real }
         let newImags = newElements.map { $0.imag }
@@ -211,15 +128,15 @@ public struct ComplexDoubleArray:
 
     // MARK: - Subscripts
 
-    public subscript(position: Int) -> ComplexDouble {
+    public subscript(index: Int) -> ComplexDouble {
         get {
-            precondition(position >= 0 && position < count, "Index out of range")
-            return ComplexDouble(real[position], imag[position])
+            precondition(index >= 0 && index < count, "Index out of range")
+            return ComplexDouble(real[index], imag[index])
         }
         set {
-            precondition(position >= 0 && position < count, "Index out of range")
-            real[position] = newValue.real
-            imag[position] = newValue.imag
+            precondition(index >= 0 && index < count, "Index out of range")
+            real[index] = newValue.real
+            imag[index] = newValue.imag
         }
     }
 
@@ -311,37 +228,8 @@ private func assertSameSize<T, U>(_ lhs: [T], _ rhs: [U]) {
 }
 
 //
-// NOTE: This extension must be in this file to access real and imag arrays.
+// NOTE: This extension must be in this file for private write access to real and imag arrays.
 //
-
-// Extension to add range-to-range replacement
-extension ComplexDoubleArray {
-    /// Replace a range with elements from another array's range
-    /// - Parameters:
-    ///   - bounds: The range in this array to replace
-    ///   - source: The source array to take elements from
-    ///   - sourceBounds: The range in the source array
-    /// - Returns: true if successful, false if sizes don't match
-    @discardableResult
-    public mutating func replaceRange<R1: RangeExpression, R2: RangeExpression>(
-        _ bounds: R1,
-        from source: ComplexDoubleArray,
-        range sourceBounds: R2
-    ) -> Bool where R1.Bound == Int, R2.Bound == Int {
-
-        let thisRange = bounds.relative(to: indices)
-        let sourceRange = sourceBounds.relative(to: source.indices)
-
-        if thisRange.count != sourceRange.count {
-            print("ERROR: Source range size must match destination range size: \(thisRange.count) vs \(sourceRange.count)")
-            return false
-        }
-
-        let sourceSlice = source[sourceRange]
-        self[thisRange] = sourceSlice
-        return true
-    }
-}
 
 // Extension for ComplexDoubleArray to update range subscripts for consistent validation pattern
 extension ComplexDoubleArray {

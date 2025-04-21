@@ -6,6 +6,12 @@
 
 import Foundation
 
+func assertSameSize(_ a: Array<Any>, _ b: Array<Any>,
+                    file: StaticString = #file, line: UInt = #line) {
+    assert(a.count == b.count,
+           "Incompatible sizes \(a.count) \(b.count)", file: file, line: line)
+}
+
 func assertSameSize(_ a: RealArray, _ b: RealArray,
                     file: StaticString = #file, line: UInt = #line) {
     assert(a.count == b.count,

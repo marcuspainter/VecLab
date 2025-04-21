@@ -7,7 +7,7 @@
 
 import Accelerate
 
-extension ComplexDoubleArray: ComplexArithmetic {
+extension ComplexDoubleArray {
 
     /// Complex array addition.
     /// - Parameters:

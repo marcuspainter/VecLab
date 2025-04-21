@@ -10,6 +10,9 @@ import Accelerate
 extension Array where Element == Double {
 
     /// Double addition.
+    ///
+    ///- Note: This overrides the default Swift `Array` behaviour does not append arrays.
+    ///  Use the `append()` or `cat()` functions.
     /// - Parameters:
     ///   - a: Double array.
     ///   - b: Double array.
@@ -38,5 +41,15 @@ extension Array where Element == Double {
     public static func * (a: [Double], b: [Double]) -> [Double] {
         assertSameSize(a, b)
         return vDSP.multiply(a, b)
+    }
+    
+    /// Double division.
+    /// - Parameters:
+    ///   - a: Double array.
+    ///   - b: Double array.
+    /// - Returns: The result of the division.
+    public static func / (a: [Double], b: [Double]) -> [Double] {
+        assertSameSize(a, b)
+        return vDSP.divide(a, b)
     }
 }

@@ -7,7 +7,7 @@
 /*
 extension Double {
     
-    /// Integer addition..
+    /// Integer addition.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Integer number.
@@ -17,7 +17,7 @@ extension Double {
         return a + Double(b)
     }
     
-    /// Integer addition..
+    /// Integer addition.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Integer number.
@@ -27,7 +27,7 @@ extension Double {
         return Double(a) + b
     }
     
-    /// Integer subtraction..
+    /// Integer subtraction.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Integer number.
@@ -37,7 +37,7 @@ extension Double {
         return a - Double(b)
     }
     
-    /// Integer subtraction..
+    /// Integer subtraction.
     /// - Parameters:
     ///   - a: Integer number.
     ///   - b: Real number.
@@ -47,7 +47,7 @@ extension Double {
         return Double(a) - b
     }
     
-    /// Integer multiplication..
+    /// Integer multiplication.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Integer number.
@@ -57,7 +57,7 @@ extension Double {
         return a * Double(b)
     }
     
-    /// Integer multiplication..
+    /// Integer multiplication.
     /// - Parameters:
     ///   - a: Integer number.
     ///   - b: Real number.
@@ -67,7 +67,7 @@ extension Double {
         return Double(a) * b
     }
     
-    /// Integer division..
+    /// Integer division.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Integer number.

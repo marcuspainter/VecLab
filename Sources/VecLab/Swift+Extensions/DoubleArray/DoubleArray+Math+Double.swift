@@ -18,7 +18,7 @@ extension Array where Element == Double {
         return vDSP.add(b, a)
     }
 
-    /// Real addition.
+    /// Real addition.∫
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Real array.
@@ -63,16 +63,6 @@ extension Array where Element == Double {
     /// - Returns: The result of the multiplication.
     public static func * (a: Double, b: [Double]) -> [Double] {
         return vDSP.multiply(a, b)
-    }
-
-    /// Real division.
-    /// - Parameters:
-    ///   - a: Real array.
-    ///   - b: Real array.
-    /// - Returns: The result of the division.
-    public static func / (a: [Double], b: [Double]) -> [Double] {
-        assertSameSize(a, b)
-        return vDSP.divide(a, b)
     }
 
     /// Real division.

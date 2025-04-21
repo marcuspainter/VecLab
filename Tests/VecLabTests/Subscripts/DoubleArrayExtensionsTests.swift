@@ -1,5 +1,5 @@
 //
-//  ArrayDoubleExtensionsTests.swift
+//  DoubleArrayExtensionsTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/04/2025.
@@ -9,7 +9,7 @@
 import XCTest
 import VecLab  // Replace with your actual module name
 
-final class ArrayDoubleExtensionsTests: XCTestCase {
+final class DoubleArrayExtensionsTests: XCTestCase {
     
     // Test that range subscripts return Arrays, not ArraySlices
     func testRangeSubscriptsReturnArrays() {

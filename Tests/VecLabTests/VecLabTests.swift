@@ -10,12 +10,23 @@ final class VecLabTests: XCTestCase {
         // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
         
         //var a = ComplexArray(count: 10)
-        var a = RealArray(0 ... 9)
-        a[0...,2] = a[0..., 2]
+        var a: [Float] = [1,2,3,4,5]
+        //a[0...2] = a[0...3]
+    
+        //print(a[0..., 2])
         
-        print(a[0..., 2])
+        let b = [true, true, false, true, false]
+        a[...3] = a[...3]
+        
+        a += a
+        print(a)
+        
+        let q = a / 3
+        print(q)
+        print(type(of: q))
     }
     
+    /*
     func testFFT() throws {
         let x = vector(1...2**12)
         let z = ComplexArray(realOnly: x)
@@ -31,6 +42,7 @@ final class VecLabTests: XCTestCase {
        //disp(XX)
         
     }
+     */
 }
 
 public func fftx(_ x: ComplexArray) -> ComplexArray {

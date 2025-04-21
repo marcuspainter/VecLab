@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-extension ComplexDouble: ComplexArithmetic {
+extension ComplexDouble {
 
     /// Complex addition.
     /// - Parameters:
