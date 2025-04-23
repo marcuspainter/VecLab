@@ -13,11 +13,13 @@ final class VecLabTests: XCTestCase {
         //var a = ComplexArray(count: 10)
         var a: [Double] = [1,2,3,4,5]
         
-        let qqq = a + 1
+        let qqq = a + 1.0
         
         let z = Complex(1,2)
         
         print("Type \(type(of: z)) is Numeric \(z is (any Numeric) ? "Yes" : "No") !")
+        
+
 
     }
     

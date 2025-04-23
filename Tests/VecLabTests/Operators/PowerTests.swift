@@ -140,7 +140,6 @@ class PowerTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
     
-/*
     func testPowerComplexArrayComplex() {
         let result: ComplexArray = complexArrayA ** complexB
         let expected: ComplexArray = ComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
@@ -152,5 +151,5 @@ class PowerTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
- */
+ 
 }

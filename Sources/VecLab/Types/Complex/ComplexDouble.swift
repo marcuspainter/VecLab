@@ -7,12 +7,12 @@
 
 /// Complex number
 public struct ComplexDouble:
-        Equatable,
-        Hashable,
-        Codable,
-        CustomStringConvertible,
-        Sendable {
-
+    Equatable,
+    Hashable,
+    Codable,
+    CustomStringConvertible,
+    CustomDebugStringConvertible,
+    Sendable {
     /// Real part.
     public var real: Double
 
@@ -21,8 +21,8 @@ public struct ComplexDouble:
 
     /// Initialize a complex number with zero.
     public init() {
-        self.real = 0
-        self.imag = 0
+        real = 0
+        imag = 0
     }
 
     /// Initialize a complex number.
@@ -40,6 +40,15 @@ public struct ComplexDouble:
             return "\(real) + \(imag)i"
         } else {
             return "\(real) - \(abs(imag))i"
+        }
+    }
+
+    /// Provides a more detailed debug representation of the complex number
+    public var debugDescription: String {
+        if imag >= 0 {
+            return "ComplexDouble(\(real), \(imag))"
+        } else {
+            return "ComplexDouble(\(real), \(imag))"
         }
     }
 }

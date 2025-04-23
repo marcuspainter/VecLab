@@ -7,6 +7,8 @@
 
 import Accelerate
 
+
+/// Power functions.
 extension Array where Element == Double {
 
     /// Real Power.

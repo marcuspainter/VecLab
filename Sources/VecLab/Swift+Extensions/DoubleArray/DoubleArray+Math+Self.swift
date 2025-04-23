@@ -1,15 +1,13 @@
 //
-//  Array+VectorDoubleArithmetic.swift
+//  DoubleArray+Math.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 22/04/2025.
+//  Created by Marcus Painter on 23/04/2025.
 //
 
 import Accelerate
 
-/*
 extension Array where Element == Double {
-    public typealias Element = Double
     
     /// Double addition.
     ///
@@ -152,4 +150,4 @@ extension Array where Element == Double {
     }
     
 }
-*/
+

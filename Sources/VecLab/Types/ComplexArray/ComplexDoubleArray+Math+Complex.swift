@@ -20,9 +20,6 @@ extension ComplexDoubleArray {
         let real = vDSP.add(b.real, a.real)
         let imag = vDSP.add(b.imag, a.imag)
         
-        
-        
-        
         return ComplexDoubleArray(real, imag)
     }
 

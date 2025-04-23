@@ -1,5 +1,5 @@
 //
-//  ComlplexDoubleArray+Math.swift
+//  ComplexDoubleArray+Math.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -16,7 +16,7 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the addition.
     public static func + (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
         assertSameSize(a, b)
-        let result = vectorAddComplexArray(a, b) // Not needed ???
+        let result = vectorAddComplexArray(a, b)
         return result
     }
 

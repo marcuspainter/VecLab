@@ -31,6 +31,20 @@ public struct ComplexDoubleArray:
 
     /// Array of imaginary values.
     public private(set) var imag: [Double]
+    
+    /// Set internal real and imaginary arrays together.
+    internal mutating func setValue(real: [Double], imag: [Double]) {
+        precondition(real.count == imag.count, "Real and imaginary arrays must have the same size.")
+        self.real = real
+        self.imag = imag
+    }
+    
+    /// Set internal real and imaginary arrays together.
+    internal mutating func setValue(to newValue: ComplexDoubleArray) {
+        precondition(newValue.real.count == newValue.imag.count, "Real and imaginary arrays must have the same size.")
+        self.real = newValue.real
+        self.imag = newValue.imag
+    }
 
     // MARK: - Initializers
 

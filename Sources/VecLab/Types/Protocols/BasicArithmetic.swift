@@ -30,6 +30,8 @@ public protocol BasicArithmetic: AdditiveArithmetic, Numeric, SignedNumeric, Div
 }
 
 /*
+ 
+// Add these to types
 extension Float: BasicArithmetic {}
 extension Double: BasicArithmetic {}
 extension Int: BasicArithmetic {}
