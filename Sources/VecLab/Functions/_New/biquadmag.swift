@@ -25,7 +25,7 @@ public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
     // let w = f * 2 * Real.pi / 48000
     let w = vector(0 ... N-1) * (.pi / Real(N))
 
-    var phi = sin(w / 2)
+    var phi = sin(w / 2.0)
     phi = phi * phi
 /*
     let H = 10 * log10[(b0 + b1 + b2) ** 2 - 4 * (b0 * b1 + 4 * b0 * b2 + b1 * b2) * phi + 16 * b0 * b2 * phi ** 2]

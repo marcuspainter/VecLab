@@ -1,18 +1,17 @@
 //
-//  VectorMath.swift
+//  Array+VectorFloatArithmetic.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 21/04/2025.
+//  Created by Marcus Painter on 22/04/2025.
 //
 
-import Foundation
+import Accelerate
 
-extension Array where Element: BasicMath {
+/*
+extension Array where Element == Float {
     
-    // Stop concatenation
-    public static func += (lhs: inout Self, rhs: Self) {
-        lhs = lhs + rhs
-    }
+    // This must be overridden to prevent concatenation by append.
+    // Uses + operator from BasicMath element.
     
     /// Array addition.
     /// - Parameters:
@@ -22,11 +21,24 @@ extension Array where Element: BasicMath {
     public static func + (a: Self, b: Self) -> [Element] {
         assert(a.count == b.count,
                "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.", file: #file, line: #line)
-        return zip(a, b).map { $0 + $1 }
+        print("Float + Float")
+        return vDSP.add(a,b)
     }
     
+    // This must also be overridden to prevent concatenation by append.
+    // Uses the math + operator defined above.
+
+    ///  Array addition.
+    /// - Parameters:
+    ///   - lhs: An array.
+    ///   - rhs:  An array.
+    public static func += (lhs: inout  Self, rhs: [Element]) {
+        print("Float +=")
+        lhs = lhs + rhs  // Overloaded
+    }
+
     // MARK: Subtraction
-    
+
     /// Array subtraction.
     /// - Parameters:
     ///   - a: An array.
@@ -34,9 +46,9 @@ extension Array where Element: BasicMath {
     /// - Returns: The result of the subtraction.
     public static func - (a: Self, b: Self) -> [Element] {
         assertSameSize(a, b)
-        return zip(a, b).map { $0 - $1 }
+        return vDSP.subtract(a,b)
     }
-    
+
     // MARK: Subtraction
 
     /// Array multiplication.
@@ -46,11 +58,12 @@ extension Array where Element: BasicMath {
     /// - Returns: The result of the division.
     public static func * (a: Self, b: Self) -> [Element] {
         assertSameSize(a, b)
-        return zip(a, b).map { $0 * $1 }
+        print("Float * Float")
+        return vDSP.multiply(a, b)
     }
 
-    // MARK: Divsion
-    
+    // MARK: Division
+
     /// Array division.
     /// - Parameters:
     ///   - a: An array.
@@ -58,79 +71,82 @@ extension Array where Element: BasicMath {
     /// - Returns: The result of the division.
     public static func / (a: Self, b: Self) -> [Element] {
         assertSameSize(a, b)
-        return zip(a, b).map { $0 / $1 }
+        return vDSP.divide(a, b)
     }
-
-    /// Element addition.
+    // MARK: Double
+    
+    /// Real addition.
     /// - Parameters:
-    ///   - a: An array.
-    ///   - b: An Element.
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the addition.
     public static func + (a: Self, b: Element) -> [Element] {
-        return a.map { $0 + b }
+        return vDSP.add(b, a)
     }
 
-    /// Element addition.
+    /// Real addition.∫
     /// - Parameters:
-    ///   - a: An Element.
-    ///   - b: An array.
+    ///   - a: Real number.
+    ///   - b: Real array.
     /// - Returns: The result of the addition.
     public static func + (a: Element, b: Self) -> [Element] {
-        return b.map { a + $0 }
+        return vDSP.add(a, b)
     }
 
-    /// Element subtraction.
+    /// Real subtraction.
     /// - Parameters:
-    ///   - a: An array.
-    ///   - b: An Element.
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: Self, b: Element) -> [Element] {
-        return a.map { $0 - b }
+    public static func - (a:Self, b: Element) -> [Element] {
+        let minusb = -b
+        return vDSP.add(minusb, a)
     }
 
-    /// Element subtraction.
+    /// Real subtraction.
     /// - Parameters:
-    ///   - a: An Element.
-    ///   - b: An array.
-    /// - Returns: The result of the subtraction.
+    ///   - a: Real number.
+    ///   - b: Real array.
+    /// - Returns: The result of the subtraction
     public static func - (a: Element, b: Self) -> [Element] {
-        return b.map { a - $0 }
+        let minusb = -b
+        return vDSP.add(a, minusb)
     }
 
-    /// Element multiplication.
+    /// Real multiplication.
     /// - Parameters:
-    ///   - a: An array.
-    ///   - b: An Element..
+    ///   - a: Real array.
+    ///   - b: Double number.
     /// - Returns: The result of the multiplication.
     public static func * (a: Self, b: Element) -> [Element] {
-        return a.map { $0 * b }
+        return vDSP.multiply(b, a)
     }
 
-    /// Element multiplication.
+    /// Real multiplication.
     /// - Parameters:
-    ///   - a: An Element..
-    ///   - b: An array.
+    ///   - a: Real number..
+    ///   - b: Real array.
     /// - Returns: The result of the multiplication.
     public static func * (a: Element, b: Self) -> [Element] {
-        return b.map { a * $0 }
+        return vDSP.multiply(a, b)
     }
 
-    /// Element division.
+    /// Real division.
     /// - Parameters:
-    ///   - a: An array.
-    ///   - b: An Element..
+    ///   - a: Real array.
+    ///   - b: Real number.
     /// - Returns: The result of the division.
     public static func / (a: Self, b: Element) -> [Element] {
-        return a.map { $0 / b }
+        return vDSP.divide(a, b)
     }
 
-    /// Element division.
+    /// Double division.
     /// - Parameters:
-    ///   - a: An Element..
-    ///   - b: An array.
-    /// - Returns: The result of the division.
+    ///   - a: Real number
+    ///   - b: Real array
+    /// - Returns: The result of the division
     public static func / (a: Element, b: Self) -> [Element] {
-        return b.map { a / $0 }
+        return vDSP.divide(a, b)
     }
     
     // MARK: Unary minus
@@ -139,7 +155,9 @@ extension Array where Element: BasicMath {
     /// - Parameter a: Real array.
     /// - Returns: The result of -a
     public static prefix func - (a: Self) -> [Element] {
-        return a.map { -$0 }
+        return vDSP.negative(a)
     }
+    
 }
+*/
 

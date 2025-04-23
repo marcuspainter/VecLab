@@ -9,6 +9,7 @@ import Accelerate
 
 /// Complex  extensions
 extension ComplexDoubleArray {
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex array.
@@ -18,6 +19,10 @@ extension ComplexDoubleArray {
         assertSameSize(a)
         let real = vDSP.add(b.real, a.real)
         let imag = vDSP.add(b.imag, a.imag)
+        
+        
+        
+        
         return ComplexDoubleArray(real, imag)
     }
 

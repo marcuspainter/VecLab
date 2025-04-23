@@ -6,7 +6,7 @@
 
 import Foundation
 
-func assertSameSize(_ a: Array<Any>, _ b: Array<Any>,
+func assertSameSize(_ a: any Collection, _ b: any Collection,
                     file: StaticString = #file, line: UInt = #line) {
     assert(a.count == b.count,
            "Incompatible sizes \(a.count) \(b.count)", file: file, line: line)

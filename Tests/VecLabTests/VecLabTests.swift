@@ -1,5 +1,6 @@
 import XCTest
 import VecLab
+import Accelerate
 
 final class VecLabTests: XCTestCase {
     func testExample() throws {
@@ -10,23 +11,16 @@ final class VecLabTests: XCTestCase {
         // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
         
         //var a = ComplexArray(count: 10)
-        var a: [Float] = [1,2,3,4,5]
-        //a[0...2] = a[0...3]
-    
-        //print(a[0..., 2])
+        var a: [Double] = [1,2,3,4,5]
         
-        let b = [true, true, false, true, false]
-        a[...3] = a[...3]
+        let qqq = a + 1
         
-        a += a
-        print(a)
+        let z = Complex(1,2)
         
-        let q = a / 3
-        print(q)
-        print(type(of: q))
+        print("Type \(type(of: z)) is Numeric \(z is (any Numeric) ? "Yes" : "No") !")
+
     }
     
-    /*
     func testFFT() throws {
         let x = vector(1...2**12)
         let z = ComplexArray(realOnly: x)
@@ -40,9 +34,8 @@ final class VecLabTests: XCTestCase {
         toc()
         print("---")
        //disp(XX)
-        
     }
-     */
+
 }
 
 public func fftx(_ x: ComplexArray) -> ComplexArray {

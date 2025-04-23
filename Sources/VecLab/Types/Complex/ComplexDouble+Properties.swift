@@ -46,22 +46,22 @@ extension ComplexDouble {
     // MARK: - Static special values
 
     /// Complex zero value (0 + 0i)
-    public static var zero: Complex {
-        return Complex(.zero, .zero)
+    public static var zero: ComplexDouble {
+        return ComplexDouble(.zero, .zero)
     }
 
     /// Complex NaN value (NaN + NaNi)
     public static var nan: Complex {
-        return Complex(.nan, .nan)
+        return ComplexDouble(.nan, .nan)
     }
 
     /// Positive infinity (∞ + ∞i)
-    public static var infinity: Complex {
+    public static var infinity: ComplexDouble {
         return Complex(.infinity, .infinity)
     }
 
     /// The imaginary unit (0 + 1i)
     public static var i: Complex {
-        return Complex(.zero, 1.0)
+        return ComplexDouble(.zero, 1.0)
     }
 }

@@ -13,7 +13,7 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Complex, _ b: Complex) -> Complex {
+    public static func ** (_ a: ComplexDouble, _ b: Complex) -> ComplexDouble {
         return pow(a, b)
     }
 
@@ -22,7 +22,7 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Integer.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Complex, _ b: Int) -> Complex {
+    public static func ** (_ a: ComplexDouble, _ b: Int) -> ComplexDouble {
         return pow(a, b)
     }
 
@@ -31,7 +31,7 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Complex, _ b: Double) -> Complex {
+    public static func ** (_ a: ComplexDouble, _ b: Double) -> ComplexDouble {
         return pow(a, b)
     }
 
@@ -40,7 +40,7 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Double, _ b: Complex) -> Complex {
+    public static func ** (_ a: Double, _ b: ComplexDouble) -> ComplexDouble {
         return pow(a, b)
     }
 
@@ -49,7 +49,7 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real array.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Complex, _ b: [Double]) -> ComplexArray {
+    public static func ** (_ a: ComplexDouble, _ b: [Double]) -> ComplexDoubleArray {
         return pow(a, b)
     }
 
@@ -58,7 +58,7 @@ extension ComplexDouble {
     ///   - a: Real array.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: [Double], _ b: Complex) -> ComplexArray {
+    public static func ** (_ a: [Double], _ b: ComplexDouble) -> ComplexDoubleArray {
         return pow(a, b)
     }
 

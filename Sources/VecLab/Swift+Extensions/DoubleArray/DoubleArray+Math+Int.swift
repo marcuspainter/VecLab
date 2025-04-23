@@ -1,21 +1,29 @@
 //
-//  DoubleArray+Math+Double.swift
+//  DoubleArray+Math+Int.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 19/04/2025.
+//  Created by Marcus Painter on 22/04/2025.
 //
 
+import Foundation
 import Accelerate
 
-extension Array where Element == Double {
+/*
 
+extension Array where Element == Double {
+    
+    // This is needed because ComplexDouble is Numeric
+    
+    // MARK: Int
+    
     /// Real addition.
     /// - Parameters:
     ///   - a: Real array.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
-    public static func + (a: [Double], b: Double) -> [Double] {
-        return vDSP.add(b, a)
+    public static func + (a: Self, b: Int) -> [Double] {
+        let bb = Double(b)
+        return vDSP.add(bb, a)
     }
 
     /// Real addition.∫
@@ -23,8 +31,9 @@ extension Array where Element == Double {
     ///   - a: Real number.
     ///   - b: Real array.
     /// - Returns: The result of the addition.
-    public static func + (a: Double, b: [Double]) -> [Double] {
-        return vDSP.add(a, b)
+    public static func + (a: Int, b: Self) -> [Double] {
+        let aa = Double(a)
+        return vDSP.add(aa, b)
     }
 
     /// Real subtraction.
@@ -32,8 +41,8 @@ extension Array where Element == Double {
     ///   - a: Real array.
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: [Double], b: Double) -> [Double] {
-        let minusb = -b
+    public static func - (a:Self, b: Int) -> [Double] {
+        let minusb = Double(-b)
         return vDSP.add(minusb, a)
     }
 
@@ -42,9 +51,10 @@ extension Array where Element == Double {
     ///   - a: Real number.
     ///   - b: Real array.
     /// - Returns: The result of the subtraction
-    public static func - (a: Double, b: [Double]) -> [Double] {
+    public static func - (a: Int, b: Self) -> [Double] {
         let minusb = -b
-        return vDSP.add(a, minusb)
+        let aa = Double(a)
+        return vDSP.add(aa, minusb)
     }
 
     /// Real multiplication.
@@ -52,8 +62,9 @@ extension Array where Element == Double {
     ///   - a: Real array.
     ///   - b: Double number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: [Double], b: Double) -> [Double] {
-        return vDSP.multiply(b, a)
+    public static func * (a: Self, b: Int) -> [Double] {
+        let bb = Double(b)
+        return vDSP.multiply(bb, a)
     }
 
     /// Real multiplication.
@@ -61,8 +72,9 @@ extension Array where Element == Double {
     ///   - a: Real number..
     ///   - b: Real array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: Double, b: [Double]) -> [Double] {
-        return vDSP.multiply(a, b)
+    public static func * (a: Int, b: Self) -> [Double] {
+        let aa = Double(a)
+        return vDSP.multiply(aa, b)
     }
 
     /// Real division.
@@ -70,8 +82,9 @@ extension Array where Element == Double {
     ///   - a: Real array.
     ///   - b: Real number.
     /// - Returns: The result of the division.
-    public static func / (a: [Double], b: Double) -> [Double] {
-        return vDSP.divide(a, b)
+    public static func / (a: Self, b: Int) -> [Double] {
+        let bb = Double(b)
+        return vDSP.divide(a, bb)
     }
 
     /// Double division.
@@ -79,7 +92,11 @@ extension Array where Element == Double {
     ///   - a: Real number
     ///   - b: Real array
     /// - Returns: The result of the division
-    public static func / (a: Double, b: [Double]) -> [Double] {
-        return vDSP.divide(a, b)
+    public static func / (a: Int, b: Self) -> [Double] {
+        let aa = Double(a)
+        return vDSP.divide(aa, b)
     }
+    
 }
+
+*/

@@ -43,7 +43,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquad() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -54,7 +54,7 @@ class FilterTests: XCTestCase {
     }
 
     func testFreqz() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -73,7 +73,7 @@ class FilterTests: XCTestCase {
     }
     
     func testFreqz2() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -94,7 +94,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquadmag() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -120,7 +120,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquadfreqz() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]

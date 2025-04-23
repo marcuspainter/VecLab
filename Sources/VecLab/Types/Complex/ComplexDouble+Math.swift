@@ -5,7 +5,21 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-extension ComplexDouble {
+extension ComplexDouble: SignedNumeric {
+    public typealias IntegerLiteralType = Double.IntegerLiteralType
+    
+    public var magnitude: Double {
+        return (real * real + imag * imag).squareRoot()
+    }
+    
+    public init(integerLiteral value: Double.IntegerLiteralType) {
+        self.init(Double(value), .zero)
+    }
+    
+    @available(*, deprecated, message: "Converting a BinaryInteger to ComplexDouble using exactly may not preserve precision")
+    public init?<T>(exactly source: T) where T : BinaryInteger {
+        self.init(Double(source), .zero)
+    }
 
     /// Complex addition.
     /// - Parameters:
@@ -36,6 +50,15 @@ extension ComplexDouble {
     public static func * (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
+    
+    /// Complex multiplication.
+    /// - Parameters:
+    ///   - a: Complex number.
+    ///   - b: Complex number.
+    /// - Returns: The result of the multiplication.
+    public static func *= (a: inout ComplexDouble, b: ComplexDouble) {
+        a =  ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
+    }
 
     /// Complex division.
     /// - Parameters:
@@ -44,5 +67,12 @@ extension ComplexDouble {
     /// - Returns: The result of the division.
     public static func / (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return complexDivide(a, b)
+    }
+    
+    /// Unary minus.
+    /// - Parameter a: Complex number.
+    /// - Returns: The result of -a.
+    public static prefix func - (a: ComplexDouble) -> ComplexDouble {
+        return ComplexDouble(-a.real, -a.imag)
     }
 }
