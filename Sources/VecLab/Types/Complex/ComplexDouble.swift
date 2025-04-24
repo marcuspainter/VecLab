@@ -33,6 +33,15 @@ public struct ComplexDouble:
         self.real = real
         self.imag = imag
     }
+    
+    /// Initialize a complex number.
+    /// - Parameters:
+    ///   - real: Real part.
+    ///   - imag: Imaginary part.
+    public init(_ real: Int, _ imag: Int) {
+        self.real = Double(real)
+        self.imag = Double(imag)
+    }
 
     /// String of complex value.
     public var description: String {

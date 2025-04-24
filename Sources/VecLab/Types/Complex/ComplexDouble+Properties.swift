@@ -47,7 +47,7 @@ extension ComplexDouble {
 
     /// Complex zero value (0 + 0i)
     public static var zero: ComplexDouble {
-        return ComplexDouble(.zero, .zero)
+        return ComplexDouble(Double.zero, Double.zero)
     }
 
     /// Complex NaN value (NaN + NaNi)

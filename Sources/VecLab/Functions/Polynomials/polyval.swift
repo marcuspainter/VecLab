@@ -55,7 +55,7 @@ public func polyval(coefficients p: RealArray, point x: Complex) -> Complex {
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(coefficients p: RealArray, points x: ComplexArray) -> ComplexArray {
     assertSameSize(x)
-    return iterate(x) { polyval(coefficients: p, point: $0) }
+    return x.map { polyval(coefficients: p, point: $0) }
 }
 
 /// Polynomial evaluation.
@@ -83,5 +83,5 @@ public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
 public func polyval(_coefficients p: ComplexArray, points x: ComplexArray) -> ComplexArray {
     assertSameSize(p)
     assertSameSize(x)
-    return iterate(x) { polyval(coefficients: p, point: $0) }
+    return x.map { polyval(coefficients: p, point: $0) }
 }

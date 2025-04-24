@@ -13,6 +13,7 @@ import Accelerate
 /// Complex array implementation using split real/imaginary arrays
 public struct ComplexDoubleArray:
     Collection,
+    Sequence,
     BidirectionalCollection,
     RandomAccessCollection,
     MutableCollection,

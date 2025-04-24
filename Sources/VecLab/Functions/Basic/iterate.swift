@@ -12,12 +12,9 @@ import Foundation
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
+@available(*, deprecated, message: "Use map() instead.")
 public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
-    var y = RealArray(repeating: 0, count: x.count)
-    for k in 0 ..< x.count {
-        y[k] = body(x[k])
-    }
-    return y
+    return x.map(body)
 }
 
 /// Real array iterator with index.
@@ -25,12 +22,11 @@ public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
+@available(*, deprecated, message: "Use enumerated().map() instead.")
 public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
-    var y = RealArray(repeating: 0, count: x.count)
-    for k in 0 ..< x.count {
-        y[k] = body(x[k], k)
+    return x.enumerated().map { index, element in
+        return body(element, index)
     }
-    return y
 }
 
 /// Complex array iterator.
@@ -38,13 +34,10 @@ public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
+@available(*, deprecated, message: "Use map() instead.")
 public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
     assertSameSize(x)
-    var y = x
-    for k in 0 ..< x.count {
-        y[k] = body(x[k])
-    }
-    return y
+    return x.map(body)
 }
 
 /// Complex array iterator with index.
@@ -52,11 +45,10 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 ///   - x: Complex array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-public func iterate(_ x: ComplexArray, _ body: (Complex, Int) -> Complex) -> ComplexArray {
+@available(*, deprecated, message: "Use enumerated().map() instead.")
+public func iterate(_ x: ComplexArray, _ body: (Int, Complex) -> Complex) -> ComplexArray {
     assertSameSize(x)
-    var y = x
-    for k in 0 ..< x.count {
-        y[k] = body(x[k], k)
+    return x.enumerated().map { index, element in
+        return body(index, element)
     }
-    return y
 }

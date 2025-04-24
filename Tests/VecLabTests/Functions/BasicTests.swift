@@ -80,7 +80,7 @@ class BasicTests: XCTestCase {
 
     func testIterateComplexArrayInt() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = iterate(complexArrayA) { $0 * Real($1) }
+        let result: ComplexArray = iterate(complexArrayA) { Real($0) * $1 }
         let expected: ComplexArray = ComplexArray([0.0, 2.0, 6.0, 12.0], [0.0, 2.0, 6.0, 12.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "iterate failed")
     }
