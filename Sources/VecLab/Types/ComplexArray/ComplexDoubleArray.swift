@@ -27,10 +27,10 @@ public struct ComplexDoubleArray:
     // MARK: - Storage
 
     /// Array of real values.
-    public private(set) var real: [Double]
+    public internal(set) var real: [Double]
 
     /// Array of imaginary values.
-    public private(set) var imag: [Double]
+    public internal(set) var imag: [Double]
     
     /// Set internal real and imaginary arrays together.
     internal mutating func setValue(real: [Double], imag: [Double]) {
@@ -142,15 +142,15 @@ public struct ComplexDoubleArray:
 
     // MARK: - Subscripts
 
-    public subscript(index: Int) -> ComplexDouble {
+    public subscript(position: Int) -> ComplexDouble {
         get {
-            precondition(index >= 0 && index < count, "Index out of range")
-            return ComplexDouble(real[index], imag[index])
+            precondition(position >= 0 && position < count, "Index out of range")
+            return ComplexDouble(real[position], imag[position])
         }
         set {
-            precondition(index >= 0 && index < count, "Index out of range")
-            real[index] = newValue.real
-            imag[index] = newValue.imag
+            precondition(position >= 0 && position < count, "Index out of range")
+            real[position] = newValue.real
+            imag[position] = newValue.imag
         }
     }
 
