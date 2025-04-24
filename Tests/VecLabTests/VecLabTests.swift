@@ -27,10 +27,14 @@ final class VecLabTests: XCTestCase {
         
         var b1 = DoubleBlock([1,2,3,4,5])
         var b2 = DoubleBlock([6,7,8,9,10])
+        var a1 = DoubleBlock(count: 5)
         
-        b1.add(b1).add(b2).add(b1)
+        a1.add(b1)
+                
+        print(a1.asArray)
         
-        print(b1.asArray)
+        let nn = ([1.0,2,3,4,5] + [6.0,7,8,9,10]) + [1.0,2,3,4,5]
+        print(nn)
 
     }
     

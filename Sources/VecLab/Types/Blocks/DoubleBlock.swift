@@ -34,6 +34,10 @@ final public class DoubleBlock {
 
     @discardableResult
     public func add (_ rhs: DoubleBlock) -> DoubleBlock {
+        if self === rhs {
+            print("NOOOOO!!!!")
+        }
+        
         let lhs = self
         vDSP_vaddD(lhs.buffer.baseAddress!, 1,
                   rhs.buffer.baseAddress!, 1,
