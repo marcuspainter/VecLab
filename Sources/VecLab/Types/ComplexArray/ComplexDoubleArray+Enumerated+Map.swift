@@ -46,7 +46,17 @@ public struct ComplexEnumeratedSequence: Sequence, IteratorProtocol {
         }
         return result
     }
-
+    
+    
+    public func map(_ transform: ((Int, ComplexDouble)) throws -> ComplexDouble) rethrows -> ComplexDoubleArray {
+        var result = ComplexDoubleArray(count: sequence.count)
+        for index in 0 ..< sequence.count {
+            let newValue = try transform((index, sequence[index]))
+            result[index] = newValue
+        }
+        return result
+    }
+    
     public func compactMap(_ transform: (ComplexDouble) -> ComplexDouble?) -> ComplexDoubleArray {
         var result = ComplexDoubleArray()
 
@@ -74,8 +84,8 @@ public struct ComplexEnumeratedSequence: Sequence, IteratorProtocol {
      }
  }
  */
-/*
 
+/*
  // Specialized map() function for ComplexDoubleArray
  // (Index, Element) params to map closure
  extension EnumeratedSequence where Base == ComplexDoubleArray {
