@@ -42,6 +42,9 @@ final class VecLabTests: XCTestCase {
         let h = zip(zz, zz)
         //let h = zz.enumerated()
         
+        zz.enumerated().map { (index, value) in Real(index) + value }
+        zz.enumerated().map { index, value in Real(index) + value }
+        
         for (i,v) in h {
             print("Hello",i,v)
         }
