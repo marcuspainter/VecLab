@@ -20,6 +20,8 @@ final class VecLabTests: XCTestCase {
         
         print("Type \(type(of: z)) is Numeric \(z is (any Numeric) ? "Yes" : "No") !")
         
+        a.forEach { print($0) }
+        
         let zz = ComplexArray(a,b)
         let zzz = zz.enumerated()
         let ttt = zzz.map { Real($0) + $1 }
@@ -31,7 +33,22 @@ final class VecLabTests: XCTestCase {
 
         let zzzz = zz.enumerated().map { Double($0) + $1 }
         print(zzzz)
-
+        
+        let f = zip(zz, zz).map { $0 + $1 }
+        
+        print(f)
+        print(type(of:f))
+        
+        let h = zip(zz, zz)
+        //let h = zz.enumerated()
+        
+        for (i,v) in h {
+            print("Hello",i,v)
+        }
+        
+        let g = zz.reduce(0, +)
+        print(g)
+        
     }
     
     func testFFT() throws {

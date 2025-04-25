@@ -51,13 +51,12 @@ extension ComplexDoubleArray {
     public func compactMap(_ transform: (ComplexDouble) -> ComplexDouble?) -> ComplexDoubleArray {
         var result = ComplexDoubleArray()
 
-        for i in 0..<count {
-            let z = self[i]
+        for index in 0..<count {
+            let z = self[index]
             if let mapped = transform(z) {
                 result.append(mapped)
             }
         }
-        
         return result
     }
 }
@@ -262,6 +261,8 @@ extension ComplexDoubleArray {
     }
 }
 
+/*
+// Not needed
 extension ComplexDoubleArray {
 
     /// Returns a new `ComplexDoubleArray` by combining each element of `self` with the corresponding element of `other`
@@ -282,6 +283,7 @@ extension ComplexDoubleArray {
         return result
     }
 }
+*/
 
 extension ComplexDoubleArray {
 

@@ -12,7 +12,7 @@ import Foundation
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-@available(*, deprecated, message: "Use map() instead.")
+//@available(*, deprecated, message: "Use map() instead.")
 public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
     return x.map(body)
 }
@@ -22,7 +22,7 @@ public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-@available(*, deprecated, message: "Use enumerated().map() instead.")
+//@available(*, deprecated, message: "Use enumerated().map() instead.")
 public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
     return x.enumerated().map { index, element in
         return body(element, index)
@@ -34,7 +34,7 @@ public func iterate(_ x: RealArray, _ body: (Real, Int) -> Real) -> RealArray {
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-@available(*, deprecated, message: "Use map() instead.")
+//@available(*, deprecated, message: "Use map() instead.")
 public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
     assertSameSize(x)
     return x.map(body)
@@ -45,10 +45,11 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 ///   - x: Complex array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-@available(*, deprecated, message: "Use enumerated().map() instead.")
+//@available(*, deprecated, message: "Use enumerated().map() instead.")
 public func iterate(_ x: ComplexArray, _ body: (Int, Complex) -> Complex) -> ComplexArray {
     assertSameSize(x)
-    return x.enumerated().map { index, element in
-        return body(index, element)
-    }
+    //return x.enumerated().map { index, element in
+    //    return body(index, element)
+    //}
+    return ComplexArray()
 }
