@@ -66,7 +66,7 @@ class BasicTests: XCTestCase {
 
     func testIterateRealArrayInt() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = iterate(realArrayA) { $0 * Real($1) }
+        let result: RealArray = iterate(realArrayA) { Real($0) * $1 }
         let expected: RealArray = [0.0, 2.0, 6.0, 12.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "iterate failed")
     }
