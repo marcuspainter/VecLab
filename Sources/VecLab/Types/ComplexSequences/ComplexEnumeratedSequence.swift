@@ -1,21 +1,9 @@
 //
-//  ComplexDoubleArray+Other.swift
+//  ComplexEnumeratedSequence.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 24/04/2025.
+//  Created by Marcus Painter on 25/04/2025.
 //
-
-/* This was really tricky to get working
- enumerate() returns array
-
- */
-
-extension ComplexDoubleArray {
-    public func enumerated() -> ComplexEnumeratedSequence {
-        return ComplexEnumeratedSequence(sequence: self)
-    }
-}
-
 
 /// The result of enumerated()
 public struct ComplexEnumeratedSequence: Sequence, IteratorProtocol {
@@ -46,8 +34,7 @@ public struct ComplexEnumeratedSequence: Sequence, IteratorProtocol {
         }
         return result
     }
-    
-    
+
     public func map(_ transform: ((Int, ComplexDouble)) throws -> ComplexDouble) rethrows -> ComplexDoubleArray {
         var result = ComplexDoubleArray(count: sequence.count)
         for index in 0 ..< sequence.count {
@@ -56,7 +43,7 @@ public struct ComplexEnumeratedSequence: Sequence, IteratorProtocol {
         }
         return result
     }
-    
+
     public func compactMap(_ transform: (ComplexDouble) -> ComplexDouble?) -> ComplexDoubleArray {
         var result = ComplexDoubleArray()
 

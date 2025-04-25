@@ -9,7 +9,6 @@ import Accelerate
 
 /// Double extensions
 extension ComplexDoubleArray {
-
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex array.

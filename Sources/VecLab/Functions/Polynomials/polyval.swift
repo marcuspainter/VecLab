@@ -66,11 +66,11 @@ public func polyval(coefficients p: RealArray, points x: ComplexArray) -> Comple
 public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
     assertSameSize(p)
     let n = length(p) // Get the number of coefficients
-    var y = Complex(p.real[0], p.imag[0]) // Initialize the result with the first coefficient
+    var y = p[0]// Initialize the result with the first coefficient
 
     // Horner's method: Iterate over the coefficients
     for i in 1 ..< n {
-        y = y * x + Complex(p.real[i], p.imag[i])
+        y = y * x + p[i]
     }
     return y
 }

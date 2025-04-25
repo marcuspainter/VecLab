@@ -38,7 +38,6 @@ extension ComplexDoubleArray {
     public func dropLast(_ k: Int) -> ComplexDoubleArray {
         ComplexDoubleArray(Array(self.dropLast(k)))
     }
-
 }
  */
 

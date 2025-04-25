@@ -18,7 +18,7 @@ final class VecLabTests: XCTestCase {
         
         let z = Complex(1,2)
         
-        print("Type \(type(of: z)) is Numeric \(z is (any Numeric) ? "Yes" : "No") !")
+        //print("Type \(type(of: z)) is Numeric \(z is (any Numeric) ? "Yes" : "No") !")
         
         a.forEach { print($0) }
         
@@ -42,8 +42,11 @@ final class VecLabTests: XCTestCase {
         let h = zip(zz, zz)
         //let h = zz.enumerated()
         
-        zz.enumerated().map { (index, value) in Real(index) + value }
-        zz.enumerated().map { index, value in Real(index) + value }
+        let r = h.enumerated().filter { $0.offset == 1 }
+        print(r)
+        
+        let _ = zz.enumerated().map { (index, value) in Real(index) + value }
+        let _ = zz.enumerated().map { index, value in Real(index) + value }
         
         for (i,v) in h {
             print("Hello",i,v)
@@ -59,11 +62,11 @@ final class VecLabTests: XCTestCase {
         let z = ComplexArray(realOnly: x)
         
         tic()
-        let X = fft(z)
+        _ = fft(z)
         toc()
         //disp(X)
         tic()
-        let XX = fftx2(z)
+        _ = fftx2(z)
         toc()
         print("---")
        //disp(XX)

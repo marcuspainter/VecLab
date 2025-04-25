@@ -7,14 +7,6 @@
 
 import Foundation
 
-func test() {
-    var a = ComplexArray(count: 10)
-    a[1...5, 2] = a[1...5, 2]
-    a[1..<5] = a[...]
-    var b = RealArray(count: 10)
-    b[...] = b[1...]
-}
-
 // Extension to provide stepping functionality for ComplexDoubleArray
 extension ComplexDoubleArray {
 

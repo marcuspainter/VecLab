@@ -8,7 +8,6 @@
 import Accelerate
 
 extension ComplexDoubleArray {
-
     /// Complex array addition.
     /// - Parameters:
     ///   - a: Complex array.

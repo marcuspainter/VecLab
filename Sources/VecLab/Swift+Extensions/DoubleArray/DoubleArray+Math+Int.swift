@@ -96,7 +96,6 @@ extension Array where Element == Double {
         let aa = Double(a)
         return vDSP.divide(aa, b)
     }
-    
 }
 
 */

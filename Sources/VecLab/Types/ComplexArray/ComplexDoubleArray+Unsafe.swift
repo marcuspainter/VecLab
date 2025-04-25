@@ -8,8 +8,7 @@
 import Accelerate
 
 extension ComplexDoubleArray {
-    
-     public static func withUnsafeParameters(
+    public static func withUnsafeParameters(
         _ a: ComplexArray,
         _ b: ComplexArray,
         _ c: inout ComplexArray,
@@ -38,7 +37,7 @@ extension ComplexDoubleArray {
             }
         }
     }
-    
+
     public static func withUnsafeParameters(
         _ a: ComplexArray,
         _ b: RealArray,
@@ -69,7 +68,7 @@ extension ComplexDoubleArray {
             }
         }
     }
-    
+
     public static func withUnsafeParameters(
         _ a: ComplexArray,
         _ c: inout ComplexArray,
@@ -91,7 +90,7 @@ extension ComplexDoubleArray {
             }
         }
     }
-    
+
     public static func withUnsafeParameters(
         _ a: ComplexArray,
         _ c: inout RealArray,

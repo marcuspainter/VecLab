@@ -9,7 +9,6 @@ import Accelerate
 
 /// Complex left conjugate multiply
 extension ComplexDoubleArray {
-
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -63,7 +62,6 @@ extension ComplexDoubleArray {
 
 /// Complex right conjugate multiply
 extension ComplexDoubleArray {
-
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
