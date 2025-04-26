@@ -23,6 +23,7 @@ public struct ComplexDoubleArray:
     Codable,
     Sendable,
     CustomStringConvertible,
+    CustomDebugStringConvertible,
     ExpressibleByArrayLiteral {
     
     // MARK: - Storage
@@ -100,12 +101,19 @@ public struct ComplexDoubleArray:
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
     }
+    
+    // Provide convenience initializers for standard library sequence types
+    public init(array: [ComplexDouble]) {
+         // Convert any sequence back to your collection type
+        self.real = array.map { $0.real }
+        self.imag = array.map { $0.imag }
+     }
 
     /// Reserve stroage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
-        real.reserveCapacity(minimumCapacity)
-        imag.reserveCapacity(minimumCapacity)
+        self.real.reserveCapacity(minimumCapacity)
+        self.imag.reserveCapacity(minimumCapacity)
     }
 
     // MARK: - Collection Protocol Requirements
@@ -206,16 +214,32 @@ public struct ComplexDoubleArray:
 
     /// String of complex value
     public var description: String {
-        var result = "["
+        var result = "ComplexDoubleArray(["
         for i in 0 ..< count {
             if i > 0 { result += ", " }
             if imag[i] >= 0 {
-                result += "\(real[i]) + \(imag[i])i"
+                result += "\(real[i])+\(imag[i])i"
             } else {
-                result += "\(real[i]) - \(abs(imag[i]))i"
+                result += "\(real[i])-\(abs(imag[i]))i"
             }
         }
-        result += "]"
+        result += "])"
+        return result
+    }
+    
+    // MARK: CustomDebugStringConvertible
+    
+    public var debugDescription: String {
+        var result = "ComplexDoubleArray(["
+        for i in 0 ..< count {
+            if i > 0 { result += ", " }
+            if imag[i] >= 0 {
+                result += "\(real[i])+\(imag[i])i"
+            } else {
+                result += "\(real[i])-\(abs(imag[i]))i"
+            }
+        }
+        result += "])"
         return result
     }
 

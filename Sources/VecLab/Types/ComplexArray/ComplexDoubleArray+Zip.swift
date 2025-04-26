@@ -1,18 +1,87 @@
 //
-//  CoomplexDouble+Zip.swift
+//  ComplexDouble+Zip.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 25/04/2025.
 //
 
-/// The result of zip()
-public func zip(_ sequence1: ComplexDoubleArray, _ sequence2: ComplexDoubleArray)
-    -> ComplexZip2Sequence {
-    return ComplexZip2Sequence(sequence1: sequence1, sequence2: sequence2)
+import Foundation
+
+extension ComplexDoubleArray {
+
+    public func zipMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
+        -> ComplexDoubleArray {
+        let minCount = Swift.min(self.count, other.count)
+        var result = ComplexDoubleArray(count: minCount)
+        
+        for i in 0..<minCount {
+            result[i] = try transform(self[i], other[i])
+        }
+        
+        return result
+    }
+
+    public func zipCompactMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
+        -> ComplexDoubleArray {
+        let minCount = Swift.min(self.count, other.count)
+        var tempResults = [Complex?](repeating: nil, count: minCount)
+        var resultCount = 0
+        
+        // First pass: collect transformed values and count non-nil results
+        for i in 0..<minCount {
+            tempResults[i] = try transform(self[i], other[i])
+            if tempResults[i] != nil {
+                resultCount += 1
+            }
+        }
+        
+        // Second pass: allocate exact size and fill
+        var result = ComplexDoubleArray(count: resultCount)
+        
+        var resultIndex = 0
+        for temp in tempResults {
+            if let value = temp {
+                result[resultIndex] = value
+                resultIndex += 1
+            }
+        }
+        
+        return result
+    }
+
+    public func zipFilter(_ other: ComplexDoubleArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
+        -> ComplexDoubleArray {
+        let minCount = Swift.min(self.count, other.count)
+        var inclusion = [Bool](repeating: false, count: minCount)
+        var resultCount = 0
+        
+        // First pass: determine which elements to include
+        for i in 0..<minCount {
+            inclusion[i] = try predicate(self[i], other[i])
+            if inclusion[i] {
+                resultCount += 1
+            }
+        }
+        
+        // Second pass: allocate exact size and fill
+        var result = ComplexDoubleArray(count: resultCount)
+        
+        var resultIndex = 0
+        for i in 0..<minCount {
+            if inclusion[i] {
+                result[resultIndex] = self[i]
+                resultIndex += 1
+            }
+        }
+        
+        return result
+    }
+    
+    public func zipForEach(_ other: ComplexDoubleArray, _ operation: (Complex, Complex) throws -> Void) rethrows {
+        let minCount = Swift.min(self.count, other.count)
+        
+        for i in 0..<minCount {
+            try operation(self[i], other[i])
+        }
+    }
 }
-
-/*
-
- See ComplexZip2Sequence for map, compactMap and ForEach.
-
- */
