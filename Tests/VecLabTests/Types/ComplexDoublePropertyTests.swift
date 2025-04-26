@@ -21,13 +21,14 @@ class ComplexDoublePropertyTests: XCTestCase {
         let _ = a.description
         
         let _ = a.hashValue
+        
         let _ = a.isFinite
         let _ = a.isInfinite
         let _ = a.isNaN
         let _ = a.isNormal
         let _ = a.isSignalingNaN
         let _ = a.isSubnormal
-        //let _ = a.isZero
+        let _ = a.isZero
         
         let _ = ComplexDouble.i
         let _ = ComplexDouble.infinity
