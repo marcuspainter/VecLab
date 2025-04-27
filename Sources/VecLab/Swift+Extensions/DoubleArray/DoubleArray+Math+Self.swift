@@ -20,7 +20,6 @@ extension Array where Element == Double {
     public static func + (a: Self, b: Self) -> [Double] {
         assert(a.count == b.count,
                "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.", file: #file, line: #line)
-        print("Double + Double")
         return vDSP.add(a, b)
     }
     
@@ -29,7 +28,6 @@ extension Array where Element == Double {
     ///   - lhs: Double array.
     ///   - rhs:  Double array.
     public static func += (lhs: inout Self, rhs: [Double]) {
-        print("Double + Double")
         lhs = lhs + rhs
     }
 
@@ -50,7 +48,6 @@ extension Array where Element == Double {
     /// - Returns: The result of the multiplication.
     public static func * (a: Self, b: Self) -> [Double] {
         assertSameSize(a, b)
-        print("Double * Double")
         return vDSP.multiply(a, b)
     }
     

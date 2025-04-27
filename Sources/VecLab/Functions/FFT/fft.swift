@@ -17,7 +17,7 @@ public func fft(_ x: ComplexArray) -> ComplexArray {
                                                        count: x.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
-                                                       ofType: Real.self) else {
+                                                       ofType: Double.self) else {
         return ComplexArray([Real](repeating: Real.nan, count: x.count),
                 [Real](repeating: Real.nan, count: x.count))
     }
@@ -31,6 +31,31 @@ public func fft(_ x: ComplexArray) -> ComplexArray {
 public func fft(_ x: RealArray) -> ComplexArray {
     return ComplexArray()
 }
+
+
+/// Setup fft functions for reuse.
+/// - Parameters:
+///   - count: FFT size.
+///   - direction: Forward or inverse transform..
+///   - transformType: Complex or real type.
+/// - Returns: A DiscreteFourierTransform.
+public func fftsetup(count: Int,
+                direction: vDSP.FourierTransformDirection,
+                transformType: vDSP.DFTTransformType = .complexComplex)
+            -> vDSP.DiscreteFourierTransform<Double>? {
+    do {
+        let dft = try vDSP.DiscreteFourierTransform(previous: nil,
+                                                 count: count,
+                                                 direction: direction,
+                                                 transformType: transformType,
+                                                 ofType: Double.self)
+        return dft
+    } catch {
+        print("fftsetup: \(error)")
+        return nil
+    }
+}
+
 
 /*
 

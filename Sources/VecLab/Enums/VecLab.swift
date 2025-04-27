@@ -7,6 +7,12 @@
 
 import os.log
 
-public enum VecLab {
+public final class VecLab: @unchecked Sendable {
 
+}
+
+public enum ErrorLevel {
+    case info
+    case warning
+    case error
 }
