@@ -1,6 +1,6 @@
 //
-//  Real+Complex.swift
-//  
+//  Numeric+ComplexUnit.swift
+//
 //
 //  Created by Marcus Painter on 28/09/2023.
 //

@@ -9,9 +9,9 @@ import Accelerate
 
 extension ComplexDoubleArray {
     public static func withUnsafeParameters(
-        _ a: ComplexArray,
-        _ b: ComplexArray,
-        _ c: inout ComplexArray,
+        _ a: ComplexDoubleArray,
+        _ b: ComplexDoubleArray,
+        _ c: inout ComplexDoubleArray,
         _ body: (UnsafePointer<DSPDoubleSplitComplex>,
                  UnsafePointer<DSPDoubleSplitComplex>,
                  UnsafeMutablePointer<DSPDoubleSplitComplex>,
@@ -39,9 +39,9 @@ extension ComplexDoubleArray {
     }
 
     public static func withUnsafeParameters(
-        _ a: ComplexArray,
+        _ a: ComplexDoubleArray,
         _ b: RealArray,
-        _ c: inout ComplexArray,
+        _ c: inout ComplexDoubleArray,
         _ body: (UnsafePointer<DSPDoubleSplitComplex>,
                  UnsafePointer<Double>,
                  UnsafeMutablePointer<DSPDoubleSplitComplex>,
@@ -70,8 +70,8 @@ extension ComplexDoubleArray {
     }
 
     public static func withUnsafeParameters(
-        _ a: ComplexArray,
-        _ c: inout ComplexArray,
+        _ a: ComplexDoubleArray,
+        _ c: inout ComplexDoubleArray,
         _ body: (UnsafePointer<DSPDoubleSplitComplex>,
                  UnsafeMutablePointer<DSPDoubleSplitComplex>,
                  vDSP_Length) -> Void) {
@@ -92,7 +92,7 @@ extension ComplexDoubleArray {
     }
 
     public static func withUnsafeParameters(
-        _ a: ComplexArray,
+        _ a: ComplexDoubleArray,
         _ c: inout RealArray,
         _ body: (UnsafePointer<DSPDoubleSplitComplex>,
                  UnsafeMutablePointer<Double>,

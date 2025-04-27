@@ -33,10 +33,10 @@ Basic functions.
 
 ### Miscellaneous
 
-- ``iterate(_:_:)-(_,(Real)->Real)``
-- ``iterate(_:_:)-(_,(Real,Int)->Real)``
 - ``iterate(_:_:)-(_,(Complex)->Complex)``
-- ``iterate(_:_:)-(_,(Complex,Int)->Complex)``
+- ``iterate(_:_:)-(_,(Int,Complex)->Complex)``
+- ``iterate(_:_:)-(_,(Int,Real)->Real)``
+- ``iterate(_:_:)-(_,(Real)->Real)``
 
 - ``norm(_:)``
 

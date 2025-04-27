@@ -1,5 +1,5 @@
 //
-//  ComplexDouble+Zip.swift
+//  ComplexDoubleArray+Zip.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 25/04/2025.
@@ -8,7 +8,12 @@
 import Foundation
 
 extension ComplexDoubleArray {
-
+    
+    /// Combine another complex array and transform it.
+    /// - Parameters:
+    ///   - other: Another complex array.
+    ///   - transform: transform description.
+    /// - Returns: A new transformed complex array.
     public func zipMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
         -> ComplexDoubleArray {
         let minCount = Swift.min(self.count, other.count)
@@ -21,6 +26,11 @@ extension ComplexDoubleArray {
         return result
     }
 
+    /// Combine another complex array and transform it.
+    /// - Parameters:
+    ///   - other: Another complex array.
+    ///   - transform: transform description.
+    /// - Returns: A new transformed complex array.
     public func zipCompactMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
         -> ComplexDoubleArray {
         let minCount = Swift.min(self.count, other.count)
@@ -49,6 +59,11 @@ extension ComplexDoubleArray {
         return result
     }
 
+    /// Combine another complex array and filter it.
+    /// - Parameters:
+    ///   - other: Another complex array.
+    ///   - predicate: Filter criteria.
+    /// - Returns: A new transformed complex array.
     public func zipFilter(_ other: ComplexDoubleArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
         -> ComplexDoubleArray {
         let minCount = Swift.min(self.count, other.count)
@@ -77,6 +92,10 @@ extension ComplexDoubleArray {
         return result
     }
     
+    /// Combine another complex array and performs a closure operation.
+    /// - Parameters:
+    ///   - other: Another complex array.
+    ///   - operation: Closure operation.
     public func zipForEach(_ other: ComplexDoubleArray, _ operation: (Complex, Complex) throws -> Void) rethrows {
         let minCount = Swift.min(self.count, other.count)
         
