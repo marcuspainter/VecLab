@@ -8,7 +8,7 @@
 import os.log
 
 public final class VecLab: @unchecked Sendable {
-    
+
 }
 
 public enum ErrorLevel {

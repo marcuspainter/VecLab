@@ -40,4 +40,3 @@ func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
 
     return c
 }
-

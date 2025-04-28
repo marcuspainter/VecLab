@@ -8,10 +8,10 @@
 import Accelerate
 
 extension Array where Element == Double {
-    
+
     /// Double addition.
     ///
-    ///- Note: This overrides the default Swift `Array` behaviour does not append arrays.
+    /// - Note: This overrides the default Swift `Array` behaviour does not append arrays.
     ///  Use the `append()` or `cat()` functions.
     /// - Parameters:
     ///   - a: Double array.
@@ -22,7 +22,7 @@ extension Array where Element == Double {
                "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.", file: #file, line: #line)
         return vDSP.add(a, b)
     }
-    
+
     ///  Array addition.
     /// - Parameters:
     ///   - lhs: Double array.
@@ -50,7 +50,7 @@ extension Array where Element == Double {
         validateSize(a, b)
         return vDSP.multiply(a, b)
     }
-    
+
     /// Double division.
     /// - Parameters:
     ///   - a: Double array.
@@ -60,9 +60,9 @@ extension Array where Element == Double {
         validateSize(a, b)
         return vDSP.divide(a, b)
     }
-    
+
     // MARK: Double
-    
+
     /// Real addition.
     /// - Parameters:
     ///   - a: Real array.
@@ -86,7 +86,7 @@ extension Array where Element == Double {
     ///   - a: Real array.
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
-    public static func - (a:Self, b: Double) -> [Double] {
+    public static func - (a: Self, b: Double) -> [Double] {
         let minusb = -b
         return vDSP.add(minusb, a)
     }
@@ -136,15 +136,14 @@ extension Array where Element == Double {
     public static func / (a: Double, b: Self) -> [Double] {
         return vDSP.divide(a, b)
     }
-    
+
     // MARK: Unary minus
-    
+
     /// Unary minus.
     /// - Parameter a: Real array.
     /// - Returns: The result of -a
     public static prefix func - (a: Self) -> [Double] {
         return vDSP.negative(a)
     }
-    
-}
 
+}

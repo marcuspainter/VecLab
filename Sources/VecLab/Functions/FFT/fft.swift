@@ -32,7 +32,6 @@ public func fft(_ x: RealArray) -> ComplexArray {
     return ComplexArray()
 }
 
-
 /// Setup fft functions for reuse.
 /// - Parameters:
 ///   - count: FFT size.
@@ -55,7 +54,6 @@ public func fftsetup(count: Int,
         return nil
     }
 }
-
 
 /*
 

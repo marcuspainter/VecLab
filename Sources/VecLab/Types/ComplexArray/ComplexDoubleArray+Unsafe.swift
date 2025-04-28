@@ -8,7 +8,7 @@
 import Accelerate
 
 extension ComplexDoubleArray {
-    
+
     /// Unsafe pointers for vDSP functions.
     /// - Parameters:
     ///   - a: A complex array.
@@ -44,7 +44,7 @@ extension ComplexDoubleArray {
             }
         }
     }
-    
+
     /// Unsafe pointers for vDSP functions.
     /// - Parameters:
     ///   - a: A complex array.

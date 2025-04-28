@@ -56,4 +56,3 @@ func erf(_ x: Double) -> Double {
     // Apply sign based on input
     return isNegative ? -result : result
 }
-

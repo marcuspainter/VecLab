@@ -126,8 +126,7 @@ extension ComplexDoubleArray {
         return true
     }
 */
-   
-    
+
     /// Returns the index of the first element matching the predicate.
     @inlinable
     public func firstIndex(where predicate: (ComplexDouble) -> Bool) -> Int? {
@@ -320,7 +319,6 @@ extension ComplexDoubleArray {
     }
 }
 */
-
 
 extension ComplexDoubleArray {
 

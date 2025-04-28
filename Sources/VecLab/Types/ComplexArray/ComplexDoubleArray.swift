@@ -25,7 +25,7 @@ public struct ComplexDoubleArray:
     CustomStringConvertible,
     CustomDebugStringConvertible,
     ExpressibleByArrayLiteral {
-    
+
     // MARK: - Storage
 
     /// Array of real values.
@@ -33,14 +33,14 @@ public struct ComplexDoubleArray:
 
     /// Array of imaginary values.
     public internal(set) var imag: [Double]
-    
+
     /// Set internal real and imaginary arrays together.
     internal mutating func setValue(real: [Double], imag: [Double]) {
         precondition(real.count == imag.count, "Real and imaginary arrays must have the same size.")
         self.real = real
         self.imag = imag
     }
-    
+
     /// Set internal real and imaginary arrays together.
     internal mutating func setValue(to newValue: ComplexDoubleArray) {
         precondition(newValue.real.count == newValue.imag.count, "Real and imaginary arrays must have the same size.")
@@ -101,7 +101,7 @@ public struct ComplexDoubleArray:
     public init(arrayLiteral elements: ComplexDouble...) {
         self.init(elements)
     }
-    
+
     // Provide convenience initializers for standard library sequence types
     public init(array: [ComplexDouble]) {
          // Convert any sequence back to your collection type
@@ -226,9 +226,9 @@ public struct ComplexDoubleArray:
         result += "])"
         return result
     }
-    
+
     // MARK: CustomDebugStringConvertible
-    
+
     public var debugDescription: String {
         var result = "ComplexDoubleArray(["
         for i in 0 ..< count {
@@ -391,4 +391,3 @@ extension ComplexDoubleArray {
         }
     }
 }
-

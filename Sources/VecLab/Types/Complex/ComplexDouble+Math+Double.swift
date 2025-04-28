@@ -79,6 +79,3 @@ extension ComplexDouble {
         return complexDivide(ComplexDouble(a, 0), b)
     }
 }
-
-
-

@@ -28,4 +28,3 @@ private func sincosArray(_ x: [Double]) -> ([Double], [Double]) {
     vvsincos(&sines, &cosines, &angles, &n)
     return (sines, cosines)
 }
-

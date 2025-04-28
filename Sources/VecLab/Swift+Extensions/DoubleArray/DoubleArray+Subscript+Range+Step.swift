@@ -97,11 +97,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Access elements from a partial range (through) with a step value
+    /// Access elements from a partial range (through) with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to access (from start through upperBound)
+    ///   - range: The range of indices to access (from start through upperBound).
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    /// - Returns: A new array with the stepped values
+    /// - Returns: A new array with the stepped values.
     public subscript(range: PartialRangeThrough<Int>, step: Int) -> [Double] {
         get {
             precondition(step != 0, "Step cannot be zero")
@@ -115,11 +115,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Access elements from a partial range (up to) with a step value
+    /// Access elements from a partial range (up to) with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to access (from start up to upperBound)
+    ///   - range: The range of indices to access (from start up to upperBound).
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    /// - Returns: A new array with the stepped values
+    /// - Returns: A new array with the stepped values.
     public subscript(range: PartialRangeUpTo<Int>, step: Int) -> [Double] {
         get {
             precondition(step != 0, "Step cannot be zero")
@@ -143,11 +143,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Set elements in a closed range with a step value
+    /// Set elements in a closed range with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to set
+    ///   - range: The range of indices to set.
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    ///   - newValues: The new values to set
+    ///   - newValues: The new values to set.
     mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: [Double]) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
@@ -169,11 +169,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Set elements in a half-open range with a step value
+    /// Set elements in a half-open range with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to set
+    ///   - range: The range of indices to set.
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    ///   - newValues: The new values to set
+    ///   - newValues: The new values to set.
     mutating func setValues(in range: Range<Int>, step: Int, to newValues: [Double]) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
@@ -198,11 +198,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Set elements in a partial range (from) with a step value
+    /// Set elements in a partial range (from) with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to set (from lowerBound to the end)
+    ///   - range: The range of indices to set (from lowerBound to the end).
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    ///   - newValues: The new values to set
+    ///   - newValues: The new values to set.
     mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: [Double]) {
         precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
         precondition(range.lowerBound < count, "Lower bound out of range")
@@ -214,11 +214,11 @@ extension Array where Element == Double {
         }
     }
 
-    /// Set elements in a partial range (through) with a step value
+    /// Set elements in a partial range (through) with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to set (from start through upperBound)
+    ///   - range: The range of indices to set (from start through upperBound).
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    ///   - newValues: The new values to set
+    ///   - newValues: The new values to set.
     mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: [Double]) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound < count, "Upper bound out of range")
@@ -226,11 +226,11 @@ extension Array where Element == Double {
         setValues(in: 0...range.upperBound, step: step, to: newValues)
     }
 
-    /// Set elements in a partial range (up to) with a step value
+    /// Set elements in a partial range (up to) with a step value.
     /// - Parameters:
-    ///   - range: The range of indices to set (from start up to upperBound)
+    ///   - range: The range of indices to set (from start up to upperBound).
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
-    ///   - newValues: The new values to set
+    ///   - newValues: The new values to set.
     mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: [Double]) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound <= count, "Upper bound out of range")

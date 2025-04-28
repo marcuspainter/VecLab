@@ -33,7 +33,7 @@ public struct ComplexDouble:
         self.real = real
         self.imag = imag
     }
-    
+
     /// Initialize a complex number.
     /// - Parameters:
     ///   - real: Real part.

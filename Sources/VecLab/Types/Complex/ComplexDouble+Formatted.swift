@@ -24,10 +24,10 @@ extension ComplexDouble {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = precision
         formatter.locale = locale
-        
+
         let realStr = formatter.string(from: NSNumber(value: real)) ?? "\(real)"
         let imagStr = formatter.string(from: NSNumber(value: abs(imag))) ?? "\(abs(imag))"
-        
+
         switch style {
         case .standard:
             if imag == 0 {
@@ -43,7 +43,7 @@ extension ComplexDouble {
             return "[\(realStr), \(imag >= 0 ? imagStr : "-\(imagStr)")]"
         }
     }
-    
+
     /// Display styles for complex numbers
     public enum ComplexStyle {
         case standard    // a + bi format

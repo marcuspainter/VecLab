@@ -11,7 +11,6 @@ import Foundation
 // Works well for |x| < 1.
 // For |x| \approx 1, numerical instability can occur. A series expansion could improve it for those cases.
 
-
 func erfinv1(_ x: Double) -> Double {
     guard abs(x) < 1 else {
         return x > 0 ? Double.infinity : -Double.infinity // erf^-1(±1) → ±∞
@@ -34,7 +33,7 @@ func erfinv1(_ x: Double) -> Double {
  print(erfinv(0.99)) // Output: ~1.821
  print(erfinv(-0.99)) // Output: ~-1.821
  */
- 
+
 // The following Swift implementation uses the Rational Approximation from Winitzki with coefficients from a
 // well-known numerical approximation:
 
@@ -96,4 +95,3 @@ func erfinv(_ x: Real) -> Real {
     }
     return p * x
 }
-

@@ -29,7 +29,7 @@ public func flip(_ x: ComplexArray) -> ComplexArray {
     // Copy
     var yreal = x.real
     var yimag = x.imag
-    
+
     // Inplace reverse
     vDSP.reverse(&yreal)
     vDSP.reverse(&yimag)

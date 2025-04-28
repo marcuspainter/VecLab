@@ -65,7 +65,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns a new `ComplexDoubleArray` containing the elements up to the first that does not satisfy the predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
@@ -160,7 +160,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Splits the array into subsequences separated by elements matching the predicate.
     /// - Parameter isSeparator: Separator closure.
     /// - Returns: An array of arrays.
@@ -316,7 +316,7 @@ extension ComplexDoubleArray {
  */
 
 extension ComplexDoubleArray {
-    
+
     /// Returns the minimum element using the given comparator.
     /// - Parameter areInIncreasingOrder: Comparator closure.
     /// - Returns: The minimum element.
@@ -349,7 +349,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns a shuffled copy of the array.
     /// - Returns: A shuffled array.
     public func shuffled() -> ComplexDoubleArray {
@@ -392,7 +392,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns a new `ComplexDoubleArray` with duplicates removed, preserving order.
     /// - Returns: A new array.
     public func unique() -> ComplexDoubleArray {
@@ -411,7 +411,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Removes duplicate elements in-place, preserving the original order.
     public mutating func removeDuplicates() {
         var seen = Set<ComplexDouble>()
@@ -430,7 +430,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns a sorted array by applying a key transform to each element.
     /// - Parameter key: Key.
     /// - Returns: A new array.
@@ -449,7 +449,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Drop elements.
     /// - Parameter n: Number.
     /// - Returns: A new array.
@@ -462,7 +462,7 @@ extension ComplexDoubleArray {
         }
         return result
     }
-    
+
     /// Dtop last element.
     /// - Parameter n: Number.
     /// - Returns: A new array.
@@ -474,7 +474,7 @@ extension ComplexDoubleArray {
         }
         return result
     }
-    
+
     /// Join arrays
     /// - Parameter arrays: Array of arrays.
     /// - Returns: An array of joined arrays..
@@ -492,7 +492,7 @@ extension ComplexDoubleArray {
 
         return result
     }
-    
+
     /// Intersperse elements.
     /// - Parameter element: A complex number.
     /// - Returns: A new array.
@@ -511,7 +511,7 @@ extension ComplexDoubleArray {
 
         return result
     }
-    
+
     /// Cycle array.
     /// - Parameter repeatCount: Reapeat count.
     /// - Returns: A new array.
@@ -531,7 +531,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns a `ComplexDoubleArray` sorted by the magnitude of its elements.
     /// - Returns: A new array.
     public func sorted() -> ComplexDoubleArray {
@@ -549,7 +549,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Randomly shuffles an array.
     /// - Parameter generator: Random number generator.
     /// - Returns: A new array.
@@ -564,7 +564,7 @@ extension ComplexDoubleArray {
 
         return result
     }
-    
+
     /// Sort with comparator.
     /// - Parameter comparator: Sort comparator.
     /// - Returns: A new array.
@@ -583,7 +583,7 @@ extension ComplexDoubleArray {
 
         return result
     }
-    
+
     /// Sort
     /// - Parameter comparators: Comparators.
     /// - Returns: A new array.

@@ -6,7 +6,6 @@
 //
 
 import Accelerate
-import Accelerate
 
 public func downsample(_ x: RealArray, _ factor: Int, _ phase: Int = 0) -> RealArray {
     guard factor > 0 else { return x }
