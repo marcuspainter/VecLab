@@ -15,15 +15,9 @@ final class ComplexDoubleArrayEnumeratedTests: XCTestCase {
         let b = a.enumerated()
         print(type(of: b))
 
-        let c = b.map { Real($0) + $1 }
-
-        let total = b.count(where: { _ in true })
-        print(total)
-
         for (i, v) in a.enumerated() {
             print("index: \(i) value: \(v)")
         }
-
     }
 
     func testReduce() throws {
