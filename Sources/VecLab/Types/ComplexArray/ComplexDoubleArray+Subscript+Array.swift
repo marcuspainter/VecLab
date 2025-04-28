@@ -13,7 +13,7 @@ extension ComplexDoubleArray {
             for idx in indices {
                 precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
             }
-            var slice = ComplexDoubleArray(repeating: .zero, count: indices.count)
+            var slice = ComplexDoubleArray(count: indices.count)
             for (offset, idx) in indices.enumerated() {
                 slice[offset] = self[idx]
             }

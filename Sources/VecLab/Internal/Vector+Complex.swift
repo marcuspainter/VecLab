@@ -202,8 +202,8 @@ func vectorDivideRealArrayComplex(_ a: RealArray, _ b: Complex) -> ComplexArray 
     let a0 = a
     let a1 = [Double](repeating: 0.0, count: a.count)
     let aa = ComplexArray(a0, a1)
-    assertSameSize(aa, bb)
-    assertSameSize(aa, c)
+    validateSize(aa, bb)
+    validateSize(aa, c)
     ComplexDoubleArray.withUnsafeParameters(aa, bb, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }

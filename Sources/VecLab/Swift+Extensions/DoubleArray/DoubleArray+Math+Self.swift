@@ -37,7 +37,7 @@ extension Array where Element == Double {
     ///   - b: Double array.
     /// - Returns: The result of the subtraction.
     public static func - (a: Self, b: Self) -> [Double] {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vDSP.subtract(a, b)
     }
 
@@ -47,7 +47,7 @@ extension Array where Element == Double {
     ///   - b: Double array.
     /// - Returns: The result of the multiplication.
     public static func * (a: Self, b: Self) -> [Double] {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vDSP.multiply(a, b)
     }
     
@@ -57,7 +57,7 @@ extension Array where Element == Double {
     ///   - b: Double array.
     /// - Returns: The result of the division.
     public static func / (a: Self, b: Self) -> [Double] {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vDSP.divide(a, b)
     }
     

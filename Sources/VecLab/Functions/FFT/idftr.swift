@@ -11,7 +11,7 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func idftr(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     let n = length(x)
 
     // Init by copy

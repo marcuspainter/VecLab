@@ -29,7 +29,7 @@ public func cos(_ x: Complex) -> Complex {
 /// - Parameter x: Angle in radians.
 /// - Returns: The cosine of the angles.
 public func cos(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     var real = RealArray(repeating: 0, count: x.count)
     var imag = RealArray(repeating: 0, count: x.count)
     let coshx = vForce.cosh(x.imag)

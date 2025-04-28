@@ -25,7 +25,7 @@ public func flip(_ x: RealArray) -> RealArray {
 /// - Parameter x: Complex array.
 /// - Returns: Flipped array with elements reversed.
 public func flip(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     // Copy
     var yreal = x.real
     var yimag = x.imag

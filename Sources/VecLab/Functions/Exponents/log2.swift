@@ -31,7 +31,7 @@ public func log2(_ a: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     var c =  ComplexArray(count: x.count)
     for k in 0 ..< x.count {
         c[k] = log2(x[k])

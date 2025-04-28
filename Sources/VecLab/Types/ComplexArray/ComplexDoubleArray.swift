@@ -61,7 +61,7 @@ public struct ComplexDoubleArray:
     ///   - real: Real array.
     ///   - imag: Imaginary array.
     public init(_ real: [Double], _ imag: [Double]) {
-        assertSameSize(real, imag)
+        validateSize(real, imag)
         self.real = real
         self.imag = imag
     }

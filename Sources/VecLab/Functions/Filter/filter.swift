@@ -53,7 +53,7 @@ public func filter(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 ///   - x: Complex input signal.
 /// - Returns: Filtered complex signal.
 public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     let yr = filter(b: b, a: a, x: x.real)
     let yi = filter(b: b, a: a, x: x.imag)
     return ComplexArray(yr, yi)

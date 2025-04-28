@@ -29,6 +29,6 @@ public func disp(_ x: RealArray) {
 /// Prints a complex array formatted in rows.
 /// - Parameter x: Complex array.
 public func disp(_ x: ComplexArray) {
-    assertSameSize(x)
+    validateSize(x)
     x.forEach { print(String(format: "% 19.15f %+19.15fi", $0.real, $0.imag)) }
 }

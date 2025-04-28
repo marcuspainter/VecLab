@@ -8,7 +8,7 @@
 import Foundation
 
 /// Product of an array.
-/// - Parameter x: Input array.
+/// - Parameter x: Real array.
 /// - Returns: The product of the array.
 public func prod(_ x: RealArray) -> Real {
     var product = x[0]
@@ -22,7 +22,7 @@ public func prod(_ x: RealArray) -> Real {
 /// - Parameter x: Complex array.
 /// - Returns: The product of the array.
 public func prod(_ x: ComplexArray) -> Complex {
-    assertSameSize(x)
+    validateSize(x)
     var product = x[0]
     for k in 1 ..< x.count {
         product = product * x[k]

@@ -18,6 +18,6 @@ public func length(_ x: RealArray) -> Int {
 /// - Parameter x: Complex array.
 /// - Returns: The length of the array.
 public func length(_ x: ComplexArray) -> Int {
-    assertSameSize(x)
+    validateSize(x)
     return x.count
 }

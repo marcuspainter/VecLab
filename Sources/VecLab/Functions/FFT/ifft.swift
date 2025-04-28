@@ -12,7 +12,7 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func ifft(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.count,
                                                        direction: .inverse,

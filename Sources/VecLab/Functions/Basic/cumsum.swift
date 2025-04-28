@@ -26,7 +26,7 @@ public func cumsum(_ x: RealArray) -> RealArray {
 /// - Parameter x: Complex array.
 /// - Returns: The cumulative sum of the array.
 public func cumsum(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     var c = x
     var sum = Complex()
     for k in 0 ..< x.count {

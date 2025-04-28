@@ -32,7 +32,7 @@ public func resize(_ x: RealArray, length m: Int) -> RealArray {
 ///   - m: Length.
 /// - Returns: Array of new length m.
 public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     let n = x.count
     guard m != n else { return x }
     var y = x

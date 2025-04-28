@@ -8,6 +8,13 @@
 import Accelerate
 
 extension ComplexDoubleArray {
+    
+    /// Unsafe pointers for vDSP functions.
+    /// - Parameters:
+    ///   - a: A complex array.
+    ///   - b: B complex array.
+    ///   - c: C complex array.
+    ///   - body: vDSP function.
     public static func withUnsafeParameters(
         _ a: ComplexDoubleArray,
         _ b: ComplexDoubleArray,
@@ -37,7 +44,13 @@ extension ComplexDoubleArray {
             }
         }
     }
-
+    
+    /// Unsafe pointers for vDSP functions.
+    /// - Parameters:
+    ///   - a: A complex array.
+    ///   - b: B double array.
+    ///   - c: C complex array.
+    ///   - body: vDSP function.
     public static func withUnsafeParameters(
         _ a: ComplexDoubleArray,
         _ b: RealArray,
@@ -69,6 +82,11 @@ extension ComplexDoubleArray {
         }
     }
 
+    /// Unsafe pointers for vDSP functions.
+    /// - Parameters:
+    ///   - a: A complex array.
+    ///   - c: C complex array.
+    ///   - body: vDSP function.
     public static func withUnsafeParameters(
         _ a: ComplexDoubleArray,
         _ c: inout ComplexDoubleArray,
@@ -91,6 +109,11 @@ extension ComplexDoubleArray {
         }
     }
 
+    /// Unsafe pointers for vDSP functions.
+    /// - Parameters:
+    ///   - a: A complex array.
+    ///   - c: C double array.
+    ///   - body: vDSP function.
     public static func withUnsafeParameters(
         _ a: ComplexDoubleArray,
         _ c: inout RealArray,

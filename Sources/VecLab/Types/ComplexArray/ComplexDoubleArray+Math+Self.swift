@@ -14,7 +14,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
     public static func + (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         let result = vectorAddComplexArray(a, b)
         return result
     }
@@ -25,7 +25,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
     public static func - (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vectorSubtractComplexArray(a, b)
     }
 
@@ -35,7 +35,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
     public static func * (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vectorMultiplyComplexArray(a, b)
     }
 
@@ -45,7 +45,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the division.
     public static func / (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vectorDivideComplexArray(a, b)
     }
 }

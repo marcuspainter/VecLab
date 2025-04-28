@@ -16,7 +16,7 @@ public func fill(_ c: RealArray, _ a: Real) {
     fillRealArray(c, a)
 }
 
-/// Fills a a complex array with a value in place.
+/// Fills a complex array with a value in place.
 /// - Parameters:
 ///   - c: Array.
 ///   - a: Value.

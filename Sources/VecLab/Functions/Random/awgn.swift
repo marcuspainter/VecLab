@@ -41,7 +41,7 @@ public func awgn(_ x: RealArray, _ snr: Real) -> (y: RealArray, noise: RealArray
 ///   - snr: SNR is decibels (dB)
 /// - Returns: The noisy signal and noise as a tuple of complex arrays
 public func awgn(_ x: ComplexArray, _ snr: Real) -> (y: ComplexArray, noise: ComplexArray) {
-    assertSameSize(x)
+    validateSize(x)
     // Calculate the signal power.
     let P_signal_real = vDSP.sumOfSquares(x.real) / Real(x.count)
     let P_signal_imag = vDSP.sumOfSquares(x.imag) / Real(x.count)

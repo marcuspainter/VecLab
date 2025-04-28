@@ -29,6 +29,6 @@ public func atan(_ x: Complex) -> Complex {
 /// - Parameter x:Tangent of angle.
 /// - Returns: Inverse tangent of x in the interval  [-π/2, π/2].
 public func atan(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     return (Real.i * 0.5) * log( (1.0 - Real.i * x) / (1.0 + Real.i * x) )
 }

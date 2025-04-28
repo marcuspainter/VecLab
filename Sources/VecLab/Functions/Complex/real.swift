@@ -19,6 +19,6 @@ public func real(_ x: Complex) -> Real {
 /// - Parameter x: Complex array.
 /// - Returns: A real array of real part of a complex array.
 public func real(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     return x.real
 }

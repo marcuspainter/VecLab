@@ -33,6 +33,6 @@ public func rem(_ a: Real, _ b: Real) -> Real {
 ///   - b: Divisor.
 /// - Returns: The remainder after division of `a` by` b`, where `a` is the dividend and `b` is the divisor.
 public func rem(_ a: RealArray, _ b: RealArray) -> RealArray {
-    assertSameSize(a, b)
+    validateSize(a, b)
     return zip(a, b).map { rem($0, $1) }
 }

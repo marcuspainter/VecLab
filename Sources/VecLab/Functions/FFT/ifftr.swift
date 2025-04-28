@@ -12,7 +12,7 @@ import Accelerate
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func ifftr(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: x.count,
                                                        direction: .inverse,

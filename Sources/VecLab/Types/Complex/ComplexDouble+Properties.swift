@@ -8,60 +8,60 @@
 extension ComplexDouble {
     // MARK: - Special value properties
 
-    /// Returns true if either component is NaN
+    /// Returns true if either component is NaN.
     public var isNaN: Bool {
         return real.isNaN || imag.isNaN
     }
 
-    /// Returns true if either component is infinite
+    /// Returns true if either component is infinite.
     public var isInfinite: Bool {
         return real.isInfinite || imag.isInfinite
     }
 
-    /// Returns true if both components are finite
+    /// Returns true if both components are finite.
     public var isFinite: Bool {
         return real.isFinite && imag.isFinite
     }
 
-    /// Returns true if both components are zero
+    /// Returns true if both components are zero.
     public var isZero: Bool {
         return real == 0.0 && imag == 0.0
     }
 
-    /// Returns true if either component is subnormal
+    /// Returns true if either component is subnormal.
     public var isSubnormal: Bool {
         return real.isSubnormal || imag.isSubnormal
     }
 
-    /// Returns true if both components are normal
+    /// Returns true if both components are normal.
     public var isNormal: Bool {
         return real.isNormal && imag.isNormal
     }
 
-    /// Returns true if either component is signaling NaN
+    /// Returns true if either component is signaling NaN.
     public var isSignalingNaN: Bool {
         return real.isSignalingNaN || imag.isSignalingNaN
     }
 
     // MARK: - Static special values
 
-    /// Complex zero value (0 + 0i)
+    /// Complex zero value (0 + 0i).
     public static var zero: ComplexDouble {
         return ComplexDouble(Double.zero, Double.zero)
     }
 
-    /// Complex NaN value (NaN + NaNi)
-    public static var nan: Complex {
+    /// Complex NaN value (NaN + NaNi).
+    public static var nan: ComplexDouble {
         return ComplexDouble(.nan, .nan)
     }
 
-    /// Positive infinity (∞ + ∞i)
+    /// Positive infinity (∞ + ∞i).
     public static var infinity: ComplexDouble {
         return Complex(.infinity, .infinity)
     }
 
-    /// The imaginary unit (0 + 1i)
-    public static var i: Complex {
+    /// The imaginary unit (0 + 1i).
+    public static var i: ComplexDouble {
         return ComplexDouble(.zero, 1.0)
     }
 }

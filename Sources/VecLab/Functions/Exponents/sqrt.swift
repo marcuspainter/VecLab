@@ -30,7 +30,7 @@ public func sqrt(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The complex square roots.
 public func sqrt(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     var c = ComplexArray(count: x.count)
     for k in 0 ..< x.count {
         c[k] = sqrt( x[k] )

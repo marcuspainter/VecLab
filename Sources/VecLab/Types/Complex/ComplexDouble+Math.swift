@@ -8,18 +8,24 @@
 extension ComplexDouble: SignedNumeric {
     public typealias IntegerLiteralType = Double.IntegerLiteralType
     
+    /// Magnitude.
+    ///
+    /// Needed for `SignedNumeric` protocol.
     public var magnitude: Double {
         return (real * real + imag * imag).squareRoot()
     }
     
+    /// Initialize from an integer literal.
+    /// - Parameter value: Integer literal.
     public init(integerLiteral value: Double.IntegerLiteralType) {
         self.init(Double(value), .zero)
     }
     
-    @available(*, deprecated, message: "Converting a BinaryInteger to ComplexDouble using exactly may not preserve precision")
+    /// Initialize from a binary integer literal.
+    /// - Parameter source: Source.
     public init?<T>(exactly source: T) where T : BinaryInteger {
         self.init(Double(source), .zero)
-    }
+   }
 
     /// Complex addition.
     /// - Parameters:
@@ -56,6 +62,7 @@ extension ComplexDouble: SignedNumeric {
     ///   - a: Complex number.
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
+    @inlinable
     public static func *= (a: inout ComplexDouble, b: ComplexDouble) {
         a =  ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
@@ -72,6 +79,7 @@ extension ComplexDouble: SignedNumeric {
     /// Unary minus.
     /// - Parameter a: Complex number.
     /// - Returns: The result of -a.
+    @inlinable
     public static prefix func - (a: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(-a.real, -a.imag)
     }

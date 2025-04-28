@@ -13,7 +13,7 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func dft(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     let n = length(x)
     if n == 1 {
         return x

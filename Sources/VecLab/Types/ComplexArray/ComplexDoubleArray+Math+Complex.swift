@@ -15,7 +15,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
     public static func + (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
-        assertSameSize(a)
+        validateSize(a)
         let real = vDSP.add(b.real, a.real)
         let imag = vDSP.add(b.imag, a.imag)
 
@@ -28,7 +28,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
     public static func + (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(b)
+        validateSize(b)
         let real = vDSP.add(a.real, b.real)
         let imag = vDSP.add(a.imag, b.imag)
         return ComplexDoubleArray(real, imag)
@@ -40,7 +40,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
     public static func - (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
-        assertSameSize(a)
+        validateSize(a)
         return ComplexDoubleArray(a.real - b.real, a.imag - b.imag)
     }
 
@@ -50,7 +50,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
     public static func - (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(b)
+        validateSize(b)
         return b - a
     }
 
@@ -60,7 +60,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
     public static func * (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
-        assertSameSize(a)
+        validateSize(a)
         return vectorMultiplyComplexArrayComplex(a, b)
     }
 
@@ -70,7 +70,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
     public static func * (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(b)
+        validateSize(b)
         return vectorMultiplyComplexComplexArray(a, b)
     }
 
@@ -80,7 +80,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the division.
     public static func / (a: ComplexDoubleArray, b: ComplexDouble) -> ComplexDoubleArray {
-        assertSameSize(a)
+        validateSize(a)
         return vectorDivideComplexArrayComplex(a, b)
     }
 
@@ -90,7 +90,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the division.
     public static func / (a: ComplexDouble, b: ComplexDoubleArray) -> ComplexDoubleArray {
-        assertSameSize(b)
+        validateSize(b)
         return vectorDivideComplexComplexArray(a, b)
     }
 }

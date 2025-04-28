@@ -27,6 +27,6 @@ public func asin(_ x: Complex) -> Complex {
 /// - Parameter x: Sine of angles.
 /// - Returns: Inverse sin of x in the interval [0, π].
 public func asin(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     return -Real.i * log(Real.i * x + sqrt(1.0 - x * x))
 }

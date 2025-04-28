@@ -15,7 +15,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex  array.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     public static func ~* (a: ComplexArray, b: ComplexArray) -> ComplexArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return vectorConjugateMultiplyComplexArray(a, b)
     }
 
@@ -25,7 +25,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     public static func ~* (a: ComplexArray, b: Complex) -> ComplexArray {
-        assertSameSize(a)
+        validateSize(a)
         return conj(a) * b
     }
 
@@ -35,7 +35,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     public static func ~* (a: Complex, b: ComplexArray) -> ComplexArray {
-        assertSameSize(b)
+        validateSize(b)
         return conj(a) * b
     }
 
@@ -45,7 +45,7 @@ extension ComplexDoubleArray {
     ///   - b: Real  number.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     public static func ~* (a: ComplexArray, b: Real) -> ComplexArray {
-        assertSameSize(a)
+        validateSize(a)
         return conj(a) * b
     }
 
@@ -55,7 +55,7 @@ extension ComplexDoubleArray {
     ///   - b: Real  array.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     public static func ~* (a: ComplexArray, b: RealArray) -> ComplexArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return conj(a) * b
     }
 }
@@ -68,7 +68,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: ComplexArray, b: ComplexArray) -> ComplexArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         let c = vectorConjugateMultiplyComplexArray(b, a)
         return c
     }
@@ -79,7 +79,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
-        assertSameSize(a)
+        validateSize(a)
         return a * conj(b) // Overloaded
     }
 
@@ -89,7 +89,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
-        assertSameSize(b)
+        validateSize(b)
         return a * conj(b) // Overloaded
     }
 
@@ -99,7 +99,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
-        assertSameSize(a, b)
+        validateSize(a, b)
         return a * conj(b) // Overloaded
     }
 
@@ -109,7 +109,7 @@ extension ComplexDoubleArray {
     ///   - b: Complex array.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Real, b: ComplexArray) -> ComplexArray {
-        assertSameSize(b)
+        validateSize(b)
         return a * conj(b) // Overloaded
     }
 }

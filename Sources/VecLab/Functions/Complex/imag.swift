@@ -19,6 +19,6 @@ public func imag(_ x: Complex) -> Real {
 /// - Parameter x: Complex array.
 /// - Returns: A real array of imaginary part of a complex array.
 public func imag(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     return x.imag
 }

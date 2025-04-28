@@ -21,6 +21,6 @@ public func angle(_ x: Complex) -> Real {
 /// - Parameter x:Complex array.
 /// - Returns: The phase angles in radians.
 public func angle(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     return vectorAngleComplexArray(x)
 }

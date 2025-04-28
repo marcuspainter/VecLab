@@ -28,6 +28,6 @@ public func log(_ x: Complex) -> Complex {
 /// - Parameter x: Complex array.
 /// - Returns: The natural logarithm of `x`.
 public func log(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     return vectorLogComplexArray(x)
 }
