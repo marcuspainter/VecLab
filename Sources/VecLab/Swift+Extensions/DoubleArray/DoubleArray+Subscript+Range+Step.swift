@@ -7,7 +7,8 @@
 
 import Foundation
 
-// Extension to provide stepping functionality for Double arrays
+// Extension to provide step functionality for Double arrays.
+
 extension Array where Element == Double {
 
     /// Access elements from a closed range with a step value

@@ -5,18 +5,9 @@
 
 A real/complex vector library in Swift.
 
-Compatible with Swift 6.0.
+Compatible with Swift 6.
 
-## New Version
-
-After using VecLab so a while, I have decided to make a major change to the way Complex arrays.
-
-
-Complex Type
-
-ComplexArray
-
-
+## New Version 2.0
 
 
 ## Overview
@@ -146,7 +137,7 @@ A complex array consists of a tuple of two real arrays. This arrangement is some
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
 let imagArray = [1.0, 2.0, 3.0, 4.0]
-let complexArray = (realArray, imagArray)
+let complexArray = ComplexArray(realArray, imagArray)
 ```
 
 ### The Imaginary Unit
@@ -180,14 +171,6 @@ Swift style:
 let t = [Double](0...<100)
 let s = [Double](1...100, 2)
 ```
-
-VecLab style using the `vector` function:
-
-```swift
-let t = vector(0..<100)
-let s = vector(1...100, 2)
-```
-
 ### Operators
 
 Overloaded operators for scalar and vectors.
@@ -207,7 +190,7 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays|arange, cat, circshift, dot, flip, gather, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
+|Arrays| arange, cat, circshift, dot, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
 |Basic| abs, cumsum, disp, iterate, norm, prod, sign, sum|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
 |Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|

@@ -8,7 +8,6 @@
 import Foundation
 import Accelerate
 
-/// Float array initialization.
 public extension Array where Element == Double {
     /// Initalize an array with a float array.
     /// - Parameter array: Float array.

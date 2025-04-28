@@ -6,7 +6,6 @@
 
 import Foundation
 
-/// Range
 public extension Array where Element == Double {
     /// Initialize a real array with an integer open range.
     /// - Parameters:

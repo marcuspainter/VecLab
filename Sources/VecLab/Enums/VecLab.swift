@@ -17,7 +17,7 @@ public enum ErrorLevel {
     case error
 }
 
-public func logInfo(
+func logInfo(
     _ condition: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = String(),
     file: StaticString = #file,
@@ -26,7 +26,7 @@ public func logInfo(
     print("Info: \(message())")
 }
 
-public func logWarning(
+func logWarning(
     _ condition: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = String(),
     file: StaticString = #file,
@@ -35,7 +35,7 @@ public func logWarning(
     print("Warning: \(message())")
 }
 
-public func logError(
+func logError(
     _ condition: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = String(),
     file: StaticString = #file,

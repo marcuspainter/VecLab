@@ -8,7 +8,8 @@
 import Foundation
 
 // Extension to make Array<Double> return arrays instead of slices when using range subscripts
-// with size validation matching the pattern from step extensions
+// with size validation matching the pattern from step extensions.
+
 extension Array where Element == Double {
 
     /// Range subscript that returns Array<Double> instead of ArraySlice<Double>
