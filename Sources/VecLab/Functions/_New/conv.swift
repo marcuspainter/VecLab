@@ -14,15 +14,13 @@ import Foundation
 ///   - y: Real array
 ///   - shape: "same" or "full"
 /// - Returns: The result of the convolution.
-public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> RealArray {
+public func conv(_ x: RealArray, _ y: RealArray, _ shape: ConvolutionType = .same) -> RealArray {
+    validateSize(x, y)
     switch shape {
-        case "same":
+        case .same:
             return convsame(x, y)
-        case "full":
+        case .full:
             return convfull(x, y)
-        default:
-            assert(false, "conv shape must be \"same\" or \"full\"")
-            return []
     }
 }
 
@@ -32,6 +30,7 @@ public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> Re
 ///   - y: Real array
 /// - Returns: The result of the convolution.
 private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
+
     let nx = length(x)
     let ny = length(y)
     let n = nx + ny - 1  // Full convolution length
