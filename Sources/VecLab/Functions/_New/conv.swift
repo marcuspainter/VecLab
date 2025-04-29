@@ -11,10 +11,10 @@ import Foundation
 /// Convolution.
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
-///   - shape: "same" or "full"
+///   - y: Real array.
+///   - shape: `same` or `full`
 /// - Returns: The result of the convolution.
-public func conv(_ x: RealArray, _ y: RealArray, _ shape: ConvolutionType = .same) -> RealArray {
+public func conv(_ x: RealArray, _ y: RealArray, shape: ConvolutionType = .same) -> RealArray {
     validateSize(x, y)
     switch shape {
         case .same:
@@ -27,7 +27,7 @@ public func conv(_ x: RealArray, _ y: RealArray, _ shape: ConvolutionType = .sam
 /// Convolution "same".
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
+///   - y: Real array.
 /// - Returns: The result of the convolution.
 private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
 
@@ -59,7 +59,7 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
 /// Convolution "full".
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
+///   - y: Real array.
 /// - Returns: The result of the convolution.
 private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
     let n = length(x) + length(y) - 1 // Result length
@@ -82,25 +82,22 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 /// Convolution.
 /// - Parameters:
 ///   - x: Complex array.
-///   - y: Complex array
-///   - shape: "same" or "full"
+///   - y: Complex array.
+///   - shape: `same` or `full`
 /// - Returns: The result of the convolution.
-public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same") -> ComplexArray {
+public func conv(_ x: ComplexArray, _ y: ComplexArray, shape: ConvolutionType = .same) -> ComplexArray {
     switch shape {
-        case "same":
+        case .same:
             return convsame(x, y)
-        case "full":
+        case .full:
             return convfull(x, y)
-        default:
-            assert(false, "conv shape must be \"same\" or \"full\"")
-            return ComplexArray()
     }
 }
 
 /// Convolution "same".
 /// - Parameters:
 ///   - x: Complex array.
-///   - y: Complex array
+///   - y: Complex array.
 /// - Returns: The result of the convolution.
 private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let nx = length(x)
@@ -198,7 +195,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
  
  */
 
-public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
+func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     // The resulting convolution array will have a size of (x.count + y.count - 1)
     let n = x.count
     let m = y.count
