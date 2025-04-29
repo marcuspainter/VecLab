@@ -9,6 +9,8 @@ Compatible with Swift 6.
 
 ## New Version 2.0
 
+- `ComplexDouble` and `ComplexDoubleArray` structs.
+- Array range indexing and slicing.
 
 ## Overview
 
@@ -24,7 +26,8 @@ Full documentation can be found on the [Swift Package Index](https://swiftpackag
 
 ### Example Usage
 
-The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
+The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a 
+recursive algorithm and its NumPy and MATLAB equivalents:
 
 ### Swift
 
@@ -101,7 +104,9 @@ end
 
 ### Library Convention
 
-The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from this type.
+The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given 
+type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from
+this type.
 
 ```swift
 public typealias Real = Double
@@ -120,10 +125,11 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers are defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
+Complex numbers are defined as a struct `ComplexDouble` of two real numbers, representing the real and imaginary parts
+ of the number. 
 
 ```swift
-public struct ComplexDouble: Equatable, Hashable, Codable, CustomStringConvertible, Sendable {
+public struct ComplexDouble { 
     /// Real part.
     public var real: Double
     /// Imaginary part.
@@ -132,7 +138,11 @@ public struct ComplexDouble: Equatable, Hashable, Codable, CustomStringConvertib
 ```
 ### Complex Arrays
 
-A complex array consists of a tuple of two real arrays. This arrangement is sometimes known as split complex. 
+A complex array now has its own struct type, `ComplexDouble`. It follows the Collection protocol and is not a true
+Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained to for compatibility 
+use with vDSP vector functions which use the `DSPDoubleSplitComplex`.
+ 
+The collection can be indexed that returns a `ComplexDouble`.
 
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
@@ -142,8 +152,8 @@ let complexArray = ComplexArray(realArray, imagArray)
 
 ### The Imaginary Unit
 
-The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi. Alternatives are 
-as a extension of Double, Float and Int or a tuple of real and imaginary parts.
+The imaginary unit, `i`, is defined as an extension to `Real`, similar to other Swift constants such as pi. 
+Alternatives are as a extension of Double, Float.
 
 These are all equivalent to 10+10i:
 

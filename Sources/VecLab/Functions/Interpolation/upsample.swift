@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 19/11/2024.
 //
 
-/// Increase sample rate by integer factor
+/// Increase sample rate by an integer factor.
 /// - Parameters:
 ///   - x: Real array.
 ///   - factor: Upsampling factor.
