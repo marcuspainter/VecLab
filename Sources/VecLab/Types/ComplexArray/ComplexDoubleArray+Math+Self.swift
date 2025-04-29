@@ -41,7 +41,7 @@ extension ComplexDoubleArray {
 
     /// Complex array division.
     /// - Parameters:
-    ///   - a: Complex array..
+    ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the division.
     public static func / (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {

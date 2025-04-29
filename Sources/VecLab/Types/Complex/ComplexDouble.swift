@@ -13,6 +13,7 @@ public struct ComplexDouble:
     CustomStringConvertible,
     CustomDebugStringConvertible,
     Sendable {
+    
     /// Real part.
     public var real: Double
 
@@ -46,13 +47,13 @@ public struct ComplexDouble:
     /// String of complex value.
     public var description: String {
         if imag >= 0 {
-            return "\(real) + \(imag)i"
+            return "\(real)+\(imag)i"
         } else {
-            return "\(real) - \(abs(imag))i"
+            return "\(real)-\(abs(imag))i"
         }
     }
 
-    /// Provides a more detailed debug representation of the complex number
+    /// Provides a more detailed debug representation of the complex number.
     public var debugDescription: String {
         if imag >= 0 {
             return "ComplexDouble(\(real), \(imag))"

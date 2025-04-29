@@ -35,12 +35,6 @@ Vector functions.
 - ``slice(_:_:_:)-(RealArray,ClosedRange<Int>,_)``
 - ``slice(_:_:_:)-(ComplexArray,ClosedRange<Int>,_)``
 
-### Vector Gather
-- ``gather(_:_:)-(RealArray,[Int])``
-- ``gather(_:_:)-(RealArray,RealArray)``
-- ``gather(_:_:)-(ComplexArray,[Int])``
-- ``gather(_:_:)-(ComplexArray,RealArray)``
-
 ### Resize
 - ``resize(_:length:)->RealArray``
 - ``resize(_:length:)->ComplexArray``

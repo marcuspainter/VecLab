@@ -22,9 +22,8 @@ New functions.
 
 ### Convolution 
 
-- ``conv(_:_:_:)->ComplexArray``
-- ``conv(_:_:_:)->RealArray``
-- ``convSimple(_:_:)``
+- ``conv(_:_:shape:)->ComplexArray``
+- ``conv(_:_:shape:)->RealArray``
 
 ### Resample
 

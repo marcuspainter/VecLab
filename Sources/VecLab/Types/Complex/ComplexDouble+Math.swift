@@ -61,7 +61,6 @@ extension ComplexDouble: SignedNumeric {
     /// - Parameters:
     ///   - a: Complex number.
     ///   - b: Complex number.
-    /// - Returns: The result of the multiplication.
     @inlinable
     public static func *= (a: inout ComplexDouble, b: ComplexDouble) {
         a =  ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
