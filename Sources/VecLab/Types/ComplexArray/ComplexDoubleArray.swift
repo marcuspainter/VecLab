@@ -68,21 +68,21 @@ public struct ComplexDoubleArray:
 
     /// Initialize from real array only (zeros for imaginary)
     public init(realOnly: [Double]) {
-        real = realOnly
-        imag = [Double](repeating: 0, count: realOnly.count)
+        self.real = realOnly
+        self.imag = [Double](repeating: 0, count: realOnly.count)
     }
 
     /// Initialize with a single complex value repeated
     public init(repeating value: ComplexDouble, count: Int) {
-        real = [Double](repeating: value.real, count: count)
-        imag = [Double](repeating: value.imag, count: count)
+        self.real = [Double](repeating: value.real, count: count)
+        self.imag = [Double](repeating: value.imag, count: count)
     }
 
     /// Initialize a complex array of length count.
     /// - Parameter count: Number of elements.
     public init(count: Int) {
-        real = [Double](repeating: 0, count: count)
-        imag = [Double](repeating: 0, count: count)
+        self.real = [Double](repeating: 0, count: count)
+        self.imag = [Double](repeating: 0, count: count)
     }
 
     /*
@@ -92,8 +92,8 @@ public struct ComplexDoubleArray:
     /// Initialize a complex array from a collection.
     /// - Parameter elements: A complex array.
     public init(_ elements: ComplexDoubleArray) {
-        real = elements.map { $0.real }
-        imag = elements.map { $0.imag }
+        self.real = elements.map { $0.real }
+        self.imag = elements.map { $0.imag }
     }
 
     /// Initialize a complex array from complex numbers.

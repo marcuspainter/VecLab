@@ -5,7 +5,8 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-/// Complex left conjugate multiply
+// MARK:  Complex left conjugate multiply
+
 extension ComplexDouble {
 
     /// Left conjugate multiply.
@@ -37,7 +38,8 @@ extension ComplexDouble {
 
 }
 
-/// Complex right conjugate multiply
+// MARK: Complex right conjugate multiply
+
 extension ComplexDouble {
 
     /// Right conjugate multiply.

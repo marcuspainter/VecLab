@@ -2,10 +2,22 @@
 
 ## Overview
 
-Unlike normal Swift indexing with range, VecLab overrides the normal behaviour of sub-arrays.
+Unlike normal Swift indexing with ranges, VecLab overrides the normal behaviour of sub-arrays.
 
-- Sub-arrays ranges are arrays not slices.
-- Assignment of sub-arrays must be the same size.
+### Array Slices
+
+Sub-array ranges are arrays not slices.
+
+```swift
+let a: [Double] = [1, 2, 3, 4, 5]
+let b = a[1 ... 3]
+let c = Array(b)
+print(c)
+
+```
+### Assignment
+
+Assignment of sub-arrays must be the same size.
 
 ```swift
 let a[0 ... 2] = b[1 ... 3] // Sizes must match
@@ -15,7 +27,8 @@ let a[0 ... 2] = b[1 ... 3] // Sizes must match
 
 |Syntax|Type|Description|
 |---|---|---|
-|`a[i]`|`subscript(index: Int)`|Access a single element|
+|`a[i]`|`subscript(index: Int)`|Access a single element at index `i`|
+|`a[b]`|`subscript(indices: [Int])`|Access elements of array `b` of indices|
 
 ### Array Range
 

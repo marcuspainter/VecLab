@@ -8,7 +8,6 @@
 import Foundation
 import Accelerate
 
-/// Complex  extensions
 extension ComplexDouble {
 
     /// Complex addition.
