@@ -17,7 +17,7 @@ public func resize(_ x: RealArray, length m: Int) -> RealArray {
     guard m != n else { return x }
     var y = x
     if m < n {
-        return slice(x, 0 ..< m)
+        return x[0 ..< m]
     } else {
         let zeroCount = m - n
         let zeros = RealArray(repeating: 0, count: zeroCount)
@@ -37,7 +37,7 @@ public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
     guard m != n else { return x }
     var y = x
     if m < n {
-        return slice(x, 0 ..< m)
+        return x[0 ..< m]
     } else {
         let zeroCount = m - n
         let zeros = ComplexArray(count: zeroCount)

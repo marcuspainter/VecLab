@@ -17,7 +17,7 @@ public func freqz(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
     let bb = paddata(b, length: N * 2)
     let aa = paddata(a, length: N * 2)
     let H = fftr(bb) / fftr(aa)
-    let HH = slice(H, 0 ..< N)
+    let HH = H[0 ..< N]
     return HH
 }
 

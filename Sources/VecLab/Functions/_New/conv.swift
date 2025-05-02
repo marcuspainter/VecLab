@@ -52,7 +52,7 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
     let end_idx = start_idx + nx - 1   // Ensure length(u) output
 
-    let c = slice(full_c, start_idx ... end_idx)
+    let c = full_c[start_idx ... end_idx]
     return c
 }
 
@@ -121,7 +121,7 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
     let end_idx = start_idx + nx - 1   // Ensure length(u) output
 
-    let c = slice(full_c, start_idx ... end_idx)
+    let c = full_c[start_idx ... end_idx]
     return c
 }
 
