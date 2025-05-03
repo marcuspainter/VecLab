@@ -36,7 +36,9 @@ final class VecLabTests: XCTestCase {
         
         let f = zip(zz, zz).map { $0 + $1 }
         
-        
+        for w in zz {
+            print("Go", w)
+        }
         
         print(f)
         print(type(of:f))

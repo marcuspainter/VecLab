@@ -16,7 +16,7 @@ import Foundation
 ///   - x: Real signal.
 ///   - snr: SNR is decibels (dB).
 /// - Returns: The noisy signal and noise as a tuple.
-public func awgn(_ x: RealArray, _ snr: Real) -> (y: RealArray, noise: RealArray) {
+public func awgn(_ x: RealArray, snr: Real) -> (signal: RealArray, noise: RealArray) {
     // Calculate the signal power.
     let P_signal = vDSP.sumOfSquares(x) / Real(x.count)
 
@@ -40,7 +40,7 @@ public func awgn(_ x: RealArray, _ snr: Real) -> (y: RealArray, noise: RealArray
 ///   - x: Complex signal
 ///   - snr: SNR is decibels (dB)
 /// - Returns: The noisy signal and noise as a tuple of complex arrays
-public func awgn(_ x: ComplexArray, _ snr: Real) -> (y: ComplexArray, noise: ComplexArray) {
+public func awgn(_ x: ComplexArray, snr: Real) -> (signal: ComplexArray, noise: ComplexArray) {
     validateSize(x)
     // Calculate the signal power.
     let P_signal_real = vDSP.sumOfSquares(x.real) / Real(x.count)
