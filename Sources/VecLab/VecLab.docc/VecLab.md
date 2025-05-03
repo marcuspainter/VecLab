@@ -170,6 +170,7 @@ Overloaded operators for scalar and vectors.
 
 ### Essentials 
 - <doc:GettingStarted>
+- <doc:Migration>
 - <doc:ArrayConcatenation>
 - <doc:ArrayIndexing>
 - <doc:FourierTransform>

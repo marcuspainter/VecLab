@@ -8,7 +8,7 @@
 // Chirp Z-Transform Spectral Zoom Optimization with MATLAB
 // https://www.osti.gov/servlets/purl/1004350
 
-public func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
+func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
     // CZT1D  Simplified Chirp Z-transform for 1D vectors only
     //   G = CZT1D(X, K, W, A) returns the K-point chirp z-transform of X,
     //   computed at points A*W^(0:K-1).
@@ -35,11 +35,12 @@ public func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex?
     
     // Apply initial twiddle factor
     let nn = vector(0 ... (m-1))
-    var aa = a ** (-nn)
+    var aa = a ** nn
     
     aa = aa * ww[m-1 ..< m+m-1]
     let y = x * aa
     
+    // Zero-pad to length
     let y_padded = paddata(y, length: nfft)
     let inv_ww = 1.0 / ww[0 ..< (m+k-1)] //  <----- Chirp filter.
     let inv_ww_padded = paddata(inv_ww, length: nfft)

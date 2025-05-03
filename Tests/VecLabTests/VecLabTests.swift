@@ -40,6 +40,8 @@ final class VecLabTests: XCTestCase {
             print("Go", w)
         }
         
+   //     let Q = fft(a)
+        
         print(f)
         print(type(of:f))
         
@@ -58,6 +60,10 @@ final class VecLabTests: XCTestCase {
         
         let g = zz.reduce(0, +)
         print(g)
+        
+        //let c1 = 2.0 + 3.0 * Real.i
+        //let c2 = 2.0 + 3.i
+        //let c3 = Complex(2.0, 3.0)
         
     }
     

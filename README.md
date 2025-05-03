@@ -9,8 +9,9 @@ Compatible with Swift 6.
 
 ## New Version 2.0
 
-- `ComplexDouble` and `ComplexDoubleArray` structs.
+- New `ComplexDouble` and `ComplexDoubleArray` structs.
 - Array range indexing and slicing.
+- `ComplexDoubleArray` conforms to collection protocol.
 
 ## Overview
 
@@ -104,10 +105,6 @@ end
 
 ### Library Convention
 
-The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given 
-type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from
-this type.
-
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
@@ -139,10 +136,10 @@ public struct ComplexDouble {
 ### Complex Arrays
 
 A complex array now has its own struct type, `ComplexDouble`. It follows the Collection protocol and is not a true
-Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained to for compatibility 
-use with vDSP vector functions which use the `DSPDoubleSplitComplex`.
+Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained for compatibility 
+use with vDSP vector functions which use the `DSPDoubleSplitComplex` type.
  
-The collection can be indexed that returns a `ComplexDouble`.
+The collection can be indexed that returns a `ComplexDouble`. 
 
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
@@ -155,12 +152,12 @@ let complexArray = ComplexArray(realArray, imagArray)
 The imaginary unit, `i`, is defined as an extension to `Real`, similar to other Swift constants such as pi. 
 Alternatives are as a extension of Double, Float.
 
-These are all equivalent to 10+10i:
+These are all equivalent to 2+3i:
 
 ```swift
-let c1 = 10 + 10 * Real.i
-let c2 = 10 + 10.i
-let c3 = Complex(10, 10) 
+let c1 = 2.0 + 3.0 * Real.i
+let c2 = 2.0 + 3.i
+let c3 = Complex(2.0, 3.0)
 ```
 It can be used in any expression. This is a complex exponential:
 

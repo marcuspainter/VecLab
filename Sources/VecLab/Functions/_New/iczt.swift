@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 01/05/2025.
 //
 
-public func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
+func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
     // ICZT1D  Inverse Chirp Z-transform for 1D vectors
     //   G = ICZT1D(X, K, W, A) returns the inverse chirp z-transform of X,
     //   where X was computed using the forward CZT with parameters K, W, A.
@@ -46,6 +46,7 @@ public func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex
     aa = aa * ww[m-1 ..< m+m-1]
     let y = x * aa
     
+    // Zero-pad to length
     let y_padded = paddata(y, length: nfft)
     let inv_ww = 1.0 / ww[0 ..< (m+k-1)]
     let inv_ww_padded = paddata(inv_ww, length: nfft)
