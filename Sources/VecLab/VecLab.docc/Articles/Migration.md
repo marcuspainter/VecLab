@@ -5,8 +5,7 @@ Migrating your code.
 ## Overview
 
 Version 2.0 now uses structs instead of tuples for complex types. Conversion should be relatively straightforward and any required
-changes will be flagged by the compiler. Your code should not need any structural changes, though you might wish to 
-take advantage some of the new features.
+changes will be flagged by the compiler.
 
 ### Type Alias Changes
 
