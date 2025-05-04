@@ -55,10 +55,7 @@ public struct ComplexDouble:
 
     /// Provides a more detailed debug representation of the complex number.
     public var debugDescription: String {
-        if imag >= 0 {
-            return "ComplexDouble(\(real), \(imag))"
-        } else {
-            return "ComplexDouble(\(real), \(imag))"
-        }
+        return "ComplexDouble(\(real), \(imag))"
+
     }
 }
