@@ -49,9 +49,7 @@ let imaginaryPart = complexNumber.1
 
 #### The Imaginary Unit
 
-The imaginary unit *i* is an extension of `Double`. The definition is the tuple `(0,1)`. A complex number can be
-initialized this way, though it is better to use the tuple form otherwise it will be evaluated as a expression 
-at run-time.
+The imaginary unit *i* is an static extension of `Double`. 
 
 ```swift
 let c = 1 + 10.0 * Real.i
@@ -89,14 +87,6 @@ A shorter and more versatile function is provided to create arrays.
 let a = vector(count: 10)
 ```
 
-##### Sized Parameter
-A vector often needs to be initialized as the same size as another vector.
-
-```swift
-let a = [1.0, 2.0, 3.0]
-let b = vector(sized: a)
-```
-
 ##### Range Parameter
 
 Arrays can be created from ranges of numbers. The function accepts `Range` or `ClosedRange`. 
@@ -115,8 +105,7 @@ let evenNumbers = vector(0..<10, 2)
 
 #### Complex Arrays
 
-Complex arrays are defined as a tuple of two 'Real` arrays of real and imaginary parts. This structure
-is known a split complex, rather than interleaved.
+Complex arrays are defined `ComplexDoubleArray`. This structure stores is known a split complex, rather than interleaved.
 
 ```swift
 let realArray = [1.0, 2.0, 3.0]
@@ -124,19 +113,10 @@ let imagArray = [4.0, 5.0, 6.0]
 let complexArray = ComplexArray(realArray, imagArray)
 ```
 
-Note that unlike a true Swift `Array`, a `ComplexArray` is a tuple and cannot use an index. 
-
-Creating a `ComplexArrray` can be longwinded:
-
 ```swift
 let realArray = RealArray(repeating: 0.0, count: 10)
 let imagArray = RealArray(repeating: 0.0, count: 10)
 let complexArray = ComplexArray(count: 10)
 ```
-
-#### The complex Function
-
-Complex arrays can be initialized using the shorter `complex` function.
-
 
 

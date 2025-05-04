@@ -2,6 +2,11 @@
 
 A real/complex vector library in Swift.
 
+## New Version 2.0
+
+- New `ComplexDouble` and `ComplexDoubleArray` structs.
+- Array range indexing and slicing.
+- `ComplexDoubleArray` conforms to collection protocol.
 
 ## Overview
 
@@ -13,9 +18,12 @@ VecLab is a Swift Package for real and complex vector operations with NumPy and 
 - Vectorized using Accelerate and vDSP.
 - FFT of 2, 3 and 5 factors.
 
+Full documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab).
+
 ### Example Usage
 
-The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
+The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a 
+recursive algorithm and its NumPy and MATLAB equivalents:
 
 ### Swift
 
@@ -36,7 +44,6 @@ public func fftx(_ x: ComplexArray) -> ComplexArray {
     }
 }
 ```
-
 Here's a breakdown of the real and complex vector operations in the function:
 
 1. `x` is the complex input array.
@@ -49,15 +56,55 @@ Here's a breakdown of the real and complex vector operations in the function:
 8. The result is the concatenation of the complex vector addition and subtraction of `u` and `v`.
 9. The recursion ends when there is one element in the input array. The FFT of a single element is itself.
 
-### Library Convention
+### NumPy
+```python
+import numpy as np
 
-The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from this type.
+def fftx(x):
+    """
+    FFTX Fast Finite Fourier Transform.
+    """
+    n = len(x)
+    omega = np.exp(-2j * np.pi / n)
+    
+    if n % 2 == 0:
+        # Recursive divide and conquer
+        k = np.arange(n//2)
+        w = omega ** k
+        u = fftx(x[::2])
+        v = w * fftx(x[1::2])
+        y = np.concatenate([u + v, u - v])
+    else:
+        y = x
+    
+    return y
+```
+### MATLAB
+
+```matlab
+function y = fftx(x)
+% FFTX Fast Finite Fourier Transform.
+n = length(x);
+omega = exp(-2*pi*i/n);
+if rem(n,2) == 0
+    % Recursive divide and conquer.
+    k = (0:n/2-1)';
+    w = omega.^k;
+    u = fftx(x(1:2:n-1));
+    v = w.*fftx(x(2:2:n));
+    y = [u+v; u-v];
+else
+    y = x
+end
+```
+
+### Library Convention
 
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = (Real, Real)
-public typealias ComplexArray = ([Real], [Real])
+public typealias Complex = ComplexDouble
+public typealias ComplexArray = ComplexDoubleArray
 ```
 
 ### Real Numbers
@@ -70,32 +117,42 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers are defined as a struct `Complex` 
+Complex numbers are defined as a struct `ComplexDouble` of two real numbers, representing the real and imaginary parts
+ of the number. 
 
 ```swift
-let c = Complex(10.0, 2.0)
+public struct ComplexDouble { 
+    /// Real part.
+    public var real: Double
+    /// Imaginary part.
+    public var imag: Double
+}
 ```
 ### Complex Arrays
 
-A complex array consists of a tuple of two real arrays. This arrangement is sometimes known as split complex. 
+A complex array now has its own struct type, `ComplexDouble`. It follows the Collection protocol and is not a true
+Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained for compatibility 
+use with vDSP vector functions which use the `DSPDoubleSplitComplex` type.
+ 
+The collection can be indexed that returns a `ComplexDouble`. 
 
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
 let imagArray = [1.0, 2.0, 3.0, 4.0]
-let complexArray = (realArray, imagArray)
+let complexArray = ComplexArray(realArray, imagArray)
 ```
 
 ### The Imaginary Unit
 
-The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi. Alternatives are 
-as a extension of Double, Float and Int or a tuple of real and imaginary parts.
+The imaginary unit, `i`, is defined as an extension to `Real`, similar to other Swift constants such as pi. 
+Alternatives are as a extension of Double, Float.
 
-These are all equivalent to 10+10i:
+These are all equivalent to 2+3i:
 
 ```swift
-let c1 = 10 + 10 * Real.i
-let c2 = 10 + 10.i
-let c3 = Complex(10, 10)
+let c1 = 2.0 + 3.0 * Real.i
+let c2 = 2.0 + 3.i
+let c3 = Complex(2.0, 3.0)
 ```
 It can be used in any expression. This is a complex exponential:
 
@@ -104,11 +161,11 @@ let phi = 100.0
 let c1 = exp(Real.i * 2 * Real.pi * phi)
 let c2 = exp(1.i * 2 * Real.pi * phi)
 let c3 = exp(2.i * Real.pi * phi)
-```
 
 ### Ranges
 
-Ranges can be defined using the Swift `Range` or `ClosedRange` types but with the addition of an optional `by` value. This has been implemented as an extension to the `Array` type.
+Ranges can be defined using the Swift `Range` or `ClosedRange` types but with the addition of an optional `by` value.
+This has been implemented as an extension to the `Array` type.
 
 Swift style:
 
@@ -116,14 +173,6 @@ Swift style:
 let t = [Double](0...<100)
 let s = [Double](1...100, 2)
 ```
-
-VecLab style using the `vector` function:
-
-```swift
-let t = vector(0..<100)
-let s = vector(1...100, 2)
-```
-
 ### Operators
 
 Overloaded operators for scalar and vectors.
@@ -135,8 +184,8 @@ Overloaded operators for scalar and vectors.
 |\*| Multiply|
 |/| Divide|
 |\*\*| Power|
-|\*~|Right conjugate multiply: *a \* conj(b)*|
-|~\*|Left conjugate multiply: *conj(a) \* b*|
+|\*~|Right conjugate multiply: a \* conj(b)|
+|~\*|Left conjugate multiply: conj(a) \* b|
 | - |Unary minus|
 
 ### Functions
@@ -164,6 +213,7 @@ Overloaded operators for scalar and vectors.
 |Timing| tic, toc, timeit|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
 |Window| blackman, blackmanharris, flattopwin, gausswin, hamming, hann, kaiser, tukeywin, rectwin|
+
 
 
 ## Topics

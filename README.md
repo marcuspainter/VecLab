@@ -5,8 +5,6 @@
 
 A real/complex vector library in Swift.
 
-Compatible with Swift 6.
-
 ## New Version 2.0
 
 - New `ComplexDouble` and `ComplexDoubleArray` structs.

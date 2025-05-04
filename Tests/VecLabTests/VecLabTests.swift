@@ -37,7 +37,7 @@ final class VecLabTests: XCTestCase {
         let f = zip(zz, zz).map { $0 + $1 }
         
         for w in zz {
-            print("Go", w)
+            print("For w in \(w)")
         }
         
    //     let Q = fft(a)
@@ -55,7 +55,7 @@ final class VecLabTests: XCTestCase {
         let _ = zz.enumerated().map { index, value in Real(index) + value }
                 
         for (i,v) in h {
-            print("Hello",i,v)
+            print(i,v)
         }
         
         let g = zz.reduce(0, +)
