@@ -1,17 +1,17 @@
 //
 //  TestHelp[er.swift
-//  
+//
 //
 //  Created by Marcus Painter on 08/09/2023.
 //
 
 import Foundation
-import XCTest
 import VecLab
+import XCTest
 
 public func assertComplexEqual(_ result: Complex, _ expected: Complex, _ message: String) {
-    XCTAssertEqual(result.0, expected.0, "\(message) - Real part not equal.")
-    XCTAssertEqual(result.1, expected.1, "\(message) - Imaginary part not equal.")
+    XCTAssertEqual(result.real, expected.real, "\(message) - Real part not equal.")
+    XCTAssertEqual(result.imag, expected.imag, "\(message) - Imaginary part not equal.")
 }
 
 // Example Usage:
@@ -19,8 +19,8 @@ public func assertComplexEqual(_ result: Complex, _ expected: Complex, _ message
 
 // Helper Function to Compare Complex Numbers
 public func assertComplexAlmostEqual(_ result: Complex, _ expected: Complex, _ message: String, accuracy: Real = 1e-6) {
-    XCTAssert(abs(result.0 - expected.0) < accuracy, "\(message) - Real part not close enough.")
-    XCTAssert(abs(result.1 - expected.1) < accuracy, "\(message) - Imaginary part not close enough.")
+    XCTAssert(abs(result.real - expected.real) < accuracy, "\(message) - Real part not close enough.")
+    XCTAssert(abs(result.imag - expected.imag) < accuracy, "\(message) - Imaginary part not close enough.")
 }
 
 // Helper Function to Compare RealArrays

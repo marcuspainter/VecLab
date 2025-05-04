@@ -4,26 +4,34 @@ Vector Creation Functions
 
 ## Topics
 
+### Vector
+
 - ``vector(count:)``
-- ``vector(_:)-9ig0f``
-- ``vector(_:)-r0jb``
-- ``vector(_:)-5sqoz``
-- ``vector(sized:)-h6cu``
-- ``vector(sized:)-1x6mw``
-- ``vector(_:_:)-8m44u``
-- ``vector(_:_:)-3p20v``
-- ``vector(_:_:)-f4yt``
-- ``vector(_:_:)-1eu48``
-- ``vector(_:_:)-1eu48``
+- ``vector(_:)-([Int])``
+- ``vector(_:)-([Float])``
+- ``vector(_:)-([Double])``
+- ``vector(sized:)-(RealArray)``
+- ``vector(sized:)-(ComplexArray)``
+- ``vector(_:_:)-(Range<Int>,_)``
+- ``vector(_:_:)-(Range<Real>,_)``
+- ``vector(_:_:)-(ClosedRange<Int>,_)``
+- ``vector(_:_:)-(ClosedRange<Real>,_)``
 
-- ``arange(_:)-7z09e``
-- ``arange(_:)-7z3xw``
-- ``arange(_:_:)-8l1k8``
-- ``arange(_:_:)-hrqg``
-- ``arange(_:_:_:)-39qok``
-- ``arange(_:_:_:)-3tu4v``
+### Arange
 
-- ``zeros(_:)-4trad``
-- ``zeros(_:)-4tpop``
-- ``ones(_:)-76nm9``
-- ``ones(_:)-76mol``
+- ``arange(_:)-(Int)``
+- ``arange(_:)-(Real)``
+- ``arange(_:_:)-(Int,_)``
+- ``arange(_:_:)-(Real,_)``
+- ``arange(_:_:_:)->[Int]``
+- ``arange(_:_:_:)->RealArray``
+
+### Zeros
+
+- ``zeros(_:)-(Int)``
+- ``zeros(_:)-(Real)``
+
+### Ones
+
+- ``ones(_:)-(Int)``
+- ``ones(_:)-(Real)``

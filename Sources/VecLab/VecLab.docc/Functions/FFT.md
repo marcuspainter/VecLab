@@ -14,10 +14,10 @@ FFT, DFT and FFT shift.
 
 ### FFT Shift
 
-- ``fftshift(_:)-1k3ff``
-- ``fftshift(_:)-8zi0``
-- ``ifftshift(_:)-6e6km``
-- ``ifftshift(_:)-7b3b3``
+- ``fftshift(_:)->RealArray``
+- ``fftshift(_:)->ComplexArray``
+- ``ifftshift(_:)->RealArray``
+- ``ifftshift(_:)->ComplexArray``
 - ``fftsymmetric(_:)``
 
 ### Discrete Fourier Transform 
@@ -27,10 +27,8 @@ FFT, DFT and FFT shift.
 - ``idft(_:)``
 - ``idftr(_:)``
 
-### Stockham Recursive FFT
-
-- ``fftx(_:)-97i6w``
-- ``fftx(_:)-44cyx``
-- ``ifftx(_:)``
-
 - ``nextpow2(_:)``
+
+### FFT Setup
+
+- ``fftsetup(count:direction:transformType:)``

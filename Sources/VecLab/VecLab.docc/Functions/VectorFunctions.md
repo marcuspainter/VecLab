@@ -5,48 +5,43 @@ Vector functions.
 ## Topics
 
 ### Concatenation
-- ``cat(_:)-2narh``
-- ``cat(_:)-7d4rm``
-- ``cat(_:)-1jof2``
-- ``cat(_:)-73wm``
+- ``cat(_:)-(RealArray...)``
+- ``cat(_:)-([RealArray])``
+- ``cat(_:)-(ComplexArray...)``
+- ``cat(_:)-([ComplexArray])``
 
 ### Circular Shift
-- ``circshift(_:_:)-6pyy5``
-- ``circshift(_:_:)-5hjog``
+- ``circshift(_:_:)->RealArray``
+- ``circshift(_:_:)->ComplexArray``
 
 ### Flip (Reverse)
-- ``flip(_:)-8jgli``
-- ``flip(_:)-6gn7f``
+- ``flip(_:)->RealArray``
+- ``flip(_:)->ComplexArray``
 
 ### Vector Length (Size)
-- ``length(_:)-560m9``
-- ``length(_:)-9qoub``
+- ``length(_:)-(RealArray)``
+- ``length(_:)-(ComplexArray)``
 
 ### Repeating Element
-- ``repelem(_:_:)-7uiad``
-- ``repelem(_:_:)-p5l0``
-- ``repelem(_:_:)-5pfik``
-- ``repelem(_:_:)-1q06r``
+- ``repelem(_:_:)-(Real,_)``
+- ``repelem(_:_:)-(RealArray,_)``
+- ``repelem(_:_:)-(Complex,_)``
+- ``repelem(_:_:)-(Complex,_)``
+- ``repelem(_:_:)-(ComplexArray,_)``
 
 ### Vector Slice
-- ``slice(_:_:_:)-3eh26``
-- ``slice(_:_:_:)-44cke``
-- ``slice(_:_:_:)-9vpbz``
-- ``slice(_:_:_:)-rt8``
-
-### Vector Gather
-- ``gather(_:_:)-80qyh``
-- ``gather(_:_:)-6jpve``
-- ``gather(_:_:)-2ivzx``
-- ``gather(_:_:)-9ef1j``
+- ``slice(_:_:_:)-(RealArray,Range<Int>,_)``
+- ``slice(_:_:_:)-(ComplexArray,Range<Int>,_)``
+- ``slice(_:_:_:)-(RealArray,ClosedRange<Int>,_)``
+- ``slice(_:_:_:)-(ComplexArray,ClosedRange<Int>,_)``
 
 ### Resize
-- ``resize(_:_:)-3zvg1``
-- ``resize(_:_:)-7wpjk``
+- ``resize(_:length:)->RealArray``
+- ``resize(_:length:)->ComplexArray``
 
 ### Padding and Trimming
-- ``paddata(_:_:)-9zje9``
-- ``paddata(_:_:)-13kdr``
-- ``trimdata(_:_:)-1bx2s``
-- ``trimdata(_:_:)-6tce2``
+- ``paddata(_:length:)->RealArray``
+- ``paddata(_:length:)->ComplexArray``
+- ``trimdata(_:length:)->RealArray``
+- ``trimdata(_:length:)->ComplexArray``
 

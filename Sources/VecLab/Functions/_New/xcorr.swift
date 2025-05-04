@@ -22,8 +22,8 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     let N = Int(2.0 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // FFT-based cross-correlation (note conjugation on y)
     let A = fftr(a)
@@ -56,8 +56,8 @@ public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let N = Int(2.0 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // FFT-based cross-correlation (note conjugation on y)
     let A = fft(a)
@@ -72,7 +72,7 @@ public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     var c = circshift(full_c, shift_amount)
 
     // Trim extra values
-    c = trimdata(c, n)
+    c = trimdata(c, length: n)
     return c
 }
 
@@ -128,18 +128,18 @@ public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
 // https://uk.mathworks.com/matlabcentral/fileexchange/43967-circular-cross-correlation-using-fft
 
 /*
- func autocorr(a: [Float]) -> [Float] {
+ func autocorr(a: [Double]) -> [Double] {
  let filterLen = a.count
  let resultLen = filterLen * 2 - 1
  let signalLen = ((filterLen + 3) & 0xFFFFFFFC) + resultLen
 
- let padding1 = [Float](repeating: 0.0, count: a.count - 1)
- let padding2 = [Float]( repeating: 0.0, count: (signalLen - padding1.count - a.count))
+ let padding1 = [Double](repeating: 0.0, count: a.count - 1)
+ let padding2 = [Double]( repeating: 0.0, count: (signalLen - padding1.count - a.count))
  let signal = padding1 + a + padding2
 
  var result = [Float](repeating: 0.0, count: resultLen)
 
- vDSP_conv(signal, 1, a, 1, &result, 1, UInt(resultLen), UInt(filterLen))
+ vDSP_convD(signal, 1, a, 1, &result, 1, UInt(resultLen), UInt(filterLen))
 
  // Remove the first n-1 values which are just mirrored from the end so that [0] always has the autocorrelation.
  result.removeFirst(filterLen - 1)

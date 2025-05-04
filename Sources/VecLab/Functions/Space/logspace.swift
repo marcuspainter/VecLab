@@ -9,7 +9,7 @@ import Foundation
 
 /// Generate logarithmically spaced vectors.
 ///
-/// Returns `[]` if 'n' is 0.
+/// Returns `[]` if `n` is 0.
 /// - Parameters:
 ///   - a: Start of interval.
 ///   - b: End of interval.

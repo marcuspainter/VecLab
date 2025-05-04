@@ -13,19 +13,19 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func dft(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     let n = length(x)
     if n == 1 {
         return x
     }
 
     // Init by copy
-    var y = x
+    var y = ComplexArray(repeating: .zero, count: x.count)
     let q = RealArray(0..<n)
     let omega = -2 * Real.pi * Real.i * q  / Real(n)
-    for p in 0..<x.0.count {
+    for p in 0..<x.count {
         let w = exp(omega * Real(p))
-        (y.0[p], y.1[p]) = sum(x * w)
+        y[p] = sum(x * w)
     }
     return y
 }

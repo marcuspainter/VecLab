@@ -17,15 +17,15 @@ class UMinusTests: XCTestCase {
     }
 
     func testUMinusComplex() {
-        let a: Complex = (1.0, -2.0)
+        let a: Complex = Complex(1.0, -2.0)
         let result = -a
-        XCTAssertEqual(result, (-1.0, 2.0), "Complex uminus failed")
+        XCTAssertEqual(result, Complex(-1.0, 2.0), "Complex uminus failed")
     }
 
     func testUMinusComplexArray() {
-        let a: ComplexArray = ([1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
+        let a: ComplexArray = ComplexArray([1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
         let result = -a
-        XCTAssertEqual(result, ([-1.0, -2.0, -3.0], [-4.0, -5.0, -6.0]), "Complex array uminus failed")
+        XCTAssertEqual(result, ComplexArray([-1.0, -2.0, -3.0], [-4.0, -5.0, -6.0]), "Complex array uminus failed")
     }
 
 }

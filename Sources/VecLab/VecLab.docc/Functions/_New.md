@@ -5,26 +5,25 @@ New functions.
 ## Topics
 
 ### Fill and Clear
-- ``clear(_:)-7e0n9``
-- ``clear(_:)-5g7kv``
+- ``clear(_:)-(RealArray)``
+- ``clear(_:)-(ComplexArray)``
 
-- ``fill(_:_:)-81ija``
-- ``fill(_:_:)-2cft``
+- ``fill(_:_:)-(_,Real)``
+- ``fill(_:_:)-(_,Complex)``
 
 
 ### Cross-correlation
 
-- ``xcorr(_:)-93vrh``
-- ``xcorr(_:)-7l8ag``
-- ``xcorr(_:_:)-3w31h``
-- ``xcorr(_:_:)-1euir``
+- ``xcorr(_:)->RealArray``
+- ``xcorr(_:)->ComplexArray``
+- ``xcorr(_:_:)->RealArray``
+- ``xcorr(_:_:)->ComplexArray``
 - ``xcorrSimple(_:_:)``
 
 ### Convolution 
 
-- ``conv(_:_:_:)-30aff``
-- ``conv(_:_:_:)-8e0jx``
-- ``convSimple(_:_:)``
+- ``conv(_:_:shape:)->ComplexArray``
+- ``conv(_:_:shape:)->RealArray``
 
 ### Resample
 
@@ -37,8 +36,11 @@ New functions.
 - ``peak2peak(_:)``
 - ``paprdb(_:)``
 
-### Bin Frequency
+### FFT Bin Frequency
 
 - ``bin2freq(bin:N:fs:)``
 - ``freq2bin(f:N:fs:)``
 
+### Peaks
+
+- ``findpeaks(_:minPeakHeight:threshold:)``

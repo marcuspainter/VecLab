@@ -43,9 +43,9 @@ public func rms(_ x: RealArray) -> Real {
 /// ```
 
 public func rms(_ x: ComplexArray) -> Real {
-    let r = vDSP.sumOfSquares(x.0)
-    let i = vDSP.sumOfSquares(x.1)
-    let sumOfSquares = (r + i)
-    let meanSquare = sumOfSquares / Real(x.0.count)
+    let real = vDSP.sumOfSquares(x.real)
+    let imag = vDSP.sumOfSquares(x.imag)
+    let sumOfSquares = (real + imag)
+    let meanSquare = sumOfSquares / Real(x.count)
     return sqrt(meanSquare)
 }

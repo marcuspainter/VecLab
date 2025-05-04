@@ -63,7 +63,7 @@ public func pow(_ a: Complex, _ b: Int) -> Complex {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
-    assertSameSize(a, b)
+    validateSize(a, b)
     return vectorPowReal(a, b)
 }
 
@@ -113,13 +113,12 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
-    assertSameSize(a, b)
-    var real = RealArray(repeating: 0, count: a.0.count)
-    var imag = RealArray(repeating: 0, count: a.1.count)
-    for k in 0 ..< a.0.count {
-        (real[k], imag[k]) = pow(Complex(a.0[k], a.1[k]), b[k])
+    validateSize(a, b)
+    var c: ComplexArray = a
+    for k in 0 ..< a.count {
+        c[k] = pow(a[k], b[k])
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -128,13 +127,12 @@ public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
-    assertSameSize(a, b)
-    var real = RealArray(repeating: 0, count: b.0.count)
-    var imag = RealArray(repeating: 0, count: b.1.count)
-    for k in 0 ..< b.0.count {
-        (real[k], imag[k]) = pow(a[k], Complex(b.0[k], b.1[k]))
+    validateSize(a, b)
+    var c: ComplexArray = b
+    for k in 0 ..< b.count {
+        c[k] = pow(a[k], b[k])
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -143,12 +141,11 @@ public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
-    var real = RealArray(repeating: 0, count: a.count)
-    var imag = RealArray(repeating: 0, count: a.count)
+    var c: ComplexArray = ComplexArray(count: a.count)
     for k in 0 ..< a.count {
-        (real[k], imag[k]) = pow(a[k], b)
+        c[k] = pow(a[k], b)
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -157,12 +154,11 @@ public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
-    var real = RealArray(repeating: 0, count: b.count)
-    var imag = RealArray(repeating: 0, count: b.count)
+    var c: ComplexArray = ComplexArray(count: b.count)
     for k in 0 ..< b.count {
-        (real[k], imag[k]) = pow(a, b[k])
+        c[k] = pow(a, b[k])
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -171,13 +167,12 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
-    assertSameSize(a)
-    var real = RealArray(repeating: 0, count: a.0.count)
-    var imag = RealArray(repeating: 0, count: a.1.count)
-    for k in 0 ..< a.0.count {
-        (real[k], imag[k]) = pow(Complex(a.0[k], a.1[k]), b)
+    validateSize(a)
+    var c: ComplexArray = ComplexArray(count: a.count)
+    for k in 0 ..< a.count {
+        c[k] = pow(a[k], b)
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -186,13 +181,12 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
-    assertSameSize(b)
-    var real = RealArray(repeating: 0, count: b.0.count)
-    var imag = RealArray(repeating: 0, count: b.1.count)
-    for k in 0 ..< b.0.count {
-        (real[k], imag[k]) = pow(a, Complex(b.0[k], b.1[k]))
+    validateSize(b)
+    var c: ComplexArray = ComplexArray(count: b.count)
+    for k in 0 ..< b.count {
+        c[k] = pow(a, b[k])
     }
-    return (real, imag)
+    return c
 }
 
 /// Power.
@@ -201,8 +195,8 @@ public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
 ///   - exponent: Complex number.
 /// - Returns: Raises `a` to the power of `b
 public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
-    let (a, b) = base
-    let (c, d) = exponent
+    let (a, b) = (base.real, base.imag)
+    let (c, d) = (exponent.real, exponent.imag)
 
     // Convert base to polar form
     let r = hypot(a, b)
@@ -213,7 +207,7 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
     let newR = pow(r, c) * exp(-d * theta)
     let newTheta = d * log(r) + c * theta
 
-    return (newR * cos(newTheta), newR * sin(newTheta))
+    return Complex(newR * cos(newTheta), newR * sin(newTheta))
 }
 
 /// Power.
@@ -222,12 +216,11 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b
 public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    assertSameSize(a, b)
-    var real = RealArray(repeating: 0, count: a.0.count)
-    var imag = RealArray(repeating: 0, count: a.1.count)
-    for k in 0 ..< a.0.count {
-        (real[k], imag[k]) = pow(Complex(a.0[k], a.1[k]), Complex(b.0[k], b.1[k]))
+    validateSize(a, b)
+    var c: ComplexArray = ComplexArray(count: a.count)
+    for k in 0 ..< a.count {
+        c[k] = pow(a[k], b[k])
     }
 
-    return (real, imag)
+    return c
 }

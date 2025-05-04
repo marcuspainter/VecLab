@@ -13,7 +13,7 @@ import Foundation
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: Real) -> Real {
+public func polyval(coefficients p: RealArray, point x: Real) -> Real {
     let y = vDSP.evaluatePolynomial(usingCoefficients: p,
                                     withVariables: [x])
     if y.count != 1 {
@@ -27,19 +27,46 @@ public func polyval(_ p: RealArray, _ x: Real) -> Real {
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: RealArray) -> RealArray {
+public func polyval(coefficients p: RealArray, points x: RealArray) -> RealArray {
     return vDSP.evaluatePolynomial(usingCoefficients: p,
                                    withVariables: x)
 }
 
 /// Polynomial evaluation.
 /// - Parameters:
-///   - p:  Polynomial coefficients.
+///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: Complex) -> Complex {
+public func polyval(coefficients p: RealArray, point x: Complex) -> Complex {
     let n = length(p) // Get the number of coefficients
-    var y = (p[0], Real(0)) // Initialize the result with the first coefficient
+    var y = Complex(p[0], Real(0)) // Initialize the result with the first coefficient
+
+    // Horner's method: Iterate over the coefficients
+    for i in 1 ..< n {
+        y = y * x + p[i]
+    }
+    return y
+}
+
+/// Polynomial evaluation.
+/// - Parameters:
+///   - p: Polynomial coefficients.
+///   - x: Query point.
+/// - Returns: The value of the polynomial p at each point in x.
+public func polyval(coefficients p: RealArray, points x: ComplexArray) -> ComplexArray {
+    validateSize(x)
+    return x.map { polyval(coefficients: p, point: $0) }
+}
+
+/// Polynomial evaluation.
+/// - Parameters:
+///   - p: Polynomial coefficients.
+///   - x: Query point.
+/// - Returns: The value of the polynomial p at each point in x.
+public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
+    validateSize(p)
+    let n = length(p) // Get the number of coefficients
+    var y = p[0]// Initialize the result with the first coefficient
 
     // Horner's method: Iterate over the coefficients
     for i in 1 ..< n {
@@ -53,35 +80,8 @@ public func polyval(_ p: RealArray, _ x: Complex) -> Complex {
 ///   - p:  Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: RealArray, _ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
-    return iterate(x) { polyval(p, $0) }
-}
-
-/// Polynomial evaluation.
-/// - Parameters:
-///   - p:  Polynomial coefficients.
-///   - x: Query point.
-/// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: ComplexArray, _ x: Complex) -> Complex {
-    assertSameSize(p)
-    let n = length(p) // Get the number of coefficients
-    var y = (p.0[0], p.1[0]) // Initialize the result with the first coefficient
-
-    // Horner's method: Iterate over the coefficients
-    for i in 1 ..< n {
-        y = y * x + (p.0[i], p.1[i])
-    }
-    return y
-}
-
-/// Polynomial evaluation.
-/// - Parameters:
-///   - p:  Polynomial coefficients.
-///   - x: Query point.
-/// - Returns: The value of the polynomial p at each point in x.
-public func polyval(_ p: ComplexArray, _ x: ComplexArray) -> ComplexArray {
-    assertSameSize(p)
-    assertSameSize(x)
-    return iterate(x) { polyval(p, $0) }
+public func polyval(_coefficients p: ComplexArray, points x: ComplexArray) -> ComplexArray {
+    validateSize(p)
+    validateSize(x)
+    return x.map { polyval(coefficients: p, point: $0) }
 }

@@ -7,28 +7,6 @@
 
 import Foundation
 
-/// Biquad filter type
-public enum BiquadType {
-    /// Low pass.
-    case lowpass
-    /// High pass.
-    case highpass
-    /// High shelf.
-    case highshelf
-    /// Low shelf.
-    case lowshelf
-    /// Peak.
-    case peak
-    /// Notch.
-    case notch
-    /// Band pass Q.
-    case bandpassQ
-    /// Band pass 0.
-    case bandpass0
-    /// All pass.
-    case allpass
-}
-
 /// Filter coefficients for biquad filter.
 /// - Parameters:
 ///   - f: Frequency (Hz).
@@ -37,7 +15,7 @@ public enum BiquadType {
 ///   - dbGain: Gain (dB).
 ///   - type: Filter type.
 /// - Returns: (b, a) coefficients as a tuple.
-public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: [Real], a: [Real]) {
+public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: RealArray, a: RealArray) {
     // Fs = 48000
     // f0 = 1000
     // Q = sqrt(2)/2

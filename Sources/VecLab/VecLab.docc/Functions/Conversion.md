@@ -7,39 +7,37 @@ Coordinate, degrees and radians, and decibel conversion.
 ### Coordinate Conversion
 
 - ``cart2pol(_:_:)``
-- ``cart2pol(_:_:_:)-3wmn0``
-- ``cart2pol(_:_:_:)-3yi56``
-- ``cart2pol(_:_:_:)-5vkxf``
-- ``cart2sph(_:_:_:)-6i7uh``
-- ``cart2sph(_:_:_:)-5gd1k``
-- ``pol2cart(_:_:)-113z5``
-- ``pol2cart(_:_:)-9uxrq``
-- ``pol2cart(_:_:_:)-9cdm3``
-- ``pol2cart(_:_:_:)-1hun1``
-- ``sph2cart(_:_:_:)-5756v``
-- ``sph2cart(_:_:_:)-9gcit``
+- ``cart2pol(_:_:_:)->(Real,_,_)``
+- ``cart2pol(_:_:_:)->(_,_)``
+- ``cart2pol(_:_:_:)->(RealArray,_,_)``
+- ``cart2sph(_:_:_:)->(Real,_,_)``
+- ``cart2sph(_:_:_:)->(RealArray,_,_)``
+- ``pol2cart(_:_:)->(Real,_)``
+- ``pol2cart(_:_:)->(RealArray,_)``
+- ``pol2cart(_:_:_:)->(Real,_,_)``
+- ``pol2cart(_:_:_:)->(RealArray,_,_)``
+- ``sph2cart(_:_:_:)->(Real,_,_)``
+- ``sph2cart(_:_:_:)->(RealArray,_,_)``
 
 ### Degrees and Radians
 
-- ``deg2rad(_:)-zhgw``
-- ``deg2rad(_:)-99si7``
-- ``rad2deg(_:)-3pglo``
-- ``rad2deg(_:)-9bbn``
+- ``deg2rad(_:)->Real``
+- ``deg2rad(_:)->RealArray``
+- ``rad2deg(_:)->Real``
+- ``rad2deg(_:)->RealArray``
 
 ### Decibel Conversion
 
-- ``mag2db(_:)-9t5a5``
-- ``mag2db(_:)-9h8vx``
-- ``pow2db(_:)-62pq4``
-- ``pow2db(_:)-23r63``
-- ``db2mag(_:)-9sslk``
-- ``db2mag(_:)-5ht3e``
-- ``db2pow(_:)-94hdb``
-- ``db2pow(_:)-7q50x``
+- ``mag2db(_:)->Real``
+- ``mag2db(_:)->RealArray``
+- ``pow2db(_:)->Real``
+- ``pow2db(_:)->RealArray``
+- ``db2mag(_:)->Real``
+- ``db2mag(_:)->RealArray``
+- ``db2pow(_:)->Real``
+- ``db2pow(_:)->RealArray``
 
 ### Floating Point Conversion
 
-- ``f2d(_:)-23j9i``
-- ``f2d(_:)-5b0v6``
-- ``d2f(_:)-3s1lo``
-- ``d2f(_:)-86efh``
+- ``f2d(_:)->[Double]``
+- ``d2f(_:)->[Float]``

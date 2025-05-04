@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -7,27 +7,30 @@ let package = Package(
     name: "VecLab",
     platforms: [
         .iOS("16.4"), // LAPACK
-        .macOS(.v14)
+        .macOS("15.0")
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
+        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "VecLab",
-            targets: ["VecLab"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+            targets: ["VecLab"])
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        // Targets are the basic building blocks of a package, defining a module or a test suite.
+        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "VecLab",
             dependencies: [],
             resources: [.process("Resources")],
             cSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
             cxxSettings: [.define("ACCELERATE_NEW_LAPACK", to: "1"), .define("ACCELERATE_LAPACK_ILP64", to: "1")],
+            swiftSettings: [
+                .define("STRICT_CONCURRENCY"),
+                .unsafeFlags([
+                    "-Xfrontend", "-strict-concurrency=complete",
+                    "-Xfrontend", "-enable-actor-data-race-checks",
+                ])
+            ],
             linkerSettings: [.linkedFramework("Accelerate")]
         ),
         .testTarget(
@@ -36,10 +39,3 @@ let package = Package(
         )
     ]
 )
-
-// Swift 5.10 StrictConcurrency
-for target in package.targets {
-    var settings = target.swiftSettings ?? []
-    settings.append(.enableExperimentalFeature("StrictConcurrency"))
-    target.swiftSettings = settings
-}

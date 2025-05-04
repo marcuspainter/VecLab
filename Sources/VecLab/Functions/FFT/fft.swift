@@ -12,24 +12,47 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
 public func fft(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.0.count,
+                                                       count: x.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
-                                                       ofType: Real.self) else {
-        return ([Real](repeating: Real.nan, count: x.0.count),
-                [Real](repeating: Real.nan, count: x.0.count))
+                                                       ofType: Double.self) else {
+        return ComplexArray([Real](repeating: Real.nan, count: x.count),
+                [Real](repeating: Real.nan, count: x.count))
     }
 
-    let splitComplexOutput = dft.transform(real: x.0, imaginary: x.1)
+    let splitComplexOutput = dft.transform(real: x.real, imaginary: x.imag)
 
-    return (splitComplexOutput.real, splitComplexOutput.imaginary)
+    return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
 public func fft(_ x: RealArray) -> ComplexArray {
-    return ([], [])
+    return ComplexArray()
+}
+
+/// Setup fft functions for reuse.
+/// - Parameters:
+///   - count: FFT size.
+///   - direction: Forward or inverse transform..
+///   - transformType: Complex or real type.
+/// - Returns: A DiscreteFourierTransform.
+public func fftsetup(count: Int,
+                direction: vDSP.FourierTransformDirection,
+                transformType: vDSP.DFTTransformType = .complexComplex)
+            -> vDSP.DiscreteFourierTransform<Double>? {
+    do {
+        let dft = try vDSP.DiscreteFourierTransform(previous: nil,
+                                                 count: count,
+                                                 direction: direction,
+                                                 transformType: transformType,
+                                                 ofType: Double.self)
+        return dft
+    } catch {
+        print("fftsetup: \(error)")
+        return nil
+    }
 }
 
 /*

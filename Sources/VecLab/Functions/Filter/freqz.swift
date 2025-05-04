@@ -14,10 +14,10 @@ import Foundation
 ///   - N: FFT Length.
 /// - Returns: Complex transfer function.
 public func freqz(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
-    let bb = paddata(b, N * 2)
-    let aa = paddata(a, N * 2)
+    let bb = paddata(b, length: N * 2)
+    let aa = paddata(a, length: N * 2)
     let H = fftr(bb) / fftr(aa)
-    let HH = slice(H, 0 ..< N)
+    let HH = H[0 ..< N]
     return HH
 }
 
@@ -34,13 +34,13 @@ public func freqz2(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
     let w = vector(0 ... N - 1) * (.pi / Real(N))
 
     // Initialize the frequency response
-    var H = complex(count: N)
+    var H = ComplexArray(count: N)
 
     // Compute the frequency response H(e^jw)
     for i in 0 ..< length(w) {
         // Evaluate the numerator and denominator polynomials at e^(-j*w[i])
-        var numerator = complex()
-        var denominator = complex()
+        var numerator = Complex()
+        var denominator = Complex()
         for k in 0 ..< length(b) {
             numerator = numerator + b[k] * exp(-Real.i * w[i] * Real(k))
         }
@@ -48,8 +48,7 @@ public func freqz2(b: RealArray, a: RealArray, N: Int = 512) -> ComplexArray {
             denominator = denominator + a[k] * exp(-Real.i * w[i] * Real(k))
         }
         let HH = numerator / denominator
-        H.0[i] = HH.0
-        H.1[i] = HH.1
+        H[i] = HH
     }
     return H
 }

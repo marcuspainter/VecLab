@@ -6,32 +6,32 @@
 
 import Foundation
 
-func assertSameSize(_ a: RealArray, _ b: RealArray,
+func validateSize(_ a: RealArray, _ b: RealArray,
                     file: StaticString = #file, line: UInt = #line) {
     assert(a.count == b.count,
            "Incompatible sizes \(a.count) \(b.count)", file: file, line: line)
 }
 
-func assertSameSize(_ a: RealArray, _ b: ComplexArray,
+func validateSize(_ a: RealArray, _ b: ComplexArray,
                     file: StaticString = #file, line: UInt = #line) {
-    assert(a.count == b.0.count && a.count == b.1.count && b.0.count == b.1.count,
-           "Incompatible sizes \(a.count) (\(b.0.count),\(b.1.count))", file: file, line: line)
+    assert(a.count == b.real.count && a.count == b.imag.count && b.real.count == b.imag.count,
+           "Incompatible sizes \(a.count) (\(b.real.count),\(b.imag.count))", file: file, line: line)
 }
 
-func assertSameSize(_ a: ComplexArray, _ b: RealArray,
+func validateSize(_ a: ComplexArray, _ b: RealArray,
                     file: StaticString = #file, line: UInt = #line) {
-    assert(a.0.count == b.count && a.1.count == b.count && a.0.count == a.1.count,
-           "Incompatible sizes (\(a.0.count),\(a.1.count)) \(b.count)", file: file, line: line)
+    assert(a.real.count == b.count && a.imag.count == b.count && a.real.count == a.imag.count,
+           "Incompatible sizes (\(a.real.count),\(a.imag.count)) \(b.count)", file: file, line: line)
 }
 
-func assertSameSize(_ a: ComplexArray, _ b: ComplexArray,
+func validateSize(_ a: ComplexArray, _ b: ComplexArray,
                     file: StaticString = #file, line: UInt = #line) {
-    assert(a.0.count == b.0.count && a.1.count == b.1.count && a.0.count == a.1.count && b.0.count == b.1.count,
-           "Incompatible sizes (\(a.0.count) \(a.1.count))  (\(b.0.count) \(b.1.count)) ", file: file, line: line)
+    assert(a.real.count == b.imag.count && a.imag.count == b.imag.count && a.real.count == a.imag.count && b.real.count == b.imag.count,
+           "Incompatible sizes (\(a.real.count) \(a.imag.count))  (\(b.real.count) \(b.imag.count)) ", file: file, line: line)
 }
 
-func assertSameSize(_ a: ComplexArray,
+func validateSize(_ a: ComplexArray,
                     file: StaticString = #file, line: UInt = #line) {
-    assert(a.0.count == a.1.count,
-           "Incompatible sizes (\(a.0.count) \(a.1.count))", file: file, line: line)
+    assert(a.real.count == a.imag.count,
+           "Incompatible sizes (\(a.real.count) \(a.imag.count))", file: file, line: line)
 }

@@ -8,16 +8,21 @@
 import Foundation
 
 /// Real part of a complex number.
+///
+/// This function is retained for compatibility. Use the `real` property.
 /// - Parameter x: Complex number.
 /// - Returns: The real part.
+@inlinable
 public func real(_ x: Complex) -> Real {
-    return x.0
+    return x.real
 }
 
 /// Real parts of a complex array.
+///
+/// This function is retained for compatibility. Use the `real` property.
 /// - Parameter x: Complex array.
 /// - Returns: A real array of real part of a complex array.
 public func real(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
-    return x.0
+    validateSize(x)
+    return x.real
 }

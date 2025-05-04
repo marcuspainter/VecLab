@@ -14,15 +14,15 @@ import Accelerate
 public func dftr(_ x: RealArray) -> ComplexArray {
     let n = length(x)
     if n == 1 {
-        return (x, [Real(0)])
+        return ComplexArray(x, [Real(0)])
     }
 
-    var y = complex(sized: x)
+    var y = ComplexArray(count: x.count)
     let k = RealArray(0..<n)
     let omega = -2 * Real.pi * Real.i * k  / Real(n)
     for i in 0..<x.count {
         let w = exp(omega * Real(i))
-        (y.0[i], y.1[i]) = sum(x * w)
+        y[i] = sum(x * w)
     }
     return y
 }

@@ -5,7 +5,11 @@
 
 A real/complex vector library in Swift.
 
-Compatible with Swift 6.0.
+## New Version 2.0
+
+- New `ComplexDouble` and `ComplexDoubleArray` structs.
+- Array range indexing and slicing.
+- `ComplexDoubleArray` conforms to collection protocol.
 
 ## Renamed to Version 1.0
 
@@ -27,21 +31,22 @@ Full documentation can be found on the [Swift Package Index](https://swiftpackag
 
 ### Example Usage
 
-The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a recursive algorithm and its NumPy and MATLAB equivalents:
+The library includes an FFT function using Accelerate, but here is an example of creating a complex FFT using a 
+recursive algorithm and its NumPy and MATLAB equivalents:
 
 ### Swift
 
 ```swift
 // FFTX Fast Finite Fourier Transform.
 public func fftx(_ x: ComplexArray) -> ComplexArray {
-    let n = length(x) 
-    let omega = exp(-2 * Real.pi * 1.i / Real(n))
+    let n = length(x)
+    let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0 ... (n / 2 - 1))
         let w = omega ** k
-        let u = fftx(slice(x, 0 ..< n - 1, 2))
-        let v = w * fftx(slice(x, 1 ..< n, 2))
+        let u = fftx(x[0 ..< n - 1, 2])
+        let v = w * fftx(x[1 ..< n, 2])
         return cat(u + v, u - v)
     } else {
         return x
@@ -104,13 +109,11 @@ end
 
 ### Library Convention
 
-The library works with existing Swift types, using only arrays and tuples. For convenience, these have been given type aliases for the underlying native types. Only the `Real` need be defined, the others are all derived from this type.
-
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = (Real, Real)
-public typealias ComplexArray = ([Real], [Real])
+public typealias Complex = ComplexDouble
+public typealias ComplexArray = ComplexDoubleArray
 ```
 
 ### Real Numbers
@@ -123,32 +126,42 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers are defined as a tuple of two real numbers, representing the real and imaginary parts of the number. 
+Complex numbers are defined as a struct `ComplexDouble` of two real numbers, representing the real and imaginary parts
+ of the number. 
 
 ```swift
-let c = (10.0, 2.0)
+public struct ComplexDouble { 
+    /// Real part.
+    public var real: Double
+    /// Imaginary part.
+    public var imag: Double
+}
 ```
 ### Complex Arrays
 
-A complex array consists of a tuple of two real arrays. This arrangement is sometimes known as split complex. 
+A complex array now has its own struct type, `ComplexDouble`. It follows the Collection protocol and is not a true
+Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained for compatibility 
+use with vDSP vector functions which use the `DSPDoubleSplitComplex` type.
+ 
+The collection can be indexed that returns a `ComplexDouble`. 
 
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
 let imagArray = [1.0, 2.0, 3.0, 4.0]
-let complexArray = (realArray, imagArray)
+let complexArray = ComplexArray(realArray, imagArray)
 ```
 
 ### The Imaginary Unit
 
-The imaginary unit, `i`, is defined as an extension to `Real`, similar to other constants such as pi. Alternatives are 
-as a extension of Double, Float and Int or a tuple of real and imaginary parts.
+The imaginary unit, `i`, is defined as an extension to `Real`, similar to other Swift constants such as pi. 
+Alternatives are as a extension of Double, Float.
 
-These are all equivalent to 10+10i:
+These are all equivalent to 2+3i:
 
 ```swift
-let c1 = 10 + 10 * Real.i
-let c2 = 10 + 10.i
-let c3 = (10, 10) 
+let c1 = 2.0 + 3.0 * Real.i
+let c2 = 2.0 + 3.i
+let c3 = Complex(2.0, 3.0)
 ```
 It can be used in any expression. This is a complex exponential:
 
@@ -157,10 +170,6 @@ let phi = 100.0
 let c1 = exp(Real.i * 2 * Real.pi * phi)
 let c2 = exp(1.i * 2 * Real.pi * phi)
 let c3 = exp(2.i * Real.pi * phi)
-let c4 = exp((0, 2) * Real.pi * phi)
-let c5 = exp((0, 2 * Real.pi) * phi)
-let c6 = exp((0, 2 * Real.pi * phi))
-```
 
 ### Ranges
 
@@ -173,14 +182,6 @@ Swift style:
 let t = [Double](0...<100)
 let s = [Double](1...100, 2)
 ```
-
-VecLab style using the `vector` function:
-
-```swift
-let t = vector(0..<100)
-let s = vector(1...100, 2)
-```
-
 ### Operators
 
 Overloaded operators for scalar and vectors.
@@ -200,8 +201,8 @@ Overloaded operators for scalar and vectors.
 
 |Group|Functions|
 |---|---|
-|Arrays|arange, cat, circshift, dot, flip, gather, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
-|Basic| abs, all, any, cumsum, disp, iterate, norm, prod, sign, sum|
+|Arrays| arange, cat, circshift, dot, flip, length, ones, paddata, repelem, resize, slice, trimdata, zeros|
+|Basic| abs, cumsum, disp, iterate, norm, prod, sign, sum|
 |Complex| abs, angle, conj, cplxpair, imag, real, unwrap, wrapTo2Pi, wrapToPi|
 |Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nchoosek, perms, prevprime, primes|

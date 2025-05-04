@@ -11,15 +11,15 @@ import Accelerate
 /// - Parameter coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - Returns: Array of complex values representing the roots of the polynomial
-//@available(iOS 16.4, *)
+// @available(iOS 16.4, *)
 public func roots(coefficients: RealArray) -> ComplexArray {
     // Handle special cases
     if coefficients.isEmpty {
-        return ([], [])
+        return ComplexArray()
     }
 
     if coefficients.count == 1 {
-        return ([], []) // Constant polynomial has no roots
+        return ComplexArray() // Constant polynomial has no roots
     }
 
     // Find the index of the first non-zero coefficient
@@ -30,7 +30,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // If all coefficients are zero, return empty array
     if startIndex == coefficients.count {
-        return ([], [])
+        return ComplexArray()
     }
 
     // Get normalized coefficients (divide by leading coefficient)
@@ -38,7 +38,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // Handle special case for linear polynomial
     if p.count == 2 {
-        return ([-p[1] / p[0]], [0.0])
+        return ComplexArray([-p[1] / p[0]], [0.0])
     }
 
     let n = p.count - 1
@@ -61,10 +61,10 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     var wI = [Real](repeating: 0.0, count: n) // Imaginary parts of eigenvalues
 
     // Call LAPACK's dgeev to compute eigenvalues
-    //sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
+    // sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
 
     (wR, wI) = eigenvalues(&A, n)
-    
+
     // Convert eigenvalues to complex number tuples
     var result = [(Real, Real)]()
     for i in 0 ..< n {
@@ -80,16 +80,16 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // Convert to complex array
 
-    var complexArray: ComplexArray = ([], [])
+    var complexArray = ComplexArray()
     for k in 0 ..< result.count {
-        complexArray.0.append(result[k].0)
-        complexArray.1.append(result[k].1)
+        let item = Complex(result[k].0, result[k].1)
+        complexArray.append(item)
     }
 
     return complexArray
 }
 
-fileprivate func eigenvalues(_ A: inout [Double], _ n: Int) -> ([Double], [Double]) {
+private func eigenvalues(_ A: inout [Double], _ n: Int) -> ([Double], [Double]) {
     // Prepare variables for eigenvalue computation
     var jobVL = "N".utf8CString[0] // Don't compute left eigenvectors
     var jobVR = "N".utf8CString[0] // Don't compute right eigenvectors
@@ -107,17 +107,17 @@ fileprivate func eigenvalues(_ A: inout [Double], _ n: Int) -> ([Double], [Doubl
 
     // Call LAPACK's dgeev to compute eigenvalues
     dgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
-    
+
     // Check if computation was successful
     if info != 0 {
         print("Error: dgeev returned info = \(info)")
         return ([], [])
     }
-    
+
     return (wR, wI)
 }
 
-fileprivate func eigenvalues(_ A: inout [Float], _ n: Int) -> ([Float], [Float]) {
+private func eigenvalues(_ A: inout [Float], _ n: Int) -> ([Float], [Float]) {
     // Prepare variables for eigenvalue computation
     var jobVL = "N".utf8CString[0] // Don't compute left eigenvectors
     var jobVR = "N".utf8CString[0] // Don't compute right eigenvectors
@@ -135,13 +135,13 @@ fileprivate func eigenvalues(_ A: inout [Float], _ n: Int) -> ([Float], [Float])
 
     // Call LAPACK's sgeev to compute eigenvalues
     sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
-    
+
     // Check if computation was successful
     if info != 0 {
         print("Error: sgeev returned info = \(info)")
         return ([], [])
     }
-    
+
     return (wR, wI)
 }
 

@@ -6,8 +6,8 @@ Filter functions.
 
 ### Filter
 
-- ``filter(b:a:x:)-5e25y``
-- ``filter(b:a:x:)-3s8ml``
+- ``filter(b:a:x:)->RealArray``
+- ``filter(b:a:x:)->ComplexArray``
 
 ### Biquad Filter
 - ``biquad(f:fs:Q:dbGain:type:)``

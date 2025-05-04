@@ -5,7 +5,6 @@
 //  Created by Marcus Painter on 11/09/2023.
 //
 
-import Accelerate
 import Foundation
 
 /// Circularly shift array.
@@ -31,7 +30,8 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
 ///   - k: Shift amount.
 /// - Returns: Circularly shifted array
 public func circshift(_ x: ComplexArray, _ k: Int) -> ComplexArray {
-    let r = circshift(x.0, k)
-    let i = circshift(x.1, k)
-    return (r, i)
+    validateSize(x)
+    let real = circshift(x.real, k)
+    let imag = circshift(x.imag, k)
+    return ComplexArray(real, imag)
 }

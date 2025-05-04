@@ -31,14 +31,14 @@ public func slice(_ x: RealArray, _ range: Range<Int>, _ by: Int = 1) -> RealArr
 ///   - by: The index step size.
 /// - Returns: The sub array.
 public func slice(_ x: ComplexArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     if by == 1 {
-        return (Array(x.0[range]), Array(x.1[range]))
+        return ComplexArray(Array(x.real[range]), Array(x.imag[range]))
     } else {
         let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
-        let r = indexRange.map { x.0[$0] }
-        let i = indexRange.map { x.1[$0] }
-        return (r, i)
+        let real = indexRange.map { x.real[$0] }
+        let imag = indexRange.map { x.imag[$0] }
+        return ComplexArray(real, imag)
     }
 }
 
@@ -66,13 +66,13 @@ public func slice(_ x: RealArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> R
 ///   - by: The index step size.
 /// - Returns: The sub array.
 public func slice(_ x: ComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     if by == 1 {
-        return (Array(x.0[range]), Array(x.1[range]))
+        return ComplexArray(Array(x.real[range]), Array(x.imag[range]))
     } else {
         let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
-        let r = indexRange.map { x.0[$0] }
-        let i = indexRange.map { x.1[$0] }
-        return (r, i)
+        let real = indexRange.map { x.real[$0] }
+        let imag = indexRange.map { x.imag[$0] }
+        return ComplexArray(real, imag)
     }
 }

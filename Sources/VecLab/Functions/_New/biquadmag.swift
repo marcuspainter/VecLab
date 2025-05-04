@@ -25,7 +25,7 @@ public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
     // let w = f * 2 * Real.pi / 48000
     let w = vector(0 ... N-1) * (.pi / Real(N))
 
-    var phi = sin(w / 2)
+    var phi = sin(w / 2.0)
     phi = phi * phi
 /*
     let H = 10 * log10[(b0 + b1 + b2) ** 2 - 4 * (b0 * b1 + 4 * b0 * b2 + b1 * b2) * phi + 16 * b0 * b2 * phi ** 2]
@@ -51,31 +51,3 @@ public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
 // http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
 
-public func biquadmag2(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
-    let b0 = b[0]
-    let b1 = b[1]
-    let b2 = b[2]
-    let a0 = a[0]
-    let a1 = a[1]
-    let a2 = a[2]
-
-    // let f = logspace(log10(20), log10(20000), 201)
-    // let w = f * 2 * Real.pi / 48000
-    let w = vector(0 ... N-1) * (.pi / Real(N))
-
-    var phi = sin(w / 2)
-    phi = phi * phi
-/*
-    let H = 10 * log10[(b0 + b1 + b2) ** 2 - 4 * (b0 * b1 + 4 * b0 * b2 + b1 * b2) * phi + 16 * b0 * b2 * phi ** 2]
-    -10 * log10[(a0 + a1 + a2) ** 2 - 4 * (a0 * a1 + 4 * a0 * a2 + a1 * a2) * phi + 16 * a0 * a2 * phi ** 2]
-*/
-    let bb = (b0 + b1 + b2) / 2
-    let bb2 = bb * bb
-    let aa = (a0 + a1 + a2) / 2
-    let aa2 = aa * aa
-
-    let H2 = 10 * log10(bb2 - phi * (4 * b0 * b2 * (1 - phi) + b1 * (b0 + b2)))
-        - 10 * log10(aa2 - phi * (4 * a0 * a2 * (1 - phi) + a1 * (a0 + a2)))
-
-    return H2
-}

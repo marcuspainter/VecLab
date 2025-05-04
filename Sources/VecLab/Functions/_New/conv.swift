@@ -11,27 +11,26 @@ import Foundation
 /// Convolution.
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
-///   - shape: "same" or "full"
+///   - y: Real array.
+///   - shape: `same` or `full`
 /// - Returns: The result of the convolution.
-public func conv(_ x: RealArray, _ y: RealArray, _ shape: String = "same") -> RealArray {
+public func conv(_ x: RealArray, _ y: RealArray, shape: ConvolutionType = .same) -> RealArray {
+    validateSize(x, y)
     switch shape {
-        case "same":
+        case .same:
             return convsame(x, y)
-        case "full":
+        case .full:
             return convfull(x, y)
-        default:
-            assert(false, "conv shape must be \"same\" or \"full\"")
-            return []
     }
 }
 
 /// Convolution "same".
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
+///   - y: Real array.
 /// - Returns: The result of the convolution.
 private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
+
     let nx = length(x)
     let ny = length(y)
     let n = nx + ny - 1  // Full convolution length
@@ -40,8 +39,8 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
     let N = Int(2 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // Compute FFT convolution
     let A = fftr(a)
@@ -53,22 +52,22 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
     let end_idx = start_idx + nx - 1   // Ensure length(u) output
 
-    let c = slice(full_c, start_idx ... end_idx)
+    let c = full_c[start_idx ... end_idx]
     return c
 }
 
 /// Convolution "full".
 /// - Parameters:
 ///   - x: Real array.
-///   - y: Real array
+///   - y: Real array.
 /// - Returns: The result of the convolution.
 private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
     let n = length(x) + length(y) - 1 // Result length
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     let A = fftr(a)
     let B = fftr(b)
@@ -83,25 +82,22 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 /// Convolution.
 /// - Parameters:
 ///   - x: Complex array.
-///   - y: Complex array
-///   - shape: "same" or "full"
+///   - y: Complex array.
+///   - shape: `same` or `full`
 /// - Returns: The result of the convolution.
-public func conv(_ x: ComplexArray, _ y: ComplexArray, _ shape: String = "same") -> ComplexArray {
+public func conv(_ x: ComplexArray, _ y: ComplexArray, shape: ConvolutionType = .same) -> ComplexArray {
     switch shape {
-        case "same":
+        case .same:
             return convsame(x, y)
-        case "full":
+        case .full:
             return convfull(x, y)
-        default:
-            assert(false, "conv shape must be \"same\" or \"full\"")
-            return ([], [])
     }
 }
 
 /// Convolution "same".
 /// - Parameters:
 ///   - x: Complex array.
-///   - y: Complex array
+///   - y: Complex array.
 /// - Returns: The result of the convolution.
 private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let nx = length(x)
@@ -112,8 +108,8 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let N = Int(2 ** nextpow2(n))
 
     // Zero-pad inputs
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     // Compute FFT convolution
     let A = fft(a)
@@ -125,7 +121,7 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
     let end_idx = start_idx + nx - 1   // Ensure length(u) output
 
-    let c = slice(full_c, start_idx ... end_idx)
+    let c = full_c[start_idx ... end_idx]
     return c
 }
 
@@ -139,8 +135,8 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
-    let a = paddata(x, N)
-    let b = paddata(y, N)
+    let a = paddata(x, length: N)
+    let b = paddata(y, length: N)
 
     let A = fft(a)
     let B = fft(b)
@@ -148,7 +144,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let C = A * B
     var c = ifft(C)
 
-    c = trimdata(c, n) // Trim to correct length
+    c = trimdata(c, length: n) // Trim to correct length
     return c
 }
 
@@ -199,7 +195,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
  
  */
 
-public func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
+func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     // The resulting convolution array will have a size of (x.count + y.count - 1)
     let n = x.count
     let m = y.count

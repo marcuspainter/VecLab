@@ -42,40 +42,40 @@ public func vector(_ x: [Double]) -> RealArray {
 /// Create a real array from a range.
 /// - Parameters:
 ///   - range: The range.
-///   - strideValue: Optional stride value. Default 1.
+///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
-public func vector(_ range: Range<Int>, _ strideValue: Int = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
+public func vector(_ range: Range<Int>, _ step: Int = 1) -> RealArray {
+    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: step)
     return stridedValues.map { Real($0) }
 }
 
 /// Create a real array from a real range.
 /// - Parameters:
 ///   - range: The range.
-///   - strideValue: Optional stride value. Default 1.
+///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
-public func vector(_ range: Range<Real>, _ strideValue: Real = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: strideValue)
+public func vector(_ range: Range<Real>, _ step: Real = 1) -> RealArray {
+    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: step)
     return stridedValues.map { Real($0) }
 }
 
 /// Create a real array from a real closed range.
 /// - Parameters:
 ///   - range: The range.
-///   - strideValue: Optional stride value. Default 1.
+///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
-public func vector(_ range: ClosedRange<Real>, _ strideValue: Real = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
+public func vector(_ range: ClosedRange<Real>, _ step: Real = 1) -> RealArray {
+    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: step)
     return stridedValues.map { Real($0) }
 }
 
 /// Create a real array from an integer closed range.
 /// - Parameters:
 ///   - range: The range.
-///   - strideValue: Optional stride value. Default 1.
+///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
-public func vector(_ range: ClosedRange<Int>, _ strideValue: Int = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: strideValue)
+public func vector(_ range: ClosedRange<Int>, _ step: Int = 1) -> RealArray {
+    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: step)
     return stridedValues.map { Real($0) }
 }
 
@@ -92,5 +92,5 @@ public func vector(sized: RealArray) -> RealArray {
 /// - Parameter sized: Complex array.
 /// - Returns: A real array the same size as the complex array.
 public func vector(sized: ComplexArray) -> RealArray {
-    return RealArray(repeating: 0, count: sized.0.count)
+    return RealArray(repeating: 0, count: sized.count)
 }

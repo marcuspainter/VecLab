@@ -21,22 +21,22 @@ public func tan(_ x: RealArray) -> RealArray {
 /// - Parameter x: Angle in radians.
 /// - Returns: The tangent of the angles.
 public func tan(_ x: Complex) -> Complex {
-    let twoX = 2.0 * x.0
-    let twoY = 2.0 * x.1
+    let twoX = 2.0 * x.real
+    let twoY = 2.0 * x.imag
     let denominator = cos(twoX) + cosh(twoY)
-    let r = sin(twoX) / denominator
-    let i = sinh(twoY) / denominator
-    return (r, i)
+    let real = sin(twoX) / denominator
+    let imag = sinh(twoY) / denominator
+    return Complex(real, imag)
 }
 
 /// Tangent of complex array in radians.
 /// - Parameter x: Angle in radians.
 /// - Returns: The tangent of the angles.
 public func tan(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     // Compute 2x and 2y
-    let twoX = vDSP.multiply(2.0, x.0)
-    let twoY = vDSP.multiply(2.0, x.1)
+    let twoX = vDSP.multiply(2.0, x.real)
+    let twoY = vDSP.multiply(2.0, x.imag)
 
     // Compute cos(2x) and cosh(2y)
     let cosTwoX = vForce.cos(twoX)
@@ -50,8 +50,8 @@ public func tan(_ x: ComplexArray) -> ComplexArray {
     let denominator = vDSP.add(cosTwoX, coshTwoY)
 
     // Compute the real and imaginary parts of tan
-    let r = vDSP.divide(sinTwoX, denominator)
-    let i = vDSP.divide(sinhTwoY, denominator)
+    let real = vDSP.divide(sinTwoX, denominator)
+    let imag = vDSP.divide(sinhTwoY, denominator)
 
-    return (r, i)
+    return ComplexArray(real, imag)
 }

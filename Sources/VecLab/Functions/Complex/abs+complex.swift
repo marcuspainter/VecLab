@@ -8,14 +8,13 @@
 import Foundation
 import Accelerate
 
-// VECTORIZED
-
 /// Magnitude  of a complex number.
 ///
 /// - Parameter x:Complex number.
 /// - Returns: Real value of  magnitudes.
+@inlinable
 public func abs(_ x: Complex) -> Real {
-    return sqrt(x.0 * x.0 + x.1 * x.1)
+    return sqrt(x.real * x.real + x.imag * x.imag)
 }
 
 /// Magnitudes  of a complex array.
@@ -23,6 +22,6 @@ public func abs(_ x: Complex) -> Real {
 /// - Parameter x:Complex array.
 /// - Returns: Real array of  magnitudes.
 public func abs(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     return vectorAbsComplexArray(x)
 }

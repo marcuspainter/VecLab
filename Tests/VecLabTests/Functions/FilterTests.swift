@@ -43,7 +43,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquad() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -54,7 +54,7 @@ class FilterTests: XCTestCase {
     }
 
     func testFreqz() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -64,7 +64,7 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
         
         let HH: ComplexArray =
-            ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
+        ComplexArray([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
         var H = freqz(b: b,a: a)
@@ -73,7 +73,7 @@ class FilterTests: XCTestCase {
     }
     
     func testFreqz2() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -83,7 +83,7 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
         
         let HH: ComplexArray =
-            ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
+        ComplexArray([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
         var H = freqz2(b: b,a: a)
@@ -94,7 +94,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquadmag() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -104,7 +104,7 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
         
         let HH: ComplexArray =
-            ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
+        ComplexArray([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
         var magnitude = biquadmag(b: b, a: a)
@@ -120,7 +120,7 @@ class FilterTests: XCTestCase {
     }
     
     func testBiquadfreqz() throws {
-        let Q = sqrt(2) / 2
+        let Q = sqrt(2.0) / 2.0
         let (b, a) = biquad(f: 100, fs: 44100, Q: Real(Q), dbGain: 6, type: .lowpass)
         
         let bb: RealArray = [0.050241422994311e-3, 0.100482845988622e-3, 0.050241422994311e-3]
@@ -130,7 +130,7 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
         
         let HH: ComplexArray = 
-            ([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
+        ComplexArray([0.999999999998857,  0.787447131918628,  0.16648785181672,  -0.176754632622424, -0.200636601365454],
             [                 0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
               
         var H = biquadfreqz(b: b, a: a)

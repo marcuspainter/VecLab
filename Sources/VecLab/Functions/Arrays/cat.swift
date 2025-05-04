@@ -36,10 +36,9 @@ public func cat(_ arrays: [RealArray]) -> RealArray {
 /// - Parameter arrays: List of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: ComplexArray...) -> ComplexArray {
-    var newArray = ComplexArray(([], []))
+    var newArray = ComplexArray()
     for array in arrays {
-        newArray.0.append(contentsOf: array.0)
-        newArray.1.append(contentsOf: array.1)
+        newArray.append(contentsOf: array)
     }
     return newArray
 }
@@ -47,10 +46,9 @@ public func cat(_ arrays: ComplexArray...) -> ComplexArray {
 /// - Parameter arrays: Array of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: [ComplexArray]) -> ComplexArray {
-    var newArray = ComplexArray(([], []))
+    var newArray = ComplexArray()
     for array in arrays {
-        newArray.0.append(contentsOf: array.0)
-        newArray.1.append(contentsOf: array.1)
+        newArray.append(contentsOf: array)
     }
     return newArray
 }

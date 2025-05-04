@@ -10,14 +10,14 @@ import Foundation
 /// Resize data by adding or removing elements.
 /// - Parameters:
 ///   - x: Input array
-///   - m: Size.
-/// - Returns: Array of new size.
-public func resize(_ x: RealArray, _ m: Int) -> RealArray {
+///   - m: Length.
+/// - Returns: Array of new length.
+public func resize(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     guard m != n else { return x }
     var y = x
     if m < n {
-        return slice(x, 0 ..< m)
+        return x[0 ..< m]
     } else {
         let zeroCount = m - n
         let zeros = RealArray(repeating: 0, count: zeroCount)
@@ -29,20 +29,19 @@ public func resize(_ x: RealArray, _ m: Int) -> RealArray {
 /// Resize data by adding or removing elements.
 /// - Parameters:
 ///   - x: Input array
-///   - m: Size.
-/// - Returns: Array of new size.
-public func resize(_ x: ComplexArray, _ m: Int) -> ComplexArray {
-    assertSameSize(x)
-    let n = x.0.count
+///   - m: Length.
+/// - Returns: Array of new length m.
+public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
+    validateSize(x)
+    let n = x.count
     guard m != n else { return x }
     var y = x
     if m < n {
-        return slice(x, 0 ..< m)
+        return x[0 ..< m]
     } else {
         let zeroCount = m - n
-        let zeros = RealArray(repeating: 0, count: zeroCount)
-        y.0.append(contentsOf: zeros)
-        y.1.append(contentsOf: zeros)
+        let zeros = ComplexArray(count: zeroCount)
+        y.append(contentsOf: zeros)
     }
     return y
 }

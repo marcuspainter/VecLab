@@ -24,7 +24,7 @@ public func pol2cart(_ theta: Real, _ rho: Real) -> (x: Real, y: Real) {
 ///   - rho: The radial distance from the origin.
 /// - Returns: A tuple containing the an array x and y Cartesian coordinates.
 public func pol2cart(_ theta: RealArray, _ rho: RealArray) -> (x: RealArray, y: RealArray) {
-    assertSameSize(theta, rho)
+    validateSize(theta, rho)
     let n = theta.count
     var x = [Real](repeating: Real(0), count: n)
     var y = x   // Zeros

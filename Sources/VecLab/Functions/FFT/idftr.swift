@@ -11,16 +11,16 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
 public func idftr(_ x: ComplexArray) -> RealArray {
-    assertSameSize(x)
+    validateSize(x)
     let n = length(x)
 
     // Init by copy
     var y = x
     let k = RealArray(0 ..< n)
     let omega = 2 * Real.pi * Real.i * k / Real(n)
-    for i in 0 ..< x.0.count {
-        let w = exp(omega * Real(i))
-        (y.0[i], y.1[i]) = sum(x * w)
+    for k in 0 ..< x.count {
+        let w = exp(omega * Real(k))
+        y[k] = sum(x * w)
     }
-    return y.0 / Real(n)
+    return y.real / Real(n)
 }

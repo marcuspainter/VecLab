@@ -52,9 +52,9 @@ public func sign(_ x: Complex) -> Complex {
 /// Sign function (signum function) of a complex array.
 ///
 /// `sign(x)` returns a value of: x./abs(x) if x is complex.
-/// - Parameter x: Complex array..
+/// - Parameter x: Complex array.
 /// - Returns: Sign of number.
 public func sign(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
+    validateSize(x)
     return x / abs(x) // Overloaded
 }

@@ -21,21 +21,21 @@ public func sin(_ x: RealArray) -> RealArray {
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
 public func sin(_ x: Complex) -> Complex {
-    return Complex(sin(x.0) * cosh(x.1), cos(x.0) * sinh(x.1))
+    return Complex(sin(x.real) * cosh(x.imag), cos(x.real) * sinh(x.imag))
 }
 
 /// Sine of complex array in radians.
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
 public func sin(_ x: ComplexArray) -> ComplexArray {
-    assertSameSize(x)
-    var r = RealArray(repeating: 0, count: x.0.count)
-    var i = RealArray(repeating: 0, count: x.1.count)
-    let coshx = vForce.cosh(x.1)
-    let sinhx = vForce.sinh(x.1)
-    r = vForce.sin(x.0)
-    i = vForce.cos(x.0)
-    r = vDSP.multiply(r, coshx) // sinx0 * coshx1
-    i = vDSP.multiply(i, sinhx) // cosx0 * sinhx1
-    return (r, i)
+    validateSize(x)
+    var real = RealArray(repeating: 0, count: x.count)
+    var imag = RealArray(repeating: 0, count: x.count)
+    let coshx = vForce.cosh(x.imag)
+    let sinhx = vForce.sinh(x.imag)
+    real = vForce.sin(x.real)
+    imag = vForce.cos(x.real)
+    real = vDSP.multiply(real, coshx) // sinx0 * coshx1
+    imag = vDSP.multiply(imag, sinhx) // cosx0 * sinhx1
+    return ComplexArray(real, imag)
 }

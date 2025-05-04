@@ -32,8 +32,8 @@ private let epsilon: Real = 1e-6
  */
 
 func testAddComplexEquality() {
-    let a: Complex = (1.0, 2.0)
-    let b: Complex = (1.0, 2.0)
+    let a: Complex = Complex(1.0, 2.0)
+    let b: Complex = Complex(1.0, 2.0)
     XCTAssertEqual(a, b, "Complex numbers are not equal!")
 }
 
@@ -77,4 +77,19 @@ func XCTAssertEqual(_ expression1: [Float], _ expression2: [Float], accuracy: Fl
 func XCTAssertEqual(_ expression1: (Float, Float), _ expression2: (Float, Float), accuracy: Float = Float(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
     XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
+}
+
+// MARK: New
+
+func XCTAssertEqual(_ expression1: ComplexArray, _ expression2: ComplexArray, accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+    
+    XCTAssert(expression1.real.count == expression2.real.count && expression1.count == expression2.count, "Not same size")
+    XCTAssertEqual(expression1.real, expression2.real, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
+    XCTAssertEqual(expression1.imag, expression2.imag, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
+}
+
+func XCTAssertEqual(_ expression1: Complex, _ expression2: Complex, accuracy: Double = Double(epsilon), _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+    
+    XCTAssertEqual(expression1.real, expression2.real, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
+    XCTAssertEqual(expression1.imag, expression2.imag, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
 }
