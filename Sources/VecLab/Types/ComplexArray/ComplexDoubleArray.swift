@@ -214,7 +214,7 @@ public struct ComplexDoubleArray:
 
     /// String of complex value
     public var description: String {
-        var result = "ComplexDoubleArray(["
+        var result = "["
         for i in 0 ..< count {
             if i > 0 { result += ", " }
             if imag[i] >= 0 {
@@ -223,7 +223,7 @@ public struct ComplexDoubleArray:
                 result += "\(real[i])-\(abs(imag[i]))i"
             }
         }
-        result += "])"
+        result += "]"
         return result
     }
 
