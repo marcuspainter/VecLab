@@ -1,7 +1,5 @@
 # Migration to Version 2.0
 
-Migrating your code.
-
 ## Overview
 
 Version 2.0 now uses structs instead of tuples for complex types. Conversion should be relatively straightforward and any required

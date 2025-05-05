@@ -15,7 +15,7 @@ VecLab is a Swift Package for real and complex vector operations with NumPy and 
 - Overloaded arithmetic operators.
 - Mixed real and complex, scalars and vectors.
 - Basic MATLAB-style functions.
-- Vectorized using Accelerate and vDSP.
+- Vectorized using Accelerate and vDSP. 
 - FFT of 2, 3 and 5 factors.
 
 Full documentation can be found on the [Swift Package Index](https://swiftpackageindex.com/marcuspainter/VecLab/documentation/veclab).
