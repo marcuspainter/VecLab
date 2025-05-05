@@ -11,12 +11,6 @@ A real/complex vector library in Swift.
 - Array range indexing and slicing.
 - `ComplexDoubleArray` conforms to collection protocol.
 
-## Renamed to Version 1.0
-
-This version has been renamed from 0.2.20 to version 1.0 in anticipation of version 2.0. The new version 2.0 will use
-Swift structs of `ComplexDouble` and `ComplexDoubleArray`, replacing the existing tuple notation for complex types. This 
-better follows the Swift architecture and will allow the use of a more Swift-like style.
-
 ## Overview
 
 VecLab is a Swift Package for real and complex vector operations with NumPy and MATLAB-style functions.
