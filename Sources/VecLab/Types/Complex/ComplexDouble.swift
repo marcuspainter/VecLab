@@ -5,13 +5,16 @@
 //  Created by Marcus Painter on 08/04/2025.
 //
 
+import Foundation
+
 /// Complex number
 public struct ComplexDouble:
-    Equatable,
-    Hashable,
+    Equatable,  // Synthesized
+    Hashable,   // Synthesized
     Codable,
-    CustomStringConvertible,
-    CustomDebugStringConvertible,
+    //CustomStringConvertible,
+    //CustomDebugStringConvertible,
+    //SignedNumeric,
     Sendable {
     
     /// Real part.
@@ -34,28 +37,5 @@ public struct ComplexDouble:
         self.real = real
         self.imag = imag
     }
-
-    /// Initialize a complex number.
-    /// - Parameters:
-    ///   - real: Real part.
-    ///   - imag: Imaginary part.
-    public init(_ real: Int, _ imag: Int) {
-        self.real = Double(real)
-        self.imag = Double(imag)
-    }
-
-    /// String of complex value.
-    public var description: String {
-        if imag >= 0 {
-            return "\(real)+\(imag)i"
-        } else {
-            return "\(real)-\(abs(imag))i"
-        }
-    }
-
-    /// Provides a more detailed debug representation of the complex number.
-    public var debugDescription: String {
-        return "ComplexDouble(\(real), \(imag))"
-
-    }
 }
+
