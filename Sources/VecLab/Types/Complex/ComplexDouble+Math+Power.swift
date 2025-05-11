@@ -5,7 +5,10 @@
 //  Created by Marcus Painter on 18/04/2025.
 //
 
-/// Complex power.
+//
+// Complex power.
+//
+
 extension ComplexDouble {
 
     /// Power.

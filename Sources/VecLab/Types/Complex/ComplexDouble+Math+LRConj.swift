@@ -5,10 +5,14 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-// MARK:  Complex left conjugate multiply
+//
+// Complex left and right conjugate multiply
+//
 
 extension ComplexDouble {
-
+    
+    // MARK: Complex left conjugate multiply
+    
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -38,9 +42,9 @@ extension ComplexDouble {
 
 }
 
-// MARK: Complex right conjugate multiply
-
 extension ComplexDouble {
+    
+    // MARK: Complex right conjugate multiply
 
     /// Right conjugate multiply.
     /// - Parameters:

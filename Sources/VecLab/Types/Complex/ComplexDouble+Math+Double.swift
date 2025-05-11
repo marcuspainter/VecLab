@@ -5,6 +5,10 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
+//
+// ComplexDouble and Double operators
+//
+
 extension ComplexDouble {
 
     /// Complex addition.

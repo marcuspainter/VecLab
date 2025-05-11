@@ -6,6 +6,7 @@
 //
 
 extension ComplexDouble {
+    
     // MARK: - Special value properties
 
     /// Returns true if either component is NaN.

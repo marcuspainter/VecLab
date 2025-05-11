@@ -8,6 +8,10 @@
 import Foundation
 import Accelerate
 
+//
+// ComplexDouble and Double array operators
+//
+
 extension ComplexDouble {
 
     /// Complex addition.
