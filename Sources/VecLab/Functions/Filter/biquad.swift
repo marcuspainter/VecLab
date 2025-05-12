@@ -11,11 +11,11 @@ import Foundation
 /// - Parameters:
 ///   - f: Frequency (Hz).
 ///   - fs: Sample rate (Hz).
-///   - Q: Quality factor.
-///   - dbGain: Gain (dB).
+///   - q: Quality factor.
+///   - db: Gain (dB).
 ///   - type: Filter type.
 /// - Returns: (b, a) coefficients as a tuple.
-public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -> (b: RealArray, a: RealArray) {
+public func biquad(f: Real, fs: Real, q: Real, db: Real, type: BiquadType) -> (b: RealArray, a: RealArray) {
     // Fs = 48000
     // f0 = 1000
     // Q = sqrt(2)/2
@@ -24,22 +24,22 @@ public func biquad(f: Real, fs: Real, Q: Real, dbGain: Real, type: BiquadType) -
 
     let f0 = f
 
-    let A = sqrt( pow(10, dbGain/20) )
+    let A = sqrt( pow(10, db/20) )
 
     let W0 = 2 * .pi * f0 / fs
     let cosW0 = cos(W0)
     let sinW0 = sin(W0)
 
-    let alpha = sinW0/(2*Q)                                  // case Q
+    let alpha = sinW0 / (2 * q)                              // case Q
     // let alpha = sinW0*sinh( ln(2)/2 * BW * w0/sinW0 )     // case: BW
     // let alpha = sinW0/2 * sqrt( (A + 1/A)*(1/S - 1) + 2 ) // case: S
 
-    var b0 = Real(0.0)
-    var b1 = Real(0.0)
-    var b2 = Real(0.0)
-    var a0 = Real(0.0)
-    var a1 = Real(0.0)
-    var a2 = Real(0.0)
+    var b0 = 0.0
+    var b1 = 0.0
+    var b2 = 0.0
+    var a0 = 0.0
+    var a1 = 0.0
+    var a2 = 0.0
 
     switch type {
         case .lowpass:  // H(s) = 1 / (s^2 + s/Q + 1)

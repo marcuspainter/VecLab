@@ -10,7 +10,7 @@ Filter functions.
 - ``filter(b:a:x:)->ComplexArray``
 
 ### Biquad Filter
-- ``biquad(f:fs:Q:dbGain:type:)``
+- ``biquad(f:fs:q:db:type:)``
 
 ### Transfer Response
 - ``freqz(b:a:n:)``
