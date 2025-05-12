@@ -43,10 +43,10 @@ func vectorClearRealArray(_ c: RealArray) {
     }
 }
 
-func vectorClearComplexArray(_ c: ([Double], [Double])) {
-    let n = c.0.count
-    c.0.withUnsafeBufferPointer { cRealBuffer in
-        c.1.withUnsafeBufferPointer { cImagBuffer in
+func vectorClearComplexArray(_ c: ComplexArray) {
+    let n = c.count
+    c.real.withUnsafeBufferPointer { cRealBuffer in
+        c.imag.withUnsafeBufferPointer { cImagBuffer in
             let C0 = UnsafeMutablePointer(mutating: cRealBuffer.baseAddress!)
             let C1 = UnsafeMutablePointer(mutating: cImagBuffer.baseAddress!)
             vDSP_vclrD(C0, 1, vDSP_Length(n))

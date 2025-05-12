@@ -6,6 +6,7 @@
 //
 
 extension ComplexDouble {
+    
     // MARK: - Special value properties
 
     /// Returns true if either component is NaN.
@@ -45,11 +46,6 @@ extension ComplexDouble {
 
     // MARK: - Static special values
 
-    /// Complex zero value (0 + 0i).
-    public static var zero: ComplexDouble {
-        return ComplexDouble(Double.zero, Double.zero)
-    }
-
     /// Complex NaN value (NaN + NaNi).
     public static var nan: ComplexDouble {
         return ComplexDouble(.nan, .nan)
@@ -64,4 +60,6 @@ extension ComplexDouble {
     public static var i: ComplexDouble {
         return ComplexDouble(.zero, 1.0)
     }
+     
+     
 }

@@ -617,6 +617,17 @@ class ArrayTests: XCTestCase {
             XCTAssertEqual(Real(i), r, accuracy: 1e-10)
         }
     }
+    
+    func testArrange1() throws {
+        let a1 = arange(5)
+        let a2 = arange(0,5)
+        let a3 = arange(0,5,1)
+        let expected = [0.0, 1.0, 2.0, 3.0, 4.0]
+        XCTAssertEqual(a1, expected, "arrange failed")
+        XCTAssertEqual(a2, expected, "arrange failed")
+        XCTAssertEqual(a3, expected, "arrange failed")
+    }
+    
 }
 
 // Helper enum for error cases

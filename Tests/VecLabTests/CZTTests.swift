@@ -20,6 +20,5 @@ final class CZTTests: XCTestCase {
         disp(g)
         disp(xx)
     }
-    
 }
 */

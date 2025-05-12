@@ -37,6 +37,22 @@ class BasicTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 3.0, 6.0, 10.0], [1.0, 3.0, 6.0, 10.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
+    
+    // MARK: cumprod
+    
+    func testCumprodRealArray() throws {
+        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let result: RealArray = cumprod(realArrayA)
+        let expected: RealArray = [1.0, 2.0, 6.0, 24.0]
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
+    }
+
+    func testCumprodComplexArray() throws {
+        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: ComplexArray = cumprod(complexArrayA)
+        let expected: ComplexArray = ComplexArray( [1.0, 0.0, -12.0, -96.0],  [1.0, 4.0, 12.0, 0.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
+    }
 
     // MARK: disp
 

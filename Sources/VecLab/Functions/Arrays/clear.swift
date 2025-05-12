@@ -5,7 +5,6 @@
 //  Created by Marcus Painter on 28/08/2024.
 //
 
-import Accelerate
 import Foundation
 
 /// Fills a real array with zeros in place.
@@ -19,6 +18,5 @@ public func clear(_ c: RealArray) {
 /// - Parameters:
 ///   - c: Array.
 public func clear(_ c: ComplexArray) {
-    vectorClearRealArray(c.real)
-    vectorClearRealArray(c.imag)
+    vectorClearComplexArray(c)
 }

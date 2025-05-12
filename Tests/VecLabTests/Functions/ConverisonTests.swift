@@ -162,20 +162,20 @@ class ConversionTests: XCTestCase {
     
     func testFreq2bin() throws {
         let f: Real = 100.0
-        let N: Int = 1024
+        let n: Int = 1024
         let fs: Real = 48000.0
 
-        let result: Int = freq2bin(f: f, N: N, fs: fs)
+        let result: Int = freq2bin(f: f, n: n, fs: fs)
         let expected: Real = 2.0
         XCTAssertEqual(Real(result), expected, accuracy: accuracy, "freq2bin failed")
     }
     
     func testBin2freq() throws {
         let bin: Int = 2
-        let N: Int = 1024
+        let n: Int = 1024
         let fs: Real = 48000.0
 
-        let result: Real = bin2freq(bin: bin, N: N, fs: fs)
+        let result: Real = bin2freq(bin: bin, n: n, fs: fs)
         let expected: Real = 93.75
         XCTAssertEqual(result, expected, accuracy: accuracy, "bin2freq failed")
     }

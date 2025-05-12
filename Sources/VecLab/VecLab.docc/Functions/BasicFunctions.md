@@ -25,6 +25,8 @@ Basic functions.
 - ``cumsum(_:)->ComplexArray``
 - ``prod(_:)->Real``
 - ``prod(_:)->Complex``
+- ``cumprod(_:)->RealArray``
+- ``cumprod(_:)->ComplexArray``
 - ``dot(_:_:)->Real``
 - ``dot(_:_:)-(RealArray,ComplexArray)``
 - ``dot(_:_:)-(ComplexArray,RealArray)``

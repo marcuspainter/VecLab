@@ -5,8 +5,6 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-import Accelerate
-
 extension ComplexDoubleArray {
     /// Complex array addition.
     /// - Parameters:
