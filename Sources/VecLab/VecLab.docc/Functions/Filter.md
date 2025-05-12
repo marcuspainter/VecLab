@@ -13,8 +13,8 @@ Filter functions.
 - ``biquad(f:fs:Q:dbGain:type:)``
 
 ### Transfer Response
-- ``freqz(b:a:N:)``
-- ``freqz2(b:a:N:)``
+- ``freqz(b:a:n:)``
+- ``freqz2(b:a:n:)``
 - ``biquadfreqz(b:a:n:)``
-- ``biquadmag(b:a:N:)``
+- ``biquadmag(b:a:n:)``
 

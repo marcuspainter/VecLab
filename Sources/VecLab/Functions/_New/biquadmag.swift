@@ -11,9 +11,9 @@ import Foundation
 /// - Parameters:
 ///   - b: b coefficients.
 ///   - a: a coefficients.
-///   - N: FFT Length.
+///   - n: FFT Length.
 /// - Returns: Complex transfer function.
-public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
+public func biquadmag(b: RealArray, a: RealArray, n: Int = 512) -> RealArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
@@ -23,7 +23,7 @@ public func biquadmag(b: RealArray, a: RealArray, N: Int = 512) -> RealArray {
 
     // let f = logspace(log10(20), log10(20000), 201)
     // let w = f * 2 * Real.pi / 48000
-    let w = vector(0 ... N-1) * (.pi / Real(N))
+    let w = vector(0 ... n-1) * (.pi / Real(n))
 
     var phi = sin(w / 2.0)
     phi = phi * phi

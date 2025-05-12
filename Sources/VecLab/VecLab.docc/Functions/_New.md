@@ -38,8 +38,8 @@ New functions.
 
 ### FFT Bin Frequency
 
-- ``bin2freq(bin:N:fs:)``
-- ``freq2bin(f:N:fs:)``
+- ``bin2freq(bin:n:fs:)``
+- ``freq2bin(f:n:fs:)``
 
 ### Peaks
 
