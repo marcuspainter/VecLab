@@ -72,7 +72,7 @@ extension Array where Element == Double {
         return vDSP.add(b, a)
     }
 
-    /// Real addition.∫
+    /// Real addition.
     /// - Parameters:
     ///   - a: Real number.
     ///   - b: Real array.

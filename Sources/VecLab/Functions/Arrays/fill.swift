@@ -21,5 +21,6 @@ public func fill(_ c: RealArray, _ a: Real) {
 ///   - c: Array.
 ///   - a: Value.
 public func fill(_ c: ComplexArray, _ a: Complex) {
+    validateSize(c)
     fillComplexArray(c, a)
 }
