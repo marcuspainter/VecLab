@@ -40,14 +40,12 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
     aa = aa * ww[m-1 ..< m+m-1]
     let y = x * aa
     
-    // Zero-pad to length
-    let y_padded = paddata(y, length: nfft)
     let inv_ww = 1.0 / ww[0 ..< (m+k-1)] //  <----- Chirp filter.
-    let inv_ww_padded = paddata(inv_ww, length: nfft)
-    
+
     // Fast convolution via FFT
-    var fy = fft(y_padded)
-    let fv = fft(inv_ww_padded)
+    // Zero pad
+    var fy = fft(y, length: nfft)
+    let fv = fft(inv_ww, length: nfft)
     fy = fy * fv
     var g = ifft(fy)
     

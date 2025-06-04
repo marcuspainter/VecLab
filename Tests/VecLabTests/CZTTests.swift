@@ -6,10 +6,9 @@
 //
 
 import XCTest
-import VecLab
+@testable import VecLab
 import Accelerate
 
-/*
 final class CZTTests: XCTestCase {
     
     func testExample() throws {
@@ -21,4 +20,3 @@ final class CZTTests: XCTestCase {
         disp(xx)
     }
 }
-*/
