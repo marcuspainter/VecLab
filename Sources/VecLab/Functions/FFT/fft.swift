@@ -10,25 +10,33 @@ import Foundation
 
 /// FFT of complex array.
 /// - Parameter x: Complex array.
+/// - Parameter length: Padded length (optional)
 /// - Returns: Complex array result.
-public func fft(_ x: ComplexArray) -> ComplexArray {
+public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     validateSize(x)
+    var input: ComplexArray
+    if let length {
+        input = paddata(x, length: length)
+    } else {
+        input = x
+    }
+    
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.count,
+                                                       count: input.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
                                                        ofType: Double.self) else {
-        return ComplexArray([Real](repeating: Real.nan, count: x.count),
-                [Real](repeating: Real.nan, count: x.count))
+        return ComplexArray([Real](repeating: Real.nan, count: input.count),
+                [Real](repeating: Real.nan, count: input.count))
     }
 
-    let splitComplexOutput = dft.transform(real: x.real, imaginary: x.imag)
+    let splitComplexOutput = dft.transform(real: input.real, imaginary: input.imag)
 
     return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
-public func fft(_ x: RealArray) -> ComplexArray {
+public func fft(_ x: RealArray, length: Int?) -> ComplexArray {
     return ComplexArray()
 }
 

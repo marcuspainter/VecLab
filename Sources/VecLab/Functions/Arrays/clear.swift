@@ -18,5 +18,6 @@ public func clear(_ c: RealArray) {
 /// - Parameters:
 ///   - c: Array.
 public func clear(_ c: ComplexArray) {
+    validateSize(c)
     vectorClearComplexArray(c)
 }

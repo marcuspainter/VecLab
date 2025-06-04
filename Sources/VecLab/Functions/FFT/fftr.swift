@@ -10,19 +10,26 @@ import Accelerate
 
 /// FFT of real array.
 /// - Parameter x: Real array.
+/// - Parameter length: Padded length (optional)
 /// - Returns: Complex array result.
-public func fftr(_ x: RealArray) -> ComplexArray {
+public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
+    var input: RealArray
+    if let length {
+        input = paddata(x, length: length)
+    } else {
+        input = x
+    }
 
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.count,
+                                                       count: input.count,
                                                        direction: .forward,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
         print("fftr failed")
-        return ComplexArray([Real](repeating: Real.nan, count: x.count),
-                [Real](repeating: Real.nan, count: x.count))
+        return ComplexArray([Real](repeating: Real.nan, count: input.count),
+                [Real](repeating: Real.nan, count: input.count))
     }
-    let zeros = [Real](repeating: 0.0, count: x.count)
+    let zeros = [Real](repeating: 0.0, count: input.count)
     let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
 
     return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)

@@ -74,9 +74,7 @@ extension ComplexDoubleArray:
         real.append(element.real)
         imag.append(element.imag)
     }
-/*
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == ComplexDouble {
-*/
+    
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
     public mutating func append(contentsOf newElements: ComplexDoubleArray) {

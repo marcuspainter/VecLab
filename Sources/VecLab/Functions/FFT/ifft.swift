@@ -11,26 +11,33 @@ import Foundation
 /// Inverse FFT of complex array with complex result.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
-public func ifft(_ x: ComplexArray) -> ComplexArray {
+public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     validateSize(x)
+    var input: ComplexArray
+    if let length {
+        input = paddata(x, length: length)
+    } else {
+        input = x
+    }
+    
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: x.count,
+                                                       count: input.count,
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
-        return ComplexArray([Real](repeating: Real.nan, count: x.count),
-                [Real](repeating: Real.nan, count: x.count))
+        return ComplexArray([Real](repeating: Real.nan, count: input.count),
+                [Real](repeating: Real.nan, count: input.count))
     }
 
-    var splitComplexOutput = dft.transform(real: x.real, imaginary: x.imag)
-    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(x.count))
-    splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Real(x.count))
+    var splitComplexOutput = dft.transform(real: input.real, imaginary: input.imag)
+    splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(input.count))
+    splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Real(input.count))
 
     return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "ifftr", message: "Use ifftr for Real arrays")
-public func ifft(_ x: ComplexArray) -> RealArray {
+public func ifft(_ x: ComplexArray, length: Int? = nil) -> RealArray {
     return []
 }
 

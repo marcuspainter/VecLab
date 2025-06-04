@@ -7,6 +7,7 @@
 
 // This adds division and unary minus to arithmetic operators
 
+/// Supports elementary arithmetic.
 public protocol ElementaryArithmetic {
     static func + (lhs: Self, rhs: Self) -> Self
     static func - (lhs: Self, rhs: Self) -> Self
