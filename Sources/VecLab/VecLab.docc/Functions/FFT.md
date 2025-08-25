@@ -7,10 +7,10 @@ FFT, DFT and FFT shift.
 
 ### Fast Fourier Transform
 
-- ``fft(_:)``
-- ``fftr(_:)``
-- ``ifft(_:)``
-- ``ifftr(_:)``
+- ``fft(_:length:)``
+- ``fftr(_:length:)``
+- ``ifft(_:length:)``
+- ``ifftr(_:length:)``
 
 ### FFT Shift
 
