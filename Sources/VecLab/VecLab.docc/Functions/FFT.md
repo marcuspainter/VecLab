@@ -27,8 +27,13 @@ FFT, DFT and FFT shift.
 - ``idft(_:)``
 - ``idftr(_:)``
 
-- ``nextpow2(_:)``
+### Discrete Cosine Transform
+
+-``dct(_:)``
+-``idct(_:)``
 
 ### FFT Setup
 
 - ``fftsetup(count:direction:transformType:)``
+
+- ``nextpow2(_:)``
