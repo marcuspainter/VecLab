@@ -28,7 +28,7 @@ let package = Package(
         ),
         .testTarget(
             name: "VecLabTests",
-            dependencies: ["VecLab", "XCTest"]
+            dependencies: ["VecLab"]
         )
     ]
 )
