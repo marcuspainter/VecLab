@@ -6,11 +6,11 @@
 //
 
 extension ComplexDouble: CustomDebugStringConvertible {
-    
+
     /// Provides a more detailed debug representation of the complex number.
     public var debugDescription: String {
         return "ComplexDouble(\(real), \(imag))"
-        
+
     }
-    
+
 }

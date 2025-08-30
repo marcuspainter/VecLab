@@ -6,20 +6,20 @@
 //
 
 extension Array where Element == Double {
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real value.
-    public static func += (lhs: inout [Double], rhs:  Double) {
+    public static func += (lhs: inout [Double], rhs: Double) {
         lhs = lhs + rhs
     }
-    
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real array..
-    public static func -= (lhs: inout [Double], rhs:  [Double]) {
+    public static func -= (lhs: inout [Double], rhs: [Double]) {
         lhs = lhs - rhs
     }
 
@@ -27,39 +27,39 @@ extension Array where Element == Double {
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real value.
-    public static func -= (lhs: inout [Double], rhs:  Double) {
+    public static func -= (lhs: inout [Double], rhs: Double) {
         lhs = lhs - rhs
     }
-    
+
     /// Multiplication'.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real array..
-    public static func *= (lhs: inout [Double], rhs:  [Double]) {
+    public static func *= (lhs: inout [Double], rhs: [Double]) {
         lhs = lhs * rhs
     }
-    
+
     /// Multiplication'.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real value.
-    public static func *= (lhs: inout [Double], rhs:  Double) {
+    public static func *= (lhs: inout [Double], rhs: Double) {
         lhs = lhs * rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real array..
-    public static func /= (lhs: inout [Double], rhs:  [Double]) {
+    public static func /= (lhs: inout [Double], rhs: [Double]) {
         lhs = lhs / rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real value.
-    public static func /= (lhs: inout [Double], rhs:  Double) {
+    public static func /= (lhs: inout [Double], rhs: Double) {
         lhs = lhs / rhs
     }
 

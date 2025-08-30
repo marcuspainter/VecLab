@@ -12,20 +12,19 @@ import Foundation
 
 /// Complex array implementation using split real/imaginary arrays
 public struct ComplexDoubleArray:
-    //Collection,
-    //Sequence,
-    //BidirectionalCollection,
-    //RandomAccessCollection,
-    //MutableCollection,
-    //RangeReplaceableCollection,
-    //Equatable,
-    //Hashable,
-    //CustomStringConvertible,
-    //CustomDebugStringConvertible,
-    //ExpressibleByArrayLiteral
+    // Collection,
+    // Sequence,
+    // BidirectionalCollection,
+    // RandomAccessCollection,
+    // MutableCollection,
+    // RangeReplaceableCollection,
+    // Equatable,
+    // Hashable,
+    // CustomStringConvertible,
+    // CustomDebugStringConvertible,
+    // ExpressibleByArrayLiteral
     Codable,
-    Sendable
-{
+    Sendable {
 
     // MARK: - Storage
 

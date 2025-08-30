@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble {
-    
+
     // MARK: - Special value properties
 
     /// Returns true if either component is NaN.
@@ -60,6 +60,5 @@ extension ComplexDouble {
     public static var i: ComplexDouble {
         return ComplexDouble(.zero, 1.0)
     }
-     
-     
+
 }

@@ -12,13 +12,12 @@ extension ComplexDoubleArray {
     /// Unary minus.
     /// - Parameter a: Complex array.
     /// - Returns: The result of -a.
-    //public static prefix func - (a: ComplexDoubleArray) -> ComplexDoubleArray {
+    // public static prefix func - (a: ComplexDoubleArray) -> ComplexDoubleArray {
     //    let real = vDSP.negative(a.real)
     //    let imag = vDSP.negative(a.imag)
     //    return ComplexDoubleArray(real, imag)
    // }
-    
-    
+
     public static prefix func - (a: ComplexDoubleArray) -> ComplexDoubleArray {
         var c = ComplexDoubleArray(count: a.count)
         ComplexDoubleArray.withUnsafeParameters(a, &c) { A, C, N in
@@ -27,6 +26,3 @@ extension ComplexDoubleArray {
         return c
     }
 }
-
-
-

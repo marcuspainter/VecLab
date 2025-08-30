@@ -50,4 +50,3 @@ public func biquadmag(b: RealArray, a: RealArray, n: Int = 512) -> RealArray {
 // https://www.musicdsp.org/en/latest/Analysis/186-frequency-response-from-biquad-coefficients.html
 // http://groups.google.com/group/comp.dsp/browse_frm/thread/8c0fa8d396aeb444/a1bc5b63ac56b686
 // https://dsp.stackexchange.com/questions/24222/iir-filter-calculating-the-phase-response
-

@@ -32,7 +32,7 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-    
+
     /// Returns the last element matching the predicate.
     @inlinable
     public func last(where predicate: (ComplexDouble) -> Bool) -> ComplexDouble? {

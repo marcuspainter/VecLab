@@ -16,7 +16,7 @@ extension ComplexDouble: AdditiveArithmetic {
     public static func + (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real + b.real, a.imag + b.imag)
     }
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
@@ -36,7 +36,7 @@ extension ComplexDouble: AdditiveArithmetic {
     public static func - (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real - b.real, a.imag - b.imag)
     }
-    
+
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex number.
@@ -46,7 +46,7 @@ extension ComplexDouble: AdditiveArithmetic {
         a.real -= b.real
         a.imag -= b.imag
     }
-    
+
     /// The zero value.
     public static var zero: ComplexDouble { .init(0, 0) }
 }

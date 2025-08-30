@@ -23,7 +23,7 @@ public func cumprod(_ x: RealArray) -> RealArray {
 /// - Returns: Complex array.
 public func cumprod(_ x: ComplexArray) -> ComplexArray {
     guard !x.isEmpty else { return [] }
-    var result = ComplexArray(repeating: Complex(1,0), count: x.count)
+    var result = ComplexArray(repeating: Complex(1, 0), count: x.count)
     result[0] = x[0]
     for i in 1..<x.count {
         result[i] = result[i - 1] * x[i]
