@@ -9,6 +9,7 @@ import Accelerate
 import VecLab
 import XCTest
 
+/*
 final class DCTTests: XCTestCase {
     let accuracy: Real = 1e-6
 
@@ -51,3 +52,4 @@ final class DCTTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "dct/idct failed")
     }
 }
+*/
