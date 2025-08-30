@@ -25,6 +25,7 @@ public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
+        print("ifft error")
         return ComplexArray([Real](repeating: Real.nan, count: input.count),
                 [Real](repeating: Real.nan, count: input.count))
     }

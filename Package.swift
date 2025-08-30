@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "VecLab",
     platforms: [
-        .iOS("16.4"), // LAPACK
+        .iOS("17.0"), // LAPACK
         .macOS("15.0")
     ],
     products: [
