@@ -19,11 +19,11 @@ Vector Creation Functions
 
 ### Arange
 
-- ``arange(_:)-(Int)``
+- ``arange(_:)``
 - ``arange(_:)-(Real)``
-- ``arange(_:_:)-(Int,_)``
+- ``arange(_:_:)``
 - ``arange(_:_:)-(Real,_)``
-- ``arange(_:_:_:)->[Int]``
+- ``arange(_:_:_:)``
 - ``arange(_:_:_:)->RealArray``
 
 ### Zeros

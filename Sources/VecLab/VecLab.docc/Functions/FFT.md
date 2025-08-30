@@ -7,10 +7,10 @@ FFT, DFT and FFT shift.
 
 ### Fast Fourier Transform
 
-- ``fft(_:)``
-- ``fftr(_:)``
-- ``ifft(_:)``
-- ``ifftr(_:)``
+- ``fft(_:length:)``
+- ``fftr(_:length:)``
+- ``ifft(_:length:)``
+- ``ifftr(_:length:)``
 
 ### FFT Shift
 
@@ -27,8 +27,13 @@ FFT, DFT and FFT shift.
 - ``idft(_:)``
 - ``idftr(_:)``
 
-- ``nextpow2(_:)``
+### Discrete Cosine Transform
+
+-``dct(_:)``
+-``idct(_:)``
 
 ### FFT Setup
 
 - ``fftsetup(count:direction:transformType:)``
+
+- ``nextpow2(_:)``

@@ -45,3 +45,7 @@ Vector functions.
 - ``trimdata(_:length:)->RealArray``
 - ``trimdata(_:length:)->ComplexArray``
 
+### Gather
+
+- ``gather(_:indices:)->RealArray``
+- ``gather(_:indices:)->ComplexArray``

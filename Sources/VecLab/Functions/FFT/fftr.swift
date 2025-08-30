@@ -10,7 +10,7 @@ import Accelerate
 
 /// FFT of real array.
 /// - Parameter x: Real array.
-/// - Parameter length: Padded length (optional)
+/// - Parameter length: Zero-padded length (optional).
 /// - Returns: Complex array result.
 public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
     var input: RealArray

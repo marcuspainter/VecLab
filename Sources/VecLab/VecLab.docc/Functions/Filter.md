@@ -7,6 +7,7 @@ Filter functions.
 ### Filter
 
 - ``filter(b:a:x:)->RealArray``
+- ``filter(b:a:x:state:)``
 - ``filter(b:a:x:)->ComplexArray``
 
 ### Biquad Filter

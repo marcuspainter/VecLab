@@ -10,6 +10,7 @@ import Accelerate
 
 /// Inverse FFT of complex array with real result.
 /// - Parameter x: Complex array.
+/// - Parameter length: Zero-padded length (optional).
 /// - Returns: Real array result.
 public func ifftr(_ x: ComplexArray, length: Int? = nil) -> RealArray {
     validateSize(x)

@@ -10,6 +10,7 @@ import Foundation
 
 /// Inverse FFT of complex array with complex result.
 /// - Parameter x: Complex array.
+/// - Parameter length:Zero-padded length (optional).
 /// - Returns: Complex array result.
 public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     validateSize(x)

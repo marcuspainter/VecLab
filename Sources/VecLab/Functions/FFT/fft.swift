@@ -10,7 +10,7 @@ import Foundation
 
 /// FFT of complex array.
 /// - Parameter x: Complex array.
-/// - Parameter length: Padded length (optional)
+/// - Parameter length: Zero-padded length (optional).
 /// - Returns: Complex array result.
 public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     validateSize(x)
