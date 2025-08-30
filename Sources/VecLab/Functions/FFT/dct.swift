@@ -7,7 +7,7 @@
 
 import Accelerate
 
-/// Discrete Cosine Transform
+/// Discrete Cosine Transform using FFT.
 /// - Parameter x: Real array.
 /// - Returns: Real Array.
 public func dct(_ x: RealArray) -> RealArray {

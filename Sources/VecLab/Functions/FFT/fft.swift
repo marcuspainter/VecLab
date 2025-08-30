@@ -44,7 +44,7 @@ public func fft(_ x: RealArray, length: Int?) -> ComplexArray {
 /// Setup fft functions for reuse.
 /// - Parameters:
 ///   - count: FFT size.
-///   - directioßn: Forward or inverse transform..
+///   - direction: Forward or inverse transform..
 ///   - transformType: Complex or real type.
 /// - Returns: A DiscreteFourierTransform.
 public func fftsetup(count: Int,

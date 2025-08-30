@@ -7,9 +7,9 @@
 
 import Accelerate
 
-/// Inverse Discrete Cosine Transform using FFT
+/// Inverse Discrete Cosine Transform using FFT.
 /// - Parameter X: Real array.
-/// - Returns: Resal Array.
+/// - Returns: Real Array.
 public func idct(_ X: RealArray) -> RealArray {
     let N = X.count
     var Y = X * sqrt(Real(N) / 2.0)
