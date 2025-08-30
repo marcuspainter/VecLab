@@ -25,7 +25,7 @@ public func ifftr(_ x: ComplexArray, length: Int? = nil) -> RealArray {
                                                        direction: .inverse,
                                                        transformType: .complexComplex,
                                                        ofType: Real.self) else {
-        print("ifftr failed")
+        print("ifftr error")
         return ([Real](repeating: Real.nan, count: input.count))
     }
 

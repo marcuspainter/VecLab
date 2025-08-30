@@ -26,6 +26,7 @@ public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
                                                        direction: .forward,
                                                        transformType: .complexComplex,
                                                        ofType: Double.self) else {
+        print("fft error")
         return ComplexArray([Real](repeating: Real.nan, count: input.count),
                 [Real](repeating: Real.nan, count: input.count))
     }
