@@ -9,10 +9,13 @@ import Foundation
 
 /// Generates histogram counts using an automatic binning algorithm.
 ///
-/// This function partitions the provided data into bins with uniform width, which is computed automatically. The automatic bin width is based on the Freedman-Diaconis rule that considers both the data spread (interquartile range) and the number of data points.
+/// This function partitions the provided data into bins with uniform width, which is computed automatically.
+/// The automatic bin width is based on the Freedman-Diaconis rule that considers both the data spread
+/// (interquartile range) and the number of data points.
 ///
 /// - Parameter data: Array of input data values.
-/// - Returns: A tuple with the first value being an array (`counts`) detailing the number of data points in each bin, and the second value (`edges`) being an array representing the edges of each bin.
+/// - Returns: A tuple with the first value being an array (`counts`) detailing the number of data points in
+/// each bin, and the second value (`edges`) being an array representing the edges of each bin.
 ///
 /// # Example:
 /// ```
@@ -30,12 +33,16 @@ public func histcounts(_ data: RealArray) -> (counts: [Int], edges: RealArray) {
 
 /// Generates histogram counts based on the provided number of bins.
 ///
-/// This function partitions the provided data into a specific number of bins (`nbins`). Each bin captures a range of data values, and the function computes how many data points fall into each bin.
+/// This function partitions the provided data into a specific number of bins (`nbins`).
+/// Each bin captures a range of data values, and the function computes how many
+///  data points fall into each bin.
 ///
 /// - Parameters:
 ///   - data: Array of input data values.
 ///   - bins: Desired number of bins for partitioning the data.
-/// - Returns: A tuple with the first value being an array (`counts`) detailing the number of data points in each bin, and the second value (`edges`) being an array representing the edges of each bin.
+/// - Returns: A tuple with the first value being an array (`counts`) detailing
+/// the number of data points in each bin, and the second value (`edges`) being an array
+/// representing the edges of each bin.
 ///
 /// # Example:
 /// ```
@@ -84,8 +91,10 @@ print(edges)   // Output: [1.5, 2.31, 3.12, 3.93, 4.74, 5.6]
  */
 
 /*
- One commonly used algorithm to automatically select the bin size for histograms is the Freedman-Diaconis rule. The rule calculates the bin width based on the interquartile range (IQR) and the number of data points. It's designed to minimize the difference between the estimated and true underlying distribution.
- 
+ One commonly used algorithm to automatically select the bin size for histograms is the Freedman-Diaconis rule.
+ The rule calculates the bin width based on the interquartile range (IQR) and the number of data points. It's designed
+ to minimize the difference between the estimated and true underlying distribution.
+
  */
 
 /// Calculate bin widths

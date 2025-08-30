@@ -9,7 +9,9 @@ import Foundation
 
 /// Median value of an array.
 ///
-/// The median is the value separating the higher half from the lower half of the data set. If the data set has an odd number of observations, the number in the middle is the median. For an even number of observations, it's the average of the two middle numbers.
+/// The median is the value separating the higher half from the lower half of the data set.
+/// If the data set has an odd number of observations, the number in the middle is the median.
+/// For an even number of observations, it's the average of the two middle numbers.
 ///
 /// - Parameter data: Input array of real numbers.
 /// - Returns: The median value of the array.

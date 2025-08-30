@@ -11,7 +11,8 @@ import Accelerate
 /// Maximum value and index in an array.
 ///
 /// - Parameter x: Input array of real numbers.
-/// - Returns: A tuple  `(value:,index:)`where the first component represents the maximum value and the second component indicates its position in the array.
+/// - Returns: A tuple  `(value:,index:)`where the first component represents
+/// the maximum value and the second component indicates its position in the array.
 ///
 /// # Example:
 /// ```

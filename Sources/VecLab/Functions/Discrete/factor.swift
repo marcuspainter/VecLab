@@ -9,7 +9,8 @@ import Foundation
 
 /// Returns the prime factors of the given integer.
 ///
-/// This function computes the prime factorization of `n` using the method of trial division. Each prime factor is listed as many times as it appears in the prime factorization.
+/// This function computes the prime factorization of `n` using the method of trial division.
+/// Each prime factor is listed as many times as it appears in the prime factorization.
 ///
 /// - Parameter n: The integer to factorize. It must be greater than 1.
 ///

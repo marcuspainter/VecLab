@@ -12,7 +12,8 @@ import Accelerate
 
 /// Variance of an array (var).
 ///
-/// Variance measures how far a set of numbers are spread out from their average value. It's calculated as the average of the squared differences from the mean
+/// Variance measures how far a set of numbers are spread out from their average value.
+/// It's calculated as the average of the squared differences from the mean
 ///
 /// - Note:Renamed from `var` to `variance` due to Swift reserved word.
 ///

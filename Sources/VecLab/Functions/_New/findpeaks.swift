@@ -11,7 +11,8 @@
 ///   - minPeakHeight: Minimum peak height.
 ///   - threshold: Threshold of neighbors.
 /// - Returns: Peaks and locations.
-public func findpeaks(_ x: RealArray, minPeakHeight: Real? = nil, threshold: Real? = nil) -> (peaks: RealArray, locations: [Int]) {
+public func findpeaks(_ x: RealArray, minPeakHeight: Real? = nil, threshold: Real? = nil)
+    -> (peaks: RealArray, locations: [Int]) {
     guard x.count > 2 else {
         return ([], [])
     }
@@ -20,10 +21,10 @@ public func findpeaks(_ x: RealArray, minPeakHeight: Real? = nil, threshold: Rea
     var locations = [Int]()
 
     // Loop through array (excluding first and last elements)
-    for i in 1..<x.count-1 {
+    for i in 1 ..< x.count - 1 {
         let current = x[i]
-        let left = x[i-1]
-        let right = x[i+1]
+        let left = x[i - 1]
+        let right = x[i + 1]
 
         // Check if the current point is a local maximum
         if current > left && current > right {

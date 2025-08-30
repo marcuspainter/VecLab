@@ -12,7 +12,9 @@ import Accelerate
 
 /// Standard deviation of an array.
 ///
-/// The standard deviation measures the amount of variation or dispersion in a set of values. A low standard deviation indicates that the values tend to be close to the mean, while a high standard deviation indicates that the values are spread out over a wider range.
+/// The standard deviation measures the amount of variation or dispersion in a set of values.
+/// A low standard deviation indicates that the values tend to be close to the mean, while a high
+/// standard deviation indicates that the values are spread out over a wider range.
 ///
 /// - Parameter A: Input array of real numbers.
 /// - Returns: The standard deviation of the values in the array.

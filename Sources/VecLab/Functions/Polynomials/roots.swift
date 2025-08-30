@@ -11,7 +11,6 @@ import Accelerate
 /// - Parameter coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - Returns: Array of complex values representing the roots of the polynomial
-// @available(iOS 16.4, *)
 public func roots(coefficients: RealArray) -> ComplexArray {
     // Handle special cases
     if coefficients.isEmpty {

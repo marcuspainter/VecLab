@@ -44,8 +44,10 @@ public func hampel(_ x: RealArray, k: Int = 3, sigma: Real = 3.0) -> RealArray {
 /*
 In this implementation:
 
-The hampel function goes through each element of the input data x and considers a sliding window of size 2k+1 around the current element.
+The hampel function goes through each element of the input data x and considers a sliding window of size 2k+1 around
+the current element.
 For each window, it computes the median of the window's values and also the median absolute deviation from the median.
-If the current element's deviation from the median exceeds `sigma` times the median absolute deviation, the value is considered an outlier and is replaced by the median.
+If the current element's deviation from the median exceeds `sigma` times the median absolute deviation, the value is
+considered an outlier and is replaced by the median.
 The median function computes the median of a given array of numbers.
  */

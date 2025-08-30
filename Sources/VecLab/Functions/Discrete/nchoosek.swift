@@ -9,14 +9,15 @@ import Foundation
 
 /// Binomial coefficient.
 ///
-/// The function computes the binomial coefficient, often represented as \( \binom{n}{k} \), which signifies the number of ways to choose `k` items from 
-/// a set of `n` items without repetition and without order.
+/// The function computes the binomial coefficient, often represented as \( \binom{n}{k} \), which signifies the
+/// number of ways to choose `k` items from  a set of `n` items without repetition and without order.
 ///
 /// - Parameters:
 ///   - n: The total number of items.
 ///   - k: The number of items to choose at a time.
 ///
-/// - Returns: An integer representing the number of ways to choose `k` items from a set of `n` items. If `k` is larger than `n`, the result is 0.
+/// - Returns: An integer representing the number of ways to choose `k` items from a set of `n` items.
+/// If `k` is larger than `n`, the result is 0.
 ///
 /// - Note:
 ///   The binomial coefficient is calculated using the formula: \( \binom{n}{k} = \frac{n!}{k! (n-k)!} \).
@@ -55,7 +56,8 @@ public func nchoosek(_ n: Int, _ k: Int) -> Int {
 ///   - v: An array of elements from which to generate combinations.
 ///   - k: The number of elements in each combination.
 ///
-/// - Returns: An array of arrays, where each inner array represents a distinct combination of `k` elements from `v`.
+/// - Returns: An array of arrays, where each inner array represents a distinct combination
+///  of `k` elements from `v`.
 ///
 /// - Note:
 ///   If `k` is larger than the number of elements in `v`, or if `k` is 0, an empty array is returned.

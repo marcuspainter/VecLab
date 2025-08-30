@@ -13,10 +13,12 @@ import Foundation
 ///
 /// - Parameter array: Input array.
 ///
-/// - Returns: An array of arrays, where each inner array represents a distinct permutation of the elements in the array.
+/// - Returns: An array of arrays, where each inner array represents a distinct permutation of the elements in
+/// the array.
 ///
 /// - Note:
-///   The number of permutations of an array of `n` elements is n! (n factorial). As a result, the output can grow very large for relatively small input arrays.
+///   The number of permutations of an array of `n` elements is n! (n factorial). As a result, the output can
+/// grow very large for relatively small input arrays.
 ///
 /// # Example
 /// ```

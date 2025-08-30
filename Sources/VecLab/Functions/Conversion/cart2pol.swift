@@ -44,7 +44,8 @@ public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: 
 ///   - x: The x-coordinate.
 ///   - y: The y-coordinate.
 ///   - z: The z-coordinate.
-/// - Returns: A tuple containing the angle theta in radians and the radial distance rho from the origin and the radial height.
+/// - Returns: A tuple containing the angle theta in radians and the radial distance rho from the origin
+/// and the radial height.
 public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real, z: Real) {
     let theta = Darwin.atan2(y, x)
     let rho = Darwin.sqrt(x * x + y * y)
@@ -56,7 +57,8 @@ public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real
 ///   - x: The x-coordinate.
 ///   - y: The y-coordinate.
 ///   - z: The z-coordinate.
-/// - Returns: A tuple containing an array of the angle theta in radians and the radial distance rho from the origin and the radial height.
+/// - Returns: A tuple containing an array of the angle theta in radians and the radial distance rho from the
+/// origin and the radial height.
 public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray)
         -> (theta: RealArray, rho: RealArray, z: RealArray) {
     let n = x.count

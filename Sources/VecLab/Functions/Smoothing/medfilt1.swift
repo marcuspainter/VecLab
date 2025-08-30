@@ -9,9 +9,10 @@ import Foundation
 
 /// One-dimensional median filter.
 ///
-/// The `medfilt1` function is a one-dimensional median filter. It replaces each entry in an input sequence with the median
-/// of neighboring entries. The range of neighboring entries is specified by a window size parameter. It's essentially a special
-/// case of the `hampel` function where you only consider the median and don't replace based on deviations.
+/// The `medfilt1` function is a one-dimensional median filter. It replaces each entry in an input sequence
+/// with the median of neighboring entries. The range of neighboring entries is specified by a window
+/// size parameter. It's essentially a special case of the `hampel` function where you only consider
+/// the median and don't replace based on deviations.
 ///
 /// - Parameters:
 ///   - x: Input data array.
@@ -62,5 +63,7 @@ private func medfilt1Truncate(_ x: RealArray, k: Int) -> RealArray {
 }
 
 /*
- This function is similar in structure to hampel, but instead of checking for outliers, it simply replaces each value in the array with the median of its surrounding values. Note that this version of medfilt1 is designed to handle the edge cases by reducing the window size near the start and end of the array.
+ This function is similar in structure to hampel, but instead of checking for outliers, it simply replaces each
+ value in the array with the median of its surrounding values. Note that this version of medfilt1 is designed
+ to handle the edge cases by reducing the window size near the start and end of the array.
  */

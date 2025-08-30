@@ -9,10 +9,12 @@ import Foundation
 
 /// Computes the mode(s) of an array.
 ///
-/// The mode is the value that appears most frequently in a dataset. A data set may have one mode, more than one mode, or no mode at all.
+/// The mode is the value that appears most frequently in a dataset.
+/// A data set may have one mode, more than one mode, or no mode at all.
 ///
 /// - Parameter data: Input array of real numbers.
-/// - Returns: An array containing the mode or modes of the data. If the dataset doesn't have a mode, the returned array will be empty.
+/// - Returns: An array containing the mode or modes of the data.
+/// If the dataset doesn't have a mode, the returned array will be empty.
 ///
 /// # Example:
 /// ```
@@ -53,5 +55,7 @@ print(mode(dataSet))  // Output: [3.0]
 */
 
 /*
- In this mode function, first create a dictionary (countMap) to count the occurrence of each value in the dataset. I then find the value(s) that have the maximum count and return them as the mode. If there are multiple values with the same highest count, all of them are returned.
+ In this mode function, first create a dictionary (countMap) to count the occurrence of each value in the dataset.
+ I then find the value(s) that have the maximum count and return them as the mode. If there are multiple values
+ with the same highest count, all of them are returned.
  */

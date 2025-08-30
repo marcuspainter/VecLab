@@ -8,7 +8,6 @@
 import Accelerate
 
 extension ComplexDoubleArray {
-
     /// Unsafe pointers for vDSP functions.
     /// - Parameters:
     ///   - a: A complex array.
@@ -29,12 +28,15 @@ extension ComplexDoubleArray {
                     b.imag.withUnsafeBufferPointer { bImagBuffer in
                         c.real.withUnsafeMutableBufferPointer { cRealBuffer in
                             c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
-                                var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
-                                                              imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
-                                var B = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: bRealBuffer.baseAddress!),
-                                                              imagp: UnsafeMutablePointer(mutating: bImagBuffer.baseAddress!))
-                                var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
-                                                              imagp: cImagBuffer.baseAddress!)
+                                var A = DSPDoubleSplitComplex(
+                                    realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                    imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                                var B = DSPDoubleSplitComplex(
+                                    realp: UnsafeMutablePointer(mutating: bRealBuffer.baseAddress!),
+                                    imagp: UnsafeMutablePointer(mutating: bImagBuffer.baseAddress!))
+                                var C = DSPDoubleSplitComplex(
+                                    realp: cRealBuffer.baseAddress!,
+                                    imagp: cImagBuffer.baseAddress!)
                                 let n = vDSP_Length(a.count)
                                 body(&A, &B, &C, n)
                             }
@@ -65,8 +67,9 @@ extension ComplexDoubleArray {
                     c.real.withUnsafeMutableBufferPointer { cRealBuffer in
                         c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
 
-                            var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
-                                                          imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                            var A = DSPDoubleSplitComplex(
+                                realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                                imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
 
                             let B = bRealBuffer.baseAddress!
 
@@ -97,10 +100,12 @@ extension ComplexDoubleArray {
             a.imag.withUnsafeBufferPointer { aImagBuffer in
                 c.real.withUnsafeMutableBufferPointer { cRealBuffer in
                     c.imag.withUnsafeMutableBufferPointer { cImagBuffer in
-                        var A = DSPDoubleSplitComplex(realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
-                                                      imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
-                        var C = DSPDoubleSplitComplex(realp: cRealBuffer.baseAddress!,
-                                                      imagp: cImagBuffer.baseAddress!)
+                        var A = DSPDoubleSplitComplex(
+                            realp: UnsafeMutablePointer(mutating: aRealBuffer.baseAddress!),
+                            imagp: UnsafeMutablePointer(mutating: aImagBuffer.baseAddress!))
+                        var C = DSPDoubleSplitComplex(
+                            realp: cRealBuffer.baseAddress!,
+                            imagp: cImagBuffer.baseAddress!)
                         let n = vDSP_Length(a.count)
                         body(&A, &C, n)
                     }

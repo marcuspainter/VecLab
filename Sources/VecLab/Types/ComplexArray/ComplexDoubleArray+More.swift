@@ -32,11 +32,10 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-
     /// Returns the last element matching the predicate.
     @inlinable
     public func last(where predicate: (ComplexDouble) -> Bool) -> ComplexDouble? {
-        for element in self.reversed() {
+        for element in reversed() {
             if predicate(element) {
                 return element
             }
@@ -47,7 +46,7 @@ extension ComplexDoubleArray {
     /// Returns the index of the first element matching the predicate.
     @inlinable
     public func firstIndex(where predicate: (ComplexDouble) -> Bool) -> Int? {
-        for (index, element) in self.enumerated() {
+        for (index, element) in enumerated() {
             if predicate(element) {
                 return index
             }
@@ -58,7 +57,7 @@ extension ComplexDoubleArray {
     /// Returns the index of the last element matching the predicate.
     @inlinable
     public func lastIndex(where predicate: (ComplexDouble) -> Bool) -> Int? {
-        for (index, element) in self.enumerated().reversed() {
+        for (index, element) in enumerated().reversed() {
             if predicate(element) {
                 return index
             }
@@ -68,9 +67,9 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-
     @inlinable
-    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, ComplexDouble) -> Result) -> Result {
+    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, ComplexDouble) -> Result)
+        -> Result {
         var result = initialResult
         for element in self {
             result = nextPartialResult(result, element)
@@ -80,7 +79,6 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-
     @inlinable
     public mutating func partition(by belongsInSecondPartition: (ComplexDouble) -> Bool) -> Int {
         var low = startIndex
@@ -105,9 +103,9 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-
     @inlinable
-    public func split(whereSeparator isSeparator: (ComplexDouble) -> Bool, omittingEmptySubsequences: Bool = true) -> [[ComplexDouble]] {
+    public func split(whereSeparator isSeparator: (ComplexDouble) -> Bool, omittingEmptySubsequences: Bool = true)
+        -> [[ComplexDouble]] {
         var result: [[ComplexDouble]] = []
         var currentChunk: [ComplexDouble] = []
 
@@ -130,14 +128,15 @@ extension ComplexDoubleArray {
     }
 
     @inlinable
-    public func splitToArrays(whereSeparator isSeparator: (ComplexDouble) -> Bool, omittingEmptySubsequences: Bool = true) -> [ComplexDoubleArray] {
-        let grouped: [[ComplexDouble]] = self.split(whereSeparator: isSeparator, omittingEmptySubsequences: omittingEmptySubsequences)
+    public func splitToArrays(whereSeparator isSeparator: (ComplexDouble) -> Bool,
+                              omittingEmptySubsequences: Bool = true) -> [ComplexDoubleArray] {
+        let grouped: [[ComplexDouble]] = split(whereSeparator: isSeparator,
+                                                omittingEmptySubsequences: omittingEmptySubsequences)
         return grouped.map { ComplexDoubleArray($0) }
     }
 }
 
 extension ComplexDoubleArray {
-
     @inlinable
     public func chunked(into size: Int) -> [ComplexDoubleArray] {
         precondition(size > 0, "Chunk size must be positive.")
@@ -147,8 +146,8 @@ extension ComplexDoubleArray {
 
         while start < count {
             let end = Swift.min(start + size, count)
-            let realChunk = Array(real[start..<end])
-            let imagChunk = Array(imag[start..<end])
+            let realChunk = Array(real[start ..< end])
+            let imagChunk = Array(imag[start ..< end])
             chunks.append(ComplexDoubleArray(realChunk, imagChunk))
             start += size
         }
@@ -158,11 +157,11 @@ extension ComplexDoubleArray {
 }
 
 extension ComplexDoubleArray {
-
     @inlinable
-    public func elementsEqual(_ other: ComplexDoubleArray, by areEquivalent: (ComplexDouble, ComplexDouble) -> Bool) -> Bool {
-        guard self.count == other.count else { return false }
-        for i in 0..<count {
+    public func elementsEqual(_ other: ComplexDoubleArray, by areEquivalent: (ComplexDouble, ComplexDouble) -> Bool)
+        -> Bool {
+        guard count == other.count else { return false }
+        for i in 0 ..< count {
             if !areEquivalent(self[i], other[i]) {
                 return false
             }
