@@ -21,7 +21,6 @@ extension ComplexDouble: AdditiveArithmetic {
     /// - Parameters:
     ///   - a: Complex number.
     ///   - b: Complex number.
-    /// - Returns: The result of the addition.
     @inlinable
     public static func += (a: inout ComplexDouble, b: ComplexDouble) {
         a.real += b.real
@@ -42,7 +41,6 @@ extension ComplexDouble: AdditiveArithmetic {
     /// - Parameters:
     ///   - a: Complex number.
     ///   - b: Complex number.
-    /// - Returns: The result of the subtraction.
     @inlinable
     public static func -= (a: inout ComplexDouble, b: ComplexDouble) {
         a.real -= b.real

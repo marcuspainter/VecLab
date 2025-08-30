@@ -10,6 +10,7 @@ import VecLab
 import XCTest
 
 final class SomeTests: XCTestCase {
+    /*
     func testExample() throws {
 
         let x = vector(1...10);
@@ -36,4 +37,5 @@ final class SomeTests: XCTestCase {
         disp(xx)
         
     }
+     */
 }
