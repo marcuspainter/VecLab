@@ -207,4 +207,55 @@ class FilterTests: XCTestCase {
         //print(b)
         //print(a)
     }
+    
+    func testFiltfilt() {
+        let x = vector(1 ... 10)
+        let b: [Double] = [0, 0, 0, 1] // 3 sample Delay
+        //let b: [Double] = ones(3) / 3.0
+        //let b: [Double] = [1, -1]
+        
+        let a: [Double] = [1]
+        
+        let y1 = filter(b: b, a: a, x: x)
+        //disp(y1)
+        
+        let y2 = filtfilt(b: b, a: a, x: x)
+        disp(y2)
+    }
+    
+    func testFiltFiltExtend() {
+        let a = vector(1 ... 3)
+        let b = vector(4 ... 6)
+        let x = vector(1 ... 10)
+        let n = x.count
+        let nfact = 3 * (max(length(a), length(b)) - 1)
+        
+        // --- Step 2. Check input length
+        if length(x) <= nfact {
+            fatalError("Data sequence too short for filter order.")
+        }
+        
+        // --- Step 3. Create reflected extensions
+        let x_pre  = 2.0 * x[0]     - flip(x[1 ..< (nfact+1)])
+        let x_post = 2.0 * x[n - 1] - flip(x[ (n-nfact-1) ..< (n-1) ])
+        
+        let x_ext = cat(x_pre, x, x_post)
+        //disp(x_ext)
+        
+        //--- Step 4. Forward filter
+        var y_ext = filter(b: b, a: a, x: x_ext)
+          
+        // --- Step 5. Reverse and filter again
+        y_ext = filter(b: b, a: a, x: flip(y_ext))
+          
+        // --- Step 6. Flip back
+        y_ext = flip(y_ext);
+        
+        y_ext = x_ext
+        
+        // --- Step 7. Trim off the extension
+        let ny = y_ext.count
+        let y = y_ext[ nfact ..< (ny - nfact) ]
+        //disp(y);
+    }
 }

@@ -87,7 +87,7 @@ final class DoubleArrayExtensionsTests: XCTestCase {
 
     // Test assignment with closed ranges
     func testClosedRangeAssignment() {
-        var array = [1.0, 2.0, 3.0, 4.0, 5.0]
+        //var array = [1.0, 2.0, 3.0, 4.0, 5.0]
 
         // Test valid replacement (correct size)
         // array[1...3] = [10.0, 20.0, 30.0]

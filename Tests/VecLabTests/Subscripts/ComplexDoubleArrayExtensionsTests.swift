@@ -89,7 +89,7 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         // let originalStdout = FileHandle.standardOutput
         // FileHandle.standardOutput = pipe
 
-        var array = ComplexDoubleArray([
+        let array = ComplexDoubleArray([
             ComplexDouble(1, 1),
             ComplexDouble(2, 2),
             ComplexDouble(3, 3),

@@ -22,17 +22,19 @@ public enum SOSFilterError: Error {
 public final class SOSFilter {
     private var biquadSetup: vDSP_biquad_SetupD
     private var delay: [Double] = []
+    private var gain: Double = 1.0
     
     /// Initialize SOSFilter with second-order sections.
     /// - Parameter sos: Array of sections.
-    public init(sos: [[Double]]) throws {
+    public init(sos: [[Double]], gain: Double = 1.0) throws {
         let sectionCount = sos.count // Single section for now
         let coefficients = Self.convertSosCoefficients(sos)
 
         guard let setup = vDSP_biquad_CreateSetupD(coefficients, vDSP_Length(sectionCount)) else {
             throw SOSFilterError.setupFailed
         }
-        biquadSetup = setup
+        self.biquadSetup = setup
+        self.gain = gain
 
         setDelay(sectionCount: sectionCount)
     }
@@ -79,7 +81,7 @@ public final class SOSFilter {
                 }
             }
         }
-        return output
+        return gain == 1.0 ? output : gain * output
     }
 
     /// Reset the filter's internal state (clear delay line).
