@@ -6,7 +6,7 @@
 //
 
 extension ComplexDoubleArray {
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -14,7 +14,7 @@ extension ComplexDoubleArray {
     public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs + rhs
     }
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -38,7 +38,7 @@ extension ComplexDoubleArray {
     public static func += (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
         lhs = lhs + rhs
     }
-    
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -46,7 +46,7 @@ extension ComplexDoubleArray {
     public static func -= (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs - rhs
     }
-    
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -70,7 +70,7 @@ extension ComplexDoubleArray {
     public static func -= (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
         lhs = lhs - rhs
     }
-    
+
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -78,7 +78,7 @@ extension ComplexDoubleArray {
     public static func *= (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs * rhs
     }
-    
+
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -102,7 +102,7 @@ extension ComplexDoubleArray {
     public static func *= (lhs: inout ComplexDoubleArray, rhs: ComplexDouble) {
         lhs = lhs * rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -110,7 +110,7 @@ extension ComplexDoubleArray {
     public static func /= (lhs: inout ComplexDoubleArray, rhs: ComplexDoubleArray) {
         lhs = lhs / rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.

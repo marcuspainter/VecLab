@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble: ElementaryArithmetic {
-    
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.

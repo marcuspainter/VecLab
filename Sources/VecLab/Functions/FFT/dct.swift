@@ -7,13 +7,13 @@
 
 import Accelerate
 
-/// Discrete Cosine Transform
+/// Discrete Cosine Transform using FFT.
 /// - Parameter x: Real array.
 /// - Returns: Real Array.
 public func dct(_ x: RealArray) -> RealArray {
     let N = x.count
     let y = cat(x, flip(x))
-    
+
     let Y = fftr(y)
     let k = vector(0..<N)
     let w = expi(-Real.pi * k / (2.0 * Real(N)))
@@ -21,28 +21,26 @@ public func dct(_ x: RealArray) -> RealArray {
     X = X / Real(N)
     X = X * sqrt(Real(N)/2.0)
     X[0] = X[0] / sqrt(2.0)
-    
+
     return X
 }
 
 // Only works for Float
 func dctVDSP(_ x: RealArray) -> RealArray {
     let inputF = d2f(x)
-    
+
     // Forward is type II
     guard let dct = vDSP.DCT(previous: nil,
                                 count: inputF.count,
                                 transformType: .II) else {
         return [Real](repeating: Real.nan, count: inputF.count)
     }
-    
+
     let outputF = dct.transform(inputF)
     let output = f2d(outputF)
-    
+
     return output
 }
-
-
 
 /*
 function X = dct_fft(x)

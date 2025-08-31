@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble: Numeric {
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -16,7 +16,7 @@ extension ComplexDouble: Numeric {
     public static func * (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
         return ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -28,12 +28,12 @@ extension ComplexDouble: Numeric {
         a.real = x
         a.imag = y
     }
-    
+
     /// Magnitude.
     ///
     /// Needed for `SignedNumeric` protocol.
     public var magnitude: Double {
         return (real * real + imag * imag).squareRoot()
     }
-    
+
 }

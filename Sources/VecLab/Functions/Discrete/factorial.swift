@@ -9,14 +9,17 @@ import Foundation
 
 /// Factorial
 ///
-/// This function returns the factorial of `n`, denoted as `n!`, which is the product of all positive integers less than or equal to `n`.
+/// This function returns the factorial of `n`, denoted as `n!`, which is the product of all positive integers
+/// less than or equal to `n`.
 ///
-/// - Parameter n: The integer whose factorial is to be computed. If `n` is negative, the function returns NaN to indicate an error.
+/// - Parameter n: The integer whose factorial is to be computed. If `n` is negative, the function returns NaN to
+/// indicate an error.
 ///
 /// - Returns: The factorial of `n`. Returns  Nan for negative values of `n`.
 ///
 /// - Note:
-///   Factorial grows very quickly and can exceed the storage capacity for standard integer types even for relatively small values of `n`.
+/// Factorial grows very quickly and can exceed the storage capacity for standard integer types even for
+/// relatively small values of `n`.
 ///
 /// # Example
 /// ```

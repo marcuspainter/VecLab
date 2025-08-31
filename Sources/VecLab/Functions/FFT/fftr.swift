@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 03/04/2024.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// FFT of real array.
 /// - Parameter x: Real array.
@@ -27,7 +27,7 @@ public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
                                                        ofType: Real.self) else {
         print("fftr error")
         return ComplexArray([Real](repeating: Real.nan, count: input.count),
-                [Real](repeating: Real.nan, count: input.count))
+                            [Real](repeating: Real.nan, count: input.count))
     }
     let zeros = [Real](repeating: 0.0, count: input.count)
     let splitComplexOutput = dft.transform(real: x, imaginary: zeros)

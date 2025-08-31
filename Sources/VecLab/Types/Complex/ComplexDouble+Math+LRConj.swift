@@ -10,9 +10,9 @@
 //
 
 extension ComplexDouble {
-    
+
     // MARK: Complex left conjugate multiply
-    
+
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex number.
@@ -43,7 +43,7 @@ extension ComplexDouble {
 }
 
 extension ComplexDouble {
-    
+
     // MARK: Complex right conjugate multiply
 
     /// Right conjugate multiply.

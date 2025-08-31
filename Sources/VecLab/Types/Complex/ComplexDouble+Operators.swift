@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble {
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex value.
@@ -38,7 +38,7 @@ extension ComplexDouble {
     public static func /= (lhs: inout ComplexDouble, rhs: ComplexDouble) {
         lhs = lhs / rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex value.

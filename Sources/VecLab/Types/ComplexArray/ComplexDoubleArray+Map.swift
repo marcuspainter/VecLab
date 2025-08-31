@@ -295,7 +295,8 @@ extension ComplexDoubleArray {
  // Not needed
  extension ComplexDoubleArray {
 
-     /// Returns a new `ComplexDoubleArray` by combining each element of `self` with the corresponding element of `other`
+     /// Returns a new `ComplexDoubleArray` by combining each element of `self` with the
+     // corresponding element of `other`
      /// using the given transform.
      public func zip(
          with other: ComplexDoubleArray,
@@ -370,7 +371,8 @@ extension ComplexDoubleArray {
     /// Returns a new array with elements rearranged and the pivot index.
     /// - Parameter belongsInSecondPartition: Predicate closure.
     /// - Returns: A new array.
-    public func partitioned(by belongsInSecondPartition: (ComplexDouble) -> Bool) -> (array: ComplexDoubleArray, pivot: Int) {
+    public func partitioned(by belongsInSecondPartition: (ComplexDouble) -> Bool)
+    -> (array: ComplexDoubleArray, pivot: Int) {
         var matching = ComplexDoubleArray()
         var nonMatching = ComplexDoubleArray()
 

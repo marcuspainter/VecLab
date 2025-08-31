@@ -1,14 +1,57 @@
-included:
-  - Sources
-
-excluded:
-  - Tests
+# .swiftlint.yml
+# SwiftLint config: focused on safety, readability, and bug prevention
+# NO style-police nonsense 🚫👮
 
 disabled_rules:
+  # 🚫 Pure style/taste rules
+  - for_where
+  - empty_count
+  - empty_string
+  - explicit_init
+  - syntactic_sugar
+  - trailing_semicolon
+  - type_name
   - identifier_name
+  - file_name
+  # - line_length
+  - redundant_void_return
   - shorthand_operator
   - large_tuple
   - switch_case_alignment
 
+opt_in_rules:
+  # ✅ Opt into useful, non-default rules
+  - weak_delegate
+  - empty_enum_arguments
+  - discouraged_optional_collection
+  - private_action
+  - private_outlet
 
+analyzer_rules:
+  # Rules that require the Swift compiler’s AST
+  - unused_declaration
+  - unused_import
+
+# Customize thresholds (avoid noise)
+line_length:
+  warning: 160  # Long lines allowed up to 160 chars
+  error: 200
+
+type_body_length:
+  warning: 400
+  error: 600
+
+function_body_length:
+  warning: 80
+  error: 120
+  
+included:
+    - Sources
+
+# Exclude generated/third-party code
+excluded:
+  - Pods
+  - Carthage
+  - Generated
+  - Tests
 

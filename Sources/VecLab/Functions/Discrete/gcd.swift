@@ -44,13 +44,16 @@ print(G) // GCD of 56 and 98 is 14
 */
 
 /*
- Your gcd function implements the Euclidean algorithm, a classical algorithm for finding the greatest common divisor (GCD) of two numbers.
+ Your gcd function implements the Euclidean algorithm, a classical algorithm for finding the greatest common divisor
+ (GCD) of two numbers.
 
  Here's a quick breakdown:
 
  While b is not zero, repeatedly replace (a, b) with (b, a % b).
  When b becomes zero, a will contain the greatest common divisor of A and B.
- The function you've provided is correct. Additionally, the use of abs(a) at the end ensures that the returned GCD is always non-negative, regardless of the signs of the input numbers A and B.
+ The function you've provided is correct. Additionally, the use of abs(a) at the end ensures that the returned GCD
+ is always non-negative, regardless of the signs of the input numbers A and B.
 
- The Euclidean algorithm is an efficient way to calculate the GCD of two numbers, so your implementation is both correct and efficient.
+ The Euclidean algorithm is an efficient way to calculate the GCD of two numbers, so your implementation is both
+ correct and efficient.
  */

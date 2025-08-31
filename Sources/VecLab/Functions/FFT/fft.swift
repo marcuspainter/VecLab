@@ -20,7 +20,7 @@ public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     } else {
         input = x
     }
-    
+
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: input.count,
                                                        direction: .forward,
@@ -28,7 +28,7 @@ public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
                                                        ofType: Double.self) else {
         print("fft error")
         return ComplexArray([Real](repeating: Real.nan, count: input.count),
-                [Real](repeating: Real.nan, count: input.count))
+                            [Real](repeating: Real.nan, count: input.count))
     }
 
     let splitComplexOutput = dft.transform(real: input.real, imaginary: input.imag)
@@ -48,15 +48,15 @@ public func fft(_ x: RealArray, length: Int?) -> ComplexArray {
 ///   - transformType: Complex or real type.
 /// - Returns: A DiscreteFourierTransform.
 public func fftsetup(count: Int,
-                direction: vDSP.FourierTransformDirection,
-                transformType: vDSP.DFTTransformType = .complexComplex)
-            -> vDSP.DiscreteFourierTransform<Double>? {
+                     direction: vDSP.FourierTransformDirection,
+                     transformType: vDSP.DFTTransformType = .complexComplex)
+    -> vDSP.DiscreteFourierTransform<Double>? {
     do {
         let dft = try vDSP.DiscreteFourierTransform(previous: nil,
-                                                 count: count,
-                                                 direction: direction,
-                                                 transformType: transformType,
-                                                 ofType: Double.self)
+                                                    count: count,
+                                                    direction: direction,
+                                                    transformType: transformType,
+                                                    ofType: Double.self)
         return dft
     } catch {
         print("fftsetup: \(error)")

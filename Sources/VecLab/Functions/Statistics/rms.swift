@@ -30,7 +30,8 @@ public func rms(_ x: RealArray) -> Real {
 
 /// Root-mean-square (RMS) value of a complex  array.
 ///
-/// The RMS is a statistical measure of the magnitude of a set of numbers. For complex numbers, this function computes the RMS for both the real and imaginary parts.
+/// The RMS is a statistical measure of the magnitude of a set of numbers.
+/// For complex numbers, this function computes the RMS for both the real and imaginary parts.
 ///
 /// - Parameter x: Input array of complex numbers, represented as `(real, imaginary)`.
 /// - Returns: The RMS value of the complex array.

@@ -12,11 +12,11 @@ public struct ComplexDouble:
     Equatable,  // Synthesized
     Hashable,   // Synthesized
     Codable,
-    //CustomStringConvertible,
-    //CustomDebugStringConvertible,
-    //SignedNumeric,
+    // CustomStringConvertible,
+    // CustomDebugStringConvertible,
+    // SignedNumeric,
     Sendable {
-    
+
     /// Real part.
     public var real: Double
 
@@ -38,4 +38,3 @@ public struct ComplexDouble:
         self.imag = imag
     }
 }
-

@@ -29,8 +29,8 @@ FFT, DFT and FFT shift.
 
 ### Discrete Cosine Transform
 
--``dct(_:)``
--``idct(_:)``
+- ``dct(_:)``
+- ``idct(_:)``
 
 ### FFT Setup
 

@@ -199,7 +199,7 @@ Overloaded operators for scalar and vectors.
 |Conversion| cart2pol, cart2sph, d2f, db2mag, db2pow, deg2rad, f2d, mag2db, pol2cart, pow2db, rad2deg, sph2cart|
 |Discrete| factor, factorial, gcd, isprime, lcm, nextprime, nchoosek, perms, prevprime, primes|
 |Exponents| exp, expi, log, log2, log10, nextpow2, sqrt|
-|FFT| dft, dftr, fft, fftr, fftshift, fftsymmetric, idft, idftr, ifft, ifftr, ifftshift|
+|FFT| dct, dft, dftr, fft, fftr, fftshift, fftsymmetric, idct, idft, idftr, ifft, ifftr, ifftshift|
 |Filter| biquad, freqz, filter|
 |Integration| diff, gradient, trapz|
 |Interpolation| interp1, interpft, sincresample|

@@ -20,7 +20,7 @@ public func ifftr(_ x: ComplexArray, length: Int? = nil) -> RealArray {
     } else {
         input = x
     }
-    
+
     guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
                                                        count: input.count,
                                                        direction: .inverse,

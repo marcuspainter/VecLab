@@ -9,8 +9,7 @@ extension ComplexDoubleArray:
     MutableCollection,
     BidirectionalCollection,
     RandomAccessCollection,
-    RangeReplaceableCollection
-{
+    RangeReplaceableCollection {
 
     /// Reserve stroage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.
@@ -74,7 +73,7 @@ extension ComplexDoubleArray:
         real.append(element.real)
         imag.append(element.imag)
     }
-    
+
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
     public mutating func append(contentsOf newElements: ComplexDoubleArray) {

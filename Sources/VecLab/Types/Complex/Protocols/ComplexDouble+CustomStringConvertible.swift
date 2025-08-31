@@ -6,7 +6,7 @@
 //
 
 extension ComplexDouble: CustomStringConvertible {
-    
+
     /// String of complex value.
     public var description: String {
         if imag >= 0 {
