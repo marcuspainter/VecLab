@@ -1,4 +1,4 @@
-# Fourier Transform
+# Fourier Transforms
 
 ## Overview
 
@@ -15,7 +15,7 @@ VecLab uses the MATLAB-style function names `abs()` and `angle()` for magnitude 
 
 ```swift
 let z = ComplexArray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
-let Z= fft(z)
+let Z = fft(z)
 let magnitude = abs(Z)
 let phase = angle(Z)
 ```

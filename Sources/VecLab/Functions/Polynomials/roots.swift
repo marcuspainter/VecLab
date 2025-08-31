@@ -33,7 +33,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     }
 
     // Get normalized coefficients (divide by leading coefficient)
-    let p = Array(coefficients[startIndex...])
+    let p = coefficients[startIndex...]
 
     // Handle special case for linear polynomial
     if p.count == 2 {

@@ -222,7 +222,9 @@ Overloaded operators for scalar and vectors.
 - <doc:Migration>
 - <doc:ArrayConcatenation>
 - <doc:ArrayIndexing>
-- <doc:FourierTransform>
+- <doc:FourierTransforms>
+- <doc:Filters>
+- <doc:DoubleAndFloatTypes>
 
 ### Vector Creation
 - <doc:RealCreation>
@@ -240,8 +242,8 @@ Overloaded operators for scalar and vectors.
 - <doc:Conversion>
 - <doc:Discrete>
 - <doc:Exponents>
-- <doc:Filter>
 - <doc:FFT>
+- <doc:Filter>
 - <doc:Integration>
 - <doc:Interpolation>
 - <doc:Modulo>

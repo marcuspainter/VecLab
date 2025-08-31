@@ -109,8 +109,6 @@ public final class BiquadFilter {
         vDSP_biquad_SetCoefficientsDouble(biquadSetup, coefficients, sectionStart, sectionCountLength)
         
         // Reset delay line if sections count changes
-
-        
     }
 
     /// Process one block of samples.

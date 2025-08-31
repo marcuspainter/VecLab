@@ -37,3 +37,4 @@ FFT, DFT and FFT shift.
 - ``fftsetup(count:direction:transformType:)``
 
 - ``nextpow2(_:)``
+

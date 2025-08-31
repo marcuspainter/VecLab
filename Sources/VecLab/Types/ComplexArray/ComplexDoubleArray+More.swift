@@ -146,8 +146,8 @@ extension ComplexDoubleArray {
 
         while start < count {
             let end = Swift.min(start + size, count)
-            let realChunk = Array(real[start ..< end])
-            let imagChunk = Array(imag[start ..< end])
+            let realChunk = real[start ..< end]
+            let imagChunk = imag[start ..< end]
             chunks.append(ComplexDoubleArray(realChunk, imagChunk))
             start += size
         }

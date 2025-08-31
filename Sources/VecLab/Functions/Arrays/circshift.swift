@@ -18,8 +18,8 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
     let shift = ((k % n) + n) % n
     if shift == 0 { return x } // Edge case: no effective shift
 
-    let part1 = Array(x[(n - shift) ..< n])   // Last `shift` elements
-    let part2 = Array(x[0 ..< (n - shift)])   // First `n-shift` elements
+    let part1 = x[(n - shift) ..< n]   // Last `shift` elements
+    let part2 = x[0 ..< (n - shift)]   // First `n-shift` elements
 
     return cat(part1, part2)
 }

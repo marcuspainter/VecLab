@@ -26,6 +26,7 @@ public final class SOSFilter {
     
     /// Initialize SOSFilter with second-order sections.
     /// - Parameter sos: Array of sections.
+    ///- Parameter gain: Gain.
     public init(sos: [[Double]], gain: Double = 1.0) throws {
         let sectionCount = sos.count // Single section for now
         let coefficients = Self.convertSosCoefficients(sos)
