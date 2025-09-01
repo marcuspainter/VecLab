@@ -24,10 +24,12 @@ class IntegrationTests: XCTestCase {
     // MARK: gradient
 
     func testGradientRealArray() throws {
-        let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        //let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let realArrayA: RealArray = [2,  2,     4,     5]
         let result: RealArray = gradient(realArrayA)
-        let expected: RealArray = [1.0, 1.0, 1.0, 1.0]
+        let expected: RealArray = [0.0, 1.0, 1.5, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
+        disp(result)
     }
 
     // MARK: trapz
