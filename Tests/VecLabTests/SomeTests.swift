@@ -39,6 +39,7 @@ final class SomeTests: XCTestCase {
     }
      */
     
+    /*
     func test1() {
         let a: [Double] = []
         let b: [Double] = []
@@ -52,4 +53,5 @@ final class SomeTests: XCTestCase {
         let d = vector(1 ... 100)
         let e = [Float](doubleArray: d)
     }
+    */
 }

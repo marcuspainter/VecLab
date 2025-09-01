@@ -66,13 +66,17 @@ public struct ComplexDoubleArray:
         self.imag = imag
     }
 
-    /// Initialize from real array only (zeros for imaginary)
+    /// Initialize from real array only (zeros for imaginary).
+    /// - Parameter realOnly: Real array.
     public init(realOnly: [Double]) {
         self.real = realOnly
         self.imag = [Double](repeating: 0, count: realOnly.count)
     }
 
-    /// Initialize with a single complex value repeated
+    /// Initialize with a single complex value repeated.
+    /// - Parameters:
+    ///   - value: Real value.
+    ///   - count: Number of elements.
     public init(repeating value: ComplexDouble, count: Int) {
         self.real = [Double](repeating: value.real, count: count)
         self.imag = [Double](repeating: value.imag, count: count)
@@ -92,11 +96,23 @@ public struct ComplexDoubleArray:
         self.imag = elements.map { $0.imag }
     }
 
-    // Provide convenience initializers for standard library sequence types
+    /// Provide convenience initializers for standard library sequence types.
+    /// - Parameter array: An array of complex numbers.
     public init(array: [ComplexDouble]) {
         // Convert any sequence back to your collection type
         self.real = array.map { $0.real }
         self.imag = array.map { $0.imag }
     }
 
+    /// Initialize a complex array as the same size as a complex array.
+    /// - Parameter sized: A complex array.
+    public init(sized: ComplexDoubleArray) {
+        self = ComplexDoubleArray(count: sized.count)
+    }
+    
+    /// Initialize a complex array as the same size as a real array.
+    /// - Parameter sized: A real array.
+    public init(sized: RealArray) {
+        self = ComplexDoubleArray(count: sized.count)
+    }
 }
