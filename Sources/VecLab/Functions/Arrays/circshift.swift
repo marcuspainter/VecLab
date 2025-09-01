@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 11/09/2023.
 //
 
-import Foundation
+import Accelerate
 
 /// Circularly shift array.
 /// - Parameters:
@@ -15,13 +15,38 @@ import Foundation
 public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
     let n = x.count
     if n == 0 { return x } // Edge case: empty array
+    
     let shift = ((k % n) + n) % n
     if shift == 0 { return x } // Edge case: no effective shift
-
-    let part1 = x[(n - shift) ..< n]   // Last `shift` elements
-    let part2 = x[0 ..< (n - shift)]   // First `n-shift` elements
-
-    return cat(part1, part2)
+    
+    // Create output array
+    var result = RealArray(repeating: 0.0, count: n)
+    
+    // Use vDSP for efficient memory operations
+    x.withUnsafeBufferPointer { xPtr in
+        result.withUnsafeMutableBufferPointer { resultPtr in
+            let basePtr = xPtr.baseAddress!
+            let resultBasePtr = resultPtr.baseAddress!
+            
+            // Copy last 'shift' elements to the beginning
+            vDSP_mmovD(basePtr + (n - shift),
+                     resultBasePtr,
+                     vDSP_Length(shift),
+                     vDSP_Length(1),
+                     vDSP_Length(1),
+                     vDSP_Length(1))
+            
+            // Copy first 'n-shift' elements after the shifted portion
+            vDSP_mmovD(basePtr,
+                     resultBasePtr + shift,
+                     vDSP_Length(n - shift),
+                     vDSP_Length(1),
+                     vDSP_Length(1),
+                     vDSP_Length(1))
+        }
+    }
+    
+    return result
 }
 
 /// Circularly shift complex array.
