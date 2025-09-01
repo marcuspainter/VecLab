@@ -7,14 +7,13 @@
 
 import Accelerate
 
-
 /// Fast Fourier Transform.
 public final class FFTClass {
     private var fft: vDSP.DiscreteFourierTransform<Double>
     private var ifft: vDSP.DiscreteFourierTransform<Double>
     private let zeros: [Double]
     private let length: Int
-    
+
     /// Initialize FFT.
     /// - Parameter length: FFT length.
     public init(length: Int) throws {
@@ -34,7 +33,7 @@ public final class FFTClass {
                                                      ofType: Double.self)
         }
     }
-    
+
     /// Forward FFT transform.
     /// - Parameter x: Real array.
     /// - Returns: Complex array.
@@ -43,7 +42,7 @@ public final class FFTClass {
         let splitComplexOutput = fft.transform(real: x, imaginary: zeros)
         return (splitComplexOutput.real, splitComplexOutput.imaginary)
     }
-    
+
     /// Inverse FFT transform.
     /// - Parameter x: Complex array.
     /// - Returns: Real array.
@@ -54,7 +53,7 @@ public final class FFTClass {
         splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Double(x.0.count))
         return splitComplexOutput.real
     }
-    
+
     /// Forward FFT transform.
     /// - Parameter x: Complex array.
     /// - Returns: Complex array.

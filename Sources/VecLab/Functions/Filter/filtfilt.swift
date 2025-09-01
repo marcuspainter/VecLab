@@ -86,11 +86,11 @@ private func imirror(filterLength: Int, x: RealArray) -> RealArray {
     // -- Step 7. Trim off the extension
     let startIndex = mirrorLength
     let endIndex = x.count - mirrorLength
-    
-    if startIndex > endIndex{
+
+    if startIndex > endIndex {
         fatalError("Data sequence too short for filter order.")
     }
-    
+
     let y = x[startIndex ... endIndex]
 
     return y

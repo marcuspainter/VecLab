@@ -23,18 +23,18 @@ public enum BiquadFilterError: Error {
     var localizedDescription: String {
         switch self {
         case .setupFailed:
-            return "Failed to create vDSP biquad setup"
+            return "Failed to create vDSP biquad setup."
         }
     }
 }
 
-/// Biquadratic IIR digital filter..
+/// Biquadratic IIR digital filter.
 public final class BiquadFilter {
     private let biquadSetup: vDSP_biquad_SetupD
     // Filter state
     private var delay: [Double]
     private let sectionCount: Int
-    
+
     /// Initialize BiquadFilter with coefficients.
     /// - Parameters:
     ///   - b: b coefficients.
@@ -95,19 +95,19 @@ public final class BiquadFilter {
 
         // Reset delay line if sections count changes
     }
-    
+
     public func updateCoefficients(b: [Double], a: [Double]) {
         precondition(b.count == 3, "Coefficients must be [b0, b1, b2].")
         precondition(a.count == 3, "Coefficients must be [a0, a1, a2].")
         precondition(a[0] == 1.0, "Coefficient a0 must be 1.")
-        
+
         let sectionStart: vDSP_Length = 0
         let sectionCountLength: vDSP_Length = vDSP_Length(sectionCount)
         var coefficients: [Double] = b
         coefficients.append(contentsOf: a.suffix(from: 1)) // Ignore a0
-        
+
         vDSP_biquad_SetCoefficientsDouble(biquadSetup, coefficients, sectionStart, sectionCountLength)
-        
+
         // Reset delay line if sections count changes
     }
 
@@ -139,4 +139,3 @@ public final class BiquadFilter {
         delay = [Double](repeating: 0, count: delay.count)
     }
 }
-

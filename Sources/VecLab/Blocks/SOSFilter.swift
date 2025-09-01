@@ -13,7 +13,7 @@ public enum SOSFilterError: Error {
     var localizedDescription: String {
         switch self {
         case .setupFailed:
-            return "Failed to create vDSP biquad setup"
+            return "Failed to create vDSP biquad setup."
         }
     }
 }
@@ -23,10 +23,10 @@ public final class SOSFilter {
     private var biquadSetup: vDSP_biquad_SetupD
     private var delay: [Double] = []
     private var gain: Double = 1.0
-    
+
     /// Initialize SOSFilter with second-order sections.
     /// - Parameter sos: Array of sections.
-    ///- Parameter gain: Gain.
+    /// - Parameter gain: Gain.
     public init(sos: [[Double]], gain: Double = 1.0) throws {
         let sectionCount = sos.count // Single section for now
         let coefficients = Self.convertSosCoefficients(sos)
@@ -61,7 +61,6 @@ public final class SOSFilter {
         return coefficients
     }
 
-    
     /// Filter signal.
     /// - Parameter input: Input signal.
     /// - Returns: Filtered signal.
