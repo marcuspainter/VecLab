@@ -5,11 +5,10 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class IntegrationTests: XCTestCase {
-
     let accuracy: Real = 1e-6
 
     // MARK: diff
@@ -24,8 +23,8 @@ class IntegrationTests: XCTestCase {
     // MARK: gradient
 
     func testGradientRealArray() throws {
-        //let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let realArrayA: RealArray = [2,  2,     4,     5]
+        // let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
+        let realArrayA: RealArray = [2.0, 2.0, 4.0, 5.0]
         let result: RealArray = gradient(realArrayA)
         let expected: RealArray = [0.0, 1.0, 1.5, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
@@ -41,5 +40,4 @@ class IntegrationTests: XCTestCase {
         let expected: Real = 7.5
         XCTAssertEqual(result, expected, accuracy: accuracy, "trapz failed")
     }
-
 }
