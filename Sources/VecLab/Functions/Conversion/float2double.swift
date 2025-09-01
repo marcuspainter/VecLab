@@ -10,7 +10,7 @@ import Accelerate
 /// Converts a single-precision array to a double-precision array.
 /// - Parameter floatArray: A  Float array.
 /// - Returns: A Double array.
-func float2double(_ floatArray: [Float]) -> [Double] {
+public func float2double(_ floatArray: [Float]) -> [Double] {
     guard !floatArray.isEmpty else {
         return []
     }

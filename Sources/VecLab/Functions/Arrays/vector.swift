@@ -27,14 +27,14 @@ public func vector(_ x: [Int]) -> RealArray {
 /// - Parameter x: Float array.
 /// - Returns: A real array.
 public func vector(_ x: [Float]) -> RealArray {
-    return x.map { Real($0) }
+    return RealArray(floatArray: x)
 }
 
 /// Create a real array from a Double array.
 /// - Parameter x: Double array.
 /// - Returns: A real array.
 public func vector(_ x: [Double]) -> RealArray {
-    return x.map { Real($0) }
+    return x
 }
 
 // MARK: Ranges
