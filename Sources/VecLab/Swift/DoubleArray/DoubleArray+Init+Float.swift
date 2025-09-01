@@ -7,27 +7,32 @@
 
 import Accelerate
 
-/*
- public extension Array where Element == Double {
-     /// Initialize an array with a float array.
-     /// - Parameter array: Float array.
-     init(float array: [Float]) {
-         self = array.map { Double($0) }
-     }
- }
-*/
-
 public extension Array where Element == Double {
-    /// Initialize  Double array from Float array.
-    /// - Parameter floats: Float array.
-    init(floats: [Float]) {
-        self = .init(repeating: 0.0, count: floats.count)
-        withUnsafeMutableBufferPointer { dst in
-            floats.withUnsafeBufferPointer { src in
+    /// Initialize  a Double array from a Float array.
+    /// - Parameter floatArray: Float array.
+    init(floatArray: [Float]) {
+        guard !floatArray.isEmpty else {
+            self = []
+            return
+        }
+        
+        self = Array(unsafeUninitializedCapacity: floatArray.count) { buffer, initializedCount in
+            floatArray.withUnsafeBufferPointer { src in
                 vDSP_vspdp(src.baseAddress!, 1,
-                           dst.baseAddress!, 1,
-                           vDSP_Length(floats.count))
+                           buffer.baseAddress!, 1,
+                           vDSP_Length(floatArray.count))
             }
+            initializedCount = floatArray.count
         }
     }
 }
+
+/*
+ public extension Array where Element == Double {
+     /// Initialize an array with a float array.
+     /// - Parameter floatArray: Float array.
+     init(floatArray: [Float]) {
+         self = floatArray.map { Double($0) }
+     }
+ }
+*/

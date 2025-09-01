@@ -39,5 +39,6 @@ Coordinate, degrees and radians, and decibel conversion.
 
 ### Floating Point Conversion
 
-- ``f2d(_:)->[Double]``
-- ``d2f(_:)->[Float]``
+- ``float2double(_:)->[Double]``
+- ``double2float(_:)->[Float]``
+

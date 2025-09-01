@@ -43,6 +43,8 @@ public func cat(_ arrays: ComplexArray...) -> ComplexArray {
     return newArray
 }
 
+/// Concatenate arrays.
+///
 /// - Parameter arrays: Array of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: [ComplexArray]) -> ComplexArray {

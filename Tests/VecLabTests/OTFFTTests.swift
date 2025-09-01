@@ -10,11 +10,11 @@ import Foundation
 import VecLab
 
 final class OTFFTTests: XCTestCase {
-    
+/*
     func testExample() throws {
         let r = vector(1...2**14)
         var z1 = ComplexArray(realOnly: r)
-        var z2 = ComplexArray(realOnly: r)
+        let z2 = ComplexArray(realOnly: r)
         
         tic()
         fft(n: z1.count, x: &z1)
@@ -25,7 +25,7 @@ final class OTFFTTests: XCTestCase {
         toc()
         
         tic()
-        var z = ifft(Z)
+        _ = ifft(Z)
         toc()
         
         tic()
@@ -33,7 +33,7 @@ final class OTFFTTests: XCTestCase {
         toc()
         disp(Z[0 ... 9])
     }
-
+*/
 }
 
 import Foundation

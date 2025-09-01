@@ -38,4 +38,18 @@ final class SomeTests: XCTestCase {
         
     }
      */
+    
+    func test1() {
+        let a: [Double] = []
+        let b: [Double] = []
+        
+        var c = a + b
+        print("c: \(c)")
+    
+        c = sin(a) + a
+        print("c: \(c)")
+        
+        let d = vector(1 ... 100)
+        let e = [Float](doubleArray: d)
+    }
 }

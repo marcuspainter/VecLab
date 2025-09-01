@@ -275,7 +275,7 @@ class FilterTests: XCTestCase {
         
         // --- Step 7. Trim off the extension
         let ny = y_ext.count
-        let y = y_ext[ nfact ..< (ny - nfact) ]
+        _ = y_ext[ nfact ..< (ny - nfact) ]
         //disp(y);
     }
 }

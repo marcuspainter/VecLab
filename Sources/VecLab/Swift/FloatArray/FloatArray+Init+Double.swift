@@ -7,27 +7,35 @@
 
 import Accelerate
 
+public extension Array where Element == Float {
+    /// Initialize  a Float array from a Double array.
+    /// - Parameter doubleArray: Double array.
+    init(doubleArray: [Double]) {
+        guard !doubleArray.isEmpty else {
+            self = []
+            return
+        }
+        
+        self = Array(unsafeUninitializedCapacity: doubleArray.count) { buffer, initializedCount in
+            doubleArray.withUnsafeBufferPointer { src in
+                vDSP_vdpsp(src.baseAddress!, 1,
+                           buffer.baseAddress!, 1,
+                           vDSP_Length(doubleArray.count))
+            }
+            initializedCount = doubleArray.count
+        }
+    }
+}
+
 /*
 public extension Array where Element == Float {
     /// Initialize a Float array with a Double array.
-    /// - Parameter array: Double  array.
-    init(double array: [Double]) {
-        self = array.map { Float($0) }
+    /// - Parameter doubleArray: Double  array.
+    init(doubleArray: [Double]) {
+        self = doubleArray.map { Float($0) }
     }
 }
 */
 
-public extension Array where Element == Float {
-    /// Initialize  Float array from Double array.
-    /// - Parameter doubles: Double array.
-    init(doubles: [Double]) {
-        self = .init(repeating: 0.0, count: doubles.count)
-        self.withUnsafeMutableBufferPointer { dst in
-            doubles.withUnsafeBufferPointer { src in
-                vDSP_vdpsp(src.baseAddress!, 1,
-                           dst.baseAddress!, 1,
-                           vDSP_Length(doubles.count))
-            }
-        }
-    }
-}
+
+

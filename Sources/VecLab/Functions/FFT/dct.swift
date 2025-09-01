@@ -27,7 +27,7 @@ public func dct(_ x: RealArray) -> RealArray {
 
 // Only works for Float
 func dctVDSP(_ x: RealArray) -> RealArray {
-    let inputF = d2f(x)
+    let inputF = double2float(x)
 
     // Forward is type II
     guard let dct = vDSP.DCT(previous: nil,
@@ -37,7 +37,7 @@ func dctVDSP(_ x: RealArray) -> RealArray {
     }
 
     let outputF = dct.transform(inputF)
-    let output = f2d(outputF)
+    let output = float2double(outputF)
 
     return output
 }
