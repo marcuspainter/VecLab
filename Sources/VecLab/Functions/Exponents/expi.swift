@@ -11,11 +11,10 @@ import Accelerate
 /// - Parameter x: Angles in radians
 /// - Returns: Complex array of (cos(x),  sin(x)) equivalent to exp(i \* x) by Euler's formula.
 public func expi(_ x: RealArray) -> ComplexArray {
-    var angles = x
     var cosines = RealArray(repeating: 0.0, count: x.count)
     var sines = RealArray(repeating: 0.0, count: x.count)
     var n = Int32(x.count)
-    vvsincos(&sines, &cosines, &angles, &n)
+    vvsincos(&sines, &cosines, x, &n)
     return ComplexArray(cosines, sines)
 }
 
