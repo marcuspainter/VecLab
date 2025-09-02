@@ -6,6 +6,7 @@
 //
 
 extension Array where Element == Real {
+
     /// Access elements using an array of indices
     public subscript(indices: [Int]) -> [Element] {
         get {
@@ -22,8 +23,10 @@ extension Array where Element == Real {
                 precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
             }
 
-            precondition(indices.count == newValue.count,
-                         "Replacement array must have the same count as the indices array")
+            precondition(
+                indices.count == newValue.count,
+                "Replacement array must have the same count as the indices array"
+            )
 
             for (offset, idx) in indices.enumerated() {
                 self[idx] = newValue[offset]

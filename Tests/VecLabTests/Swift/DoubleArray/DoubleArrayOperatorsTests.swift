@@ -1,5 +1,5 @@
 //
-//  DoubleArrayOperatorTests.swift
+//  DoubleArrayOperatorsTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 02/09/2025.
@@ -8,7 +8,7 @@
 import VecLab
 import XCTest
 
-final class DoubleArrayOperatorTests: XCTestCase {
+final class DoubleArrayOperatorsTests: XCTestCase {
 
     func testOperators() throws {
 

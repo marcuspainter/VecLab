@@ -26,7 +26,7 @@ extension Array where Element == Double {
             // Validate replacement size matches range size
             if bounds.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(bounds.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             replaceSubrange(bounds, with: newValue)
@@ -49,7 +49,7 @@ extension Array where Element == Double {
             // Validate replacement size matches range size
             if halfOpenRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(halfOpenRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             replaceSubrange(halfOpenRange, with: newValue)
@@ -75,7 +75,7 @@ extension Array where Element == Double {
             // Validate replacement size matches range size
             if fullRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             replaceSubrange(fullRange, with: newValue)
@@ -101,7 +101,7 @@ extension Array where Element == Double {
             // Validate replacement size matches range size
             if fullRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             replaceSubrange(fullRange, with: newValue)
@@ -127,7 +127,7 @@ extension Array where Element == Double {
             // Validate replacement size matches range size
             if fullRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             replaceSubrange(0...bounds.upperBound, with: newValue)

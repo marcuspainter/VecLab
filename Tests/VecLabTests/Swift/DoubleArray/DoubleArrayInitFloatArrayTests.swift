@@ -18,4 +18,13 @@ final class DoubleArrayInitFloatArrayTests: XCTestCase {
 
         XCTAssertEqual(newDoubles, doubles)
     }
+    
+    func testInitEmpty() throws {
+
+        let floats: [Float] = []
+        let doubles: [Double] = []
+        let newDoubles = [Double](floatArray: floats)
+
+        XCTAssertEqual(newDoubles, doubles)
+    }
 }
