@@ -30,11 +30,25 @@ class BasicTests: XCTestCase {
         let expected: RealArray = [1.0, 3.0, 6.0, 10.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
+    
+    func testCumsumRealArrayEmpty() throws {
+        let realArrayA: RealArray = []
+        let result: RealArray = cumsum(realArrayA)
+        let expected: RealArray = []
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
+    }
 
     func testCumsumComplexArray() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let result: ComplexArray = cumsum(complexArrayA)
         let expected: ComplexArray = ComplexArray([1.0, 3.0, 6.0, 10.0], [1.0, 3.0, 6.0, 10.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
+    }
+    
+    func testCumsumComplexArrayEmpty() throws {
+        let complexArrayA: ComplexArray = []
+        let result: ComplexArray = cumsum(complexArrayA)
+        let expected: ComplexArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
     
@@ -46,11 +60,25 @@ class BasicTests: XCTestCase {
         let expected: RealArray = [1.0, 2.0, 6.0, 24.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
+    
+    func testCumprodRealArrayEmpty() throws {
+        let realArrayA: RealArray = []
+        let result: RealArray = cumprod(realArrayA)
+        let expected: RealArray = []
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
+    }
 
     func testCumprodComplexArray() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let result: ComplexArray = cumprod(complexArrayA)
         let expected: ComplexArray = ComplexArray( [1.0, 0.0, -12.0, -96.0],  [1.0, 4.0, 12.0, 0.0])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
+    }
+    
+    func testCumprodComplexArrayEmpty() throws {
+        let complexArrayA: ComplexArray = []
+        let result: ComplexArray = cumprod(complexArrayA)
+        let expected: ComplexArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
 

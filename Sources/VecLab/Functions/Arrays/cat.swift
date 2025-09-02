@@ -5,8 +5,6 @@
 //  Created by Marcus Painter on 14/09/2023.
 //
 
-import Foundation
-
 import Accelerate
 
 /// Concatenate arrays.
@@ -36,6 +34,7 @@ public func cat(_ arrays: RealArray...) -> RealArray {
     }
 }
 
+/*
 /// Concatenate arrays.
 ///
 /// - Parameter arrays: List of arrays.
@@ -49,6 +48,7 @@ func cat2(_ arrays: RealArray...) -> RealArray {
     }
     return newArray
 }
+*/
 
 /// Concatenate arrays.
 ///

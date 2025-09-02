@@ -25,7 +25,7 @@ public func acos(_ x: Complex) -> Complex {
 
 /// Inverse sine of complex array.
 /// - Parameter x: Cosine of angles.
-/// - Returns: Inverse cossin of x in the interval [0, π].
+/// - Returns: Inverse cosine of x in the interval [0, π].
 public func acos(_ x: ComplexArray) -> ComplexArray {
     validateSize(x)
     let xx = x

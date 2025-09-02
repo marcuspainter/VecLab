@@ -218,4 +218,23 @@ class TrigonometryTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([0.004517137276658, -0.000507980623470], [1.002054988245812, 1.000438513202052])
         XCTAssertEqual(result, expected, accuracy: accuracy, "tan failed")
     }
+    
+    // MARK: sincos
+    
+    func testSincosReal() throws {
+        let realX: Real = 0.0
+        let result = sincos(realX)
+        let expected = (0.0, 1.0)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "sincos failed")
+    }
+    
+    func testSincosRealArray() throws {
+        let realArrayX: RealArray = [0.0, .pi, -.pi, .pi/2.0]
+        let result = sincos(realArrayX)
+        let expected: ([Double], [Double]) = ([0.0, 0.0, 0.0, 1.0],[1.0, -1.0, -1.0, 0.0])
+        XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "sincos failed")
+        XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "sincos failed")
+    }
+    
+    
 }

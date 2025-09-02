@@ -23,15 +23,3 @@ public func wrapToPi(_ angle: Real) -> Real {
 public func wrapToPi(_ angle: RealArray) -> RealArray {
     return angle.map { wrapToPi($0) }
 }
-
-/*
- private func truncatingRemainder(_ a: Real, _ b: Real) -> Real {
-     guard b != 0 else { fatalError("Division by zero") }
-
-     let quotient = a / b
-     let floorQuotient = floor(quotient)
-     let remainder = a - b * floorQuotient
-
-     return remainder
- }
- */
