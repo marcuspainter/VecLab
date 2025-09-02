@@ -45,6 +45,35 @@ class ExponentTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "expi failed")
         disp(result)
     }
+    
+    func testExpiReal() throws {
+        let realA: Real = 0.5
+        let result: Complex = expi(realA)
+        let expected: Complex = Complex(0.877582561890373, 0.479425538604203)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "expi failed")
+        disp(result)
+    }
+    
+    // MARK: expj
+
+    func testExpjRealArray() throws {
+        let realArrayA: RealArray = [0.0, 0.5, 1.0]
+        let result: ComplexArray = expj(realArrayA)
+        let expected: ComplexArray = ComplexArray(
+            [1.000000000000000, 0.877582561890373, 0.540302305868140],
+            [0.000000000000000, 0.479425538604203, 0.841470984807897])
+        XCTAssertEqual(result, expected, accuracy: accuracy, "expj failed")
+        disp(result)
+    }
+    
+    func testExpjReal() throws {
+        let realA: Real = 0.5
+        let result: Complex = expj(realA)
+        let expected: Complex = Complex(0.877582561890373, 0.479425538604203)
+        XCTAssertEqual(result, expected, accuracy: accuracy, "expj failed")
+        disp(result)
+    }
+
 
     // MARK: log
 
