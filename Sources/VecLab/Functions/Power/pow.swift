@@ -64,7 +64,7 @@ public func pow(_ a: Complex, _ b: Int) -> Complex {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
     validateSize(a, b)
-    return vectorPowReal(a, b)
+    return vForce.pow(bases: a, exponents: b)
 }
 
 /// Power.
@@ -73,7 +73,8 @@ public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Real) -> RealArray {
-    return vectorPowReal(a, b)
+    let bb = RealArray(repeating: b, count: a.count)
+    return vForce.pow(bases: a, exponents: bb)
 }
 
 /// Power.
@@ -82,7 +83,8 @@ public func pow(_ a: RealArray, _ b: Real) -> RealArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Real, _ b: RealArray) -> RealArray {
-    return vectorPowReal(a, b)
+    let aa = RealArray(repeating: a, count: b.count)
+    return vForce.pow(bases: aa, exponents: b)
 }
 
 // MARK: Complex
