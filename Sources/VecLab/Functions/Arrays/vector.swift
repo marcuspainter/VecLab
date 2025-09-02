@@ -81,16 +81,9 @@ public func vector(_ range: ClosedRange<Int>, _ step: Int = 1) -> RealArray {
 
 // MARK: Sized
 
-/// Create a real array of the same size as a real array.
+/// Create a real array of the same size as any array.
 /// - Parameter sized: Real array.
-/// - Returns: A real array the same size the real array.
-public func vector(sized: RealArray) -> RealArray {
-    return RealArray(repeating: 0, count: sized.count)
-}
-
-/// Create a real array of the same size as a complex array.
-/// - Parameter sized: Complex array.
-/// - Returns: A real array the same size as the complex array.
-public func vector(sized: ComplexArray) -> RealArray {
+/// - Returns: A real array the same size the array.
+public func vector(sized: any Collection) -> RealArray {
     return RealArray(repeating: 0, count: sized.count)
 }

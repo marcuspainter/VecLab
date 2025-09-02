@@ -104,7 +104,7 @@ public struct ComplexDoubleArray:
         self.imag = array.map { $0.imag }
     }
 
-    /// Initialize a complex array as the same size as a complex array.
+    /// Initialize a complex array as the same size as any array.
     /// - Parameter sized: A collection with a count property.
     public init(sized: any Collection) {
         self = ComplexDoubleArray(count: sized.count)
