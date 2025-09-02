@@ -224,9 +224,11 @@ extension ComplexDoubleArray:
             self[fullRange] = newValue
         }
     }
+    
+    // Function to assert that two arrays have the same size
+    private func assertSameSize<T, U>(_ lhs: [T], _ rhs: [U]) {
+        precondition(lhs.count == rhs.count, "Arrays must have the same size: \(lhs.count) vs \(rhs.count)")
+    }
 }
 
-// Function to assert that two arrays have the same size
-private func assertSameSize<T, U>(_ lhs: [T], _ rhs: [U]) {
-    precondition(lhs.count == rhs.count, "Arrays must have the same size: \(lhs.count) vs \(rhs.count)")
-}
+

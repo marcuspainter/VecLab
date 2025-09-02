@@ -1,5 +1,5 @@
 //
-//  DoubleArray+Operators.swift
+//  DoubleArray+Math+Assignment.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.

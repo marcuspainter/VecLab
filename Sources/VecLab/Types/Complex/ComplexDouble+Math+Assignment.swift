@@ -1,5 +1,5 @@
 //
-//  ComplexDouble+Operators.swift
+//  ComplexDouble+Math+Assignment.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 13/05/2025.
