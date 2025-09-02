@@ -35,3 +35,6 @@ Exponents, logarithms and square root.
 
 - ``expi(_:)->Complex``
 - ``expi(_:)->ComplexArray``
+
+- ``expj(_:)->Complex``
+- ``expj(_:)->ComplexArray``
