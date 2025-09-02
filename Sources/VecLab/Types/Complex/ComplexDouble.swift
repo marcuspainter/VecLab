@@ -14,6 +14,7 @@ public struct ComplexDouble:
     Codable,
     // CustomStringConvertible,
     // CustomDebugStringConvertible,
+    // Numeric
     // SignedNumeric,
     Sendable {
 

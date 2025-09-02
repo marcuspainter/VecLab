@@ -54,4 +54,14 @@ final class SomeTests: XCTestCase {
         let e = [Float](doubleArray: d)
     }
     */
+    
+    func test1() {
+        var d = [1.0, 2.0, 3.0]
+        let f = [Float](doubleArray: d)
+        d = [Double](floatArray: f)
+        
+        let empty = [Float](doubleArray: [])
+        
+        print(f)
+    }
 }
