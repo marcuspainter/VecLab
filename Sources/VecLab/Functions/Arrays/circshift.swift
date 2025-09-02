@@ -7,46 +7,34 @@
 
 import Accelerate
 
-/// Circularly shift array.
+
+import Accelerate
+
+/// Circularly shift real array.
 /// - Parameters:
-///   - x: Input array.
+///   - x: Real array.
 ///   - k: Shift amount.
-/// - Returns: Circularly shifted array
+/// - Returns: Circularly shifted array.
 public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
     let n = x.count
-    if n == 0 { return x } // Edge case: empty array
+    if n == 0 { return x }
     
     let shift = ((k % n) + n) % n
-    if shift == 0 { return x } // Edge case: no effective shift
-    
-    // Create output array
-    var result = RealArray(repeating: 0.0, count: n)
-    
-    // Use vDSP for efficient memory operations
-    x.withUnsafeBufferPointer { xPtr in
-        result.withUnsafeMutableBufferPointer { resultPtr in
-            let basePtr = xPtr.baseAddress!
-            let resultBasePtr = resultPtr.baseAddress!
-            
+    if shift == 0 { return x }
+
+    return RealArray(unsafeUninitializedCapacity: n) { buffer, initializedCount in
+        x.withUnsafeBufferPointer { xPtr in
+            let xBase = xPtr.baseAddress!
+            let outBase = buffer.baseAddress!
+
             // Copy last 'shift' elements to the beginning
-            vDSP_mmovD(basePtr + (n - shift),
-                     resultBasePtr,
-                     vDSP_Length(shift),
-                     vDSP_Length(1),
-                     vDSP_Length(1),
-                     vDSP_Length(1))
+            cblas_dcopy(__LAPACK_int(shift), xBase + (n - shift), 1, outBase, 1)
             
-            // Copy first 'n-shift' elements after the shifted portion
-            vDSP_mmovD(basePtr,
-                     resultBasePtr + shift,
-                     vDSP_Length(n - shift),
-                     vDSP_Length(1),
-                     vDSP_Length(1),
-                     vDSP_Length(1))
+            // Copy first 'n - shift' elements after the shifted portion
+            cblas_dcopy(__LAPACK_int(n - shift), xBase, 1, outBase + shift, 1)
         }
+        initializedCount = n
     }
-    
-    return result
 }
 
 /// Circularly shift complex array.
