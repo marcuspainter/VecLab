@@ -105,14 +105,9 @@ public struct ComplexDoubleArray:
     }
 
     /// Initialize a complex array as the same size as a complex array.
-    /// - Parameter sized: A complex array.
-    public init(sized: ComplexDoubleArray) {
+    /// - Parameter sized: A collection with a count property.
+    public init(sized: any Collection) {
         self = ComplexDoubleArray(count: sized.count)
     }
-    
-    /// Initialize a complex array as the same size as a real array.
-    /// - Parameter sized: A real array.
-    public init(sized: RealArray) {
-        self = ComplexDoubleArray(count: sized.count)
-    }
+
 }

@@ -6,9 +6,9 @@
 //
 
 public extension Array where Element == Double {
-    /// Initalize an array with zeros with the size of another rray.
-    /// - Parameter sized: Number of elements
-    init(sized: [Double]) {
+    /// Initalize an array with zeros with the size of another array.
+    /// - Parameter sized: A collection with a count property.
+    init(sized: any Collection) {
         self = [Element](repeating: 0, count: sized.count)
     }
 }
