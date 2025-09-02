@@ -32,6 +32,7 @@ public func idct(_ X: RealArray) -> RealArray {
     return x
 }
 
+/*
 // Only works for Float
 func idctVDSP(_ x: RealArray) -> RealArray {
     let inputF = double2float(x)
@@ -48,6 +49,7 @@ func idctVDSP(_ x: RealArray) -> RealArray {
 
     return output
 }
+*/
 
 /*
  function x = idct_fft(X)

@@ -37,6 +37,7 @@ public func diff(_ x: RealArray) -> RealArray {
     return result
 }
 
+/*
 /// Differences and approximate derivatives.
 ///
 /// - Note: The length of the returned array is (length - 1).
@@ -51,3 +52,4 @@ func diff2(_ x: RealArray) -> RealArray {
     }
     return result
 }
+*/

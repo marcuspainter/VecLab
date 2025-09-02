@@ -53,6 +53,7 @@ public func gradient(_ x: RealArray) -> RealArray {
     return result
 }
 
+/*
 /// Numerical gradient.
 /// - Parameter x: Input array.
 /// - Returns: The numerical gradient.
@@ -74,3 +75,4 @@ func gradient2(_ x: RealArray) -> RealArray {
 
     return result
 }
+*/

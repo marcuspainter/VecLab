@@ -17,7 +17,8 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     let inputLength = x.count
 
     // --- Step 1. Filter order length
-    let mirrorLength = 3 * (max(length(a), length(b)) - 1)
+    let filterOrder = max(a.count, b.count) - 1
+    let mirrorLength = 3 * filterOrder
 
     // --- Step 2. Check input length
     if inputLength <= mirrorLength {
