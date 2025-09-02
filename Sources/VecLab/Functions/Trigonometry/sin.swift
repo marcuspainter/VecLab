@@ -5,10 +5,7 @@
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
-
-// VECTORIZED
 
 /// Sine  of array in radians.
 /// - Parameter x: Angle in radians.
@@ -28,14 +25,11 @@ public func sin(_ x: Complex) -> Complex {
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
 public func sin(_ x: ComplexArray) -> ComplexArray {
-    validateSize(x)
-    var real = RealArray(repeating: 0, count: x.count)
-    var imag = RealArray(repeating: 0, count: x.count)
     let coshx = vForce.cosh(x.imag)
     let sinhx = vForce.sinh(x.imag)
-    real = vForce.sin(x.real)
-    imag = vForce.cos(x.real)
-    real = vDSP.multiply(real, coshx) // sinx0 * coshx1
-    imag = vDSP.multiply(imag, sinhx) // cosx0 * sinhx1
+    let sinx = vForce.sin(x.real)
+    let cosx = vForce.cos(x.real)
+    let real = vDSP.multiply(sinx, coshx) // sinx0 * coshx1
+    let imag = vDSP.multiply(cosx, sinhx) // cosx0 * sinhx1
     return ComplexArray(real, imag)
 }
