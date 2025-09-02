@@ -19,6 +19,13 @@ class IntegrationTests: XCTestCase {
         let expected: RealArray = [1.0, 1.0, 1.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "diff failed")
     }
+    
+    func testDiffRealArrayEmpty() throws {
+        let realArrayA: RealArray = []
+        let result: RealArray = diff(realArrayA)
+        let expected: RealArray = []
+        XCTAssertEqual(result, expected, accuracy: accuracy, "diff failed")
+    }
 
     // MARK: gradient
 
@@ -27,6 +34,22 @@ class IntegrationTests: XCTestCase {
         let realArrayA: RealArray = [2.0, 2.0, 4.0, 5.0]
         let result: RealArray = gradient(realArrayA)
         let expected: RealArray = [0.0, 1.0, 1.5, 1.0]
+        XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
+        disp(result)
+    }
+    
+    func testGradientRealArrayEmpty() throws {
+        let realArrayA: RealArray = []
+        let result: RealArray = gradient(realArrayA)
+        let expected: RealArray = []
+        XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
+        disp(result)
+    }
+    
+    func testGradientRealArray1() throws {
+        let realArrayA: RealArray = [1]
+        let result: RealArray = gradient(realArrayA)
+        let expected: RealArray = [0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "gradient failed")
         disp(result)
     }
