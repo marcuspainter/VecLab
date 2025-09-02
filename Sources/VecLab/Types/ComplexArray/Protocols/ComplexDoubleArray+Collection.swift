@@ -11,7 +11,7 @@ extension ComplexDoubleArray:
     RandomAccessCollection,
     RangeReplaceableCollection {
 
-    /// Reserve stroage capacity of array.
+    /// Reserve storage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         self.real.reserveCapacity(minimumCapacity)
