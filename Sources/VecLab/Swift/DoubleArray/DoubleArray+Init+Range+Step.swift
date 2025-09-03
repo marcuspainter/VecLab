@@ -6,14 +6,14 @@
 
 import Foundation
 
-public extension Array where Element == Double {
+extension Array where Element == Double {
     /// Initialize a real array with an integer open range.
     /// - Parameters:
     ///   - range: Open integer range.
     ///   - step: Step value, default = 1.
-    @available(*, deprecated, renamed: "vector", message: "Use vector() instead")
-    init(_ range: Range<Int>, _ step: Int = 1) {
-        let  strideValue = stride(from: range.lowerBound, to: range.upperBound, by: step)
+    @available(*, deprecated, renamed: "vector", message: "Use vector() for ranges.")
+    public init(_ range: Range<Int>, _ step: Int = 1) {
+        let strideValue = stride(from: range.lowerBound, to: range.upperBound, by: step)
         self = strideValue.map { Element($0) }
     }
 
@@ -21,8 +21,8 @@ public extension Array where Element == Double {
     /// - Parameters:
     ///   - range: Open real range.
     ///   - step: Step value, default = 1.
-    @available(*, deprecated, renamed: "vector", message: "Use vector() instead")
-    init(_ range: Range<Double>, _ step: Double = 1) {
+    @available(*, deprecated, renamed: "vector", message: "Use vector() for ranges.")
+    public init(_ range: Range<Double>, _ step: Double = 1) {
         let strideValue = stride(from: range.lowerBound, to: range.upperBound, by: step)
         self = strideValue.map { $0 }
     }
@@ -31,8 +31,8 @@ public extension Array where Element == Double {
     /// - Parameters:
     ///   - range: Closed real range.
     ///   - step: Step value, default = 1.
-    @available(*, deprecated, renamed: "vector", message: "Use vector() instead")
-    init(_ range: ClosedRange<Double>, _ step: Double = 1) {
+    @available(*, deprecated, renamed: "vector", message: "Use vector() for ranges.")
+    public init(_ range: ClosedRange<Double>, _ step: Double = 1) {
         let strideValue = stride(from: range.lowerBound, through: range.upperBound, by: step)
         self = strideValue.map { ($0) }
     }
@@ -41,8 +41,8 @@ public extension Array where Element == Double {
     /// - Parameters:
     ///   - range: Closed integer range.
     ///   - step: Stride value, default = 1.
-    @available(*, deprecated, renamed: "vector", message: "Use vector() instead")
-    init(_ range: ClosedRange<Int>, _ step: Int = 1) {
+    @available(*, deprecated, renamed: "vector", message: "Use vector() for ranges.")
+    public init(_ range: ClosedRange<Int>, _ step: Int = 1) {
         let strideValue = stride(from: range.lowerBound, through: range.upperBound, by: step)
         self = strideValue.map { Element($0) }
     }
