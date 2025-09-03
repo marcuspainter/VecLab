@@ -92,7 +92,7 @@ class InterpolationTests: XCTestCase {
     }
     
     func testDownsampleWithPhases2() {
-        let input: [Double] = Array(0..<10)
+        let input: [Double] = vector(0..<10)
         let factor = 3
 
         // Direct values

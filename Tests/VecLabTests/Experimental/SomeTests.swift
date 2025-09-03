@@ -62,6 +62,6 @@ final class SomeTests: XCTestCase {
         
         let empty = [Float](doubleArray: [])
         
-        print(f)
+        print(empty)
     }
 }
