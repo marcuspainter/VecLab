@@ -1,12 +1,12 @@
 //
 //  variance.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 // VECTORIZED
 

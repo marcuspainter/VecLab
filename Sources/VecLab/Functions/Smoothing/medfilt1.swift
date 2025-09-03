@@ -1,6 +1,6 @@
 //
 //  medfilt1.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
@@ -23,7 +23,7 @@ public func medfilt1(_ x: RealArray, k: Int = 3, padding: String = "zeropad") ->
     switch padding {
     case "truncate":
         return medfilt1Truncate(x, k: k)
-    case "zeropad": // "zeropad"
+    case "zeropad":  // "zeropad"
         return medfilt1ZeroPad(x, k: k)
     default:
         fatalError("Invalid padding option.")

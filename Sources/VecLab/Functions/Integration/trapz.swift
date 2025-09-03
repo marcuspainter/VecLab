@@ -1,12 +1,12 @@
 //
 //  trapz.swift
-//  
+//
 //
 //  Created by Marcus Painter on 18/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Trapezoidal numerical integration.
 /// - Parameters:
@@ -20,8 +20,8 @@ public func trapz(_ x: RealArray, _ y: RealArray) -> Real {
 
     var Q = Real(0.0)
     for i in 1..<x.count {
-        let dx = x[i] - x[i-1]
-        let avgY = (y[i] + y[i-1]) / 2
+        let dx = x[i] - x[i - 1]
+        let avgY = (y[i] + y[i - 1]) / 2
         Q += dx * avgY
     }
 

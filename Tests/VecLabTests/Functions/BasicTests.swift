@@ -30,7 +30,7 @@ class BasicTests: XCTestCase {
         let expected: RealArray = [1.0, 3.0, 6.0, 10.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
-    
+
     func testCumsumRealArrayEmpty() throws {
         let realArrayA: RealArray = []
         let result: RealArray = cumsum(realArrayA)
@@ -44,23 +44,23 @@ class BasicTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 3.0, 6.0, 10.0], [1.0, 3.0, 6.0, 10.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
-    
+
     func testCumsumComplexArrayEmpty() throws {
         let complexArrayA: ComplexArray = []
         let result: ComplexArray = cumsum(complexArrayA)
         let expected: ComplexArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
-    
+
     // MARK: cumprod
-    
+
     func testCumprodRealArray() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: RealArray = cumprod(realArrayA)
         let expected: RealArray = [1.0, 2.0, 6.0, 24.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
-    
+
     func testCumprodRealArrayEmpty() throws {
         let realArrayA: RealArray = []
         let result: RealArray = cumprod(realArrayA)
@@ -71,10 +71,10 @@ class BasicTests: XCTestCase {
     func testCumprodComplexArray() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let result: ComplexArray = cumprod(complexArrayA)
-        let expected: ComplexArray = ComplexArray( [1.0, 0.0, -12.0, -96.0],  [1.0, 4.0, 12.0, 0.0])
+        let expected: ComplexArray = ComplexArray([1.0, 0.0, -12.0, -96.0], [1.0, 4.0, 12.0, 0.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
-    
+
     func testCumprodComplexArrayEmpty() throws {
         let complexArrayA: ComplexArray = []
         let result: ComplexArray = cumprod(complexArrayA)
@@ -194,7 +194,10 @@ class BasicTests: XCTestCase {
     func testSignComplexArray() throws {
         let complexA: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
         let result: ComplexArray = sign(complexA)
-        let expected: ComplexArray = ComplexArray([0.707106781186547, 0.707106781186547], [0.707106781186547, 0.707106781186547])
+        let expected: ComplexArray = ComplexArray(
+            [0.707106781186547, 0.707106781186547],
+            [0.707106781186547, 0.707106781186547]
+        )
         XCTAssertEqual(result, expected, accuracy: accuracy, "sign failed")
     }
 
@@ -217,7 +220,9 @@ class BasicTests: XCTestCase {
     func testSincRealArray() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: RealArray = sinc(realArrayA)
-        let expected: RealArray = [3.898171832519375e-17, -3.898171832519375e-17, 3.898171832519375e-17, -3.898171832519375e-17]
+        let expected: RealArray = [
+            3.898171832519375e-17, -3.898171832519375e-17, 3.898171832519375e-17, -3.898171832519375e-17,
+        ]
         XCTAssertEqual(result, expected, accuracy: accuracy, "sinc failed")
     }
 
@@ -236,14 +241,14 @@ class BasicTests: XCTestCase {
         let expected: Complex = Complex(10.0, 10.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "sum failed")
     }
-    
+
     func testDotReal1() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let result: Real = dot(realArrayA, realArrayA)
         let expected: Real = 30.0
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
-    
+
     func testDot2Real() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
         let realArrayB: RealArray = [5.0, 6.0, 7.0, 8.0]
@@ -259,7 +264,7 @@ class BasicTests: XCTestCase {
         let expected: Complex = Complex(30.0000, 30.0000)
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
-    
+
     func testDotComplexReal() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let realArrayB: RealArray = [1.0, 2.0, 3.0, 4.0]
@@ -276,4 +281,3 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
 }
-

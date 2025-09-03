@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import XCTest
 import VecLab
+import XCTest
 
 class LConjMultiplyTests: XCTestCase {
 
@@ -21,31 +21,31 @@ class LConjMultiplyTests: XCTestCase {
     var complexB: Complex = Complex(1.0, 1.0)
     var complexArrayB: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
 
- /*
-    func testLConjMultiplyRealReal() {
-        let result: Real = realA ~* realB
-        let expected: Real = 1.0
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-
-    func testLConjMultiplyRealArrayRealArray() {
-        let result: RealArray = realArrayA ~* realArrayB
-        let expected: RealArray = [1.0, 4.0]
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-
-    func testLConjMultiplyRealArrayReal() {
-        let result: RealArray = realArrayA ~* realB
-        let expected: RealArray = [1.0, 2.0]
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-
-    func testLConjMultiplyRealRealArray() {
-        let result: RealArray = realA ~* realArrayB
-        let expected: RealArray = [1.0, 2.0]
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-  */
+    /*
+       func testLConjMultiplyRealReal() {
+           let result: Real = realA ~* realB
+           let expected: Real = 1.0
+           XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+       }
+    
+       func testLConjMultiplyRealArrayRealArray() {
+           let result: RealArray = realArrayA ~* realArrayB
+           let expected: RealArray = [1.0, 4.0]
+           XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+       }
+    
+       func testLConjMultiplyRealArrayReal() {
+           let result: RealArray = realArrayA ~* realB
+           let expected: RealArray = [1.0, 2.0]
+           XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+       }
+    
+       func testLConjMultiplyRealRealArray() {
+           let result: RealArray = realA ~* realArrayB
+           let expected: RealArray = [1.0, 2.0]
+           XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+       }
+     */
     func testLConjMultiplyComplexComplex() {
         let result: Complex = complexA ~* complexB
         let expected: Complex = Complex(2.0, 0.0)
@@ -58,25 +58,25 @@ class LConjMultiplyTests: XCTestCase {
         XCTAssertEqual(result, expected, "Left conjugate multiply failed")
     }
 
-/*
-    func testLConjMultiplyRealComplex() {
-        let result: Complex = realA ~* complexB
-        let expected: Complex = (1.0,1.0)
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-*/
+    /*
+        func testLConjMultiplyRealComplex() {
+            let result: Complex = realA ~* complexB
+            let expected: Complex = (1.0,1.0)
+            XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+        }
+    */
     func testLConjMultiplyComplexRealArray() {
         let result: ComplexArray = complexA ~* realArrayB
         let expected: ComplexArray = ComplexArray([1.0, 2.0], [-1.0, -2.0])
         XCTAssertEqual(result, expected, "Left conjugate multiply failed")
     }
-/*
-    func testLConjMultiplyRealArrayComplex() {
-        let result: ComplexArray = realArrayA ~* complexB
-        let expected: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-*/
+    /*
+        func testLConjMultiplyRealArrayComplex() {
+            let result: ComplexArray = realArrayA ~* complexB
+            let expected: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+            XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+        }
+    */
     func testLConjMultiplyComplexArrayComplexArray() {
         let result: ComplexArray = complexArrayA ~* complexArrayB
         let expected: ComplexArray = ComplexArray([2.0, 2.0], [0.0, 0.0])
@@ -88,25 +88,25 @@ class LConjMultiplyTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 1.0], [-1.0, -1.0])
         XCTAssertEqual(result, expected, "Left conjugate multiply failed")
     }
-/*
-    func testLConjMultiplyRealComplexArray() {
-        let result: ComplexArray = realA ~* complexArrayB
-        let expected: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-*/
+    /*
+        func testLConjMultiplyRealComplexArray() {
+            let result: ComplexArray = realA ~* complexArrayB
+            let expected: ComplexArray = ([1.0, 1.0], [1.0, 1.0])
+            XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+        }
+    */
     func testLConjMultiplyComplexArrayRealArray() {
         let result: ComplexArray = complexArrayA ~* realArrayB
         let expected: ComplexArray = ComplexArray([1.0, 2.0], [-1.0, -2.0])
         XCTAssertEqual(result, expected, "Left conjugate multiply failed")
     }
-/*
-    func testLConjMultiplyRealArrayComplexArray() {
-        let result: ComplexArray = realArrayA ~* complexArrayB
-        let expected: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
-        XCTAssertEqual(result, expected, "Left conjugate multiply failed")
-    }
-*/
+    /*
+        func testLConjMultiplyRealArrayComplexArray() {
+            let result: ComplexArray = realArrayA ~* complexArrayB
+            let expected: ComplexArray = ([1.0, 2.0], [1.0, 2.0])
+            XCTAssertEqual(result, expected, "Left conjugate multiply failed")
+        }
+    */
     func testLConjMultiplyComplexArrayComplex() {
         let result: ComplexArray = complexArrayA ~* complexB
         let expected: ComplexArray = ComplexArray([2.0, 2.0], [0.0, 0.0])

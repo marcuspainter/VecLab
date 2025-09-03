@@ -26,21 +26,21 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
     let a = a ?? Complex(1.0, 0.0)
 
     // Length for power-of-two FFT
-    let nfft = Int(2 ** nextpow2(m+k-1))
+    let nfft = Int(2 ** nextpow2(m + k - 1))
 
     // Premultiply data
-    let kk = vector((-m+1) ... max(k-1, m-1))
+    let kk = vector((-m + 1)...max(k - 1, m - 1))
     let kk2 = (kk ** 2.0) / 2.0
     let ww = w ** kk2  // Chirp filter is 1./ww
 
     // Apply initial twiddle factor
-    let nn = vector(0 ... (m-1))
+    let nn = vector(0...(m - 1))
     var aa = a ** nn
 
-    aa = aa * ww[m-1 ..< m+m-1]
+    aa = aa * ww[m - 1..<m + m - 1]
     let y = x * aa
 
-    let inv_ww = 1.0 / ww[0 ..< (m+k-1)] //  <----- Chirp filter.
+    let inv_ww = 1.0 / ww[0..<(m + k - 1)]  //  <----- Chirp filter.
 
     // Fast convolution via FFT
     // Zero pad
@@ -50,13 +50,13 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
     var g = ifft(fy)
 
     // Final multiply
-    g = g[m-1 ..< (m+k-1)] * ww[m-1 ..< (m+k-1)]
+    g = g[m - 1..<(m + k - 1)] * ww[m - 1..<(m + k - 1)]
 
     return g
 }
 
 /*
- 
+
  x = [1,2,3,4,5,6,7,8];
  g = czt1d_1(x)
  y = iczt1d_1(g)
@@ -154,5 +154,5 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
  x = x / m;
 
  end
- 
+
  */

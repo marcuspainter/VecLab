@@ -26,7 +26,7 @@ extension ComplexDouble {
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
     public static func + (a: Double, b: ComplexDouble) -> ComplexDouble {
-        return b + a // Overloaded
+        return b + a  // Overloaded
     }
 
     /// Complex subtraction.
@@ -44,7 +44,7 @@ extension ComplexDouble {
     ///   - b: Complex number.
     /// - Returns: The result of the subtraction.
     public static func - (a: Double, b: ComplexDouble) -> ComplexDouble {
-        return  ComplexDouble(a - b.real, -b.imag)
+        return ComplexDouble(a - b.real, -b.imag)
     }
 
     /// Complex multiplication.
@@ -62,7 +62,7 @@ extension ComplexDouble {
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
     public static func * (a: Double, b: ComplexDouble) -> ComplexDouble {
-        return b * a // Overloaded
+        return b * a  // Overloaded
     }
 
     /// Complex division.

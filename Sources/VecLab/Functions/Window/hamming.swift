@@ -1,6 +1,6 @@
 //
 //  hamming.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //

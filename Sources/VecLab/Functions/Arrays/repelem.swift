@@ -19,7 +19,7 @@ public func repelem(_ x: Real, _ n: Int) -> RealArray {
     }
 
     var y = xarray
-    for _ in 2 ... n {
+    for _ in 2...n {
         y.append(contentsOf: xarray)
     }
     return y
@@ -35,7 +35,7 @@ public func repelem(_ x: RealArray, _ n: Int) -> RealArray {
         return x
     }
     var y = x
-    for _ in 2 ... n {
+    for _ in 2...n {
         y.append(contentsOf: x)
     }
     return y
@@ -53,7 +53,7 @@ public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
     }
 
     var y = xarray
-    for _ in 2 ... n {
+    for _ in 2...n {
         y.append(contentsOf: xarray)
     }
     return y
@@ -70,7 +70,7 @@ public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
         return x
     }
     var y = x
-    for _ in 2 ... n {
+    for _ in 2...n {
         y.append(contentsOf: x)
     }
     return y

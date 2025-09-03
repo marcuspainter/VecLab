@@ -1,12 +1,12 @@
 //
 //  interpft.swift
-//  
+//
 //
 //  Created by Marcus Painter on 17/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Interpolate using FFT. method  (Alternative)
 /// - Parameters:
@@ -22,9 +22,9 @@ public func interpft(_ x: RealArray, _ n: Int) -> RealArray {
         let z = zeros(N * Int(U) - N)
         let X = fftr(x)
         // XX = U * [X2( 1:((N+1)/2) )  z  X2(((N+1)/2+1):N)]; // Matlab
-        let t1 = X[0 ..< ((N+1)/2)]
+        let t1 = X[0..<((N + 1) / 2)]
         let t2 = ComplexArray(z, z)
-        let t3 = X[(N+1)/2 ..< N]
+        let t3 = X[(N + 1) / 2..<N]
         let XX = U * cat(t1, t2, t3)
         let xx = ifftr(XX)
         return xx
@@ -32,11 +32,11 @@ public func interpft(_ x: RealArray, _ n: Int) -> RealArray {
         let U = Real(n)
         let X = fftr(x)
         let z = zeros(N * Int(U) - N)
-        let t1 = X[0 ..< (N/2)]
-        let t2 = ComplexArray( [X.real[N/2+1]], [X.imag[N/2+1]]) * 0.5
+        let t1 = X[0..<(N / 2)]
+        let t2 = ComplexArray([X.real[N / 2 + 1]], [X.imag[N / 2 + 1]]) * 0.5
         let t3 = ComplexArray(z, z)
-        let t4 = ComplexArray( [X.real[N/2+1]], [X.imag[N/2+1]]) * 0.5
-        let t5 = X[N/2+1 ..< N]
+        let t4 = ComplexArray([X.real[N / 2 + 1]], [X.imag[N / 2 + 1]]) * 0.5
+        let t5 = X[N / 2 + 1..<N]
         // XX = U * [X(1:(N/2)) X((N/2)+1)/2 z X(N/2+1)/2 X(N/2+2:N)];  // Matlab
         let XX = U * cat(t1, t2, t3, t4, t5)
         let xx = ifftr(XX)

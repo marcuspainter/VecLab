@@ -10,13 +10,14 @@ import Foundation
 /// Complex number
 public struct ComplexDouble:
     Equatable,  // Synthesized
-    Hashable,   // Synthesized
+    Hashable,  // Synthesized
     Codable,
     // CustomStringConvertible,
     // CustomDebugStringConvertible,
     // Numeric
     // SignedNumeric,
-    Sendable {
+    Sendable
+{
 
     /// Real part.
     public var real: Double

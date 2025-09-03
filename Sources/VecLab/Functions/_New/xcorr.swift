@@ -16,7 +16,7 @@ import Foundation
 public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     let nx = length(x)
     let ny = length(y)
-    let n  = nx + ny - 1  // Full cross-correlation length
+    let n = nx + ny - 1  // Full cross-correlation length
 
     // Use power-of-2 FFT size
     let N = Int(2.0 ** nextpow2(n))
@@ -38,7 +38,7 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
     var c = circshift(full_c, shift_amount)
 
     // Trim extra values
-    c = Array(c[0 ..< n])
+    c = Array(c[0..<n])
     return c
 }
 
@@ -50,7 +50,7 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
 public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let nx = length(x)
     let ny = length(y)
-    let n  = nx + ny - 1  // Full cross-correlation length
+    let n = nx + ny - 1  // Full cross-correlation length
 
     // Use power-of-2 FFT size
     let N = Int(2.0 ** nextpow2(n))
@@ -109,9 +109,9 @@ public func xcorrSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     let resultSize = n + m - 1
     var result = [Real](repeating: 0.0, count: resultSize)
 
-    for i in 0 ..< n {
-        for j in 0 ..< m {
-            result[i + m - 1 - j] += x[i] * y[j] // Note the index change here
+    for i in 0..<n {
+        for j in 0..<m {
+            result[i + m - 1 - j] += x[i] * y[j]  // Note the index change here
         }
     }
 

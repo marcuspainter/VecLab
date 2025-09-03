@@ -9,5 +9,5 @@ import VecLab
 import XCTest
 
 final class DoubleArrayInitSizedTests: XCTestCase {
-    
+
 }

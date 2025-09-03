@@ -134,7 +134,7 @@ class AddTests: XCTestCase {
         func testAddAssertSameSize() {
             let a: RealArray = [1.0, 2.0, 3.0]
             let b: RealArray = [1.0, 2.0]
-
+    
             XCTAssertThrowsError(try assertSameSize(a, b), "assertSameSize did not throw an error for different size arrays")
         }
      */

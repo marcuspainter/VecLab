@@ -33,7 +33,7 @@ class OptimizationTests: XCTestCase {
     // MARK: fminsearch
 
     func testFminsearch() throws {
-        let objective: (RealArray) -> Real  = { x in
+        let objective: (RealArray) -> Real = { x in
             return 100.0 * (x[1] - x[0] * x[0]) * (x[1] - x[0] * x[0]) + (1.0 - x[0]) * (1.0 - x[0])
         }
 

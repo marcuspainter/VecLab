@@ -7,20 +7,24 @@
 
 import Accelerate
 
-public extension Array where Element == Double {
+extension Array where Element == Double {
     /// Initialize  a Double array from a Float array.
     /// - Parameter floatArray: Float array.
-    init(floatArray: [Float]) {
+    public init(floatArray: [Float]) {
         guard !floatArray.isEmpty else {
             self = []
             return
         }
-        
+
         self = Array(unsafeUninitializedCapacity: floatArray.count) { buffer, initializedCount in
             floatArray.withUnsafeBufferPointer { src in
-                vDSP_vspdp(src.baseAddress!, 1,
-                           buffer.baseAddress!, 1,
-                           vDSP_Length(floatArray.count))
+                vDSP_vspdp(
+                    src.baseAddress!,
+                    1,
+                    buffer.baseAddress!,
+                    1,
+                    vDSP_Length(floatArray.count)
+                )
             }
             initializedCount = floatArray.count
         }

@@ -27,11 +27,11 @@ public func downsample(_ x: RealArray, _ factor: Int, _ phase: Int = 0) -> RealA
         result.withUnsafeMutableBufferPointer { outputPtr in
             vDSP_mmovD(
                 inputPtr.baseAddress! + adjustedPhase,  // source
-                outputPtr.baseAddress!,                 // destination
-                1,                                      // columns to copy
-                vDSP_Length(outputSize),                // rows to copy
-                vDSP_Length(factor),                    // input row stride
-                1                                       // output row stride
+                outputPtr.baseAddress!,  // destination
+                1,  // columns to copy
+                vDSP_Length(outputSize),  // rows to copy
+                vDSP_Length(factor),  // input row stride
+                1  // output row stride
             )
         }
     }

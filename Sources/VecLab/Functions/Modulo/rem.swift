@@ -1,6 +1,6 @@
 //
 //  rem.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -21,7 +21,7 @@ public func rem(_ a: Int, _ b: Int) -> Int {
 /// - Parameters:
 ///   - a: Dividend.
 ///   - b: Divisor.
-/// - Returns: The remainder after division of `a` by` b`, where `a` is the dividend and `b` is the divisor. 
+/// - Returns: The remainder after division of `a` by` b`, where `a` is the dividend and `b` is the divisor.
 public func rem(_ a: Real, _ b: Real) -> Real {
     let result = a - b * trunc(a / b)
     return result

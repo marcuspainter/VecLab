@@ -10,5 +10,4 @@ import XCTest
 
 final class DoubleArraySubscriptArrayTests: XCTestCase {
 
-    
 }

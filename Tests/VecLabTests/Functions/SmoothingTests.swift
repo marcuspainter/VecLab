@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class SmoothingTests: XCTestCase {
 

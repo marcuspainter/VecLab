@@ -1,12 +1,12 @@
 //
 //  asin.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Inverse sine of real array.
 /// - Parameter x:Sine of angle.

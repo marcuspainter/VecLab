@@ -1,6 +1,6 @@
 //
 //  histcounts.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
@@ -108,7 +108,7 @@ func autoBinWidth(data: RealArray) -> Real {
     let IQR = upperQuartile - lowerQuartile
 
     // Calculate bin width using the Freedman-Diaconis rule
-    let binWidth = 2.0 * IQR / pow(N, 1.0/3.0)
+    let binWidth = 2.0 * IQR / pow(N, 1.0 / 3.0)
 
     return binWidth
 }

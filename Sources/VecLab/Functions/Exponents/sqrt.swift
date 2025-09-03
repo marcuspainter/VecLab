@@ -1,14 +1,14 @@
 //
 //  sqrt.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
 
 // https://github.com/dankogai/swift-complex/blob/master/Sources/Complex/Complex.swift
 
-import Foundation
 import Accelerate
+import Foundation
 
 // NOT VECTORIZED
 
@@ -32,8 +32,8 @@ public func sqrt(_ x: Complex) -> Complex {
 public func sqrt(_ x: ComplexArray) -> ComplexArray {
     validateSize(x)
     var c = ComplexArray(count: x.count)
-    for k in 0 ..< x.count {
-        c[k] = sqrt( x[k] )
+    for k in 0..<x.count {
+        c[k] = sqrt(x[k])
     }
     return c
 }

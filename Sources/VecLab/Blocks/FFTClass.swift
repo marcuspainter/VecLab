@@ -20,17 +20,21 @@ public final class FFTClass {
         self.length = length
         zeros = [Double](repeating: 0.0, count: length)
         do {
-            self.fft = try vDSP.DiscreteFourierTransform(previous: nil,
-                                                    count: length,
-                                                    direction: .forward,
-                                                    transformType: .complexComplex,
-                                                    ofType: Double.self)
+            self.fft = try vDSP.DiscreteFourierTransform(
+                previous: nil,
+                count: length,
+                direction: .forward,
+                transformType: .complexComplex,
+                ofType: Double.self
+            )
 
-            self.ifft = try vDSP.DiscreteFourierTransform(previous: nil,
-                                                     count: length,
-                                                     direction: .inverse,
-                                                     transformType: .complexComplex,
-                                                     ofType: Double.self)
+            self.ifft = try vDSP.DiscreteFourierTransform(
+                previous: nil,
+                count: length,
+                direction: .inverse,
+                transformType: .complexComplex,
+                ofType: Double.self
+            )
         }
     }
 
@@ -47,7 +51,7 @@ public final class FFTClass {
     /// - Parameter x: Complex array.
     /// - Returns: Real array.
     public func ifftr(_ x: ([Double], [Double])) -> [Double] {
-        assert(x.0.count == x.1.count, "real imag mismatch" )
+        assert(x.0.count == x.1.count, "real imag mismatch")
         assert(x.0.count == self.length, "Wrong size")
         var splitComplexOutput = ifft.transform(real: x.0, imaginary: x.1)
         splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Double(x.0.count))
@@ -58,7 +62,7 @@ public final class FFTClass {
     /// - Parameter x: Complex array.
     /// - Returns: Complex array.
     public func fft(_ x: ([Double], [Double])) -> ([Double], [Double]) {
-        assert(x.0.count == x.1.count, "real imag mismatch" )
+        assert(x.0.count == x.1.count, "real imag mismatch")
         assert(x.0.count == self.length, "Wrong size")
         let splitComplexOutput = fft.transform(real: x.0, imaginary: x.1)
         return (splitComplexOutput.real, splitComplexOutput.imaginary)
@@ -68,7 +72,7 @@ public final class FFTClass {
     /// - Parameter x: Complex array.
     /// - Returns: Complex array.
     public func ifft(_ x: ([Double], [Double])) -> ([Double], [Double]) {
-        assert(x.0.count == x.1.count, "real imag mismatch" )
+        assert(x.0.count == x.1.count, "real imag mismatch")
         assert(x.0.count == self.length, "Wrong size")
         var splitComplexOutput = ifft.transform(real: x.0, imaginary: x.1)
         splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Double(x.0.count))

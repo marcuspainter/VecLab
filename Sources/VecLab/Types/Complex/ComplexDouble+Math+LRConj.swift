@@ -61,7 +61,7 @@ extension ComplexDouble {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Real, b: Complex) -> Complex {
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 
     /// Right conjugate multiply.
@@ -70,7 +70,7 @@ extension ComplexDouble {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: RealArray, b: Complex) -> ComplexArray {
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 
 }

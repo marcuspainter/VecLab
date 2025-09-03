@@ -1,6 +1,6 @@
 //
 //  isprime.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -11,7 +11,7 @@ import Foundation
 ///
 /// This function checks if `n` is a prime number using a deterministic method.
 ///
-///  All prime numbers are of the form 6k±1, except for 2 and 3. Any prime greater than 3 can't be divisible by 2 or 3. 
+///  All prime numbers are of the form 6k±1, except for 2 and 3. Any prime greater than 3 can't be divisible by 2 or 3.
 ///  This means, after checking for the base cases, you only need to test factors of the form 6k±1.
 ///
 /// - Parameter n: The integer to check.
@@ -44,7 +44,7 @@ public func isprime(_ n: Int) -> Bool {
 
 /*
 
- Your isprime function is a well-known optimized check for determining if a number is prime. The logic behind 
+ Your isprime function is a well-known optimized check for determining if a number is prime. The logic behind
  this optimization is based on the following observations:
 
  All prime numbers are of the form 6k±1, except for 2 and 3.

@@ -1,6 +1,6 @@
 //
 //  primes.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -33,7 +33,7 @@ public func primes(_ x: Real) -> RealArray {
 
     for i in 2...Int(sqrt(Real(n))) {
         if isPrime[i] {
-            for j in stride(from: i*i, to: intN + 1, by: i) {
+            for j in stride(from: i * i, to: intN + 1, by: i) {
                 isPrime[j] = false
             }
         }

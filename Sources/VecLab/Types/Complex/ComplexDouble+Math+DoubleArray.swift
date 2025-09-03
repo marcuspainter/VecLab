@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 //
 // ComplexDouble and Double array operators

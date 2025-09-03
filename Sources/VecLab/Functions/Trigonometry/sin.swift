@@ -1,6 +1,6 @@
 //
 //  sin.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -29,7 +29,7 @@ public func sin(_ x: ComplexArray) -> ComplexArray {
     let sinhx = vForce.sinh(x.imag)
     let sinx = vForce.sin(x.real)
     let cosx = vForce.cos(x.real)
-    let real = vDSP.multiply(sinx, coshx) // sinx0 * coshx1
-    let imag = vDSP.multiply(cosx, sinhx) // cosx0 * sinhx1
+    let real = vDSP.multiply(sinx, coshx)  // sinx0 * coshx1
+    let imag = vDSP.multiply(cosx, sinhx)  // cosx0 * sinhx1
     return ComplexArray(real, imag)
 }

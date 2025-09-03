@@ -13,7 +13,8 @@ extension ComplexDoubleArray {
     /// - Parameter transform: transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedMap(_ transform: (Int, Complex) throws -> Complex) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         var result = ComplexDoubleArray(count: count)
 
         for i in 0..<count {
@@ -26,7 +27,8 @@ extension ComplexDoubleArray {
     /// - Parameter transform: Transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedCompactMap(_ transform: (Int, Complex) throws -> Complex?) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         var tempResults = [Complex?](repeating: nil, count: count)
         var resultCount = 0
 
@@ -56,7 +58,8 @@ extension ComplexDoubleArray {
     /// - Parameter predicate: Filter closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedFilter(_ predicate: (Int, Complex) throws -> Bool) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         var inclusion = [Bool](repeating: false, count: count)
         var resultCount = 0
 

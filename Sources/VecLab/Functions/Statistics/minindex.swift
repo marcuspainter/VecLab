@@ -1,12 +1,12 @@
 //
 //  minindex.swift
-//  
+//
 //
 //  Created by Marcus Painter on 05/04/2024.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Minimum value and index in an array.
 ///

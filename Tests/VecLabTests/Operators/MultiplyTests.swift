@@ -1,13 +1,13 @@
 //
 //  MultiplyTests.swift
-//  
+//
 //
 //  Created by Marcus Painter on 25/09/2023.
 //
 
 import Foundation
-import XCTest
 import VecLab
+import XCTest
 
 class MultiplyTests: XCTestCase {
 

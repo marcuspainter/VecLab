@@ -12,7 +12,7 @@ import Foundation
 /// - Returns: The product of the array.
 public func prod(_ x: RealArray) -> Real {
     var product = x[0]
-    for k in 1 ..< x.count {
+    for k in 1..<x.count {
         product *= x[k]
     }
     return product
@@ -24,7 +24,7 @@ public func prod(_ x: RealArray) -> Real {
 public func prod(_ x: ComplexArray) -> Complex {
     validateSize(x)
     var product = x[0]
-    for k in 1 ..< x.count {
+    for k in 1..<x.count {
         product = product * x[k]
     }
     return product

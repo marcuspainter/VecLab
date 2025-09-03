@@ -9,7 +9,7 @@ import VecLab
 import XCTest
 
 final class DoubleArrayMathIntTests: XCTestCase {
-    
-    func testOperators() throws { }
-    
+
+    func testOperators() throws {}
+
 }

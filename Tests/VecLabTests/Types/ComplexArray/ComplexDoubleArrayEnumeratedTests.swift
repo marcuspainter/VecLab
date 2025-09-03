@@ -5,11 +5,11 @@
 //  Created by Marcus Painter on 25/04/2025.
 //
 
-import VecLab // Replace with your actual module name
+import VecLab  // Replace with your actual module name
 import XCTest
 
 final class ComplexDoubleArrayEnumeratedTests: XCTestCase {
-    
+
     func testEnumerated() throws {
         let a = ComplexDoubleArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
         let b = a.enumerated()

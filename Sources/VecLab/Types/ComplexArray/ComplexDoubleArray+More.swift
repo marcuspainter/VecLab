@@ -69,7 +69,8 @@ extension ComplexDoubleArray {
 extension ComplexDoubleArray {
     @inlinable
     public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, ComplexDouble) -> Result)
-        -> Result {
+        -> Result
+    {
         var result = initialResult
         for element in self {
             result = nextPartialResult(result, element)
@@ -105,7 +106,8 @@ extension ComplexDoubleArray {
 extension ComplexDoubleArray {
     @inlinable
     public func split(whereSeparator isSeparator: (ComplexDouble) -> Bool, omittingEmptySubsequences: Bool = true)
-        -> [[ComplexDouble]] {
+        -> [[ComplexDouble]]
+    {
         var result: [[ComplexDouble]] = []
         var currentChunk: [ComplexDouble] = []
 
@@ -128,10 +130,14 @@ extension ComplexDoubleArray {
     }
 
     @inlinable
-    public func splitToArrays(whereSeparator isSeparator: (ComplexDouble) -> Bool,
-                              omittingEmptySubsequences: Bool = true) -> [ComplexDoubleArray] {
-        let grouped: [[ComplexDouble]] = split(whereSeparator: isSeparator,
-                                                omittingEmptySubsequences: omittingEmptySubsequences)
+    public func splitToArrays(
+        whereSeparator isSeparator: (ComplexDouble) -> Bool,
+        omittingEmptySubsequences: Bool = true
+    ) -> [ComplexDoubleArray] {
+        let grouped: [[ComplexDouble]] = split(
+            whereSeparator: isSeparator,
+            omittingEmptySubsequences: omittingEmptySubsequences
+        )
         return grouped.map { ComplexDoubleArray($0) }
     }
 }
@@ -146,8 +152,8 @@ extension ComplexDoubleArray {
 
         while start < count {
             let end = Swift.min(start + size, count)
-            let realChunk = real[start ..< end]
-            let imagChunk = imag[start ..< end]
+            let realChunk = real[start..<end]
+            let imagChunk = imag[start..<end]
             chunks.append(ComplexDoubleArray(realChunk, imagChunk))
             start += size
         }
@@ -159,9 +165,10 @@ extension ComplexDoubleArray {
 extension ComplexDoubleArray {
     @inlinable
     public func elementsEqual(_ other: ComplexDoubleArray, by areEquivalent: (ComplexDouble, ComplexDouble) -> Bool)
-        -> Bool {
+        -> Bool
+    {
         guard count == other.count else { return false }
-        for i in 0 ..< count {
+        for i in 0..<count {
             if !areEquivalent(self[i], other[i]) {
                 return false
             }

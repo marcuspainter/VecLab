@@ -6,10 +6,10 @@
 
 import Foundation
 
-public extension Array where Element == Double {
+extension Array where Element == Double {
     /// Initalize an array with zeros.
     /// - Parameter count: Number of elements
-    init(count: Int) {
+    public init(count: Int) {
         self = [Element](repeating: 0, count: count)
     }
 }

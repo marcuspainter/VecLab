@@ -1,6 +1,6 @@
 //
 //  perms.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -34,7 +34,7 @@ public func perms<T>(_ array: [T]) -> [[T]] {
     var result: [[T]] = []
 
     for (index, item) in array.enumerated() {
-        let remaining = Array(array[..<index] + array[(index+1)...])
+        let remaining = Array(array[..<index] + array[(index + 1)...])
         for perm in perms(remaining) {
             result.append([item] + perm)
         }
@@ -50,34 +50,34 @@ print(perms(numbers))
 
 // The algorithm to get the next lexicographic permutation is as follows:
 
-// Find the largest index i such that array[i] < array[i+1]. If no such index exists, the permutation is the 
+// Find the largest index i such that array[i] < array[i+1]. If no such index exists, the permutation is the
 // last permutation. Find the largest index j greater than i such that array[i] < array[j]. Swap the value of array[i]
 // with that of array[j]. Reverse the sub-array array[i+1 ... end].
 
 /*
- 
+
  public func perms<T: Comparable>(_ array: [T]) -> [[T]] {
      var array = array.sorted()
      var result: [[T]] = [array]
-     
+
      while true {
          var i = array.count - 2
          while i >= 0 && array[i] >= array[i+1] {
              i -= 1
          }
-         
+
          if i == -1 { break }
-         
+
          var j = array.count - 1
          while array[j] <= array[i] {
              j -= 1
          }
-         
+
          array.swapAt(i, j)
          array[(i+1)...].reverse()
          result.append(array)
      }
-     
+
      return result
  }
 

@@ -7,17 +7,17 @@
 
 import Foundation
 
-public extension Double {
+extension Double {
     /// Converts `Double` to `Float`.
-    var f: Float { Float(self) }
+    public var f: Float { Float(self) }
 }
 
-public extension Float {
+extension Float {
     /// Convert a `Float` to `Float`
-    var f: Float { self }
+    public var f: Float { self }
 }
 
-public extension Int {
+extension Int {
     /// Converts an `Int`  to `Float`.
-    var f: Float { Float(self) }
+    public var f: Float { Float(self) }
 }

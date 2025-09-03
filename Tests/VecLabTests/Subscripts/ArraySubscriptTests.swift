@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 17/04/2025.
 //
 
-import VecLab // Replace with your actual module name
+import VecLab  // Replace with your actual module name
 import XCTest
 
 final class ArraySubscriptsTests: XCTestCase {
@@ -21,27 +21,27 @@ final class ArraySubscriptsTests: XCTestCase {
     }
 
     func testRange() {
-        a[m ..< n] = b[m ..< n]
+        a[m..<n] = b[m..<n]
         let expected: [Double] = [0, 1, 1, 0, 0]
         XCTAssertEqual(a, expected, "Failed to assign range")
     }
 
     func testRange2() {
-        a = b[1 ..< 3]
+        a = b[1..<3]
         let expected: [Double] = [1, 1]
         XCTAssertEqual(a, expected, "Failed to assign range")
         print(a)
     }
 
     func testRange3() {
-        a[1 ..< 3] = [7, 7]
+        a[1..<3] = [7, 7]
         let expected: [Double] = [0, 7, 7, 0, 0]
         XCTAssertEqual(a, expected, "Failed to assign range")
         print(a)
     }
 
     func testClosedRange() {
-        a[m ... n] = b[m ... n]
+        a[m...n] = b[m...n]
         let expected: [Double] = [0, 1, 1, 1, 0]
         XCTAssertEqual(a, expected, "Failed to assign closed range")
     }
@@ -71,7 +71,7 @@ final class ArraySubscriptsTests: XCTestCase {
     }
 
     func testRangeStep() {
-        a[0 ..< 3] = b[0..., 2]
+        a[0..<3] = b[0..., 2]
         let expected: [Double] = [1, 1, 1, 0, 0]
         XCTAssertEqual(a, expected, "Failed to assign range")
     }
@@ -85,7 +85,7 @@ final class ArraySubscriptsTests: XCTestCase {
     }
 
     func testClosedRangeStep() {
-        a[1 ... 2] = b[1 ... 3, 2]
+        a[1...2] = b[1...3, 2]
         let expected: [Double] = [0, 1, 1, 0, 0]
         XCTAssertEqual(a, expected, "Failed to assign closed range")
     }
@@ -118,7 +118,7 @@ final class ArraySubscriptsTests: XCTestCase {
         let expected: [Double] = [1, 0, 3, 0, 5]
         XCTAssertEqual(a, expected, "Failed to assign partial range from")
     }
-    
+
 }
 
 /*

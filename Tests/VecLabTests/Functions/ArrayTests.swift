@@ -51,7 +51,7 @@ class ArrayTests: XCTestCase {
         let expected: RealArray = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
         XCTAssertEqual(result, expected, "cat failed")
     }
-    
+
     func testCatRealArrayArray() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0]
         let realArrayB: RealArray = [4.0, 5.0, 6.0]
@@ -69,7 +69,7 @@ class ArrayTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [3.0, 4.0, 1.0, 2.0])
         XCTAssertEqual(result, expected, "cat failed")
     }
-    
+
     func testCatComplexArrayArray() throws {
         let realArrayA: RealArray = [1.0, 2.0]
         let realArrayB: RealArray = [3.0, 4.0]
@@ -344,14 +344,14 @@ class ArrayTests: XCTestCase {
 
     func testSliceRealArrayOpen() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = slice(realArrayA, 0 ... 2)
+        let result: RealArray = slice(realArrayA, 0...2)
         let expected: RealArray = [1.0, 2.0, 3.0]
         XCTAssertEqual(result, expected, "slice failed")
     }
 
     func testSliceRealArrayClosed() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = slice(realArrayA, 0 ..< 2)
+        let result: RealArray = slice(realArrayA, 0..<2)
         let expected: RealArray = [1.0, 2.0]
         XCTAssertEqual(result, expected, "slice failed")
     }
@@ -359,7 +359,7 @@ class ArrayTests: XCTestCase {
     func testSliceRealArrayOpenBy() throws {
         let by: Int = 2
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = slice(realArrayA, 0 ... 3, by)
+        let result: RealArray = slice(realArrayA, 0...3, by)
         let expected: RealArray = [1.0, 3.0]
         XCTAssertEqual(result, expected, "slice failed")
     }
@@ -367,21 +367,21 @@ class ArrayTests: XCTestCase {
     func testSliceRealArrayClosedBy() throws {
         let by: Int = 2
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: RealArray = slice(realArrayA, 0 ..< 4, by)
+        let result: RealArray = slice(realArrayA, 0..<4, by)
         let expected: RealArray = [1.0, 3.0]
         XCTAssertEqual(result, expected, "slice failed")
     }
 
     func testSliceComplexArrayOpen() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = slice(complexArrayA, 0 ... 2)
+        let result: ComplexArray = slice(complexArrayA, 0...2)
         let expected: ComplexArray = ComplexArray([1.0, 2.0, 3.0], [1.0, 2.0, 3.0])
         XCTAssertEqual(result, expected, "slice failed")
     }
 
     func testSliceComlexArrayClosed() throws {
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = slice(complexArrayA, 0 ..< 2)
+        let result: ComplexArray = slice(complexArrayA, 0..<2)
         let expected: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, "slice failed")
     }
@@ -389,7 +389,7 @@ class ArrayTests: XCTestCase {
     func testSliceComplexArrayOpenBy() throws {
         let by: Int = 2
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = slice(complexArrayA, 0 ... 3, by)
+        let result: ComplexArray = slice(complexArrayA, 0...3, by)
         let expected: ComplexArray = ComplexArray([1.0, 3.0], [1.0, 3.0])
         XCTAssertEqual(result, expected, "slice failed")
     }
@@ -397,7 +397,7 @@ class ArrayTests: XCTestCase {
     func testSliceComplexArrayClosedBy() throws {
         let by: Int = 2
         let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = slice(complexArrayA, 0 ..< 4, by)
+        let result: ComplexArray = slice(complexArrayA, 0..<4, by)
         let expected: ComplexArray = ComplexArray([1.0, 3.0], [1.0, 3.0])
         XCTAssertEqual(result, expected, "slice failed")
     }
@@ -435,7 +435,7 @@ class ArrayTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         XCTAssertEqual(result, expected, "trimdata failed")
     }
-    
+
     // MARK: flip
 
     func testFlipReal() throws {
@@ -451,7 +451,7 @@ class ArrayTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([4.0, 3.0, 2.0, 1.0], [4.0, 3.0, 2.0, 1.0])
         XCTAssertEqual(result, expected, "flip failed")
     }
-    
+
     // MARK: zeros
 
     func testZeros() throws {
@@ -460,14 +460,14 @@ class ArrayTests: XCTestCase {
         let expected: RealArray = [0.0, 0.0, 0.0, 0.0]
         XCTAssertEqual(result, expected, "zeros failed")
     }
-    
+
     func testZerosReal() throws {
         let n: Real = 4.0
         let result: RealArray = zeros(n)
         let expected: RealArray = [0.0, 0.0, 0.0, 0.0]
         XCTAssertEqual(result, expected, "zeros failed")
     }
-    
+
     // MARK: ones
 
     func testOnes() throws {
@@ -476,14 +476,14 @@ class ArrayTests: XCTestCase {
         let expected: RealArray = [1.0, 1.0, 1.0, 1.0]
         XCTAssertEqual(result, expected, "ones failed")
     }
-    
+
     func testOnesReal() throws {
         let n: Real = 4.0
         let result: RealArray = ones(n)
         let expected: RealArray = [1.0, 1.0, 1.0, 1.0]
         XCTAssertEqual(result, expected, "ones failed")
     }
-    
+
     // MARK: paddata
 
     func testPaddataReal() throws {
@@ -607,7 +607,7 @@ class ArrayTests: XCTestCase {
 
     func testEmptyRange() {
         XCTAssertEqual(arange(0, 0), [])
-        XCTAssertEqual(arange(5, 2), []) // Start > Stop
+        XCTAssertEqual(arange(5, 2), [])  // Start > Stop
     }
 
     func testNegativeRange() {
@@ -657,17 +657,17 @@ class ArrayTests: XCTestCase {
             XCTAssertEqual(Real(i), r, accuracy: 1e-10)
         }
     }
-    
+
     func testArrange1() throws {
         let a1 = arange(5)
-        let a2 = arange(0,5)
-        let a3 = arange(0,5,1)
+        let a2 = arange(0, 5)
+        let a3 = arange(0, 5, 1)
         let expected = [0.0, 1.0, 2.0, 3.0, 4.0]
         XCTAssertEqual(a1, expected, "arrange failed")
         XCTAssertEqual(a2, expected, "arrange failed")
         XCTAssertEqual(a3, expected, "arrange failed")
     }
-    
+
 }
 
 // Helper enum for error cases

@@ -47,7 +47,7 @@ class NewTests: XCTestCase {
             70,
             44,
             23,
-            8
+            8,
         ]
         XCTAssertEqual(result, expected, accuracy: accuracy, "xcorr failed")
         disp(result)

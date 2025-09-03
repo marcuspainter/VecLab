@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class DiscreteTests: XCTestCase {
 
@@ -98,7 +98,7 @@ class DiscreteTests: XCTestCase {
     }
 
     func testIsprimeFalse() throws {
-        let result: Bool = isprime(1010101)
+        let result: Bool = isprime(1_010_101)
         let expected: Bool = false
         XCTAssertEqual(result, expected, "isprime failed")
     }
@@ -161,9 +161,9 @@ class DiscreteTests: XCTestCase {
         let expected: Int = 2
         XCTAssertEqual(result, expected, "nextprime failed")
     }
-    
+
     func testNextprimeMax() throws {
-        let maxPrime = 2147483647
+        let maxPrime = 2_147_483_647
         let result: Int = nextprime(maxPrime - 2)
         let expected: Int = maxPrime
         XCTAssertEqual(result, expected, "nextprime failed")
@@ -192,7 +192,7 @@ class DiscreteTests: XCTestCase {
         let expected: Real = 997.0
         XCTAssertEqual(result, expected, "prevprime failed")
     }
-    
+
     func testPrevprime2() throws {
         let result: Real = prevprime(2)
         XCTAssert(result == 2, "prevprime failed")
@@ -206,7 +206,7 @@ class DiscreteTests: XCTestCase {
         let result: Real = prevprime(0)
         XCTAssert(result.isNaN, "prevprime failed")
     }
-    
+
     func testPrevprimeNegative() throws {
         let result: Real = prevprime(-1)
         XCTAssert(result.isNaN, "prevprime failed")

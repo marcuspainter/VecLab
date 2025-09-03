@@ -24,7 +24,8 @@ public struct ComplexDoubleArray:
     // CustomDebugStringConvertible,
     // ExpressibleByArrayLiteral
     Codable,
-    Sendable {
+    Sendable
+{
 
     // MARK: - Storage
 

@@ -89,7 +89,7 @@ extension Array where Element == Double {
                 return self[range.lowerBound..<count, step]
             } else {
                 // For negative step, we want to go from the end towards the lowerBound
-                return self[range.lowerBound...count-1, step]
+                return self[range.lowerBound...count - 1, step]
             }
         }
         set {
@@ -132,7 +132,7 @@ extension Array where Element == Double {
                 // For negative step, we want to go from (upperBound-1) towards 0
                 // Make sure we handle the case where upperBound is 0
                 if range.upperBound > 0 {
-                    return self[0...range.upperBound-1, step]
+                    return self[0...range.upperBound - 1, step]
                 } else {
                     return []
                 }
@@ -160,7 +160,9 @@ extension Array where Element == Double {
         }
 
         if indices.count != newValues.count {
-            print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
+            print(
+                "ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))"
+            )
             return
         }
 
@@ -189,7 +191,9 @@ extension Array where Element == Double {
         }
 
         if indices.count != newValues.count {
-            print("ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))")
+            print(
+                "ERROR: New values count (\(newValues.count)) must match the number of stepped indices (\(indices.count))"
+            )
             return
         }
 
@@ -210,7 +214,7 @@ extension Array where Element == Double {
         if step > 0 {
             setValues(in: range.lowerBound..<count, step: step, to: newValues)
         } else {
-            setValues(in: range.lowerBound...count-1, step: step, to: newValues)
+            setValues(in: range.lowerBound...count - 1, step: step, to: newValues)
         }
     }
 
@@ -238,7 +242,7 @@ extension Array where Element == Double {
         if step > 0 {
             setValues(in: 0..<range.upperBound, step: step, to: newValues)
         } else if range.upperBound > 0 {
-            setValues(in: 0...range.upperBound-1, step: step, to: newValues)
+            setValues(in: 0...range.upperBound - 1, step: step, to: newValues)
         } else {
             // If upperBound is 0 and step is negative, there are no values to set
             if !newValues.isEmpty {

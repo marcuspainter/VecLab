@@ -1,6 +1,6 @@
 //
 //  factorial.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -29,7 +29,7 @@ import Foundation
 /// ```
 public func factorial(_ n: Int) -> Real {
     if n < 0 { return Real.nan }  // Return NaN for negative numbers
-    if n <= 1 { return 1.0 }        // Return 1.0 for 0! and 1!
+    if n <= 1 { return 1.0 }  // Return 1.0 for 0! and 1!
 
     var product = 1
     for i in 2...n {

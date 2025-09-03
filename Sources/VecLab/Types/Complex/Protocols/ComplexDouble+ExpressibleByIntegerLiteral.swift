@@ -17,6 +17,6 @@ extension ComplexDouble: ExpressibleByIntegerLiteral {
     /// - Parameter source: Source.
     public init?<T>(exactly source: T) where T: BinaryInteger {
         self.init(Double(source), .zero)
-   }
+    }
 
 }

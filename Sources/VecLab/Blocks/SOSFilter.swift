@@ -28,7 +28,7 @@ public final class SOSFilter {
     /// - Parameter sos: Array of sections.
     /// - Parameter gain: Gain.
     public init(sos: [[Double]], gain: Double = 1.0) throws {
-        let sectionCount = sos.count // Single section for now
+        let sectionCount = sos.count  // Single section for now
         let coefficients = Self.convertSosCoefficients(sos)
 
         guard let setup = vDSP_biquad_CreateSetupD(coefficients, vDSP_Length(sectionCount)) else {
@@ -71,13 +71,15 @@ public final class SOSFilter {
         input.withUnsafeBufferPointer { inPtr in
             output.withUnsafeMutableBufferPointer { outPtr in
                 delay.withUnsafeMutableBufferPointer { delayPtr in
-                    vDSP_biquadD(biquadSetup,
-                                 delayPtr.baseAddress!,
-                                 inPtr.baseAddress!,
-                                 1,
-                                 outPtr.baseAddress!,
-                                 1,
-                                 count)
+                    vDSP_biquadD(
+                        biquadSetup,
+                        delayPtr.baseAddress!,
+                        inPtr.baseAddress!,
+                        1,
+                        outPtr.baseAddress!,
+                        1,
+                        count
+                    )
                 }
             }
         }

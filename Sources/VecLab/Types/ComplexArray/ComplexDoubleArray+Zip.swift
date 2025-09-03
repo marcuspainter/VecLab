@@ -15,7 +15,8 @@ extension ComplexDoubleArray {
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
     public func zipMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         let minCount = Swift.min(self.count, other.count)
         var result = ComplexDoubleArray(count: minCount)
 
@@ -32,7 +33,8 @@ extension ComplexDoubleArray {
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
     public func zipCompactMap(_ other: ComplexDoubleArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         let minCount = Swift.min(self.count, other.count)
         var tempResults = [Complex?](repeating: nil, count: minCount)
         var resultCount = 0
@@ -65,7 +67,8 @@ extension ComplexDoubleArray {
     ///   - predicate: Filter criteria.
     /// - Returns: A new transformed complex array.
     public func zipFilter(_ other: ComplexDoubleArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
-        -> ComplexDoubleArray {
+        -> ComplexDoubleArray
+    {
         let minCount = Swift.min(self.count, other.count)
         var inclusion = [Bool](repeating: false, count: minCount)
         var resultCount = 0

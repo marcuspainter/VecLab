@@ -28,7 +28,7 @@ public func linspace(_ x1: Real, _ x2: Real, _ n: Int = 100) -> RealArray {
     }
 
     let step = (x2 - x1) / Real(n - 1)
-    return (0 ..< n).map { x1 + Real($0) * step }
+    return (0..<n).map { x1 + Real($0) * step }
 }
 
 /*

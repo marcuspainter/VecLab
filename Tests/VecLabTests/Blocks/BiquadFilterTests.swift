@@ -18,9 +18,9 @@ class BiquadFilterTests: XCTestCase {
         let a = [1.0, -1.981488509144573, 0.9816582826171341]
         let bFilter = try! BiquadFilter(b: b, a: a)
 
-        let x1: [Double] = [1, 2, 3, 4, 5] // input signal 1
-        let x2: [Double] = [6, 7, 8, 9, 10] // input signal 2
-        let xFull: [Double] = cat(x1, x2) // Combined
+        let x1: [Double] = [1, 2, 3, 4, 5]  // input signal 1
+        let x2: [Double] = [6, 7, 8, 9, 10]  // input signal 2
+        let xFull: [Double] = cat(x1, x2)  // Combined
 
         // Initial state
         var y1: [Double]

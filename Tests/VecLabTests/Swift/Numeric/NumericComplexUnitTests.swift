@@ -20,10 +20,10 @@ final class NumericComplexUnitTests: XCTestCase {
         XCTAssert(complexUnit == int.i)
         XCTAssert(complexUnit == float.i)
         XCTAssert(complexUnit == double.i)
-        
+
         XCTAssert(complexUnit == Double.i)
     }
-    
+
     func testJ() throws {
 
         let double: Double = 1.0
@@ -34,7 +34,7 @@ final class NumericComplexUnitTests: XCTestCase {
         XCTAssert(complexUnit == int.j)
         XCTAssert(complexUnit == float.j)
         XCTAssert(complexUnit == double.j)
-        
+
         XCTAssert(complexUnit == Double.j)
     }
 

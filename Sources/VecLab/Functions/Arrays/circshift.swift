@@ -7,9 +7,6 @@
 
 import Accelerate
 
-
-import Accelerate
-
 /// Circularly shift real array.
 /// - Parameters:
 ///   - x: Real array.
@@ -18,7 +15,7 @@ import Accelerate
 public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
     let n = x.count
     if n == 0 { return x }
-    
+
     let shift = ((k % n) + n) % n
     if shift == 0 { return x }
 
@@ -29,7 +26,7 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
 
             // Copy last 'shift' elements to the beginning
             cblas_dcopy(__LAPACK_int(shift), xBase + (n - shift), 1, outBase, 1)
-            
+
             // Copy first 'n - shift' elements after the shifted portion
             cblas_dcopy(__LAPACK_int(n - shift), xBase, 1, outBase + shift, 1)
         }

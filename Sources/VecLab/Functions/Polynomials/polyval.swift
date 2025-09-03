@@ -14,8 +14,10 @@ import Foundation
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(coefficients p: RealArray, point x: Real) -> Real {
-    let y = vDSP.evaluatePolynomial(usingCoefficients: p,
-                                    withVariables: [x])
+    let y = vDSP.evaluatePolynomial(
+        usingCoefficients: p,
+        withVariables: [x]
+    )
     if y.count != 1 {
         return Real.nan
     }
@@ -28,8 +30,10 @@ public func polyval(coefficients p: RealArray, point x: Real) -> Real {
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(coefficients p: RealArray, points x: RealArray) -> RealArray {
-    return vDSP.evaluatePolynomial(usingCoefficients: p,
-                                   withVariables: x)
+    return vDSP.evaluatePolynomial(
+        usingCoefficients: p,
+        withVariables: x
+    )
 }
 
 /// Polynomial evaluation.
@@ -38,11 +42,11 @@ public func polyval(coefficients p: RealArray, points x: RealArray) -> RealArray
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(coefficients p: RealArray, point x: Complex) -> Complex {
-    let n = length(p) // Get the number of coefficients
-    var y = Complex(p[0], Real(0)) // Initialize the result with the first coefficient
+    let n = length(p)  // Get the number of coefficients
+    var y = Complex(p[0], Real(0))  // Initialize the result with the first coefficient
 
     // Horner's method: Iterate over the coefficients
-    for i in 1 ..< n {
+    for i in 1..<n {
         y = y * x + p[i]
     }
     return y
@@ -65,11 +69,11 @@ public func polyval(coefficients p: RealArray, points x: ComplexArray) -> Comple
 /// - Returns: The value of the polynomial p at each point in x.
 public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
     validateSize(p)
-    let n = length(p) // Get the number of coefficients
-    var y = p[0]// Initialize the result with the first coefficient
+    let n = length(p)  // Get the number of coefficients
+    var y = p[0]  // Initialize the result with the first coefficient
 
     // Horner's method: Iterate over the coefficients
-    for i in 1 ..< n {
+    for i in 1..<n {
         y = y * x + p[i]
     }
     return y

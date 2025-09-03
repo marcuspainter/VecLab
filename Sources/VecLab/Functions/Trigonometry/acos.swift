@@ -1,12 +1,12 @@
 //
 //  acos.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Inverse cosine of array.
 /// - Parameter x:Cosine of angle.

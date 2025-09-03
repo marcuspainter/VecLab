@@ -9,7 +9,7 @@ import Accelerate
 
 /*
  Delay:
- 
+
  An array of single-precision values initialized with direct-form 1 “past” state data for each section of the biquad.
  The length of the array should be (2 * M) + 2, where M is the number of sections.
  For each section m, Delay[2*m:2*m+1] represent the two delayed input values for section m
@@ -44,8 +44,8 @@ public final class BiquadFilter {
         precondition(a.count == 3, "Coefficients must be [a0, a1, a2].")
         precondition(a[0] == 1.0, "Coefficient a0 must be 1.")
         var coefficients: [Double] = b
-        coefficients.append(contentsOf: a.suffix(from: 1)) // Ignore a0
-        self.sectionCount = 1 // Single section for now
+        coefficients.append(contentsOf: a.suffix(from: 1))  // Ignore a0
+        self.sectionCount = 1  // Single section for now
         guard let setup = vDSP_biquad_CreateSetupD(coefficients, vDSP_Length(sectionCount)) else {
             throw BiquadFilterError.setupFailed
         }
@@ -65,7 +65,7 @@ public final class BiquadFilter {
         precondition(coefficients[3] == 1.0, "Coefficient a0 must be 1.")
         var coeffientsArray: [Double] = coefficients
         coeffientsArray.remove(at: 3)
-        self.sectionCount = 1 // Single section for now
+        self.sectionCount = 1  // Single section for now
 
         guard let setup = vDSP_biquad_CreateSetupD(coeffientsArray, vDSP_Length(sectionCount)) else {
             throw BiquadFilterError.setupFailed
@@ -104,7 +104,7 @@ public final class BiquadFilter {
         let sectionStart: vDSP_Length = 0
         let sectionCountLength: vDSP_Length = vDSP_Length(sectionCount)
         var coefficients: [Double] = b
-        coefficients.append(contentsOf: a.suffix(from: 1)) // Ignore a0
+        coefficients.append(contentsOf: a.suffix(from: 1))  // Ignore a0
 
         vDSP_biquad_SetCoefficientsDouble(biquadSetup, coefficients, sectionStart, sectionCountLength)
 
@@ -121,13 +121,15 @@ public final class BiquadFilter {
         input.withUnsafeBufferPointer { inPtr in
             output.withUnsafeMutableBufferPointer { outPtr in
                 delay.withUnsafeMutableBufferPointer { delayPtr in
-                    vDSP_biquadD(biquadSetup,
-                                 delayPtr.baseAddress!,
-                                 inPtr.baseAddress!,
-                                 1,
-                                 outPtr.baseAddress!,
-                                 1,
-                                 count)
+                    vDSP_biquadD(
+                        biquadSetup,
+                        delayPtr.baseAddress!,
+                        inPtr.baseAddress!,
+                        1,
+                        outPtr.baseAddress!,
+                        1,
+                        count
+                    )
                 }
             }
         }

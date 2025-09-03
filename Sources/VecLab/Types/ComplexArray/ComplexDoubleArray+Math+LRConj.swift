@@ -80,7 +80,7 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: ComplexArray, b: Complex) -> ComplexArray {
         validateSize(a)
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 
     /// Right conjugate multiply.
@@ -90,7 +90,7 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Complex, b: ComplexArray) -> ComplexArray {
         validateSize(b)
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 
     /// Right conjugate multiply.
@@ -100,7 +100,7 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: RealArray, b: ComplexArray) -> ComplexArray {
         validateSize(a, b)
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 
     /// Right conjugate multiply.
@@ -110,6 +110,6 @@ extension ComplexDoubleArray {
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Real, b: ComplexArray) -> ComplexArray {
         validateSize(b)
-        return a * conj(b) // Overloaded
+        return a * conj(b)  // Overloaded
     }
 }

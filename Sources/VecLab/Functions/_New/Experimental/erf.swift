@@ -13,12 +13,12 @@ import Foundation
 
 func erf2(_ x: Double) -> Double {
     // Constants for approximation
-    let a1 =  0.254829592
+    let a1 = 0.254829592
     let a2 = -0.284496736
-    let a3 =  1.421413741
+    let a3 = 1.421413741
     let a4 = -1.453152027
-    let a5 =  1.061405429
-    let p  =  0.3275911
+    let a5 = 1.061405429
+    let p = 0.3275911
 
     // Save the sign of x
     let sign = x < 0 ? -1.0 : 1.0

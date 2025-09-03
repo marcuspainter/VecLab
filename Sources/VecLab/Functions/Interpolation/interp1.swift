@@ -1,6 +1,6 @@
 //
 //  interp1.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
@@ -9,7 +9,7 @@ import Foundation
 
 /// Linear interpolation
 ///
-/// This function returns the linear interpolant to a function with given values at discrete data-points. 
+/// This function returns the linear interpolant to a function with given values at discrete data-points.
 /// It mimics MATLAB's `interp1` function for the linear interpolation method.
 ///
 /// - Parameters:

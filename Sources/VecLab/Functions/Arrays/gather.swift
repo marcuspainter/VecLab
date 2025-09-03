@@ -53,9 +53,11 @@ func gatherVeryUnsafe(source: [Double], indices: [Int]) {
         let uindices = rawPtr.bindMemory(to: UInt.self)
 
         destination.withUnsafeMutableBufferPointer { dbp in
-            vDSP.gather(source,
-                        indices: UnsafeBufferPointer(start: uindices.baseAddress, count: uindices.count),
-                        result: &dbp)
+            vDSP.gather(
+                source,
+                indices: UnsafeBufferPointer(start: uindices.baseAddress, count: uindices.count),
+                result: &dbp
+            )
         }
     }
 }

@@ -14,12 +14,16 @@ public func double2float(_ doubleArray: [Double]) -> [Float] {
     guard !doubleArray.isEmpty else {
         return []
     }
-    
+
     return Array(unsafeUninitializedCapacity: doubleArray.count) { buffer, initializedCount in
         doubleArray.withUnsafeBufferPointer { src in
-            vDSP_vdpsp(src.baseAddress!, 1,
-                       buffer.baseAddress!, 1,
-                       vDSP_Length(doubleArray.count))
+            vDSP_vdpsp(
+                src.baseAddress!,
+                1,
+                buffer.baseAddress!,
+                1,
+                vDSP_Length(doubleArray.count)
+            )
         }
         initializedCount = doubleArray.count
     }
@@ -29,6 +33,3 @@ public func double2float(_ doubleArray: [Double]) -> [Float] {
 public func d2f(_ d: [Double]) -> [Float] {
     return []
 }
-
-
-

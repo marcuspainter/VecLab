@@ -1,6 +1,6 @@
 //
 //  nextprime.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -22,7 +22,7 @@ import Foundation
 /// print(nextPrime) // prints: 23
 /// ```
 public func nextprime(_ x: Int) -> Int {
-    let maxPrime = 2147483647
+    let maxPrime = 2_147_483_647
     var num = x
     while num < maxPrime {
         if isprime(num) {

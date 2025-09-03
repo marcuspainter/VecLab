@@ -14,7 +14,7 @@ import Foundation
 /// - Returns: Output array.
 public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
     var y = RealArray(repeating: 0, count: x.count)
-    for index in 0 ..< x.count {
+    for index in 0..<x.count {
         y[index] = body(x[index])
     }
     return y
@@ -27,7 +27,7 @@ public func iterate(_ x: RealArray, _ body: (Real) -> Real) -> RealArray {
 /// - Returns: Output array.
 public func iterate(_ x: RealArray, _ body: (Int, Real) -> Real) -> RealArray {
     var y = RealArray(repeating: 0, count: x.count)
-    for index in 0 ..< x.count {
+    for index in 0..<x.count {
         y[index] = body(index, x[index])
     }
     return y
@@ -41,7 +41,7 @@ public func iterate(_ x: RealArray, _ body: (Int, Real) -> Real) -> RealArray {
 public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
     validateSize(x)
     var y = ComplexArray(repeating: 0, count: x.count)
-    for index in 0 ..< x.count {
+    for index in 0..<x.count {
         y[index] = body(x[index])
     }
     return y
@@ -55,7 +55,7 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 public func iterate(_ x: ComplexArray, _ body: (Int, Complex) -> Complex) -> ComplexArray {
     validateSize(x)
     var y = ComplexArray(repeating: 0, count: x.count)
-    for index in 0 ..< x.count {
+    for index in 0..<x.count {
         y[index] = body(index, x[index])
     }
     return y

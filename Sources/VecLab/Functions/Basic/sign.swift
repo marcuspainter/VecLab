@@ -46,7 +46,7 @@ public func sign(_ x: RealArray) -> RealArray {
 /// - Parameter x: Complex number.
 /// - Returns: Sign of number.
 public func sign(_ x: Complex) -> Complex {
-    return x / abs(x) // Overloaded
+    return x / abs(x)  // Overloaded
 }
 
 /// Sign function (signum function) of a complex array.
@@ -56,5 +56,5 @@ public func sign(_ x: Complex) -> Complex {
 /// - Returns: Sign of number.
 public func sign(_ x: ComplexArray) -> ComplexArray {
     validateSize(x)
-    return x / abs(x) // Overloaded
+    return x / abs(x)  // Overloaded
 }

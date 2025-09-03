@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class StatisticsTests: XCTestCase {
 
@@ -35,26 +35,26 @@ class StatisticsTests: XCTestCase {
         XCTAssertEqual(edges, expectedEdges, "max failed")
     }
 
-/*
-    func testHistcountsRealArrayAutoMatlab() throws {
-        let realArrayA: RealArray = [1.0, 1.0, 1.0, 2.0, 2.0, 3.0,  4.0]
-        let (counts, edges) = histcounts(realArrayA)
-        let expectedCounts: [Int] = [3, 2, 1, 1]
-        let expectedEdges: RealArray = [1.0, 2.0, 3.0, 4.0]
-        XCTAssertEqual(counts, expectedCounts, "max failed")
-        XCTAssertEqual(edges, expectedEdges, "max failed")
-    }
+    /*
+        func testHistcountsRealArrayAutoMatlab() throws {
+            let realArrayA: RealArray = [1.0, 1.0, 1.0, 2.0, 2.0, 3.0,  4.0]
+            let (counts, edges) = histcounts(realArrayA)
+            let expectedCounts: [Int] = [3, 2, 1, 1]
+            let expectedEdges: RealArray = [1.0, 2.0, 3.0, 4.0]
+            XCTAssertEqual(counts, expectedCounts, "max failed")
+            XCTAssertEqual(edges, expectedEdges, "max failed")
+        }
     
-    func testHistcountsRealArrayBinsMatlab() throws {
-        let realArrayA: RealArray = [1.0, 1.0, 1.0, 2.0, 2.0, 3.0,  4.0]
-        let bins = 4
-        let (counts, edges) = histcounts(realArrayA, bins: bins)
-        let expectedCounts: [Int] = [3, 2, 1, 1]
-        let expectedEdges: RealArray = [0.7, 1.6, 2.5, 3.4, 4.3]
-        XCTAssertEqual(counts, expectedCounts, "max failed")
-        XCTAssertEqual(edges, expectedEdges, "max failed")
-    }
-*/
+        func testHistcountsRealArrayBinsMatlab() throws {
+            let realArrayA: RealArray = [1.0, 1.0, 1.0, 2.0, 2.0, 3.0,  4.0]
+            let bins = 4
+            let (counts, edges) = histcounts(realArrayA, bins: bins)
+            let expectedCounts: [Int] = [3, 2, 1, 1]
+            let expectedEdges: RealArray = [0.7, 1.6, 2.5, 3.4, 4.3]
+            XCTAssertEqual(counts, expectedCounts, "max failed")
+            XCTAssertEqual(edges, expectedEdges, "max failed")
+        }
+    */
 
     // MARK: max
 

@@ -21,14 +21,20 @@ public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
         input = x
     }
 
-    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: input.count,
-                                                       direction: .inverse,
-                                                       transformType: .complexComplex,
-                                                       ofType: Real.self) else {
+    guard
+        let dft = try? vDSP.DiscreteFourierTransform(
+            previous: nil,
+            count: input.count,
+            direction: .inverse,
+            transformType: .complexComplex,
+            ofType: Real.self
+        )
+    else {
         print("ifft error")
-        return ComplexArray([Real](repeating: Real.nan, count: input.count),
-                [Real](repeating: Real.nan, count: input.count))
+        return ComplexArray(
+            [Real](repeating: Real.nan, count: input.count),
+            [Real](repeating: Real.nan, count: input.count)
+        )
     }
 
     var splitComplexOutput = dft.transform(real: input.real, imaginary: input.imag)

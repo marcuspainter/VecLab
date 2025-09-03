@@ -1,6 +1,6 @@
 //
 //  dft.swift
-//  
+//
 //
 //  Created by Marcus Painter on 15/09/2023.
 //
@@ -22,7 +22,7 @@ public func dft(_ x: ComplexArray) -> ComplexArray {
     // Init by copy
     var y = ComplexArray(repeating: .zero, count: x.count)
     let q = vector(0..<n)
-    let omega = -2 * Real.pi * Real.i * q  / Real(n)
+    let omega = -2 * Real.pi * Real.i * q / Real(n)
     for p in 0..<x.count {
         let w = exp(omega * Real(p))
         y[p] = sum(x * w)

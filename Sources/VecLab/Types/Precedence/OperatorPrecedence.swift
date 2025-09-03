@@ -8,15 +8,15 @@
 // Uses Matlab convention: 2**2**3 Matlab = 64, NumPy = 256
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
-    associativity: left     // Matlab
+    associativity: left  // Matlab
     // associativity: right    // NumPy
 }
 
 /// Power
-infix operator **: PowerPrecedence
+infix operator ** : PowerPrecedence
 
 /// Left conjugate multiply
-infix operator ~*: MultiplicationPrecedence
+infix operator ~* : MultiplicationPrecedence
 
 /// Right conjugate multiply
-infix operator *~: MultiplicationPrecedence
+infix operator *~ : MultiplicationPrecedence

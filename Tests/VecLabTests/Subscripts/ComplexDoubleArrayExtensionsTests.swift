@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 17/04/2025.
 //
 
-import VecLab // Replace with your actual module name
+import VecLab  // Replace with your actual module name
 import XCTest
 
 final class ComplexDoubleArrayExtensionsTests: XCTestCase {
@@ -20,24 +20,36 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         ])
 
         // Test regular range
-        let slice1 = array[1 ..< 4]
+        let slice1 = array[1..<4]
         XCTAssertTrue(type(of: slice1) == ComplexDoubleArray.self, "Range subscript should return ComplexDoubleArray")
 
         // Test closed range
-        let slice2 = array[1 ... 3]
-        XCTAssertTrue(type(of: slice2) == ComplexDoubleArray.self, "Closed range subscript should return ComplexDoubleArray")
+        let slice2 = array[1...3]
+        XCTAssertTrue(
+            type(of: slice2) == ComplexDoubleArray.self,
+            "Closed range subscript should return ComplexDoubleArray"
+        )
 
         // Test partial range from
         let slice3 = array[2...]
-        XCTAssertTrue(type(of: slice3) == ComplexDoubleArray.self, "Partial range from subscript should return ComplexDoubleArray")
+        XCTAssertTrue(
+            type(of: slice3) == ComplexDoubleArray.self,
+            "Partial range from subscript should return ComplexDoubleArray"
+        )
 
         // Test partial range up to
         let slice4 = array[..<3]
-        XCTAssertTrue(type(of: slice4) == ComplexDoubleArray.self, "Partial range up to subscript should return ComplexDoubleArray")
+        XCTAssertTrue(
+            type(of: slice4) == ComplexDoubleArray.self,
+            "Partial range up to subscript should return ComplexDoubleArray"
+        )
 
         // Test partial range through
         let slice5 = array[...2]
-        XCTAssertTrue(type(of: slice5) == ComplexDoubleArray.self, "Partial range through subscript should return ComplexDoubleArray")
+        XCTAssertTrue(
+            type(of: slice5) == ComplexDoubleArray.self,
+            "Partial range through subscript should return ComplexDoubleArray"
+        )
     }
 
     // Test that the arrays contain the correct values
@@ -51,14 +63,14 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         ])
 
         // Test regular range
-        let slice1 = array[1 ..< 4]
+        let slice1 = array[1..<4]
         XCTAssertEqual(slice1[0].real, 2)
         XCTAssertEqual(slice1[0].imag, 2)
         XCTAssertEqual(slice1[2].real, 4)
         XCTAssertEqual(slice1.count, 3)
 
         // Test closed range
-        let slice2 = array[1 ... 3]
+        let slice2 = array[1...3]
         XCTAssertEqual(slice2[0].real, 2)
         XCTAssertEqual(slice2[2].real, 4)
         XCTAssertEqual(slice2.count, 3)
@@ -138,7 +150,7 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         ])
 
         // Test valid replacement (correct size)
-        array[1 ... 3] = ComplexDoubleArray([
+        array[1...3] = ComplexDoubleArray([
             ComplexDouble(10, 10),
             ComplexDouble(20, 20),
             ComplexDouble(30, 30),

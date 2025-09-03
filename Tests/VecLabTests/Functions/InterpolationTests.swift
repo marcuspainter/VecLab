@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class InterpolationTests: XCTestCase {
 
@@ -24,24 +24,24 @@ class InterpolationTests: XCTestCase {
     }
 
     // MARK: interpft
- /*
-    func testInterpftRealArray() throws {
-        let realArrayA: RealArray =  [1.0, -1.0, 1.0, -1.0]
-        let result: RealArray = interpft(realArrayA, 8)
-        let expected: RealArray = [1.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.0, 0.0]
-        XCTAssertEqual(result, expected, accuracy: accuracy, "interpft failed")
-    }
-*/
+    /*
+       func testInterpftRealArray() throws {
+           let realArrayA: RealArray =  [1.0, -1.0, 1.0, -1.0]
+           let result: RealArray = interpft(realArrayA, 8)
+           let expected: RealArray = [1.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.0, 0.0]
+           XCTAssertEqual(result, expected, accuracy: accuracy, "interpft failed")
+       }
+    */
     // MARK: sincresample
-/*
-    func testSincresampleRealArray() throws {
-        let realArrayA: RealArray = [-2.1, -2.0, -1.9, -1.5, -1.0, 0.0, 1.0, 1.5, 1.9, 2.0, 2.1]
-        let result: RealArray = interp1(realArrayA)
-        let expected: RealArray = [-2.0, -2.0, -1.0, -1.0, -1.0, 0.0, 1.0, 2.0, 2.0, 2.0, 3.0]
-        XCTAssertEqual(result, expected, accuracy: accuracy, "sincresample failed")
-    }
-  */
-    
+    /*
+        func testSincresampleRealArray() throws {
+            let realArrayA: RealArray = [-2.1, -2.0, -1.9, -1.5, -1.0, 0.0, 1.0, 1.5, 1.9, 2.0, 2.1]
+            let result: RealArray = interp1(realArrayA)
+            let expected: RealArray = [-2.0, -2.0, -1.0, -1.0, -1.0, 0.0, 1.0, 2.0, 2.0, 2.0, 3.0]
+            XCTAssertEqual(result, expected, accuracy: accuracy, "sincresample failed")
+        }
+      */
+
     func testDownsampleBy2() {
         let input: [Double] = [10, 20, 30, 40, 50, 60]
         let expected: [Double] = [10, 30, 50]
@@ -72,11 +72,11 @@ class InterpolationTests: XCTestCase {
 
     func testPhaseBeyondLength() {
         let input: [Double] = [1, 2, 3]
-        let result = downsample(input, 2, 5) // phase % factor = 1
+        let result = downsample(input, 2, 5)  // phase % factor = 1
         let expected: [Double] = [2]
         XCTAssertEqual(result, expected, accuracy: 1e-10)
     }
-    
+
     func testDownsampleWithPhases() {
         let input: [Double] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         let factor = 3
@@ -90,7 +90,7 @@ class InterpolationTests: XCTestCase {
         // Phase 2: [2, 5, 8]
         XCTAssertEqual(downsample(input, factor, 2), [2, 5, 8], accuracy: 1e-10)
     }
-    
+
     func testDownsampleWithPhases2() {
         let input: [Double] = vector(0..<10)
         let factor = 3
@@ -108,4 +108,3 @@ class InterpolationTests: XCTestCase {
     }
 
 }
-

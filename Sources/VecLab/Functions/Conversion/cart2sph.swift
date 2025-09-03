@@ -34,15 +34,18 @@ public func cart2sph(_ x: Real, _ y: Real, _ z: Real) -> (azimuth: Real, elevati
 /// - Returns: A tuple containing the arrays of azimuthal angle (measured in the xy-plane from the positive x-axis),
 /// the elevation angle (measured from the xy-plane), and the radial distance from the origin.
 public func cart2sph(_ x: RealArray, _ y: RealArray, _ z: RealArray)
-        -> (azimuth: RealArray, elevation: RealArray, r: RealArray) {
+    -> (azimuth: RealArray, elevation: RealArray, r: RealArray)
+{
     let n = x.count
-    assert(y.count == n && z.count == n,
-           "Arrays must be the same size, x: \(x.count), y: \(y.count), z: \(z.count) ")
+    assert(
+        y.count == n && z.count == n,
+        "Arrays must be the same size, x: \(x.count), y: \(y.count), z: \(z.count) "
+    )
     var azimuth = [Real](repeating: Real(0), count: n)
-    var elevation = azimuth // Zeros
-    var r = azimuth // Zeros
+    var elevation = azimuth  // Zeros
+    var r = azimuth  // Zeros
 
-    for k in 0 ..< n {
+    for k in 0..<n {
         let coord = cart2sph(azimuth[k], elevation[k], r[k])
         azimuth[k] = coord.0
         elevation[k] = coord.1

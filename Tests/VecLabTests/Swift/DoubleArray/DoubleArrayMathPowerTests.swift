@@ -10,5 +10,4 @@ import XCTest
 
 final class DoubleArrayMathPowerTests: XCTestCase {
 
-    
 }

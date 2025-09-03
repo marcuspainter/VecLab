@@ -1,6 +1,6 @@
 //
 //  hampel.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
@@ -26,8 +26,8 @@ public func hampel(_ x: RealArray, k: Int = 3, sigma: Real = 3.0) -> RealArray {
 
     var y = x
 
-    for i in k..<x.count-k {
-        let window = x[(i-k)...(i+k)]
+    for i in k..<x.count - k {
+        let window = x[(i - k)...(i + k)]
         let medianValue = median(window)
         let deviation = window.map { abs($0 - medianValue) }
         let medianDeviation = median(deviation)

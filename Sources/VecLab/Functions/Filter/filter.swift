@@ -23,21 +23,21 @@ public func filter(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     var w = RealArray(count: max(M, L))
     var y = RealArray(count: N)
 
-    for n in 0 ..< N {
+    for n in 0..<N {
         // Compute w[0]
         var wn = x[n]
-        for i in 1 ..< L {
+        for i in 1..<L {
             wn -= a[i] * w[i - 1]
         }
 
         // Update output y[n]
         y[n] = b[0] * wn
-        for i in 1 ..< M {
+        for i in 1..<M {
             y[n] += b[i] * w[i - 1]
         }
 
         // Shift state variables for the next iteration
-        for j in (1 ..< M).reversed() {
+        for j in (1..<M).reversed() {
             w[j] = w[j - 1]
         }
         w[0] = wn
@@ -70,7 +70,8 @@ public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray 
 /// - Returns: Filtered signal and filter state arrays as a tuple.
 public func filter(b: RealArray, a: RealArray, x: RealArray, state: RealArray) -> (y: RealArray, newState: RealArray) {
     precondition(!a.isEmpty && a[0] != 0, "a[0] must be nonzero")
-    let na = a.count, nb = b.count
+    let na = a.count
+    let nb = b.count
     let nfilt = max(na, nb)
 
     // Pure gain (no state)
@@ -90,14 +91,14 @@ public func filter(b: RealArray, a: RealArray, x: RealArray, state: RealArray) -
 
     let a0 = a[0]
 
-    for n in 0 ..< x.count {
+    for n in 0..<x.count {
         let xn = x[n]
         let temp = (b[0] / a0) * xn + z[0]
         y[n] = temp
 
         // Middle states
         if stateLen > 1 {
-            for i in 1 ..< (nfilt - 1) {
+            for i in 1..<(nfilt - 1) {
                 let bi = (i < nb) ? b[i] : 0.0
                 let ai = (i < na) ? a[i] : 0.0
                 z[i - 1] = (bi / a0) * xn + z[i] - (ai / a0) * temp

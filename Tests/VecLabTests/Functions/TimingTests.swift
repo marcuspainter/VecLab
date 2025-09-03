@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class TimingTests: XCTestCase {
 
@@ -16,7 +16,7 @@ class TimingTests: XCTestCase {
         usleep(100)
         toc()
     }
-    
+
     func testTimeti() throws {
 
         timeit {

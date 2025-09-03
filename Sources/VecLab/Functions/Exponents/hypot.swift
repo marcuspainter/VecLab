@@ -17,10 +17,10 @@ public func hypot(_ a: Real, _ b: Real) -> Real {
     var result: Real
     if abs(a) > abs(b) {
         r = b / a
-        result = abs(a) * Darwin.sqrt(1.0 + r*r)
+        result = abs(a) * Darwin.sqrt(1.0 + r * r)
     } else {
         r = a / b
-        result = abs(b) * Darwin.sqrt(1.0 + r*r)
+        result = abs(b) * Darwin.sqrt(1.0 + r * r)
     }
     return result
 }
@@ -46,10 +46,10 @@ public func hypot(_ a: Complex, _ b: Complex) -> Complex {
     var result: Complex
     if abs(a) > abs(b) {
         r = b / a
-        result = abs(a) * sqrt(1.0 + r*r)
+        result = abs(a) * sqrt(1.0 + r * r)
     } else {
         r = a / b
-        result = abs(b) * sqrt(1.0 + r*r)
+        result = abs(b) * sqrt(1.0 + r * r)
     }
     return result
 }
@@ -66,7 +66,7 @@ public func hypot(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
 }
 
 /*
- 
+
 C = hypot(A,B) returns the hypotenuse of a right triangle with side lengths of A and B.
 This function computes C = sqrt(abs(A).^2 + abs(B).^2) by avoiding underflow and overflow.
 
@@ -79,5 +79,5 @@ else
     r = A / B;
     result = abs(B) * sqrt(1 + r^2);
 end
- 
+
 */

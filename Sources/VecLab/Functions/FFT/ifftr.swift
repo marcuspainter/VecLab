@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 03/04/2024.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 /// Inverse FFT of complex array with real result.
 /// - Parameter x: Complex array.
@@ -21,11 +21,15 @@ public func ifftr(_ x: ComplexArray, length: Int? = nil) -> RealArray {
         input = x
     }
 
-    guard let dft = try? vDSP.DiscreteFourierTransform(previous: nil,
-                                                       count: input.count,
-                                                       direction: .inverse,
-                                                       transformType: .complexComplex,
-                                                       ofType: Real.self) else {
+    guard
+        let dft = try? vDSP.DiscreteFourierTransform(
+            previous: nil,
+            count: input.count,
+            direction: .inverse,
+            transformType: .complexComplex,
+            ofType: Real.self
+        )
+    else {
         print("ifftr error")
         return ([Real](repeating: Real.nan, count: input.count))
     }

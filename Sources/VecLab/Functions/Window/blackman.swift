@@ -1,6 +1,6 @@
 //
 //  blackman.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
@@ -28,6 +28,6 @@ public func blackman(_ L: Int, type: WindowType = .symmetric) -> RealArray {
 
     return (0..<L).map { n in
         let k = Real(n)
-       return a0 - a1 * cos(s1 * k) + a2 * cos(s2 * k)
+        return a0 - a1 * cos(s1 * k) + a2 * cos(s2 * k)
     }
 }

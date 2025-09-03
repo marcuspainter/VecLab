@@ -56,9 +56,9 @@ final class MersenneTwisterRNG: VecLabRandomNumberGenerator, @unchecked Sendable
 
     private let n = 624
     private let m = 397
-    private let matrixA: UInt32 = 0x9908b0df
-    private let upperMask: UInt32 = 0x80000000
-    private let lowerMask: UInt32 = 0x7fffffff
+    private let matrixA: UInt32 = 0x9908_b0df
+    private let upperMask: UInt32 = 0x8000_0000
+    private let lowerMask: UInt32 = 0x7fff_ffff
 
     required init(seed: UInt32) {
         self.seed = seed
@@ -70,7 +70,7 @@ final class MersenneTwisterRNG: VecLabRandomNumberGenerator, @unchecked Sendable
     private func initGenerator(_ seed: UInt32) {
         mt[0] = seed
         for i in 1..<n {
-            mt[i] = UInt32(1812433253 * (mt[i-1] ^ (mt[i-1] >> 30)) + UInt32(i))
+            mt[i] = UInt32(1_812_433_253 * (mt[i - 1] ^ (mt[i - 1] >> 30)) + UInt32(i))
         }
         index = n
     }
@@ -79,7 +79,7 @@ final class MersenneTwisterRNG: VecLabRandomNumberGenerator, @unchecked Sendable
         let mag01: [UInt32] = [0, matrixA]
 
         for kk in 0..<n {
-            let y = (mt[kk] & upperMask) | (mt[(kk+1) % n] & lowerMask)
+            let y = (mt[kk] & upperMask) | (mt[(kk + 1) % n] & lowerMask)
             mt[kk] = mt[(kk + m) % n] ^ (y >> 1) ^ mag01[Int(y & 1)]
         }
 
@@ -96,8 +96,8 @@ final class MersenneTwisterRNG: VecLabRandomNumberGenerator, @unchecked Sendable
 
         // Tempering
         y ^= (y >> 11)
-        y ^= (y << 7) & 0x9d2c5680
-        y ^= (y << 15) & 0xefc60000
+        y ^= (y << 7) & 0x9d2c_5680
+        y ^= (y << 15) & 0xefc6_0000
         y ^= (y >> 18)
 
         // Convert to [0,1) interval like MATLAB

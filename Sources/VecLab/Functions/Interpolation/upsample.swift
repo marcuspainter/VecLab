@@ -13,12 +13,12 @@
 /// - Returns: Real array of n – 1 zeros between samples.
 public func upsample(_ x: RealArray, _ factor: Int, _ phase: Int = 0) -> RealArray {
     guard factor > 0 else { return x }
-    let adjustedPhase = phase % factor // Ensure phase is within 0..(factor-1)
+    let adjustedPhase = phase % factor  // Ensure phase is within 0..(factor-1)
     let outputSize = x.count * factor
     var result = RealArray(repeating: 0.0, count: outputSize)
 
     var outputIndex = adjustedPhase
-    for i in 0 ..< x.count {
+    for i in 0..<x.count {
         result[outputIndex] = x[i]
         outputIndex += factor
     }

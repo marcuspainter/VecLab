@@ -84,7 +84,7 @@ func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> Complex
 func vectorMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
     var c = ComplexArray(sized: a)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
-        let conjugateFlag = Int32(1) // No conjugate multiply
+        let conjugateFlag = Int32(1)  // No conjugate multiply
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
     return c
@@ -113,7 +113,7 @@ func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> Compl
 
     let bb = ComplexArray(b0, b1)
     ComplexDoubleArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
-        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        let conjugateFlag = Int32(1)  // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
     return c
@@ -125,7 +125,7 @@ func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> Compl
     let a1 = [Double](repeating: a.imag, count: b.count)
     let aa = ComplexArray(a0, a1)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
-        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        let conjugateFlag = Int32(1)  // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
     return c

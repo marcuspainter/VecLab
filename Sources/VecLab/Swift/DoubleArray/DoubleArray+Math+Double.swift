@@ -18,8 +18,12 @@ extension Array where Element == Double {
     ///   - b: Double array.
     /// - Returns: The result of the addition.
     public static func + (a: Self, b: Self) -> [Double] {
-        assert(a.count == b.count,
-               "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.", file: #file, line: #line)
+        assert(
+            a.count == b.count,
+            "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.",
+            file: #file,
+            line: #line
+        )
         return vDSP.add(a, b)
     }
 

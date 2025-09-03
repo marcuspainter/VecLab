@@ -13,17 +13,17 @@ import Foundation
 
 func erfinv1(_ x: Double) -> Double {
     guard abs(x) < 1 else {
-        return x > 0 ? Double.infinity : -Double.infinity // erf^-1(±1) → ±∞
+        return x > 0 ? Double.infinity : -Double.infinity  // erf^-1(±1) → ±∞
     }
 
     // Constants for approximation
-    let a = 0.147 // Adjustable parameter for accuracy
+    let a = 0.147  // Adjustable parameter for accuracy
     let lnTerm = log(1 - x * x)
 
     let firstPart = 2 / (.pi * a) + lnTerm / 2
     let sqrtTerm = sqrt(firstPart * firstPart - lnTerm / a)
 
-    return copysign(sqrt(sqrtTerm - firstPart), x) // Apply sign of x
+    return copysign(sqrt(sqrtTerm - firstPart), x)  // Apply sign of x
 }
 
 /*
@@ -39,7 +39,7 @@ func erfinv1(_ x: Double) -> Double {
 
 func erfinv2(_ x: Double) -> Double {
     guard abs(x) < 1 else {
-        return x > 0 ? Double.infinity : -Double.infinity // Handle ±1 limits
+        return x > 0 ? Double.infinity : -Double.infinity  // Handle ±1 limits
     }
 
     let sign = x < 0 ? -1.0 : 1.0
@@ -49,7 +49,7 @@ func erfinv2(_ x: Double) -> Double {
     let a = [0.886226899, -1.645349621, 0.914624893, -0.140543331]
     let b = [1.0, -2.118377725, 1.442710462, -0.329097515, 0.012229801]
 
-    let t = 1.0 - absX // Transformation to improve accuracy
+    let t = 1.0 - absX  // Transformation to improve accuracy
     let num = (((a[3] * t + a[2]) * t + a[1]) * t + a[0]) * t
     let denom = ((((b[4] * t + b[3]) * t + b[2]) * t + b[1]) * t + b[0])
 

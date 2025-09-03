@@ -117,7 +117,7 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = a
-    for k in 0 ..< a.count {
+    for k in 0..<a.count {
         c[k] = pow(a[k], b[k])
     }
     return c
@@ -131,7 +131,7 @@ public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = b
-    for k in 0 ..< b.count {
+    for k in 0..<b.count {
         c[k] = pow(a[k], b[k])
     }
     return c
@@ -144,7 +144,7 @@ public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0 ..< a.count {
+    for k in 0..<a.count {
         c[k] = pow(a[k], b)
     }
     return c
@@ -157,7 +157,7 @@ public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
     var c: ComplexArray = ComplexArray(count: b.count)
-    for k in 0 ..< b.count {
+    for k in 0..<b.count {
         c[k] = pow(a, b[k])
     }
     return c
@@ -171,7 +171,7 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
     validateSize(a)
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0 ..< a.count {
+    for k in 0..<a.count {
         c[k] = pow(a[k], b)
     }
     return c
@@ -185,7 +185,7 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
     validateSize(b)
     var c: ComplexArray = ComplexArray(count: b.count)
-    for k in 0 ..< b.count {
+    for k in 0..<b.count {
         c[k] = pow(a, b[k])
     }
     return c
@@ -220,7 +220,7 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
 public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0 ..< a.count {
+    for k in 0..<a.count {
         c[k] = pow(a[k], b[k])
     }
 

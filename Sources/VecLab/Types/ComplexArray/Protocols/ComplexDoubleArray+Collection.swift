@@ -9,7 +9,8 @@ extension ComplexDoubleArray:
     MutableCollection,
     BidirectionalCollection,
     RandomAccessCollection,
-    RangeReplaceableCollection {
+    RangeReplaceableCollection
+{
 
     /// Reserve storage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.
@@ -38,11 +39,13 @@ extension ComplexDoubleArray:
     ///   - subrange: Index subrange.
     ///   - newElements: Replacement complex numbers.
     public mutating func replaceSubrange<C: Collection>(_ subrange: Range<Int>, with newElements: C)
-        where C.Element == ComplexDouble {
+    where C.Element == ComplexDouble {
 
         precondition(subrange.lowerBound >= 0 && subrange.upperBound <= count, "Range out of bounds")
-        precondition(subrange.count == newElements.count,
-                                 "Replacement size must match range size: \(subrange.count) vs \(newElements.count)")
+        precondition(
+            subrange.count == newElements.count,
+            "Replacement size must match range size: \(subrange.count) vs \(newElements.count)"
+        )
 
         let newReals = newElements.map { $0.real }
         let newImags = newElements.map { $0.imag }
@@ -127,7 +130,7 @@ extension ComplexDoubleArray:
             // Validate replacement size matches range size
             if bounds.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(bounds.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             real.replaceSubrange(bounds, with: newValue.real)
@@ -149,7 +152,7 @@ extension ComplexDoubleArray:
             // Validate replacement size matches range size
             if halfOpenRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(halfOpenRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             self[halfOpenRange] = newValue
@@ -172,7 +175,7 @@ extension ComplexDoubleArray:
             // Validate replacement size matches range size
             if fullRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             self[fullRange] = newValue
@@ -195,7 +198,7 @@ extension ComplexDoubleArray:
             // Validate replacement size matches range size
             if fullRange.count != newValue.count {
                 print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
-                return // Exit without making changes
+                return  // Exit without making changes
             }
 
             self[fullRange] = newValue
@@ -217,18 +220,18 @@ extension ComplexDoubleArray:
 
             // Validate replacement size matches range size
             if (fullRange.upperBound - fullRange.lowerBound + 1) != newValue.count {
-                print("ERROR: Replacement size must match range size: \((fullRange.upperBound - fullRange.lowerBound + 1)) vs \(newValue.count)")
-                return // Exit without making changes
+                print(
+                    "ERROR: Replacement size must match range size: \((fullRange.upperBound - fullRange.lowerBound + 1)) vs \(newValue.count)"
+                )
+                return  // Exit without making changes
             }
 
             self[fullRange] = newValue
         }
     }
-    
+
     // Function to assert that two arrays have the same size
     private func assertSameSize<T, U>(_ lhs: [T], _ rhs: [U]) {
         precondition(lhs.count == rhs.count, "Arrays must have the same size: \(lhs.count) vs \(rhs.count)")
     }
 }
-
-

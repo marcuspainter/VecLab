@@ -1,12 +1,12 @@
 //
 //  log2.swift
-//  
+//
 //
 //  Created by Marcus Painter on 09/09/2023.
 //
 
-import Foundation
 import Accelerate
+import Foundation
 
 // NOT VECTORIZED
 
@@ -32,8 +32,8 @@ public func log2(_ a: Complex) -> Complex {
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: ComplexArray) -> ComplexArray {
     validateSize(x)
-    var c =  ComplexArray(count: x.count)
-    for k in 0 ..< x.count {
+    var c = ComplexArray(count: x.count)
+    for k in 0..<x.count {
         c[k] = log2(x[k])
     }
     return c

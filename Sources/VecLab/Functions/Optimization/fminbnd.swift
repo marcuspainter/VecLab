@@ -1,6 +1,6 @@
 //
 //  fminbnd.swift
-//  
+//
 //
 //  Created by Marcus Painter on 18/09/2023.
 //
@@ -37,7 +37,7 @@ func gss(f: @escaping (Real) -> Real, a: Real, b: Real, tol: Real = 1e-5) -> (Re
     var yc = f(c)
     var yd = f(d)
 
-    for _ in 0..<n-1 {
+    for _ in 0..<n - 1 {
         if yc < yd {
             b = d
             d = c

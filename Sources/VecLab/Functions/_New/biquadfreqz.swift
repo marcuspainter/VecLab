@@ -22,7 +22,7 @@ public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArra
     let a2 = a[2]
 
     let N = n
-    let w = vector(0 ... N-1) * (.pi / Real(N))
+    let w = vector(0...N - 1) * (.pi / Real(N))
 
     // Compute trigonometric terms
     let sin_half_w = sin(w / 2.0)
@@ -30,16 +30,16 @@ public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArra
     let sin_2w = sin(2.0 * w)
 
     // Compute cosine terms using trigonometric identities
-    let cos_w =  1.0 - 2.0 * sin_half_w * sin_half_w
+    let cos_w = 1.0 - 2.0 * sin_half_w * sin_half_w
     let cos_2w = 1.0 - 2.0 * sin_w * sin_w
 
     // Real and imaginary parts of the numerator
     let num_re = b0 + b1 * cos_w + b2 * cos_2w
-    let num_im =     -b1 * sin_w - b2 * sin_2w  // Corrected sign
+    let num_im = -b1 * sin_w - b2 * sin_2w  // Corrected sign
 
     // Real and imaginary parts of the denominator
     let den_re = a0 + a1 * cos_w + a2 * cos_2w
-    let den_im =     -a1 * sin_w - a2 * sin_2w  // Corrected sign
+    let den_im = -a1 * sin_w - a2 * sin_2w  // Corrected sign
 
     // Compute the complex frequency response
     let num = ComplexArray(num_re, num_im)

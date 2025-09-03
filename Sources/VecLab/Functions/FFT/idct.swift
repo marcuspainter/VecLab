@@ -15,7 +15,7 @@ public func idct(_ X: RealArray) -> RealArray {
     var Y = X * sqrt(Real(N) / 2.0)
     Y[0] = Y[0] * sqrt(2.0)
 
-    let k = vector(0 ..< N)
+    let k = vector(0..<N)
     let w = expi(Real.pi * k / (2.0 * Real(N)))
     let YY = Y * w
 
@@ -27,7 +27,7 @@ public func idct(_ X: RealArray) -> RealArray {
     let Z = cat(YY, [0], conj(flip(YY[1..<N])))
 
     let z = ifftr(Z)
-    let x = z[0 ..< N] * 2.0
+    let x = z[0..<N] * 2.0
 
     return x
 }

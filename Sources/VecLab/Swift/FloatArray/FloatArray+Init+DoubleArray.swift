@@ -7,20 +7,24 @@
 
 import Accelerate
 
-public extension Array where Element == Float {
+extension Array where Element == Float {
     /// Initialize  a Float array from a Double array.
     /// - Parameter doubleArray: Double array.
-    init(doubleArray: [Double]) {
+    public init(doubleArray: [Double]) {
         guard !doubleArray.isEmpty else {
             self = []
             return
         }
-        
+
         self = Array(unsafeUninitializedCapacity: doubleArray.count) { buffer, initializedCount in
             doubleArray.withUnsafeBufferPointer { src in
-                vDSP_vdpsp(src.baseAddress!, 1,
-                           buffer.baseAddress!, 1,
-                           vDSP_Length(doubleArray.count))
+                vDSP_vdpsp(
+                    src.baseAddress!,
+                    1,
+                    buffer.baseAddress!,
+                    1,
+                    vDSP_Length(doubleArray.count)
+                )
             }
             initializedCount = doubleArray.count
         }
@@ -36,6 +40,3 @@ public extension Array where Element == Float {
     }
 }
 */
-
-
-

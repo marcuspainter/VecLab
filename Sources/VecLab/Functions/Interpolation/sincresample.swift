@@ -1,6 +1,6 @@
 //
 //  sincresample.swift
-//  
+//
 //
 //  Created by Marcus Painter on 12/09/2023.
 //
@@ -18,7 +18,7 @@ public func sincresample(_ x: RealArray, _ r: Real, _ beta: Real) -> RealArray {
     let M = Int(round(Real(N) * r))
 
     var y = RealArray(repeating: 0.0, count: M)
-    let W = Int(round(Real(N)/2))
+    let W = Int(round(Real(N) / 2))
 
     for m in 0..<M {
         let t = Real(m) / r
@@ -26,7 +26,7 @@ public func sincresample(_ x: RealArray, _ r: Real, _ beta: Real) -> RealArray {
         let nEnd = min(N, Int(t) + W)
 
         for n in nStart..<nEnd {
-            y[m] += x[n] * sinc(t - Real(n)) * kaiserWindow(Real(n - Int(t) + W + 1), Real(2*W+1), beta)
+            y[m] += x[n] * sinc(t - Real(n)) * kaiserWindow(Real(n - Int(t) + W + 1), Real(2 * W + 1), beta)
         }
     }
 
@@ -35,7 +35,7 @@ public func sincresample(_ x: RealArray, _ r: Real, _ beta: Real) -> RealArray {
 
 func kaiserWindow(_ n: Real, _ M: Real, _ beta: Real) -> Real {
     let alpha = (2 * n) / (M - 1) - 1
-    return besseli0(beta * sqrt(1 - alpha*alpha)) / besseli0(beta)
+    return besseli0(beta * sqrt(1 - alpha * alpha)) / besseli0(beta)
 }
 
 /*
@@ -58,7 +58,7 @@ func kaiserWindow(_ n: Real, _ M: Real, _ beta: Real) -> Real {
      for m = 1:M
          % Resampled time instance
          t = m / r;
-         
+
          % Calculate resampled value using sinc interpolation and Kaiser window
          for n = max(1, t - W):min(N, t + W)
              y(m) = y(m) + x(n) * sinc(t - n) * kaiser_window(n - t + W + 1, 2*W+1, beta);
@@ -78,7 +78,7 @@ func kaiserWindow(_ n: Real, _ M: Real, _ beta: Real) -> Real {
  function w = kaiser_window(n, M, beta)
      % n - Sample index (starting from 1, so adjust to 0-based)
      n = n - 1;
-     
+
      % Kaiser window formula
      alpha = (2 * n) / (M - 1) - 1;
      w = I0(beta * sqrt(1 - alpha^2)) / I0(beta);

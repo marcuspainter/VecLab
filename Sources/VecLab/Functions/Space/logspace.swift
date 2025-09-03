@@ -1,6 +1,6 @@
 //
 //  logspace.swift
-//  
+//
 //
 //  Created by Marcus Painter on 08/09/2023.
 //
@@ -21,5 +21,5 @@ public func logspace(_ a: Real, _ b: Real, _ n: Int = 50) -> RealArray {
     }
 
     let step = (b - a) / Real(n - 1)
-    return (0 ..< n).map { pow(10, a + Real($0) * step) }
+    return (0..<n).map { pow(10, a + Real($0) * step) }
 }

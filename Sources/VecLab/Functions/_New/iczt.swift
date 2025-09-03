@@ -28,25 +28,25 @@ func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil
     if let a {
         a_inv = 1.0 / a
     } else {
-        a_inv = Complex(1.0, 0.0) // Reciprocal of 1 is 1
+        a_inv = Complex(1.0, 0.0)  // Reciprocal of 1 is 1
     }
 
     // Length for power-of-two FFT
     let nfft = Int(2 ** nextpow2(m + k - 1))
 
     // Premultiply data
-    let kk = vector((-m+1) ... max(k-1, m-1))
+    let kk = vector((-m + 1)...max(k - 1, m - 1))
     let kk2 = (kk ** 2.0) / 2.0
     let ww = w_inv ** kk2
 
     // Apply initial twiddle factor
-    let nn = vector(0 ... (m-1))
+    let nn = vector(0...(m - 1))
     var aa = a_inv ** nn
 
-    aa = aa * ww[m-1 ..< m+m-1]
+    aa = aa * ww[m - 1..<m + m - 1]
     let y = x * aa
 
-    let inv_ww = 1.0 / ww[0 ..< (m+k-1)] // <----- Inverse chirp filter.
+    let inv_ww = 1.0 / ww[0..<(m + k - 1)]  // <----- Inverse chirp filter.
 
     // Fast convolution via FFT
     // Zero pad
@@ -56,7 +56,7 @@ func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil
     var g = ifft(fy)
 
     // Final multiply
-    g = g[m-1 ..< (m+k-1)] * ww[m-1 ..< (m+k-1)]
+    g = g[m - 1..<(m + k - 1)] * ww[m - 1..<(m + k - 1)]
 
     // Scale to get proper inverse
     g = g / Double(m)

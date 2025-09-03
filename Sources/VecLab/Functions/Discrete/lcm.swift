@@ -65,8 +65,8 @@ print(L) // LCM of 56 and 98 is 392
  LCM(a,b)=
  GCD(a,b)
  ∣a×b∣
- ​    
-  
+ ​
+
 
  This formula is based on the relationship between the LCM and the greatest common divisor (GCD) of two numbers.
 

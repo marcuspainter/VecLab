@@ -17,10 +17,10 @@ import Foundation
 public func conv(_ x: RealArray, _ y: RealArray, shape: ConvolutionType = .same) -> RealArray {
     validateSize(x, y)
     switch shape {
-        case .same:
-            return convsame(x, y)
-        case .full:
-            return convfull(x, y)
+    case .same:
+        return convsame(x, y)
+    case .full:
+        return convfull(x, y)
     }
 }
 
@@ -46,13 +46,13 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
     let A = fftr(a)
     let B = fftr(b)
     let C = A * B
-    let full_c = ifftr(C) // Full convolution result
+    let full_c = ifftr(C)  // Full convolution result
 
     // Extract the "same" portion
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
-    let end_idx = start_idx + nx - 1   // Ensure length(u) output
+    let end_idx = start_idx + nx - 1  // Ensure length(u) output
 
-    let c = full_c[start_idx ... end_idx]
+    let c = full_c[start_idx...end_idx]
     return c
 }
 
@@ -62,7 +62,7 @@ private func convsame(_ x: RealArray, _ y: RealArray) -> RealArray {
 ///   - y: Real array.
 /// - Returns: The result of the convolution.
 private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
-    let n = length(x) + length(y) - 1 // Result length
+    let n = length(x) + length(y) - 1  // Result length
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
@@ -75,7 +75,7 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
     let C = A * B
     var c = ifftr(C)
 
-    c = Array(c[0 ..< n]) // Trim to correct length
+    c = Array(c[0..<n])  // Trim to correct length
     return c
 }
 
@@ -87,10 +87,10 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 /// - Returns: The result of the convolution.
 public func conv(_ x: ComplexArray, _ y: ComplexArray, shape: ConvolutionType = .same) -> ComplexArray {
     switch shape {
-        case .same:
-            return convsame(x, y)
-        case .full:
-            return convfull(x, y)
+    case .same:
+        return convsame(x, y)
+    case .full:
+        return convfull(x, y)
     }
 }
 
@@ -115,13 +115,13 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let A = fft(a)
     let B = fft(b)
     let C = A * B
-    let full_c = ifft(C) // Full convolution result
+    let full_c = ifft(C)  // Full convolution result
 
     // Extract the "same" portion
     let start_idx = Int(floor(Real(ny) / 2.0))  // Corrected center alignment
-    let end_idx = start_idx + nx - 1   // Ensure length(u) output
+    let end_idx = start_idx + nx - 1  // Ensure length(u) output
 
-    let c = full_c[start_idx ... end_idx]
+    let c = full_c[start_idx...end_idx]
     return c
 }
 
@@ -131,7 +131,7 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
 ///   - y: Complex array
 /// - Returns: The result of the convolution.
 private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
-    let n = length(x) + length(y) - 1 // Result length
+    let n = length(x) + length(y) - 1  // Result length
 
     // Simulate using power of 2 fft only
     let N = Int(2 ** nextpow2(n))
@@ -144,7 +144,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
     let C = A * B
     var c = ifft(C)
 
-    c = trimdata(c, length: n) // Trim to correct length
+    c = trimdata(c, length: n)  // Trim to correct length
     return c
 }
 
@@ -192,7 +192,7 @@ private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
  c = c(1:n); % Trim to correct length
 
  end
- 
+
  */
 
 func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
@@ -203,8 +203,8 @@ func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
     var result = [Real](repeating: 0.0, count: resultSize)
 
     // Brute-force convolution
-    for i in 0 ..< n {
-        for j in 0 ..< m {
+    for i in 0..<n {
+        for j in 0..<m {
             result[i + j] += x[i] * y[j]
         }
     }
@@ -228,7 +228,7 @@ func convSimple(_ x: RealArray, _ y: RealArray) -> RealArray {
   ans =
 
       10    40   100   160   220   280   340   400   370   240
- 
+
 
 
  */

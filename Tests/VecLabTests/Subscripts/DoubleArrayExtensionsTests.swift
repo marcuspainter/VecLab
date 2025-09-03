@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 17/04/2025.
 //
 
-import VecLab // Replace with your actual module name
+import VecLab  // Replace with your actual module name
 import XCTest
 
 final class DoubleArrayExtensionsTests: XCTestCase {
@@ -14,11 +14,11 @@ final class DoubleArrayExtensionsTests: XCTestCase {
         let array = [1.0, 2.0, 3.0, 4.0, 5.0]
 
         // Test regular range
-        let slice1 = array[1 ..< 4]
+        let slice1 = array[1..<4]
         XCTAssertTrue(type(of: slice1) == [Double].self, "Range subscript should return [Double]")
 
         // Test closed range
-        let slice2 = array[1 ... 3]
+        let slice2 = array[1...3]
         XCTAssertTrue(type(of: slice2) == [Double].self, "Closed range subscript should return [Double]")
 
         // Test partial range from
@@ -39,11 +39,11 @@ final class DoubleArrayExtensionsTests: XCTestCase {
         let array = [1.0, 2.0, 3.0, 4.0, 5.0]
 
         // Test regular range
-        let slice1 = array[1 ..< 4]
+        let slice1 = array[1..<4]
         XCTAssertEqual(slice1, [2.0, 3.0, 4.0])
 
         // Test closed range
-        let slice2 = array[1 ... 3]
+        let slice2 = array[1...3]
         XCTAssertEqual(slice2, [2.0, 3.0, 4.0])
 
         // Test partial range from
@@ -69,7 +69,7 @@ final class DoubleArrayExtensionsTests: XCTestCase {
         var array = [1.0, 2.0, 3.0, 4.0, 5.0]
 
         // Test valid replacement (correct size)
-        array[1 ..< 4] = [10.0, 20.0, 30.0]
+        array[1..<4] = [10.0, 20.0, 30.0]
         XCTAssertEqual(array, [1.0, 10.0, 20.0, 30.0, 5.0])
 
         // Test invalid replacement (wrong size)

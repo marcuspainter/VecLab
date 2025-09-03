@@ -22,10 +22,14 @@ public func dot(_ a: RealArray, _ b: RealArray) -> Real {
 private func dotReal(_ a: [Double], _ b: [Double]) -> Double {
     var c: Double = 0.0
     let n = a.count
-    vDSP_dotprD(a, 1,
-                b, 1,
-                &c,
-                vDSP_Length(n))
+    vDSP_dotprD(
+        a,
+        1,
+        b,
+        1,
+        &c,
+        vDSP_Length(n)
+    )
     return c
 }
 

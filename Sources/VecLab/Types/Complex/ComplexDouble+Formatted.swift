@@ -46,7 +46,7 @@ extension ComplexDouble {
 
     /// Display styles for complex numbers
     public enum ComplexStyle {
-        case standard    // a + bi format
-        case engineering // [a, b] format
+        case standard  // a + bi format
+        case engineering  // [a, b] format
     }
 }

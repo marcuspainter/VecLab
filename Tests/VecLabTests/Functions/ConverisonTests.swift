@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import VecLab
 import XCTest
 
@@ -28,7 +26,7 @@ class ConversionTests: XCTestCase {
         let z: Real = 1.0
         let result: (Real, Real, Real) = cart2pol(x, y, z)
         let expected: (Real, Real, Real) = (0.785398163397448, 1.414213562373095, 1.0)
-        
+
         XCTAssertEqual(result.0, expected.0, accuracy: accuracy, "cart2pol failed")
         XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "cart2pol failed")
         XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "cart2pol failed")
@@ -53,9 +51,9 @@ class ConversionTests: XCTestCase {
     }
 
     func testDb2magArray() throws {
-        let db: RealArray = [0.0, 1.0,  -6.020599913279624]
+        let db: RealArray = [0.0, 1.0, -6.020599913279624]
         let result: RealArray = db2mag(db)
-        let expected: RealArray = [1.0,  1.122018454301963, 0.5]
+        let expected: RealArray = [1.0, 1.122018454301963, 0.5]
         XCTAssertEqual(result, expected, accuracy: accuracy, "db2mag failed")
     }
 
@@ -108,7 +106,7 @@ class ConversionTests: XCTestCase {
         let expected: (Real, Real) = (1.0, 1.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "pol2cart failed")
     }
-    
+
     func testPol2cart3D() throws {
         let theta: Real = 0.785398163397448
         let rho: Real = 1.414213562373095
@@ -159,7 +157,7 @@ class ConversionTests: XCTestCase {
         XCTAssertEqual(result.1, expected.1, accuracy: accuracy, "rad2deg failed")
         XCTAssertEqual(result.2, expected.2, accuracy: accuracy, "rad2deg failed")
     }
-    
+
     func testFreq2bin() throws {
         let f: Real = 100.0
         let n: Int = 1024
@@ -169,7 +167,7 @@ class ConversionTests: XCTestCase {
         let expected: Real = 2.0
         XCTAssertEqual(Real(result), expected, accuracy: accuracy, "freq2bin failed")
     }
-    
+
     func testBin2freq() throws {
         let bin: Int = 2
         let n: Int = 1024

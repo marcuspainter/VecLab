@@ -5,8 +5,8 @@
 //  Created by Marcus Painter on 25/09/2023.
 //
 
-import XCTest
 import VecLab
+import XCTest
 
 class ComplexTests: XCTestCase {
 
@@ -63,7 +63,7 @@ class ComplexTests: XCTestCase {
     // MARK: cplxpair
 
     // TODO:
-    
+
     // MARK: imag
 
     func testImagComplex() throws {
@@ -132,30 +132,29 @@ class ComplexTests: XCTestCase {
         let expected: Real = Real.pi
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
-    
+
     func testWrapToPiRealArray() throws {
         let realArrayA: RealArray = [0.0, .pi, -.pi, 2 * .pi, 3 * .pi]
         let result: RealArray = wrapToPi(realArrayA)
         let expected: RealArray = [0.0, .pi, -.pi, 0.0, .pi]
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapToPi failed")
     }
-    
+
     // MARK: wrapTo2Pi
-    
+
     func testWrapTo2PiReal2Pi() throws {
         let realA: Real = 2.0 * .pi
         let result: Real = wrapTo2Pi(realA)
         let expected: Real = 2.0 * .pi
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapTo2Pi failed")
     }
-    
+
     func testWrapTo2PiReal2PiPi() throws {
         let realA: Real = -.pi
         let result: Real = wrapTo2Pi(realA)
         let expected: Real = .pi
         XCTAssertEqual(result, expected, accuracy: accuracy, "wrapTo2Pi failed")
     }
-
 
     func testWrapTo2PiRealArray() throws {
         let realArrayA: RealArray = [0.0, 2.0 * .pi, 3.0 * .pi]
@@ -172,7 +171,7 @@ class ComplexTests: XCTestCase {
         let expected: RealArray = [3 * Real.pi, 3 * Real.pi]
         XCTAssertEqual(result, expected, accuracy: accuracy, "unwrap failed")
     }
-    
+
     func testUnwrapArrayEmpty() throws {
         let realArrayA: RealArray = []
         let result: RealArray = unwrap(realArrayA)

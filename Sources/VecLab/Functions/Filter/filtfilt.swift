@@ -26,8 +26,8 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     }
 
     // --- Step 3. Create reflected extensions
-    let signalBefore = 2.0 * x[0] - flip(x[1 ..< (mirrorLength + 1)])
-    let signalAfter = 2.0 * x[inputLength - 1] - flip(x[(inputLength - mirrorLength - 1) ..< (inputLength - 1)])
+    let signalBefore = 2.0 * x[0] - flip(x[1..<(mirrorLength + 1)])
+    let signalAfter = 2.0 * x[inputLength - 1] - flip(x[(inputLength - mirrorLength - 1)..<(inputLength - 1)])
     let signalExtended = cat(signalBefore, x, signalAfter)
 
     // --- Step 4. Forward filter
@@ -41,7 +41,7 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 
     // -- Step 7. Trim off the extension
     let outputExtendedLength = outputExtended.count
-    let output = outputExtended[mirrorLength ..< (outputExtendedLength - mirrorLength)]
+    let output = outputExtended[mirrorLength..<(outputExtendedLength - mirrorLength)]
 
     return output
 }
@@ -73,8 +73,8 @@ private func mirror(filterLength: Int, x: RealArray) -> RealArray {
     }
 
     // --- Step 3. Create reflected extensions
-    let signalBefore = 2.0 * x[0] - flip(x[1 ..< (mirrorLength + 1)])
-    let signalAfter = 2.0 * x[inputLength - 1] - flip(x[(inputLength - mirrorLength - 1) ..< (inputLength - 1)])
+    let signalBefore = 2.0 * x[0] - flip(x[1..<(mirrorLength + 1)])
+    let signalAfter = 2.0 * x[inputLength - 1] - flip(x[(inputLength - mirrorLength - 1)..<(inputLength - 1)])
     let signalExtended = cat(signalBefore, x, signalAfter)
 
     return signalExtended
@@ -92,7 +92,7 @@ private func imirror(filterLength: Int, x: RealArray) -> RealArray {
         fatalError("Data sequence too short for filter order.")
     }
 
-    let y = x[startIndex ... endIndex]
+    let y = x[startIndex...endIndex]
 
     return y
 }

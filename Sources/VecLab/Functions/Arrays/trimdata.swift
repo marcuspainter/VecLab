@@ -15,7 +15,7 @@ import Foundation
 public func trimdata(_ x: RealArray, length m: Int) -> RealArray {
     let n = x.count
     if m < n {
-        return x[0 ..< m]
+        return x[0..<m]
     }
     return x
 }
@@ -29,7 +29,7 @@ public func trimdata(_ x: ComplexArray, length m: Int) -> ComplexArray {
     validateSize(x)
     let n = x.count
     if m < n {
-        return x[0 ..< m]
+        return x[0..<m]
     }
     return x
 }

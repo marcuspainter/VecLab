@@ -24,7 +24,12 @@ public func assertComplexAlmostEqual(_ result: Complex, _ expected: Complex, _ m
 }
 
 // Helper Function to Compare RealArrays
-public func assertRealArrayAlmostEqual(_ result: RealArray, _ expected: RealArray, _ message: String, accuracy: Real = 1e-6) {
+public func assertRealArrayAlmostEqual(
+    _ result: RealArray,
+    _ expected: RealArray,
+    _ message: String,
+    accuracy: Real = 1e-6
+) {
     XCTAssertEqual(result.count, expected.count, "Array lengths not equal")
     for (r, e) in zip(result, expected) {
         XCTAssert(abs(r - e) < accuracy, "\(message) - Value \(r) not close enough to \(e).")

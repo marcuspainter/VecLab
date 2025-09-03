@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import XCTest
 import VecLab
+import XCTest
 
 class DivideTests: XCTestCase {
 
@@ -62,19 +62,19 @@ class DivideTests: XCTestCase {
         let expected: Complex = Complex(1.0, 0.0)
         XCTAssertEqual(result, expected, "Divide failed")
     }
-/*
-    func testDivideComplexComplexPath1() {
-        let result: Complex = complexPath1A / complexPath1B
-        let expected: Complex = complexResultPath1
-        XCTAssertEqual(result, expected, "Divide failed")
-    }
-
-    func testDivideComplexComplexPath2() {
-        let result: Complex = complexPath2A / complexPath2B
-        let expected: Complex = complexResultPath2
-        XCTAssertEqual(result, expected, "Divide failed")
-    }
-*/
+    /*
+        func testDivideComplexComplexPath1() {
+            let result: Complex = complexPath1A / complexPath1B
+            let expected: Complex = complexResultPath1
+            XCTAssertEqual(result, expected, "Divide failed")
+        }
+    
+        func testDivideComplexComplexPath2() {
+            let result: Complex = complexPath2A / complexPath2B
+            let expected: Complex = complexResultPath2
+            XCTAssertEqual(result, expected, "Divide failed")
+        }
+    */
 
     func testDivideComplexReal() {
         let result: Complex = complexA / realB
@@ -153,5 +153,5 @@ class DivideTests: XCTestCase {
         print(c)
         print(d)
     }
-*/
+    */
 }
