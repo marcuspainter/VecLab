@@ -10,8 +10,7 @@ Vector Creation Functions
 - ``vector(_:)-([Int])``
 - ``vector(_:)-([Float])``
 - ``vector(_:)-([Double])``
-- ``vector(sized:)-(RealArray)``
-- ``vector(sized:)-(ComplexArray)``
+- ``vector(sized:)``
 - ``vector(_:_:)-(Range<Int>,_)``
 - ``vector(_:_:)-(Range<Real>,_)``
 - ``vector(_:_:)-(ClosedRange<Int>,_)``
