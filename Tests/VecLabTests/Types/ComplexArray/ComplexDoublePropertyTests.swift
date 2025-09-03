@@ -10,18 +10,18 @@ import VecLab
 import XCTest
 
 class ComplexDoublePropertyTests: XCTestCase {
-    
+
     func testInit() throws {
         let a = ComplexDouble()
-        XCTAssertEqual(a.real, 0.0,  "init failed")
-        
+        XCTAssertEqual(a.real, 0.0, "init failed")
+
         let _ = a.real
         let _ = a.imag
-        
+
         let _ = a.description
-        
+
         let _ = a.hashValue
-        
+
         let _ = a.isFinite
         let _ = a.isInfinite
         let _ = a.isNaN
@@ -29,7 +29,7 @@ class ComplexDoublePropertyTests: XCTestCase {
         let _ = a.isSignalingNaN
         let _ = a.isSubnormal
         let _ = a.isZero
-        
+
         let _ = ComplexDouble.i
         let _ = ComplexDouble.infinity
         let _ = ComplexDouble.nan
