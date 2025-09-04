@@ -9,5 +9,13 @@ import VecLab
 import XCTest
 
 final class DoubleArrayInitSizedTests: XCTestCase {
+    
+    func testInit() throws {
+        let a = [Double](repeating: 0.0, count: 10)
+        
+        let b = [Double](sized: a)
+        
+        XCTAssertEqual(b.count, a.count)
+    }
 
 }

@@ -10,7 +10,7 @@ import XCTest
 
 final class DoubleArrayInitCountTests: XCTestCase {
 
-    func testInit() throws {
+    func testInitCount() throws {
         let count = 10
         let array = [Double](count: count)
 

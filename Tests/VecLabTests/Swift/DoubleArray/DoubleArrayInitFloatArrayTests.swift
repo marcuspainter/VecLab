@@ -10,7 +10,7 @@ import XCTest
 
 final class DoubleArrayInitFloatArrayTests: XCTestCase {
 
-    func testInit() throws {
+    func testInitFloatArray() throws {
 
         let floats: [Float] = [1.0, 2.0, 3.0, 4.0]
         let doubles: [Double] = [1.0, 2.0, 3.0, 4.0]
@@ -22,9 +22,8 @@ final class DoubleArrayInitFloatArrayTests: XCTestCase {
     func testInitEmpty() throws {
 
         let floats: [Float] = []
-        let doubles: [Double] = []
         let newDoubles = [Double](floatArray: floats)
 
-        XCTAssertEqual(newDoubles, doubles)
+        XCTAssertEqual(newDoubles, [])
     }
 }

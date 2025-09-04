@@ -90,13 +90,6 @@ public struct ComplexDoubleArray:
         self.imag = [Double](repeating: 0, count: count)
     }
 
-    /// Initialize a complex array from a collection.
-    /// - Parameter elements: A complex array.
-    public init(_ elements: ComplexDoubleArray) {
-        self.real = elements.map { $0.real }
-        self.imag = elements.map { $0.imag }
-    }
-
     /// Provide convenience initializers for standard library sequence types.
     /// - Parameter array: An array of complex numbers.
     public init(array: [ComplexDouble]) {
