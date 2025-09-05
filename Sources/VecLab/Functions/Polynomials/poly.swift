@@ -45,7 +45,7 @@ fileprivate func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) ->
     return abs(a.real - b.real) < tol && abs(a.imag - b.imag) < tol
 }
 
-fileprivate func matlabSort_lex(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSortLex(_ arr: ComplexArray) -> ComplexArray {
     return arr.sorted { a, b in
         if a.real != b.real { return a.real < b.real }
         return a.imag < b.imag
@@ -66,7 +66,10 @@ fileprivate func matlabSort(_ arr: ComplexArray) -> ComplexArray {
     }
 }
 
-// Fixed poly(roots:)
+
+/// Polynomial with specified roots.
+/// - Parameter roots: Roots of polynomial.
+/// - Returns: The coefficients of the polynomial whose roots are the elements of `roots`.
 public func poly(roots: ComplexArray) -> ComplexArray {
     let n = roots.count
     var c = ComplexArray(count: n + 1)

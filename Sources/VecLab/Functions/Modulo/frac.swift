@@ -28,6 +28,6 @@ public func frac(_ x: RealArray) -> RealArray {
     return c
 }
 
-private func vectorFrac(_ x: [Double], _ c: inout [Double]) {
+fileprivate func vectorFrac(_ x: [Double], _ c: inout [Double]) {
     vDSP_vfracD(x, 1, &c, 1, vDSP_Length(x.count))
 }
