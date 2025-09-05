@@ -47,7 +47,7 @@ class PolynomialTests: XCTestCase {
     func testPolyvalComplexArrayComplexArray() throws {
         let p: ComplexArray = ComplexArray([3, 2, 1], [3, 2, 1])
         let x: ComplexArray = ComplexArray([5, 7, 9], [5, 7, 9])
-        let result: ComplexArray = polyval(_coefficients: p, points: x)
+        let result: ComplexArray = polyval(coefficients: p, points: x)
         let expected: ComplexArray = ComplexArray([-149, -293, -485], [171, 323, 523])
 
         disp(result)
@@ -61,5 +61,12 @@ class PolynomialTests: XCTestCase {
         let expected: ComplexArray = ComplexArray([3.0, 2.0], [0.0, 0.0])
         print("Roots: \(result)")  // Should be approximately [(3.0, 0.0), (2.0, 0.0)]
         XCTAssertEqual(result, expected, accuracy: accuracy, "roots failed")
+    }
+    
+    func testPloyvalCoeefficients() throws {
+        let result : Complex = polyval(coefficients: [1.0, 2.0, 3.0], point: 2)
+        print(result)
+        // Matlab order = 11
+        // 
     }
 }

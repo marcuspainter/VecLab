@@ -39,4 +39,12 @@ public struct ComplexDouble:
         self.real = real
         self.imag = imag
     }
+    
+    /// Initialize a complex number with a real number..
+    /// - Parameters:
+    ///   - realOnly: Real part.
+    public init(realOnly: Double) {
+        self.real = realOnly
+        self.imag = 0
+    }
 }
