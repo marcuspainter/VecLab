@@ -208,6 +208,7 @@ Overloaded operators for scalar and vectors.
 |Interpolation| interp1, interpft, sincresample|
 |Modulo| ceil, fix, floor, mod, rem, round, trunc|
 |Optimization| fminbnd, fminsearch|
+|Polynomials| poly, polyval, roots|
 |Power| pow|
 |Random| awgn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|

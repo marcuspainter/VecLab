@@ -205,6 +205,7 @@ Overloaded operators for scalar and vectors.
 |Interpolation| interp1, interpft, sincresample|
 |Modulo| ceil, fix, floor, mod, rem, round, trunc|
 |Optimization| fminbnd, fminsearch|
+|Polynomials| poly, polyval, roots|
 |Power| pow|
 |Random| awgn, rand, randn, rng|
 |Smoothing| hampel, medfilt1|
@@ -214,6 +215,7 @@ Overloaded operators for scalar and vectors.
 |Timing| tic, toc, timeit|
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
 |Window| blackman, blackmanharris, flattopwin, gausswin, hamming, hann, kaiser, tukeywin, rectwin|
+
 
 ## Topics
 
