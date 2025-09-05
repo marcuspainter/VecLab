@@ -11,7 +11,13 @@ Polynomial functions.
 - ``polyval(coefficients:point:)-(RealArray,Complex)``
 - ``polyval(coefficients:points:)-(RealArray,ComplexArray)``
 - ``polyval(coefficients:point:)-(ComplexArray,Complex)``
+- ``polyval(coefficients:points:)-(ComplexArray,RealArray)``
+- ``polyval(coefficients:points:)-(ComplexArray,ComplexArray)``
 
 ### Polynomial Roots
 
 - ``roots(coefficients:)``
+
+### Polynomial From Roots
+
+- ``poly(roots:)->(ComplexArray)``

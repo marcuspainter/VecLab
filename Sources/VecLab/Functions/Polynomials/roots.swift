@@ -62,7 +62,7 @@ public func rootsX(coefficients: RealArray) -> ComplexArray {
     // Call LAPACK's dgeev to compute eigenvalues
     // sgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
 
-    (wR, wI) = eigenvalues(&A, n)
+    (wR, wI) = eigenvalues(A, n)
 
     // Convert eigenvalues to complex number tuples
     var result = [(Real, Real)]()
@@ -141,7 +141,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     }
 
     // Compute eigenvalues using LAPACK
-    let (wR, wI) = eigenvalues(&A, n)
+    let (wR, wI) = eigenvalues(A, n)
     var result = ComplexArray(wR, wI)
 
     // Add zero roots if needed
@@ -153,24 +153,26 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     return result
 }
 
-private func eigenvalues(_ A: inout [Double], _ n: Int) -> ([Double], [Double]) {
+private func eigenvalues(_ A: [Double], _ n: Int) -> ([Double], [Double]) {
+    // Copy A since LAPACK will overwrite it
+    var Acopy = A
     // Prepare variables for eigenvalue computation
     var jobVL = "N".utf8CString[0]  // Don't compute left eigenvectors
     var jobVR = "N".utf8CString[0]  // Don't compute right eigenvectors
-    var N = __LAPACK_int(n)
-    var ldA = __LAPACK_int(n)
+    var N = n
+    var ldA = n
     var wR = [Double](repeating: 0.0, count: n)  // Real parts of eigenvalues
     var wI = [Double](repeating: 0.0, count: n)  // Imaginary parts of eigenvalues
     var VL = [Double](repeating: 0.0, count: 1)  // Left eigenvectors (not used)
-    var ldVL = __LAPACK_int(1)
+    var ldVL = 1
     var VR = [Double](repeating: 0.0, count: 1)  // Right eigenvectors (not used)
-    var ldVR = __LAPACK_int(1)
-    var workSize = __LAPACK_int(4 * n)  // Size of work array
+    var ldVR = 1
+    var workSize = (4 * n)  // Size of work array
     var work = [Double](repeating: 0.0, count: Int(workSize))
-    var info = __LAPACK_int(0)
+    var info = 0
 
     // Call LAPACK's dgeev to compute eigenvalues
-    dgeev_(&jobVL, &jobVR, &N, &A, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
+    dgeev_(&jobVL, &jobVR, &N, &Acopy, &ldA, &wR, &wI, &VL, &ldVL, &VR, &ldVR, &work, &workSize, &info)
 
     // Check if computation was successful
     if info != 0 {

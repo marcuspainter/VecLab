@@ -19,14 +19,13 @@ public func polyval(coefficients p: RealArray, point x: Real) -> Real {
     guard !p.isEmpty else {
         return Real.nan
     }
-    let y = vDSP.evaluatePolynomial(
-        usingCoefficients: p,
-        withVariables: [x]
-    )
-    if y.count != 1 {
-        return Real.nan
+    let n = length(p)
+    // Horner's method: Iterate over the coefficients
+    var y = p[0]
+    for i in 1..<n {
+        y = y * x + p[i]
     }
-    return y[0]
+    return y
 }
 
 /// Polynomial evaluation.
