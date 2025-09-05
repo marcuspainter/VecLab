@@ -43,7 +43,7 @@ public func pow(_ a: Real, _ b: Int) -> Real {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Int) -> RealArray {
-    return b == 2 ? a * a : pow(a, Real(b))
+    return b == 2 ? vDSP.square(a): pow(a, Real(b))
 }
 
 /// Power.
@@ -74,7 +74,7 @@ public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Real) -> RealArray {
     let bb = RealArray(repeating: b, count: a.count)
-    return b == 2.0 ? a * a : vForce.pow(bases: a, exponents: bb)
+    return b == 2.0 ? vDSP.square(a) : vForce.pow(bases: a, exponents: bb)
 }
 
 /// Power.
