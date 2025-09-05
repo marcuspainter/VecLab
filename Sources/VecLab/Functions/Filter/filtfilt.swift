@@ -61,7 +61,7 @@ public func filtfilt(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArra
     return ComplexArray(yr, yi)
 }
 
-private func mirror(filterLength: Int, x: RealArray) -> RealArray {
+fileprivate func mirror(filterLength: Int, x: RealArray) -> RealArray {
     let inputLength = x.count
 
     // --- Step 1. Filter order length
@@ -80,7 +80,7 @@ private func mirror(filterLength: Int, x: RealArray) -> RealArray {
     return signalExtended
 }
 
-private func imirror(filterLength: Int, x: RealArray) -> RealArray {
+fileprivate func unmirror(filterLength: Int, x: RealArray) -> RealArray {
     // --- Step 1. Filter order length
     let mirrorLength = 3 * (filterLength - 1)
 
