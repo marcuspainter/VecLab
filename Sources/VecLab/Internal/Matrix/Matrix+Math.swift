@@ -5,34 +5,50 @@
 //  Created by Marcus Painter on 04/09/2025.
 //
 
-func matrixAdd() {
+/*
+import Accelerate
+
+func matrixAdd(_ a: [[Double]], _ b: [[Double]]) {
     
 }
 
-func matrixSubtract() {
-    
+func matrixAdd(a: [Double], arow: Int, acol: Int, b: [Double], brow: Int, bcol: Int) -> [Double] {
+    return []
 }
 
-func matrixMultiply() {
-    
+func matrixSubtract(_ a: [Double], _ b: [Double]) -> [Double] {
+    return []
+
 }
 
-func matrixDivide() {
-    
+func matrixMultiply(_ a: [Double], _ b: [Double]) -> [Double] {
+    return []
+
 }
 
-func matrixNegate() {
-    
+func matrixDivide(_ a: [Double], _ b: [Double]) -> [Double] {
+    return []
+
 }
 
-func matrixTranspose() {
-    
+func matrixNegate(_ a: [Double], _ b: [Double]) -> [Double] {
+    return []
+
 }
 
-func matrixRowMajor() {
-    
+func matrixTranspose(_ a: [Double]) -> [Double] {
+    return []
+
 }
 
-func matrixColumnMajor() {
-    
+func matrixRowMajor(a: [Double], b: [Double]) -> [Double] {
+    return []
+
 }
+
+func matrixColumnMajor(a: [Double], b: [Double]) -> [Double] {
+    return []
+
+}
+
+*/
