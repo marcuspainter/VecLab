@@ -5,6 +5,8 @@
 //  Created by Marcus Painter on 05/09/2025.
 //
 
+import Foundation
+
 /// Computes polynomial coefficients from roots (inverse of roots()).
 /// - Parameter roots: Array of complex roots
 /// - Returns: RealArray of polynomial coefficients in descending powers
@@ -39,14 +41,28 @@ public func polyX(roots: ComplexArray) -> ComplexArray {
 }
 
 // Helpers — adjust names/types to match your Complex/ComplexArray API
-func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) -> Bool {
+fileprivate func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) -> Bool {
     return abs(a.real - b.real) < tol && abs(a.imag - b.imag) < tol
 }
 
-func matlabSort(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSort_lex(_ arr: ComplexArray) -> ComplexArray {
     return arr.sorted { a, b in
         if a.real != b.real { return a.real < b.real }
         return a.imag < b.imag
+    }
+}
+
+fileprivate func matlabSort(_ arr: ComplexArray) -> ComplexArray {
+    return arr.sorted { a, b in
+        let magA = sqrt(a.real * a.real + a.imag * a.imag)
+        let magB = sqrt(b.real * b.real + b.imag * b.imag)
+        if magA != magB {
+            return magA < magB
+        }
+        // Tie-break by phase (atan2 returns (-π, π])
+        let phaseA = atan2(a.imag, a.real)
+        let phaseB = atan2(b.imag, b.real)
+        return phaseA < phaseB
     }
 }
 

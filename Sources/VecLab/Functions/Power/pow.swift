@@ -16,7 +16,7 @@ import Foundation
 ///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Int, _ b: Int) -> Real {
-    return Darwin.pow(Real(a), Real(b))
+    return b == 2 ? Real(a) * Real(a) : Darwin.pow(Real(a), Real(b))
 }
 
 /// Power.
@@ -25,7 +25,7 @@ public func pow(_ a: Int, _ b: Int) -> Real {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Int, _ b: Real) -> Real {
-    return Darwin.pow(Real(a), b)
+    return b == 2.0 ? Real(a) * Real(a) : Darwin.pow(Real(a), b)
 }
 
 /// Power.
@@ -34,7 +34,7 @@ public func pow(_ a: Int, _ b: Real) -> Real {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Real, _ b: Int) -> Real {
-    return Darwin.pow(a, Real(b))
+    return b == 2 ? a * a : Darwin.pow(a, Real(b))
 }
 
 /// Power.
@@ -43,7 +43,7 @@ public func pow(_ a: Real, _ b: Int) -> Real {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Int) -> RealArray {
-    return pow(a, Real(b))
+    return b == 2 ? a * a : pow(a, Real(b))
 }
 
 /// Power.
@@ -52,7 +52,7 @@ public func pow(_ a: RealArray, _ b: Int) -> RealArray {
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Complex, _ b: Int) -> Complex {
-    return pow(a, Real(b))
+    return b == 2 ? a * a : pow(a, Real(b))
 }
 
 // MARK: Real Array
@@ -74,7 +74,7 @@ public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Real) -> RealArray {
     let bb = RealArray(repeating: b, count: a.count)
-    return vForce.pow(bases: a, exponents: bb)
+    return b == 2.0 ? a * a : vForce.pow(bases: a, exponents: bb)
 }
 
 /// Power.
@@ -95,7 +95,7 @@ public func pow(_ a: Real, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Complex, _ b: Real) -> Complex {
-    return complexComplexRealPow(a, b)
+    return b == 2.0 ? a * a : complexComplexRealPow(a, b)
 }
 
 /// Power.

@@ -225,6 +225,7 @@ Overloaded operators for scalar and vectors.
 - <doc:FourierTransforms>
 - <doc:Filters>
 - <doc:DoubleAndFloatTypes>
+- <doc:Notes>
 
 ### Vector Creation
 - <doc:RealCreation>

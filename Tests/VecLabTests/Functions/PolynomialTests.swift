@@ -63,10 +63,22 @@ class PolynomialTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "roots failed")
     }
     
-    func testPloyvalCoeefficients() throws {
-        let result : Complex = polyval(coefficients: [1.0, 2.0, 3.0], point: 2)
-        print(result)
+    func testPolyvalCoefficients() throws {
+        //let result : Complex = polyval(coefficients: [1.0, 2.0, 3.0], point: 2)
+        //print(result)
         // Matlab order = 11
-        // 
+        
+        let c1 = [1.0, 2.0, 3.0]
+        let result: Complex = polyval(coefficients: c1, point: 2)
+        print(result) // 11
+
+        let c2 = [1.0, -3.0, 2.0]
+        let r2 = roots(coefficients: c2)
+        print(r2)
+        // [2.0+0.0i, 1.0+0.0i]
+        
+        let c3 = poly(roots: r2)
+        print(c3)
+        // [1.0+0.0i, -3.0+0.0i, 2.0+0.0i]
     }
 }

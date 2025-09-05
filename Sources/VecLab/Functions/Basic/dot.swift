@@ -14,23 +14,7 @@ import Accelerate
 /// - Returns: The real dot product of a and b.
 public func dot(_ a: RealArray, _ b: RealArray) -> Real {
     validateSize(a, b)
-    return dotReal(a, b)
-}
-
-// MARK: Private
-
-private func dotReal(_ a: [Double], _ b: [Double]) -> Double {
-    var c: Double = 0.0
-    let n = a.count
-    vDSP_dotprD(
-        a,
-        1,
-        b,
-        1,
-        &c,
-        vDSP_Length(n)
-    )
-    return c
+    return vDSP.dot(a, b)
 }
 
 /// Dot product.
@@ -40,8 +24,8 @@ private func dotReal(_ a: [Double], _ b: [Double]) -> Double {
 /// dot(a,b) = sum( a \* conj(b))
 ///
 /// - Parameters:
-///   - a: Real array.
-///   - b: Real array.
+///   - a: Complex array.
+///   - b: Complex array.
 /// - Returns: The complex dot product of a and b.
 public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
     validateSize(a, b)
@@ -58,7 +42,7 @@ public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
 ///
 /// - Parameters:
 ///   - a: Real array.
-///   - b: Real array.
+///   - b: Complex array.
 /// - Returns: The complex dot product of a and b.
 public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
     validateSize(a, b)

@@ -197,6 +197,8 @@ class PolynomialRootsTests: XCTestCase {
         XCTAssertEqual(got4, exp4, accuracy: 1e-6)
 
         print("Tests passed")
+        
+        let z = ComplexArray()
     }
     
     func testPoly3() {
