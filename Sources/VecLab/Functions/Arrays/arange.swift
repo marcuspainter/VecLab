@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import Accelerate
 
 /// Return evenly spaced values within a given interval.
 /// - Parameter stop: Real value.
 /// - Returns: The array.
 public func arange(_ stop: Real) -> RealArray {
+    return arange(0.0, stop, 1.0)
+}
+
+public func arange2(_ stop: Real) -> RealArray {
     return arange(0.0, stop, 1.0)
 }
 
@@ -39,15 +44,5 @@ public func arange(_ start: Real, _ stop: Real, _ step: Real) -> RealArray {
     }
 
     let count = Int(ceil((stop - start) / step))
-    var result = [Real](repeating: 0.0, count: count)
-
-    for i in 0..<count {
-        let value = start + (Real(i) * step)
-        if (step > 0 && value >= stop) || (step < 0 && value <= stop) {
-            return Array(result[0..<i])
-        }
-        result[i] = value
-    }
-
-    return result
+    return vDSP.ramp(withInitialValue: start, increment: step, count: count)
 }
