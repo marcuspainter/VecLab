@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Accelerate
 
 /// Create a real array.
 /// - Parameter count: Number of elements in the array.
@@ -45,8 +46,12 @@ public func vector(_ x: [Double]) -> RealArray {
 ///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
 public func vector(_ range: Range<Int>, _ step: Int = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: step)
-    return stridedValues.map { Real($0) }
+    guard step != 0 else { return [] } // avoid infinite loop
+    
+    let distance = range.upperBound - range.lowerBound
+    let count = max(0, Int(distance / step)) // floor division to stay below upperBound
+    
+    return vDSP.ramp(withInitialValue: Double(range.lowerBound), increment: Double(step), count: count)
 }
 
 /// Create a real array from a real range.
@@ -55,8 +60,12 @@ public func vector(_ range: Range<Int>, _ step: Int = 1) -> RealArray {
 ///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
 public func vector(_ range: Range<Real>, _ step: Real = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, to: range.upperBound, by: step)
-    return stridedValues.map { Real($0) }
+    guard step != 0 else { return [] } // avoid infinite loop
+    
+    let distance = range.upperBound - range.lowerBound
+    let count = max(0, Int(distance / step)) // floor division to stay below upperBound
+    
+    return vDSP.ramp(withInitialValue: range.lowerBound, increment: step, count: count)
 }
 
 /// Create a real array from a real closed range.
@@ -65,8 +74,12 @@ public func vector(_ range: Range<Real>, _ step: Real = 1) -> RealArray {
 ///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
 public func vector(_ range: ClosedRange<Real>, _ step: Real = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: step)
-    return stridedValues.map { Real($0) }
+    guard step != 0 else { return [] } // avoid infinite loop
+    
+    let distance = range.upperBound - range.lowerBound
+    let count = max(0, Int(floor(distance / step)) + 1)
+    
+    return vDSP.ramp(withInitialValue: range.lowerBound, increment: step, count: count)
 }
 
 /// Create a real array from an integer closed range.
@@ -75,8 +88,12 @@ public func vector(_ range: ClosedRange<Real>, _ step: Real = 1) -> RealArray {
 ///   - step: Optional stride value. Default 1.
 /// - Returns: A real array.
 public func vector(_ range: ClosedRange<Int>, _ step: Int = 1) -> RealArray {
-    let stridedValues = stride(from: range.lowerBound, through: range.upperBound, by: step)
-    return stridedValues.map { Real($0) }
+    guard step != 0 else { return [] } // avoid infinite loop
+    
+    let distance = Double(range.upperBound - range.lowerBound)
+    let count = max(0, Int(floor(distance / Double(step))) + 1)
+    
+    return vDSP.ramp(withInitialValue: Double(range.lowerBound), increment: Double(step), count: count)
 }
 
 // MARK: Sized
