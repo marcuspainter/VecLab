@@ -13,13 +13,13 @@ class RandomTests: XCTestCase {
     let tolerance: Real = 1e-10
     
     func testRand() {
-        let ss = rng(seed: 1)
+        rng(seed: 1)
         let r = rand(count: 10)
-        let (s,n) = awgn(zeros(1000), snr: 0.1)
+        let (s,n) = awgn(zeros(1000), snr: 0.1 )
         
         disp((r))
         
-        print(ss)
+        print(rng())
     }
     
     

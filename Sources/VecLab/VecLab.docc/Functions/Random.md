@@ -11,6 +11,7 @@ Random numbers and white Gaussian noise.
 - ``randn()``
 - ``randn(count:)``
 - ``rng(seed:)``
+- ``rng()``
 
 ### White Gaussian  Noise
 

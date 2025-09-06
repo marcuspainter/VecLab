@@ -10,45 +10,53 @@ import Foundation
 // Private singleton class to manage global RNG state
 private final class GlobalRNG: @unchecked Sendable {
     static let shared = GlobalRNG()
-    
+
+    private var seed: UInt64 = 0
     private var generator: any RandomNumberGenerator
     private let lock = NSLock()
-    
+
     private init() {
         // Start with a random seed for non-reproducible behavior by default
-        let randomSeed = UInt64.random(in: 0...UInt64.max)
-        self.generator = SeededRandomNumberGenerator(seed: randomSeed)
+        self.seed = UInt64.random(in: 0...UInt64.max)
+        self.generator = SeededRandomNumberGenerator(seed: seed)
     }
-    
-    func rand() -> Real {
+
+    func rand() -> Double {
         lock.lock()
         defer { lock.unlock() }
         // Use Swift's built-in random generation
-        return Real.random(in: 0.0..<1.0, using: &generator)
+        return Double.random(in: 0.0..<1.0, using: &generator)
     }
-    
+
     func setSeed(_ seed: UInt64) {
         lock.lock()
         defer { lock.unlock() }
         // For seeded generation, use a seeded generator
         generator = SeededRandomNumberGenerator(seed: seed)
+        self.seed = seed
+    }
+    
+    func getSeed() -> UInt64 {
+        lock.lock()
+        defer { lock.unlock() }
+        return self.seed
     }
 }
 
 // Simple seeded RNG for reproducible results
 private struct SeededRandomNumberGenerator: RandomNumberGenerator {
     private var state: UInt64
-    
+
     init(seed: UInt64) {
         self.state = seed
     }
-    
+
     mutating func next() -> UInt64 {
         // Simple Xorshift* (better quality)
         state ^= state >> 12
         state ^= state << 25
         state ^= state >> 27
-        return state &* 0x2545F4914F6CDD1D
+        return state &* 0x2545_F491_4F6C_DD1D
     }
 }
 
@@ -89,15 +97,22 @@ public func rand(count: Int) -> RealArray {
 /// - Parameter count: The number of elements in the array.
 /// - Returns: An array of random numbers from the standard normal distribution.
 public func randn(count: Int) -> RealArray {
-    var result = [Real](repeating: 0, count: count)
+    var result = RealArray(count: count)
     for i in 0..<count {
         result[i] = randn()
     }
     return result
 }
 
-@discardableResult
-public func rng(seed: UInt64 = UInt64.random(in: UInt64.min...UInt64.max)) -> UInt64 {
-    GlobalRNG.shared.setSeed(seed)
-    return seed
+/// Sets the seed of the random number generator.
+/// - Parameter seed: Seed  for random number generator. 0 is a random seed.
+public func rng(seed: UInt64) {
+    let newSeed = seed == 0 ? UInt64.random(in: .min ... .max) : seed
+    GlobalRNG.shared.setSeed(newSeed)
+}
+
+/// Get the seed of the random number generator.
+/// - Returns: Current seed of the random number generator.
+public func rng() -> UInt64 {
+    return GlobalRNG.shared.getSeed()
 }
