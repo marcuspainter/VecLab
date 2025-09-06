@@ -44,20 +44,22 @@ print(c)
 [5.0, 7.0, 9.0]  // Result of addition.
 ```
 
-Note the behaviour has changed, so be aware of any unexpected results.
+Note the behaviour has changed, so be aware of any unexpected results. There will be a error if the arrays are 
+not the same length.
 
 #### Using the cat() function
 
-To concatenate a `RealArray` or `ComplexArray`, use the `cat()` function.
+To concatenate a `RealArray` or `ComplexArray`, use the variadic `cat()` function.
 ```swift
 import VecLab
 
 let a = [1.0, 2.0, 3.0]
 let b = [4.0, 5.0, 6.0]
-let c = cat(a, b)
+let b = [7.0, 8.0, 9.0]
+let c = cat(a, b, c)
 print(c)
 
-[1.0, 2.0, 3.0, 4.0, 5.0, 6.0] // Result of concatenation.
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0] // Result of concatenation.
 ```
 
 All other array types can still use the original Swift `+` operator. So in the `String` example, the result will be as

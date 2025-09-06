@@ -2,7 +2,7 @@
 
 ## Overview
 
-Unlike normal Swift indexing with ranges, VecLab overrides the normal behaviour of sub-arrays.
+Unlike normal Swift indexing with ranges, VecLab overrides the normal behaviour of slices of sub-arrays.
 
 ### Array Slices
 
