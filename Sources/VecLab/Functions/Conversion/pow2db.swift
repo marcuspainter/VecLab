@@ -21,7 +21,5 @@ public func pow2db(_ pow: Real) -> Real {
 /// - Parameter pow: Power array.
 /// - Returns: Value in decibels.
 public func pow2db(_ pow: RealArray) -> RealArray {
-    var db = RealArray(repeating: 0, count: pow.count)
-    vDSP.convert(power: pow, toDecibels: &db, zeroReference: 1.0)
-    return db
+    return vDSP.powerToDecibels(pow, zeroReference: 1.0)
 }
