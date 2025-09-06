@@ -13,18 +13,18 @@ import XCTest
 /*
 /Users/marcuspainter/Swift6/VecLab/Tests/VecLabTests/ConcurrencyCheckTests.swift:26:27 Sending 'sharedState' risks causing data races
 */
-
 /*
-final class ConcurrencyCheckTests: XCTestCase {
 
+final class ConcurrencyCheckTests: XCTestCase {
+    
     // This class is not marked as @MainActor or with any other concurrency annotations
     class UnsafeSharedState {
         var value: Int = 0
     }
-
+    
     func testConcurrencyChecking() async {
         let sharedState = UnsafeSharedState()
-
+        
         // Create multiple tasks that access the shared state without proper synchronization
         async let task1 = Task { // <-- ERROR HERE
             for _ in 0..<1000 {
@@ -32,21 +32,58 @@ final class ConcurrencyCheckTests: XCTestCase {
             }
             return sharedState.value
         }
-
+        
         async let task2 = Task {
             for _ in 0..<1000 {
                 sharedState.value += 1
             }
             return sharedState.value
         }
-
+        
         // Wait for both tasks to complete
         let (result1, result2) = await (task1.value, task2.value)
-
+        
         // This assertion isn't the important part - the compiler should flag
         // the race condition above if strict concurrency checking is enabled
         XCTAssertTrue(result1 > 0 && result2 > 0)
     }
-}
+    
+    class NonSendableClass {
+        var value = 0
+    }
+    
+    func test() async {
+        let obj = NonSendableClass()
+        
+        Task {
+            obj.value = 1 // Should error with strict concurrency
+        }
+    }
+    
+    func testConcurrencyChecking2() async {
+        let sharedState = UnsafeSharedState()
 
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+                sharedState.value += 1 // Should definitely error
+            }
+            group.addTask {
+                sharedState.value += 1 // Should definitely error
+            }
+        }
+    }
+    
+    func testObviousConcurrencyViolation() async {
+        let sharedState = UnsafeSharedState()
+        
+        // This should definitely error with strict concurrency
+        Task {
+            sharedState.value = 100
+        }
+        
+        Task {
+            sharedState.value = 200
+        }
+    }
+}
 */

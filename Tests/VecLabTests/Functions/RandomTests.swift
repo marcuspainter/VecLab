@@ -14,11 +14,11 @@ class RandomTests: XCTestCase {
     
     func testRand() {
         rng(seed: 1234)
-        let r = rand(count: 10)
+        let r = rand(count: 1000)
+        let (s,n) = awgn(zeros(1000), snr: 0.1)
         
-        disp(r)
+        disp(mean(r))
     }
     
-    let n = awgn(rand(count: 1000), snr: 0.1)
     
 }

@@ -4,7 +4,7 @@
 //
 //  Created by Marcus Painter on 11/09/2023.
 //
-
+/*
 // https://www.cocoawithlove.com/blog/2016/05/19/random-numbers.html
 
 import Foundation
@@ -221,3 +221,4 @@ public func rng(seed: UInt32, generator: String = "MersenneTwister") {
 public func rng() -> UInt32 {
     return GlobalRNG.shared.seed
 }
+*/

@@ -11,31 +11,34 @@ import Foundation
 /// Add white Gaussian noise to a real signal.
 ///
 /// This function uses the gaussian distributed random numbers using ``randn()``. For repeatable results,
-/// set the seed of the random number generator using ``rng(seed:generator:)``.
+/// set the seed of the random number generator using ``rng(seed:)``.
 /// - Parameters:
 ///   - x: Real signal.
 ///   - snr: SNR is decibels (dB).
 /// - Returns: The noisy signal and noise as a tuple.
 public func awgn(_ x: RealArray, snr: Real) -> (signal: RealArray, noise: RealArray) {
-    // Calculate the signal power.
+    // Calculate the signal power
     let P_signal = vDSP.sumOfSquares(x) / Real(x.count)
-
-    // Calculate the noise power based on the desired SNR.
+    
+    // Calculate the noise power based on the desired SNR
     let P_noise = P_signal / pow(10.0, snr / 10.0)
-
-    // Generate the noise with the appropriate power.
-    let noise = vDSP.add(sqrt(P_noise), randn(count: x.count))
-
-    // Add the noise to the signal.
+    
+    // Generate zero-mean unit-variance Gaussian noise
+    let unitNoise = randn(count: x.count)
+    
+    // Scale noise to have the correct power (multiply by standard deviation)
+    let noise = vDSP.multiply(sqrt(P_noise), unitNoise)
+    
+    // Add the noise to the signal
     let y = vDSP.add(x, noise)
-
-    return (y, noise)
+    
+    return (signal: y, noise: noise)
 }
 
 /// Add white Gaussian noise to a complex signal.
 ///
 /// This function uses the gaussian distributed random numbers using ``randn()``. For repeatable results,
-/// set the seed of the random number generator using ``rng(seed:generator:)``.
+/// set the seed of the random number generator using ``rng(seed:)``.
 /// - Parameters:
 ///   - x: Complex signal
 ///   - snr: SNR is decibels (dB)

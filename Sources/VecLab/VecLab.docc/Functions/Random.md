@@ -10,10 +10,9 @@ Random numbers and white Gaussian noise.
 - ``rand(count:)``
 - ``randn()``
 - ``randn(count:)``
-- ``rng()``
-- ``rng(seed:generator:)``
+- ``rng(seed:)``
 
-### Gaussian White Noise
+### White Gaussian  Noise
 
 - ``awgn(_:snr:)->(RealArray,_)``
 - ``awgn(_:snr:)->(ComplexArray,_)``
