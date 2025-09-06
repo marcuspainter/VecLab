@@ -6,6 +6,8 @@
 //
 
 /// Increase sample rate by an integer factor.
+///
+/// This function does not perform any anti-aliasing filtering.
 /// - Parameters:
 ///   - x: Real array.
 ///   - factor: Upsampling factor.
