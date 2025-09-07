@@ -34,7 +34,7 @@ public func sign(_ x: Real) -> Real {
 /// 0 if the corresponding element of x equals 0.
 /// -1 if the corresponding element of x is less than 0.
 /// x./abs(x) if x is complex.
-/// - Parameter x: Real number.
+/// - Parameter x: Real array.
 /// - Returns: Sign of number.
 public func sign(_ x: RealArray) -> RealArray {
     return x.map { sign($0) }
