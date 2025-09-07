@@ -8,6 +8,51 @@
 import Accelerate
 import Foundation
 
+extension Array where Element == Double {
+
+    fileprivate init(unsafeCount capacity: Int) {
+        self = .init(unsafeUninitializedCapacity: capacity) { buffer, initializedCount in
+            initializedCount = capacity
+        }
+    }
+}
+
+extension ComplexArray {
+
+    fileprivate init(unsafeCount capacity: Int) {
+        self.real = .init(unsafeUninitializedCapacity: capacity) { buffer, initializedCount in
+            initializedCount = capacity
+        }
+        self.imag = .init(unsafeUninitializedCapacity: capacity) { buffer, initializedCount in
+            initializedCount = capacity
+        }
+    }
+
+    fileprivate init(unsafeCountX capacity: Int) {
+        self.real = [Double](repeating: 0, count: capacity)
+        self.imag = [Double](repeating: 0, count: capacity)
+    }
+
+    fileprivate init(
+        unsafeUninitializedCapacity: Int,
+        initializingWith initializer: (
+            _ complex: inout ComplexArray
+        ) throws -> Void
+    ) rethrows {
+
+        // Allocate uninitialized arrays
+        self.real = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
+            initializedCount = unsafeUninitializedCapacity
+        }
+        self.imag = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
+            initializedCount = unsafeUninitializedCapacity
+        }
+
+        try initializer(&self)
+
+    }
+}
+
 // MARK: Clear
 
 func vectorClearRealArray(_ a: inout [Double]) {
@@ -17,7 +62,7 @@ func vectorClearRealArray(_ a: inout [Double]) {
 // MARK: Fill
 
 func vectorFillRealArray(_ a: Double, c: inout [Double]) {
-    var aa = a // Copy
+    var aa = a  // Copy
     vDSP_vfillD(&aa, &c, 1, vDSP_Length(c.count))
 }
 
@@ -32,7 +77,7 @@ func vectorFillRealArray(_ a: Double, c: inout [Double]) {
 // MARK: Angle
 
 func vectorAngleComplexArray(_ a: ComplexArray) -> RealArray {
-    var c = RealArray(count: a.count)
+    var c = RealArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvphasD(A, 1, C, 1, N)
     }
@@ -42,7 +87,7 @@ func vectorAngleComplexArray(_ a: ComplexArray) -> RealArray {
 // MARK: Abs
 
 func vectorAbsComplexArray(_ a: ComplexArray) -> RealArray {
-    var c = RealArray(count: a.count)
+    var c = RealArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvabsD(A, 1, C, 1, N)
     }
@@ -52,7 +97,7 @@ func vectorAbsComplexArray(_ a: ComplexArray) -> RealArray {
 // MARK: Conjugate
 
 func vectorConjugateComplexArray(_ a: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvconjD(A, 1, C, 1, N)
     }
@@ -62,7 +107,7 @@ func vectorConjugateComplexArray(_ a: ComplexArray) -> ComplexArray {
 // MARK: Add
 
 func vectorAddComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexDoubleArray(count: a.count)
+    var c = ComplexDoubleArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvaddD(A, 1, B, 1, C, 1, N)
     }
@@ -72,7 +117,7 @@ func vectorAddComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray
 // MARK: Subtract
 
 func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexDoubleArray(count: a.count)
+    var c = ComplexDoubleArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvsubD(A, 1, B, 1, C, 1, N)
     }
@@ -81,99 +126,8 @@ func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> Complex
 
 // MARK: Multiply
 
-extension ComplexArray {
-
-    public init(
-        unsafeUninitializedCapacity: Int,
-        initializingWith initializer: (
-            _ realBuffer: inout UnsafeMutableBufferPointer<Double>,
-            _ imagBuffer: inout UnsafeMutableBufferPointer<Double>,
-            _ initializedCount: inout Int
-        ) throws -> Void
-    ) rethrows {
-        
-        // Allocate uninitialized arrays
-        self.real = [Double](unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        self.imag = [Double](unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        
-        var actualCount = unsafeUninitializedCapacity
-        
-        try real.withUnsafeMutableBufferPointer { realPtr in
-            try imag.withUnsafeMutableBufferPointer { imagPtr in
-                var realPtr = realPtr
-                var imagPtr = imagPtr
-                try initializer(&realPtr, &imagPtr, &actualCount)
-            }
-        }
-        
-        // Resize arrays if actualCount < capacity
-        if actualCount < unsafeUninitializedCapacity {
-            real.removeLast(unsafeUninitializedCapacity - actualCount)
-            imag.removeLast(unsafeUninitializedCapacity - actualCount)
-        }
-    }
-
-    public init(unsafeCount capacity: Int) {
-        self.real = .init(unsafeUninitializedCapacity: capacity) { buffer, initializedCount in
-            initializedCount = capacity
-        }
-        self.imag = .init(unsafeUninitializedCapacity: capacity) { buffer, initializedCount in
-            initializedCount = capacity
-        }
-    }
-    
-    public init(
-        unsafeUninitializedCapacity: Int,
-        initializingWith initializer: (
-            _ complex: inout DSPDoubleSplitComplex
-        ) throws -> Void
-    ) rethrows {
-        
-        // Allocate uninitialized arrays
-        self.real = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        self.imag = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        
-        try real.withUnsafeMutableBufferPointer { realPtr in
-            try imag.withUnsafeMutableBufferPointer { imagPtr in
-                var complex = DSPDoubleSplitComplex(
-                    realp: UnsafeMutablePointer(mutating: realPtr.baseAddress!),
-                    imagp: UnsafeMutablePointer(mutating: imagPtr.baseAddress!)
-                )
-                try initializer(&complex)
-            }
-        }
-    }
-    
-    public init(
-        unsafeUninitializedCapacity: Int,
-        initializingWith initializer: (
-            _ complex: inout ComplexArray
-        ) throws -> Void
-    ) rethrows {
-        
-        // Allocate uninitialized arrays
-        self.real = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        self.imag = .init(unsafeUninitializedCapacity: unsafeUninitializedCapacity) { _, initializedCount in
-            initializedCount = unsafeUninitializedCapacity
-        }
-        
-        try initializer(&self)
-            
-        }
-}
-
 func vectorMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1)  // No conjugate multiply
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
@@ -182,7 +136,7 @@ func vectorMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> Complex
 }
 
 public func vectorMultiplyComplexArray2(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(unsafeCount: a.count) // Uninitialized array
+    var c = ComplexArray(unsafeCount: a.count)  // Uninitialized array
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1)  // No conjugate multiply
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
@@ -200,9 +154,8 @@ public func vectorMultiplyComplexArray3(_ a: ComplexArray, _ b: ComplexArray) ->
     return x
 }
 
-
 func vectorMultiplyComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvmulD(A, 1, B, 1, C, 1, N)
     }
@@ -210,7 +163,7 @@ func vectorMultiplyComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> C
 }
 
 func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     let bb = ComplexArray(repeating: b, count: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
         let conjugateFlag = Int32(1)  // No conjugate multiply: 1
@@ -220,7 +173,7 @@ func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> Compl
 }
 
 func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: b.count)
+    var c = ComplexArray(unsafeCount: b.count)
     let aa = ComplexArray(repeating: a, count: b.count)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1)  // No conjugate multiply: 1
@@ -232,7 +185,7 @@ func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> Compl
 // MARK: Conjugate Multiply
 
 func vectorConjugateMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         // Conjugate multiply: -1
         let conjugateFlag = Int32(-1)
@@ -244,7 +197,7 @@ func vectorConjugateMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -
 // MARK: Divide
 
 func vectorDivideComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
@@ -258,8 +211,8 @@ func vectorDivideComplexArrayReal(_ a: ComplexArray, _ b: Real) -> ComplexArray 
 }
 
 func vectorDivideRealComplexArray(_ a: Real, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: b.count)
-    let aa = ComplexArray(repeating: Complex(a,0.0), count: b.count)
+    var c = ComplexArray(unsafeCount: b.count)
+    let aa = ComplexArray(repeating: Complex(a, 0.0), count: b.count)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
@@ -267,7 +220,7 @@ func vectorDivideRealComplexArray(_ a: Real, _ b: ComplexArray) -> ComplexArray 
 }
 
 func vectorDivideComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvdivD(A, 1, B, 1, C, 1, N)
     }
@@ -275,8 +228,8 @@ func vectorDivideComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> Com
 }
 
 func vectorDivideRealArrayComplexArray(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: b.count)
-    let aa = ComplexArray(realOnly:a)
+    var c = ComplexArray(unsafeCount: b.count)
+    let aa = ComplexArray(realOnly: a)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
@@ -290,7 +243,7 @@ func vectorDivideComplexRealArray(_ a: Complex, _ b: RealArray) -> ComplexArray 
 }
 
 func vectorDivideRealArrayComplex(_ a: RealArray, _ b: Complex) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     let bb = ComplexArray(repeating: b, count: a.count)
     let aa = ComplexArray(realOnly: a)
     validateSize(aa, bb)
@@ -302,7 +255,7 @@ func vectorDivideRealArrayComplex(_ a: RealArray, _ b: Complex) -> ComplexArray 
 }
 
 func vectorDivideComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = ComplexArray(unsafeCount: a.count)
     let bb = ComplexArray(repeating: b, count: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
@@ -311,7 +264,7 @@ func vectorDivideComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> Complex
 }
 
 func vectorDivideComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: b.count)
+    var c = ComplexArray(unsafeCount: b.count)
     let aa = ComplexArray(repeating: a, count: b.count)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)

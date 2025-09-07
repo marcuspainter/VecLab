@@ -15,10 +15,6 @@ public func arange(_ stop: Real) -> RealArray {
     return arange(0.0, stop, 1.0)
 }
 
-public func arange2(_ stop: Real) -> RealArray {
-    return arange(0.0, stop, 1.0)
-}
-
 /// Return evenly spaced values within a given interval.
 /// - Parameters:
 ///   - start: Real value.

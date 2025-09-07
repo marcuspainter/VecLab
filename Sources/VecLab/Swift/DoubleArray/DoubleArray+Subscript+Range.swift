@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Accelerate
 
 // Extension to make Array<Double> return arrays instead of slices when using range subscripts
 // with size validation matching the pattern from step extensions.
@@ -17,8 +18,22 @@ extension Array where Element == Double {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
             // Use type annotation to avoid recursion
-            let slice: ArraySlice<Double> = self[bounds]
-            return Array(slice)
+            //let slice: ArraySlice<Double> = self[bounds]
+            //return Array(slice)
+            
+            
+            let n = bounds.count
+            return [Double](unsafeUninitializedCapacity: n) { buffer, initializedCount in
+                self.withUnsafeBufferPointer { src in
+                    vDSP_mmovD(src.baseAddress! + bounds.lowerBound,
+                               buffer.baseAddress!,
+                               vDSP_Length(n), 1,
+                               vDSP_Length(n), 1)
+                }
+                initializedCount = n
+            }
+            
+             
         }
         set {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
@@ -40,6 +55,21 @@ extension Array where Element == Double {
             // Use type annotation to avoid recursion
             let slice: ArraySlice<Double> = self[bounds]
             return Array(slice)
+            
+            /*
+            let n = bounds.count   // ClosedRange count = upper - lower + 1
+            return [Double](unsafeUninitializedCapacity: n) { buffer, initializedCount in
+                self.withUnsafeBufferPointer { src in
+                    vDSP_mmovD(
+                        src.baseAddress! + bounds.lowerBound, // source start
+                        buffer.baseAddress!,                  // destination
+                        vDSP_Length(n), 1,                    // width, height
+                        vDSP_Length(n), 1                     // src stride, dst stride
+                    )
+                }
+                initializedCount = n
+            }
+             */
         }
         set {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")

@@ -7,6 +7,11 @@ Basic functions.
 ### Absolute Value
 - ``abs(_:)-(RealArray)``
 
+### Sort
+
+- ``sort(_:order:)->(RealArray)``
+- ``sort(_:order:)->(ComplexArray)``
+
 ### Sign
 - ``sign(_:)->Real``
 - ``sign(_:)->RealArray``
@@ -17,6 +22,7 @@ Basic functions.
 - ``disp(_:)-(RealArray)``
 - ``disp(_:)-(ComplexArray)``
 - ``disp(_:)-(ArraySlice<Real>)``
+- ``disp(_:)-()``
 
 ### Sums and Products
 - ``sum(_:)->Real``
@@ -40,4 +46,9 @@ Basic functions.
 - ``iterate(_:_:)-(_,(Real)->Real)``
 
 - ``norm(_:)``
+
+- ``clip(_:lower:upper:)-(Real,Real,Real)``
+- ``clip(_:lower:upper:)-(RealArray,Real,Real)``
+- ``threshold(_:lower:)-(Real,Real)``
+- ``threshold(_:lower:)-(RealArray,Real)``
 
