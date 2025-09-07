@@ -12,24 +12,7 @@ import Accelerate
 /// - Parameter arrays: List of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: RealArray...) -> RealArray {
-    let totalCount = arrays.reduce(0) { $0 + $1.count }
-
-    return RealArray(unsafeUninitializedCapacity: totalCount) { buffer, initializedCount in
-        var index = 0
-        for array in arrays {
-            let n = array.count
-            let destinationOffsetPtr = buffer.baseAddress!.advanced(by: index)
-
-            // Get a read-only pointer to the source array's elements
-            array.withUnsafeBufferPointer { sourceBuffer in
-                // Direct vector copy
-                cblas_dcopy(n, sourceBuffer.baseAddress!, 1, destinationOffsetPtr, 1)
-            }
-
-            index += array.count
-        }
-        initializedCount = totalCount
-    }
+    return cat(arrays)
 }
 
 /// Concatenate arrays.
@@ -38,12 +21,28 @@ public func cat(_ arrays: RealArray...) -> RealArray {
 /// - Returns: A single combined array.
 public func cat(_ arrays: [RealArray]) -> RealArray {
     let totalCount = arrays.reduce(0) { $0 + $1.count }
-    var newArray = RealArray()
-    newArray.reserveCapacity(totalCount)
-    for array in arrays {
-        newArray.append(contentsOf: array)
+
+    return RealArray(unsafeUninitializedCapacity: totalCount) { buffer, initializedCount in
+        var index = 0
+        for array in arrays {
+            let n = array.count
+            let destinationOffsetPtr = buffer.baseAddress!.advanced(by: index)
+
+            array.withUnsafeBufferPointer { sourceBuffer in
+                // vDSP memory move (vector copy)
+                vDSP_mmovD(
+                    sourceBuffer.baseAddress!,   // source
+                    destinationOffsetPtr,        // destination
+                    vDSP_Length(n),              // number of columns
+                    1,                           // number of rows
+                    vDSP_Length(n),              // row stride in source
+                    vDSP_Length(n)               // row stride in destination
+                )
+            }
+            index += n
+        }
+        initializedCount = totalCount
     }
-    return newArray
 }
 
 /// Concatenate arrays.

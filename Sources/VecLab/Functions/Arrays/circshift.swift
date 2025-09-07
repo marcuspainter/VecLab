@@ -24,11 +24,25 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
             let xBase = xPtr.baseAddress!
             let outBase = buffer.baseAddress!
 
-            // Copy last 'shift' elements to the beginning
-            cblas_dcopy(__LAPACK_int(shift), xBase + (n - shift), 1, outBase, 1)
+            // Copy last `shift` elements to the beginning
+            vDSP_mmovD(
+                xBase + (n - shift), // source
+                outBase,             // destination
+                vDSP_Length(shift),  // number of columns
+                1,                   // number of rows
+                vDSP_Length(shift),  // source row stride
+                vDSP_Length(shift)   // destination row stride
+            )
 
-            // Copy first 'n - shift' elements after the shifted portion
-            cblas_dcopy(__LAPACK_int(n - shift), xBase, 1, outBase + shift, 1)
+            // Copy first `n - shift` elements after the shifted portion
+            vDSP_mmovD(
+                xBase,                    // source
+                outBase + shift,          // destination
+                vDSP_Length(n - shift),   // number of columns
+                1,                        // number of rows
+                vDSP_Length(n - shift),   // source row stride
+                vDSP_Length(n - shift)    // destination row stride
+            )
         }
         initializedCount = n
     }
@@ -41,7 +55,5 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
 /// - Returns: Circularly shifted array
 public func circshift(_ x: ComplexArray, _ k: Int) -> ComplexArray {
     validateSize(x)
-    let real = circshift(x.real, k)
-    let imag = circshift(x.imag, k)
-    return ComplexArray(real, imag)
+    return ComplexArray(circshift(x.real, k), circshift(x.imag, k))
 }
