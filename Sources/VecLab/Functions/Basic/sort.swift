@@ -35,27 +35,27 @@ public func sort(_ x: ComplexArray, order: SortOder = .ascending) -> ComplexArra
     switch order {
     case .ascending:
         return x.sorted { a, b in
-            let magA = sqrt(a.real * a.real + a.imag * a.imag)
-            let magB = sqrt(b.real * b.real + b.imag * b.imag)
+            let magA = hypot(a.real, a.imag)
+            let magB = hypot(b.real, b.imag)
             if magA != magB {
                 return magA < magB
             }
             // Tie-break by phase (atan2 returns (-π, π])
-            let phaseA = atan2(a.imag, a.real)
-            let phaseB = atan2(b.imag, b.real)
+            let phaseA = wrapTo2Pi(angle(a))
+            let phaseB = wrapTo2Pi(angle(b))
             return phaseA < phaseB
         }
 
     case .descending:
         return x.sorted { a, b in
-            let magA = sqrt(a.real * a.real + a.imag * a.imag)
-            let magB = sqrt(b.real * b.real + b.imag * b.imag)
+            let magA = hypot(a.real, a.imag)
+            let magB = hypot(b.real, b.imag)
             if magA != magB {
                 return magA > magB
             }
             // Tie-break by phase (atan2 returns (-π, π])
-            let phaseA = atan2(a.imag, a.real)
-            let phaseB = atan2(b.imag, b.real)
+            let phaseA = wrapTo2Pi(angle(a))
+            let phaseB = wrapTo2Pi(angle(b))
             return phaseA > phaseB
         }
     }
@@ -63,14 +63,14 @@ public func sort(_ x: ComplexArray, order: SortOder = .ascending) -> ComplexArra
 
 fileprivate func matlabSort2(_ arr: ComplexArray) -> ComplexArray {
     return arr.sorted { a, b in
-        let magA = sqrt(a.real * a.real + a.imag * a.imag)
-        let magB = sqrt(b.real * b.real + b.imag * b.imag)
+        let magA = hypot(a.real, a.imag)
+        let magB = hypot(b.real, b.imag)
         if magA != magB {
             return magA < magB
         }
         // Tie-break by phase (atan2 returns (-π, π])
-        let phaseA = atan2(a.imag, a.real)
-        let phaseB = atan2(b.imag, b.real)
+        let phaseA = wrapTo2Pi(angle(a))
+        let phaseB = wrapTo2Pi(angle(b))
         return phaseA < phaseB
     }
 }
