@@ -1,5 +1,5 @@
 //
-//  DoubleArray+Math+Double.swift
+//  Array+Double+Math+Double.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 23/04/2025.

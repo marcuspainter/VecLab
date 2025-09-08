@@ -1,5 +1,5 @@
 //
-//  DoubleArray+Init+Range+Step.swift
+//  Array+Double+Init+Range+Step.swift
 //
 //  Created by Marcus Painter on 05/09/2023.
 //

@@ -1,5 +1,5 @@
 //
-//  DoubleArray+Init+FloatArray.swift
+//  Array+Double+Init+FloatArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
