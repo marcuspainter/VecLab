@@ -1,0 +1,60 @@
+//
+//  MatrixComplex.swift
+//  VecLab
+//
+//  Created by Marcus Painter on 07/09/2025.
+//
+
+struct MatrixComplex {
+
+    var rows: Int = 0
+    var cols: Int = 0
+    var grid: [ComplexDouble] = []
+
+    init(_ grid: [ComplexDouble], rows: Int, cols: Int, ) {
+        if grid.isEmpty {
+            return
+        }
+        self.rows = rows
+        self.cols = cols
+        self.grid = grid
+    }
+
+    init(_ array: [[ComplexDouble]]) {
+        if array.isEmpty {
+            return
+        }
+        self.rows = array.count
+        self.cols = array[0].count
+        for item in array {
+            assert(item.count == self.cols, "Matrix must have consistent column count")
+            self.grid.append(contentsOf: item)
+        }
+    }
+
+    init() {
+    }
+
+    init(_ matrix: MatrixComplex, grid: [ComplexDouble]) {
+        if grid.isEmpty {
+            return
+        }
+        self.rows = matrix.rows
+        self.cols = matrix.cols
+        self.grid = grid
+    }
+
+    init(_ matrix: Matrix) {
+        self.rows = matrix.rows
+        self.cols = matrix.cols
+        grid = matrix.grid.map { ComplexDouble($0, 0) }
+    }
+    
+    init(real: [Double], imag: [Double], rows: Int, cols: Int) {
+        assert(real.count == imag.count, "Real and imaginary parts must have the same length")
+        self.rows = rows
+        self.cols = cols
+        self.grid = zip(real, imag).map { ComplexDouble($0, $1) }
+    }
+
+}

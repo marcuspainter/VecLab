@@ -16,7 +16,7 @@ import Foundation
 ///   - b: Integer number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Int, _ b: Int) -> Real {
-    return b == 2 ? Real(a) * Real(a) : Darwin.pow(Real(a), Real(b))
+    return Darwin.pow(Real(a), Real(b))
 }
 
 /// Power.
@@ -25,7 +25,7 @@ public func pow(_ a: Int, _ b: Int) -> Real {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Int, _ b: Real) -> Real {
-    return b == 2.0 ? Real(a) * Real(a) : Darwin.pow(Real(a), b)
+    return Darwin.pow(Real(a), b)
 }
 
 /// Power.
@@ -34,7 +34,7 @@ public func pow(_ a: Int, _ b: Real) -> Real {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Real, _ b: Int) -> Real {
-    return b == 2 ? a * a : Darwin.pow(a, Real(b))
+    return Darwin.pow(a, Real(b))
 }
 
 /// Power.
@@ -43,7 +43,7 @@ public func pow(_ a: Real, _ b: Int) -> Real {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Int) -> RealArray {
-    return b == 2 ? vDSP.square(a): pow(a, Real(b))
+    return pow(a, Real(b))
 }
 
 /// Power.
@@ -52,7 +52,7 @@ public func pow(_ a: RealArray, _ b: Int) -> RealArray {
 ///   - b: Integer.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Complex, _ b: Int) -> Complex {
-    return b == 2 ? a * a : pow(a, Real(b))
+    return pow(a, Real(b))
 }
 
 // MARK: Real Array
@@ -64,7 +64,7 @@ public func pow(_ a: Complex, _ b: Int) -> Complex {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
     validateSize(a, b)
-    return vForce.pow(bases: a, exponents: b)
+    return vectorPowReal(a, b)
 }
 
 /// Power.
@@ -73,8 +73,7 @@ public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: RealArray, _ b: Real) -> RealArray {
-    let bb = RealArray(repeating: b, count: a.count)
-    return b == 2.0 ? vDSP.square(a) : vForce.pow(bases: a, exponents: bb)
+    return vectorPowReal(a, b)
 }
 
 /// Power.
@@ -83,8 +82,7 @@ public func pow(_ a: RealArray, _ b: Real) -> RealArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Real, _ b: RealArray) -> RealArray {
-    let aa = RealArray(repeating: a, count: b.count)
-    return vForce.pow(bases: aa, exponents: b)
+    return vectorPowReal(a, b)
 }
 
 // MARK: Complex
@@ -95,7 +93,7 @@ public func pow(_ a: Real, _ b: RealArray) -> RealArray {
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`.
 public func pow(_ a: Complex, _ b: Real) -> Complex {
-    return b == 2.0 ? a * a : complexComplexRealPow(a, b)
+    return complexComplexRealPow(a, b)
 }
 
 /// Power.
@@ -117,7 +115,7 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = a
-    for k in 0..<a.count {
+    for k in 0 ..< a.count {
         c[k] = pow(a[k], b[k])
     }
     return c
@@ -131,7 +129,7 @@ public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = b
-    for k in 0..<b.count {
+    for k in 0 ..< b.count {
         c[k] = pow(a[k], b[k])
     }
     return c
@@ -144,7 +142,7 @@ public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0..<a.count {
+    for k in 0 ..< a.count {
         c[k] = pow(a[k], b)
     }
     return c
@@ -157,7 +155,7 @@ public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
     var c: ComplexArray = ComplexArray(count: b.count)
-    for k in 0..<b.count {
+    for k in 0 ..< b.count {
         c[k] = pow(a, b[k])
     }
     return c
@@ -171,7 +169,7 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
     validateSize(a)
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0..<a.count {
+    for k in 0 ..< a.count {
         c[k] = pow(a[k], b)
     }
     return c
@@ -185,7 +183,7 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
     validateSize(b)
     var c: ComplexArray = ComplexArray(count: b.count)
-    for k in 0..<b.count {
+    for k in 0 ..< b.count {
         c[k] = pow(a, b[k])
     }
     return c
@@ -220,7 +218,7 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
 public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
     validateSize(a, b)
     var c: ComplexArray = ComplexArray(count: a.count)
-    for k in 0..<a.count {
+    for k in 0 ..< a.count {
         c[k] = pow(a[k], b[k])
     }
 

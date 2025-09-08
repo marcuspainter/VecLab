@@ -120,7 +120,7 @@ final class SomeTests: XCTestCase {
         }
                               
         let t2 = benchmark {
-            z2 = vectorMultiplyComplexArray3(a, b)
+            z2 = vectorMultiplyComplexArray(a, b)
         }
     
         print(z1[n-1])

@@ -229,6 +229,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Filters>
 - <doc:DoubleAndFloatTypes>
 - <doc:Notes>
+- <doc:CodingStandard>
 
 ### Vector Creation
 - <doc:RealCreation>

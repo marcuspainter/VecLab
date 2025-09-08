@@ -36,8 +36,8 @@ public func solve(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArra
     precondition(A.count == n * n, "A must be n×n")
     precondition(B.count == n * nrhs, "B must be n×nrhs")
 
-    var A_col = rowMajorToColMajorX(A, rows: n, cols: n)
-    var B_col = rowMajorToColMajorX(B, rows: n, cols: nrhs)
+    var A_col = rowToColMajorX(A, rows: n, cols: n)
+    var B_col = rowToColMajorX(B, rows: n, cols: nrhs)
     
     var N = n
     var NRHS = nrhs
@@ -55,12 +55,12 @@ public func solve(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArra
     }
 
     // Convert solution back to row-major
-    let X_row = colMajorToRowMajorX(B_col, rows: n, cols: nrhs)
+    let X_row = colToRowMajorX(B_col, rows: n, cols: nrhs)
     
     return X_row
 }
 
-fileprivate func rowMajorToColMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
+fileprivate func rowToColMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
     precondition(input.count == rows * cols, "Invalid dimensions")
 
     var output = Array(repeating: 0.0, count: input.count)
@@ -77,7 +77,7 @@ fileprivate func rowMajorToColMajorX(_ input: [Double], rows: Int, cols: Int) ->
 }
 
 // Row and columns are row-major dimensions
-fileprivate func colMajorToRowMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
+fileprivate func colToRowMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
     precondition(input.count == rows * cols, "Invalid dimensions")
 
     var output = Array(repeating: 0.0, count: input.count)

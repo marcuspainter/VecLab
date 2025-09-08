@@ -8,6 +8,17 @@
 import Accelerate
 import Foundation
 
+extension ComplexArray {
+    init(unsafeCount count: Int) {
+        self.real = [Double](unsafeUninitializedCapacity: count) { buffer, initializedCount in
+            initializedCount = count
+        }
+        self.imag = [Double](unsafeUninitializedCapacity: count) { buffer, initializedCount in
+            initializedCount = count
+        }
+    }
+}
+
 // MARK: Clear
 
 func vectorClearRealArray(_ a: inout [Double]) {
@@ -82,7 +93,7 @@ func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> Complex
 // MARK: Multiply
 
 func vectorMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+    var c = a
     ComplexDoubleArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
@@ -100,18 +111,7 @@ func vectorMultiplyComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> C
 
 func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
     var c = a
-    var b0 = a.real
-    var b1 = a.real
-
-    // Copy to var
-    var br = b.real
-    var bi = b.imag
-
-    let n = vDSP_Length(a.count)
-    vDSP_vfillD(&br, &b0, 1, n)
-    vDSP_vfillD(&bi, &b1, 1, n)
-
-    let bb = ComplexArray(b0, b1)
+    let bb = ComplexArray(repeating: b, count: a.count)
     ComplexDoubleArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
@@ -121,9 +121,7 @@ func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> Compl
 
 func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> ComplexArray {
     var c = b
-    let a0 = [Double](repeating: a.real, count: b.count)
-    let a1 = [Double](repeating: a.imag, count: b.count)
-    let aa = ComplexArray(a0, a1)
+    let aa = ComplexArray(repeating: a, count: b.count)
     ComplexDoubleArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
