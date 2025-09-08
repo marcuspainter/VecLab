@@ -1,5 +1,5 @@
 //
-//  Global+Assertions.swift
+//  VectorAssertions.swift
 //
 //  Created by Marcus Painter on 06/09/2023.
 //

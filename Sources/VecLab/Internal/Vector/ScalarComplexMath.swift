@@ -1,5 +1,5 @@
 //
-//  Complex+Math.swift
+//  ScalarComplexMath.swift
 //
 //
 //  Created by Marcus Painter on 08/09/2023.

@@ -11,11 +11,13 @@ import Accelerate
 extension Matrix {
     
     static func * (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateCompatible(a, b)
         let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
         return Matrix(c, rows: a.rows, cols: b.cols)
     }
     
     static func .* (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateSize(a, b)
         let c = a.grid * b.grid
         return Matrix(a, grid: c)
     }

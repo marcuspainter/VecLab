@@ -9,6 +9,7 @@ extension Matrix {
     
     // Element-wise
     static func .** (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateSize(a, b)
         let c = a.grid ** b.grid
         return Matrix(a, grid: c)
     }

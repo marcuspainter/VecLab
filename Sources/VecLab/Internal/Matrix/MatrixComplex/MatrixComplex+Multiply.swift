@@ -10,12 +10,14 @@ import Accelerate
 extension MatrixComplex {
     
     static func * (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
+        validateCompatible(a, b)
         let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
         return MatrixComplex(c, rows: a.rows, cols: b.cols)
     }
     
     // Element-wise
     static func .* (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
+        validateSize(a, b)
         let c = a.grid * b.grid
         return MatrixComplex(a, grid: c)
     }
@@ -36,6 +38,7 @@ extension MatrixComplex {
     
     // Element-wise
     static func .* (_ a: MatrixComplex, _ b: Matrix) -> MatrixComplex {
+        validateSize(a, b)
         let c = a.grid * b.grid
         return MatrixComplex(a, grid: c)
     }
@@ -46,6 +49,7 @@ extension MatrixComplex {
     
     // Element-wise
     static func .* (_ a: Matrix, _ b: MatrixComplex) -> MatrixComplex {
+        validateSize(a, b)
         let c = a.grid * b.grid
         return MatrixComplex(b, grid: c)
     }

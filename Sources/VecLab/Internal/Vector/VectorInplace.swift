@@ -1,5 +1,5 @@
 //
-//  Vector+Inplace.swift
+//  VectorInplace.swift
 //
 //
 //  Created by Marcus Painter on 28/08/2024.
