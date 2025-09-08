@@ -1,5 +1,5 @@
 //
-//  ComplexDouble.swift
+//  Complex.swift
 //  PhaseMeter
 //
 //  Created by Marcus Painter on 08/04/2025.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// Complex number
-public struct ComplexDouble:
+public struct Complex:
     Equatable,  // Synthesized
     Hashable,  // Synthesized
     Codable,

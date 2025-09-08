@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleArray+LRConj.swift
+//  ComplexArray+LRConj.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -8,7 +8,7 @@
 import Accelerate
 
 /// Complex left conjugate multiply
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Left conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.
@@ -61,7 +61,7 @@ extension ComplexDoubleArray {
 }
 
 /// Complex right conjugate multiply
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Right conjugate multiply.
     /// - Parameters:
     ///   - a: Complex array.

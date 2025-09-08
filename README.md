@@ -7,9 +7,9 @@ A real/complex vector library in Swift.
 
 ## New Version 2.0
 
-- New `ComplexDouble` and `ComplexDoubleArray` structs.
+- New `Complex` and `ComplexArray` structs.
 - Array range indexing and slicing.
-- `ComplexDoubleArray` conforms to collection protocol.
+- `ComplexArray` conforms to collection protocol.
 
 ## Overview
 
@@ -106,8 +106,8 @@ end
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = ComplexDouble
-public typealias ComplexArray = ComplexDoubleArray
+public typealias Complex = Complex
+public typealias ComplexArray = ComplexArray
 ```
 
 ### Real Numbers
@@ -120,11 +120,11 @@ Real arrays are just a normal Swift `Array` of `Double`.
 
 ### Complex Numbers
 
-Complex numbers are defined as a struct `ComplexDouble` of two real numbers, representing the real and imaginary parts
+Complex numbers are defined as a struct `Complex` of two real numbers, representing the real and imaginary parts
  of the number. 
 
 ```swift
-public struct ComplexDouble { 
+public struct Complex { 
     /// Real part.
     public var real: Double
     /// Imaginary part.
@@ -133,11 +133,11 @@ public struct ComplexDouble {
 ```
 ### Complex Arrays
 
-A complex array now has its own struct type, `ComplexDouble`. It follows the Collection protocol and is not a true
-Swift array of `[ComplexDouble]`. Internally, the real and imaginary arrays are maintained for compatibility 
+A complex array now has its own struct type, `Complex`. It follows the Collection protocol and is not a true
+Swift array of `[Complex]`. Internally, the real and imaginary arrays are maintained for compatibility 
 use with vDSP vector functions which use the `DSPDoubleSplitComplex` type.
  
-The collection can be indexed that returns a `ComplexDouble`. 
+The collection can be indexed that returns a `Complex`. 
 
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]

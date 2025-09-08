@@ -1,17 +1,17 @@
 //
-//  ComplexDoubleArray+Math.swift
+//  ComplexArray+Math.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Complex array addition.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
         validateSize(a, b)
         let result = vectorAddComplexArray(a, b)
         return result
@@ -22,7 +22,7 @@ extension ComplexDoubleArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
-    public static func - (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
         validateSize(a, b)
         return vectorSubtractComplexArray(a, b)
     }
@@ -32,7 +32,7 @@ extension ComplexDoubleArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
         validateSize(a, b)
         return vectorMultiplyComplexArray(a, b)
     }
@@ -42,7 +42,7 @@ extension ComplexDoubleArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexDoubleArray, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
         validateSize(a, b)
         return vectorDivideComplexArray(a, b)
     }

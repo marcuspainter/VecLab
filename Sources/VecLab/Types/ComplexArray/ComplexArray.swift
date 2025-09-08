@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleArray.swift
+//  ComplexArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/04/2025.
@@ -11,7 +11,7 @@ import Accelerate
 import Foundation
 
 /// Complex array implementation using split real/imaginary arrays
-public struct ComplexDoubleArray:
+public struct ComplexArray:
     // Collection,
     // Sequence,
     // BidirectionalCollection,
@@ -43,7 +43,7 @@ public struct ComplexDoubleArray:
     }
 
     /// Set internal real and imaginary arrays together.
-    internal mutating func setValue(to newValue: ComplexDoubleArray) {
+    internal mutating func setValue(to newValue: ComplexArray) {
         precondition(newValue.real.count == newValue.imag.count, "Real and imaginary arrays must have the same size.")
         self.real = newValue.real
         self.imag = newValue.imag
@@ -78,7 +78,7 @@ public struct ComplexDoubleArray:
     /// - Parameters:
     ///   - value: Real value.
     ///   - count: Number of elements.
-    public init(repeating value: ComplexDouble, count: Int) {
+    public init(repeating value: Complex, count: Int) {
         self.real = [Double](repeating: value.real, count: count)
         self.imag = [Double](repeating: value.imag, count: count)
     }
@@ -92,7 +92,7 @@ public struct ComplexDoubleArray:
 
     /// Provide convenience initializers for standard library sequence types.
     /// - Parameter array: An array of complex numbers.
-    public init(array: [ComplexDouble]) {
+    public init(array: [Complex]) {
         // Convert any sequence back to your collection type
         self.real = array.map { $0.real }
         self.imag = array.map { $0.imag }
@@ -101,7 +101,7 @@ public struct ComplexDoubleArray:
     /// Initialize a complex array as the same size as any array.
     /// - Parameter sized: A collection with a count property.
     public init(sized: any Collection) {
-        self = ComplexDoubleArray(count: sized.count)
+        self = ComplexArray(count: sized.count)
     }
 
 }

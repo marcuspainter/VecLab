@@ -52,12 +52,12 @@ extension MatrixComplex {
         return MatrixComplex(b, grid: c)
     }
     
-    static func / (_ a: MatrixComplex, _ b: ComplexDouble) -> MatrixComplex {
+    static func / (_ a: MatrixComplex, _ b: Complex) -> MatrixComplex {
         let c = a.grid / b
         return MatrixComplex(a, grid: c)
     }
     
-    static func / (_ a: ComplexDouble, _ b: MatrixComplex) -> MatrixComplex {
+    static func / (_ a: Complex, _ b: MatrixComplex) -> MatrixComplex {
         let c = a / b.grid
         return MatrixComplex(b, grid: c)
     }

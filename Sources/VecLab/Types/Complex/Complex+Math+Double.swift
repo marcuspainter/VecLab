@@ -1,23 +1,23 @@
 //
-//  ComplexDouble+Math+Double.swift
+//  Complex+Math+Double.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
 //
 
 //
-// ComplexDouble and Double operators
+// Complex and Double operators
 //
 
-extension ComplexDouble {
+extension Complex {
 
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexDouble, b: Double) -> ComplexDouble {
-        return ComplexDouble(a.real + b, a.imag)
+    public static func + (a: Complex, b: Double) -> Complex {
+        return Complex(a.real + b, a.imag)
     }
 
     /// Complex addition.
@@ -25,7 +25,7 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
-    public static func + (a: Double, b: ComplexDouble) -> ComplexDouble {
+    public static func + (a: Double, b: Complex) -> Complex {
         return b + a  // Overloaded
     }
 
@@ -34,8 +34,8 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: ComplexDouble, b: Double) -> ComplexDouble {
-        return ComplexDouble(a.real - b, a.imag)
+    public static func - (a: Complex, b: Double) -> Complex {
+        return Complex(a.real - b, a.imag)
     }
 
     /// Complex subtraction.
@@ -43,8 +43,8 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: Double, b: ComplexDouble) -> ComplexDouble {
-        return ComplexDouble(a - b.real, -b.imag)
+    public static func - (a: Double, b: Complex) -> Complex {
+        return Complex(a - b.real, -b.imag)
     }
 
     /// Complex multiplication.
@@ -52,8 +52,8 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexDouble, b: Double) -> ComplexDouble {
-        return ComplexDouble(a.real * b, a.imag * b)
+    public static func * (a: Complex, b: Double) -> Complex {
+        return Complex(a.real * b, a.imag * b)
     }
 
     /// Complex multiplication.
@@ -61,7 +61,7 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: Double, b: ComplexDouble) -> ComplexDouble {
+    public static func * (a: Double, b: Complex) -> Complex {
         return b * a  // Overloaded
     }
 
@@ -70,8 +70,8 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexDouble, b: Double) -> ComplexDouble {
-        return ComplexDouble(a.real / b, a.imag / b)
+    public static func / (a: Complex, b: Double) -> Complex {
+        return Complex(a.real / b, a.imag / b)
     }
 
     /// Complex division.
@@ -79,7 +79,7 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the division.
-    public static func / (a: Double, b: ComplexDouble) -> ComplexDouble {
-        return complexDivide(ComplexDouble(a, 0), b)
+    public static func / (a: Double, b: Complex) -> Complex {
+        return complexDivide(Complex(a, 0), b)
     }
 }

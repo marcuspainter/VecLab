@@ -1,5 +1,5 @@
 //
-//  ComplexDouble+Math+Array.swift
+//  Complex+Math+Array.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -9,21 +9,21 @@ import Accelerate
 import Foundation
 
 //
-// ComplexDouble and Double array operators
+// Complex and Double array operators
 //
 
-extension ComplexDouble {
+extension Complex {
 
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexDouble, b: [Double]) -> ComplexDoubleArray {
+    public static func + (a: Complex, b: [Double]) -> ComplexArray {
         let real = vDSP.add(a.real, b)
         var imag = b
         vectorFillRealArray(a.imag, c: &imag)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex addition.
@@ -31,11 +31,11 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
-    public static func + (a: [Double], b: ComplexDouble) -> ComplexDoubleArray {
+    public static func + (a: [Double], b: Complex) -> ComplexArray {
         let real = vDSP.add(b.real, a)
         var imag = a
         vectorFillRealArray(b.imag, c: &imag)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex subtraction.
@@ -43,10 +43,10 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: ComplexDouble, b: [Double]) -> ComplexDoubleArray {
+    public static func - (a: Complex, b: [Double]) -> ComplexArray {
         let real = a.real - b
         let imag = RealArray(repeating: Real(a.imag), count: b.count)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex subtraction.
@@ -54,10 +54,10 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the subtraction.
-    public static func - (a: [Double], b: ComplexDouble) -> ComplexDoubleArray {
+    public static func - (a: [Double], b: Complex) -> ComplexArray {
         let real = a - b.real
         let imag = RealArray(repeating: -Real(b.imag), count: a.count)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex multiplication.
@@ -65,10 +65,10 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexDouble, b: [Double]) -> ComplexDoubleArray {
+    public static func * (a: Complex, b: [Double]) -> ComplexArray {
         let real = vDSP.multiply(a.real, b)
         let imag = vDSP.multiply(a.imag, b)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex multiplication.
@@ -76,10 +76,10 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: [Double], b: ComplexDouble) -> ComplexDoubleArray {
+    public static func * (a: [Double], b: Complex) -> ComplexArray {
         let real = vDSP.multiply(b.real, a)
         let imag = vDSP.multiply(b.imag, a)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex division.
@@ -87,7 +87,7 @@ extension ComplexDouble {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexDouble, b: [Double]) -> ComplexDoubleArray {
+    public static func / (a: Complex, b: [Double]) -> ComplexArray {
         return vectorDivideComplexRealArray(a, b)
     }
 
@@ -96,7 +96,7 @@ extension ComplexDouble {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the division.
-    public static func / (a: [Double], b: ComplexDouble) -> ComplexDoubleArray {
+    public static func / (a: [Double], b: Complex) -> ComplexArray {
         return vectorDivideRealArrayComplex(a, b)
     }
 }

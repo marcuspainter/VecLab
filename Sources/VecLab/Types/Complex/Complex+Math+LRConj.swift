@@ -1,5 +1,5 @@
 //
-//  ComplexDouble+Math+Lconj.swift
+//  Complex+Math+Lconj.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -9,7 +9,7 @@
 // Complex left and right conjugate multiply
 //
 
-extension ComplexDouble {
+extension Complex {
 
     // MARK: Complex left conjugate multiply
 
@@ -42,7 +42,7 @@ extension ComplexDouble {
 
 }
 
-extension ComplexDouble {
+extension Complex {
 
     // MARK: Complex right conjugate multiply
 

@@ -1,11 +1,11 @@
 //
-//  ComplexDouble+ExpressibleByIntegerLiteral.swift
+//  Complex+ExpressibleByIntegerLiteral.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 10/05/2025.
 //
 
-extension ComplexDouble: ExpressibleByIntegerLiteral {
+extension Complex: ExpressibleByIntegerLiteral {
 
     /// Initialize from an integer literal.
     /// - Parameter value: Integer literal.

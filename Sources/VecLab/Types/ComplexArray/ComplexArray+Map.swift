@@ -1,27 +1,27 @@
 //
-//  ComplexDoubleArray+Map.swift
+//  ComplexArray+Map.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 23/04/2025.
 //
 
 /*
- - Return type is ComplexDoubleArray or scalar where appropriate
- - Avoids [ComplexDouble]
+ - Return type is ComplexArray or scalar where appropriate
+ - Avoids [Complex]
  - Uses preallocation only when the size is known
  - Uses .append() when necessary
- - Any function that would normally involve [ComplexDouble] must return or use ComplexDoubleArray instead.
+ - Any function that would normally involve [Complex] must return or use ComplexArray instead.
  */
 
 import Foundation
 
-extension ComplexDoubleArray {
-    /// Returns a new `ComplexDoubleArray` containing the results of mapping the given transform.
+extension ComplexArray {
+    /// Returns a new `ComplexArray` containing the results of mapping the given transform.
     /// over this array’s elements.
     /// - Parameter transform: Transform closure.
     /// - Returns: A transformed array.
-    public func map(_ transform: (ComplexDouble) -> ComplexDouble) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray(count: count)
+    public func map(_ transform: (Complex) -> Complex) -> ComplexArray {
+        var result = ComplexArray(count: count)
 
         for i in 0..<count {
             let z = self[i]
@@ -31,12 +31,12 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a new `ComplexDoubleArray` containing the elements of this array
+    /// Returns a new `ComplexArray` containing the elements of this array
     /// that satisfy the given predicate.
     /// - Parameter isIncluded: Filter closure.
     /// - Returns: A filtered array.
-    public func filter(_ isIncluded: (ComplexDouble) -> Bool) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray()
+    public func filter(_ isIncluded: (Complex) -> Bool) -> ComplexArray {
+        var result = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -47,12 +47,12 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a new `ComplexDoubleArray` containing the non-nil results of
+    /// Returns a new `ComplexArray` containing the non-nil results of
     /// mapping the given transform over this array’s elements.
     /// - Parameter transform: Transform closure.
     /// - Returns: A transformed array.
-    public func compactMap(_ transform: (ComplexDouble) -> ComplexDouble?) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray()
+    public func compactMap(_ transform: (Complex) -> Complex?) -> ComplexArray {
+        var result = ComplexArray()
 
         for index in 0..<count {
             let z = self[index]
@@ -64,13 +64,13 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
-    /// Returns a new `ComplexDoubleArray` containing the elements up to the first that does not satisfy the predicate.
+    /// Returns a new `ComplexArray` containing the elements up to the first that does not satisfy the predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
-    public func prefix(while predicate: (ComplexDouble) -> Bool) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray()
+    public func prefix(while predicate: (Complex) -> Bool) -> ComplexArray {
+        var result = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -81,11 +81,11 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a new `ComplexDoubleArray` containing the elements from the first that fails the predicate.
+    /// Returns a new `ComplexArray` containing the elements from the first that fails the predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
-    public func drop(while predicate: (ComplexDouble) -> Bool) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray()
+    public func drop(while predicate: (Complex) -> Bool) -> ComplexArray {
+        var result = ComplexArray()
         var shouldDrop = true
 
         for i in 0..<count {
@@ -103,12 +103,12 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a new `ComplexDoubleArray` containing the first `n` elements.
+    /// Returns a new `ComplexArray` containing the first `n` elements.
     /// - Parameter maxLength: Maximum length.
     /// - Returns: A new array.
-    public func prefix(_ maxLength: Int) -> ComplexDoubleArray {
+    public func prefix(_ maxLength: Int) -> ComplexArray {
         let n = Swift.min(maxLength, count)
-        var result = ComplexDoubleArray(count: n)
+        var result = ComplexArray(count: n)
 
         for i in 0..<n {
             result[i] = self[i]
@@ -117,13 +117,13 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a new `ComplexDoubleArray` containing the last `n` elements.
+    /// Returns a new `ComplexArray` containing the last `n` elements.
     /// - Parameter maxLength: Maximum length.
     /// - Returns: A new array.
-    public func suffix(_ maxLength: Int) -> ComplexDoubleArray {
+    public func suffix(_ maxLength: Int) -> ComplexArray {
         let n = Swift.min(maxLength, count)
         let start = count - n
-        var result = ComplexDoubleArray(count: n)
+        var result = ComplexArray(count: n)
 
         for i in 0..<n {
             result[i] = self[start + i]
@@ -135,8 +135,8 @@ extension ComplexDoubleArray {
     /// Flattens and maps elements. Only non-nil results are included.
     /// - Parameter transform: Transform closure.
     /// - Returns: A new array.
-    public func flatMap(_ transform: (ComplexDouble) -> ComplexDoubleArray) -> ComplexDoubleArray {
-        var result = ComplexDoubleArray()
+    public func flatMap(_ transform: (Complex) -> ComplexArray) -> ComplexArray {
+        var result = ComplexArray()
 
         for i in 0..<count {
             let subArray = transform(self[i])
@@ -146,10 +146,10 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Returns a reversed `ComplexDoubleArray`.
+    /// Returns a reversed `ComplexArray`.
     /// - Returns: An new array.
-    public func reversed() -> ComplexDoubleArray {
-        var result = ComplexDoubleArray(count: count)
+    public func reversed() -> ComplexArray {
+        var result = ComplexArray(count: count)
 
         for i in 0..<count {
             result[i] = self[count - 1 - i]
@@ -159,21 +159,21 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Splits the array into subsequences separated by elements matching the predicate.
     /// - Parameter isSeparator: Separator closure.
     /// - Returns: An array of arrays.
-    public func split(whereSeparator isSeparator: (ComplexDouble) -> Bool) -> [ComplexDoubleArray] {
-        var result: [ComplexDoubleArray] = []
-        var current = ComplexDoubleArray()
+    public func split(whereSeparator isSeparator: (Complex) -> Bool) -> [ComplexArray] {
+        var result: [ComplexArray] = []
+        var current = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
             if isSeparator(z) {
                 if !current.isEmpty {
                     result.append(current)
-                    current = ComplexDoubleArray()
+                    current = ComplexArray()
                 }
             } else {
                 current.append(z)
@@ -190,14 +190,14 @@ extension ComplexDoubleArray {
     /// Splits the array into equally-sized chunks.
     /// - Parameter chunkSize: Chunk size.
     /// - Returns: A an array of arrays
-    public func chunked(size chunkSize: Int) -> [ComplexDoubleArray] {
+    public func chunked(size chunkSize: Int) -> [ComplexArray] {
         precondition(chunkSize > 0, "Chunk size must be greater than zero.")
-        var result: [ComplexDoubleArray] = []
+        var result: [ComplexArray] = []
         var i = 0
 
         while i < count {
             let end = Swift.min(i + chunkSize, count)
-            var chunk = ComplexDoubleArray(count: end - i)
+            var chunk = ComplexArray(count: end - i)
 
             for j in i..<end {
                 chunk[j - i] = self[j]
@@ -210,15 +210,15 @@ extension ComplexDoubleArray {
         return result
     }
 
-    /// Combines all values into a single `ComplexDouble` using the given closure.
+    /// Combines all values into a single `Complex` using the given closure.
     /// - Parameters:
     ///   - initialResult: Initial result.
     ///   - nextPartialResult: New partial result closure.
     /// - Returns: A new array.
     public func reduce(
-        _ initialResult: ComplexDouble,
-        _ nextPartialResult: (ComplexDouble, ComplexDouble) -> ComplexDouble
-    ) -> ComplexDouble {
+        _ initialResult: Complex,
+        _ nextPartialResult: (Complex, Complex) -> Complex
+    ) -> Complex {
         var accumulator = initialResult
 
         for i in 0..<count {
@@ -230,18 +230,18 @@ extension ComplexDoubleArray {
 
     /// Calls the given closure on each element in order.
     /// - Parameter body: Closure.
-    public func forEach(_ body: (ComplexDouble) -> Void) {
+    public func forEach(_ body: (Complex) -> Void) {
         for i in 0..<count {
             body(self[i])
         }
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Returns true if any element satisfies the given predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
-    public func contains(where predicate: (ComplexDouble) -> Bool) -> Bool {
+    public func contains(where predicate: (Complex) -> Bool) -> Bool {
         for i in 0..<count {
             if predicate(self[i]) {
                 return true
@@ -253,7 +253,7 @@ extension ComplexDoubleArray {
     /// Returns true if all elements satisfy the given predicate.
     /// - Parameter predicate: Predicate closure
     /// - Returns: A new array.
-    public func allSatisfy(_ predicate: (ComplexDouble) -> Bool) -> Bool {
+    public func allSatisfy(_ predicate: (Complex) -> Bool) -> Bool {
         for i in 0..<count {
             if !predicate(self[i]) {
                 return false
@@ -265,7 +265,7 @@ extension ComplexDoubleArray {
     /// Returns the first element that satisfies the given predicate, or nil if none.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: The first element.
-    public func first(where predicate: (ComplexDouble) -> Bool) -> ComplexDouble? {
+    public func first(where predicate: (Complex) -> Bool) -> Complex? {
         for i in 0..<count {
             let z = self[i]
             if predicate(z) {
@@ -275,15 +275,15 @@ extension ComplexDoubleArray {
         return nil
     }
 
-    /// Returns a sorted `ComplexDoubleArray`, using the provided comparator.
+    /// Returns a sorted `ComplexArray`, using the provided comparator.
     /// - Parameter areInIncreasingOrder: Sorting closure.
     /// - Returns: A new array.
-    public func sorted(by areInIncreasingOrder: (ComplexDouble, ComplexDouble) -> Bool) -> ComplexDoubleArray {
+    public func sorted(by areInIncreasingOrder: (Complex, Complex) -> Bool) -> ComplexArray {
         let sortedIndices = (0..<count).sorted { i, j in
             areInIncreasingOrder(self[i], self[j])
         }
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (newIndex, sourceIndex) in sortedIndices.enumerated() {
             result[newIndex] = self[sourceIndex]
         }
@@ -293,17 +293,17 @@ extension ComplexDoubleArray {
 
 /*
  // Not needed
- extension ComplexDoubleArray {
+ extension ComplexArray {
 
-     /// Returns a new `ComplexDoubleArray` by combining each element of `self` with the
+     /// Returns a new `ComplexArray` by combining each element of `self` with the
      // corresponding element of `other`
      /// using the given transform.
      public func zip(
-         with other: ComplexDoubleArray,
-         _ transform: (ComplexDouble, ComplexDouble) -> ComplexDouble
-     ) -> ComplexDoubleArray {
+         with other: ComplexArray,
+         _ transform: (Complex, Complex) -> Complex
+     ) -> ComplexArray {
          let n = Swift.min(self.count, other.count)
-         var result = ComplexDoubleArray(count: n)
+         var result = ComplexArray(count: n)
 
          for i in 0..<n {
              let lhs = self[i]
@@ -316,12 +316,12 @@ extension ComplexDoubleArray {
  }
  */
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Returns the minimum element using the given comparator.
     /// - Parameter areInIncreasingOrder: Comparator closure.
     /// - Returns: The minimum element.
-    public func min(by areInIncreasingOrder: (ComplexDouble, ComplexDouble) -> Bool) -> ComplexDouble? {
+    public func min(by areInIncreasingOrder: (Complex, Complex) -> Bool) -> Complex? {
         guard !isEmpty else { return nil }
         var best = self[0]
         for i in 1..<count {
@@ -336,7 +336,7 @@ extension ComplexDoubleArray {
     /// Returns the maximum element using the given comparator.
     /// - Parameter areInIncreasingOrder: Comparator closure.
     /// - Returns: The maximum element.
-    public func max(by areInIncreasingOrder: (ComplexDouble, ComplexDouble) -> Bool) -> ComplexDouble? {
+    public func max(by areInIncreasingOrder: (Complex, Complex) -> Bool) -> Complex? {
         guard !isEmpty else { return nil }
         var best = self[0]
         for i in 1..<count {
@@ -349,15 +349,15 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Returns a shuffled copy of the array.
     /// - Returns: A shuffled array.
-    public func shuffled() -> ComplexDoubleArray {
+    public func shuffled() -> ComplexArray {
         var indices = [Int](0..<count)
         indices.shuffle()
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (i, originalIndex) in indices.enumerated() {
             result[i] = self[originalIndex]
         }
@@ -366,16 +366,16 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Partitions the array into two groups: those matching the predicate, and those that do not.
     /// Returns a new array with elements rearranged and the pivot index.
     /// - Parameter belongsInSecondPartition: Predicate closure.
     /// - Returns: A new array.
-    public func partitioned(by belongsInSecondPartition: (ComplexDouble) -> Bool)
-        -> (array: ComplexDoubleArray, pivot: Int)
+    public func partitioned(by belongsInSecondPartition: (Complex) -> Bool)
+        -> (array: ComplexArray, pivot: Int)
     {
-        var matching = ComplexDoubleArray()
-        var nonMatching = ComplexDoubleArray()
+        var matching = ComplexArray()
+        var nonMatching = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -394,13 +394,13 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
-    /// Returns a new `ComplexDoubleArray` with duplicates removed, preserving order.
+    /// Returns a new `ComplexArray` with duplicates removed, preserving order.
     /// - Returns: A new array.
-    public func unique() -> ComplexDoubleArray {
-        var seen = Set<ComplexDouble>()
-        var result = ComplexDoubleArray()
+    public func unique() -> ComplexArray {
+        var seen = Set<Complex>()
+        var result = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -413,12 +413,12 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Removes duplicate elements in-place, preserving the original order.
     public mutating func removeDuplicates() {
-        var seen = Set<ComplexDouble>()
-        var newItems = ComplexDoubleArray()
+        var seen = Set<Complex>()
+        var newItems = ComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -432,17 +432,17 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Returns a sorted array by applying a key transform to each element.
     /// - Parameter key: Key.
     /// - Returns: A new array.
-    public func sorted<T: Comparable>(by key: (ComplexDouble) -> T) -> ComplexDoubleArray {
+    public func sorted<T: Comparable>(by key: (Complex) -> T) -> ComplexArray {
         let sortedIndices = (0..<count).sorted { i, j in
             key(self[i]) < key(self[j])
         }
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (newIndex, sourceIndex) in sortedIndices.enumerated() {
             result[newIndex] = self[sourceIndex]
         }
@@ -451,15 +451,15 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Drop elements.
     /// - Parameter n: Number.
     /// - Returns: A new array.
-    public func dropFirst(_ n: Int = 1) -> ComplexDoubleArray {
+    public func dropFirst(_ n: Int = 1) -> ComplexArray {
         let n = Swift.min(n, count)
         let newCount = count - n
-        var result = ComplexDoubleArray(count: newCount)
+        var result = ComplexArray(count: newCount)
         for i in 0..<newCount {
             result[i] = self[i + n]
         }
@@ -469,9 +469,9 @@ extension ComplexDoubleArray {
     /// Dtop last element.
     /// - Parameter n: Number.
     /// - Returns: A new array.
-    public func dropLast(_ n: Int = 1) -> ComplexDoubleArray {
+    public func dropLast(_ n: Int = 1) -> ComplexArray {
         let newCount = Swift.max(0, count - n)
-        var result = ComplexDoubleArray(count: newCount)
+        var result = ComplexArray(count: newCount)
         for i in 0..<newCount {
             result[i] = self[i]
         }
@@ -481,9 +481,9 @@ extension ComplexDoubleArray {
     /// Join arrays
     /// - Parameter arrays: Array of arrays.
     /// - Returns: An array of joined arrays..
-    public static func joined(_ arrays: [ComplexDoubleArray]) -> ComplexDoubleArray {
+    public static func joined(_ arrays: [ComplexArray]) -> ComplexArray {
         let totalCount = arrays.reduce(0) { $0 + $1.count }
-        var result = ComplexDoubleArray(count: totalCount)
+        var result = ComplexArray(count: totalCount)
 
         var index = 0
         for array in arrays {
@@ -499,11 +499,11 @@ extension ComplexDoubleArray {
     /// Intersperse elements.
     /// - Parameter element: A complex number.
     /// - Returns: A new array.
-    public func interspersed(with element: ComplexDouble) -> ComplexDoubleArray {
+    public func interspersed(with element: Complex) -> ComplexArray {
         guard count > 1 else { return self }
 
         let newCount = count * 2 - 1
-        var result = ComplexDoubleArray(count: newCount)
+        var result = ComplexArray(count: newCount)
 
         for i in 0..<count {
             result[i * 2] = self[i]
@@ -518,10 +518,10 @@ extension ComplexDoubleArray {
     /// Cycle array.
     /// - Parameter repeatCount: Reapeat count.
     /// - Returns: A new array.
-    public func cycled(count repeatCount: Int) -> ComplexDoubleArray {
+    public func cycled(count repeatCount: Int) -> ComplexArray {
         precondition(repeatCount >= 0, "Repeat count must be non-negative.")
         let totalCount = count * repeatCount
-        var result = ComplexDoubleArray(count: totalCount)
+        var result = ComplexArray(count: totalCount)
 
         for i in 0..<repeatCount {
             for j in 0..<count {
@@ -533,16 +533,16 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
-    /// Returns a `ComplexDoubleArray` sorted by the magnitude of its elements.
+    /// Returns a `ComplexArray` sorted by the magnitude of its elements.
     /// - Returns: A new array.
-    public func sorted() -> ComplexDoubleArray {
+    public func sorted() -> ComplexArray {
         let sortedIndices = (0..<count).sorted { lhs, rhs in
             self[lhs].magnitude < self[rhs].magnitude
         }
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }
@@ -551,16 +551,16 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
 
     /// Randomly shuffles an array.
     /// - Parameter generator: Random number generator.
     /// - Returns: A new array.
-    public func shuffled<T: RandomNumberGenerator>(using generator: inout T) -> ComplexDoubleArray {
+    public func shuffled<T: RandomNumberGenerator>(using generator: inout T) -> ComplexArray {
         var indices = [Int](0..<count)
         indices.shuffle(using: &generator)
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (i, j) in indices.enumerated() {
             result[i] = self[j]
         }
@@ -574,12 +574,12 @@ extension ComplexDoubleArray {
     @available(macOS 13.0, iOS 16.0, *)
     public func sorted<C: SortComparator>(
         using comparator: C
-    ) -> ComplexDoubleArray where C.Compared == ComplexDouble {
+    ) -> ComplexArray where C.Compared == Complex {
         let sortedIndices = (0..<count).sorted {
             comparator.compare(self[$0], self[$1]) == .orderedAscending
         }
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }
@@ -593,7 +593,7 @@ extension ComplexDoubleArray {
     @available(macOS 13.0, iOS 16.0, *)
     public func sorted<S: Sequence, C: SortComparator>(
         using comparators: S
-    ) -> ComplexDoubleArray where S.Element == C, C.Compared == ComplexDouble {
+    ) -> ComplexArray where S.Element == C, C.Compared == Complex {
         let sortedIndices = (0..<count).sorted {
             for comparator in comparators {
                 let result = comparator.compare(self[$0], self[$1])
@@ -604,7 +604,7 @@ extension ComplexDoubleArray {
             return false
         }
 
-        var result = ComplexDoubleArray(count: count)
+        var result = ComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }

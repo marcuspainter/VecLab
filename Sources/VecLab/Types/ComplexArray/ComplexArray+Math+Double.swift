@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleArray+Math+Double.swift
+//  ComplexArray+Math+Double.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -8,16 +8,16 @@
 import Accelerate
 
 /// Double extensions
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
+    public static func + (a: ComplexArray, b: Double) -> ComplexArray {
         validateSize(a)
         let real = vDSP.add(b, a.real)
-        return ComplexDoubleArray(real, a.imag)
+        return ComplexArray(real, a.imag)
     }
 
     /// Complex addition.
@@ -25,20 +25,20 @@ extension ComplexDoubleArray {
     ///   - a: Real number.
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
-    public static func + (a: Double, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func + (a: Double, b: ComplexArray) -> ComplexArray {
         validateSize(b)
         let real = vDSP.add(a, b.real)
-        return ComplexDoubleArray(real, b.imag)
+        return ComplexArray(real, b.imag)
     }
 
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Real number.
-    /// - Returns: The result of the ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
-    public static func - (a: ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
+    /// - Returns: The result of the ComplexArray, b: Double) -> ComplexArray {
+    public static func - (a: ComplexArray, b: Double) -> ComplexArray {
         validateSize(a)
-        return ComplexDoubleArray(a.real - b, a.imag)
+        return ComplexArray(a.real - b, a.imag)
     }
 
     /// Complex subtraction.
@@ -46,9 +46,9 @@ extension ComplexDoubleArray {
     ///   - a: Real number.
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
-    public static func - (a: Double, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func - (a: Double, b: ComplexArray) -> ComplexArray {
         validateSize(b)
-        return ComplexDoubleArray(a - b.real, -b.imag)
+        return ComplexArray(a - b.real, -b.imag)
     }
 
     /// Complex multiplication.
@@ -56,11 +56,11 @@ extension ComplexDoubleArray {
     ///   - a: Complex array.
     ///   - b: Real number.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
+    public static func * (a: ComplexArray, b: Double) -> ComplexArray {
         validateSize(a)
         let real = vDSP.multiply(b, a.real)
         let imag = vDSP.multiply(b, a.imag)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex multiplication.
@@ -68,10 +68,10 @@ extension ComplexDoubleArray {
     ///   - a: Real number.
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: Double, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func * (a: Double, b: ComplexArray) -> ComplexArray {
         let real = vDSP.multiply(a, b.real)
         let imag = vDSP.multiply(a, b.imag)
-        return ComplexDoubleArray(real, imag)
+        return ComplexArray(real, imag)
     }
 
     /// Complex division.
@@ -79,7 +79,7 @@ extension ComplexDoubleArray {
     ///   - a: Complex array.
     ///   - b: Real number.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexDoubleArray, b: Double) -> ComplexDoubleArray {
+    public static func / (a: ComplexArray, b: Double) -> ComplexArray {
         validateSize(a)
         return vectorDivideComplexArrayReal(a, b)
     }
@@ -89,7 +89,7 @@ extension ComplexDoubleArray {
     ///   - a: Real number.
     ///   - b: Complex array.
     /// - Returns: The result of the division.
-    public static func / (a: Double, b: ComplexDoubleArray) -> ComplexDoubleArray {
+    public static func / (a: Double, b: ComplexArray) -> ComplexArray {
         validateSize(b)
         return vectorDivideRealComplexArray(a, b)
     }

@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleArrayExtensionsTests.swift
+//  ComplexArrayExtensionsTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/04/2025.
@@ -8,58 +8,58 @@
 import VecLab  // Replace with your actual module name
 import XCTest
 
-final class ComplexDoubleArrayExtensionsTests: XCTestCase {
-    // Test that range subscripts return ComplexDoubleArrays, not slices
+final class ComplexArrayExtensionsTests: XCTestCase {
+    // Test that range subscripts return ComplexArrays, not slices
     func testRangeSubscriptsReturnComplexArrays() {
-        let array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        let array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test regular range
         let slice1 = array[1..<4]
-        XCTAssertTrue(type(of: slice1) == ComplexDoubleArray.self, "Range subscript should return ComplexDoubleArray")
+        XCTAssertTrue(type(of: slice1) == ComplexArray.self, "Range subscript should return ComplexArray")
 
         // Test closed range
         let slice2 = array[1...3]
         XCTAssertTrue(
-            type(of: slice2) == ComplexDoubleArray.self,
-            "Closed range subscript should return ComplexDoubleArray"
+            type(of: slice2) == ComplexArray.self,
+            "Closed range subscript should return ComplexArray"
         )
 
         // Test partial range from
         let slice3 = array[2...]
         XCTAssertTrue(
-            type(of: slice3) == ComplexDoubleArray.self,
-            "Partial range from subscript should return ComplexDoubleArray"
+            type(of: slice3) == ComplexArray.self,
+            "Partial range from subscript should return ComplexArray"
         )
 
         // Test partial range up to
         let slice4 = array[..<3]
         XCTAssertTrue(
-            type(of: slice4) == ComplexDoubleArray.self,
-            "Partial range up to subscript should return ComplexDoubleArray"
+            type(of: slice4) == ComplexArray.self,
+            "Partial range up to subscript should return ComplexArray"
         )
 
         // Test partial range through
         let slice5 = array[...2]
         XCTAssertTrue(
-            type(of: slice5) == ComplexDoubleArray.self,
-            "Partial range through subscript should return ComplexDoubleArray"
+            type(of: slice5) == ComplexArray.self,
+            "Partial range through subscript should return ComplexArray"
         )
     }
 
     // Test that the arrays contain the correct values
     func testRangeSubscriptsContent() {
-        let array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        let array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test regular range
@@ -101,19 +101,19 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         // let originalStdout = FileHandle.standardOutput
         // FileHandle.standardOutput = pipe
 
-        let array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        let array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test valid replacement (correct size)
-        // array[1..<4] = ComplexDoubleArray([
-        //    ComplexDouble(10, 10),
-        //    ComplexDouble(20, 20),
-        //    ComplexDouble(30, 30)
+        // array[1..<4] = ComplexArray([
+        //    Complex(10, 10),
+        //    Complex(20, 20),
+        //    Complex(30, 30)
         // ])
 
         //XCTAssertEqual(array[0].real, 1)
@@ -126,9 +126,9 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         let expectedImag = array.imag
 
         // Test invalid replacement (wrong size)
-        //array[1 ..< 4] = ComplexDoubleArray([
-        //    ComplexDouble(40, 40),
-        //    ComplexDouble(50, 50),
+        //array[1 ..< 4] = ComplexArray([
+        //    Complex(40, 40),
+        //    Complex(50, 50),
         //])
 
         // Restore standard output
@@ -141,19 +141,19 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
 
     // Test assignment with closed ranges
     func testClosedRangeAssignment() {
-        var array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        var array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test valid replacement (correct size)
-        array[1...3] = ComplexDoubleArray([
-            ComplexDouble(10, 10),
-            ComplexDouble(20, 20),
-            ComplexDouble(30, 30),
+        array[1...3] = ComplexArray([
+            Complex(10, 10),
+            Complex(20, 20),
+            Complex(30, 30),
         ])
 
         XCTAssertEqual(array[0].real, 1)
@@ -166,9 +166,9 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         let expectedImag = array.imag
 
         // Test invalid replacement (wrong size) - should log error and not change
-        // array[1...3] = ComplexDoubleArray([
-        //    ComplexDouble(40, 40),
-        //   ComplexDouble(50, 50)
+        // array[1...3] = ComplexArray([
+        //    Complex(40, 40),
+        //   Complex(50, 50)
         // ])
 
         // Verify the array wasn't changed
@@ -178,19 +178,19 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
 
     // Test assignment with partial ranges
     func testPartialRangeAssignment() {
-        var array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        var array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test partial range from
-        array[2...] = ComplexDoubleArray([
-            ComplexDouble(30, 30),
-            ComplexDouble(40, 40),
-            ComplexDouble(50, 50),
+        array[2...] = ComplexArray([
+            Complex(30, 30),
+            Complex(40, 40),
+            Complex(50, 50),
         ])
 
         XCTAssertEqual(array[0].real, 1)
@@ -198,19 +198,19 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         XCTAssertEqual(array[4].real, 50)
 
         // Reset array
-        array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test partial range up to
-        array[..<3] = ComplexDoubleArray([
-            ComplexDouble(10, 10),
-            ComplexDouble(20, 20),
-            ComplexDouble(30, 30),
+        array[..<3] = ComplexArray([
+            Complex(10, 10),
+            Complex(20, 20),
+            Complex(30, 30),
         ])
 
         XCTAssertEqual(array[0].real, 10)
@@ -218,19 +218,19 @@ final class ComplexDoubleArrayExtensionsTests: XCTestCase {
         XCTAssertEqual(array[3].real, 4)
 
         // Reset array
-        array = ComplexDoubleArray([
-            ComplexDouble(1, 1),
-            ComplexDouble(2, 2),
-            ComplexDouble(3, 3),
-            ComplexDouble(4, 4),
-            ComplexDouble(5, 5),
+        array = ComplexArray([
+            Complex(1, 1),
+            Complex(2, 2),
+            Complex(3, 3),
+            Complex(4, 4),
+            Complex(5, 5),
         ])
 
         // Test partial range through
-        array[...2] = ComplexDoubleArray([
-            ComplexDouble(10, 10),
-            ComplexDouble(20, 20),
-            ComplexDouble(30, 30),
+        array[...2] = ComplexArray([
+            Complex(10, 10),
+            Complex(20, 20),
+            Complex(30, 30),
         ])
 
         XCTAssertEqual(array[0].real, 10)

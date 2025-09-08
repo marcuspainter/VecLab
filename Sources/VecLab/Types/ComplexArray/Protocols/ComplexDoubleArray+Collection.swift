@@ -1,11 +1,11 @@
 //
-//  ComplexDoubleArray+Collection.swift
+//  ComplexArray+Collection.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexDoubleArray:
+extension ComplexArray:
     MutableCollection,
     BidirectionalCollection,
     RandomAccessCollection,
@@ -21,9 +21,9 @@ extension ComplexDoubleArray:
 
     // MARK: - Collection Protocol Requirements
 
-    public typealias Element = ComplexDouble
+    public typealias Element = Complex
     public typealias Index = Int
-    public typealias SubSequence = ComplexDoubleArray
+    public typealias SubSequence = ComplexArray
     public typealias Indices = Range<Int>
 
     /// The position of the first element in a nonempty array.
@@ -39,7 +39,7 @@ extension ComplexDoubleArray:
     ///   - subrange: Index subrange.
     ///   - newElements: Replacement complex numbers.
     public mutating func replaceSubrange<C: Collection>(_ subrange: Range<Int>, with newElements: C)
-    where C.Element == ComplexDouble {
+    where C.Element == Complex {
 
         precondition(subrange.lowerBound >= 0 && subrange.upperBound <= count, "Range out of bounds")
         precondition(
@@ -56,10 +56,10 @@ extension ComplexDoubleArray:
 
     // MARK: - Subscripts
 
-    public subscript(position: Int) -> ComplexDouble {
+    public subscript(position: Int) -> Complex {
         get {
             precondition(position >= 0 && position < count, "Index out of range")
-            return ComplexDouble(real[position], imag[position])
+            return Complex(real[position], imag[position])
         }
         set {
             precondition(position >= 0 && position < count, "Index out of range")
@@ -72,14 +72,14 @@ extension ComplexDoubleArray:
 
     /// Append a complex number.
     /// - Parameter element: A complex number.
-    public mutating func append(_ element: ComplexDouble) {
+    public mutating func append(_ element: Complex) {
         real.append(element.real)
         imag.append(element.imag)
     }
 
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
-    public mutating func append(contentsOf newElements: ComplexDoubleArray) {
+    public mutating func append(contentsOf newElements: ComplexArray) {
         real.append(contentsOf: newElements.real)
         imag.append(contentsOf: newElements.imag)
     }
@@ -88,7 +88,7 @@ extension ComplexDoubleArray:
     /// - Parameters:
     ///   - element: A complex number.
     ///   - index: Index insertion point.
-    public mutating func insert(_ element: ComplexDouble, at index: Int) {
+    public mutating func insert(_ element: Complex, at index: Int) {
         precondition(index >= 0 && index <= count, "Index out of range for insertion")
         real.insert(element.real, at: index)
         imag.insert(element.imag, at: index)
@@ -97,9 +97,9 @@ extension ComplexDoubleArray:
     /// Removes a complex number.
     /// - Parameter index: Index of item.
     /// - Returns: Removed item.
-    public mutating func remove(at index: Int) -> ComplexDouble {
+    public mutating func remove(at index: Int) -> Complex {
         precondition(index >= 0 && index < count, "Index out of range for removal")
-        let complexValue = ComplexDouble(real[index], imag[index])
+        let complexValue = Complex(real[index], imag[index])
         real.remove(at: index)
         imag.remove(at: index)
         return complexValue
@@ -113,13 +113,13 @@ extension ComplexDoubleArray:
         imag.removeSubrange(bounds)
     }
 
-    // Returns concrete type ComplexDoubleArray not SubSequence
+    // Returns concrete type ComplexArray not SubSequence
 
     /// Access a range of complex elements
-    public subscript(bounds: Range<Int>) -> ComplexDoubleArray {
+    public subscript(bounds: Range<Int>) -> ComplexArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            var slice = ComplexDoubleArray()
+            var slice = ComplexArray()
             slice.real = Array(real[bounds])
             slice.imag = Array(imag[bounds])
             return slice
@@ -139,7 +139,7 @@ extension ComplexDoubleArray:
     }
 
     /// Access a closed range of complex elements
-    public subscript(bounds: ClosedRange<Int>) -> ComplexDoubleArray {
+    public subscript(bounds: ClosedRange<Int>) -> ComplexArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
             return self[bounds.lowerBound..<(bounds.upperBound + 1)]
@@ -160,7 +160,7 @@ extension ComplexDoubleArray:
     }
 
     /// Access a partial range from lower bound
-    public subscript(bounds: PartialRangeFrom<Int>) -> ComplexDoubleArray {
+    public subscript(bounds: PartialRangeFrom<Int>) -> ComplexArray {
         get {
             precondition(bounds.lowerBound >= 0, "Lower bound must be non-negative")
             precondition(bounds.lowerBound < count, "Lower bound out of range")
@@ -183,7 +183,7 @@ extension ComplexDoubleArray:
     }
 
     /// Access a partial range up to upper bound
-    public subscript(bounds: PartialRangeUpTo<Int>) -> ComplexDoubleArray {
+    public subscript(bounds: PartialRangeUpTo<Int>) -> ComplexArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound <= count, "Upper bound out of range")
@@ -206,7 +206,7 @@ extension ComplexDoubleArray:
     }
 
     /// Access a partial range through upper bound
-    public subscript(bounds: PartialRangeThrough<Int>) -> ComplexDoubleArray {
+    public subscript(bounds: PartialRangeThrough<Int>) -> ComplexArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound < count, "Upper bound out of range")

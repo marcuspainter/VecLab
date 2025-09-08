@@ -9,9 +9,9 @@ struct MatrixComplex {
 
     var rows: Int = 0
     var cols: Int = 0
-    var grid: [ComplexDouble] = []
+    var grid: [Complex] = []
 
-    init(_ grid: [ComplexDouble], rows: Int, cols: Int, ) {
+    init(_ grid: [Complex], rows: Int, cols: Int, ) {
         if grid.isEmpty {
             return
         }
@@ -20,7 +20,7 @@ struct MatrixComplex {
         self.grid = grid
     }
 
-    init(_ array: [[ComplexDouble]]) {
+    init(_ array: [[Complex]]) {
         if array.isEmpty {
             return
         }
@@ -35,7 +35,7 @@ struct MatrixComplex {
     init() {
     }
 
-    init(_ matrix: MatrixComplex, grid: [ComplexDouble]) {
+    init(_ matrix: MatrixComplex, grid: [Complex]) {
         if grid.isEmpty {
             return
         }
@@ -47,14 +47,14 @@ struct MatrixComplex {
     init(_ matrix: Matrix) {
         self.rows = matrix.rows
         self.cols = matrix.cols
-        grid = matrix.grid.map { ComplexDouble($0, 0) }
+        grid = matrix.grid.map { Complex($0, 0) }
     }
     
     init(real: [Double], imag: [Double], rows: Int, cols: Int) {
         assert(real.count == imag.count, "Real and imaginary parts must have the same length")
         self.rows = rows
         self.cols = cols
-        self.grid = zip(real, imag).map { ComplexDouble($0, $1) }
+        self.grid = zip(real, imag).map { Complex($0, $1) }
     }
 
 }

@@ -5,39 +5,39 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
-extension Array where Element == ComplexDouble {
+extension Array where Element == Complex {
 
-    static func + (_ a: [ComplexDouble], _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func + (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 + $1 }
         return addComplexComplex(a, b)
     }
 
-    static func + (_ a: [ComplexDouble], _ b: Double) -> [ComplexDouble] {
+    static func + (_ a: [Complex], _ b: Double) -> [Complex] {
         //return a.map { $0 + b }
         return addComplexReal(a, b)
     }
 
-    static func + (_ a: Double, _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func + (_ a: Double, _ b: [Complex]) -> [Complex] {
         //return b.map { a + $0 }
         return addComplexReal(b, a)
     }
 
-    static func + (_ a: [ComplexDouble], _ b: [Double]) -> [ComplexDouble] {
+    static func + (_ a: [Complex], _ b: [Double]) -> [Complex] {
         //return zip(a, b).map { $0 + $1 }
         return addComplexRealArray(a, b)
     }
 
-    static func + (_ a: [Double], _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func + (_ a: [Double], _ b: [Complex]) -> [Complex] {
         // return zip(a, b).map { $0 + $1 }
         return addComplexRealArray(b, a)
     }
 
-    static func + (_ a: [ComplexDouble], _ b: ComplexDouble) -> [ComplexDouble] {
+    static func + (_ a: [Complex], _ b: Complex) -> [Complex] {
         //return a.map { $0 + b }
         return addComplexComplexScalar(a, b)
     }
 
-    static func + (_ a: ComplexDouble, _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func + (_ a: Complex, _ b: [Complex]) -> [Complex] {
         //return b.map { a + $0 }
         return addComplexComplexScalar(b, a)
     }

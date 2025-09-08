@@ -1,11 +1,11 @@
 //
-//  ComplexDouble+Properties.swift
+//  Complex+Properties.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/04/2025.
 //
 
-extension ComplexDouble {
+extension Complex {
 
     // MARK: - Special value properties
 
@@ -47,18 +47,18 @@ extension ComplexDouble {
     // MARK: - Static special values
 
     /// Complex NaN value (NaN + NaNi).
-    public static var nan: ComplexDouble {
-        return ComplexDouble(.nan, .nan)
+    public static var nan: Complex {
+        return Complex(.nan, .nan)
     }
 
     /// Positive infinity (∞ + ∞i).
-    public static var infinity: ComplexDouble {
+    public static var infinity: Complex {
         return Complex(.infinity, .infinity)
     }
 
     /// The imaginary unit (0 + 1i).
-    public static var i: ComplexDouble {
-        return ComplexDouble(.zero, 1.0)
+    public static var i: Complex {
+        return Complex(.zero, 1.0)
     }
 
 }

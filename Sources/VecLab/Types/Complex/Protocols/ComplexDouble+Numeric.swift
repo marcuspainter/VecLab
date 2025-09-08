@@ -1,11 +1,11 @@
 //
-//  ComplexDouble+Numeric.swift
+//  Complex+Numeric.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 10/05/2025.
 //
 
-extension ComplexDouble: Numeric {
+extension Complex: Numeric {
 
     /// Complex multiplication.
     /// - Parameters:
@@ -13,8 +13,8 @@ extension ComplexDouble: Numeric {
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
     @inlinable
-    public static func * (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
-        return ComplexDouble(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
+    public static func * (a: Complex, b: Complex) -> Complex {
+        return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
 
     /// Complex multiplication.
@@ -22,7 +22,7 @@ extension ComplexDouble: Numeric {
     ///   - a: Complex number.
     ///   - b: Complex number.
     @inlinable
-    public static func *= (a: inout ComplexDouble, b: ComplexDouble) {
+    public static func *= (a: inout Complex, b: Complex) {
         let x = a.real * b.real - a.imag * b.imag
         let y = a.real * b.imag + a.imag * b.real
         a.real = x

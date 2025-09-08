@@ -1,17 +1,17 @@
 //
-//  ComplexDouble+Math+Assignment.swift
+//  Complex+Math+Assignment.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 13/05/2025.
 //
 
-extension ComplexDouble {
+extension Complex {
 
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
-    public static func += (lhs: inout ComplexDouble, rhs: Double) {
+    public static func += (lhs: inout Complex, rhs: Double) {
         lhs = lhs + rhs
     }
 
@@ -19,7 +19,7 @@ extension ComplexDouble {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
-    public static func -= (lhs: inout ComplexDouble, rhs: Double) {
+    public static func -= (lhs: inout Complex, rhs: Double) {
         lhs = lhs - rhs
     }
 
@@ -27,7 +27,7 @@ extension ComplexDouble {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
-    public static func *= (lhs: inout ComplexDouble, rhs: Double) {
+    public static func *= (lhs: inout Complex, rhs: Double) {
         lhs = lhs * rhs
     }
 
@@ -35,7 +35,7 @@ extension ComplexDouble {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A complex value.
-    public static func /= (lhs: inout ComplexDouble, rhs: ComplexDouble) {
+    public static func /= (lhs: inout Complex, rhs: Complex) {
         lhs = lhs / rhs
     }
 
@@ -43,7 +43,7 @@ extension ComplexDouble {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
-    public static func /= (lhs: inout ComplexDouble, rhs: Double) {
+    public static func /= (lhs: inout Complex, rhs: Double) {
         lhs = lhs / rhs
     }
 }

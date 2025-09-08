@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleTests.swift
+//  ComplexTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -9,10 +9,10 @@ import Foundation
 import VecLab
 import XCTest
 
-class ComplexDoublePropertyTests: XCTestCase {
+class ComplexPropertyTests: XCTestCase {
 
     func testInit() throws {
-        let a = ComplexDouble()
+        let a = Complex()
         XCTAssertEqual(a.real, 0.0, "init failed")
 
         let _ = a.real
@@ -30,9 +30,9 @@ class ComplexDoublePropertyTests: XCTestCase {
         let _ = a.isSubnormal
         let _ = a.isZero
 
-        let _ = ComplexDouble.i
-        let _ = ComplexDouble.infinity
-        let _ = ComplexDouble.nan
-        let _ = ComplexDouble.zero
+        let _ = Complex.i
+        let _ = Complex.infinity
+        let _ = Complex.nan
+        let _ = Complex.zero
     }
 }

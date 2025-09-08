@@ -7,7 +7,7 @@
 
 import Accelerate
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Unsafe pointers for vDSP functions.
     /// - Parameters:
     ///   - a: A complex array.
@@ -15,9 +15,9 @@ extension ComplexDoubleArray {
     ///   - c: C complex array.
     ///   - body: vDSP function.
     public static func withUnsafeParameters(
-        _ a: ComplexDoubleArray,
-        _ b: ComplexDoubleArray,
-        _ c: inout ComplexDoubleArray,
+        _ a: ComplexArray,
+        _ b: ComplexArray,
+        _ c: inout ComplexArray,
         _ body: (
             UnsafePointer<DSPDoubleSplitComplex>,
             UnsafePointer<DSPDoubleSplitComplex>,
@@ -60,9 +60,9 @@ extension ComplexDoubleArray {
     ///   - c: C complex array.
     ///   - body: vDSP function.
     public static func withUnsafeParameters(
-        _ a: ComplexDoubleArray,
+        _ a: ComplexArray,
         _ b: RealArray,
-        _ c: inout ComplexDoubleArray,
+        _ c: inout ComplexArray,
         _ body: (
             UnsafePointer<DSPDoubleSplitComplex>,
             UnsafePointer<Double>,
@@ -103,8 +103,8 @@ extension ComplexDoubleArray {
     ///   - c: C complex array.
     ///   - body: vDSP function.
     public static func withUnsafeParameters(
-        _ a: ComplexDoubleArray,
-        _ c: inout ComplexDoubleArray,
+        _ a: ComplexArray,
+        _ c: inout ComplexArray,
         _ body: (
             UnsafePointer<DSPDoubleSplitComplex>,
             UnsafeMutablePointer<DSPDoubleSplitComplex>,
@@ -137,7 +137,7 @@ extension ComplexDoubleArray {
     ///   - c: C double array.
     ///   - body: vDSP function.
     public static func withUnsafeParameters(
-        _ a: ComplexDoubleArray,
+        _ a: ComplexArray,
         _ c: inout RealArray,
         _ body: (
             UnsafePointer<DSPDoubleSplitComplex>,

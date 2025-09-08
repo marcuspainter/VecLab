@@ -6,14 +6,14 @@ To begin using the library, you will need to be familiar with the basic data typ
 
 #### Real and Complex Data Types
 
-VecLab uses Swift `Double` and `[Double]` arrays for real numbers. For complex numbers the `ComplexDouble`
-and `ComplexDoubleArray` types. For convenience, the following typealiases are defined.
+VecLab uses Swift `Double` and `[Double]` arrays for real numbers. For complex numbers the `Complex`
+and `ComplexArray` types. For convenience, the following typealiases are defined.
 
 ```swift
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = ComplexDouble
-public typealias ComplexArray = ComplexDoubleArray
+public typealias Complex = Complex
+public typealias ComplexArray = ComplexArray
 ```
 
 ### Scalars
@@ -35,10 +35,10 @@ let c: Real =  123.0
 
 #### Complex Number
 
-A complex number struct `ComplexDouble`.
+A complex number struct `Complex`.
 
 ```swift
-let a = ComplexDouble(1.0, 10.0)
+let a = Complex(1.0, 10.0)
 ```
 
 ```swift
@@ -105,7 +105,7 @@ let evenNumbers = vector(0..<10, 2)
 
 #### Complex Arrays
 
-Complex arrays are defined `ComplexDoubleArray`. This structure stores is known a split complex, rather than interleaved.
+Complex arrays are defined `ComplexArray`. This structure stores is known a split complex, rather than interleaved.
 
 ```swift
 let realArray = [1.0, 2.0, 3.0]

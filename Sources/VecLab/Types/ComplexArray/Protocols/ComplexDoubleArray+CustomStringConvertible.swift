@@ -1,11 +1,11 @@
 //
-//  ComplexDoubleArray+CustomStringConvertible.swift
+//  ComplexArray+CustomStringConvertible.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexDoubleArray: CustomStringConvertible {
+extension ComplexArray: CustomStringConvertible {
 
     /// String of complex value
     public var description: String {

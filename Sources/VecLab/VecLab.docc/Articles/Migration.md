@@ -7,7 +7,7 @@ changes will be flagged by the compiler.
 
 ### Type Alias Changes
 
-Complex numbers are now `ComplexDouble` structs and complex arrays are now `ComplexDoubleArray` structs.
+Complex numbers are now `Complex` structs and complex arrays are now `ComplexArray` structs.
 
 For convenience, these are shortened to `Complex` and `ComplexArray` with type aliases. The package assumes `Double` 
 as the base numeric type. `Float` types may be added at a later date.
@@ -24,8 +24,8 @@ public typealias ComplexArray = ([Real], [Real]) // Tuple
 // V2
 public typealias Real = Double
 public typealias RealArray = [Real]
-public typealias Complex = ComplexDouble // Struct
-public typealias ComplexArray = ComplexDoubleArray // Struct Collection
+public typealias Complex = Complex // Struct
+public typealias ComplexArray = ComplexArray // Struct Collection
 ```
 
 ### Complex Numbers

@@ -8,39 +8,39 @@
 import Accelerate
 import Foundation
 
-extension Array where Element == ComplexDouble {
+extension Array where Element == Complex {
 
-    static func * (_ a: [ComplexDouble], _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func * (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 * $1 }
         return multiplyComplexComplex(a, b)
     }
 
-    static func * (_ a: [ComplexDouble], _ b: Double) -> [ComplexDouble] {
+    static func * (_ a: [Complex], _ b: Double) -> [Complex] {
         //return a.map { $0 * b }
         return multiplyComplexReal(a, b)
     }
 
-    static func * (_ a: Double, _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func * (_ a: Double, _ b: [Complex]) -> [Complex] {
         //return b.map { a * $0 }
         return multiplyComplexReal(b, a)
     }
 
-    static func * (_ a: [ComplexDouble], _ b: [Double]) -> [ComplexDouble] {
+    static func * (_ a: [Complex], _ b: [Double]) -> [Complex] {
         //return zip(a, b).map { $0 * $1 }
         return multiplyComplexRealArray(a, b)
     }
 
-    static func * (_ a: [Double], _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func * (_ a: [Double], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 * $1 }
         return multiplyComplexRealArray(b, a)
     }
 
-    static func * (_ a: [ComplexDouble], _ b: ComplexDouble) -> [ComplexDouble] {
+    static func * (_ a: [Complex], _ b: Complex) -> [Complex] {
         //return a.map { $0 * b }
         return multiplyComplexComplexScalar(a, b)
     }
 
-    static func * (_ a: ComplexDouble, _ b: [ComplexDouble]) -> [ComplexDouble] {
+    static func * (_ a: Complex, _ b: [Complex]) -> [Complex] {
         //return b.map { a * $0 }
         return multiplyComplexComplexScalar(b, a)
     }

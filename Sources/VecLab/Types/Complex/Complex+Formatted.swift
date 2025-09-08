@@ -1,5 +1,5 @@
 //
-//  ComplexDouble+Formatted.swift
+//  Complex+Formatted.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 23/04/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ComplexDouble {
+extension Complex {
     /// Returns a formatted string representation of the complex number
     /// - Parameters:
     ///   - precision: Number of decimal places (default: 2)

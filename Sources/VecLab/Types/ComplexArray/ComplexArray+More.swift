@@ -1,19 +1,19 @@
 //
-//  ComplexDoubleArray+More.swift
+//  ComplexArray+More.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 24/04/2025.
 //
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Returns an array of subsequences split by a predicate.
     @inlinable
     public func split(
         omittingEmptySubsequences: Bool = true,
-        whereSeparator isSeparator: (ComplexDouble) -> Bool
-    ) -> [ComplexDoubleArray] {
+        whereSeparator isSeparator: (Complex) -> Bool
+    ) -> [ComplexArray] {
         Array(self).split(omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: isSeparator)
-            .map { ComplexDoubleArray(Array($0)) }
+            .map { ComplexArray(Array($0)) }
     }
 
     /// Returns an array of at most `maxSplits + 1` subsequences, splitting by a predicate.
@@ -21,20 +21,20 @@ extension ComplexDoubleArray {
     public func split(
         maxSplits: Int,
         omittingEmptySubsequences: Bool = true,
-        whereSeparator isSeparator: (ComplexDouble) -> Bool
-    ) -> [ComplexDoubleArray] {
+        whereSeparator isSeparator: (Complex) -> Bool
+    ) -> [ComplexArray] {
         Array(self).split(
             maxSplits: maxSplits,
             omittingEmptySubsequences: omittingEmptySubsequences,
             whereSeparator: isSeparator
-        ).map { ComplexDoubleArray(Array($0)) }
+        ).map { ComplexArray(Array($0)) }
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     /// Returns the last element matching the predicate.
     @inlinable
-    public func last(where predicate: (ComplexDouble) -> Bool) -> ComplexDouble? {
+    public func last(where predicate: (Complex) -> Bool) -> Complex? {
         for element in reversed() {
             if predicate(element) {
                 return element
@@ -45,7 +45,7 @@ extension ComplexDoubleArray {
 
     /// Returns the index of the first element matching the predicate.
     @inlinable
-    public func firstIndex(where predicate: (ComplexDouble) -> Bool) -> Int? {
+    public func firstIndex(where predicate: (Complex) -> Bool) -> Int? {
         for (index, element) in enumerated() {
             if predicate(element) {
                 return index
@@ -56,7 +56,7 @@ extension ComplexDoubleArray {
 
     /// Returns the index of the last element matching the predicate.
     @inlinable
-    public func lastIndex(where predicate: (ComplexDouble) -> Bool) -> Int? {
+    public func lastIndex(where predicate: (Complex) -> Bool) -> Int? {
         for (index, element) in enumerated().reversed() {
             if predicate(element) {
                 return index
@@ -66,9 +66,9 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     @inlinable
-    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, ComplexDouble) -> Result)
+    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Complex) -> Result)
         -> Result
     {
         var result = initialResult
@@ -79,9 +79,9 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     @inlinable
-    public mutating func partition(by belongsInSecondPartition: (ComplexDouble) -> Bool) -> Int {
+    public mutating func partition(by belongsInSecondPartition: (Complex) -> Bool) -> Int {
         var low = startIndex
         var high = endIndex - 1
 
@@ -103,13 +103,13 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     @inlinable
-    public func split(whereSeparator isSeparator: (ComplexDouble) -> Bool, omittingEmptySubsequences: Bool = true)
-        -> [[ComplexDouble]]
+    public func split(whereSeparator isSeparator: (Complex) -> Bool, omittingEmptySubsequences: Bool = true)
+        -> [[Complex]]
     {
-        var result: [[ComplexDouble]] = []
-        var currentChunk: [ComplexDouble] = []
+        var result: [[Complex]] = []
+        var currentChunk: [Complex] = []
 
         for element in self {
             if isSeparator(element) {
@@ -131,30 +131,30 @@ extension ComplexDoubleArray {
 
     @inlinable
     public func splitToArrays(
-        whereSeparator isSeparator: (ComplexDouble) -> Bool,
+        whereSeparator isSeparator: (Complex) -> Bool,
         omittingEmptySubsequences: Bool = true
-    ) -> [ComplexDoubleArray] {
-        let grouped: [[ComplexDouble]] = split(
+    ) -> [ComplexArray] {
+        let grouped: [[Complex]] = split(
             whereSeparator: isSeparator,
             omittingEmptySubsequences: omittingEmptySubsequences
         )
-        return grouped.map { ComplexDoubleArray($0) }
+        return grouped.map { ComplexArray($0) }
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     @inlinable
-    public func chunked(into size: Int) -> [ComplexDoubleArray] {
+    public func chunked(into size: Int) -> [ComplexArray] {
         precondition(size > 0, "Chunk size must be positive.")
 
-        var chunks: [ComplexDoubleArray] = []
+        var chunks: [ComplexArray] = []
         var start = 0
 
         while start < count {
             let end = Swift.min(start + size, count)
             let realChunk = real[start..<end]
             let imagChunk = imag[start..<end]
-            chunks.append(ComplexDoubleArray(realChunk, imagChunk))
+            chunks.append(ComplexArray(realChunk, imagChunk))
             start += size
         }
 
@@ -162,9 +162,9 @@ extension ComplexDoubleArray {
     }
 }
 
-extension ComplexDoubleArray {
+extension ComplexArray {
     @inlinable
-    public func elementsEqual(_ other: ComplexDoubleArray, by areEquivalent: (ComplexDouble, ComplexDouble) -> Bool)
+    public func elementsEqual(_ other: ComplexArray, by areEquivalent: (Complex, Complex) -> Bool)
         -> Bool
     {
         guard count == other.count else { return false }

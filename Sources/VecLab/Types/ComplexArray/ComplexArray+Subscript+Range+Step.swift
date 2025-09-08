@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleArray+Subscript+Range+Step.swift
+//  ComplexArray+Subscript+Range+Step.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/04/2025.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// Extension to provide stepping functionality for ComplexDoubleArray
-extension ComplexDoubleArray {
+// Extension to provide stepping functionality for ComplexArray
+extension ComplexArray {
 
     // Helper method to verify that real and imag arrays have the same size
     private func verifySizes() {
@@ -20,13 +20,13 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to access
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    public subscript(range: ClosedRange<Int>, step: Int) -> ComplexDoubleArray {
+    public subscript(range: ClosedRange<Int>, step: Int) -> ComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
             verifySizes()
 
-            var result = ComplexDoubleArray()
+            var result = ComplexArray()
 
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
@@ -53,13 +53,13 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to access
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    public subscript(range: Range<Int>, step: Int) -> ComplexDoubleArray {
+    public subscript(range: Range<Int>, step: Int) -> ComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
             verifySizes()
 
-            var result = ComplexDoubleArray()
+            var result = ComplexArray()
 
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
@@ -87,7 +87,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to access (from lowerBound to the end)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeFrom<Int>, step: Int) -> ComplexDoubleArray {
+    subscript(range: PartialRangeFrom<Int>, step: Int) -> ComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
@@ -111,7 +111,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to access (from start through upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeThrough<Int>, step: Int) -> ComplexDoubleArray {
+    subscript(range: PartialRangeThrough<Int>, step: Int) -> ComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
@@ -130,7 +130,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to access (from start up to upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeUpTo<Int>, step: Int) -> ComplexDoubleArray {
+    subscript(range: PartialRangeUpTo<Int>, step: Int) -> ComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
@@ -145,7 +145,7 @@ extension ComplexDoubleArray {
                 if range.upperBound > 0 {
                     return self[0...range.upperBound - 1, step]
                 } else {
-                    return ComplexDoubleArray()
+                    return ComplexArray()
                 }
             }
         }
@@ -159,7 +159,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to set
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: ComplexDoubleArray) {
+    mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: ComplexArray) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
         verifySizes()
@@ -191,7 +191,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to set
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: Range<Int>, step: Int, to newValues: ComplexDoubleArray) {
+    mutating func setValues(in range: Range<Int>, step: Int, to newValues: ComplexArray) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
         verifySizes()
@@ -226,7 +226,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to set (from lowerBound to the end)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: ComplexDoubleArray) {
+    mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: ComplexArray) {
         precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
         precondition(range.lowerBound < count, "Lower bound out of range")
         verifySizes()
@@ -244,7 +244,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to set (from start through upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: ComplexDoubleArray) {
+    mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: ComplexArray) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound < count, "Upper bound out of range")
         verifySizes()
@@ -258,7 +258,7 @@ extension ComplexDoubleArray {
     ///   - range: The range of indices to set (from start up to upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: ComplexDoubleArray) {
+    mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: ComplexArray) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound <= count, "Upper bound out of range")
         verifySizes()
@@ -279,17 +279,17 @@ extension ComplexDoubleArray {
 
 // Example usage:
 /*
-var array = ComplexDoubleArray([
-    ComplexDouble(0, 0),
-    ComplexDouble(1, 1),
-    ComplexDouble(2, 2),
-    ComplexDouble(3, 3),
-    ComplexDouble(4, 4),
-    ComplexDouble(5, 5),
-    ComplexDouble(6, 6),
-    ComplexDouble(7, 7),
-    ComplexDouble(8, 8),
-    ComplexDouble(9, 9)
+var array = ComplexArray([
+    Complex(0, 0),
+    Complex(1, 1),
+    Complex(2, 2),
+    Complex(3, 3),
+    Complex(4, 4),
+    Complex(5, 5),
+    Complex(6, 6),
+    Complex(7, 7),
+    Complex(8, 8),
+    Complex(9, 9)
 ])
 
 // Get every second element in the range
@@ -299,19 +299,19 @@ let everySecond = array[0...8, 2]  // [0+0i, 2+2i, 4+4i, 6+6i, 8+8i]
 let reversed = array[9...0, -1]  // [9+9i, 8+8i, 7+7i, 6+6i, 5+5i, 4+4i, 3+3i, 2+2i, 1+1i, 0+0i]
 
 // Set every third element
-array.setValues(in: 0...9, step: 3, to: ComplexDoubleArray([
-    ComplexDouble(10, 10),
-    ComplexDouble(20, 20),
-    ComplexDouble(30, 30),
-    ComplexDouble(40, 40)
+array.setValues(in: 0...9, step: 3, to: ComplexArray([
+    Complex(10, 10),
+    Complex(20, 20),
+    Complex(30, 30),
+    Complex(40, 40)
 ]))
 // array becomes [10+10i, 1+1i, 2+2i, 20+20i, 4+4i, 5+5i, 30+30i, 7+7i, 8+8i, 40+40i]
 
 // This will print an error and not modify the array
-array.setValues(in: 0...9, step: 2, to: ComplexDoubleArray([
-    ComplexDouble(1, 1),
-    ComplexDouble(2, 2),
-    ComplexDouble(3, 3)
+array.setValues(in: 0...9, step: 2, to: ComplexArray([
+    Complex(1, 1),
+    Complex(2, 2),
+    Complex(3, 3)
 ]))
 // ERROR: New values count (3) must match the number of stepped indices (5)
 */

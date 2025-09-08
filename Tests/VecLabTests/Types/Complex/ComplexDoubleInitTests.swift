@@ -1,5 +1,5 @@
 //
-//  ComplexDoubleTests.swift
+//  ComplexTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 02/09/2025.
@@ -11,14 +11,14 @@ import XCTest
 final class ComlplexDoubleTests: XCTestCase {
     
     func testInit() throws {
-        let a = ComplexDouble()
+        let a = Complex()
         
         XCTAssertEqual(a.real, 0)
         XCTAssertEqual(a.imag, 0)
     }
     
     func testInitRealImag() throws {
-        let a = ComplexDouble(1.0, -2.0)
+        let a = Complex(1.0, -2.0)
         
         XCTAssertEqual(a.real, 1.0)
         XCTAssertEqual(a.imag, -2.0)

@@ -1,14 +1,14 @@
 //
-//  ComplexDoubleArray+CustomDebugStringConvertible.swift
+//  ComplexArray+CustomDebugStringConvertible.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexDoubleArray: CustomDebugStringConvertible {
+extension ComplexArray: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        var result = "ComplexDoubleArray(["
+        var result = "ComplexArray(["
         for i in 0..<count {
             if i > 0 { result += ", " }
             if imag[i] >= 0 {

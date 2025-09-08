@@ -1,11 +1,11 @@
 //
-//  ComplexDouble+AdditiveArithmetic.swift
+//  Complex+AdditiveArithmetic.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 10/05/2025.
 //
 
-extension ComplexDouble: AdditiveArithmetic {
+extension Complex: AdditiveArithmetic {
 
     /// Complex addition.
     /// - Parameters:
@@ -13,8 +13,8 @@ extension ComplexDouble: AdditiveArithmetic {
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
     @inlinable
-    public static func + (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
-        return ComplexDouble(a.real + b.real, a.imag + b.imag)
+    public static func + (a: Complex, b: Complex) -> Complex {
+        return Complex(a.real + b.real, a.imag + b.imag)
     }
 
     /// Complex addition.
@@ -22,7 +22,7 @@ extension ComplexDouble: AdditiveArithmetic {
     ///   - a: Complex number.
     ///   - b: Complex number.
     @inlinable
-    public static func += (a: inout ComplexDouble, b: ComplexDouble) {
+    public static func += (a: inout Complex, b: Complex) {
         a.real += b.real
         a.imag += b.imag
     }
@@ -33,8 +33,8 @@ extension ComplexDouble: AdditiveArithmetic {
     ///   - b: Complex number.
     /// - Returns: The result of the subtraction.
     @inlinable
-    public static func - (a: ComplexDouble, b: ComplexDouble) -> ComplexDouble {
-        return ComplexDouble(a.real - b.real, a.imag - b.imag)
+    public static func - (a: Complex, b: Complex) -> Complex {
+        return Complex(a.real - b.real, a.imag - b.imag)
     }
 
     /// Complex subtraction.
@@ -42,11 +42,11 @@ extension ComplexDouble: AdditiveArithmetic {
     ///   - a: Complex number.
     ///   - b: Complex number.
     @inlinable
-    public static func -= (a: inout ComplexDouble, b: ComplexDouble) {
+    public static func -= (a: inout Complex, b: Complex) {
         a.real -= b.real
         a.imag -= b.imag
     }
 
     /// The zero value.
-    public static var zero: ComplexDouble { .init(0, 0) }
+    public static var zero: Complex { .init(0, 0) }
 }
