@@ -29,7 +29,4 @@ struct Matrix {
         self.cols = matrix.cols
         self.grid = grid
     }
-    
-    
-
 }

@@ -5,3 +5,9 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
+extension Array where Element == Complex {
+    
+    init(count: Int) {
+        self = Array(repeating: .zero, count: count)
+    }
+}
