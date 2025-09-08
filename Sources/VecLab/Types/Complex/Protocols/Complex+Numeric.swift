@@ -32,6 +32,7 @@ extension Complex: Numeric {
     /// Magnitude.
     ///
     /// Needed for `SignedNumeric` protocol.
+    @inlinable
     public var magnitude: Double {
         return (real * real + imag * imag).squareRoot()
     }

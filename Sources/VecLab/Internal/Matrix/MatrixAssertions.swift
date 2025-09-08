@@ -7,7 +7,7 @@
 
 import Foundation
 
-func validateSize(
+public func validateSize(
     _ a: Matrix,
     _ b: Matrix,
     file: StaticString = #file,
@@ -21,7 +21,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: MatrixComplex,
     _ b: MatrixComplex,
     file: StaticString = #file,
@@ -35,7 +35,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: MatrixComplex,
     _ b: Matrix,
     file: StaticString = #file,
@@ -49,7 +49,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: Matrix,
     _ b: MatrixComplex,
     file: StaticString = #file,

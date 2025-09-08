@@ -1,11 +1,11 @@
 //
-//  Matrix+Power.swift
+//  Matrix+Math+Power.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 08/09/2025.
 //
 
-extension Matrix {
+public extension Matrix {
     
     // Element-wise
     static func .** (_ a: Matrix, _ b: Matrix) -> Matrix {

@@ -11,6 +11,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
+    @inlinable
     public static func += (lhs: inout ComplexArray, rhs: ComplexArray) {
         lhs = lhs + rhs
     }
@@ -19,6 +20,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
+    @inlinable
     public static func += (lhs: inout ComplexArray, rhs: Double) {
         lhs = lhs + rhs
     }
@@ -27,6 +29,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real array.
+    @inlinable
     public static func += (lhs: inout ComplexArray, rhs: [Double]) {
         lhs = lhs + rhs
     }
@@ -35,6 +38,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex value.
+    @inlinable
     public static func += (lhs: inout ComplexArray, rhs: Complex) {
         lhs = lhs + rhs
     }
@@ -43,6 +47,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
+    @inlinable
     public static func -= (lhs: inout ComplexArray, rhs: ComplexArray) {
         lhs = lhs - rhs
     }
@@ -51,6 +56,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
+    @inlinable
     public static func -= (lhs: inout ComplexArray, rhs: Double) {
         lhs = lhs - rhs
     }
@@ -59,6 +65,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real array.
+    @inlinable
     public static func -= (lhs: inout ComplexArray, rhs: [Double]) {
         lhs = lhs - rhs
     }
@@ -67,6 +74,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex value.
+    @inlinable
     public static func -= (lhs: inout ComplexArray, rhs: Complex) {
         lhs = lhs - rhs
     }
@@ -75,6 +83,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
+    @inlinable
     public static func *= (lhs: inout ComplexArray, rhs: ComplexArray) {
         lhs = lhs * rhs
     }
@@ -83,6 +92,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
+    @inlinable
     public static func *= (lhs: inout ComplexArray, rhs: Double) {
         lhs = lhs * rhs
     }
@@ -91,6 +101,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real array.
+    @inlinable
     public static func *= (lhs: inout ComplexArray, rhs: [Double]) {
         lhs = lhs * rhs
     }
@@ -99,6 +110,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex value.
+    @inlinable
     public static func *= (lhs: inout ComplexArray, rhs: Complex) {
         lhs = lhs * rhs
     }
@@ -107,6 +119,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
+    @inlinable
     public static func /= (lhs: inout ComplexArray, rhs: ComplexArray) {
         lhs = lhs / rhs
     }
@@ -115,6 +128,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
+    @inlinable
     public static func /= (lhs: inout ComplexArray, rhs: Double) {
         lhs = lhs / rhs
     }
@@ -123,6 +137,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real array.
+    @inlinable
     public static func /= (lhs: inout ComplexArray, rhs: [Double]) {
         lhs = lhs / rhs
     }
@@ -131,6 +146,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A complex value.
+    @inlinable
     public static func /= (lhs: inout ComplexArray, rhs: Complex) {
         lhs = lhs / rhs
     }

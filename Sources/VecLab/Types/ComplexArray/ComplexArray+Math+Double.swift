@@ -14,6 +14,7 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
+    @inlinable
     public static func + (a: ComplexArray, b: Double) -> ComplexArray {
         validateSize(a)
         let real = vDSP.add(b, a.real)

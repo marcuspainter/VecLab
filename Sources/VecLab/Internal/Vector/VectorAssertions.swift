@@ -6,7 +6,7 @@
 
 import Foundation
 
-func validateSize(
+public func validateSize(
     _ a: RealArray,
     _ b: RealArray,
     file: StaticString = #file,
@@ -20,7 +20,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: RealArray,
     _ b: ComplexArray,
     file: StaticString = #file,
@@ -34,7 +34,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: ComplexArray,
     _ b: RealArray,
     file: StaticString = #file,
@@ -48,7 +48,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: ComplexArray,
     _ b: ComplexArray,
     file: StaticString = #file,
@@ -63,7 +63,7 @@ func validateSize(
     )
 }
 
-func validateSize(
+public func validateSize(
     _ a: ComplexArray,
     file: StaticString = #file,
     line: UInt = #line

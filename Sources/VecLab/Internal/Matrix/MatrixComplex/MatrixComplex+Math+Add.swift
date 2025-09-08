@@ -1,11 +1,11 @@
 //
-//  MatrixComplex+Add.swift
+//  MatrixComplex+Math+Add.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 07/09/2025.
 //
 
-extension MatrixComplex {
+public extension MatrixComplex {
     
     static func + (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         let c = a.grid + b.grid

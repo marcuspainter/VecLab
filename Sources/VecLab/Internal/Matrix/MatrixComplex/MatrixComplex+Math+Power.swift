@@ -1,11 +1,11 @@
 //
-//  MatrixComplex+Power.swift
+//  MatrixComplex+Math+Power.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 08/09/2025.
 //
 
-extension MatrixComplex {
+public extension MatrixComplex {
     
     // Element-wise
     static func .** (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {

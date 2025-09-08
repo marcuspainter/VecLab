@@ -16,6 +16,7 @@ extension Complex {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
+    @inlinable
     public static func + (a: Complex, b: Double) -> Complex {
         return Complex(a.real + b, a.imag)
     }
@@ -25,6 +26,7 @@ extension Complex {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the addition.
+    @inlinable
     public static func + (a: Double, b: Complex) -> Complex {
         return b + a  // Overloaded
     }
@@ -34,6 +36,7 @@ extension Complex {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
+    @inlinable
     public static func - (a: Complex, b: Double) -> Complex {
         return Complex(a.real - b, a.imag)
     }
@@ -43,6 +46,7 @@ extension Complex {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the subtraction.
+    @inlinable
     public static func - (a: Double, b: Complex) -> Complex {
         return Complex(a - b.real, -b.imag)
     }
@@ -52,6 +56,7 @@ extension Complex {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the multiplication.
+    @inlinable
     public static func * (a: Complex, b: Double) -> Complex {
         return Complex(a.real * b, a.imag * b)
     }
@@ -61,6 +66,7 @@ extension Complex {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: The result of the multiplication.
+    @inlinable
     public static func * (a: Double, b: Complex) -> Complex {
         return b * a  // Overloaded
     }
@@ -70,6 +76,7 @@ extension Complex {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: The result of the division.
+    @inlinable
     public static func / (a: Complex, b: Double) -> Complex {
         return Complex(a.real / b, a.imag / b)
     }

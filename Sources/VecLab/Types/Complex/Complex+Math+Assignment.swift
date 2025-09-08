@@ -11,6 +11,7 @@ extension Complex {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
+    @inlinable
     public static func += (lhs: inout Complex, rhs: Double) {
         lhs = lhs + rhs
     }
@@ -19,6 +20,7 @@ extension Complex {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
+    @inlinable
     public static func -= (lhs: inout Complex, rhs: Double) {
         lhs = lhs - rhs
     }
@@ -27,6 +29,7 @@ extension Complex {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
+    @inlinable
     public static func *= (lhs: inout Complex, rhs: Double) {
         lhs = lhs * rhs
     }
@@ -35,6 +38,7 @@ extension Complex {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A complex value.
+    @inlinable
     public static func /= (lhs: inout Complex, rhs: Complex) {
         lhs = lhs / rhs
     }
@@ -43,6 +47,7 @@ extension Complex {
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
+    @inlinable
     public static func /= (lhs: inout Complex, rhs: Double) {
         lhs = lhs / rhs
     }

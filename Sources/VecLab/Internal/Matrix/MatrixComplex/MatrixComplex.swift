@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
-struct MatrixComplex {
+public struct MatrixComplex {
 
     var rows: Int = 0
     var cols: Int = 0

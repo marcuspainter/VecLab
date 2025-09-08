@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
-struct Matrix {
+public struct Matrix {
     var rows: Int = 0
     var cols: Int = 0
     var grid: [Double] = []

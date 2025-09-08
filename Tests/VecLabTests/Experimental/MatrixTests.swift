@@ -15,6 +15,10 @@ final class MatrixTests: XCTestCase {
         let a = Matrix([1, 2, 3, 4], rows: 2, cols: 2)
         let b = Matrix([5, 6, 7, 8], rows: 2, cols: 2)
         
+        let f = Matrix([[1,2,3],
+                        [4,5,6],
+                        [7,8,9]])
+        
         var c = 10 + b
         
         let z = [Complex](repeating: Complex(2, 2), count: 12)
@@ -36,6 +40,8 @@ final class MatrixTests: XCTestCase {
         
         c.grid = rightDivision(a.grid, a.grid, m: a.rows, n: a.cols)
         print(c.grid)
+        
+        print(f)
     }
     
 }

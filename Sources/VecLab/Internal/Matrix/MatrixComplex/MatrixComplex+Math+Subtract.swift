@@ -1,11 +1,11 @@
 //
-//  MatrixComplex+Subtract.swift
+//  MatrixComplex+Math+Subtract.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 08/09/2025.
 //
 
-extension MatrixComplex {
+public extension MatrixComplex {
     
     static func - (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         let c = a.grid - b.grid

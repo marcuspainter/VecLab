@@ -17,6 +17,7 @@ extension Complex: SignedNumeric {
     }
 
     /// Replaces this value with its additive inverse.
+    @inlinable
     mutating public func negate() {
         self.real = -self.real
         self.imag = -self.imag

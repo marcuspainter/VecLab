@@ -1,5 +1,5 @@
 //
-//  Matrix+Divide.swift
+//  Matrix+Math+Divide.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 08/09/2025.
@@ -7,7 +7,7 @@
 
 import Accelerate
 
-extension Matrix {
+public extension Matrix {
     
     @available(*, unavailable, message: "Use ./")
     static func / (_ a: Matrix, _ b: Matrix) -> Matrix {
@@ -79,32 +79,5 @@ func matrixDivide(_ a: [Double], _ b: [Double], m: Int, k: Int, n: Int) -> [Doub
     return result
 }
 
-public func rightDivision(_ A: RealArray, _ B: RealArray, m: Int, n: Int) -> RealArray {
-    // A/B: solve X*B = A
-    // Equivalent to: B^T * X^T = A^T
-    
-    precondition(A.count == m * n, "A must be m×n")
-    precondition(B.count == n * n, "B must be n×n (square)")
-    
-    // Transpose A and B
-    let AT = transposeMatrix(A, rows: m, cols: n)  // n×m
-    let BT = transposeMatrix(B, rows: n, cols: n)  // n×n
-    
-    // Solve B^T * X^T = A^T
-    let XT = solve(BT, AT, n: n, nrhs: m)
-    
-    // Transpose result back
-    return transposeMatrix(XT, rows: n, cols: m)  // m×n
-}
 
-public func transposeMatrix(_ matrix: RealArray, rows: Int, cols: Int) -> RealArray {
-    var result = RealArray(repeating: 0.0, count: rows * cols)
-    
-    for i in 0..<rows {
-        for j in 0..<cols {
-            result[i * cols + j] = matrix[j * rows + i]  // Row-major indexing
-        }
-    }
-    
-    return result
-}
+
