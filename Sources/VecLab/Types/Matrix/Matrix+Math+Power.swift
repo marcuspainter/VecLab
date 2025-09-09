@@ -25,4 +25,17 @@ public extension Matrix {
         let c =  a ** b.grid
         return Matrix(b, grid: c)
     }
+    
+    // MARK: Not implemented
+    
+    @available(*, unavailable, renamed: ".**", message: "Matrices cannot be raised to the power of a matrix. Did you mean .**")
+    static func ** (_ a: Matrix, _ b: Matrix) -> Matrix {
+        return Matrix()
+    }
+    
+    @available(*, unavailable, message: "Double cannot be raised to the power of a matrix")
+    static func ** (_ a: Double, _ b: Matrix) -> Matrix {
+        return Matrix()
+    }
+
 }

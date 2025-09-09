@@ -21,7 +21,7 @@ func matrixDivide(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [Co
         bCopy.withUnsafeMutableBufferPointer { bPtr in
             ipiv.withUnsafeMutableBufferPointer { ipivPtr in
                 // Step 1: Factor B using LU decomposition
-                zgetrf_(&kk,                             // M: Number of rows of B
+                zgetrf_(&kk,                            // M: Number of rows of B
                        &kk,                             // N: Number of columns of B
                        OpaquePointer(bPtr.baseAddress), // A: Matrix B (will be overwritten with LU)
                        &kk,                             // LDA: Leading dimension of B
@@ -52,7 +52,6 @@ func matrixDivide(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [Co
     
     return result
 }
-
 
 public func matrixTranspose(_ matrix: [Complex], rows: Int, cols: Int) -> [Complex] {
     var result = [Complex](repeating: .zero, count: rows * cols)

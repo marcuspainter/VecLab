@@ -11,13 +11,19 @@ public struct MatrixComplex {
     var cols: Int = 0
     var grid: [Complex] = []
 
-    init(_ grid: [Complex], rows: Int, cols: Int, ) {
+    init(_ grid: [Complex], _ rows: Int, _ cols: Int, ) {
         if grid.isEmpty {
             return
         }
         self.rows = rows
         self.cols = cols
         self.grid = grid
+    }
+    
+    public init(_ rows: Int, _ cols: Int, ) {
+        self.rows = rows
+        self.cols = cols
+        self.grid = [Complex](repeating: .zero, count: rows * cols)
     }
 
     init(_ array: [[Complex]]) {

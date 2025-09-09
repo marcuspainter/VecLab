@@ -1,5 +1,5 @@
 //
-//  Array+Double+Init+sSized.swift
+//  Array+Double+Init+Sized.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 02/09/2025.
@@ -12,3 +12,4 @@ extension Array where Element == Double {
         self = [Element](repeating: 0, count: sized.count)
     }
 }
+

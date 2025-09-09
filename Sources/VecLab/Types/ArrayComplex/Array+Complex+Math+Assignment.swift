@@ -1,55 +1,45 @@
 //
-//  Complex+Math+Assignment.swift
+//  Array+Complex+Math+Assignment.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 13/05/2025.
+//  Created by Marcus Painter on 09/09/2025.
 //
 
-extension Complex {
+extension Array where Element == Complex {
     
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
     @inlinable
-    public static func += (lhs: inout Complex, rhs: Double) {
+    public static func += (lhs: inout Self, rhs: Self) {
         lhs = lhs + rhs
     }
-    
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
     @inlinable
-    public static func -= (lhs: inout Complex, rhs: Double) {
+    public static func -= (lhs: inout Self, rhs: Self) {
         lhs = lhs - rhs
     }
-
+    
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex value.
     ///   - rhs: A real value.
     @inlinable
-    public static func *= (lhs: inout Complex, rhs: Double) {
+    public static func *= (lhs: inout Self, rhs: Self) {
         lhs = lhs * rhs
     }
-
-    /// Division.
-    /// - Parameters:
-    ///   - lhs: This complex value.
-    ///   - rhs: A real value.
-    @inlinable
-    public static func /= (lhs: inout Complex, rhs: Double) {
-        lhs = lhs / rhs
-    }
-
-    /// Division.
-    /// - Parameters:
-    ///   - lhs: This complex value.
-    ///   - rhs: A real value.
-    @inlinable
-    public static func /= (lhs: inout Complex, rhs: Complex) {
-        lhs = lhs / rhs
-    }
     
+    /// Division.
+    /// - Parameters:
+    ///   - lhs: This complex value.
+    ///   - rhs: A complex value.
+    @inlinable
+    public static func /= (lhs: inout Self, rhs: Self) {
+        lhs = lhs / rhs
+    }
 }

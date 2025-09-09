@@ -28,10 +28,10 @@ import Accelerate
 /// - Returns: Solution vector x
 public func solve(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArray {
     // Infer dimensions
-    //let n = Int(Double(A.count).squareRoot())
-    //precondition(n * n == A.count, "A must be square")
-    //precondition(B.count % n == 0, "B's row count must match A")
-    //let nrhs = B.count / n
+    let n = Int(Double(A.count).squareRoot())
+    precondition(n * n == A.count, "A must be square")
+    precondition(B.count % n == 0, "B's row count must match A")
+    let nrhs = B.count / n
     
     precondition(A.count == n * n, "A must be n×n")
     precondition(B.count == n * nrhs, "B must be n×nrhs")

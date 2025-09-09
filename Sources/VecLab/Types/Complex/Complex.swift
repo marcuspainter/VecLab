@@ -18,7 +18,6 @@ public struct Complex:
     // SignedNumeric,
     Sendable
 {
-
     /// Real part.
     public var real: Double
 

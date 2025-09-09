@@ -1,36 +1,27 @@
 //
-//  Matrix+Math+Assignment.swift
+//  MatrixComplex+Math+Assignment.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 08/09/2025.
 //
 
-extension Matrix {
+extension MatrixComplex {
 
     /// Addition.
     /// - Parameters:
-    ///   - lhs: This complex array.
-    ///   - rhs: A complex array.
+    ///   - lhs: This complex matrix.
+    ///   - rhs: A real value.
     @inlinable
-    public static func += (lhs: inout Matrix, rhs: Matrix) {
+    public static func += (lhs: inout MatrixComplex, rhs: Double) {
         lhs = lhs + rhs
     }
-
-    /// Addition.
+    
+    /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func += (lhs: inout Matrix, rhs: Double) {
-        lhs = lhs + rhs
-    }
-
-    /// Subtraction.
-    /// - Parameters:
-    ///   - lhs: This complex array.
-    ///   - rhs: A complex array.
-    @inlinable
-    public static func -= (lhs: inout Matrix, rhs: Matrix) {
+    public static func -= (lhs: inout MatrixComplex, rhs: MatrixComplex) {
         lhs = lhs - rhs
     }
 
@@ -39,7 +30,7 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func -= (lhs: inout Matrix, rhs: Double) {
+    public static func -= (lhs: inout MatrixComplex, rhs: Double) {
         lhs = lhs - rhs
     }
 
@@ -48,7 +39,7 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
     @inlinable
-    public static func *= (lhs: inout Matrix, rhs: Matrix) {
+    public static func *= (lhs: inout MatrixComplex, rhs: MatrixComplex) {
         lhs = lhs * rhs
     }
     
@@ -57,7 +48,7 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A complex array.
     @inlinable
-    public static func .*= (lhs: inout Matrix, rhs: Matrix) {
+    public static func .*= (lhs: inout MatrixComplex, rhs: MatrixComplex) {
         lhs = lhs .* rhs
     }
 
@@ -66,7 +57,7 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func *= (lhs: inout Matrix, rhs: Double) {
+    public static func *= (lhs: inout MatrixComplex, rhs: Double) {
         lhs = lhs * rhs
     }
     
@@ -75,7 +66,7 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func ./= (lhs: inout Matrix, rhs: Matrix) {
+    public static func ./= (lhs: inout MatrixComplex, rhs: MatrixComplex) {
         lhs = lhs ./ rhs
     }
 
@@ -84,9 +75,8 @@ extension Matrix {
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func /= (lhs: inout Matrix, rhs: Double) {
+    public static func /= (lhs: inout MatrixComplex, rhs: Double) {
         lhs = lhs / rhs
     }
-
 
 }

@@ -71,4 +71,10 @@ extension Complex {
         return Complex(.zero, 1.0)
     }
 
+    /// The imaginary unit (0 + 1j).
+    @inlinable
+    public static var j: Complex {
+        return Complex(.zero, 1.0)
+    }
+    
 }

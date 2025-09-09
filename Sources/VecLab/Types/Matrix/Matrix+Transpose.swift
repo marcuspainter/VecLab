@@ -9,6 +9,6 @@ public extension Matrix {
     
     var T: Matrix {
         let grid = matrixTranspose(self.grid, rows: self.rows, cols: self.cols)
-        return Matrix(grid, rows: self.cols, cols: self.rows)
+        return Matrix(grid, self.cols, self.rows)
     }
 }

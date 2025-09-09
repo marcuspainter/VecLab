@@ -5,14 +5,6 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
-
-//
-//  Vector+Real.swift
-//
-//
-//  Created by Marcus Painter on 11/09/2023.
-//
-
 import Accelerate
 import Foundation
 

@@ -10,6 +10,15 @@
 //
 
 extension Complex {
+    
+    /// Complex division.
+    /// - Parameters:
+    ///   - a: Complex number.
+    ///   - b: Complex number.
+    /// - Returns: The result of the division.
+    public static func / (a: Complex, b: Complex) -> Complex {
+        return complexDivide(a, b)
+    }
 
     /// Complex addition.
     /// - Parameters:
@@ -70,7 +79,7 @@ extension Complex {
     public static func * (a: Double, b: Complex) -> Complex {
         return b * a  // Overloaded
     }
-
+    
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.

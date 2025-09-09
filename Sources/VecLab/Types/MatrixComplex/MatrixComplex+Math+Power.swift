@@ -24,4 +24,16 @@ public extension MatrixComplex {
         let c =  a.grid ** b.grid
         return MatrixComplex(a, grid: c)
     }
+    
+    // MARK: Not implemented
+    
+    @available(*, unavailable, renamed: ".**", message: "Matrices cannot be raised to the power of a matrix. Did you mean .**")
+    static func ** (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
+        return MatrixComplex()
+    }
+    
+    @available(*, unavailable, message: "Double cannot be raised to the power of a matrix")
+    static func ** (_ a: Double, _ b: MatrixComplex) -> MatrixComplex {
+        return MatrixComplex()
+    }
 }

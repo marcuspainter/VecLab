@@ -99,4 +99,5 @@ extension Complex {
     public static func / (a: [Double], b: Complex) -> ComplexArray {
         return vectorDivideRealArrayComplex(a, b)
     }
+    
 }
