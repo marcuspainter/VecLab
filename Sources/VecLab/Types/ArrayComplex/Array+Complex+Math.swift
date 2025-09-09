@@ -1,50 +1,48 @@
 //
-//  Array+Complex+Multiply.swift
+//  Array+Complex+Math.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 07/09/2025.
+//  Created by Marcus Painter on 09/09/2025.
 //
 
-import Accelerate
-import Foundation
-
 extension Array where Element == Complex {
+    
+    public static func + (_ a: [Complex], _ b: [Complex]) -> [Complex] {
+        //return zip(a, b).map { $0 + $1 }
+        return addComplexComplex(a, b)
+    }
+    
+    public static func - (_ a: [Complex], _ b: [Complex]) -> [Complex] {
+        return zip(a, b).map { $0 - $1 }
+    }
 
     public static func * (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 * $1 }
         return multiplyComplexComplex(a, b)
     }
 
-    public static func * (_ a: [Complex], _ b: Double) -> [Complex] {
-        //return a.map { $0 * b }
-        return multiplyComplexReal(a, b)
+    public static func / (_ a: [Complex], _ b: [Complex]) -> [Complex] {
+        return zip(a, b).map { $0 / $1 }
     }
 
-    public static func * (_ a: Double, _ b: [Complex]) -> [Complex] {
-        //return b.map { a * $0 }
-        return multiplyComplexReal(b, a)
-    }
+}
 
-    public static func * (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        //return zip(a, b).map { $0 * $1 }
-        return multiplyComplexRealArray(a, b)
-    }
+func addComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    let count = a.count
 
-    public static func * (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        //return zip(a, b).map { $0 * $1 }
-        return multiplyComplexRealArray(b, a)
+    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
+        a.withUnsafeBufferPointer { ptr1 in
+            b.withUnsafeBufferPointer { ptr2 in
+                for i in 0..<count {
+                    let a = ptr1[i]
+                    let b = ptr2[i]
+                    buffer[i].real = a.real + b.real
+                    buffer[i].imag = a.imag + b.imag
+                }
+                initializedCount = count
+            }
+        }
     }
-
-    public static func * (_ a: [Complex], _ b: Complex) -> [Complex] {
-        //return a.map { $0 * b }
-        return multiplyComplexComplexScalar(a, b)
-    }
-
-    public static func * (_ a: Complex, _ b: [Complex]) -> [Complex] {
-        //return b.map { a * $0 }
-        return multiplyComplexComplexScalar(b, a)
-    }
-
 }
 
 func multiplyComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
@@ -65,22 +63,7 @@ func multiplyComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
     }
 }
 
-func multiplyComplexReal(_ a: [Complex], _ b: Double) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            for i in 0..<count {
-                let a = ptr1[i]
-                buffer[i].real = a.real * b
-                buffer[i].imag = a.imag * b
-            }
-            initializedCount = count
-        }
-    }
-}
-
-func multiplyComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
+func divideComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
     let count = a.count
 
     return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
@@ -89,27 +72,10 @@ func multiplyComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
                 for i in 0..<count {
                     let a = ptr1[i]
                     let b = ptr2[i]
-                    buffer[i].real = a.real * b
-                    buffer[i].imag = a.imag * b
+                    buffer[i] = complexDivide(a, b)
                 }
                 initializedCount = count
             }
-        }
-    }
-}
-
-func multiplyComplexComplexScalar(_ a: [Complex], _ b: Complex) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            for i in 0..<count {
-                let a = ptr1[i]
-                buffer[i].real = a.real * b.real - a.imag * b.imag
-                buffer[i].imag = a.real * b.imag + a.imag * b.real
-            }
-            initializedCount = count
-
         }
     }
 }
