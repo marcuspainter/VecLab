@@ -248,3 +248,31 @@ func XCTAssertEqual(
         line: line
     )
 }
+
+func XCTAssertEqual(
+    _ expression1: [Complex],
+    _ expression2: [Complex],
+    accuracy: Double = Double(epsilon),
+    _ message: @autoclosure () -> String = "",
+    file: StaticString = #filePath,
+    line: UInt = #line
+) {
+    XCTAssertEqual(
+        expression1.count,
+        expression2.count,
+        "Array counts differ: \(expression1.count) vs \(expression2.count). \(message())",
+        file: file,
+        line: line
+    )
+    
+    for (index, (c1, c2)) in zip(expression1, expression2).enumerated() {
+        XCTAssertEqual(
+            c1,
+            c2,
+            accuracy: accuracy,
+            "Mismatch at index \(index): \(c1) vs \(c2). \(message())",
+            file: file,
+            line: line
+        )
+    }
+}

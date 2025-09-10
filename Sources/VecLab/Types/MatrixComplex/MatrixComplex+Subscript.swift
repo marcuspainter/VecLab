@@ -1,12 +1,12 @@
 //
-//  Matrix+Subscript.swift
+//  MatrixComplex+Subscript.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 09/09/2025.
+//  Created by Marcus Painter on 10/09/2025.
 //
 
-extension Matrix {
-    public subscript(i: Int, j: Int) -> Double {
+extension MatrixComplex {
+    public subscript(i: Int, j: Int) -> Complex {
         get {
             return grid[i * cols + j]
         }
@@ -15,6 +15,3 @@ extension Matrix {
         }
     }
 }
-
-
-

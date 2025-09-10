@@ -52,7 +52,7 @@ func addComplexReal(_ a: [Complex], _ b: Double) -> [Complex] {
             for i in 0..<count {
                 let a = ptr1[i]
                 buffer[i].real = a.real + b
-                buffer[i].imag = a.imag + b
+                buffer[i].imag = a.imag
             }
             initializedCount = count
         }

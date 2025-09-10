@@ -54,7 +54,7 @@ func addComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
                     let a = ptr1[i]
                     let b = ptr2[i]
                     buffer[i].real = a.real + b
-                    buffer[i].imag = a.imag + b
+                    buffer[i].imag = a.imag
                 }
                 initializedCount = count
             }

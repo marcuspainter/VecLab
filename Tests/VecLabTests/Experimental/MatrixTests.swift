@@ -79,7 +79,7 @@ final class MatrixTests: XCTestCase {
         
         // MARK: Complex
         
-        var complex = Complex(1,2)
+        var complex = Complex(1,2) // (real, imag)
         complex = complex + complex
         complex = complex - complex
         complex = complex * complex
@@ -234,5 +234,206 @@ final class MatrixTests: XCTestCase {
         matrixComplex = matrixComplex / complex
         matrixComplex = complex / matrixComplex
     }
+    
+    func test3() {
+        let double = 2.0
+        
+        // MARK: [Double]
+        
+        let n = 5
+        var arrayDouble: [Double] = [1,2,3,4,5]
+        arrayDouble = arrayDouble + arrayDouble
+        arrayDouble = arrayDouble - arrayDouble
+        arrayDouble = arrayDouble * arrayDouble
+        arrayDouble = arrayDouble / arrayDouble
+        arrayDouble += arrayDouble
+        arrayDouble -= arrayDouble
+        arrayDouble *= arrayDouble
+        arrayDouble /= arrayDouble
+        
+        // Double
+        arrayDouble = arrayDouble + double
+        arrayDouble = double + arrayDouble
+        arrayDouble = arrayDouble - double
+        arrayDouble = double - arrayDouble
+        arrayDouble = arrayDouble * double
+        arrayDouble = double * arrayDouble
+        arrayDouble = arrayDouble / double
+        arrayDouble = double / arrayDouble
+        
+        arrayDouble += double
+        arrayDouble -= double
+        arrayDouble *= double
+        arrayDouble /= double
+        
+        // MARK: Complex
+        
+        var complex = Complex(1,2) // (real, imag)
+        complex = complex + complex
+        complex = complex - complex
+        complex = complex * complex
+        complex = complex / complex
+        complex += complex
+        complex -= complex
+        complex *= complex
+        complex /= complex
+        
+        complex = complex + double
+        complex = double + complex
+        complex = complex - double
+        complex = double - complex
+        complex = complex * double
+        complex = double * complex
+        complex = complex / double
+        complex = double / complex
+        
+        complex += double
+        complex -= double
+        complex *= double
+        complex /= double
+        
+        //complex = complex + arrayDouble
+        //complex = arrayDouble + complex
+        //complex = complex - arrayDouble
+        //complex = arrayDouble - complex
+        //complex = complex * arrayDouble
+        //complex = arrayDouble * complex
+        //complex = complex / arrayDouble
+        //complex = arrayDouble / complex
+        
+        
+        // Not valid
+        // complex += arrayDouble
+        //complex -= arrayDouble
+        // complex *= arrayDouble
+        //complex /= arrayDouble
+        
+        // MARK: [Complex]
+        
+        var arrayComplex: [Complex] = [1.0+2.i, 3.0+4.i, 5.0+6.i, 7.0+8.i, 9.0+10.i] // Expand
+        arrayComplex = arrayComplex + arrayComplex
+        arrayComplex = arrayComplex - arrayComplex
+        arrayComplex = arrayComplex * arrayComplex
+        arrayComplex = arrayComplex / arrayComplex
+        arrayComplex += arrayComplex
+        arrayComplex -= arrayComplex
+        arrayComplex *= arrayComplex
+        arrayComplex /= arrayComplex
+        
+        arrayComplex = arrayComplex + arrayComplex
+        arrayComplex = arrayComplex - arrayComplex
+        arrayComplex = arrayComplex * arrayComplex
+        arrayComplex = arrayComplex / arrayComplex
+        arrayComplex += arrayComplex
+        arrayComplex -= arrayComplex
+        arrayComplex *= arrayComplex
+        arrayComplex /= arrayComplex
+        
+        // Double
+        arrayComplex = arrayComplex + double
+        arrayComplex = double + arrayComplex
+        arrayComplex = arrayComplex - double
+        arrayComplex = double - arrayComplex
+        arrayComplex = arrayComplex * double
+        arrayComplex = double * arrayComplex
+        arrayComplex = arrayComplex / double
+        arrayComplex = double / arrayComplex
+        
+        // [Double]
+        arrayComplex = arrayComplex + arrayDouble
+        arrayComplex = arrayDouble + arrayComplex
+        arrayComplex = arrayComplex - arrayDouble
+        arrayComplex = arrayDouble - arrayComplex
+        arrayComplex = arrayComplex * arrayDouble
+        arrayComplex = arrayDouble * arrayComplex
+        arrayComplex = arrayComplex / arrayDouble
+        arrayComplex = arrayDouble / arrayComplex
+        
+        // MARK: Matrix
+        
+        // Row-major
+        let gridDouble = cat(arrayDouble, arrayDouble, arrayDouble, arrayDouble, arrayDouble)
+        
+        var matrix = Matrix(gridDouble, 5,5)
+        matrix = matrix + matrix
+        matrix = matrix - matrix
+        matrix = matrix * matrix
+        matrix = matrix .* matrix
+        //matrix = matrix / matrix
+        matrix = matrix ./ matrix
+        
+        matrix += matrix
+        matrix -= matrix
+        matrix *= matrix
+        // matrix /= matrix
+        
+        matrix = matrix + double
+        matrix = double + matrix
+        matrix = matrix - double
+        matrix = double - matrix
+        matrix = matrix * double
+        matrix = double * matrix
+        matrix = matrix / double
+        matrix = double / matrix
+        
+        matrix += double
+        matrix -= double
+        matrix *= double
+        
+        // [Double] is not valid
+        //matrix = matrix + arrayDouble
+        //matrix = arrayDouble + matrix
+        //matrix = matrix - arrayDouble
+        //matrix = arrayDouble - matrix
+        //matrix = matrix * arrayDouble
+        //matrix = arrayDouble * matrix
+        //matrix = matrix / arrayDouble
+        //matrix = arrayDouble / matrix
+        
+        // Row-major
+        var gridComplex: [Complex] = []
+        gridComplex.append(contentsOf: arrayComplex)
+        gridComplex.append(contentsOf: arrayComplex)
+        gridComplex.append(contentsOf: arrayComplex)
+        gridComplex.append(contentsOf: arrayComplex)
+        gridComplex.append(contentsOf: arrayComplex)
+        
+        var matrixComplex = MatrixComplex(gridComplex,5,5)
+
+        matrixComplex = matrixComplex + matrixComplex
+        matrixComplex = matrixComplex - matrixComplex
+        matrixComplex = matrixComplex * matrixComplex
+        matrixComplex = matrixComplex .* matrixComplex
+        //matrixComplex = matrixComplex / matrixComplex
+        matrixComplex = matrixComplex ./ matrixComplex
+        
+        matrixComplex += matrixComplex
+        matrixComplex -= matrixComplex
+        matrixComplex *= matrixComplex
+        matrixComplex .*= matrixComplex
+        //matrixComplex /= matrixComplex
+        matrixComplex ./= matrixComplex
+        
+        //  Double
+        matrixComplex = matrixComplex + double
+        matrixComplex = double + matrixComplex
+        matrixComplex = matrixComplex - double
+        matrixComplex = double - matrixComplex
+        matrixComplex = matrixComplex * double
+        matrixComplex = double * matrixComplex
+        matrixComplex = matrixComplex / double
+        matrixComplex = double / matrixComplex
+        
+        //  Complex
+        matrixComplex = matrixComplex + complex
+        matrixComplex = complex + matrixComplex
+        matrixComplex = matrixComplex - complex
+        matrixComplex = complex - matrixComplex
+        matrixComplex = matrixComplex * complex
+        matrixComplex = complex * matrixComplex
+        matrixComplex = matrixComplex / complex
+        matrixComplex = complex / matrixComplex
+    }
+    
     
 }

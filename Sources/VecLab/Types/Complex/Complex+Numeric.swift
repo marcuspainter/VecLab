@@ -14,6 +14,8 @@ extension Complex: Numeric, AdditiveArithmetic {
     /// - Returns: The result of the multiplication.
     @inlinable
     public static func * (a: Complex, b: Complex) -> Complex {
+        
+        //return complexMultiply(a, b)
         return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
 

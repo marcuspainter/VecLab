@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 25/04/2025.
 //
 
-import VecLab  // Replace with your actual module name
+import VecLab
 import XCTest
 
 final class ComplexArrayEnumeratedTests: XCTestCase {
