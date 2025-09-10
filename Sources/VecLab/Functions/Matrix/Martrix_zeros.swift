@@ -15,3 +15,15 @@ public func ones(_ rows: Int, _ cols: Int) -> Matrix
     let grid = [Double](repeating: 1.0, count: rows * cols)
     return Matrix(grid, rows, cols)
 }
+
+public func rand(_ rows: Int, _ cols: Int) -> Matrix
+{
+    let grid = rand(count: cols * rows)
+    return Matrix(grid, rows, cols)
+}
+
+public func randn(_ rows: Int, _ cols: Int) -> Matrix
+{
+    let grid = randn(count: cols * rows)
+    return Matrix(grid, rows, cols)
+}

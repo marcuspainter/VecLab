@@ -12,9 +12,7 @@ public struct MatrixComplex {
     public var grid: [Complex] = []
 
     public init(_ grid: [Complex], _ rows: Int, _ cols: Int) {
-        if grid.isEmpty {
-            return
-        }
+        precondition(rows * cols == grid.count, "Wrong size for grid")
         self.rows = rows
         self.cols = cols
         self.grid = grid

@@ -416,4 +416,29 @@ class OperatorOverloadTests: XCTestCase {
             let _ = largeArray + anotherLargeArray
         }
     }
+    
+    func testUnary() {
+        let arrayDouble:[Double] = [1,2,3,4,5]
+        var a = -arrayDouble
+        
+        let arrayComplex:[Complex] = [1,2,3,4,5]
+        var b = -arrayComplex
+        
+        print(b)
+        
+        let matrix =  Matrix([1.0,2.0,3.0
+                              ,4.0,5.0,6.0], 2,3)
+        var c = -matrix
+        print(c.grid)
+        
+        let grid: [Complex] = [
+            Complex(1.0, 1.0),
+            Complex(2.0, 1.0),
+            Complex(3.0, 2.0),
+            Complex(1.0, 1.0)
+        ]
+        var matrixComplex = MatrixComplex(grid, 2, 2)
+        var d = -matrixComplex
+        print(d.grid)
+    }
 }
