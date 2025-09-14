@@ -11,6 +11,6 @@ infix operator .**  : PowerPrecedence
 infix operator .*   : MultiplicationPrecedence
 infix operator ./   : MultiplicationPrecedence
 
-infix operator .**= : PowerPrecedence
-infix operator .*=  : MultiplicationPrecedence
-infix operator ./=  : MultiplicationPrecedence
+infix operator .**= : AssignmentPrecedence
+infix operator .*=  : AssignmentPrecedence
+infix operator ./=  : AssignmentPrecedence
