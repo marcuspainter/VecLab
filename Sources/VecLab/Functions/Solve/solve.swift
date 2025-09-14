@@ -60,7 +60,7 @@ public func solve(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArra
     return X_row
 }
 
-fileprivate func rowToColMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
+func rowToColMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
     precondition(input.count == rows * cols, "Invalid dimensions")
 
     var output = Array(repeating: 0.0, count: input.count)
@@ -77,7 +77,7 @@ fileprivate func rowToColMajorX(_ input: [Double], rows: Int, cols: Int) -> [Dou
 }
 
 // Row and columns are row-major dimensions
-fileprivate func colToRowMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
+func colToRowMajorX(_ input: [Double], rows: Int, cols: Int) -> [Double] {
     precondition(input.count == rows * cols, "Invalid dimensions")
 
     var output = Array(repeating: 0.0, count: input.count)

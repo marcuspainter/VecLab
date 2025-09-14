@@ -1,36 +1,50 @@
 //
-//  Matrix+Math+Divide.swift
+//  Matrix+Math.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 08/09/2025.
+//  Created by Marcus Painter on 14/09/2025.
 //
 
 import Accelerate
 
-public extension Matrix {
-    
+extension Matrix {
+
+    public static func + (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateSize(a, b)
+        let c = a.grid + b.grid
+        return Matrix(a, grid: c)
+    }
+
+    public static func - (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateSize(a, b)
+        let c = a.grid - b.grid
+        return Matrix(a, grid: c)
+    }
+
+    public static func * (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateCompatible(a, b)
+        let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
+        return Matrix(c, a.rows, b.cols)
+    }
+
+    public static func .* (_ a: Matrix, _ b: Matrix) -> Matrix {
+        validateSize(a, b)
+        let c = a.grid * b.grid
+        return Matrix(a, grid: c)
+    }
+
     @available(*, unavailable, message: "Use ./")
-    static func / (_ a: Matrix, _ b: Matrix) -> Matrix {
+    public static func / (_ a: Matrix, _ b: Matrix) -> Matrix {
         return Matrix()
     }
-    
+
     // Element-wise
-    static func ./ (_ a: Matrix, _ b: Matrix) -> Matrix {
+    public static func ./ (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.grid / b.grid
         return Matrix(a, grid: c)
     }
-    
-    static func / (_ a: Matrix, _ b: Double) -> Matrix {
-        let c = a.grid / b
-        return Matrix(a, grid: c)
-    }
-    
-    static func / (_ a: Double, _ b: Matrix) -> Matrix {
-        let c = a / b.grid
-        return Matrix(b, grid: c)
-    }
-    
+
 }
 
 func matrixDivide(_ a: [Double], _ b: [Double], m: Int, k: Int, n: Int) -> [Double] {

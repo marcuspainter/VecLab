@@ -7,14 +7,11 @@
 
 import Foundation
 
-/// Type alias for `Double`
+/// Type alias for `Double`.
 public typealias Real = Double
 
-/// Type alias for an array of real numbers
+/// Type alias for an array of `Real`.
 public typealias RealArray = [Real]
 
-/// Type alias for a complex number
-//public typealias Complex = ComplexDouble
-
-/// Type alias for a complex array
-//public typealias SplitComplexArray = ComplexDoubleArray
+/// Type alias for an array of `Complex`.
+public typealias ComplexArray = [Complex]
