@@ -12,9 +12,9 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Parameter length: Zero-padded length (optional).
 /// - Returns: Real array result.
-public func ifftr(_ x: ComplexArray, length: Int? = nil) -> RealArray {
+public func ifftr(_ x: SplitComplexArray, length: Int? = nil) -> RealArray {
     validateSize(x)
-    var input: ComplexArray
+    var input: SplitComplexArray
     if let length {
         input = paddata(x, length: length)
     } else {

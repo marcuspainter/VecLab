@@ -112,9 +112,9 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+public func pow(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     validateSize(a, b)
-    var c: ComplexArray = a
+    var c: SplitComplexArray = a
     for k in 0 ..< a.count {
         c[k] = pow(a[k], b[k])
     }
@@ -126,9 +126,9 @@ public func pow(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
+public func pow(_ a: RealArray, _ b: SplitComplexArray) -> SplitComplexArray {
     validateSize(a, b)
-    var c: ComplexArray = b
+    var c: SplitComplexArray = b
     for k in 0 ..< b.count {
         c[k] = pow(a[k], b[k])
     }
@@ -140,8 +140,8 @@ public func pow(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
 ///   - a: Real array.
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
-    var c: ComplexArray = ComplexArray(count: a.count)
+public func pow(_ a: RealArray, _ b: Complex) -> SplitComplexArray {
+    var c: SplitComplexArray = SplitComplexArray(count: a.count)
     for k in 0 ..< a.count {
         c[k] = pow(a[k], b)
     }
@@ -153,8 +153,8 @@ public func pow(_ a: RealArray, _ b: Complex) -> ComplexArray {
 ///   - a: Complex number.
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
-    var c: ComplexArray = ComplexArray(count: b.count)
+public func pow(_ a: Complex, _ b: RealArray) -> SplitComplexArray {
+    var c: SplitComplexArray = SplitComplexArray(count: b.count)
     for k in 0 ..< b.count {
         c[k] = pow(a, b[k])
     }
@@ -166,9 +166,9 @@ public func pow(_ a: Complex, _ b: RealArray) -> ComplexArray {
 ///   - a: Complex array.
 ///   - b: Real number.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
+public func pow(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
     validateSize(a)
-    var c: ComplexArray = ComplexArray(count: a.count)
+    var c: SplitComplexArray = SplitComplexArray(count: a.count)
     for k in 0 ..< a.count {
         c[k] = pow(a[k], b)
     }
@@ -180,9 +180,9 @@ public func pow(_ a: ComplexArray, _ b: Real) -> ComplexArray {
 ///   - a: Real number.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b`
-public func pow(_ a: Real, _ b: ComplexArray) -> ComplexArray {
+public func pow(_ a: Real, _ b: SplitComplexArray) -> SplitComplexArray {
     validateSize(b)
-    var c: ComplexArray = ComplexArray(count: b.count)
+    var c: SplitComplexArray = SplitComplexArray(count: b.count)
     for k in 0 ..< b.count {
         c[k] = pow(a, b[k])
     }
@@ -215,9 +215,9 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: Raises `a` to the power of `b
-public func pow(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+public func pow(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     validateSize(a, b)
-    var c: ComplexArray = ComplexArray(count: a.count)
+    var c: SplitComplexArray = SplitComplexArray(count: a.count)
     for k in 0 ..< a.count {
         c[k] = pow(a[k], b[k])
     }

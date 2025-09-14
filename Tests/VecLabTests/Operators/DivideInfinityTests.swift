@@ -239,18 +239,18 @@ class DivideInfinityTests: XCTestCase {
 
     func testInfinityArray1() {
         let a: RealArray = [Real.infinity]
-        let b: ComplexArray = ([0.0], [Real.infinity])
-        let result: ComplexArray = a / b
-        let expected: ComplexArray = ([0.0], [-Real.infinity])
+        let b: SplitComplexArray = ([0.0], [Real.infinity])
+        let result: SplitComplexArray = a / b
+        let expected: SplitComplexArray = ([0.0], [-Real.infinity])
         print(result)
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
     func testInfinityArray2() {
-        let a: ComplexArray = ([Real.infinity], [0.0])
-        let b: ComplexArray = ([0.0], [Real.infinity])
-        let result: ComplexArray = a / b
-        let expected: ComplexArray = ([0.0], [-Real.infinity])
+        let a: SplitComplexArray = ([Real.infinity], [0.0])
+        let b: SplitComplexArray = ([0.0], [Real.infinity])
+        let result: SplitComplexArray = a / b
+        let expected: SplitComplexArray = ([0.0], [-Real.infinity])
         print(result)
         XCTAssertEqual(result, expected, "Divide failed")
         XCTAssertEqual(result.0[0].isNaN, false, "Divide failed")
@@ -258,11 +258,11 @@ class DivideInfinityTests: XCTestCase {
     }
 
     func testInfinityVector() {
-        let a: ComplexArray = ([Real.infinity], [0.0])
-        let b: ComplexArray = ([0.0], [Real.infinity])
+        let a: SplitComplexArray = ([Real.infinity], [0.0])
+        let b: SplitComplexArray = ([0.0], [Real.infinity])
         let result = a / b
 
-        let expected: ComplexArray = ([0.0], [-Real.infinity])
+        let expected: SplitComplexArray = ([0.0], [-Real.infinity])
         XCTAssertEqual(result, expected, "Divide failed")
         XCTAssertEqual(result.0[0].isNaN, false, "Divide failed")
         XCTAssertEqual(result.1[0].isNaN, false, "Divide failed")

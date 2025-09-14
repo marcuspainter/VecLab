@@ -81,7 +81,7 @@ func divideComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
 }
 
 // SIMD-optimized function to multiply two complex arrays element-wise
-func multiplyComplexArraysSIMD(_ a: [Complex], _ b: [Complex]) -> [Complex]? {
+func multiplySplitComplexArraysSIMD(_ a: [Complex], _ b: [Complex]) -> [Complex]? {
     let count = a.count
     guard count == b.count else {
         return nil

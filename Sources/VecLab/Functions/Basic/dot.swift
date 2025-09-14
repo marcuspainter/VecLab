@@ -27,7 +27,7 @@ public func dot(_ a: RealArray, _ b: RealArray) -> Real {
 ///   - a: Complex array.
 ///   - b: Complex array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
+public func dot(_ a: SplitComplexArray, _ b: SplitComplexArray) -> Complex {
     validateSize(a, b)
     let c = a *~ b
     let dotSum = sum(c)
@@ -44,7 +44,7 @@ public func dot(_ a: ComplexArray, _ b: ComplexArray) -> Complex {
 ///   - a: Real array.
 ///   - b: Complex array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
+public func dot(_ a: RealArray, _ b: SplitComplexArray) -> Complex {
     validateSize(a, b)
     let c = a * b
     let dotSum = sum(c)
@@ -61,7 +61,7 @@ public func dot(_ a: RealArray, _ b: ComplexArray) -> Complex {
 ///   - a: Complex array.
 ///   - b: Real array.
 /// - Returns: The complex dot product of a and b.
-public func dot(_ a: ComplexArray, _ b: RealArray) -> Complex {
+public func dot(_ a: SplitComplexArray, _ b: RealArray) -> Complex {
     validateSize(a, b)
     let c = a ~* b
     let dotSum = sum(c)

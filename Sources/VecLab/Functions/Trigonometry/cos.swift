@@ -25,7 +25,7 @@ public func cos(_ x: Complex) -> Complex {
 /// Cosine of a complex array in radians.
 /// - Parameter x: Angle in radians.
 /// - Returns: The cosine of the angles.
-public func cos(_ x: ComplexArray) -> ComplexArray {
+public func cos(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let coshx = vForce.cosh(x.imag)
     let sinhx = vForce.sinh(x.imag)
@@ -34,5 +34,5 @@ public func cos(_ x: ComplexArray) -> ComplexArray {
     sinx = vDSP.negative(sinx)
     let real = vDSP.multiply(cosx, coshx)  //  cosx0 * coshx1
     let imag = vDSP.multiply(sinx, sinhx)  // -sinx0 * sinhx1
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }

@@ -6,7 +6,7 @@ Complex functions.
 
 ### Magnitude and Angle
 - ``abs(_:)->Real``
-- ``abs(_:)-(ComplexArray)``
+- ``abs(_:)-(SplitComplexArray)``
 - ``angle(_:)->Real``
 - ``angle(_:)->RealArray``
 
@@ -18,7 +18,7 @@ Complex functions.
 
 ### Conjugate
 - ``conj(_:)->Complex``
-- ``conj(_:)->ComplexArray``
+- ``conj(_:)->SplitComplexArray``
 
 ### Phase
 - ``unwrap(_:tol:)``

@@ -20,7 +20,7 @@ public func fill(_ c: RealArray, _ a: Real) {
 /// - Parameters:
 ///   - c: Array.
 ///   - a: Value.
-public func fill(_ c: ComplexArray, _ a: Complex) {
+public func fill(_ c: SplitComplexArray, _ a: Complex) {
     validateSize(c)
-    fillComplexArray(c, a)
+    fillSplitComplexArray(c, a)
 }

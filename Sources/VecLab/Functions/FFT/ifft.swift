@@ -12,9 +12,9 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Parameter length:Zero-padded length (optional).
 /// - Returns: Complex array result.
-public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
+public func ifft(_ x: SplitComplexArray, length: Int? = nil) -> SplitComplexArray {
     validateSize(x)
-    var input: ComplexArray
+    var input: SplitComplexArray
     if let length {
         input = paddata(x, length: length)
     } else {
@@ -31,7 +31,7 @@ public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
         )
     else {
         print("ifft error")
-        return ComplexArray(
+        return SplitComplexArray(
             [Real](repeating: Real.nan, count: input.count),
             [Real](repeating: Real.nan, count: input.count)
         )
@@ -41,11 +41,11 @@ public func ifft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
     splitComplexOutput.real = vDSP.divide(splitComplexOutput.real, Real(input.count))
     splitComplexOutput.imaginary = vDSP.divide(splitComplexOutput.imaginary, Real(input.count))
 
-    return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
+    return SplitComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "ifftr", message: "Use ifftr for Real arrays")
-public func ifft(_ x: ComplexArray, length: Int? = nil) -> RealArray {
+public func ifft(_ x: SplitComplexArray, length: Int? = nil) -> RealArray {
     return []
 }
 

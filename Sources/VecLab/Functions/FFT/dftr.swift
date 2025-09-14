@@ -11,13 +11,13 @@ import Foundation
 /// DFT of real array.
 /// - Parameter x: Real array.
 /// - Returns: Complex array result.
-public func dftr(_ x: RealArray) -> ComplexArray {
+public func dftr(_ x: RealArray) -> SplitComplexArray {
     let n = length(x)
     if n == 1 {
-        return ComplexArray(x, [Real(0)])
+        return SplitComplexArray(x, [Real(0)])
     }
 
-    var y = ComplexArray(count: x.count)
+    var y = SplitComplexArray(count: x.count)
     let k = vector(0..<n)
     let omega = -2 * Real.pi * Real.i * k / Real(n)
     for i in 0..<x.count {

@@ -29,10 +29,10 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "acos failed")
     }
 
-    func testAcosComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
-        let result: ComplexArray = acos(complexArrayX)
-        let expected: ComplexArray = ComplexArray(
+    func testAcosSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
+        let result: SplitComplexArray = acos(SplitComplexArrayX)
+        let expected: SplitComplexArray = SplitComplexArray(
             [0.904556894302381, 0.816547182096851],
             [-1.061275061905036, -1.734324521487967]
         )
@@ -55,21 +55,21 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
     }
 
-    func testAsinComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
-        let save = ComplexArray(complexArrayX)
-        let result: ComplexArray = asin(complexArrayX)
+    func testAsinSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
+        let save = SplitComplexArray(SplitComplexArrayX)
+        let result: SplitComplexArray = asin(SplitComplexArrayX)
 
-        XCTAssertEqual(save, complexArrayX, "Oops!")
+        XCTAssertEqual(save, SplitComplexArrayX, "Oops!")
 
-        let expected: ComplexArray = ComplexArray(
+        let expected: SplitComplexArray = SplitComplexArray(
             [666.239432492515e-003, 754.249144698046e-003],
             [1.06127506190504e+000, 1.73432452148797e+000]
         )
         XCTAssertEqual(result, expected, accuracy: accuracy, "asin failed")
 
         /*
-                let x = complexArrayX
+                let x = SplitComplexArrayX
                 let z = -Real.i * log(Real.i * x + sqrt(1.0 - x * x))
                 disp(z)
                 let t1 = x * x
@@ -97,10 +97,10 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "atan failed")
     }
 
-    func testAtanComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
-        let result: ComplexArray = atan(complexArrayX)
-        let expected: ComplexArray = ComplexArray(
+    func testAtanSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
+        let result: SplitComplexArray = atan(SplitComplexArrayX)
+        let expected: SplitComplexArray = SplitComplexArray(
             [1.017221967897851, 1.311223269671635],
             [0.402359478108525, 0.238877861256859]
         )
@@ -174,10 +174,10 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "cos failed")
     }
 
-    func testCosComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [3.0, 4.0])
-        let result: ComplexArray = cos(complexArrayX)
-        let expected: ComplexArray = ComplexArray(
+    func testCosSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [3.0, 4.0])
+        let result: SplitComplexArray = cos(SplitComplexArrayX)
+        let expected: SplitComplexArray = SplitComplexArray(
             [5.439580991019764, -11.364234706401060],
             [-8.429751080849945, -24.814651485634183]
         )
@@ -200,10 +200,10 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "sin failed")
     }
 
-    func testSinComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [3.0, 4.0])
-        let result: ComplexArray = sin(complexArrayX)
-        let expected: ComplexArray = ComplexArray(
+    func testSinSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [3.0, 4.0])
+        let result: SplitComplexArray = sin(SplitComplexArrayX)
+        let expected: SplitComplexArray = SplitComplexArray(
             [8.471645454300148, 24.831305848946378],
             [5.412680923178193, -11.356612711218173]
         )
@@ -226,10 +226,10 @@ class TrigonometryTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "tan failed")
     }
 
-    func testTanComplexArray() throws {
-        let complexArrayX: ComplexArray = ComplexArray([1.0, 2.0], [3.0, 4.0])
-        let result: ComplexArray = tan(complexArrayX)
-        let expected: ComplexArray = ComplexArray(
+    func testTanSplitComplexArray() throws {
+        let SplitComplexArrayX: SplitComplexArray = SplitComplexArray([1.0, 2.0], [3.0, 4.0])
+        let result: SplitComplexArray = tan(SplitComplexArrayX)
+        let expected: SplitComplexArray = SplitComplexArray(
             [0.004517137276658, -0.000507980623470],
             [1.002054988245812, 1.000438513202052]
         )

@@ -17,4 +17,4 @@ public typealias RealArray = [Real]
 //public typealias Complex = ComplexDouble
 
 /// Type alias for a complex array
-//public typealias ComplexArray = ComplexDoubleArray
+//public typealias SplitComplexArray = ComplexDoubleArray

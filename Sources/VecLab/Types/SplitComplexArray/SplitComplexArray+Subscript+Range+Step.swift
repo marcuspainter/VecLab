@@ -1,5 +1,5 @@
 //
-//  ComplexArray+Subscript+Range+Step.swift
+//  SplitComplexArray+Subscript+Range+Step.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/04/2025.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// Extension to provide stepping functionality for ComplexArray
-extension ComplexArray {
+// Extension to provide stepping functionality for SplitComplexArray
+extension SplitComplexArray {
 
     // Helper method to verify that real and imag arrays have the same size
     private func verifySizes() {
@@ -20,13 +20,13 @@ extension ComplexArray {
     ///   - range: The range of indices to access
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    public subscript(range: ClosedRange<Int>, step: Int) -> ComplexArray {
+    public subscript(range: ClosedRange<Int>, step: Int) -> SplitComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
             verifySizes()
 
-            var result = ComplexArray()
+            var result = SplitComplexArray()
 
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, through: range.upperBound, by: step))
@@ -53,13 +53,13 @@ extension ComplexArray {
     ///   - range: The range of indices to access
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    public subscript(range: Range<Int>, step: Int) -> ComplexArray {
+    public subscript(range: Range<Int>, step: Int) -> SplitComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
             verifySizes()
 
-            var result = ComplexArray()
+            var result = SplitComplexArray()
 
             if step > 0 {
                 let indices = [Int](stride(from: range.lowerBound, to: range.upperBound, by: step))
@@ -87,7 +87,7 @@ extension ComplexArray {
     ///   - range: The range of indices to access (from lowerBound to the end)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeFrom<Int>, step: Int) -> ComplexArray {
+    subscript(range: PartialRangeFrom<Int>, step: Int) -> SplitComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
@@ -111,7 +111,7 @@ extension ComplexArray {
     ///   - range: The range of indices to access (from start through upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeThrough<Int>, step: Int) -> ComplexArray {
+    subscript(range: PartialRangeThrough<Int>, step: Int) -> SplitComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
@@ -130,7 +130,7 @@ extension ComplexArray {
     ///   - range: The range of indices to access (from start up to upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     /// - Returns: A new complex array with the stepped values
-    subscript(range: PartialRangeUpTo<Int>, step: Int) -> ComplexArray {
+    subscript(range: PartialRangeUpTo<Int>, step: Int) -> SplitComplexArray {
         get {
             precondition(step != 0, "Step cannot be zero")
             precondition(range.upperBound >= 0, "Upper bound must be non-negative")
@@ -145,7 +145,7 @@ extension ComplexArray {
                 if range.upperBound > 0 {
                     return self[0...range.upperBound - 1, step]
                 } else {
-                    return ComplexArray()
+                    return SplitComplexArray()
                 }
             }
         }
@@ -159,7 +159,7 @@ extension ComplexArray {
     ///   - range: The range of indices to set
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: ComplexArray) {
+    mutating func setValues(in range: ClosedRange<Int>, step: Int, to newValues: SplitComplexArray) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound < count, "Range out of bounds")
         verifySizes()
@@ -191,7 +191,7 @@ extension ComplexArray {
     ///   - range: The range of indices to set
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: Range<Int>, step: Int, to newValues: ComplexArray) {
+    mutating func setValues(in range: Range<Int>, step: Int, to newValues: SplitComplexArray) {
         precondition(step != 0, "Step cannot be zero")
         precondition(range.lowerBound >= 0 && range.upperBound <= count, "Range out of bounds")
         verifySizes()
@@ -226,7 +226,7 @@ extension ComplexArray {
     ///   - range: The range of indices to set (from lowerBound to the end)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: ComplexArray) {
+    mutating func setValues(in range: PartialRangeFrom<Int>, step: Int, to newValues: SplitComplexArray) {
         precondition(range.lowerBound >= 0, "Lower bound must be non-negative")
         precondition(range.lowerBound < count, "Lower bound out of range")
         verifySizes()
@@ -244,7 +244,7 @@ extension ComplexArray {
     ///   - range: The range of indices to set (from start through upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: ComplexArray) {
+    mutating func setValues(in range: PartialRangeThrough<Int>, step: Int, to newValues: SplitComplexArray) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound < count, "Upper bound out of range")
         verifySizes()
@@ -258,7 +258,7 @@ extension ComplexArray {
     ///   - range: The range of indices to set (from start up to upperBound)
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
     ///   - newValues: The new values to set
-    mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: ComplexArray) {
+    mutating func setValues(in range: PartialRangeUpTo<Int>, step: Int, to newValues: SplitComplexArray) {
         precondition(range.upperBound >= 0, "Upper bound must be non-negative")
         precondition(range.upperBound <= count, "Upper bound out of range")
         verifySizes()
@@ -279,7 +279,7 @@ extension ComplexArray {
 
 // Example usage:
 /*
-var array = ComplexArray([
+var array = SplitComplexArray([
     Complex(0, 0),
     Complex(1, 1),
     Complex(2, 2),
@@ -299,7 +299,7 @@ let everySecond = array[0...8, 2]  // [0+0i, 2+2i, 4+4i, 6+6i, 8+8i]
 let reversed = array[9...0, -1]  // [9+9i, 8+8i, 7+7i, 6+6i, 5+5i, 4+4i, 3+3i, 2+2i, 1+1i, 0+0i]
 
 // Set every third element
-array.setValues(in: 0...9, step: 3, to: ComplexArray([
+array.setValues(in: 0...9, step: 3, to: SplitComplexArray([
     Complex(10, 10),
     Complex(20, 20),
     Complex(30, 30),
@@ -308,7 +308,7 @@ array.setValues(in: 0...9, step: 3, to: ComplexArray([
 // array becomes [10+10i, 1+1i, 2+2i, 20+20i, 4+4i, 5+5i, 30+30i, 7+7i, 8+8i, 40+40i]
 
 // This will print an error and not modify the array
-array.setValues(in: 0...9, step: 2, to: ComplexArray([
+array.setValues(in: 0...9, step: 2, to: SplitComplexArray([
     Complex(1, 1),
     Complex(2, 2),
     Complex(3, 3)

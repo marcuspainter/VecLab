@@ -8,7 +8,7 @@
 /// Returns a complex array from angles by Euler
 /// - Parameter x: Angles in radians
 /// - Returns: Complex array of (cos(x),  sin(x)) equivalent to exp(j \* x) by Euler's formula.
-public func expj(_ x: RealArray) -> ComplexArray {
+public func expj(_ x: RealArray) -> SplitComplexArray {
     return expi(x)
 }
 

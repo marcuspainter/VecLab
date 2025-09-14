@@ -24,12 +24,12 @@ public func sin(_ x: Complex) -> Complex {
 /// Sine of complex array in radians.
 /// - Parameter x: Angle in radians.
 /// - Returns: The sine of the angles.
-public func sin(_ x: ComplexArray) -> ComplexArray {
+public func sin(_ x: SplitComplexArray) -> SplitComplexArray {
     let coshx = vForce.cosh(x.imag)
     let sinhx = vForce.sinh(x.imag)
     let sinx = vForce.sin(x.real)
     let cosx = vForce.cos(x.real)
     let real = vDSP.multiply(sinx, coshx)  // sinx0 * coshx1
     let imag = vDSP.multiply(cosx, sinhx)  // cosx0 * sinhx1
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }

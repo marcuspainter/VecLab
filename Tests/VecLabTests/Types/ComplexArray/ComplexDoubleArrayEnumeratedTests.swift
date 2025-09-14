@@ -8,10 +8,10 @@
 import VecLab
 import XCTest
 
-final class ComplexArrayEnumeratedTests: XCTestCase {
+final class SplitComplexArrayEnumeratedTests: XCTestCase {
 
     func testEnumerated() throws {
-        let a = ComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let a = SplitComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
         let b = a.enumerated()
         print(type(of: b))
 
@@ -21,7 +21,7 @@ final class ComplexArrayEnumeratedTests: XCTestCase {
     }
 
     func testReduce() throws {
-        let a = ComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let a = SplitComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
         let sum = a.reduce(0, +)
         let expected = Complex(15, 15)
 
@@ -29,8 +29,8 @@ final class ComplexArrayEnumeratedTests: XCTestCase {
     }
 
     func testFilter() throws {
-        let a = ComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
-        let expected = ComplexArray([3, 4, 5], [3, 4, 5])
+        let a = SplitComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let expected = SplitComplexArray([3, 4, 5], [3, 4, 5])
 
         let b = a.filter { $0.real > 2 }
         print(b)
@@ -38,13 +38,13 @@ final class ComplexArrayEnumeratedTests: XCTestCase {
     }
 
     func testForEach() throws {
-        let a = ComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let a = SplitComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
         a.forEach { print($0) }
     }
 
     func testZipForEach() throws {
-        let a = ComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
-        let b = ComplexArray([6, 7, 8, 9, 10], [6, 7, 8, 9, 10])
+        let a = SplitComplexArray([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        let b = SplitComplexArray([6, 7, 8, 9, 10], [6, 7, 8, 9, 10])
 
         a.zipForEach(b) { print($0, $1) }
     }

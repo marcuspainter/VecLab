@@ -46,8 +46,8 @@ public func repelem(_ x: RealArray, _ n: Int) -> RealArray {
 ///   - x:A complex number.
 ///   - n:Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
-    let xarray = ComplexArray([x.real], [x.imag])
+public func repelem(_ x: Complex, _ n: Int) -> SplitComplexArray {
+    let xarray = SplitComplexArray([x.real], [x.imag])
     guard n > 1 else {
         return xarray
     }
@@ -64,7 +64,7 @@ public func repelem(_ x: Complex, _ n: Int) -> ComplexArray {
 ///   - x: A complex array.
 ///   - n:Number of repetitions.
 /// - Returns: Repeated array.
-public func repelem(_ x: ComplexArray, _ n: Int) -> ComplexArray {
+public func repelem(_ x: SplitComplexArray, _ n: Int) -> SplitComplexArray {
     validateSize(x)
     guard n > 1 else {
         return x

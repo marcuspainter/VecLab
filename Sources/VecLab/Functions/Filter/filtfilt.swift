@@ -54,11 +54,11 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 ///   - a: a coefficients.
 ///   - x: Complex input signal.
 /// - Returns: Filtered signal.
-public func filtfilt(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray {
+public func filtfilt(b: RealArray, a: RealArray, x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let yr = filtfilt(b: b, a: a, x: x.real)
     let yi = filtfilt(b: b, a: a, x: x.imag)
-    return ComplexArray(yr, yi)
+    return SplitComplexArray(yr, yi)
 }
 
 fileprivate func mirror(filterLength: Int, x: RealArray) -> RealArray {

@@ -13,8 +13,8 @@ final class OTFFTTests: XCTestCase {
     /*
         func testExample() throws {
             let r = vector(1...2**14)
-            var z1 = ComplexArray(realOnly: r)
-            let z2 = ComplexArray(realOnly: r)
+            var z1 = SplitComplexArray(realOnly: r)
+            let z2 = SplitComplexArray(realOnly: r)
     
             tic()
             fft(n: z1.count, x: &z1)
@@ -39,7 +39,7 @@ final class OTFFTTests: XCTestCase {
 // Assuming Complex type exists
 // typealias Complex = Complex<Double>
 
-func fft0(n: Int, s: Int, eo: Bool, x: inout ComplexArray, y: inout ComplexArray) {
+func fft0(n: Int, s: Int, eo: Bool, x: inout SplitComplexArray, y: inout SplitComplexArray) {
     // n  : sequence length
     // s  : stride
     // eo : x is output if eo == false, y is output if eo == true
@@ -79,11 +79,11 @@ func fft0(n: Int, s: Int, eo: Bool, x: inout ComplexArray, y: inout ComplexArray
     }
 }
 
-func fft(n: Int, x: inout ComplexArray) {
+func fft(n: Int, x: inout SplitComplexArray) {
     // n : sequence length
     // x : input/output sequence
 
-    var y = ComplexArray(count: x.count)
+    var y = SplitComplexArray(count: x.count)
 
     fft0(n: n, s: 1, eo: false, x: &x, y: &y)
 
@@ -93,11 +93,11 @@ func fft(n: Int, x: inout ComplexArray) {
     // }
 }
 
-func ifft(n: Int, x: inout ComplexArray) {
+func ifft(n: Int, x: inout SplitComplexArray) {
     // n : sequence length
     // x : input/output sequence
 
-    var y = ComplexArray(count: x.count)
+    var y = SplitComplexArray(count: x.count)
     x = conj(x)
 
     fft0(n: n, s: 1, eo: false, x: &x, y: &y)

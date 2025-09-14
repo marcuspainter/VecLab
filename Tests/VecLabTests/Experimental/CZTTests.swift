@@ -14,7 +14,7 @@ final class CZTTests: XCTestCase {
 
     func testCZTeven() throws {
         let x: [Double] = [1, 2, 3, 4, 5, 6, 7, 8]
-        let z = ComplexArray(realOnly: x)
+        let z = SplitComplexArray(realOnly: x)
         let g = czt(z)
         let xx = iczt(g)
         disp(g)
@@ -23,7 +23,7 @@ final class CZTTests: XCTestCase {
 
     func testCztOdd() throws {
         let x: [Double] = [1, 2, 3, 4, 5, 6, 7]
-        let z = ComplexArray(realOnly: x)
+        let z = SplitComplexArray(realOnly: x)
         let g = czt(z)
         let xx = iczt(g)
         disp(g)

@@ -29,9 +29,9 @@ public func sqrt(_ x: Complex) -> Complex {
 /// Square root of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The complex square roots.
-public func sqrt(_ x: ComplexArray) -> ComplexArray {
+public func sqrt(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
-    var c = ComplexArray(count: x.count)
+    var c = SplitComplexArray(count: x.count)
     for k in 0..<x.count {
         c[k] = sqrt(x[k])
     }

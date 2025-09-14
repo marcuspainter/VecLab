@@ -16,4 +16,4 @@ Random numbers and white Gaussian noise.
 ### White Gaussian  Noise
 
 - ``awgn(_:snr:)->(RealArray,_)``
-- ``awgn(_:snr:)->(ComplexArray,_)``
+- ``awgn(_:snr:)->(SplitComplexArray,_)``

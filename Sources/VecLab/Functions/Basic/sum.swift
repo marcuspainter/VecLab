@@ -20,7 +20,7 @@ public func sum(_ x: RealArray) -> Real {
 /// Sum of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The sum of the array.
-public func sum(_ x: ComplexArray) -> Complex {
+public func sum(_ x: SplitComplexArray) -> Complex {
     validateSize(x)
     return Complex(vDSP.sum(x.real), vDSP.sum(x.imag))
 }

@@ -38,12 +38,12 @@ public func rms(_ x: RealArray) -> Real {
 ///
 /// # Example:
 /// ```
-/// let complexData: ComplexArray = ([1.0, 2.0], [1.5, 2.5])
+/// let complexData: SplitComplexArray = ([1.0, 2.0], [1.5, 2.5])
 /// let rmsValue = rms(complexData)
 /// print(rmsValue)  // Expected Output: Some RMS value
 /// ```
 
-public func rms(_ x: ComplexArray) -> Real {
+public func rms(_ x: SplitComplexArray) -> Real {
     let real = vDSP.sumOfSquares(x.real)
     let imag = vDSP.sumOfSquares(x.imag)
     let sumOfSquares = (real + imag)

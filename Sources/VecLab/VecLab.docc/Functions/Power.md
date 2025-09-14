@@ -36,9 +36,9 @@ let y = pow(x, 3)
 - ``pow(_:_:)-(RealArray,Real)``
 - ``pow(_:_:)-(RealArray,RealArray)``
 - ``pow(_:_:)-(RealArray,Complex)``
-- ``pow(_:_:)-(RealArray,ComplexArray)``
+- ``pow(_:_:)-(RealArray,SplitComplexArray)``
 - ``pow(_:_:)-(Complex,RealArray``
-- ``pow(_:_:)-(Real,ComplexArray)``
-- ``pow(_:_:)-(ComplexArray,Real)``
-- ``pow(_:_:)-(ComplexArray,RealArray)``
-- ``pow(_:_:)-(ComplexArray,ComplexArray)``
+- ``pow(_:_:)-(Real,SplitComplexArray)``
+- ``pow(_:_:)-(SplitComplexArray,Real)``
+- ``pow(_:_:)-(SplitComplexArray,RealArray)``
+- ``pow(_:_:)-(SplitComplexArray,SplitComplexArray)``

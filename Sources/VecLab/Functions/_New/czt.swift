@@ -8,7 +8,7 @@
 // Chirp Z-Transform Spectral Zoom Optimization with MATLAB
 // https://www.osti.gov/servlets/purl/1004350
 
-func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
+func czt(_ x: SplitComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> SplitComplexArray {
     // CZT1D  Simplified Chirp Z-transform for 1D vectors only
     //   G = CZT1D(X, K, W, A) returns the K-point chirp z-transform of X,
     //   computed at points A*W^(0:K-1).

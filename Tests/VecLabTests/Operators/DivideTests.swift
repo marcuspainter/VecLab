@@ -14,12 +14,12 @@ class DivideTests: XCTestCase {
     var realA: Real = 1.0
     var realArrayA: RealArray = [1.0, 2.0]
     var complexA: Complex = Complex(1.0, 1.0)
-    var complexArrayA: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     var realB: Real = 1.0
     var realArrayB: RealArray = [1.0, 2.0]
     var complexB: Complex = Complex(1.0, 1.0)
-    var complexArrayB: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayB: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     /*
      Smith algorithm
@@ -89,56 +89,56 @@ class DivideTests: XCTestCase {
     }
 
     func testDivideComplexRealArray() {
-        let result: ComplexArray = complexA / realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 0.5], [1.0, 0.5])
+        let result: SplitComplexArray = complexA / realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 0.5], [1.0, 0.5])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
     func testDivideRealArrayComplex() {
-        let result: ComplexArray = realArrayA / complexA
-        let expected: ComplexArray = ComplexArray([0.5, 1.0], [-0.5, -1.0])
+        let result: SplitComplexArray = realArrayA / complexA
+        let expected: SplitComplexArray = SplitComplexArray([0.5, 1.0], [-0.5, -1.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideComplexArrayComplexArray() {
-        let result: ComplexArray = complexArrayA / complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [0.0, 0.0])
+    func testDivideComplexArraySplitComplexArray() {
+        let result: SplitComplexArray = SplitComplexArrayA / SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideComplexArrayReal() {
-        let result: ComplexArray = complexArrayA / realB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    func testDivideSplitComplexArrayReal() {
+        let result: SplitComplexArray = SplitComplexArrayA / realB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideRealComplexArray() {
-        let result: ComplexArray = 1.0 / ComplexArray([1.0, 1.0], [1.0, 1.0])
-        let expected: ComplexArray = ComplexArray([0.5, 0.5], [-0.5, -0.5])
+    func testDivideRealSplitComplexArray() {
+        let result: SplitComplexArray = 1.0 / SplitComplexArray([1.0, 1.0], [1.0, 1.0])
+        let expected: SplitComplexArray = SplitComplexArray([0.5, 0.5], [-0.5, -0.5])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideComplexArrayRealArray() {
-        let result: ComplexArray = complexArrayA / realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 0.5], [1.0, 0.5])
+    func testDivideSplitComplexArrayRealArray() {
+        let result: SplitComplexArray = SplitComplexArrayA / realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 0.5], [1.0, 0.5])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideRealArrayComplexArray() {
-        let result: ComplexArray = realArrayA / complexArrayB
-        let expected: ComplexArray = ComplexArray([0.5, 1.0], [-0.5, -1.0])
+    func testDivideRealArraySplitComplexArray() {
+        let result: SplitComplexArray = realArrayA / SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([0.5, 1.0], [-0.5, -1.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideComplexArrayComplex() {
-        let result: ComplexArray = complexArrayA / complexB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [0.0, 0.0])
+    func testDivideSplitComplexArrayComplex() {
+        let result: SplitComplexArray = SplitComplexArrayA / complexB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 
-    func testDivideComplexComplexArray() {
-        let result: ComplexArray = complexA / complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [0.0, 0.0])
+    func testDivideComplexSplitComplexArray() {
+        let result: SplitComplexArray = complexA / SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, "Divide failed")
     }
 

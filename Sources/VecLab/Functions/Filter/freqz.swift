@@ -13,7 +13,7 @@ import Foundation
 ///   - a: a coefficients.
 ///   - n: FFT Length.
 /// - Returns: Complex transfer function.
-public func freqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArray {
+public func freqz(b: RealArray, a: RealArray, n: Int = 512) -> SplitComplexArray {
     let bb = paddata(b, length: n * 2)
     let aa = paddata(a, length: n * 2)
     let H = fftr(bb) / fftr(aa)
@@ -27,14 +27,14 @@ public func freqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArray {
 ///   - a: a coefficients.
 ///   - n: DFT Length.
 /// - Returns: Complex transfer function.
-public func freqz2(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArray {
+public func freqz2(b: RealArray, a: RealArray, n: Int = 512) -> SplitComplexArray {
     // Define the frequency range
     // var w = linspace(0, .pi, N+1) // 512 points between 0 and pi
     // w = resize(w, w.count - 1)
     let w = vector(0...n - 1) * (.pi / Real(n))
 
     // Initialize the frequency response
-    var H = ComplexArray(count: n)
+    var H = SplitComplexArray(count: n)
 
     // Compute the frequency response H(e^jw)
     for i in 0..<length(w) {

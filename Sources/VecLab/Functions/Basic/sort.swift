@@ -31,7 +31,7 @@ public func sort(_ x: RealArray, order: SortOder = .ascending) -> RealArray {
 ///   - x: Complex array.
 ///   - order: Sort order.
 /// - Returns: A sorted complex array.
-public func sort(_ x: ComplexArray, order: SortOder = .ascending) -> ComplexArray {
+public func sort(_ x: SplitComplexArray, order: SortOder = .ascending) -> SplitComplexArray {
     switch order {
     case .ascending:
         return x.sorted { a, b in
@@ -61,7 +61,7 @@ public func sort(_ x: ComplexArray, order: SortOder = .ascending) -> ComplexArra
     }
 }
 
-fileprivate func matlabSort2(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSort2(_ arr: SplitComplexArray) -> SplitComplexArray {
     return arr.sorted { a, b in
         let magA = hypot(a.real, a.imag)
         let magB = hypot(b.real, b.imag)

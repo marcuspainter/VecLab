@@ -12,9 +12,9 @@ import Foundation
 /// - Parameter x: Complex array.
 /// - Parameter length: Zero-padded length (optional).
 /// - Returns: Complex array result.
-public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
+public func fft(_ x: SplitComplexArray, length: Int? = nil) -> SplitComplexArray {
     validateSize(x)
-    var input: ComplexArray
+    var input: SplitComplexArray
     if let length {
         input = paddata(x, length: length)
     } else {
@@ -31,7 +31,7 @@ public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
         )
     else {
         print("fft error")
-        return ComplexArray(
+        return SplitComplexArray(
             [Real](repeating: Real.nan, count: input.count),
             [Real](repeating: Real.nan, count: input.count)
         )
@@ -39,12 +39,12 @@ public func fft(_ x: ComplexArray, length: Int? = nil) -> ComplexArray {
 
     let splitComplexOutput = dft.transform(real: input.real, imaginary: input.imag)
 
-    return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
+    return SplitComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
 
 @available(*, unavailable, renamed: "fftr", message: "Use fftr for Real arrays")
-public func fft(_ x: RealArray, length: Int?) -> ComplexArray {
-    return ComplexArray()
+public func fft(_ x: RealArray, length: Int?) -> SplitComplexArray {
+    return SplitComplexArray()
 }
 
 /// Setup fft functions for reuse.
@@ -202,7 +202,7 @@ public func fftsetup(
 
 /*
  /// Inverse Fast Fourier Transform of a complex array.
- public func ifft(_ x: ComplexArray) -> ComplexArray {
+ public func ifft(_ x: SplitComplexArray) -> SplitComplexArray {
      let splitComplexRealInput =  x.0
      let splitComplexImaginaryInput = x.1
 
@@ -212,7 +212,7 @@ public func fftsetup(
                                                                      transformType: .complexComplex,
                                                                      ofType: Real.self) else {
 
-         return createComplexArray(repeating: (Real.nan, Real.nan), count: x.0.count)
+         return createSplitComplexArray(repeating: (Real.nan, Real.nan), count: x.0.count)
      }
 
      let splitComplexOutput = splitComplexDFT.transform(real: splitComplexRealInput,

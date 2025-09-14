@@ -1,19 +1,19 @@
 //
-//  ComplexArray+Subscript+Array.swift
+//  SplitComplexArray+Subscript+Array.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-extension ComplexArray {
+extension SplitComplexArray {
     /// Access elements using an array of indices
-    public subscript(indices: [Int]) -> ComplexArray {
+    public subscript(indices: [Int]) -> SplitComplexArray {
         get {
             // Verify all indices are in bounds
             for idx in indices {
                 precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
             }
-            var slice = ComplexArray(count: indices.count)
+            var slice = SplitComplexArray(count: indices.count)
             for (offset, idx) in indices.enumerated() {
                 slice[offset] = self[idx]
             }

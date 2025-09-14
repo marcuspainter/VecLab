@@ -53,7 +53,7 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
 ///   - x: Complex array.
 ///   - k: Shift amount.
 /// - Returns: Circularly shifted array
-public func circshift(_ x: ComplexArray, _ k: Int) -> ComplexArray {
+public func circshift(_ x: SplitComplexArray, _ k: Int) -> SplitComplexArray {
     validateSize(x)
-    return ComplexArray(circshift(x.real, k), circshift(x.imag, k))
+    return SplitComplexArray(circshift(x.real, k), circshift(x.imag, k))
 }

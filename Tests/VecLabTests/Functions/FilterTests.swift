@@ -62,8 +62,8 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
 
-        let HH: ComplexArray =
-            ComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+        let HH: SplitComplexArray =
+            SplitComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
                          [0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
 
         var H = freqz(b: b, a: a)
@@ -81,8 +81,8 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
 
-        let HH: ComplexArray =
-            ComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+        let HH: SplitComplexArray =
+            SplitComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
                          [0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
 
         var H = freqz2(b: b, a: a)
@@ -102,8 +102,8 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
 
-        let HH: ComplexArray =
-            ComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+        let HH: SplitComplexArray =
+            SplitComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
                          [0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
 
         var magnitude = biquadmag(b: b, a: a)
@@ -128,8 +128,8 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(b, bb, accuracy: accuracy, "biquad failed")
         XCTAssertEqual(a, aa, accuracy: accuracy, "biquad failed")
 
-        let HH: ComplexArray =
-            ComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
+        let HH: SplitComplexArray =
+            SplitComplexArray([0.999999999998857, 0.787447131918628, 0.16648785181672, -0.176754632622424, -0.200636601365454],
                          [0, -0.588789505736948, -0.785673403249241, -0.482549328814426, -0.248410563593813])
 
         var H = biquadfreqz(b: b, a: a)
@@ -231,7 +231,7 @@ class FilterTests: XCTestCase {
     
     func testFiltfiltComplex() {
         let x = vector(1 ... 10)
-        let z = ComplexArray(x, x)
+        let z = SplitComplexArray(x, x)
         let b: [Double] = [0, 0, 0, 1] // 3 sample Delay
         //let b: [Double] = ones(3) / 3.0
         //let b: [Double] = [1, -1]

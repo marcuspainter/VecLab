@@ -1,5 +1,5 @@
 //
-//  ComplexArrayTests.swift
+//  SplitComplexArrayTests.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 16/04/2025.
@@ -8,24 +8,24 @@
 import VecLab  // Replace with your actual module name
 import XCTest
 
-final class ComplexArrayTests: XCTestCase {
+final class SplitComplexArrayTests: XCTestCase {
 
     // Test initialization
     func testInitialization() {
         // Empty init
-        let empty = ComplexArray()
+        let empty = SplitComplexArray()
         XCTAssertEqual(empty.count, 0)
         XCTAssertTrue(empty.isEmpty)
 
         // Init with sequence
         let values = [Complex(1, 2), Complex(3, 4), Complex(5, 6)]
-        let array = ComplexArray(values)
+        let array = SplitComplexArray(values)
         XCTAssertEqual(array.count, 3)
         XCTAssertEqual(array[0].real, 1)
         XCTAssertEqual(array[0].imag, 2)
 
         // Array literal init
-        let literal: ComplexArray = [Complex(7, 8), Complex(9, 10)]
+        let literal: SplitComplexArray = [Complex(7, 8), Complex(9, 10)]
         XCTAssertEqual(literal.count, 2)
         XCTAssertEqual(literal[1].real, 9)
         XCTAssertEqual(literal[1].imag, 10)
@@ -33,7 +33,7 @@ final class ComplexArrayTests: XCTestCase {
 
     // Test collection operations
     func testCollectionOperations() {
-        var array: ComplexArray = [
+        var array: SplitComplexArray = [
             Complex(1, 2),
             Complex(3, 4),
             Complex(5, 6),
@@ -65,7 +65,7 @@ final class ComplexArrayTests: XCTestCase {
 
     // Test range-based operations
     func testRangeOperations() {
-        var array: ComplexArray = [
+        var array: SplitComplexArray = [
             Complex(1, 2),
             Complex(3, 4),
             Complex(5, 6),
@@ -108,7 +108,7 @@ final class ComplexArrayTests: XCTestCase {
 
     // Test RangeReplaceableCollection operations
     func testRangeReplaceableOperations() {
-        var array = ComplexArray()
+        var array = SplitComplexArray()
 
         // Append
         array.append(Complex(1, 2))
@@ -146,9 +146,9 @@ final class ComplexArrayTests: XCTestCase {
 
     // Test Equatable conformance
     func testEquatable() {
-        let array1: ComplexArray = [Complex(1, 2), Complex(3, 4)]
-        let array2: ComplexArray = [Complex(1, 2), Complex(3, 4)]
-        let array3: ComplexArray = [Complex(1, 2), Complex(5, 6)]
+        let array1: SplitComplexArray = [Complex(1, 2), Complex(3, 4)]
+        let array2: SplitComplexArray = [Complex(1, 2), Complex(3, 4)]
+        let array3: SplitComplexArray = [Complex(1, 2), Complex(5, 6)]
 
         XCTAssertEqual(array1, array2)
         XCTAssertNotEqual(array1, array3)
@@ -156,7 +156,7 @@ final class ComplexArrayTests: XCTestCase {
     /*
        // Test description
        func testDescription() {
-           let array: ComplexArray = [Complex(1, 2), Complex(3, -4)]
+           let array: SplitComplexArray = [Complex(1, 2), Complex(3, -4)]
            let description = array.description
     
            // Just check that it contains some relevant substrings
@@ -169,7 +169,7 @@ final class ComplexArrayTests: XCTestCase {
 
     // Test Equatable conformance
     func testCat() {
-        var array1: ComplexArray = [Complex(1, 2), Complex(3, 4)]
+        var array1: SplitComplexArray = [Complex(1, 2), Complex(3, 4)]
         var array2 = [1.0, 2.0]
         array1 += array1
         array2 += array2

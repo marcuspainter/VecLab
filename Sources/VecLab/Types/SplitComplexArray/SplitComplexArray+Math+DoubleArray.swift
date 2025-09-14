@@ -1,5 +1,5 @@
 //
-//  ComplexArray+Math+Array.swift
+//  SplitComplexArray+Math+Array.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
@@ -8,16 +8,16 @@
 import Accelerate
 
 /// [Double] extensions
-extension ComplexArray {
+extension SplitComplexArray {
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Real array.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexArray, b: [Double]) -> ComplexArray {
+    public static func + (a: SplitComplexArray, b: [Double]) -> SplitComplexArray {
         validateSize(a, b)
         let real = vDSP.add(a.real, b)
-        return ComplexArray(real, a.imag)
+        return SplitComplexArray(real, a.imag)
     }
 
     /// Complex addition.
@@ -25,20 +25,20 @@ extension ComplexArray {
     ///   - a: Real array.
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
-    public static func + (a: [Double], b: ComplexArray) -> ComplexArray {
+    public static func + (a: [Double], b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
         let real = vDSP.add(b.real, a)
-        return ComplexArray(real, b.imag)
+        return SplitComplexArray(real, b.imag)
     }
 
     /// Complex subtraction.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Real array.
-    /// - Returns: The result of the ComplexArray, b: Double) -> ComplexArray {
-    public static func - (a: ComplexArray, b: [Double]) -> ComplexArray {
+    /// - Returns: The result of the SplitComplexArray, b: Double) -> SplitComplexArray {
+    public static func - (a: SplitComplexArray, b: [Double]) -> SplitComplexArray {
         validateSize(a, b)
-        return ComplexArray(a.real - b, a.imag)
+        return SplitComplexArray(a.real - b, a.imag)
     }
 
     /// Complex subtraction.
@@ -46,7 +46,7 @@ extension ComplexArray {
     ///   - a: Real array.
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
-    public static func - (a: [Double], b: ComplexArray) -> ComplexArray {
+    public static func - (a: [Double], b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
         return b - a
     }
@@ -56,9 +56,9 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Real array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexArray, b: [Double]) -> ComplexArray {
+    public static func * (a: SplitComplexArray, b: [Double]) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorMultiplyComplexArrayRealArray(a, b)
+        return vectorMultiplySplitComplexArrayRealArray(a, b)
     }
 
     /// Complex multiplication.
@@ -66,9 +66,9 @@ extension ComplexArray {
     ///   - a: Real array.
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: [Double], b: ComplexArray) -> ComplexArray {
+    public static func * (a: [Double], b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorMultiplyComplexArrayRealArray(b, a)
+        return vectorMultiplySplitComplexArrayRealArray(b, a)
     }
 
     /// Complex division.
@@ -76,9 +76,9 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Real array.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexArray, b: [Double]) -> ComplexArray {
+    public static func / (a: SplitComplexArray, b: [Double]) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorDivideComplexArrayRealArray(a, b)
+        return vectorDivideSplitComplexArrayRealArray(a, b)
     }
 
     /// Complex division.
@@ -86,8 +86,8 @@ extension ComplexArray {
     ///   - a: Real array.
     ///   - b: Complex array.
     /// - Returns: The result of the division.
-    public static func / (a: [Double], b: ComplexArray) -> ComplexArray {
+    public static func / (a: [Double], b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorDivideRealArrayComplexArray(a, b)
+        return vectorDivideRealArraySplitComplexArray(a, b)
     }
 }

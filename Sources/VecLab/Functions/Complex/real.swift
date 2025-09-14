@@ -22,7 +22,7 @@ public func real(_ x: Complex) -> Real {
 /// This function is retained for compatibility. Use the `real` property.
 /// - Parameter x: Complex array.
 /// - Returns: A real array of real part of a complex array.
-public func real(_ x: ComplexArray) -> RealArray {
+public func real(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     return x.real
 }

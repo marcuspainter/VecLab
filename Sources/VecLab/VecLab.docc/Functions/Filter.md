@@ -7,13 +7,13 @@ Filter functions.
 ### Filter
 
 - ``filter(b:a:x:)->RealArray``
-- ``filter(b:a:x:)->ComplexArray``
+- ``filter(b:a:x:)->SplitComplexArray``
 - ``filter(b:a:x:state:)``
 
 ### Zero-Phase Filter
 
 - ``filtfilt(b:a:x:)->RealArray``
-- ``filtfilt(b:a:x:)->ComplexArray``
+- ``filtfilt(b:a:x:)->SplitComplexArray``
 
 ### Biquad Filter
 - ``biquad(f:fs:q:db:type:)``

@@ -27,7 +27,7 @@ public func exp(_ x: Complex) -> Complex {
 /// Exponential of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The exponential of `x`.
-public func exp(_ x: ComplexArray) -> ComplexArray {
+public func exp(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
-    return vectorExpComplexArray(x)
+    return vectorExpSplitComplexArray(x)
 }

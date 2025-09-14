@@ -59,10 +59,10 @@ public func hypot(_ a: Complex, _ b: Complex) -> Complex {
 ///   - a: Complex  array.
 ///   - b: Complex array.
 /// - Returns: Returns the hypotenuse of a right triangle with side lengths of  `a`and `b`.
-public func hypot(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+public func hypot(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     validateSize(a, b)
     let result = zip(a, b).map { hypot($0, $1) }
-    return ComplexArray(result)
+    return SplitComplexArray(result)
 }
 
 /*

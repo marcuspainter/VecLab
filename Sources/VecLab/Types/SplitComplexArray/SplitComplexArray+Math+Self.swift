@@ -1,19 +1,19 @@
 //
-//  ComplexArray+Math.swift
+//  SplitComplexArray+Math.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
 //
 
-extension ComplexArray {
+extension SplitComplexArray {
     /// Complex array addition.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the addition.
-    public static func + (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+    public static func + (a: SplitComplexArray, b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        let result = vectorAddComplexArray(a, b)
+        let result = vectorAddSplitComplexArray(a, b)
         return result
     }
 
@@ -22,9 +22,9 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the subtraction.
-    public static func - (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+    public static func - (a: SplitComplexArray, b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorSubtractComplexArray(a, b)
+        return vectorSubtractSplitComplexArray(a, b)
     }
 
     /// Complex array multiplication.
@@ -32,9 +32,9 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the multiplication.
-    public static func * (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+    public static func * (a: SplitComplexArray, b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorMultiplyComplexArray(a, b)
+        return vectorMultiplySplitComplexArray(a, b)
     }
 
     /// Complex array division.
@@ -42,8 +42,8 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: The result of the division.
-    public static func / (a: ComplexArray, b: ComplexArray) -> ComplexArray {
+    public static func / (a: SplitComplexArray, b: SplitComplexArray) -> SplitComplexArray {
         validateSize(a, b)
-        return vectorDivideComplexArray(a, b)
+        return vectorDivideSplitComplexArray(a, b)
     }
 }

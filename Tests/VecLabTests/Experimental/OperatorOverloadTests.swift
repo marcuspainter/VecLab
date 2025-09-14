@@ -184,7 +184,7 @@ class OperatorOverloadTests: XCTestCase {
     
     // MARK: - [Complex] Tests
     
-    func testComplexArrayArithmetic() {
+    func testSplitComplexArrayArithmetic() {
         var arrayComplexA: [Complex] = [
             Complex(1.0, 2.0),
             Complex(3.0, -1.0),
@@ -202,16 +202,16 @@ class OperatorOverloadTests: XCTestCase {
         let arrayDouble: [Double] = [2.0, 1.5, 0.5, 3.0]
         let scalar = 1.5
         
-        let complexArraySum = arrayComplexA + arrayComplexB
-        XCTAssertEqual(complexArraySum, [
+        let SplitComplexArraySum = arrayComplexA + arrayComplexB
+        XCTAssertEqual(SplitComplexArraySum, [
             Complex(3.0, 1.0),
             Complex(4.0, 1.0),
             Complex(1.0, 5.0),
             Complex(-0.5, -1.0)
         ], accuracy: tolerance)
         
-        let complexArrayDiff = arrayComplexA - arrayComplexB
-        XCTAssertEqual(complexArrayDiff, [
+        let SplitComplexArrayDiff = arrayComplexA - arrayComplexB
+        XCTAssertEqual(SplitComplexArrayDiff, [
             Complex(-1.0, 3.0),
             Complex(2.0, -3.0),
             Complex(-5.0, 3.0),
@@ -233,24 +233,24 @@ class OperatorOverloadTests: XCTestCase {
             Complex(0.5, -3.0)
         ]
         
-        let complexArrayPlusScalar = arrayComplexA + scalar
-        XCTAssertEqual(complexArrayPlusScalar, [
+        let SplitComplexArrayPlusScalar = arrayComplexA + scalar
+        XCTAssertEqual(SplitComplexArrayPlusScalar, [
             Complex(2.5, 2.0),
             Complex(4.5, -1.0),
             Complex(-0.5, 4.0),
             Complex(2.0, -3.0)
         ], accuracy: tolerance)
         
-        let complexArrayPlusDoubleArray = arrayComplexA + arrayDouble
-        XCTAssertEqual(complexArrayPlusDoubleArray, [
+        let SplitComplexArrayPlusDoubleArray = arrayComplexA + arrayDouble
+        XCTAssertEqual(SplitComplexArrayPlusDoubleArray, [
             Complex(3.0, 2.0),
             Complex(4.5, -1.0),
             Complex(-1.5, 4.0),
             Complex(3.5, -3.0)
         ], accuracy: tolerance)
         
-        let doubleArrayPlusComplexArray = arrayDouble + arrayComplexA
-        XCTAssertEqual(doubleArrayPlusComplexArray, [
+        let doubleArrayPlusSplitComplexArray = arrayDouble + arrayComplexA
+        XCTAssertEqual(doubleArrayPlusSplitComplexArray, [
             Complex(3.0, 2.0),
             Complex(4.5, -1.0),
             Complex(-1.5, 4.0),

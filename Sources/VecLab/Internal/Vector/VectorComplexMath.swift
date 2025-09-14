@@ -8,7 +8,7 @@
 import Accelerate
 import Foundation
 
-extension ComplexArray {
+extension SplitComplexArray {
     init(unsafeCount count: Int) {
         self.real = [Double](unsafeUninitializedCapacity: count) { buffer, initializedCount in
             initializedCount = count
@@ -33,8 +33,8 @@ func vectorFillRealArray(_ a: Double, c: inout [Double]) {
 }
 
 /*
- func vectorFillComplexArray(_ a: Complex, c: inout ComplexArray) {
-     ComplexArray.withUnsafeParameters(a, &c) { A, C, N in
+ func vectorFillSplitComplexArray(_ a: Complex, c: inout SplitComplexArray) {
+     SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
          vDSP_zvfillD(A, C, 1, N)
      }
  }
@@ -42,9 +42,9 @@ func vectorFillRealArray(_ a: Double, c: inout [Double]) {
 
 // MARK: Angle
 
-func vectorAngleComplexArray(_ a: ComplexArray) -> RealArray {
+func vectorAngleSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
     var c = a.real
-    ComplexArray.withUnsafeParameters(a, &c) { A, C, N in
+    SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvphasD(A, 1, C, 1, N)
     }
     return c
@@ -52,9 +52,9 @@ func vectorAngleComplexArray(_ a: ComplexArray) -> RealArray {
 
 // MARK: Abs
 
-func vectorAbsComplexArray(_ a: ComplexArray) -> RealArray {
+func vectorAbsSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
     var c = a.real
-    ComplexArray.withUnsafeParameters(a, &c) { A, C, N in
+    SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvabsD(A, 1, C, 1, N)
     }
     return c
@@ -62,9 +62,9 @@ func vectorAbsComplexArray(_ a: ComplexArray) -> RealArray {
 
 // MARK: Conjugate
 
-func vectorConjugateComplexArray(_ a: ComplexArray) -> ComplexArray {
+func vectorConjugateSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, &c) { A, C, N in
+    SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvconjD(A, 1, C, 1, N)
     }
     return c
@@ -72,9 +72,9 @@ func vectorConjugateComplexArray(_ a: ComplexArray) -> ComplexArray {
 
 // MARK: Add
 
-func vectorAddComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+func vectorAddSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvaddD(A, 1, B, 1, C, 1, N)
     }
     return c
@@ -82,9 +82,9 @@ func vectorAddComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray
 
 // MARK: Subtract
 
-func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+func vectorSubtractSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvsubD(A, 1, B, 1, C, 1, N)
     }
     return c
@@ -92,37 +92,37 @@ func vectorSubtractComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> Complex
 
 // MARK: Multiply
 
-func vectorMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+func vectorMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
     return c
 }
 
-func vectorMultiplyComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+func vectorMultiplySplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvmulD(A, 1, B, 1, C, 1, N)
     }
     return c
 }
 
-func vectorMultiplyComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
+func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
     var c = a
-    let bb = ComplexArray(repeating: b, count: a.count)
-    ComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
+    let bb = SplitComplexArray(repeating: b, count: a.count)
+    SplitComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
     return c
 }
 
-func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> ComplexArray {
+func vectorMultiplyComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
-    let aa = ComplexArray(repeating: a, count: b.count)
-    ComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+    let aa = SplitComplexArray(repeating: a, count: b.count)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply: 1
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
     }
@@ -131,9 +131,9 @@ func vectorMultiplyComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> Compl
 
 // MARK: Conjugate Multiply
 
-func vectorConjugateMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+func vectorConjugateMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         // Conjugate multiply: -1
         let conjugateFlag = Int32(-1)
         vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
@@ -143,88 +143,88 @@ func vectorConjugateMultiplyComplexArray(_ a: ComplexArray, _ b: ComplexArray) -
 
 // MARK: Divide
 
-func vectorDivideComplexArray(_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+func vectorDivideSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideComplexArrayReal(_ a: ComplexArray, _ b: Real) -> ComplexArray {
+func vectorDivideSplitComplexArrayReal(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
     let real = vDSP.divide(a.real, b)
     let imag = vDSP.divide(a.imag, b)
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }
 
-func vectorDivideRealComplexArray(_ a: Real, _ b: ComplexArray) -> ComplexArray {
+func vectorDivideRealSplitComplexArray(_ a: Real, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a0 = [Double](repeating: a, count: b.count)
     let a1 = [Double](repeating: 0.0, count: b.count)
-    let aa = ComplexArray(a0, a1)
-    ComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+    let aa = SplitComplexArray(a0, a1)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideComplexArrayRealArray(_ a: ComplexArray, _ b: RealArray) -> ComplexArray {
+func vectorDivideSplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     var c = a
-    ComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvdivD(A, 1, B, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideRealArrayComplexArray(_ a: RealArray, _ b: ComplexArray) -> ComplexArray {
+func vectorDivideRealArraySplitComplexArray(_ a: RealArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a1 = [Double](repeating: 0.0, count: a.count)
-    let aa = ComplexArray(a, a1)
-    ComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+    let aa = SplitComplexArray(a, a1)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideComplexRealArray(_ a: Complex, _ b: RealArray) -> ComplexArray {
+func vectorDivideComplexRealArray(_ a: Complex, _ b: RealArray) -> SplitComplexArray {
     let real = vDSP.divide(a.real, b)
     let imag = vDSP.divide(a.imag, b)
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }
 
-func vectorDivideRealArrayComplex(_ a: RealArray, _ b: Complex) -> ComplexArray {
-    var c = ComplexArray(count: a.count)
+func vectorDivideRealArrayComplex(_ a: RealArray, _ b: Complex) -> SplitComplexArray {
+    var c = SplitComplexArray(count: a.count)
     let b0 = [Double](repeating: b.real, count: a.count)
     let b1 = [Double](repeating: b.imag, count: a.count)
-    let bb = ComplexArray(b0, b1)
+    let bb = SplitComplexArray(b0, b1)
     let a0 = a
     let a1 = [Double](repeating: 0.0, count: a.count)
-    let aa = ComplexArray(a0, a1)
+    let aa = SplitComplexArray(a0, a1)
     validateSize(aa, bb)
     validateSize(aa, c)
-    ComplexArray.withUnsafeParameters(aa, bb, &c) { A, B, C, N in
+    SplitComplexArray.withUnsafeParameters(aa, bb, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideComplexArrayComplex(_ a: ComplexArray, _ b: Complex) -> ComplexArray {
+func vectorDivideSplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
     var c = a
     let b0 = [Double](repeating: b.real, count: a.count)
     let b1 = [Double](repeating: b.imag, count: a.count)
-    let bb = ComplexArray(b0, b1)
-    ComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
+    let bb = SplitComplexArray(b0, b1)
+    SplitComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
 }
 
-func vectorDivideComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> ComplexArray {
+func vectorDivideComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a0 = [Double](repeating: a.real, count: b.count)
     let a1 = [Double](repeating: a.imag, count: b.count)
-    let aa = ComplexArray(a0, a1)
-    ComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+    let aa = SplitComplexArray(a0, a1)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)
     }
     return c
@@ -232,26 +232,26 @@ func vectorDivideComplexComplexArray(_ a: Complex, _ b: ComplexArray) -> Complex
 
 // MARK: Log
 
-func vectorLogComplexArray(_ a: ComplexArray) -> ComplexArray {
+func vectorLogSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
     var angle = [Double](repeating: 0, count: a.count)
     var mag = [Double](repeating: 0, count: a.count)
     var logMag = [Double](repeating: 0, count: a.count)
-    ComplexArray.withUnsafeParameters(a, &angle) { A, C, N in
+    SplitComplexArray.withUnsafeParameters(a, &angle) { A, C, N in
         vDSP_zvphasD(A, 1, C, 1, N)
     }
-    ComplexArray.withUnsafeParameters(a, &mag) { A, C, N in
+    SplitComplexArray.withUnsafeParameters(a, &mag) { A, C, N in
         vDSP_zvabsD(A, 1, C, 1, N)
     }
 
     var n = Int32(a.count)
     vvlog(&logMag, &mag, &n)
 
-    return ComplexArray(logMag, angle)
+    return SplitComplexArray(logMag, angle)
 }
 
 // MARK: Exp
 
-func vectorExpComplexArray(_ a: ComplexArray) -> ComplexArray {
+func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
     // 1. Calculate e^a for each real part
     let expReal = vForce.exp(a.real)
 
@@ -264,5 +264,5 @@ func vectorExpComplexArray(_ a: ComplexArray) -> ComplexArray {
     let resultReal = vDSP.multiply(expReal, cosImag)
     let resultImag = vDSP.multiply(expReal, sinImag)
 
-    return ComplexArray(resultReal, resultImag)
+    return SplitComplexArray(resultReal, resultImag)
 }

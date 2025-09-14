@@ -10,7 +10,7 @@ import Foundation
 /// Inverse DFT of complex array.
 /// - Parameter x:Complex array.
 /// - Returns: Complex array result.
-public func idft(_ x: ComplexArray) -> ComplexArray {
+public func idft(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let n = length(x)
     if n == 1 {

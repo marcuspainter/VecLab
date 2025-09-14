@@ -21,7 +21,7 @@ class FFTClassTests: XCTestCase {
         let X = fft.fftr(x)
         let y = fft.ifftr(X)
 
-        let XX = ComplexArray(X.0, X.1)
+        let XX = SplitComplexArray(X.0, X.1)
 
         XCTAssertEqual(y, x, accuracy: accuracy)
 

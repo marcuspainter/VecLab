@@ -10,4 +10,4 @@ Special functions.
 - ``gamma(_:)->Real``
 - ``gamma(_:)->RealArray``
 - ``gamma(_:)->Complex``
-- ``gamma(_:)->ComplexArray``
+- ``gamma(_:)->SplitComplexArray``

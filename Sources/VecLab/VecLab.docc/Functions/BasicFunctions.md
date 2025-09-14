@@ -10,17 +10,17 @@ Basic functions.
 ### Sort
 
 - ``sort(_:order:)->(RealArray)``
-- ``sort(_:order:)->(ComplexArray)``
+- ``sort(_:order:)->(SplitComplexArray)``
 
 ### Sign
 - ``sign(_:)->Real``
 - ``sign(_:)->RealArray``
 - ``sign(_:)->Complex``
-- ``sign(_:)->ComplexArray``
+- ``sign(_:)->SplitComplexArray``
 
 ### Print and Display
 - ``disp(_:)-(RealArray)``
-- ``disp(_:)-(ComplexArray)``
+- ``disp(_:)-(SplitComplexArray)``
 - ``disp(_:)-(ArraySlice<Real>)``
 - ``disp(_:)-()``
 
@@ -28,15 +28,15 @@ Basic functions.
 - ``sum(_:)->Real``
 - ``sum(_:)->Complex``
 - ``cumsum(_:)->RealArray``
-- ``cumsum(_:)->ComplexArray``
+- ``cumsum(_:)->SplitComplexArray``
 - ``prod(_:)->Real``
 - ``prod(_:)->Complex``
 - ``cumprod(_:)->RealArray``
-- ``cumprod(_:)->ComplexArray``
+- ``cumprod(_:)->SplitComplexArray``
 - ``dot(_:_:)->Real``
-- ``dot(_:_:)-(RealArray,ComplexArray)``
-- ``dot(_:_:)-(ComplexArray,RealArray)``
-- ``dot(_:_:)-(ComplexArray,ComplexArray)``
+- ``dot(_:_:)-(RealArray,SplitComplexArray)``
+- ``dot(_:_:)-(SplitComplexArray,RealArray)``
+- ``dot(_:_:)-(SplitComplexArray,SplitComplexArray)``
 
 ### Miscellaneous
 

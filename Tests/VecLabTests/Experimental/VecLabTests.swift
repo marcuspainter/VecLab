@@ -10,7 +10,7 @@ final class VecLabTests: XCTestCase {
         // Defining Test Cases and Test Methods
         // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
 
-        //var a = ComplexArray(count: 10)
+        //var a = SplitComplexArray(count: 10)
         let a: [Double] = [1, 2, 3, 4, 5]
         let b: [Double] = [1, 2, 3, 4, 5]
 
@@ -22,7 +22,7 @@ final class VecLabTests: XCTestCase {
 
         a.forEach { print($0) }
 
-        let zz = ComplexArray(a, b)
+        let zz = SplitComplexArray(a, b)
         let zzz = zz.enumerated()
         let ttt = zzz.map { Real($0) + $1 }
         print(ttt)
@@ -69,7 +69,7 @@ final class VecLabTests: XCTestCase {
 
     func testFFT() throws {
         let x = vector(1...2 ** 12)
-        let z = ComplexArray(realOnly: x)
+        let z = SplitComplexArray(realOnly: x)
 
         tic()
         _ = fft(z)
@@ -84,7 +84,7 @@ final class VecLabTests: XCTestCase {
 
 }
 
-public func fftx(_ x: ComplexArray) -> ComplexArray {
+public func fftx(_ x: SplitComplexArray) -> SplitComplexArray {
     let n = length(x)
     let omega = exp(-2 * Real.pi * 1.i / Real(n))
     if rem(n, 2) == 0 {
@@ -99,7 +99,7 @@ public func fftx(_ x: ComplexArray) -> ComplexArray {
     }
 }
 
-public func fftx2(_ x: ComplexArray) -> ComplexArray {
+public func fftx2(_ x: SplitComplexArray) -> SplitComplexArray {
     let n = length(x)
     let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
@@ -114,7 +114,7 @@ public func fftx2(_ x: ComplexArray) -> ComplexArray {
     }
 }
 
-public func fftx2(_ x: [Double]) -> ComplexArray {
+public func fftx2(_ x: [Double]) -> SplitComplexArray {
     let n = length(x)
     let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
@@ -125,6 +125,6 @@ public func fftx2(_ x: [Double]) -> ComplexArray {
         let v = w * fftx2(x[1..<n, 2])
         return cat(u + v, u - v)
     } else {
-        return ComplexArray(realOnly: x)
+        return SplitComplexArray(realOnly: x)
     }
 }

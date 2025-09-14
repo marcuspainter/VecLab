@@ -1,11 +1,11 @@
 //
-//  ComplexArray+Collection.swift
+//  SplitComplexArray+Collection.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexArray:
+extension SplitComplexArray:
     MutableCollection,
     BidirectionalCollection,
     RandomAccessCollection,
@@ -23,7 +23,7 @@ extension ComplexArray:
 
     public typealias Element = Complex
     public typealias Index = Int
-    public typealias SubSequence = ComplexArray
+    public typealias SubSequence = SplitComplexArray
     public typealias Indices = Range<Int>
 
     /// The position of the first element in a nonempty array.
@@ -79,7 +79,7 @@ extension ComplexArray:
 
     /// Append a complex array.
     /// - Parameter newElements: A complex array.
-    public mutating func append(contentsOf newElements: ComplexArray) {
+    public mutating func append(contentsOf newElements: SplitComplexArray) {
         real.append(contentsOf: newElements.real)
         imag.append(contentsOf: newElements.imag)
     }
@@ -113,13 +113,13 @@ extension ComplexArray:
         imag.removeSubrange(bounds)
     }
 
-    // Returns concrete type ComplexArray not SubSequence
+    // Returns concrete type SplitComplexArray not SubSequence
 
     /// Access a range of complex elements
-    public subscript(bounds: Range<Int>) -> ComplexArray {
+    public subscript(bounds: Range<Int>) -> SplitComplexArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            var slice = ComplexArray()
+            var slice = SplitComplexArray()
             slice.real = Array(real[bounds])
             slice.imag = Array(imag[bounds])
             return slice
@@ -139,7 +139,7 @@ extension ComplexArray:
     }
 
     /// Access a closed range of complex elements
-    public subscript(bounds: ClosedRange<Int>) -> ComplexArray {
+    public subscript(bounds: ClosedRange<Int>) -> SplitComplexArray {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
             return self[bounds.lowerBound..<(bounds.upperBound + 1)]
@@ -160,7 +160,7 @@ extension ComplexArray:
     }
 
     /// Access a partial range from lower bound
-    public subscript(bounds: PartialRangeFrom<Int>) -> ComplexArray {
+    public subscript(bounds: PartialRangeFrom<Int>) -> SplitComplexArray {
         get {
             precondition(bounds.lowerBound >= 0, "Lower bound must be non-negative")
             precondition(bounds.lowerBound < count, "Lower bound out of range")
@@ -183,7 +183,7 @@ extension ComplexArray:
     }
 
     /// Access a partial range up to upper bound
-    public subscript(bounds: PartialRangeUpTo<Int>) -> ComplexArray {
+    public subscript(bounds: PartialRangeUpTo<Int>) -> SplitComplexArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound <= count, "Upper bound out of range")
@@ -206,7 +206,7 @@ extension ComplexArray:
     }
 
     /// Access a partial range through upper bound
-    public subscript(bounds: PartialRangeThrough<Int>) -> ComplexArray {
+    public subscript(bounds: PartialRangeThrough<Int>) -> SplitComplexArray {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
             precondition(bounds.upperBound < count, "Upper bound out of range")

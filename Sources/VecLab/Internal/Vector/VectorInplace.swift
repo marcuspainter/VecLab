@@ -19,7 +19,7 @@ func fillRealArray(_ c: [Double], _ a: Double) {
     }
 }
 
-func fillComplexArray(_ c: ComplexArray, _ a: Complex) {
+func fillSplitComplexArray(_ c: SplitComplexArray, _ a: Complex) {
     let n = c.count
     var aa0 = a.real
     var aa1 = a.imag
@@ -43,7 +43,7 @@ func vectorClearRealArray(_ c: RealArray) {
     }
 }
 
-func vectorClearComplexArray(_ c: ComplexArray) {
+func vectorClearSplitComplexArray(_ c: SplitComplexArray) {
     let n = c.count
     c.real.withUnsafeBufferPointer { cRealBuffer in
         c.imag.withUnsafeBufferPointer { cImagBuffer in

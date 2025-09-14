@@ -1,11 +1,11 @@
 //
-//  ComplexArray+ExpressibleByArrayLiteral.swift
+//  SplitComplexArray+ExpressibleByArrayLiteral.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexArray: ExpressibleByArrayLiteral {
+extension SplitComplexArray: ExpressibleByArrayLiteral {
     public typealias ArrayLiteralElement = Complex
 
     /// Initialize a complex array from complex numbers.

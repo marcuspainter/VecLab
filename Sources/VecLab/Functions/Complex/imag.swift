@@ -22,7 +22,7 @@ public func imag(_ x: Complex) -> Real {
 /// This function is retained for compatibility. Use the `imag` property.
 /// - Parameter x: Complex array.
 /// - Returns: A real array of imaginary part of a complex array.
-public func imag(_ x: ComplexArray) -> RealArray {
+public func imag(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     return x.imag
 }

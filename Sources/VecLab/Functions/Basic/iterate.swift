@@ -38,9 +38,9 @@ public func iterate(_ x: RealArray, _ body: (Int, Real) -> Real) -> RealArray {
 ///   - x: Real array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexArray {
+public func iterate(_ x: SplitComplexArray, _ body: (Complex) -> Complex) -> SplitComplexArray {
     validateSize(x)
-    var y = ComplexArray(repeating: 0, count: x.count)
+    var y = SplitComplexArray(repeating: 0, count: x.count)
     for index in 0..<x.count {
         y[index] = body(x[index])
     }
@@ -52,9 +52,9 @@ public func iterate(_ x: ComplexArray, _ body: (Complex) -> Complex) -> ComplexA
 ///   - x: Complex array.
 ///   - body: Closure to execute.
 /// - Returns: Output array.
-public func iterate(_ x: ComplexArray, _ body: (Int, Complex) -> Complex) -> ComplexArray {
+public func iterate(_ x: SplitComplexArray, _ body: (Int, Complex) -> Complex) -> SplitComplexArray {
     validateSize(x)
-    var y = ComplexArray(repeating: 0, count: x.count)
+    var y = SplitComplexArray(repeating: 0, count: x.count)
     for index in 0..<x.count {
         y[index] = body(index, x[index])
     }

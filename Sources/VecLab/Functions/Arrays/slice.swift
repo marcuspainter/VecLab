@@ -30,15 +30,15 @@ public func slice(_ x: RealArray, _ range: Range<Int>, _ by: Int = 1) -> RealArr
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: ComplexArray, _ range: Range<Int>, _ by: Int = 1) -> ComplexArray {
+public func slice(_ x: SplitComplexArray, _ range: Range<Int>, _ by: Int = 1) -> SplitComplexArray {
     validateSize(x)
     if by == 1 {
-        return ComplexArray(Array(x.real[range]), Array(x.imag[range]))
+        return SplitComplexArray(Array(x.real[range]), Array(x.imag[range]))
     } else {
         let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
         let real = indexRange.map { x.real[$0] }
         let imag = indexRange.map { x.imag[$0] }
-        return ComplexArray(real, imag)
+        return SplitComplexArray(real, imag)
     }
 }
 
@@ -65,14 +65,14 @@ public func slice(_ x: RealArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> R
 ///   - range:Index range.
 ///   - by: The index step size.
 /// - Returns: The sub array.
-public func slice(_ x: ComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> ComplexArray {
+public func slice(_ x: SplitComplexArray, _ range: ClosedRange<Int>, _ by: Int = 1) -> SplitComplexArray {
     validateSize(x)
     if by == 1 {
-        return ComplexArray(Array(x.real[range]), Array(x.imag[range]))
+        return SplitComplexArray(Array(x.real[range]), Array(x.imag[range]))
     } else {
         let indexRange = stride(from: range.lowerBound, to: range.upperBound, by: by)
         let real = indexRange.map { x.real[$0] }
         let imag = indexRange.map { x.imag[$0] }
-        return ComplexArray(real, imag)
+        return SplitComplexArray(real, imag)
     }
 }

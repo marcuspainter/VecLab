@@ -1,5 +1,5 @@
 //
-//  ComplexArray.swift
+//  SplitComplexArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/04/2025.
@@ -11,7 +11,7 @@ import Accelerate
 import Foundation
 
 /// Complex array implementation using split real/imaginary arrays
-public struct ComplexArray:
+public struct SplitComplexArray:
     // Collection,
     // Sequence,
     // BidirectionalCollection,
@@ -43,7 +43,7 @@ public struct ComplexArray:
     }
 
     /// Set internal real and imaginary arrays together.
-    internal mutating func setValue(to newValue: ComplexArray) {
+    internal mutating func setValue(to newValue: SplitComplexArray) {
         precondition(newValue.real.count == newValue.imag.count, "Real and imaginary arrays must have the same size.")
         self.real = newValue.real
         self.imag = newValue.imag
@@ -101,7 +101,7 @@ public struct ComplexArray:
     /// Initialize a complex array as the same size as any array.
     /// - Parameter sized: A collection with a count property.
     public init(sized: any Collection) {
-        self = ComplexArray(count: sized.count)
+        self = SplitComplexArray(count: sized.count)
     }
 
 }

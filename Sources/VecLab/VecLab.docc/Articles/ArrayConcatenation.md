@@ -31,7 +31,7 @@ print(c)
 However, when using VecLab, we want mathematically add the two arrays as vectors, not concatenate them.
 
 VecLab cannot override the Swift concatenation operator, but it can make a specialized operator that only applies 
-to `RealArray` and `ComplexArray`.
+to `RealArray` and `SplitComplexArray`.
 
 ```swift
 import VecLab
@@ -49,7 +49,7 @@ not the same length.
 
 #### Using the cat() function
 
-To concatenate a `RealArray` or `ComplexArray`, use the variadic `cat()` function.
+To concatenate a `RealArray` or `SplitComplexArray`, use the variadic `cat()` function.
 ```swift
 import VecLab
 

@@ -23,9 +23,9 @@ public func log10(_ a: Complex) -> Complex {
 }
 
 /// Base 10 logarithm of a complex array.
-public func log10(_ x: ComplexArray) -> ComplexArray {
+public func log10(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
-    var c = ComplexArray(count: x.count)
+    var c = SplitComplexArray(count: x.count)
     for k in 0..<x.count {
         c[k] = log10(x[k])
     }

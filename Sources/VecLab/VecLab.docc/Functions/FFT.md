@@ -15,9 +15,9 @@ FFT, DFT and FFT shift.
 ### FFT Shift
 
 - ``fftshift(_:)->RealArray``
-- ``fftshift(_:)->ComplexArray``
+- ``fftshift(_:)->SplitComplexArray``
 - ``ifftshift(_:)->RealArray``
-- ``ifftshift(_:)->ComplexArray``
+- ``ifftshift(_:)->SplitComplexArray``
 - ``fftsymmetric(_:)``
 
 ### Discrete Fourier Transform 

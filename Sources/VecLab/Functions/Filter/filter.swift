@@ -52,11 +52,11 @@ public func filter(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 ///   - a: a coefficients.
 ///   - x: Complex input signal.
 /// - Returns: Filtered complex signal.
-public func filter(b: RealArray, a: RealArray, x: ComplexArray) -> ComplexArray {
+public func filter(b: RealArray, a: RealArray, x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let yr = filter(b: b, a: a, x: x.real)
     let yi = filter(b: b, a: a, x: x.imag)
-    return ComplexArray(yr, yi)
+    return SplitComplexArray(yr, yi)
 }
 
 /// Filter with State

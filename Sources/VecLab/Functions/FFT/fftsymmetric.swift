@@ -10,7 +10,7 @@ import Foundation
 /// Make conjugate symmetric.
 /// - Parameter x: Complex  array.
 /// - Returns: Conjugate symmetric array.
-public func fftsymmetric(_ x: ComplexArray) -> ComplexArray {
+public func fftsymmetric(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     var y = x
     let n = x.count

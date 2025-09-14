@@ -58,35 +58,35 @@ class AddTests: XCTestCase {
     }
 
     // Test complex array addition
-    func testAddComplexArray() {
-        let a: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+    func testAddSplitComplexArray() {
+        let a: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 5.0], [5.0, 7.0]), "Complex array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 5.0], [5.0, 7.0]), "Complex array addition failed")
     }
 
     // Test complex and complex array addition
-    func testAddComplexComplexArray() {
+    func testAddComplexSplitComplexArray() {
         let a: Complex = Complex(1.0, 2.0)
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 4.0], [5.0, 6.0]), "Complex and complex array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 4.0], [5.0, 6.0]), "Complex and complex array addition failed")
     }
 
     // Test complex array and complex addition
-    func testAddComplexArrayComplex() {
-        let a: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+    func testAddSplitComplexArrayComplex() {
+        let a: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let b: Complex = Complex(1.0, 2.0)
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 4.0], [5.0, 6.0]), "Complex and complex array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 4.0], [5.0, 6.0]), "Complex and complex array addition failed")
     }
 
     // Test real array and complex array addition
-    func testAddRealArrayComplexArray() {
+    func testAddRealArraySplitComplexArray() {
         let a: RealArray = [1.0, 2.0]
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 5.0], [3.0, 4.0]), "Real array and complex array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 5.0], [3.0, 4.0]), "Real array and complex array addition failed")
     }
 
     // Test real array and complex number addition
@@ -94,31 +94,31 @@ class AddTests: XCTestCase {
         let a: RealArray = [1.0, 2.0]
         let b: Complex = Complex(2.0, 3.0)
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 4.0], [3.0, 3.0]), "Real array and complex number addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 4.0], [3.0, 3.0]), "Real array and complex number addition failed")
     }
 
     // Test complex array and real number addition
-    func testAddComplexArrayReal() {
-        let a: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
+    func testAddSplitComplexArrayReal() {
+        let a: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
         let b: Real = 2.0
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 4.0], [2.0, 3.0]), "Complex array and real number addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 4.0], [2.0, 3.0]), "Complex array and real number addition failed")
     }
 
     // Test complex array and real number addition
-    func testAddRealComplexArray() {
+    func testAddRealSplitComplexArray() {
         let a: Real = 2.0
-        let b: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
+        let b: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 4.0], [2.0, 3.0]), "Complex array and real number addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 4.0], [2.0, 3.0]), "Complex array and real number addition failed")
     }
 
     // Test complex array and real array addition
-    func testAddComplexArrayRealArray() {
-        let a: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
+    func testAddSplitComplexArrayRealArray() {
+        let a: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
         let b: RealArray = [2.0, 3.0]
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([3.0, 5.0], [2.0, 3.0]), "Complex array and real array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([3.0, 5.0], [2.0, 3.0]), "Complex array and real array addition failed")
     }
 
     // Test complex number and real array addition
@@ -126,7 +126,7 @@ class AddTests: XCTestCase {
         let a: Complex = Complex(1.0, 2.0)
         let b: RealArray = [1.0, 2.0]
         let result = a + b
-        XCTAssertEqual(result, ComplexArray([2.0, 3.0], [2.0, 2.0]), "Complex number and real array addition failed")
+        XCTAssertEqual(result, SplitComplexArray([2.0, 3.0], [2.0, 2.0]), "Complex number and real array addition failed")
     }
 
     /*

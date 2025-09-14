@@ -1,18 +1,18 @@
 //
-//  ComplexArray+Math+Power.swift
+//  SplitComplexArray+Math+Power.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/04/2025.
 //
 
 /// Complex power.
-extension ComplexArray {
+extension SplitComplexArray {
     /// Power.
     /// - Parameters:
     ///   - a: Complex array.
     ///   - b: Complex array.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: ComplexArray, _ b: ComplexArray) -> ComplexArray {
+    public static func ** (_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
         return pow(a, b)
     }
 
@@ -21,7 +21,7 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: ComplexArray, _ b: Complex) -> ComplexArray {
+    public static func ** (_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
         return a.map { pow($0, b) }
     }
 
@@ -30,7 +30,7 @@ extension ComplexArray {
     ///   - a: Complex array.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Complex, _ b: ComplexArray) -> ComplexArray {
+    public static func ** (_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
         return b.map { pow(a, $0) }
     }
 
@@ -39,7 +39,7 @@ extension ComplexArray {
     ///   - a: Complex number.
     ///   - b: Real number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: ComplexArray, _ b: Double) -> ComplexArray {
+    public static func ** (_ a: SplitComplexArray, _ b: Double) -> SplitComplexArray {
         return pow(a, b)
     }
 
@@ -48,7 +48,7 @@ extension ComplexArray {
     ///   - a: Real number.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: Double, _ b: ComplexArray) -> ComplexArray {
+    public static func ** (_ a: Double, _ b: SplitComplexArray) -> SplitComplexArray {
         return pow(a, b)
     }
 
@@ -57,7 +57,7 @@ extension ComplexArray {
     ///   - a: Complex number.
     ///   - b: Real array.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: ComplexArray, _ b: [Double]) -> ComplexArray {
+    public static func ** (_ a: SplitComplexArray, _ b: [Double]) -> SplitComplexArray {
         return pow(a, b)
     }
 
@@ -66,7 +66,7 @@ extension ComplexArray {
     ///   - a: Real array.
     ///   - b: Complex number.
     /// - Returns: Raises `a` to the power of `b`.
-    public static func ** (_ a: [Double], _ b: ComplexArray) -> ComplexArray {
+    public static func ** (_ a: [Double], _ b: SplitComplexArray) -> SplitComplexArray {
         return pow(a, b)
     }
 }

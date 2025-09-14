@@ -31,7 +31,7 @@ public func resize(_ x: RealArray, length m: Int) -> RealArray {
 ///   - x: Input array
 ///   - m: Length.
 /// - Returns: Array of new length m.
-public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
+public func resize(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray {
     validateSize(x)
     let n = x.count
     guard m != n else { return x }
@@ -40,7 +40,7 @@ public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
         return x[0..<m]
     } else {
         let zeroCount = m - n
-        let zeros = ComplexArray(count: zeroCount)
+        let zeros = SplitComplexArray(count: zeroCount)
         y.append(contentsOf: zeros)
     }
     return y

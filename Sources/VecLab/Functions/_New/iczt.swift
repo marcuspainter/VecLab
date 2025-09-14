@@ -5,7 +5,7 @@
 //  Created by Marcus Painter on 01/05/2025.
 //
 
-func iczt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> ComplexArray {
+func iczt(_ x: SplitComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil) -> SplitComplexArray {
     // ICZT1D  Inverse Chirp Z-transform for 1D vectors
     //   G = ICZT1D(X, K, W, A) returns the inverse chirp z-transform of X,
     //   where X was computed using the forward CZT with parameters K, W, A.

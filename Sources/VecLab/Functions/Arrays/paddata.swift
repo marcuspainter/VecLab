@@ -28,12 +28,12 @@ public func paddata(_ x: RealArray, length m: Int) -> RealArray {
 ///   - x: Input array.
 ///   - m: Length.
 /// - Returns: Array padded to length m.
-public func paddata(_ x: ComplexArray, length m: Int) -> ComplexArray {
+public func paddata(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray {
     validateSize(x)
     let n = x.count
     if m > n {
         let zeroCount = m - n
-        let zeros = ComplexArray(count: zeroCount)
+        let zeros = SplitComplexArray(count: zeroCount)
         return cat(x, zeros)
     }
     return x

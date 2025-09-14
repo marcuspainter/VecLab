@@ -154,9 +154,9 @@ class StatisticsTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "rms failed")
     }
 
-    func testRmsComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: Real = rms(complexArrayA)
+    func testRmsSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: Real = rms(SplitComplexArrayA)
         let expected: Real = 3.872983346207417
         XCTAssertEqual(result, expected, accuracy: accuracy, "rms failed")
     }

@@ -22,7 +22,7 @@ public func validateSize(
 
 public func validateSize(
     _ a: RealArray,
-    _ b: ComplexArray,
+    _ b: SplitComplexArray,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -35,7 +35,7 @@ public func validateSize(
 }
 
 public func validateSize(
-    _ a: ComplexArray,
+    _ a: SplitComplexArray,
     _ b: RealArray,
     file: StaticString = #file,
     line: UInt = #line
@@ -49,8 +49,8 @@ public func validateSize(
 }
 
 public func validateSize(
-    _ a: ComplexArray,
-    _ b: ComplexArray,
+    _ a: SplitComplexArray,
+    _ b: SplitComplexArray,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -64,7 +64,7 @@ public func validateSize(
 }
 
 public func validateSize(
-    _ a: ComplexArray,
+    _ a: SplitComplexArray,
     file: StaticString = #file,
     line: UInt = #line
 ) {

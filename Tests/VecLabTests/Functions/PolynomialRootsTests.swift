@@ -24,7 +24,7 @@ class PolynomialRootsTests: XCTestCase {
 
     // Helper function to check if roots array contains expected values (order may vary)
     func assertRootsContain(
-        _ roots: ComplexArray,
+        _ roots: SplitComplexArray,
         _ expected: [Complex],
         accuracy: Real = 1e-10,
         file: StaticString = #file,
@@ -163,7 +163,7 @@ class PolynomialRootsTests: XCTestCase {
         
         print(p)
         
-        var z = ComplexArray([1,3,2,3],[1,1,1,2])
+        var z = SplitComplexArray([1,3,2,3],[1,1,1,2])
         
         z = z.sorted { $0.real != $1.real ? $0.real < $1.real : $0.imag < $1.imag }
         print(z)
@@ -172,33 +172,33 @@ class PolynomialRootsTests: XCTestCase {
     func testPoly2() {
 
         // 1) real roots
-        let r1 = ComplexArray([Complex(1,0), Complex(2,0), Complex(3,0)])
-        let exp1 = ComplexArray([Complex(1,0), Complex(-6,0), Complex(11,0), Complex(-6,0)])
+        let r1 = SplitComplexArray([Complex(1,0), Complex(2,0), Complex(3,0)])
+        let exp1 = SplitComplexArray([Complex(1,0), Complex(-6,0), Complex(11,0), Complex(-6,0)])
         let got1 = poly(roots: r1)
         XCTAssertEqual(got1, exp1, accuracy: 1e-6)
 
         // 2) conjugate pair -> real coefficients
-        let r2 = ComplexArray([Complex(1,1), Complex(1,-1)])
-        let exp2 = ComplexArray([Complex(1,0), Complex(-2,0), Complex(2,0)])
+        let r2 = SplitComplexArray([Complex(1,1), Complex(1,-1)])
+        let exp2 = SplitComplexArray([Complex(1,0), Complex(-2,0), Complex(2,0)])
         let got2 = poly(roots: r2)
         XCTAssertEqual(got2, exp2, accuracy: 1e-6)
 
         // 3) non-conjugate complex roots (the failing case)
-        let r3 = ComplexArray([Complex(1,1), Complex(2,1)])
-        let exp3 = ComplexArray([Complex(1,0), Complex(-3,-2), Complex(1,3)]) // expected complex coeffs
+        let r3 = SplitComplexArray([Complex(1,1), Complex(2,1)])
+        let exp3 = SplitComplexArray([Complex(1,0), Complex(-3,-2), Complex(1,3)]) // expected complex coeffs
         let got3 = poly(roots: r3)
         XCTAssertEqual(got3, exp3, accuracy: 1e-6)
         print(got3)
 
         // 4) single root
-        let r4 = ComplexArray([Complex(5,0)])
-        let exp4 = ComplexArray([Complex(1,0), Complex(-5,0)])
+        let r4 = SplitComplexArray([Complex(5,0)])
+        let exp4 = SplitComplexArray([Complex(1,0), Complex(-5,0)])
         let got4 = poly(roots: r4)
         XCTAssertEqual(got4, exp4, accuracy: 1e-6)
 
         print("Tests passed")
         
-        let z = ComplexArray()
+        let z = SplitComplexArray()
     }
     
     func testPoly3() {
@@ -215,7 +215,7 @@ class PolynomialRootsTests: XCTestCase {
         assert(approxEqual(ab, Complex(1, 3)), "Complex multiplication is wrong!")
 
         // 1) poly() vs direct product
-        let roots = ComplexArray([Complex(1,1), Complex(2,1)])
+        let roots = SplitComplexArray([Complex(1,1), Complex(2,1)])
         let c = poly(roots: roots)                 // your function under test
         let prod = roots.reduce(Complex(1,0)) { $0 * $1 }  // multiply the roots
 

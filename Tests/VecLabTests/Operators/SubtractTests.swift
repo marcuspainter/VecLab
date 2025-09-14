@@ -38,27 +38,27 @@ class SubtractTests: XCTestCase {
         XCTAssertEqual(result, Complex(2.0, -2.0), "Real and complex subtraction failed")
     }
 
-    func testSubtractComplexArray() {
-        let a: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+    func testSubtractSplitComplexArray() {
+        let a: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([-1.0, -1.0], [-1.0, -1.0]), "Complex array subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([-1.0, -1.0], [-1.0, -1.0]), "Complex array subtraction failed")
     }
 
-    func testSubtractComplexComplexArray() {
+    func testSubtractComplexSplitComplexArray() {
         let a: Complex = Complex(1.0, 2.0)
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([1.0, 2.0], [1.0, 2.0]), "Complex and complex array subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([1.0, 2.0], [1.0, 2.0]), "Complex and complex array subtraction failed")
     }
 
-    func testSubtractRealArrayComplexArray() {
+    func testSubtractRealArraySplitComplexArray() {
         let a: RealArray = [1.0, 2.0]
-        let b: ComplexArray = ComplexArray([2.0, 3.0], [3.0, 4.0])
+        let b: SplitComplexArray = SplitComplexArray([2.0, 3.0], [3.0, 4.0])
         let result = a - b
         XCTAssertEqual(
             result,
-            ComplexArray([1.0, 1.0], [3.0, 4.0]),
+            SplitComplexArray([1.0, 1.0], [3.0, 4.0]),
             "Real array and complex array subtraction failed"
         )
     }
@@ -67,28 +67,28 @@ class SubtractTests: XCTestCase {
         let a: RealArray = [1.0, 2.0]
         let b: Complex = Complex(2.0, 3.0)
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([-1.0, 0.0], [-3.0, -3.0]), "Real array and complex subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([-1.0, 0.0], [-3.0, -3.0]), "Real array and complex subtraction failed")
     }
 
-    func testSubtractComplexArrayReal() {
-        let a: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
+    func testSubtractSplitComplexArrayReal() {
+        let a: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
         let b: Real = 2.0
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([-1.0, 0.0], [2.0, 3.0]), "Complex array and real subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([-1.0, 0.0], [2.0, 3.0]), "Complex array and real subtraction failed")
     }
 
-    func testSubtractRealComplexArray() {
+    func testSubtractRealSplitComplexArray() {
         let a: Real = 2.0
-        let b: ComplexArray = ComplexArray([1.0, 2.0], [2.0, 3.0])
+        let b: SplitComplexArray = SplitComplexArray([1.0, 2.0], [2.0, 3.0])
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([1.0, 0.0], [-2.0, -3.0]), "Real and complex array subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([1.0, 0.0], [-2.0, -3.0]), "Real and complex array subtraction failed")
     }
 
     func testSubtractComplexRealArray() {
         let a: Complex = Complex(1.0, 2.0)
         let b: RealArray = [1.0, 2.0]
         let result = a - b
-        XCTAssertEqual(result, ComplexArray([0.0, -1.0], [2.0, 2.0]), "Complex and real array subtraction failed")
+        XCTAssertEqual(result, SplitComplexArray([0.0, -1.0], [2.0, 2.0]), "Complex and real array subtraction failed")
     }
 }
 

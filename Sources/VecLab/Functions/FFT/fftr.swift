@@ -12,7 +12,7 @@ import Foundation
 /// - Parameter x: Real array.
 /// - Parameter length: Zero-padded length (optional).
 /// - Returns: Complex array result.
-public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
+public func fftr(_ x: RealArray, length: Int? = nil) -> SplitComplexArray {
     var input: RealArray
     if let length {
         input = paddata(x, length: length)
@@ -30,7 +30,7 @@ public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
         )
     else {
         print("fftr error")
-        return ComplexArray(
+        return SplitComplexArray(
             [Real](repeating: Real.nan, count: input.count),
             [Real](repeating: Real.nan, count: input.count)
         )
@@ -38,5 +38,5 @@ public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
     let zeros = [Real](repeating: 0.0, count: input.count)
     let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
 
-    return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
+    return SplitComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }

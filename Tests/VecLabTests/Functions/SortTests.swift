@@ -22,11 +22,11 @@ class SortTests: XCTestCase {
         //print(result1)
         
         let b: RealArray = [1,5,8,3, 9,4,6,8]
-        let z = ComplexArray(a,b)
+        let z = SplitComplexArray(a,b)
         let result2 = sort(z)
         print(abs(result2))
         
-        var zz = ComplexArray()
+        var zz = SplitComplexArray()
         for k in vector(0...360, 30) {
             zz.append(Complex(cos(deg2rad(k)), sin(deg2rad(k))))
         }
@@ -38,7 +38,7 @@ class SortTests: XCTestCase {
     }
 }
 
-fileprivate func matlabSort2(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSort2(_ arr: SplitComplexArray) -> SplitComplexArray {
     return arr.sorted { a, b in
         let magA = sqrt(a.real * a.real + a.imag * a.imag)
         let magB = sqrt(b.real * b.real + b.imag * b.imag)

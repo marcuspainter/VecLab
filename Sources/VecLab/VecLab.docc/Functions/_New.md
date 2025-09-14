@@ -6,7 +6,7 @@ New functions.
 
 ### Fill and Clear
 - ``clear(_:)-(RealArray)``
-- ``clear(_:)-(ComplexArray)``
+- ``clear(_:)-(SplitComplexArray)``
 
 - ``fill(_:_:)-(_,Real)``
 - ``fill(_:_:)-(_,Complex)``
@@ -15,15 +15,15 @@ New functions.
 ### Cross-correlation
 
 - ``xcorr(_:)->RealArray``
-- ``xcorr(_:)->ComplexArray``
+- ``xcorr(_:)->SplitComplexArray``
 - ``xcorr(_:_:)->RealArray``
-- ``xcorr(_:_:)->ComplexArray``
+- ``xcorr(_:_:)->SplitComplexArray``
 - ``xcorrSimple(_:_:)``
 
 ### Convolution 
 
 - ``conv(_:_:shape:)->RealArray``
-- ``conv(_:_:shape:)->ComplexArray``
+- ``conv(_:_:shape:)->SplitComplexArray``
 
 ### Resample
 

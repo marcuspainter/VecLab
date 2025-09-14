@@ -91,7 +91,7 @@ public func gamma(_ z: RealArray) -> RealArray {
 /// Gamma function.
 /// - Parameter z: Complex input value
 /// - Returns: Returns the gamma function evaluated at the elements of x.
-public func gamma(_ z: ComplexArray) -> ComplexArray {
+public func gamma(_ z: SplitComplexArray) -> SplitComplexArray {
     validateSize(z)
     var result = z
     for k in 0..<result.count {

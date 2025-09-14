@@ -32,7 +32,7 @@ public func tan(_ x: Complex) -> Complex {
 /// Tangent of complex array in radians.
 /// - Parameter x: Angle in radians.
 /// - Returns: The tangent of the angles.
-public func tan(_ x: ComplexArray) -> ComplexArray {
+public func tan(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     // Compute 2x and 2y
     let twoX = vDSP.multiply(2.0, x.real)
@@ -53,5 +53,5 @@ public func tan(_ x: ComplexArray) -> ComplexArray {
     let real = vDSP.divide(sinTwoX, denominator)
     let imag = vDSP.divide(sinhTwoY, denominator)
 
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }

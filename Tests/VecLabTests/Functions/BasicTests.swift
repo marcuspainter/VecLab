@@ -38,17 +38,17 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
 
-    func testCumsumComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = cumsum(complexArrayA)
-        let expected: ComplexArray = ComplexArray([1.0, 3.0, 6.0, 10.0], [1.0, 3.0, 6.0, 10.0])
+    func testCumsumSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: SplitComplexArray = cumsum(SplitComplexArrayA)
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 3.0, 6.0, 10.0], [1.0, 3.0, 6.0, 10.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
 
-    func testCumsumComplexArrayEmpty() throws {
-        let complexArrayA: ComplexArray = []
-        let result: ComplexArray = cumsum(complexArrayA)
-        let expected: ComplexArray = []
+    func testCumsumSplitComplexArrayEmpty() throws {
+        let SplitComplexArrayA: SplitComplexArray = []
+        let result: SplitComplexArray = cumsum(SplitComplexArrayA)
+        let expected: SplitComplexArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumsum failed")
     }
 
@@ -68,17 +68,17 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
 
-    func testCumprodComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = cumprod(complexArrayA)
-        let expected: ComplexArray = ComplexArray([1.0, 0.0, -12.0, -96.0], [1.0, 4.0, 12.0, 0.0])
+    func testCumprodSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: SplitComplexArray = cumprod(SplitComplexArrayA)
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 0.0, -12.0, -96.0], [1.0, 4.0, 12.0, 0.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
 
-    func testCumprodComplexArrayEmpty() throws {
-        let complexArrayA: ComplexArray = []
-        let result: ComplexArray = cumprod(complexArrayA)
-        let expected: ComplexArray = []
+    func testCumprodSplitComplexArrayEmpty() throws {
+        let SplitComplexArrayA: SplitComplexArray = []
+        let result: SplitComplexArray = cumprod(SplitComplexArrayA)
+        let expected: SplitComplexArray = []
         XCTAssertEqual(result, expected, accuracy: accuracy, "cumprod failed")
     }
 
@@ -89,9 +89,9 @@ class BasicTests: XCTestCase {
         disp(realArrayA)
     }
 
-    func testDispComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        disp(complexArrayA)
+    func testDispSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        disp(SplitComplexArrayA)
     }
 
     func testDispAny() throws {
@@ -115,17 +115,17 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "iterate failed")
     }
 
-    func testIterateComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = iterate(complexArrayA) { -$0 }
-        let expected: ComplexArray = ComplexArray([-1.0, -2.0, -3.0, -4.0], [-1.0, -2.0, -3.0, -4.0])
+    func testIterateSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: SplitComplexArray = iterate(SplitComplexArrayA) { -$0 }
+        let expected: SplitComplexArray = SplitComplexArray([-1.0, -2.0, -3.0, -4.0], [-1.0, -2.0, -3.0, -4.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "iterate failed")
     }
 
-    func testIterateComplexArrayInt() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: ComplexArray = iterate(complexArrayA) { Real($0) * $1 }
-        let expected: ComplexArray = ComplexArray([0.0, 2.0, 6.0, 12.0], [0.0, 2.0, 6.0, 12.0])
+    func testIterateSplitComplexArrayInt() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: SplitComplexArray = iterate(SplitComplexArrayA) { Real($0) * $1 }
+        let expected: SplitComplexArray = SplitComplexArray([0.0, 2.0, 6.0, 12.0], [0.0, 2.0, 6.0, 12.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "iterate failed")
     }
 
@@ -147,9 +147,9 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "prod failed")
     }
 
-    func testProdComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: Complex = prod(complexArrayA)
+    func testProdSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: Complex = prod(SplitComplexArrayA)
         let expected: Complex = Complex(-96.0, 0.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "prod failed")
     }
@@ -191,10 +191,10 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "sign failed")
     }
 
-    func testSignComplexArray() throws {
-        let complexA: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
-        let result: ComplexArray = sign(complexA)
-        let expected: ComplexArray = ComplexArray(
+    func testSignSplitComplexArray() throws {
+        let complexA: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
+        let result: SplitComplexArray = sign(complexA)
+        let expected: SplitComplexArray = SplitComplexArray(
             [0.707106781186547, 0.707106781186547],
             [0.707106781186547, 0.707106781186547]
         )
@@ -235,9 +235,9 @@ class BasicTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "sum failed")
     }
 
-    func testSumComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: Complex = sum(complexArrayA)
+    func testSumSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: Complex = sum(SplitComplexArrayA)
         let expected: Complex = Complex(10.0, 10.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "sum failed")
     }
@@ -259,24 +259,24 @@ class BasicTests: XCTestCase {
 
     func testDotRealComplex() throws {
         let realArrayA: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let complexArrayB: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let result: Complex = dot(realArrayA, complexArrayB)
+        let SplitComplexArrayB: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let result: Complex = dot(realArrayA, SplitComplexArrayB)
         let expected: Complex = Complex(30.0000, 30.0000)
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
 
     func testDotComplexReal() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
         let realArrayB: RealArray = [1.0, 2.0, 3.0, 4.0]
-        let result: Complex = dot(complexArrayA, realArrayB)
+        let result: Complex = dot(SplitComplexArrayA, realArrayB)
         let expected: Complex = Complex(30.0000, -30.0000)
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }
 
     func testDotComplexComplex() throws {
-        let complexArrayA: ComplexArray = ComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
-        let complexArrayB: ComplexArray = ComplexArray([5.0, 6.0, 7.0, 8.0], [5.0, 6.0, 7.0, 8.0])
-        let result: Complex = dot(complexArrayA, complexArrayB)
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+        let SplitComplexArrayB: SplitComplexArray = SplitComplexArray([5.0, 6.0, 7.0, 8.0], [5.0, 6.0, 7.0, 8.0])
+        let result: Complex = dot(SplitComplexArrayA, SplitComplexArrayB)
         let expected: Complex = Complex(140.0, 0.0)
         XCTAssertEqual(result, expected, accuracy: accuracy, "dot failed")
     }

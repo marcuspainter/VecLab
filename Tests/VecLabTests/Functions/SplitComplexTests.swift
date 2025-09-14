@@ -8,7 +8,7 @@
 import VecLab
 import XCTest
 
-class ComplexTests: XCTestCase {
+class SplitComplexTests: XCTestCase {
 
     let accuracy: Real = 1e-6
 
@@ -21,9 +21,9 @@ class ComplexTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
     }
 
-    func testAbsComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
-        let result: RealArray = abs(complexArrayA)
+    func testAbsSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let result: RealArray = abs(SplitComplexArrayA)
         let expected: RealArray = [5.0, 13.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
     }
@@ -37,9 +37,9 @@ class ComplexTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "angle failed")
     }
 
-    func testAngleComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
-        let result: RealArray = angle(complexArrayA)
+    func testAngleSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let result: RealArray = angle(SplitComplexArrayA)
         let expected: RealArray = [0.927295218001612, 1.176005207095135]
         XCTAssertEqual(result, expected, accuracy: accuracy, "angle failed")
     }
@@ -53,10 +53,10 @@ class ComplexTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "conj failed")
     }
 
-    func testConjComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
-        let result: ComplexArray = conj(complexArrayA)
-        let expected: ComplexArray = ComplexArray([3.0, 5.0], [-4.0, -12.0])
+    func testConjSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let result: SplitComplexArray = conj(SplitComplexArrayA)
+        let expected: SplitComplexArray = SplitComplexArray([3.0, 5.0], [-4.0, -12.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "conj failed")
     }
 
@@ -73,9 +73,9 @@ class ComplexTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "imag failed")
     }
 
-    func testImagComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
-        let result: RealArray = imag(complexArrayA)
+    func testImagSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let result: RealArray = imag(SplitComplexArrayA)
         let expected: RealArray = [4.0, 12.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "imag failed")
     }
@@ -89,9 +89,9 @@ class ComplexTests: XCTestCase {
         XCTAssertEqual(result, expected, accuracy: accuracy, "real failed")
     }
 
-    func testRealComplexArray() throws {
-        let complexArrayA: ComplexArray = ComplexArray([3.0, 5.0], [4.0, 12.0])
-        let result: RealArray = real(complexArrayA)
+    func testRealSplitComplexArray() throws {
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let result: RealArray = real(SplitComplexArrayA)
         let expected: RealArray = [3.0, 5.0]
         XCTAssertEqual(result, expected, accuracy: accuracy, "real failed")
     }

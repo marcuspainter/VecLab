@@ -1,27 +1,27 @@
 //
-//  ComplexArray+Map.swift
+//  SplitComplexArray+Map.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 23/04/2025.
 //
 
 /*
- - Return type is ComplexArray or scalar where appropriate
+ - Return type is SplitComplexArray or scalar where appropriate
  - Avoids [Complex]
  - Uses preallocation only when the size is known
  - Uses .append() when necessary
- - Any function that would normally involve [Complex] must return or use ComplexArray instead.
+ - Any function that would normally involve [Complex] must return or use SplitComplexArray instead.
  */
 
 import Foundation
 
-extension ComplexArray {
-    /// Returns a new `ComplexArray` containing the results of mapping the given transform.
+extension SplitComplexArray {
+    /// Returns a new `SplitComplexArray` containing the results of mapping the given transform.
     /// over this array’s elements.
     /// - Parameter transform: Transform closure.
     /// - Returns: A transformed array.
-    public func map(_ transform: (Complex) -> Complex) -> ComplexArray {
-        var result = ComplexArray(count: count)
+    public func map(_ transform: (Complex) -> Complex) -> SplitComplexArray {
+        var result = SplitComplexArray(count: count)
 
         for i in 0..<count {
             let z = self[i]
@@ -31,12 +31,12 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a new `ComplexArray` containing the elements of this array
+    /// Returns a new `SplitComplexArray` containing the elements of this array
     /// that satisfy the given predicate.
     /// - Parameter isIncluded: Filter closure.
     /// - Returns: A filtered array.
-    public func filter(_ isIncluded: (Complex) -> Bool) -> ComplexArray {
-        var result = ComplexArray()
+    public func filter(_ isIncluded: (Complex) -> Bool) -> SplitComplexArray {
+        var result = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -47,12 +47,12 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a new `ComplexArray` containing the non-nil results of
+    /// Returns a new `SplitComplexArray` containing the non-nil results of
     /// mapping the given transform over this array’s elements.
     /// - Parameter transform: Transform closure.
     /// - Returns: A transformed array.
-    public func compactMap(_ transform: (Complex) -> Complex?) -> ComplexArray {
-        var result = ComplexArray()
+    public func compactMap(_ transform: (Complex) -> Complex?) -> SplitComplexArray {
+        var result = SplitComplexArray()
 
         for index in 0..<count {
             let z = self[index]
@@ -64,13 +64,13 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
-    /// Returns a new `ComplexArray` containing the elements up to the first that does not satisfy the predicate.
+    /// Returns a new `SplitComplexArray` containing the elements up to the first that does not satisfy the predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
-    public func prefix(while predicate: (Complex) -> Bool) -> ComplexArray {
-        var result = ComplexArray()
+    public func prefix(while predicate: (Complex) -> Bool) -> SplitComplexArray {
+        var result = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -81,11 +81,11 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a new `ComplexArray` containing the elements from the first that fails the predicate.
+    /// Returns a new `SplitComplexArray` containing the elements from the first that fails the predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
-    public func drop(while predicate: (Complex) -> Bool) -> ComplexArray {
-        var result = ComplexArray()
+    public func drop(while predicate: (Complex) -> Bool) -> SplitComplexArray {
+        var result = SplitComplexArray()
         var shouldDrop = true
 
         for i in 0..<count {
@@ -103,12 +103,12 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a new `ComplexArray` containing the first `n` elements.
+    /// Returns a new `SplitComplexArray` containing the first `n` elements.
     /// - Parameter maxLength: Maximum length.
     /// - Returns: A new array.
-    public func prefix(_ maxLength: Int) -> ComplexArray {
+    public func prefix(_ maxLength: Int) -> SplitComplexArray {
         let n = Swift.min(maxLength, count)
-        var result = ComplexArray(count: n)
+        var result = SplitComplexArray(count: n)
 
         for i in 0..<n {
             result[i] = self[i]
@@ -117,13 +117,13 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a new `ComplexArray` containing the last `n` elements.
+    /// Returns a new `SplitComplexArray` containing the last `n` elements.
     /// - Parameter maxLength: Maximum length.
     /// - Returns: A new array.
-    public func suffix(_ maxLength: Int) -> ComplexArray {
+    public func suffix(_ maxLength: Int) -> SplitComplexArray {
         let n = Swift.min(maxLength, count)
         let start = count - n
-        var result = ComplexArray(count: n)
+        var result = SplitComplexArray(count: n)
 
         for i in 0..<n {
             result[i] = self[start + i]
@@ -135,8 +135,8 @@ extension ComplexArray {
     /// Flattens and maps elements. Only non-nil results are included.
     /// - Parameter transform: Transform closure.
     /// - Returns: A new array.
-    public func flatMap(_ transform: (Complex) -> ComplexArray) -> ComplexArray {
-        var result = ComplexArray()
+    public func flatMap(_ transform: (Complex) -> SplitComplexArray) -> SplitComplexArray {
+        var result = SplitComplexArray()
 
         for i in 0..<count {
             let subArray = transform(self[i])
@@ -146,10 +146,10 @@ extension ComplexArray {
         return result
     }
 
-    /// Returns a reversed `ComplexArray`.
+    /// Returns a reversed `SplitComplexArray`.
     /// - Returns: An new array.
-    public func reversed() -> ComplexArray {
-        var result = ComplexArray(count: count)
+    public func reversed() -> SplitComplexArray {
+        var result = SplitComplexArray(count: count)
 
         for i in 0..<count {
             result[i] = self[count - 1 - i]
@@ -159,21 +159,21 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Splits the array into subsequences separated by elements matching the predicate.
     /// - Parameter isSeparator: Separator closure.
     /// - Returns: An array of arrays.
-    public func split(whereSeparator isSeparator: (Complex) -> Bool) -> [ComplexArray] {
-        var result: [ComplexArray] = []
-        var current = ComplexArray()
+    public func split(whereSeparator isSeparator: (Complex) -> Bool) -> [SplitComplexArray] {
+        var result: [SplitComplexArray] = []
+        var current = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
             if isSeparator(z) {
                 if !current.isEmpty {
                     result.append(current)
-                    current = ComplexArray()
+                    current = SplitComplexArray()
                 }
             } else {
                 current.append(z)
@@ -190,14 +190,14 @@ extension ComplexArray {
     /// Splits the array into equally-sized chunks.
     /// - Parameter chunkSize: Chunk size.
     /// - Returns: A an array of arrays
-    public func chunked(size chunkSize: Int) -> [ComplexArray] {
+    public func chunked(size chunkSize: Int) -> [SplitComplexArray] {
         precondition(chunkSize > 0, "Chunk size must be greater than zero.")
-        var result: [ComplexArray] = []
+        var result: [SplitComplexArray] = []
         var i = 0
 
         while i < count {
             let end = Swift.min(i + chunkSize, count)
-            var chunk = ComplexArray(count: end - i)
+            var chunk = SplitComplexArray(count: end - i)
 
             for j in i..<end {
                 chunk[j - i] = self[j]
@@ -237,7 +237,7 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
     /// Returns true if any element satisfies the given predicate.
     /// - Parameter predicate: Predicate closure.
     /// - Returns: A new array.
@@ -275,15 +275,15 @@ extension ComplexArray {
         return nil
     }
 
-    /// Returns a sorted `ComplexArray`, using the provided comparator.
+    /// Returns a sorted `SplitComplexArray`, using the provided comparator.
     /// - Parameter areInIncreasingOrder: Sorting closure.
     /// - Returns: A new array.
-    public func sorted(by areInIncreasingOrder: (Complex, Complex) -> Bool) -> ComplexArray {
+    public func sorted(by areInIncreasingOrder: (Complex, Complex) -> Bool) -> SplitComplexArray {
         let sortedIndices = (0..<count).sorted { i, j in
             areInIncreasingOrder(self[i], self[j])
         }
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (newIndex, sourceIndex) in sortedIndices.enumerated() {
             result[newIndex] = self[sourceIndex]
         }
@@ -293,17 +293,17 @@ extension ComplexArray {
 
 /*
  // Not needed
- extension ComplexArray {
+ extension SplitComplexArray {
 
-     /// Returns a new `ComplexArray` by combining each element of `self` with the
+     /// Returns a new `SplitComplexArray` by combining each element of `self` with the
      // corresponding element of `other`
      /// using the given transform.
      public func zip(
-         with other: ComplexArray,
+         with other: SplitComplexArray,
          _ transform: (Complex, Complex) -> Complex
-     ) -> ComplexArray {
+     ) -> SplitComplexArray {
          let n = Swift.min(self.count, other.count)
-         var result = ComplexArray(count: n)
+         var result = SplitComplexArray(count: n)
 
          for i in 0..<n {
              let lhs = self[i]
@@ -316,7 +316,7 @@ extension ComplexArray {
  }
  */
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Returns the minimum element using the given comparator.
     /// - Parameter areInIncreasingOrder: Comparator closure.
@@ -349,15 +349,15 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Returns a shuffled copy of the array.
     /// - Returns: A shuffled array.
-    public func shuffled() -> ComplexArray {
+    public func shuffled() -> SplitComplexArray {
         var indices = [Int](0..<count)
         indices.shuffle()
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (i, originalIndex) in indices.enumerated() {
             result[i] = self[originalIndex]
         }
@@ -366,16 +366,16 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
     /// Partitions the array into two groups: those matching the predicate, and those that do not.
     /// Returns a new array with elements rearranged and the pivot index.
     /// - Parameter belongsInSecondPartition: Predicate closure.
     /// - Returns: A new array.
     public func partitioned(by belongsInSecondPartition: (Complex) -> Bool)
-        -> (array: ComplexArray, pivot: Int)
+        -> (array: SplitComplexArray, pivot: Int)
     {
-        var matching = ComplexArray()
-        var nonMatching = ComplexArray()
+        var matching = SplitComplexArray()
+        var nonMatching = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -394,13 +394,13 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
-    /// Returns a new `ComplexArray` with duplicates removed, preserving order.
+    /// Returns a new `SplitComplexArray` with duplicates removed, preserving order.
     /// - Returns: A new array.
-    public func unique() -> ComplexArray {
+    public func unique() -> SplitComplexArray {
         var seen = Set<Complex>()
-        var result = ComplexArray()
+        var result = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -413,12 +413,12 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Removes duplicate elements in-place, preserving the original order.
     public mutating func removeDuplicates() {
         var seen = Set<Complex>()
-        var newItems = ComplexArray()
+        var newItems = SplitComplexArray()
 
         for i in 0..<count {
             let z = self[i]
@@ -432,17 +432,17 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Returns a sorted array by applying a key transform to each element.
     /// - Parameter key: Key.
     /// - Returns: A new array.
-    public func sorted<T: Comparable>(by key: (Complex) -> T) -> ComplexArray {
+    public func sorted<T: Comparable>(by key: (Complex) -> T) -> SplitComplexArray {
         let sortedIndices = (0..<count).sorted { i, j in
             key(self[i]) < key(self[j])
         }
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (newIndex, sourceIndex) in sortedIndices.enumerated() {
             result[newIndex] = self[sourceIndex]
         }
@@ -451,15 +451,15 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Drop elements.
     /// - Parameter n: Number.
     /// - Returns: A new array.
-    public func dropFirst(_ n: Int = 1) -> ComplexArray {
+    public func dropFirst(_ n: Int = 1) -> SplitComplexArray {
         let n = Swift.min(n, count)
         let newCount = count - n
-        var result = ComplexArray(count: newCount)
+        var result = SplitComplexArray(count: newCount)
         for i in 0..<newCount {
             result[i] = self[i + n]
         }
@@ -469,9 +469,9 @@ extension ComplexArray {
     /// Dtop last element.
     /// - Parameter n: Number.
     /// - Returns: A new array.
-    public func dropLast(_ n: Int = 1) -> ComplexArray {
+    public func dropLast(_ n: Int = 1) -> SplitComplexArray {
         let newCount = Swift.max(0, count - n)
-        var result = ComplexArray(count: newCount)
+        var result = SplitComplexArray(count: newCount)
         for i in 0..<newCount {
             result[i] = self[i]
         }
@@ -481,9 +481,9 @@ extension ComplexArray {
     /// Join arrays
     /// - Parameter arrays: Array of arrays.
     /// - Returns: An array of joined arrays..
-    public static func joined(_ arrays: [ComplexArray]) -> ComplexArray {
+    public static func joined(_ arrays: [SplitComplexArray]) -> SplitComplexArray {
         let totalCount = arrays.reduce(0) { $0 + $1.count }
-        var result = ComplexArray(count: totalCount)
+        var result = SplitComplexArray(count: totalCount)
 
         var index = 0
         for array in arrays {
@@ -499,11 +499,11 @@ extension ComplexArray {
     /// Intersperse elements.
     /// - Parameter element: A complex number.
     /// - Returns: A new array.
-    public func interspersed(with element: Complex) -> ComplexArray {
+    public func interspersed(with element: Complex) -> SplitComplexArray {
         guard count > 1 else { return self }
 
         let newCount = count * 2 - 1
-        var result = ComplexArray(count: newCount)
+        var result = SplitComplexArray(count: newCount)
 
         for i in 0..<count {
             result[i * 2] = self[i]
@@ -518,10 +518,10 @@ extension ComplexArray {
     /// Cycle array.
     /// - Parameter repeatCount: Reapeat count.
     /// - Returns: A new array.
-    public func cycled(count repeatCount: Int) -> ComplexArray {
+    public func cycled(count repeatCount: Int) -> SplitComplexArray {
         precondition(repeatCount >= 0, "Repeat count must be non-negative.")
         let totalCount = count * repeatCount
-        var result = ComplexArray(count: totalCount)
+        var result = SplitComplexArray(count: totalCount)
 
         for i in 0..<repeatCount {
             for j in 0..<count {
@@ -533,16 +533,16 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
-    /// Returns a `ComplexArray` sorted by the magnitude of its elements.
+    /// Returns a `SplitComplexArray` sorted by the magnitude of its elements.
     /// - Returns: A new array.
-    public func sorted() -> ComplexArray {
+    public func sorted() -> SplitComplexArray {
         let sortedIndices = (0..<count).sorted { lhs, rhs in
             self[lhs].magnitude < self[rhs].magnitude
         }
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }
@@ -551,16 +551,16 @@ extension ComplexArray {
     }
 }
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Randomly shuffles an array.
     /// - Parameter generator: Random number generator.
     /// - Returns: A new array.
-    public func shuffled<T: RandomNumberGenerator>(using generator: inout T) -> ComplexArray {
+    public func shuffled<T: RandomNumberGenerator>(using generator: inout T) -> SplitComplexArray {
         var indices = [Int](0..<count)
         indices.shuffle(using: &generator)
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (i, j) in indices.enumerated() {
             result[i] = self[j]
         }
@@ -574,12 +574,12 @@ extension ComplexArray {
     @available(macOS 13.0, iOS 16.0, *)
     public func sorted<C: SortComparator>(
         using comparator: C
-    ) -> ComplexArray where C.Compared == Complex {
+    ) -> SplitComplexArray where C.Compared == Complex {
         let sortedIndices = (0..<count).sorted {
             comparator.compare(self[$0], self[$1]) == .orderedAscending
         }
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }
@@ -593,7 +593,7 @@ extension ComplexArray {
     @available(macOS 13.0, iOS 16.0, *)
     public func sorted<S: Sequence, C: SortComparator>(
         using comparators: S
-    ) -> ComplexArray where S.Element == C, C.Compared == Complex {
+    ) -> SplitComplexArray where S.Element == C, C.Compared == Complex {
         let sortedIndices = (0..<count).sorted {
             for comparator in comparators {
                 let result = comparator.compare(self[$0], self[$1])
@@ -604,7 +604,7 @@ extension ComplexArray {
             return false
         }
 
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
         for (i, j) in sortedIndices.enumerated() {
             result[i] = self[j]
         }

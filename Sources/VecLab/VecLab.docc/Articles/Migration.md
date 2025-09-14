@@ -7,9 +7,9 @@ changes will be flagged by the compiler.
 
 ### Type Alias Changes
 
-Complex numbers are now `Complex` structs and complex arrays are now `ComplexArray` structs.
+Complex numbers are now `Complex` structs and complex arrays are now `SplitComplexArray` structs.
 
-For convenience, these are shortened to `Complex` and `ComplexArray` with type aliases. The package assumes `Double` 
+For convenience, these are shortened to `Complex` and `SplitComplexArray` with type aliases. The package assumes `Double` 
 as the base numeric type. `Float` types may be added at a later date.
 
 Your function signatures should not require any changes.
@@ -19,13 +19,13 @@ Your function signatures should not require any changes.
 public typealias Real = Double
 public typealias RealArray = [Real]
 public typealias Complex = (Real, Real) // Tuple
-public typealias ComplexArray = ([Real], [Real]) // Tuple
+public typealias SplitComplexArray = ([Real], [Real]) // Tuple
 
 // V2
 public typealias Real = Double
 public typealias RealArray = [Real]
 public typealias Complex = Complex // Struct
-public typealias ComplexArray = ComplexArray // Struct Collection
+public typealias SplitComplexArray = SplitComplexArray // Struct Collection
 ```
 
 ### Complex Numbers
@@ -42,14 +42,14 @@ let complexNumber = Complex(2.0, 3.0)
 
 ### Complex Arrays
 
-Use the `ComplexArray` initializer.
+Use the `SplitComplexArray` initializer.
 
 ```swift
 // V1
-let complexArray = (realArray, imagArray)
+let SplitComplexArray = (realArray, imagArray)
 
 // V2
-let complexArray = ComplexArray(realArray, imagArray)
+let SplitComplexArray = SplitComplexArray(realArray, imagArray)
 ```
 
 ### Real and Imaginary Parts
@@ -68,7 +68,7 @@ let imagPart = x.imag
 ```
 ### Complex Array Indexing
 
-The `ComplexArray` type is now a `Collection`. Accessing a complex number in an array can be done using a single index.
+The `SplitComplexArray` type is now a `Collection`. Accessing a complex number in an array can be done using a single index.
 The real and imaginary parts do not have to be indexed as separate arrays, simplifying access to individual complex elements.
 
 For example, assigning one array element to another:

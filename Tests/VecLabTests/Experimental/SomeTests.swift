@@ -108,19 +108,19 @@ final class SomeTests: XCTestCase {
     func test3() {
         
         let n = 1000
-        let a = ComplexArray(repeating: (3.0 + 4.j), count: n)
-        let b = ComplexArray(repeating: (4.0 + 2.j), count: n)
+        let a = SplitComplexArray(repeating: (3.0 + 4.j), count: n)
+        let b = SplitComplexArray(repeating: (4.0 + 2.j), count: n)
         
-        var z1 = ComplexArray(repeating: .zero, count: n)
-        var z2 = ComplexArray(repeating: .zero, count: n)
+        var z1 = SplitComplexArray(repeating: .zero, count: n)
+        var z2 = SplitComplexArray(repeating: .zero, count: n)
         
         let t1 = benchmark {
-            z1 = vectorMultiplyComplexArray(a, b)
+            z1 = vectorMultiplySplitComplexArray(a, b)
             
         }
                               
         let t2 = benchmark {
-            z2 = vectorMultiplyComplexArray(a, b)
+            z2 = vectorMultiplySplitComplexArray(a, b)
         }
     
         print(z1[n-1])
@@ -146,9 +146,9 @@ final class SomeTests: XCTestCase {
         var di = [Double](repeating: 0.0, count: n)
         var dr = [Double](repeating: 0.0, count: n)
 
-        var za = ComplexArray(a, b)
-        var zb = ComplexArray(c, d)
-        var zz = ComplexArray(count: n)
+        var za = SplitComplexArray(a, b)
+        var zb = SplitComplexArray(c, d)
+        var zz = SplitComplexArray(count: n)
 
         let t1 = benchmark("Swift  ") {
             for k in 0..<a.count {

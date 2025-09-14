@@ -61,7 +61,7 @@ public func polyval(coefficients p: RealArray, point x: Complex) -> Complex {
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(coefficients p: RealArray, points x: ComplexArray) -> ComplexArray {
+public func polyval(coefficients p: RealArray, points x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     return x.map { polyval(coefficients: p, point: $0) }
 }
@@ -71,7 +71,7 @@ public func polyval(coefficients p: RealArray, points x: ComplexArray) -> Comple
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
+public func polyval(coefficients p: SplitComplexArray, point x: Complex) -> Complex {
     validateSize(p)
     let n = length(p)   // Get the number of coefficients
     var y = p[0]        // Initialize the result with the first coefficient
@@ -88,7 +88,7 @@ public func polyval(coefficients p: ComplexArray, point x: Complex) -> Complex {
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(coefficients p: ComplexArray, points x: ComplexArray) -> ComplexArray {
+public func polyval(coefficients p: SplitComplexArray, points x: SplitComplexArray) -> SplitComplexArray {
     validateSize(p)
     validateSize(x)
     return x.map { polyval(coefficients: p, point: $0) }
@@ -99,7 +99,7 @@ public func polyval(coefficients p: ComplexArray, points x: ComplexArray) -> Com
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(coefficients p: ComplexArray, point x: Real) -> Complex {
+public func polyval(coefficients p: SplitComplexArray, point x: Real) -> Complex {
     return polyval(coefficients: p, point: Complex(x, 0))
 }
 
@@ -108,6 +108,6 @@ public func polyval(coefficients p: ComplexArray, point x: Real) -> Complex {
 ///   - p: Polynomial coefficients.
 ///   - x: Query point.
 /// - Returns: The value of the polynomial p at each point in x.
-public func polyval(coefficients p: ComplexArray, points x: RealArray) -> ComplexArray {
-    return polyval(coefficients: p, points: ComplexArray(realOnly: x))
+public func polyval(coefficients p: SplitComplexArray, points x: RealArray) -> SplitComplexArray {
+    return polyval(coefficients: p, points: SplitComplexArray(realOnly: x))
 }

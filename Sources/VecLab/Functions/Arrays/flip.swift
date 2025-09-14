@@ -24,7 +24,7 @@ public func flip(_ x: RealArray) -> RealArray {
 /// Flip order of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Flipped array with elements reversed.
-public func flip(_ x: ComplexArray) -> ComplexArray {
+public func flip(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     // Copy
     var c = x

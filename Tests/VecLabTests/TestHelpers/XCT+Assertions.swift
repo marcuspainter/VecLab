@@ -12,7 +12,7 @@ import XCTest
 private let epsilon: Real = 1e-6
 
 /*
- func XCTAssertEqual(_ expression1: ComplexArray, _ expression2: ComplexArray, accuracy: Real = epsilon, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
+ func XCTAssertEqual(_ expression1: SplitComplexArray, _ expression2: SplitComplexArray, accuracy: Real = epsilon, _ message: @autoclosure () -> String = "", file: StaticString = #filePath, line: UInt = #line) {
      XCTAssertEqual(expression1.0, expression2.0, accuracy: accuracy, "Real part mismatch: \(message())", file: file, line: line)
      XCTAssertEqual(expression1.1, expression2.1, accuracy: accuracy, "Imaginary part mismatch: \(message())", file: file, line: line)
  }
@@ -192,8 +192,8 @@ func XCTAssertEqual(
 // MARK: New
 
 func XCTAssertEqual(
-    _ expression1: ComplexArray,
-    _ expression2: ComplexArray,
+    _ expression1: SplitComplexArray,
+    _ expression2: SplitComplexArray,
     accuracy: Double = Double(epsilon),
     _ message: @autoclosure () -> String = "",
     file: StaticString = #filePath,

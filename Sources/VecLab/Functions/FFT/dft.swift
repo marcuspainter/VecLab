@@ -12,7 +12,7 @@ import Foundation
 /// DFT of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array result.
-public func dft(_ x: ComplexArray) -> ComplexArray {
+public func dft(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let n = length(x)
     if n == 1 {
@@ -20,7 +20,7 @@ public func dft(_ x: ComplexArray) -> ComplexArray {
     }
 
     // Init by copy
-    var y = ComplexArray(repeating: .zero, count: x.count)
+    var y = SplitComplexArray(repeating: .zero, count: x.count)
     let q = vector(0..<n)
     let omega = -2 * Real.pi * Real.i * q / Real(n)
     for p in 0..<x.count {

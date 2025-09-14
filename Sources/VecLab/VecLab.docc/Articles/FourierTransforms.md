@@ -14,7 +14,7 @@ VecLab uses the newer [`vDSP.DiscreteFourierTransform`](https://developer.apple.
 VecLab uses the MATLAB-style function names `abs()` and `angle()` for magnitude and phase.
 
 ```swift
-let z = ComplexArray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+let z = SplitComplexArray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0], [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
 let Z = fft(z)
 let magnitude = abs(Z)
 let phase = angle(Z)
@@ -27,7 +27,7 @@ for real numbers (similar to NumPy). The compiler will give an error if the wron
 
 ```swift
 let x: [Double] = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
-let X = fftr(x)  // Returns ComplexArray
+let X = fftr(x)  // Returns SplitComplexArray
 let y = ifftr(X) // Returns [Double] real array
 
 let Z = fft(x) // Error: 'fft' has been renamed to 'fftr': Use fftr for Real arrays

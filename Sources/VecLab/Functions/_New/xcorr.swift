@@ -47,7 +47,7 @@ public func xcorr(_ x: RealArray, _ y: RealArray) -> RealArray {
 ///   - x: Complex array.
 ///   - y: Complex array.
 /// - Returns: The cross correlation result.
-public func xcorr(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+public func xcorr(_ x: SplitComplexArray, _ y: SplitComplexArray) -> SplitComplexArray {
     let nx = length(x)
     let ny = length(y)
     let n = nx + ny - 1  // Full cross-correlation length
@@ -92,7 +92,7 @@ public func xcorr(_ x: RealArray) -> RealArray {
 /// - Parameters:
 ///   - x: real array.
 /// - Returns: The autocorrelation.
-public func xcorr(_ x: ComplexArray) -> ComplexArray {
+public func xcorr(_ x: SplitComplexArray) -> SplitComplexArray {
     xcorr(x, x)
 }
 

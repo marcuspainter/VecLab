@@ -26,10 +26,10 @@ public func fftshift(_ x: RealArray) -> RealArray {
 /// - Parameters:
 ///   - x: Input array.
 /// - Returns: Shifted array
-public func fftshift(_ x: ComplexArray) -> ComplexArray {
+public func fftshift(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     let real = fftshift(x.real)
     let imag = fftshift(x.imag)
 
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }

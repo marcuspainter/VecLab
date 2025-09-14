@@ -16,12 +16,12 @@ class PowerTests: XCTestCase {
     var realA: Real = 1.0
     var realArrayA: RealArray = [1.0, 2.0]
     var complexA: Complex = Complex(1.0, 1.0)
-    var complexArrayA: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     var realB: Real = 1.0
     var realArrayB: RealArray = [1.0, 2.0]
     var complexB: Complex = Complex(1.0, 1.0)
-    var complexArrayB: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayB: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     var intA: Int = 2
     var intB: Int = 2
@@ -99,56 +99,56 @@ class PowerTests: XCTestCase {
     }
 
     func testPowerComplexRealArray() {
-        let result: ComplexArray = complexA ** realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 0.0], [1.0, 2.0])
+        let result: SplitComplexArray = complexA ** realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 0.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
     func testPowerRealArrayComplex() {
-        let result: ComplexArray = realArrayA ** complexB
-        let expected: ComplexArray = ComplexArray([1.0, 1.538477802728], [0.0, 1.277922552627])
+        let result: SplitComplexArray = realArrayA ** complexB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.538477802728], [0.0, 1.277922552627])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerComplexArrayComplexArray() {
-        let result: ComplexArray = complexArrayA ** complexArrayB
-        let expected: ComplexArray = ComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+    func testPowerComplexArraySplitComplexArray() {
+        let result: SplitComplexArray = SplitComplexArrayA ** SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "Power failed")
     }
 
-    func testPowerComplexArrayReal() {
-        let result: ComplexArray = complexArrayA ** realB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    func testPowerSplitComplexArrayReal() {
+        let result: SplitComplexArray = SplitComplexArrayA ** realB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerRealComplexArray() {
-        let result: ComplexArray = realA ** complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [0.0, 0.0])
+    func testPowerRealSplitComplexArray() {
+        let result: SplitComplexArray = realA ** SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [0.0, 0.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerComplexArrayRealArray() {
-        let result: ComplexArray = complexArrayA ** realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 0.0], [1.0, 2.0])
+    func testPowerSplitComplexArrayRealArray() {
+        let result: SplitComplexArray = SplitComplexArrayA ** realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 0.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerRealArrayComplexArray() {
-        let result: ComplexArray = realArrayA ** complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 1.538477802728], [0.0, 1.277922552627])
+    func testPowerRealArraySplitComplexArray() {
+        let result: SplitComplexArray = realArrayA ** SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.538477802728], [0.0, 1.277922552627])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerComplexArrayComplex() {
-        let result: ComplexArray = complexArrayA ** complexB
-        let expected: ComplexArray = ComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+    func testPowerSplitComplexArrayComplex() {
+        let result: SplitComplexArray = SplitComplexArrayA ** complexB
+        let expected: SplitComplexArray = SplitComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 
-    func testPowerComplexComplexArray() {
-        let result: ComplexArray = complexA ** complexArrayB
-        let expected: ComplexArray = ComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
+    func testPowerComplexSplitComplexArray() {
+        let result: SplitComplexArray = complexA ** SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([0.273957253830, 0.273957253830], [0.583700758759, 0.583700758759])
         XCTAssertEqual(result, expected, accuracy: accuracy, "** failed")
     }
 

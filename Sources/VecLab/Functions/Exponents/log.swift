@@ -27,7 +27,7 @@ public func log(_ x: Complex) -> Complex {
 /// Natural logarithm of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The natural logarithm of `x`.
-public func log(_ x: ComplexArray) -> ComplexArray {
+public func log(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
-    return vectorLogComplexArray(x)
+    return vectorLogSplitComplexArray(x)
 }

@@ -4,9 +4,9 @@ A real/complex vector library in Swift.
 
 ## New Version 2.0
 
-- New `Complex` and `ComplexArray` structs.
+- New `Complex` and `SplitComplexArray` structs.
 - Array range indexing and slicing.
-- `ComplexArray` conforms to collection protocol.
+- `SplitComplexArray` conforms to collection protocol.
 
 ## Overview
 
@@ -29,7 +29,7 @@ recursive algorithm and its NumPy and MATLAB equivalents:
 
 ```swift
 // FFTX Fast Finite Fourier Transform.
-public func fftx(_ x: ComplexArray) -> ComplexArray {
+public func fftx(_ x: SplitComplexArray) -> SplitComplexArray {
     let n = length(x)
     let omega = exp(-2.i * .pi / Double(n))
     if rem(n, 2) == 0 {
@@ -104,7 +104,7 @@ end
 public typealias Real = Double
 public typealias RealArray = [Real]
 public typealias Complex = Complex
-public typealias ComplexArray = ComplexArray
+public typealias SplitComplexArray = SplitComplexArray
 ```
 
 ### Real Numbers
@@ -139,7 +139,7 @@ The collection can be indexed that returns a `Complex`.
 ```swift
 let realArray = [1.0, 2.0, 3.0, 4.0]
 let imagArray = [1.0, 2.0, 3.0, 4.0]
-let complexArray = ComplexArray(realArray, imagArray)
+let SplitComplexArray = SplitComplexArray(realArray, imagArray)
 ```
 
 ### The Imaginary Unit

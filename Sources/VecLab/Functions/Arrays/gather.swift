@@ -32,7 +32,7 @@ public func gather(_ x: RealArray, indices: [Int]) -> RealArray {
     }
 }
 
-public func gather(_ x: ComplexArray, indices: [Int]) -> ComplexArray {
+public func gather(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray {
     precondition(indices.allSatisfy { $0 >= 0 }, "Indices must be non-negative")
     
     let n = indices.count
@@ -64,7 +64,7 @@ public func gather(_ x: ComplexArray, indices: [Int]) -> ComplexArray {
         initializedCount = n
     }
     
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }
 
 
@@ -83,11 +83,11 @@ public func gatherSafeish(_ x: RealArray, indices: [Int]) -> RealArray {
 ///   - x: Complex array.
 ///   - indices: Array of integer indices.
 /// - Returns: Complex array containing elements of specified indices.
-public func gather2(_ x: ComplexArray, indices: [Int]) -> ComplexArray {
+public func gather2(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray {
     let uindices: [UInt] = indices.map { UInt($0) }
     let real = vDSP.gather(x.real, indices: uindices)
     let imag = vDSP.gather(x.imag, indices: uindices)
-    return ComplexArray(real, imag)
+    return SplitComplexArray(real, imag)
 }
 
 func gatherSafe(source: [Double], indices: [Int]) -> [Double] {

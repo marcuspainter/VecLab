@@ -39,7 +39,7 @@ extension Complex {
     ///   - b: Real  array.
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     @inlinable
-    public static func ~* (a: Complex, b: RealArray) -> ComplexArray {
+    public static func ~* (a: Complex, b: RealArray) -> SplitComplexArray {
         return conj(a) * b
     }
 
@@ -74,7 +74,7 @@ extension Complex {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     @inlinable
-    public static func *~ (a: RealArray, b: Complex) -> ComplexArray {
+    public static func *~ (a: RealArray, b: Complex) -> SplitComplexArray {
         return a * conj(b)  // Overloaded
     }
 

@@ -13,7 +13,7 @@ import Foundation
 ///   - a: a coefficients.
 ///   - n: FFT size.
 /// - Returns: Complex transfer function.
-public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArray {
+public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> SplitComplexArray {
     let b0 = b[0]
     let b1 = b[1]
     let b2 = b[2]
@@ -42,8 +42,8 @@ public func biquadfreqz(b: RealArray, a: RealArray, n: Int = 512) -> ComplexArra
     let den_im = -a1 * sin_w - a2 * sin_2w  // Corrected sign
 
     // Compute the complex frequency response
-    let num = ComplexArray(num_re, num_im)
-    let den = ComplexArray(den_re, den_im)
+    let num = SplitComplexArray(num_re, num_im)
+    let den = SplitComplexArray(den_re, den_im)
     let H = num / den
 
     return H

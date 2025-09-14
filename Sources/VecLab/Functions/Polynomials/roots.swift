@@ -11,14 +11,14 @@ import Accelerate
 /// - Parameter coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - Returns: Array of complex values representing the roots of the polynomial
-public func rootsX(coefficients: RealArray) -> ComplexArray {
+public func rootsX(coefficients: RealArray) -> SplitComplexArray {
     // Handle special cases
     if coefficients.isEmpty {
-        return ComplexArray()
+        return SplitComplexArray()
     }
 
     if coefficients.count == 1 {
-        return ComplexArray()  // Constant polynomial has no roots
+        return SplitComplexArray()  // Constant polynomial has no roots
     }
 
     // Find the index of the first non-zero coefficient
@@ -29,7 +29,7 @@ public func rootsX(coefficients: RealArray) -> ComplexArray {
 
     // If all coefficients are zero, return empty array
     if startIndex == coefficients.count {
-        return ComplexArray()
+        return SplitComplexArray()
     }
 
     // Get normalized coefficients (divide by leading coefficient)
@@ -37,7 +37,7 @@ public func rootsX(coefficients: RealArray) -> ComplexArray {
 
     // Handle special case for linear polynomial
     if p.count == 2 {
-        return ComplexArray([-p[1] / p[0]], [0.0])
+        return SplitComplexArray([-p[1] / p[0]], [0.0])
     }
 
     let n = p.count - 1
@@ -79,23 +79,23 @@ public func rootsX(coefficients: RealArray) -> ComplexArray {
 
     // Convert to complex array
 
-    var complexArray = ComplexArray()
+    var SplitComplexArray = SplitComplexArray()
     for k in 0..<result.count {
         let item = Complex(result[k].0, result[k].1)
-        complexArray.append(item)
+        SplitComplexArray.append(item)
     }
 
-    return complexArray
+    return SplitComplexArray
 }
 
 /// Finds the roots of a polynomial with real coefficients.
 /// - **Parameter** coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - **Returns**: Array of complex values representing the roots of the polynomial
-public func roots(coefficients: RealArray) -> ComplexArray {
+public func roots(coefficients: RealArray) -> SplitComplexArray {
     // Handle special cases
     if coefficients.isEmpty || coefficients.count == 1 {
-        return ComplexArray()
+        return SplitComplexArray()
     }
 
     // Find the index of the first non-zero coefficient
@@ -106,7 +106,7 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // If all coefficients are zero, return empty array
     if startIndex == coefficients.count {
-        return ComplexArray()
+        return SplitComplexArray()
     }
 
     // Get normalized coefficients (divide by leading coefficient)
@@ -115,11 +115,11 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     // Handle special case for linear polynomial
     if p.count == 2 {
         let realRoot = -p[1] / p[0]
-        var result = ComplexArray([realRoot], [0.0])
+        var result = SplitComplexArray([realRoot], [0.0])
 
         // Add zero roots if needed
         if startIndex > 0 {
-            let zeroRoots = ComplexArray(count: startIndex)
+            let zeroRoots = SplitComplexArray(count: startIndex)
             result.append(contentsOf: zeroRoots)
         }
         return result
@@ -142,11 +142,11 @@ public func roots(coefficients: RealArray) -> ComplexArray {
 
     // Compute eigenvalues using LAPACK
     let (wR, wI) = eigenvalues(A, n)
-    var result = ComplexArray(wR, wI)
+    var result = SplitComplexArray(wR, wI)
 
     // Add zero roots if needed
     if startIndex > 0 {
-        let zeroRoots = ComplexArray(count: startIndex)
+        let zeroRoots = SplitComplexArray(count: startIndex)
         result.append(contentsOf: zeroRoots)
     }
 

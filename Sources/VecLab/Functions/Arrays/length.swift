@@ -17,7 +17,7 @@ public func length(_ x: RealArray) -> Int {
 /// Length of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The length of the array.
-public func length(_ x: ComplexArray) -> Int {
+public func length(_ x: SplitComplexArray) -> Int {
     validateSize(x)
     return x.count
 }

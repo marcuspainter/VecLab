@@ -1,5 +1,5 @@
 //
-//  ComplexArray+Enumerated.swift
+//  SplitComplexArray+Enumerated.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 24/04/2025.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Enumerate and transform the complex array.
     /// - Parameter transform: transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedMap(_ transform: (Int, Complex) throws -> Complex) rethrows
-        -> ComplexArray
+        -> SplitComplexArray
     {
-        var result = ComplexArray(count: count)
+        var result = SplitComplexArray(count: count)
 
         for i in 0..<count {
             result[i] = try transform(i, self[i])
@@ -27,7 +27,7 @@ extension ComplexArray {
     /// - Parameter transform: Transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedCompactMap(_ transform: (Int, Complex) throws -> Complex?) rethrows
-        -> ComplexArray
+        -> SplitComplexArray
     {
         var tempResults = [Complex?](repeating: nil, count: count)
         var resultCount = 0
@@ -41,7 +41,7 @@ extension ComplexArray {
         }
 
         // Second pass: allocate exact size and fill
-        var result = ComplexArray(count: resultCount)
+        var result = SplitComplexArray(count: resultCount)
 
         var resultIndex = 0
         for temp in tempResults {
@@ -58,7 +58,7 @@ extension ComplexArray {
     /// - Parameter predicate: Filter closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedFilter(_ predicate: (Int, Complex) throws -> Bool) rethrows
-        -> ComplexArray
+        -> SplitComplexArray
     {
         var inclusion = [Bool](repeating: false, count: count)
         var resultCount = 0
@@ -72,7 +72,7 @@ extension ComplexArray {
         }
 
         // Second pass: allocate exact size and fill
-        var result = ComplexArray(count: resultCount)
+        var result = SplitComplexArray(count: resultCount)
 
         var resultIndex = 0
         for i in 0..<count {

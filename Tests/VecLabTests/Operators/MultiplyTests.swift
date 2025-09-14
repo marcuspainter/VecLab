@@ -14,12 +14,12 @@ class MultiplyTests: XCTestCase {
     var realA: Real = 1.0
     var realArrayA: RealArray = [1.0, 2.0]
     var complexA: Complex = Complex(1.0, 1.0)
-    var complexArrayA: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     var realB: Real = 1.0
     var realArrayB: RealArray = [1.0, 2.0]
     var complexB: Complex = Complex(1.0, 1.0)
-    var complexArrayB: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    var SplitComplexArrayB: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
 
     func testMultiplyRealReal() {
         let result: Real = realA * realB
@@ -64,56 +64,56 @@ class MultiplyTests: XCTestCase {
     }
 
     func testMultiplyComplexRealArray() {
-        let result: ComplexArray = complexA * realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
+        let result: SplitComplexArray = complexA * realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
     func testMultiplyRealArrayComplex() {
-        let result: ComplexArray = realArrayA * complexB
-        let expected: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
+        let result: SplitComplexArray = realArrayA * complexB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyComplexArrayComplexArray() {
-        let result: ComplexArray = complexArrayA * complexArrayB
-        let expected: ComplexArray = ComplexArray([0.0, 0.0], [2.0, 2.0])
+    func testMultiplyComplexArraySplitComplexArray() {
+        let result: SplitComplexArray = SplitComplexArrayA * SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([0.0, 0.0], [2.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyComplexArrayReal() {
-        let result: ComplexArray = complexArrayA * realB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    func testMultiplySplitComplexArrayReal() {
+        let result: SplitComplexArray = SplitComplexArrayA * realB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyRealComplexArray() {
-        let result: ComplexArray = realA * complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 1.0], [1.0, 1.0])
+    func testMultiplyRealSplitComplexArray() {
+        let result: SplitComplexArray = realA * SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 1.0], [1.0, 1.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyComplexArrayRealArray() {
-        let result: ComplexArray = complexArrayA * realArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
+    func testMultiplySplitComplexArrayRealArray() {
+        let result: SplitComplexArray = SplitComplexArrayA * realArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyRealArrayComplexArray() {
-        let result: ComplexArray = realArrayA * complexArrayB
-        let expected: ComplexArray = ComplexArray([1.0, 2.0], [1.0, 2.0])
+    func testMultiplyRealArraySplitComplexArray() {
+        let result: SplitComplexArray = realArrayA * SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([1.0, 2.0], [1.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyComplexArrayComplex() {
-        let result: ComplexArray = complexArrayA * complexB
-        let expected: ComplexArray = ComplexArray([0.0, 0.0], [2.0, 2.0])
+    func testMultiplySplitComplexArrayComplex() {
+        let result: SplitComplexArray = SplitComplexArrayA * complexB
+        let expected: SplitComplexArray = SplitComplexArray([0.0, 0.0], [2.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 
-    func testMultiplyComplexComplexArray() {
-        let result: ComplexArray = complexA * complexArrayB
-        let expected: ComplexArray = ComplexArray([0.0, 0.0], [2.0, 2.0])
+    func testMultiplyComplexSplitComplexArray() {
+        let result: SplitComplexArray = complexA * SplitComplexArrayB
+        let expected: SplitComplexArray = SplitComplexArray([0.0, 0.0], [2.0, 2.0])
         XCTAssertEqual(result, expected, "Multiply failed")
     }
 }

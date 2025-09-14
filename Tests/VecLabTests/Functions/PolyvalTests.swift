@@ -62,7 +62,7 @@ class PolyvalTests: XCTestCase {
     func testRealPolyComplexPoints() {
         // Test p(x) = x² + 1 at x = [i, -i, 1+i]
         let coeffs: RealArray = [1, 0, 1]  // x² + 1
-        let points: ComplexArray = [
+        let points: SplitComplexArray = [
             Complex(0, 1),  // i -> 0
             Complex(0, -1),  // -i -> 0
             Complex(1, 1),  // 1+i -> (1+i)² + 1 = 1 + 2i - 1 + 1 = 1 + 2i
@@ -87,7 +87,7 @@ class PolyvalTests: XCTestCase {
     func testComplexPolyRealPoint() {
         // Test p(x) = (1+i)x + (2-i) at x = 1
         // Expected: (1+i)(1) + (2-i) = 1+i + 2-i = 3
-        let coeffs: ComplexArray = [
+        let coeffs: SplitComplexArray = [
             Complex(1, 1),  // 1+i (coefficient of x)
             Complex(2, -1),  // 2-i (constant term)
         ]
@@ -100,7 +100,7 @@ class PolyvalTests: XCTestCase {
     func testComplexPolyRealPoints() {
         // Test p(x) = ix + 1 at x = [0, 1, 2]
         // Expected: [1, 1+i, 1+2i]
-        let coeffs: ComplexArray = [
+        let coeffs: SplitComplexArray = [
             Complex(0, 1),  // i (coefficient of x)
             Complex(1, 0),  // 1 (constant term)
         ]
@@ -125,7 +125,7 @@ class PolyvalTests: XCTestCase {
     func testComplexPolyComplexPoint() {
         // Test p(x) = ix + (1+i) at x = 1-i
         // Expected: i(1-i) + (1+i) = i - i² + 1 + i = i + 1 + 1 + i = 2 + 2i
-        let coeffs: ComplexArray = [
+        let coeffs: SplitComplexArray = [
             Complex(0, 1),  // i (coefficient of x)
             Complex(1, 1),  // 1+i (constant term)
         ]
@@ -190,11 +190,11 @@ class PolyvalTests: XCTestCase {
         }
     }
 
-    func testPerformanceComplexArray() {
+    func testPerformanceSplitComplexArray() {
         let n = vector(1...50)
         let m = vector(1...500)
-        let coeffs: ComplexArray = ComplexArray(n, n)
-        let points: ComplexArray = ComplexArray(m, m)
+        let coeffs: SplitComplexArray = SplitComplexArray(n, n)
+        let points: SplitComplexArray = SplitComplexArray(m, m)
 
         measure {
             _ = polyval(coefficients: coeffs, points: points)

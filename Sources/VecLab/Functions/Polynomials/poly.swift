@@ -10,9 +10,9 @@ import Foundation
 /// Computes polynomial coefficients from roots (inverse of roots()).
 /// - Parameter roots: Array of complex roots
 /// - Returns: RealArray of polynomial coefficients in descending powers
-public func polyX(roots: ComplexArray) -> ComplexArray {
+public func polyX(roots: SplitComplexArray) -> SplitComplexArray {
     let n = roots.count
-    var c = ComplexArray(count: n+1)
+    var c = SplitComplexArray(count: n+1)
     c[0] = Complex(1.0, 0.0)
 
     for j in 0..<n {
@@ -40,19 +40,19 @@ public func polyX(roots: ComplexArray) -> ComplexArray {
     return c
 }
 
-// Helpers — adjust names/types to match your Complex/ComplexArray API
+// Helpers — adjust names/types to match your Complex/SplitComplexArray API
 fileprivate func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) -> Bool {
     return abs(a.real - b.real) < tol && abs(a.imag - b.imag) < tol
 }
 
-fileprivate func matlabSortLex(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSortLex(_ arr: SplitComplexArray) -> SplitComplexArray {
     return arr.sorted { a, b in
         if a.real != b.real { return a.real < b.real }
         return a.imag < b.imag
     }
 }
 
-fileprivate func matlabSort(_ arr: ComplexArray) -> ComplexArray {
+fileprivate func matlabSort(_ arr: SplitComplexArray) -> SplitComplexArray {
     return arr.sorted { a, b in
         let magA = sqrt(a.real * a.real + a.imag * a.imag)
         let magB = sqrt(b.real * b.real + b.imag * b.imag)
@@ -70,9 +70,9 @@ fileprivate func matlabSort(_ arr: ComplexArray) -> ComplexArray {
 /// Polynomial with specified roots.
 /// - Parameter roots: Roots of polynomial.
 /// - Returns: The coefficients of the polynomial whose roots are the elements of `roots`.
-public func poly(roots: ComplexArray) -> ComplexArray {
+public func poly(roots: SplitComplexArray) -> SplitComplexArray {
     let n = roots.count
-    var c = ComplexArray(count: n + 1)
+    var c = SplitComplexArray(count: n + 1)
     c[0] = Complex(1.0, 0.0)
 
     // Recurrence (same as MATLAB)
@@ -99,7 +99,7 @@ public func poly(roots: ComplexArray) -> ComplexArray {
             }
         }
         if areConjugates {
-            c = ComplexArray(realOnly: c.real)
+            c = SplitComplexArray(realOnly: c.real)
         }
     }
 

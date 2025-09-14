@@ -1,15 +1,14 @@
 //
-//  ComplexArray+CustomStringConvertible.swift
+//  SplitComplexArray+CustomDebugStringConvertible.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 11/05/2025.
 //
 
-extension ComplexArray: CustomStringConvertible {
+extension SplitComplexArray: CustomDebugStringConvertible {
 
-    /// String of complex value
-    public var description: String {
-        var result = "["
+    public var debugDescription: String {
+        var result = "SplitComplexArray(["
         for i in 0..<count {
             if i > 0 { result += ", " }
             if imag[i] >= 0 {
@@ -18,7 +17,8 @@ extension ComplexArray: CustomStringConvertible {
                 result += "\(real[i])-\(abs(imag[i]))i"
             }
         }
-        result += "]"
+        result += "])"
         return result
     }
+
 }

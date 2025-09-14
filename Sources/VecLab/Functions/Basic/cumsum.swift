@@ -25,7 +25,7 @@ public func cumsum(_ x: RealArray) -> RealArray {
 /// Cumulative sum of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The cumulative sum of the array.
-public func cumsum(_ x: ComplexArray) -> ComplexArray {
+public func cumsum(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     var c = x
     var sum = Complex()

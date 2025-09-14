@@ -1,5 +1,5 @@
 //
-//  ComplexArray+Zip.swift
+//  SplitComplexArray+Zip.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 25/04/2025.
@@ -7,18 +7,18 @@
 
 import Foundation
 
-extension ComplexArray {
+extension SplitComplexArray {
 
     /// Combine another complex array and transform it.
     /// - Parameters:
     ///   - other: Another complex array.
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
-    public func zipMap(_ other: ComplexArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
-        -> ComplexArray
+    public func zipMap(_ other: SplitComplexArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
+        -> SplitComplexArray
     {
         let minCount = Swift.min(self.count, other.count)
-        var result = ComplexArray(count: minCount)
+        var result = SplitComplexArray(count: minCount)
 
         for i in 0..<minCount {
             result[i] = try transform(self[i], other[i])
@@ -32,8 +32,8 @@ extension ComplexArray {
     ///   - other: Another complex array.
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
-    public func zipCompactMap(_ other: ComplexArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
-        -> ComplexArray
+    public func zipCompactMap(_ other: SplitComplexArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
+        -> SplitComplexArray
     {
         let minCount = Swift.min(self.count, other.count)
         var tempResults = [Complex?](repeating: nil, count: minCount)
@@ -48,7 +48,7 @@ extension ComplexArray {
         }
 
         // Second pass: allocate exact size and fill
-        var result = ComplexArray(count: resultCount)
+        var result = SplitComplexArray(count: resultCount)
 
         var resultIndex = 0
         for temp in tempResults {
@@ -66,8 +66,8 @@ extension ComplexArray {
     ///   - other: Another complex array.
     ///   - predicate: Filter criteria.
     /// - Returns: A new transformed complex array.
-    public func zipFilter(_ other: ComplexArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
-        -> ComplexArray
+    public func zipFilter(_ other: SplitComplexArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
+        -> SplitComplexArray
     {
         let minCount = Swift.min(self.count, other.count)
         var inclusion = [Bool](repeating: false, count: minCount)
@@ -82,7 +82,7 @@ extension ComplexArray {
         }
 
         // Second pass: allocate exact size and fill
-        var result = ComplexArray(count: resultCount)
+        var result = SplitComplexArray(count: resultCount)
 
         var resultIndex = 0
         for i in 0..<minCount {
@@ -99,7 +99,7 @@ extension ComplexArray {
     /// - Parameters:
     ///   - other: Another complex array.
     ///   - operation: Closure operation.
-    public func zipForEach(_ other: ComplexArray, _ operation: (Complex, Complex) throws -> Void) rethrows {
+    public func zipForEach(_ other: SplitComplexArray, _ operation: (Complex, Complex) throws -> Void) rethrows {
         let minCount = Swift.min(self.count, other.count)
 
         for i in 0..<minCount {

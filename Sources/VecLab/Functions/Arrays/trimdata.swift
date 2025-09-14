@@ -25,7 +25,7 @@ public func trimdata(_ x: RealArray, length m: Int) -> RealArray {
 ///   - x: Complex array.
 ///   - m: New size.
 /// - Returns: Trimmed array.
-public func trimdata(_ x: ComplexArray, length m: Int) -> ComplexArray {
+public func trimdata(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray {
     validateSize(x)
     let n = x.count
     if m < n {

@@ -21,9 +21,9 @@ public func cumprod(_ x: RealArray) -> RealArray {
 /// Cumulative product.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array.
-public func cumprod(_ x: ComplexArray) -> ComplexArray {
+public func cumprod(_ x: SplitComplexArray) -> SplitComplexArray {
     guard !x.isEmpty else { return [] }
-    var result = ComplexArray(repeating: Complex(1, 0), count: x.count)
+    var result = SplitComplexArray(repeating: Complex(1, 0), count: x.count)
     result[0] = x[0]
     for i in 1..<x.count {
         result[i] = result[i - 1] * x[i]

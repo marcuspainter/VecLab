@@ -85,7 +85,7 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
 ///   - y: Complex array.
 ///   - shape: `same` or `full`
 /// - Returns: The result of the convolution.
-public func conv(_ x: ComplexArray, _ y: ComplexArray, shape: ConvolutionType = .same) -> ComplexArray {
+public func conv(_ x: SplitComplexArray, _ y: SplitComplexArray, shape: ConvolutionType = .same) -> SplitComplexArray {
     switch shape {
     case .same:
         return convsame(x, y)
@@ -99,7 +99,7 @@ public func conv(_ x: ComplexArray, _ y: ComplexArray, shape: ConvolutionType = 
 ///   - x: Complex array.
 ///   - y: Complex array.
 /// - Returns: The result of the convolution.
-private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+private func convsame(_ x: SplitComplexArray, _ y: SplitComplexArray) -> SplitComplexArray {
     let nx = length(x)
     let ny = length(y)
     let n = nx + ny - 1  // Full convolution length
@@ -130,7 +130,7 @@ private func convsame(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
 ///   - x: Complex array.
 ///   - y: Complex array
 /// - Returns: The result of the convolution.
-private func convfull(_ x: ComplexArray, _ y: ComplexArray) -> ComplexArray {
+private func convfull(_ x: SplitComplexArray, _ y: SplitComplexArray) -> SplitComplexArray {
     let n = length(x) + length(y) - 1  // Result length
 
     // Simulate using power of 2 fft only

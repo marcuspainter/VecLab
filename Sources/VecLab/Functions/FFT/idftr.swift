@@ -10,7 +10,7 @@ import Foundation
 /// Inverse DFT of complex array with real result.
 /// - Parameter x: Complex array.
 /// - Returns: Real array result.
-public func idftr(_ x: ComplexArray) -> RealArray {
+public func idftr(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     let n = length(x)
 
