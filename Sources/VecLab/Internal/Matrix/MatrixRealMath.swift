@@ -30,7 +30,7 @@ func matrixMultiply(_ a: [Double], _ b: [Double], m: Int, k: Int, n: Int) -> [Do
         b.withUnsafeBufferPointer { bPtr in
             result.withUnsafeMutableBufferPointer { resultPtr in
                 cblas_dgemm(
-                    CblasRowMajor,                        // ORDER: Row-major storage
+                    CblasColMajor,                        // ORDER: Row-major storage
                     CblasNoTrans,                         // TRANSA: Don't transpose A
                     CblasNoTrans,                         // TRANSB: Don't transpose B
                     m,                                    // M: Rows of A and C
@@ -74,7 +74,7 @@ func matrixVectorMultiply(_ matrix: [Double], _ vector: [Double], m: Int, n: Int
         vector.withUnsafeBufferPointer { vectorPtr in
             result.withUnsafeMutableBufferPointer { resultPtr in
                 cblas_dgemv(
-                    CblasRowMajor,                        // ORDER: Row-major storage
+                    CblasColMajor,                        // ORDER: Row-major storage
                     CblasNoTrans,                         // TRANS: No transpose of matrix
                     m,                                    // M: Number of rows of matrix
                     n,                                    // N: Number of columns of matrix
@@ -93,7 +93,6 @@ func matrixVectorMultiply(_ matrix: [Double], _ vector: [Double], m: Int, n: Int
     
     return result
 }
-
 
 public func rightDivision(_ A: [Double], _ B: [Double], m: Int, n: Int) -> [Double] {
     // A/B: solve X*B = A

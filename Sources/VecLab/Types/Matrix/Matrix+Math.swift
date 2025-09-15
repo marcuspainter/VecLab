@@ -24,7 +24,7 @@ extension Matrix {
     public static func * (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateCompatible(a, b)
         let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
-        return Matrix(c, a.rows, b.cols)
+        return Matrix(rows: a.rows, cols: b.cols, grid: c)
     }
 
     public static func .* (_ a: Matrix, _ b: Matrix) -> Matrix {

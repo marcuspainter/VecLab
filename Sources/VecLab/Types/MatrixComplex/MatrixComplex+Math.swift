@@ -29,17 +29,17 @@ extension MatrixComplex {
     public static func * (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         validateCompatible(a, b)
         let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
-        return MatrixComplex(c, a.rows, b.cols)
+        return MatrixComplex(rows: a.rows, cols: b.cols, grid: c)
     }
     
     // Element-wise
     public static func .* (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         validateSize(a, b)
         let c = a.grid * b.grid
-        return MatrixComplex(a, grid: c)
+        return MatrixComplex(rows: a.rows, cols: a.cols, grid: c)
     }
     
-    @available(*, unavailable, message: "Division by a matrix is not supported. Use ./ for element-wise division.")
+    @available(*, unavailable, message: "Matrix division is not supported. Use ./ for element-wise division.")
     public static func / (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         return MatrixComplex()
     }
@@ -47,7 +47,7 @@ extension MatrixComplex {
     // Element-wise
     public static func ./ (_ a: MatrixComplex, _ b: MatrixComplex) -> MatrixComplex {
         let c = a.grid / b.grid
-        return MatrixComplex(a, grid: c)
+        return MatrixComplex(rows: a.rows, cols: a.cols, grid: c)
     }
     
 }

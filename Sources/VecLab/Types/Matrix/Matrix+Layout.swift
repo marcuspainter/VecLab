@@ -1,12 +1,12 @@
 //
-//  Matrix+Order.swift
+//  Matrix+Layout.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 15/09/2025.
 //
 
 import Accelerate
-
+/*
 func rowMajorToColumnMajor(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
     
     return [Double](unsafeUninitializedCapacity: M * N) { dst, initializedCount in
@@ -75,41 +75,29 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
                     vDSP_Length(M)         // number of rows in the source
                 )
             }
-            
         }
         initializedCount = src.count
     }
 }
 
-import Accelerate
+func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inout [Double]) {
+    precondition(src.count == M * N, "Source array size does not match rows * cols")
 
-func transposeInterleavedComplexWithStride(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
-    precondition(src.count == 2*M*N)
-    var dst = [Double](repeating: 0, count: 2*M*N)
-    
-    
-    
-    src.withUnsafeBufferPointer { sPtr in
-        dst.withUnsafeMutableBufferPointer { dPtr in
-            // Transpose real parts
+    src.withUnsafeBufferPointer { srcPtr in
+        dst.withUnsafeMutableBufferPointer { dstPtr in
+            // vDSP_mtransD copies M×N into N×M, performing a transpose
             vDSP_mtransD(
-                sPtr.baseAddress!, 2,           // source stride = 2 (real part)
-                dPtr.baseAddress!, 2,           // destination stride = 2
-                vDSP_Length(N),                 // number of columns in source
-                vDSP_Length(M)                  // number of rows in source
-            )
-            
-            // Transpose imaginary parts
-            vDSP_mtransD(
-                sPtr.baseAddress! + 1,          // start at first imaginary element
-                2,                              // source stride = 2
-                dPtr.baseAddress! + 1,          // destination start
-                2,                              // destination stride = 2
-                vDSP_Length(N),
-                vDSP_Length(M)
+                srcPtr.baseAddress!,
+                1,                     // source stride (row-major: 1 element apart)
+                dstPtr.baseAddress!,
+                1,                     // destination stride
+                vDSP_Length(N),        // number of columns in the source
+                vDSP_Length(M)         // number of rows in the source
             )
         }
     }
-    
-    return dst
+
 }
+
+*/
+

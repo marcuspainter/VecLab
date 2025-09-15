@@ -462,15 +462,15 @@ final class MatrixTests: XCTestCase {
         
         var r: [Double] = [1, 2, 3,
                           4, 5, 6]
-        var c = rowMajorToColumnMajor(r, rows: 2, cols: 3)
-        print(r)
-        print(c)
+   //     var c = rowMajorToColumnMajor(r, rows: 2, cols: 3)
+    //    print(r)
+    //    print(c)
         
-        r = columnMajorToRowMajor(c, rows: 2, cols: 3)
-        print(r)
+   //     r = columnMajorToRowMajor(c, rows: 2, cols: 3)
+   //     print(r)
         
-        c = transposeMatrix(r, rows: 2, cols: 3)
-        print(c)
+  //      c = transposeMatrix(r, rows: 2, cols: 3)
+   //     print(c)
     }
 }
 

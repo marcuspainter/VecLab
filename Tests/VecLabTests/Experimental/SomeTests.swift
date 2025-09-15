@@ -210,7 +210,7 @@ final class SomeTests: XCTestCase {
         }
         
         let t5 = benchmark {
-            c2 = addSimd4Array(a, a)
+   //         c2 = addSimd4Array(a, a)
         }
        
     }

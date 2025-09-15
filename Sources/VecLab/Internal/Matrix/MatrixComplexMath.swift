@@ -91,7 +91,7 @@ func matrixMultiply(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [
                 withUnsafePointer(to: &alpha) { alphaPtr in
                     withUnsafePointer(to: &beta) { betaPtr in
                         cblas_zgemm(
-                            CblasRowMajor,                        // ORDER: Row-major storage
+                            CblasColMajor,                        // ORDER: Row-major storage
                             CblasNoTrans,                         // TRANSA: Don't transpose A
                             CblasNoTrans,                         // TRANSB: Don't transpose B
                             m,                                    // M: Rows of A and C
@@ -139,7 +139,7 @@ func matrixVectorMultiply(_ matrix: [Complex], _ vector: [Complex], m: Int, n: I
                 withUnsafePointer(to: &alpha) { alphaPtr in
                     withUnsafePointer(to: &beta) { betaPtr in
                         cblas_zgemv(
-                            CblasRowMajor,                        // ORDER: Row-major storage
+                            CblasColMajor,                        // ORDER: Row-major storage
                             CblasNoTrans,                         // TRANS: No transpose of matrix
                             m,                                    // M: Number of rows of matrix
                             n,                                    // N: Number of columns of matrix
