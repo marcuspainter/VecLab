@@ -318,7 +318,7 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(matrixA.grid, expectedTimesScalar2.grid, accuracy: tolerance)
     }
 
-    // MARK: - MatrixComplex Tests
+    // MARK: - ComplexMatrix Tests
    
     func testComplexMatrixArithmetic() {
         let gridComplexA: [Complex] = [
@@ -335,13 +335,13 @@ class OperatorOverloadTests: XCTestCase {
             Complex(3.0, -2.0)
         ]
         
-        var matrixComplexA = MatrixComplex(gridComplexA, 2, 2)
-        let matrixComplexB = MatrixComplex(gridComplexB, 2, 2)
+        var matrixComplexA = ComplexMatrix(gridComplexA, 2, 2)
+        let matrixComplexB = ComplexMatrix(gridComplexB, 2, 2)
         let scalar = 2.0
         let complexScalar = Complex(1.5, -0.5)
         
         let complexMatrixSum = matrixComplexA + matrixComplexB
-        let expectedComplexMatrixSum = MatrixComplex([
+        let expectedComplexMatrixSum = ComplexMatrix([
             Complex(3.0, 0.0),
             Complex(3.0, 1.0),
             Complex(2.0, 3.0),
@@ -350,7 +350,7 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(complexMatrixSum.grid, expectedComplexMatrixSum.grid, accuracy: tolerance)
         
         let complexMatrixElementProduct = matrixComplexA .* matrixComplexB
-        let expectedComplexMatrixElementProduct = MatrixComplex([
+        let expectedComplexMatrixElementProduct = ComplexMatrix([
             Complex(3.0, 1.0),
             Complex(4.0, 3.0),
             Complex(-5.0, 1.0),
@@ -359,16 +359,16 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(complexMatrixElementProduct.grid, expectedComplexMatrixElementProduct.grid, accuracy: tolerance)
         
         matrixComplexA += matrixComplexB
-        let expectedMatrixComplexPlusEqual = MatrixComplex([
+        let expectedComplexMatrixPlusEqual = ComplexMatrix([
             Complex(3.0, 0.0),
             Complex(3.0, 1.0),
             Complex(2.0, 3.0),
             Complex(2.0, -1.0)
         ], 2, 2)
-        XCTAssertEqual(matrixComplexA.grid, expectedMatrixComplexPlusEqual.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixComplexA.grid, expectedComplexMatrixPlusEqual.grid, accuracy: tolerance)
         
-        matrixComplexA = MatrixComplex(gridComplexA, 2, 2)
-        let complexMatrixPlusScalar = MatrixComplex( [
+        matrixComplexA = ComplexMatrix(gridComplexA, 2, 2)
+        let complexMatrixPlusScalar = ComplexMatrix( [
             Complex(3.0, 1.0),
             Complex(4.0, -1.0),
             Complex(5.0, 2.0),
@@ -377,7 +377,7 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(complexMatrixPlusScalar.grid, complexMatrixPlusScalar.grid, accuracy: tolerance)
         
         let complexMatrixPlusComplexScalar = matrixComplexA + complexScalar
-        let expectedComplexMatrixPlusComplexScalar = MatrixComplex( [
+        let expectedComplexMatrixPlusComplexScalar = ComplexMatrix( [
             Complex(2.5, 0.5),
             Complex(3.5, -1.5),
             Complex(4.5, 1.5),
@@ -386,7 +386,7 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(complexMatrixPlusComplexScalar.grid, expectedComplexMatrixPlusComplexScalar.grid, accuracy: tolerance)
         
         let complexScalarPlusComplexMatrix = complexScalar + matrixComplexA
-        let expectedComplexScalarPlusComplexMatrix = MatrixComplex([
+        let expectedComplexScalarPlusComplexMatrix = ComplexMatrix([
             Complex(2.5, 0.5),
             Complex(3.5, -1.5),
             Complex(4.5, 1.5),
@@ -395,7 +395,7 @@ class OperatorOverloadTests: XCTestCase {
         XCTAssertEqual(complexScalarPlusComplexMatrix.grid, expectedComplexScalarPlusComplexMatrix.grid, accuracy: tolerance)
         
         let complexMatrixProduct = matrixComplexA * matrixComplexB
-        let expectedComplexMatrixProduct = MatrixComplex([
+        let expectedComplexMatrixProduct = ComplexMatrix([
             Complex(2.0, 4.0),
             Complex(3.0, -4.0),
             Complex(8.0, -1.0),
@@ -455,7 +455,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(3.0, 2.0),
             Complex(1.0, 1.0)
         ]
-        var matrixComplex = MatrixComplex(grid, 2, 2)
+        var matrixComplex = ComplexMatrix(grid, 2, 2)
         var d = -matrixComplex
         print(d.grid)
     }

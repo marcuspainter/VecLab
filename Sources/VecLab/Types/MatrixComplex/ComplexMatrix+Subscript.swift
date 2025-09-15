@@ -1,11 +1,11 @@
 //
-//  MatrixComplex+Subscript.swift
+//  ComplexMatrix+Subscript.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 10/09/2025.
 //
 
-extension MatrixComplex {
+extension ComplexMatrix {
     
     // Row-major
     public subscript(i: Int, j: Int) -> Complex {

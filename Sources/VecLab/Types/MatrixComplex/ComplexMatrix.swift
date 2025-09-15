@@ -1,5 +1,5 @@
 //
-//  MatrixComplex.swift
+//  ComplexMatrix.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 07/09/2025.
@@ -7,7 +7,7 @@
 
 import Accelerate
 
-public struct MatrixComplex {
+public struct ComplexMatrix {
 
     public var rows: Int = 0
     public var cols: Int = 0
@@ -44,7 +44,7 @@ public struct MatrixComplex {
     init() {
     }
     
-    init(_ matrix: MatrixComplex, grid: [Complex]) {
+    init(_ matrix: ComplexMatrix, grid: [Complex]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.grid = grid
@@ -74,7 +74,7 @@ public struct MatrixComplex {
 
 }
 
-extension MatrixComplex {
+extension ComplexMatrix {
     
     func swapRowsCols() {
         
@@ -83,7 +83,7 @@ extension MatrixComplex {
 }
 
 
-extension MatrixComplex {
+extension ComplexMatrix {
 
     public static func rowToColMajor(_ input: [Complex], rows: Int, cols: Int) -> [Complex] {
         precondition(input.count == rows * cols, "Invalid dimensions")

@@ -22,8 +22,8 @@ public func validateSize(
 }
 
 public func validateSize(
-    _ a: MatrixComplex,
-    _ b: MatrixComplex,
+    _ a: ComplexMatrix,
+    _ b: ComplexMatrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -36,7 +36,7 @@ public func validateSize(
 }
 
 public func validateSize(
-    _ a: MatrixComplex,
+    _ a: ComplexMatrix,
     _ b: Matrix,
     file: StaticString = #file,
     line: UInt = #line
@@ -51,7 +51,7 @@ public func validateSize(
 
 public func validateSize(
     _ a: Matrix,
-    _ b: MatrixComplex,
+    _ b: ComplexMatrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -78,8 +78,8 @@ func validateCompatible(
 }
 
 func validateCompatible(
-    _ a: MatrixComplex,
-    _ b: MatrixComplex,
+    _ a: ComplexMatrix,
+    _ b: ComplexMatrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {

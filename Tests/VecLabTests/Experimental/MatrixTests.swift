@@ -27,13 +27,13 @@ final class MatrixTests: XCTestCase {
         
         c = a ./ b
         
-        let q = MatrixComplex([1.0+1.i, 2.0+2.i, 3.0+3.i, 4.0+4.i], 2, 2)
+        let q = ComplexMatrix([1.0+1.i, 2.0+2.i, 3.0+3.i, 4.0+4.i], 2, 2)
         var d = q * 10.0
         
         d = q ./ q
         
         let nnn = 100 * 100
-        let r = MatrixComplex(real: vector(1...nnn), imag: vector(1...nnn), rows: 100, cols: 100 )
+        let r = ComplexMatrix(real: vector(1...nnn), imag: vector(1...nnn), rows: 100, cols: 100 )
         let s = (r + r).H
         
         print(s.grid)
@@ -198,7 +198,7 @@ final class MatrixTests: XCTestCase {
         //matrix = matrix / arrayDouble
         //matrix = arrayDouble / matrix
      
-        var matrixComplex = MatrixComplex(5,5)
+        var matrixComplex = ComplexMatrix(5,5)
 
         matrixComplex = matrixComplex + matrixComplex
         matrixComplex = matrixComplex - matrixComplex
@@ -398,7 +398,7 @@ final class MatrixTests: XCTestCase {
         gridComplex.append(contentsOf: arrayComplex)
         gridComplex.append(contentsOf: arrayComplex)
         
-        var matrixComplex = MatrixComplex(gridComplex,5,5)
+        var matrixComplex = ComplexMatrix(gridComplex,5,5)
 
         matrixComplex = matrixComplex + matrixComplex
         matrixComplex = matrixComplex - matrixComplex
@@ -444,7 +444,7 @@ final class MatrixTests: XCTestCase {
         var grid: [Complex] = [1.0+2.i, 3.0+4.i,
                                5.0+6.i, 7.0+8.i]
         
-        let z = MatrixComplex(grid, 2, 2)
+        let z = ComplexMatrix(grid, 2, 2)
         
         let c = a * b - a .* b ./ a
         
