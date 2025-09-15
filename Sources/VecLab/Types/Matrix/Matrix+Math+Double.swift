@@ -46,5 +46,4 @@ extension Matrix {
         let c = a / b.grid
         return Matrix(b, grid: c)
     }
-
 }

@@ -6,6 +6,8 @@
 //
 
 extension MatrixComplex {
+    
+    // Row-major
     public subscript(i: Int, j: Int) -> Complex {
         get {
             return grid[i * cols + j]
@@ -14,4 +16,5 @@ extension MatrixComplex {
             grid[i * cols + j] = newValue
         }
     }
+    
 }

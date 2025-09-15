@@ -183,4 +183,36 @@ final class SomeTests: XCTestCase {
         print("x", (t2.median / t3.median))
     }
     
+    func testSIMD() {
+        
+        let n = Int(2 ** 14)
+        var a = vector(1...n)
+        var c1 = a
+        var c2 = a
+        
+        let t1 = benchmark {
+            for k in 0..<n {
+                c1[k] = a[k] + a[k]
+            }
+            
+        }
+                              
+        let t2 = benchmark {
+            c2 = addSimd4(a, a)
+        }
+        
+        let t3 = benchmark {
+            c2 = vDSP.add(a, a)
+        }
+   
+        let t4 = benchmark {
+            c2 = a + a
+        }
+        
+        let t5 = benchmark {
+            c2 = addSimd4Array(a, a)
+        }
+       
+    }
+    
 }

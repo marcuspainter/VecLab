@@ -435,5 +435,42 @@ final class MatrixTests: XCTestCase {
         matrixComplex = complex / matrixComplex
     }
     
+    func testMat() {
+        let a = Matrix([[1,2],
+                        [3,4]])
+        let b = Matrix([[5,6],
+                        [7,8]])
+                
+        var grid: [Complex] = [1.0+2.i, 3.0+4.i,
+                               5.0+6.i, 7.0+8.i]
+        
+        let z = MatrixComplex(grid, 2, 2)
+        
+        let c = a * b - a .* b ./ a
+        
+        let zz = z * z
+        
+        //print(zz.grid)
+        
+        let d = det(b.grid, n: 2)
+        
+        print("det: \(d)")
+    }
     
+    func testOrder() {
+    
+        
+        var r: [Double] = [1, 2, 3,
+                          4, 5, 6]
+        var c = rowMajorToColumnMajor(r, rows: 2, cols: 3)
+        print(r)
+        print(c)
+        
+        r = columnMajorToRowMajor(c, rows: 2, cols: 3)
+        print(r)
+        
+        c = transposeMatrix(r, rows: 2, cols: 3)
+        print(c)
+    }
 }
+

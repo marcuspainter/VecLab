@@ -5,9 +5,9 @@
 //  Created by Marcus Painter on 08/09/2025.
 //
 
-public extension Matrix {
-    
-    static prefix func - (_ a: Matrix) -> Matrix {
+extension Matrix {
+
+    public static prefix func - (_ a: Matrix) -> Matrix {
         return Matrix(a, grid: -a.grid)
     }
 }

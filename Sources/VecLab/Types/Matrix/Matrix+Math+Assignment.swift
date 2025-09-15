@@ -51,7 +51,7 @@ extension Matrix {
     public static func *= (lhs: inout Matrix, rhs: Matrix) {
         lhs = lhs * rhs
     }
-    
+
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -69,7 +69,7 @@ extension Matrix {
     public static func *= (lhs: inout Matrix, rhs: Double) {
         lhs = lhs * rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -86,6 +86,5 @@ extension Matrix {
     public static func /= (lhs: inout Matrix, rhs: Double) {
         lhs = lhs / rhs
     }
-
 
 }

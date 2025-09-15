@@ -6,6 +6,8 @@
 //
 
 extension Matrix {
+    
+    // Row-major
     public subscript(i: Int, j: Int) -> Double {
         get {
             return grid[i * cols + j]
@@ -15,6 +17,3 @@ extension Matrix {
         }
     }
 }
-
-
-

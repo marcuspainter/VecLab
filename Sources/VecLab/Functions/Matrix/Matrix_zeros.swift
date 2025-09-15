@@ -27,3 +27,16 @@ public func randn(_ rows: Int, _ cols: Int) -> Matrix
     let grid = randn(count: cols * rows)
     return Matrix(grid, rows, cols)
 }
+
+enum xxx {
+    public static func zzz(_ a: some Numeric) -> some Numeric {
+        let b = a + 1
+        return b
+    }
+}
+
+func qqq() {
+    
+    let a = Complex(1,2)
+    let c = xxx.zzz(a)
+}
