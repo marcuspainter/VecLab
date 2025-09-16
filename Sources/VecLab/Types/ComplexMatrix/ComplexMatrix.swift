@@ -11,21 +11,21 @@ public struct ComplexMatrix {
 
     public var rows: Int = 0
     public var cols: Int = 0
-    public var grid: [Complex] = []
+    public var data: [Complex] = []
 
-    public init(_ grid: [Complex], _ rows: Int, _ cols: Int, layout: MatrixLayout = .rowMajor) {
-        precondition(rows * cols == grid.count, "Wrong size for grid")
+    public init(_ data: [Complex], _ rows: Int, _ cols: Int, layout: Matrix.Layout = .rowMajor) {
+        precondition(rows * cols == data.count, "Wrong size for data")
         self.rows = rows
         self.cols = cols
-        self.grid = [Complex](repeating: .zero, count: rows * cols)
+        self.data = [Complex](repeating: .zero, count: rows * cols)
         
-        transposeComplexMatrix(grid, rows: rows, cols: cols, result: &self.grid)
+        transposeComplexMatrix(data, rows: rows, cols: cols, result: &self.data)
     }
     
     public init(_ rows: Int, _ cols: Int) {
         self.rows = rows
         self.cols = cols
-        self.grid = [Complex](repeating: .zero, count: rows * cols)
+        self.data = [Complex](repeating: .zero, count: rows * cols)
     }
 
     public init(_ array: [[Complex]]) {
@@ -36,11 +36,11 @@ public struct ComplexMatrix {
         self.cols = array[0].count
         for item in array {
             assert(item.count == self.cols, "Matrix must have consistent column count")
-            self.grid.append(contentsOf: item)
+            self.data.append(contentsOf: item)
         }
-        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        //self.data = Self.rowToColMajor(self.data, rows: self.rows, cols: self.cols)
         
-        transposeComplexMatrix(self.grid, rows: self.rows, cols: self.cols, result: &self.grid)
+        transposeComplexMatrix(self.data, rows: self.rows, cols: self.cols, result: &self.data)
         
        
     }
@@ -48,32 +48,32 @@ public struct ComplexMatrix {
     init() {
     }
     
-    init(_ matrix: ComplexMatrix, grid: [Complex]) {
+    init(_ matrix: ComplexMatrix, data: [Complex]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
-        self.grid = grid
+        self.data = data
     }
 
-    init(rows: Int, cols: Int, grid: [Complex]) {
-        if grid.isEmpty {
+    init(rows: Int, cols: Int, data: [Complex]) {
+        if data.isEmpty {
             return
         }
         self.rows = rows
         self.cols = cols
-        self.grid = grid
+        self.data = data
     }
 
     init(_ matrix: Matrix) {
         self.rows = matrix.rows
         self.cols = matrix.cols
-        self.grid = matrix.grid.map { Complex($0, 0) }
+        self.data = matrix.data.map { Complex($0, 0) }
     }
     
     init(real: [Double], imag: [Double], rows: Int, cols: Int) {
         assert(real.count == imag.count, "Real and imaginary parts must have the same length")
         self.rows = rows
         self.cols = cols
-        self.grid = zip(real, imag).map { Complex($0, $1) }
+        self.data = zip(real, imag).map { Complex($0, $1) }
     }
 
 }

@@ -7,34 +7,27 @@
 
 import Accelerate
 
-public enum MatrixLayout {
-    case rowMajor
-    case colMajor
-}
 
-
-public struct Matrix: Sendable {
+public struct Matrix {
     public var rows: Int = 0
     public var cols: Int = 0
-    public var grid: [Double] = []
+    public var data: [Double] = []
 
-    public init(_ grid: [Double], _ rows: Int, _ cols: Int, layout: MatrixLayout = .rowMajor ) {
-        assert(cols * rows == grid.count, "Grid size does not match rows and columns")
+    public init(_ data: [Double], _ rows: Int, _ cols: Int, layout: Matrix.Layout = .rowMajor ) {
+        assert(cols * rows == data.count, "Grid size does not match rows and columns")
         self.rows = rows
         self.cols = cols
-        self.grid = grid
-        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
-        if layout == .rowMajor {
-            transposeMatrix(grid, rows: rows, cols: cols, result: &self.grid)
-        }
+        self.data = data
 
-        
+        if layout == .rowMajor {
+            transposeMatrix(data, rows: rows, cols: cols, result: &self.data)
+        }
     }
 
     public init(_ rows: Int, _ cols: Int, ) {
         self.rows = rows
         self.cols = cols
-        self.grid = [Double](repeating: 0.0, count: rows * cols)
+        self.data = [Double](repeating: 0.0, count: rows * cols)
     }
 
     public init(_ array: [[Double]]) {
@@ -42,14 +35,14 @@ public struct Matrix: Sendable {
             return
         }
         self.rows = array.count
-        self.cols = array[0].count
-        for item in array {
-            assert(item.count == self.cols, "Matrix must have consistent column count")
-            self.grid.append(contentsOf: item)
-        }
-        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        self.cols = array.first?.count ?? 0
         
-        transposeMatrix(grid, rows: rows, cols: cols, result: &self.grid)
+        // Validate rectangular matrix
+        assert(array.allSatisfy { $0.count == cols }, "All rows must have same length")
+        
+        let flatGrid = array.flatMap { $0 }
+        
+        transposeMatrix(flatGrid, rows: rows, cols: cols, result: &self.data)
     }
 
     public init() {
@@ -57,16 +50,16 @@ public struct Matrix: Sendable {
 
     // Do not convert layout
     
-    public init(_ matrix: Matrix, grid: [Double]) {
+    public init(_ matrix: Matrix, data: [Double]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
-        self.grid = grid
+        self.data = data
     }
     
-    public init(rows: Int, cols: Int, grid: [Double]) {
+    public init(rows: Int, cols: Int, data: [Double]) {
         self.rows = rows
         self.cols = cols
-        self.grid = grid
+        self.data = data
     }
 }
 

@@ -10,20 +10,20 @@ extension Matrix {
     // Row-major
     public subscript(i: Int, j: Int) -> Double {
         get {
-            return grid[i * cols + j]
+            return data[i * cols + j]
         }
         set {
-            grid[i * cols + j] = newValue
+            data[i * cols + j] = newValue
         }
     }
 */
     // Column-major
     public subscript(i: Int, j: Int) -> Double {
         get {
-            return grid[j * rows + i]
+            return data[j * rows + i]
         }
         set {
-            grid[j * rows + i] = newValue
+            data[j * rows + i] = newValue
         }
     }
 }

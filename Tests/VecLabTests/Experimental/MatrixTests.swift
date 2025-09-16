@@ -36,12 +36,12 @@ final class MatrixTests: XCTestCase {
         let r = ComplexMatrix(real: vector(1...nnn), imag: vector(1...nnn), rows: 100, cols: 100 )
         let s = (r + r).H
         
-        print(s.grid)
+        print(s.data)
         
         let t = r * r
         
-        c.grid = rightDivision(a.grid, a.grid, m: a.rows, n: a.cols)
-        print(c.grid)
+        c.data = rightDivision(a.data, a.data, m: a.rows, n: a.cols)
+        print(c.data)
         
         var m = Double(1)
         m += m
@@ -352,9 +352,9 @@ final class MatrixTests: XCTestCase {
         // MARK: Matrix
         
         // Row-major
-        let gridDouble = cat(arrayDouble, arrayDouble, arrayDouble, arrayDouble, arrayDouble)
+        let dataDouble = cat(arrayDouble, arrayDouble, arrayDouble, arrayDouble, arrayDouble)
         
-        var matrix = Matrix(gridDouble, 5,5)
+        var matrix = Matrix(dataDouble, 5,5)
         matrix = matrix + matrix
         matrix = matrix - matrix
         matrix = matrix * matrix
@@ -391,14 +391,14 @@ final class MatrixTests: XCTestCase {
         //matrix = arrayDouble / matrix
         
         // Row-major
-        var gridComplex: [Complex] = []
-        gridComplex.append(contentsOf: arrayComplex)
-        gridComplex.append(contentsOf: arrayComplex)
-        gridComplex.append(contentsOf: arrayComplex)
-        gridComplex.append(contentsOf: arrayComplex)
-        gridComplex.append(contentsOf: arrayComplex)
+        var dataComplex: [Complex] = []
+        dataComplex.append(contentsOf: arrayComplex)
+        dataComplex.append(contentsOf: arrayComplex)
+        dataComplex.append(contentsOf: arrayComplex)
+        dataComplex.append(contentsOf: arrayComplex)
+        dataComplex.append(contentsOf: arrayComplex)
         
-        var matrixComplex = ComplexMatrix(gridComplex,5,5)
+        var matrixComplex = ComplexMatrix(dataComplex,5,5)
 
         matrixComplex = matrixComplex + matrixComplex
         matrixComplex = matrixComplex - matrixComplex
@@ -441,18 +441,18 @@ final class MatrixTests: XCTestCase {
         let b = Matrix([[5,6],
                         [7,8]])
                 
-        var grid: [Complex] = [1.0+2.i, 3.0+4.i,
+        var data: [Complex] = [1.0+2.i, 3.0+4.i,
                                5.0+6.i, 7.0+8.i]
         
-        let z = ComplexMatrix(grid, 2, 2)
+        let z = ComplexMatrix(data, 2, 2)
         
         let c = a * b - a .* b ./ a
         
         let zz = z * z
         
-        //print(zz.grid)
+        //print(zz.data)
         
-        let d = det(b.grid, n: 2)
+        let d = det(b.data, n: 2)
         
         print("det: \(d)")
     }

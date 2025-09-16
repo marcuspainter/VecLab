@@ -8,6 +8,6 @@
 extension Matrix {
 
     public static prefix func - (_ a: Matrix) -> Matrix {
-        return Matrix(a, grid: -a.grid)
+        return Matrix(a, data: -a.data)
     }
 }

@@ -8,13 +8,13 @@
 extension ComplexMatrix {
     
     public static func + (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a.grid + b.grid
-        return ComplexMatrix(a, grid: c)
+        let c = a.data + b.data
+        return ComplexMatrix(a, data: c)
     }
     
     public static func - (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a.grid - b.grid
-        return ComplexMatrix(a, grid: c)
+        let c = a.data - b.data
+        return ComplexMatrix(a, data: c)
     }
     
     /// Addition.
@@ -28,15 +28,15 @@ extension ComplexMatrix {
     
     public static func * (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         validateCompatible(a, b)
-        let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
-        return ComplexMatrix(rows: a.rows, cols: b.cols, grid: c)
+        let c = matrixMultiply(a.data, b.data, m: a.rows, k: a.cols, n: b.rows)
+        return ComplexMatrix(rows: a.rows, cols: b.cols, data: c)
     }
     
     // Element-wise
     public static func .* (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         validateSize(a, b)
-        let c = a.grid * b.grid
-        return ComplexMatrix(rows: a.rows, cols: a.cols, grid: c)
+        let c = a.data * b.data
+        return ComplexMatrix(rows: a.rows, cols: a.cols, data: c)
     }
     
     @available(*, unavailable, message: "Matrix division is not supported. Use ./ for element-wise division.")
@@ -46,8 +46,8 @@ extension ComplexMatrix {
     
     // Element-wise
     public static func ./ (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a.grid / b.grid
-        return ComplexMatrix(rows: a.rows, cols: a.cols, grid: c)
+        let c = a.data / b.data
+        return ComplexMatrix(rows: a.rows, cols: a.cols, data: c)
     }
     
 }

@@ -79,7 +79,7 @@ final class SolveTests2: XCTestCase {
 }
 
 func solve(_ A: Matrix, _ B: Matrix) -> Matrix {
-    let grid = solve(A.grid, B.grid, n: A.rows, nrhs: B.cols)
-    let X = Matrix(grid, A.rows, B.cols)
+    let data = solve(A.data, B.data, n: A.rows, nrhs: B.cols)
+    let X = Matrix(data, A.rows, B.cols)
     return X
 }

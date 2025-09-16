@@ -11,26 +11,26 @@ extension Matrix {
 
     public static func + (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
-        let c = a.grid + b.grid
-        return Matrix(a, grid: c)
+        let c = a.data + b.data
+        return Matrix(a, data: c)
     }
 
     public static func - (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
-        let c = a.grid - b.grid
-        return Matrix(a, grid: c)
+        let c = a.data - b.data
+        return Matrix(a, data: c)
     }
 
     public static func * (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateCompatible(a, b)
-        let c = matrixMultiply(a.grid, b.grid, m: a.rows, k: a.cols, n: b.rows)
-        return Matrix(rows: a.rows, cols: b.cols, grid: c)
+        let c = matrixMultiply(a.data, b.data, m: a.rows, k: a.cols, n: b.rows)
+        return Matrix(rows: a.rows, cols: b.cols, data: c)
     }
 
     public static func .* (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
-        let c = a.grid * b.grid
-        return Matrix(a, grid: c)
+        let c = a.data * b.data
+        return Matrix(a, data: c)
     }
 
     @available(*, unavailable, message: "Use ./")
@@ -41,8 +41,8 @@ extension Matrix {
     // Element-wise
     public static func ./ (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
-        let c = a.grid / b.grid
-        return Matrix(a, grid: c)
+        let c = a.data / b.data
+        return Matrix(a, data: c)
     }
 
 }

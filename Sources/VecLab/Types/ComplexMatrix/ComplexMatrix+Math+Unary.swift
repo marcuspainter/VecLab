@@ -8,6 +8,6 @@
 public extension ComplexMatrix {
     
     static prefix func - (_ a: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(a, grid: -a.grid)
+        return ComplexMatrix(a, data: -a.data)
     }
 }

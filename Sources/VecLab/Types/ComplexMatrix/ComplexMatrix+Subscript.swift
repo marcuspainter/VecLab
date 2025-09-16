@@ -10,10 +10,10 @@ extension ComplexMatrix {
     // Row-major
     public subscript(i: Int, j: Int) -> Complex {
         get {
-            return grid[i * cols + j]
+            return data[i * cols + j]
         }
         set {
-            grid[i * cols + j] = newValue
+            data[i * cols + j] = newValue
         }
     }
     

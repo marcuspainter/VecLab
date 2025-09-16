@@ -261,82 +261,82 @@ class OperatorOverloadTests: XCTestCase {
     // MARK: - Matrix Tests
     
     func testMatrixArithmetic() {
-        let gridA: [Double] = [1,2,3, 4,5,6, 7,8,9]
-        let gridB: [Double] = [9,8,7, 6,5,4, 3,2,1]
+        let dataA: [Double] = [1,2,3, 4,5,6, 7,8,9]
+        let dataB: [Double] = [9,8,7, 6,5,4, 3,2,1]
         
-        var matrixA = Matrix(gridA, 3, 3)
-        let matrixB = Matrix(gridB, 3, 3)
+        var matrixA = Matrix(dataA, 3, 3)
+        let matrixB = Matrix(dataB, 3, 3)
         let scalar = 2.0
         
         let matrixSum = matrixA + matrixB
-        XCTAssertEqual(matrixSum.grid, Array(repeating: 10.0, count: 9), accuracy: tolerance)
+        XCTAssertEqual(matrixSum.data, Array(repeating: 10.0, count: 9), accuracy: tolerance)
         
         let matrixDiff = matrixA - matrixB
         let expectedDiff = Matrix([-8,-6,-4,-2,0,2,4,6,8],3,3)
-        XCTAssertEqual(matrixDiff.grid, expectedDiff.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixDiff.data, expectedDiff.data, accuracy: tolerance)
         
         let matrixElementWiseProduct = matrixA .* matrixB
         let expectedElementWiseProduct = Matrix([9,16,21,24,25,24,21,16,9],3,3)
-        XCTAssertEqual(matrixElementWiseProduct.grid, expectedElementWiseProduct.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixElementWiseProduct.data, expectedElementWiseProduct.data, accuracy: tolerance)
         
         let matrixElementWiseDivision = matrixA ./ matrixB
         let expectedElementWiseDivision = Matrix([1.0/9.0, 2.0/8.0, 3.0/7.0, 4.0/6.0, 1.0, 6.0/4.0, 7.0/3.0, 8.0/2.0, 9.0/1.0],3,3)
-        XCTAssertEqual(matrixElementWiseDivision.grid, expectedElementWiseDivision.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixElementWiseDivision.data, expectedElementWiseDivision.data, accuracy: tolerance)
         
         let matrixProduct = matrixA * matrixB
         let expectedProduct = Matrix([30, 24, 18,
                                       84, 69, 54,
                                       138, 114, 90], 3, 3)
-        XCTAssertEqual(matrixProduct.grid, expectedProduct.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixProduct.data, expectedProduct.data, accuracy: tolerance)
         
         matrixA += matrixB
-        XCTAssertEqual(matrixA.grid, Array(repeating: 10.0, count: 9), accuracy: tolerance)
+        XCTAssertEqual(matrixA.data, Array(repeating: 10.0, count: 9), accuracy: tolerance)
         
-        matrixA = Matrix(gridA, 3, 3)
+        matrixA = Matrix(dataA, 3, 3)
         let matrixPlusScalar = matrixA + scalar
         let expectedPlusScalar = Matrix([3,4,5,6,7,8,9,10,11],3,3)
-        XCTAssertEqual(matrixPlusScalar.grid, expectedPlusScalar.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixPlusScalar.data, expectedPlusScalar.data, accuracy: tolerance)
         
         let scalarPlusMatrix = scalar + matrixA
         let expectedPlusMatrix = Matrix([3,4,5,6,7,8,9,10,11],3,3)
-        XCTAssertEqual(scalarPlusMatrix.grid, expectedPlusMatrix.grid, accuracy: tolerance)
+        XCTAssertEqual(scalarPlusMatrix.data, expectedPlusMatrix.data, accuracy: tolerance)
         
         let matrixTimesScalar = matrixA * scalar
         let expectedTimesScalar = Matrix([2,4,6,8,10,12,14,16,18],3,3)
-        XCTAssertEqual(matrixTimesScalar.grid, expectedTimesScalar.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixTimesScalar.data, expectedTimesScalar.data, accuracy: tolerance)
         
         matrixA += scalar
         let expectedPlusScalar2 = Matrix([3,4,5,6,7,8,9,10,11],3,3)
-        XCTAssertEqual(matrixA.grid, expectedPlusScalar2.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixA.data, expectedPlusScalar2.data, accuracy: tolerance)
         
         matrixA -= scalar
-        let expectedMinusScalar2 = Matrix(gridA, 3, 3)
-        XCTAssertEqual(matrixA.grid, expectedMinusScalar2.grid, accuracy: tolerance)
+        let expectedMinusScalar2 = Matrix(dataA, 3, 3)
+        XCTAssertEqual(matrixA.data, expectedMinusScalar2.data, accuracy: tolerance)
         
         matrixA *= scalar
         let expectedTimesScalar2 = Matrix([2,4,6,8,10,12,14,16,18], 3, 3)
-        XCTAssertEqual(matrixA.grid, expectedTimesScalar2.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixA.data, expectedTimesScalar2.data, accuracy: tolerance)
     }
 
     // MARK: - ComplexMatrix Tests
    
     func testComplexMatrixArithmetic() {
-        let gridComplexA: [Complex] = [
+        let dataComplexA: [Complex] = [
             Complex(1.0, 1.0),
             Complex(2.0, -1.0),
             Complex(3.0, 2.0),
             Complex(-1.0, 1.0)
         ]
         
-        let gridComplexB: [Complex] = [
+        let dataComplexB: [Complex] = [
             Complex(2.0, -1.0),
             Complex(1.0, 2.0),
             Complex(-1.0, 1.0),
             Complex(3.0, -2.0)
         ]
         
-        var matrixComplexA = ComplexMatrix(gridComplexA, 2, 2)
-        let matrixComplexB = ComplexMatrix(gridComplexB, 2, 2)
+        var matrixComplexA = ComplexMatrix(dataComplexA, 2, 2)
+        let matrixComplexB = ComplexMatrix(dataComplexB, 2, 2)
         let scalar = 2.0
         let complexScalar = Complex(1.5, -0.5)
         
@@ -347,7 +347,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(2.0, 3.0),
             Complex(2.0, -1.0)
         ], 2, 2)
-        XCTAssertEqual(complexMatrixSum.grid, expectedComplexMatrixSum.grid, accuracy: tolerance)
+        XCTAssertEqual(complexMatrixSum.data, expectedComplexMatrixSum.data, accuracy: tolerance)
         
         let complexMatrixElementProduct = matrixComplexA .* matrixComplexB
         let expectedComplexMatrixElementProduct = ComplexMatrix([
@@ -356,7 +356,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(-5.0, 1.0),
             Complex(-1.0, 5.0)
         ], 2, 2)
-        XCTAssertEqual(complexMatrixElementProduct.grid, expectedComplexMatrixElementProduct.grid, accuracy: tolerance)
+        XCTAssertEqual(complexMatrixElementProduct.data, expectedComplexMatrixElementProduct.data, accuracy: tolerance)
         
         matrixComplexA += matrixComplexB
         let expectedComplexMatrixPlusEqual = ComplexMatrix([
@@ -365,16 +365,16 @@ class OperatorOverloadTests: XCTestCase {
             Complex(2.0, 3.0),
             Complex(2.0, -1.0)
         ], 2, 2)
-        XCTAssertEqual(matrixComplexA.grid, expectedComplexMatrixPlusEqual.grid, accuracy: tolerance)
+        XCTAssertEqual(matrixComplexA.data, expectedComplexMatrixPlusEqual.data, accuracy: tolerance)
         
-        matrixComplexA = ComplexMatrix(gridComplexA, 2, 2)
+        matrixComplexA = ComplexMatrix(dataComplexA, 2, 2)
         let complexMatrixPlusScalar = ComplexMatrix( [
             Complex(3.0, 1.0),
             Complex(4.0, -1.0),
             Complex(5.0, 2.0),
             Complex(1.0, 1.0)
         ], 2, 2)
-        XCTAssertEqual(complexMatrixPlusScalar.grid, complexMatrixPlusScalar.grid, accuracy: tolerance)
+        XCTAssertEqual(complexMatrixPlusScalar.data, complexMatrixPlusScalar.data, accuracy: tolerance)
         
         let complexMatrixPlusComplexScalar = matrixComplexA + complexScalar
         let expectedComplexMatrixPlusComplexScalar = ComplexMatrix( [
@@ -383,7 +383,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(4.5, 1.5),
             Complex(0.5, 0.5)
         ], 2, 2)
-        XCTAssertEqual(complexMatrixPlusComplexScalar.grid, expectedComplexMatrixPlusComplexScalar.grid, accuracy: tolerance)
+        XCTAssertEqual(complexMatrixPlusComplexScalar.data, expectedComplexMatrixPlusComplexScalar.data, accuracy: tolerance)
         
         let complexScalarPlusComplexMatrix = complexScalar + matrixComplexA
         let expectedComplexScalarPlusComplexMatrix = ComplexMatrix([
@@ -392,7 +392,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(4.5, 1.5),
             Complex(0.5, 0.5)
         ], 2, 2)
-        XCTAssertEqual(complexScalarPlusComplexMatrix.grid, expectedComplexScalarPlusComplexMatrix.grid, accuracy: tolerance)
+        XCTAssertEqual(complexScalarPlusComplexMatrix.data, expectedComplexScalarPlusComplexMatrix.data, accuracy: tolerance)
         
         let complexMatrixProduct = matrixComplexA * matrixComplexB
         let expectedComplexMatrixProduct = ComplexMatrix([
@@ -401,7 +401,7 @@ class OperatorOverloadTests: XCTestCase {
             Complex(8.0, -1.0),
             Complex(-2.0, 13.0)
         ], 2, 2)
-        XCTAssertEqual(complexMatrixProduct.grid, expectedComplexMatrixProduct.grid, accuracy: tolerance)
+        XCTAssertEqual(complexMatrixProduct.data, expectedComplexMatrixProduct.data, accuracy: tolerance)
     }
      
     // MARK: - Edge Cases and Integration Tests
@@ -447,16 +447,16 @@ class OperatorOverloadTests: XCTestCase {
         let matrix =  Matrix([1.0,2.0,3.0
                               ,4.0,5.0,6.0], 2,3)
         var c = -matrix
-        print(c.grid)
+        print(c.data)
         
-        let grid: [Complex] = [
+        let data: [Complex] = [
             Complex(1.0, 1.0),
             Complex(2.0, 1.0),
             Complex(3.0, 2.0),
             Complex(1.0, 1.0)
         ]
-        var matrixComplex = ComplexMatrix(grid, 2, 2)
+        var matrixComplex = ComplexMatrix(data, 2, 2)
         var d = -matrixComplex
-        print(d.grid)
+        print(d.data)
     }
 }
