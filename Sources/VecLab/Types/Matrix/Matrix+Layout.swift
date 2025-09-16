@@ -6,7 +6,7 @@
 //
 
 import Accelerate
-/*
+
 func rowMajorToColumnMajor(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
     
     return [Double](unsafeUninitializedCapacity: M * N) { dst, initializedCount in
@@ -27,6 +27,8 @@ func rowMajorToColumnMajor(_ src: [Double], rows M: Int, cols N: Int) -> [Double
         initializedCount = src.count
     }
 }
+
+/*
 
 import Accelerate
 
@@ -80,24 +82,7 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
     }
 }
 
-func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inout [Double]) {
-    precondition(src.count == M * N, "Source array size does not match rows * cols")
 
-    src.withUnsafeBufferPointer { srcPtr in
-        dst.withUnsafeMutableBufferPointer { dstPtr in
-            // vDSP_mtransD copies M×N into N×M, performing a transpose
-            vDSP_mtransD(
-                srcPtr.baseAddress!,
-                1,                     // source stride (row-major: 1 element apart)
-                dstPtr.baseAddress!,
-                1,                     // destination stride
-                vDSP_Length(N),        // number of columns in the source
-                vDSP_Length(M)         // number of rows in the source
-            )
-        }
-    }
-
-}
 
 */
 

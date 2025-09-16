@@ -17,9 +17,9 @@ public struct ComplexMatrix {
         precondition(rows * cols == grid.count, "Wrong size for grid")
         self.rows = rows
         self.cols = cols
-        self.grid = grid
+        self.grid = [Complex](repeating: .zero, count: rows * cols)
         
-        self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        transposeComplexMatrix(grid, rows: rows, cols: cols, result: &self.grid)
     }
     
     public init(_ rows: Int, _ cols: Int) {
@@ -38,7 +38,11 @@ public struct ComplexMatrix {
             assert(item.count == self.cols, "Matrix must have consistent column count")
             self.grid.append(contentsOf: item)
         }
-        self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        
+        transposeComplexMatrix(self.grid, rows: self.rows, cols: self.cols, result: &self.grid)
+        
+       
     }
 
     init() {
@@ -120,26 +124,40 @@ extension ComplexMatrix {
 
 }
 
+private func transposeComplexMatrix(
+    _ src: [Complex],
+    rows M: Int,
+    cols N: Int,
+    result dst: inout [Complex]
+) {
+    precondition(src.count == M * N)
+    precondition(dst.count == M * N)
 
-func transposeComplexMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inout [Double]) {
-    precondition(src.count == 2*M*N, "Source array size does not match 2 * rows * cols")
-    
+    // Safety checks: Complex must be exactly two Doubles, tightly packed
+    precondition(MemoryLayout<Complex>.stride == MemoryLayout<Double>.stride * 2,
+                 "Complex must be two Doubles with no padding")
+    precondition(MemoryLayout<Complex>.size == MemoryLayout<Double>.stride * 2,
+                 "Complex must be exactly 16 bytes")
+    precondition(MemoryLayout<Complex>.alignment == MemoryLayout<Double>.alignment,
+                 "Complex must have same alignment as Double")
+
     src.withUnsafeBufferPointer { sPtr in
         dst.withUnsafeMutableBufferPointer { dPtr in
+            let sBase = UnsafeRawPointer(sPtr.baseAddress!).assumingMemoryBound(to: Double.self)
+            let dBase = UnsafeMutableRawPointer(dPtr.baseAddress!).assumingMemoryBound(to: Double.self)
+
             // Transpose real parts
             vDSP_mtransD(
-                sPtr.baseAddress!, 2,           // source stride = 2 (real part)
-                dPtr.baseAddress!, 2,           // destination stride = 2
-                vDSP_Length(N),                 // number of columns in source
-                vDSP_Length(M)                  // number of rows in source
+                sBase, 2,
+                dBase, 2,
+                vDSP_Length(N),
+                vDSP_Length(M)
             )
-            
+
             // Transpose imaginary parts
             vDSP_mtransD(
-                sPtr.baseAddress! + 1,          // start at first imaginary element
-                2,                              // source stride = 2
-                dPtr.baseAddress! + 1,          // destination start
-                2,                              // destination stride = 2
+                sBase + 1, 2,
+                dBase + 1, 2,
                 vDSP_Length(N),
                 vDSP_Length(M)
             )

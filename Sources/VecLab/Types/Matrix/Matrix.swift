@@ -5,6 +5,8 @@
 //  Created by Marcus Painter on 07/09/2025.
 //
 
+import Accelerate
+
 public enum MatrixLayout {
     case rowMajor
     case colMajor
@@ -21,7 +23,12 @@ public struct Matrix: Sendable {
         self.rows = rows
         self.cols = cols
         self.grid = grid
-        self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        if layout == .rowMajor {
+            transposeMatrix(grid, rows: rows, cols: cols, result: &self.grid)
+        }
+
+        
     }
 
     public init(_ rows: Int, _ cols: Int, ) {
@@ -40,7 +47,9 @@ public struct Matrix: Sendable {
             assert(item.count == self.cols, "Matrix must have consistent column count")
             self.grid.append(contentsOf: item)
         }
-        self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        //self.grid = Self.rowToColMajor(self.grid, rows: self.rows, cols: self.cols)
+        
+        transposeMatrix(grid, rows: rows, cols: cols, result: &self.grid)
     }
 
     public init() {
@@ -94,6 +103,25 @@ extension Matrix {
         }
 
         return output
+    }
+
+}
+
+func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inout [Double]) {
+    precondition(src.count == M * N, "Source array size does not match rows * cols")
+
+    src.withUnsafeBufferPointer { srcPtr in
+        dst.withUnsafeMutableBufferPointer { dstPtr in
+            // vDSP_mtransD copies M×N into N×M, performing a transpose
+            vDSP_mtransD(
+                srcPtr.baseAddress!,
+                1,                     // source stride (row-major: 1 element apart)
+                dstPtr.baseAddress!,
+                1,                     // destination stride
+                vDSP_Length(N),        // number of columns in the source
+                vDSP_Length(M)         // number of rows in the source
+            )
+        }
     }
 
 }
