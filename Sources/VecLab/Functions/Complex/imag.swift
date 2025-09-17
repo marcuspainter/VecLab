@@ -26,3 +26,12 @@ public func imag(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     return x.imag
 }
+
+/// Imaginary parts of a complex array.
+///
+/// This function is retained for compatibility. Use the `imag` property.
+/// - Parameter x: Complex array.
+/// - Returns: A real array of imaginary part of a complex array.
+public func imag(_ x: [Complex]) -> RealArray {
+    return x.map { $0.imag }
+}
