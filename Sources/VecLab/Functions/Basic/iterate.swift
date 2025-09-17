@@ -40,7 +40,7 @@ public func iterate(_ x: RealArray, _ body: (Int, Real) -> Real) -> RealArray {
 /// - Returns: Output array.
 public func iterate(_ x: SplitComplexArray, _ body: (Complex) -> Complex) -> SplitComplexArray {
     validateSize(x)
-    var y = SplitComplexArray(repeating: 0, count: x.count)
+    var y = SplitComplexArray(count: x.count)
     for index in 0..<x.count {
         y[index] = body(x[index])
     }
@@ -54,7 +54,7 @@ public func iterate(_ x: SplitComplexArray, _ body: (Complex) -> Complex) -> Spl
 /// - Returns: Output array.
 public func iterate(_ x: SplitComplexArray, _ body: (Int, Complex) -> Complex) -> SplitComplexArray {
     validateSize(x)
-    var y = SplitComplexArray(repeating: 0, count: x.count)
+    var y = SplitComplexArray(count: x.count)
     for index in 0..<x.count {
         y[index] = body(index, x[index])
     }

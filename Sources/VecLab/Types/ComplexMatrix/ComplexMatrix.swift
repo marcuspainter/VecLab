@@ -13,13 +13,20 @@ public struct ComplexMatrix {
     public var cols: Int = 0
     public var data: [Complex] = []
 
-    public init(_ data: [Complex], _ rows: Int, _ cols: Int, layout: Matrix.Layout = .rowMajor) {
+    public init(_ data: [Complex], _ rows: Int, _ cols: Int, order: MatrixOrder = .rowMajor) {
         precondition(rows * cols == data.count, "Wrong size for data")
         self.rows = rows
         self.cols = cols
         self.data = [Complex](repeating: .zero, count: rows * cols)
         
-        transposeComplexMatrix(data, rows: rows, cols: cols, result: &self.data)
+        switch order {
+            case .rowMajor:
+                transposeComplexMatrix(data, rows: rows, cols: cols, result: &self.data)
+                break
+            case .colMajor:
+                // No transpose
+                break
+        }
     }
     
     public init(_ rows: Int, _ cols: Int) {
@@ -33,16 +40,19 @@ public struct ComplexMatrix {
             return
         }
         self.rows = array.count
-        self.cols = array[0].count
-        for item in array {
-            assert(item.count == self.cols, "Matrix must have consistent column count")
-            self.data.append(contentsOf: item)
-        }
-        //self.data = Self.rowToColMajor(self.data, rows: self.rows, cols: self.cols)
+        self.cols = array.first?.count ?? 0
+
+        // Validate rectangular matrix
+        assert(array.allSatisfy { $0.count == cols }, "All rows must have same length")
+
+        let flatData = array.flatMap { $0 }
+
+        self.data = flatData
         
-        transposeComplexMatrix(self.data, rows: self.rows, cols: self.cols, result: &self.data)
-        
-       
+        transposeComplexMatrix(flatData, rows: rows, cols: cols, result: &self.data)
+
+        assert(data.count == rows * cols, "Matrix failed")
+    
     }
 
     init() {
@@ -77,15 +87,6 @@ public struct ComplexMatrix {
     }
 
 }
-
-extension ComplexMatrix {
-    
-    func swapRowsCols() {
-        
-    }
-    
-}
-
 
 extension ComplexMatrix {
 

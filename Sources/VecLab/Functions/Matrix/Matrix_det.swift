@@ -7,6 +7,11 @@
 
 import Accelerate
 
+public func det(_ a: Matrix) -> Double {
+    precondition(a.rows == a.cols, "Matrix must be square")
+    return det(a.data, n: a.rows)
+}
+
 func det(_ a: [Double], n: Int) -> Double {
 
     var ipiv = [Int](repeating: 0, count: n)

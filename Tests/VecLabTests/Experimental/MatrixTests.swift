@@ -472,5 +472,41 @@ final class MatrixTests: XCTestCase {
   //      c = transposeMatrix(r, rows: 2, cols: 3)
    //     print(c)
     }
+    
+    func testArrayLiteral() {
+        let a: Matrix = [[1],[2],[3]]
+        print(a)
+    }
+    
+    func testDet() {
+        let a: Matrix = [[1,2],[3,4]]
+        let d = det(a)
+        print(d)
+    }
+    
+    func testEye() {
+        let i = eye(4)
+        let b: Matrix = [[1,2,3,4],
+                 [5,6,7,8],
+                 [9,10,11,12],
+                 [13,14,15,16]]
+        let c = b.T.T
+        print(b)
+        print(c)
+        
+    }
+    
+    func testDiag() {
+        let b: Matrix = [[1,2,3,4],
+                 [5,6,7,8],
+                 [9,10,11,12],
+                 [13,14,15,16]]
+        let c = diag(b)
+        print(b)
+        print(c)
+        
+        let t = trace(b)
+        print(t)
+    }
 }
 

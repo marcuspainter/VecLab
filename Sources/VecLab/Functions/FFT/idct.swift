@@ -24,7 +24,7 @@ public func idct(_ X: RealArray) -> RealArray {
     // Z[N + 1 ..< 2 * N] = conj(flip(YY[1 ..< N]))
 
     // Equivalent
-    let Z = cat(YY, [0], conj(flip(YY[1..<N])))
+    let Z = cat(YY, [.zero], conj(flip(YY[1..<N])))
 
     let z = ifftr(Z)
     let x = z[0..<N] * 2.0

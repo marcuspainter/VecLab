@@ -8,6 +8,6 @@
 // Uses Matlab convention: 2**2**3 Matlab = 64, NumPy = 256
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
-    associativity: left  // Matlab
-    // associativity: right    // NumPy
+    associativity: left        // Matlab
+    // associativity: right     // NumPy
 }

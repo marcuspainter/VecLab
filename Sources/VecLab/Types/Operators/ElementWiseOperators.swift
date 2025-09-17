@@ -7,10 +7,11 @@
 
 // Element-wise operator for matrices
 
-infix operator .**  : PowerPrecedence
 infix operator .*   : MultiplicationPrecedence
-infix operator ./   : MultiplicationPrecedence
-
-infix operator .**= : AssignmentPrecedence
 infix operator .*=  : AssignmentPrecedence
+
+infix operator ./   : MultiplicationPrecedence
 infix operator ./=  : AssignmentPrecedence
+
+infix operator .**  : PowerPrecedence
+infix operator .**= : AssignmentPrecedence

@@ -5,16 +5,11 @@
 //  Created by Marcus Painter on 14/09/2025.
 //
 
-extension Matrix {
 
-    public enum Layout {
-        case rowMajor
-        case colMajor
-    }
-    
-    public enum VectorType {
-        case rowVector
-        case colVector
-    }
+public enum MatrixOrder {
+    case rowMajor
+    case colMajor
 }
+
+
 

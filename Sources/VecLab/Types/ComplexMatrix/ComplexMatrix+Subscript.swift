@@ -7,8 +7,30 @@
 
 extension ComplexMatrix {
     
-    // Row-major
+    // Column-major
+    @inlinable
     public subscript(i: Int, j: Int) -> Complex {
+        get {
+            return data[j * rows + i]
+        }
+        set {
+            data[j * rows + i] = newValue
+        }
+    }
+
+    @inlinable
+    public subscript(i: Int) -> Complex {
+        get {
+            return data[i]
+        }
+        set {
+            data[i] = newValue
+        }
+    }
+
+/*
+    // Row-major
+    public subscript(i: Int, j: Int) -> Double {
         get {
             return data[i * cols + j]
         }
@@ -16,5 +38,8 @@ extension ComplexMatrix {
             data[i * cols + j] = newValue
         }
     }
+*/
     
 }
+
+

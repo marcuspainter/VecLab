@@ -7,21 +7,36 @@
 
 import Accelerate
 
+private extension Array where Element == Double {
+    
+    init(unsafeUninitializedCount: Int) {
+        self = .init(unsafeUninitializedCapacity: unsafeUninitializedCount) { buffer, initializedCount in
+            initializedCount = unsafeUninitializedCount
+        }
+    }
+    
+}
 
 public struct Matrix {
     public var rows: Int = 0
     public var cols: Int = 0
-    public var data: [Double] = []
+    public var data: [Double] = [] // Column-major
 
-    public init(_ data: [Double], _ rows: Int, _ cols: Int, layout: Matrix.Layout = .rowMajor ) {
+    public init(_ data: [Double], _ rows: Int, _ cols: Int, order: MatrixOrder = .rowMajor) {
         assert(cols * rows == data.count, "Grid size does not match rows and columns")
         self.rows = rows
         self.cols = cols
         self.data = data
 
-        if layout == .rowMajor {
+        switch order {
+        case .rowMajor:
             transposeMatrix(data, rows: rows, cols: cols, result: &self.data)
+            break
+        case .colMajor:
+            // No transpose
+            break
         }
+
     }
 
     public init(_ rows: Int, _ cols: Int, ) {
@@ -36,32 +51,44 @@ public struct Matrix {
         }
         self.rows = array.count
         self.cols = array.first?.count ?? 0
-        
+
         // Validate rectangular matrix
         assert(array.allSatisfy { $0.count == cols }, "All rows must have same length")
+
+        let flatData = array.flatMap { $0 }
+
+        self.data = flatData
         
-        let flatGrid = array.flatMap { $0 }
+        // Unitialized array
+        //self.data = [Double](unsafeUninitializedCapacity: flatData.count) { buffer, initializedCount in
+        //    initializedCount = flatData.count
+        //}
         
-        transposeMatrix(flatGrid, rows: rows, cols: cols, result: &self.data)
+        //self.data = [Double](unsafeUninitializedCount: flatData.count)
+
+        transposeMatrix(flatData, rows: rows, cols: cols, result: &self.data)
+
+        assert(data.count == rows * cols, "Matrix init failed")
     }
 
     public init() {
     }
 
     // Do not convert layout
-    
+
     public init(_ matrix: Matrix, data: [Double]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = data
     }
-    
+
     public init(rows: Int, cols: Int, data: [Double]) {
         self.rows = rows
         self.cols = cols
         self.data = data
     }
 }
+
 
 extension Matrix {
 
@@ -108,11 +135,11 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inou
             // vDSP_mtransD copies M×N into N×M, performing a transpose
             vDSP_mtransD(
                 srcPtr.baseAddress!,
-                1,                     // source stride (row-major: 1 element apart)
+                1,  // source stride (row-major: 1 element apart)
                 dstPtr.baseAddress!,
-                1,                     // destination stride
-                vDSP_Length(N),        // number of columns in the source
-                vDSP_Length(M)         // number of rows in the source
+                1,  // destination stride
+                vDSP_Length(N),  // number of columns in the source
+                vDSP_Length(M)  // number of rows in the source
             )
         }
     }

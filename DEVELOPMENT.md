@@ -1,0 +1,48 @@
+# Development Notes
+
+## Migration: Prefer interleaved [Complex] for new APIs (keep SplitComplex for compatibility)
+
+We are standardizing complex-number buffers for new code to use an interleaved `[Complex]` layout (AoS). `SplitComplexArray` remains supported for compatibility and interop, but should not be expanded. New public APIs must accept (and preferably return) `[Complex]`.
+
+### Rationale
+- Simpler API surface: pass `[Complex]` rather than parallel real/imag arrays.
+- Fewer bounds/index bugs and better readability.
+- Works cleanly with Swift value semantics and `UnsafeBufferPointer<Complex>` when needed.
+
+### Guidelines
+- New code and new public APIs must accept/return `Array<Complex>` (or `ContiguousArray<Complex>`).
+- Keep `SplitComplexArray` for existing code paths and interop, but avoid adding new usages unless strictly required.
+- Where existing APIs currently take `SplitComplexArray`, prefer adding an overload that takes `[Complex]` and internally adapts as needed.
+- If performance-critical code needs raw pointers, prefer temporary views over permanent split storage:
+  - Use `withUnsafe[Mutable]BufferPointer` on `[Complex]` and derive real/imag pointers as needed, or convert into split scratch buffers locally.
+- Document any remaining or new need for split layout in the call site with a brief rationale.
+
+
+### Interop with Accelerate/vDSP
+Some vDSP functions still prefer split-complex (`DSPSplitComplex`/`DSPDoubleSplitComplex`). When interop is necessary:
+
+- Convert on the fly from interleaved to split-complex without permanently storing split buffers.
+- Reuse stack or scratch buffers where possible.
+
+Example pattern (double-precision):
+
+```swift
+struct Complex {
+    var real: Double
+    var imag: Double
+}
+
+extension Array where Element == Complex {
+    mutating func withSplitScratch<R>(_ body: (_ real: UnsafeMutablePointer<Double>, _ imag: UnsafeMutablePointer<Double>) throws -> R) rethrows -> R {
+        var reals = [Double](repeating: 0, count: count)
+        var imags = [Double](repeating: 0, count: count)
+        for i in indices { reals[i] = self[i].real; imags[i] = self[i].imag }
+        let result = try reals.withUnsafeMutableBufferPointer { rBuf in
+            try imags.withUnsafeMutableBufferPointer { iBuf in
+                try body(rBuf.baseAddress!, iBuf.baseAddress!)
+            }
+        }
+        for i in indices { self[i].real = reals[i]; self[i].imag = imags[i] }
+        return result
+    }
+}

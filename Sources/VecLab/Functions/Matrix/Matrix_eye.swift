@@ -7,7 +7,7 @@
 
 public func eye(_ n: Int) -> Matrix {
     let data = dataEye(n)
-    return Matrix(data, n, n)
+    return Matrix(rows: n, cols: n, data: data)
 }
 
 func dataEye(_ n: Int) -> RealArray {

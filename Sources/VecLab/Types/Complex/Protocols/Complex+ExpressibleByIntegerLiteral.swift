@@ -20,3 +20,41 @@ extension Complex: ExpressibleByIntegerLiteral {
     }
 
 }
+
+struct Quack: SignedNumeric {
+    typealias Magnitude = Double
+    typealias IntegerLiteralType = Int
+    
+    var magnitude: Double { 0 }
+    
+    static func *= (lhs: inout Quack, rhs: Quack) {
+        
+    }
+    
+    init() {
+        
+    }
+    
+    init(integerLiteral: Int) {
+        
+    }
+    
+    static func - (lhs: Quack, rhs: Quack) -> Quack {
+        Quack()
+    }
+    
+    init?<T>(exactly source: T) where T : BinaryInteger {
+    }
+    
+    static func * (lhs: Quack, rhs: Quack) -> Quack {
+        Quack()
+    }
+    
+    static func + (lhs: Quack, rhs: Quack) -> Quack {
+        Quack()
+    }
+    
+
+    
+    
+}
