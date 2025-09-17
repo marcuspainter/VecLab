@@ -9,34 +9,15 @@ import Accelerate
 import Foundation
 
 func vectorPowReal(_ a: [Double], _ b: [Double]) -> [Double] {
-    var c = a
-    c.withUnsafeMutableBufferPointer { cPtr in
-        a.withUnsafeBufferPointer { aPtr in
-            vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
-        }
-    }
-    return c
+    return vForce.pow(bases: a, exponents: b)
 }
 
 func vectorPowReal(_ a: [Double], _ b: Double) -> [Double] {
-    var c = a
     let bb = [Double](repeating: b, count: a.count)
-    c.withUnsafeMutableBufferPointer { cPtr in
-        a.withUnsafeBufferPointer { aPtr in
-            vForce.pow(bases: aPtr, exponents: bb, result: &cPtr)
-        }
-    }
-    return c
+    return vForce.pow(bases: a, exponents: bb)
 }
 
 func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
-    var c = b
     let aa = [Double](repeating: a, count: b.count)
-    c.withUnsafeMutableBufferPointer { cPtr in
-        aa.withUnsafeBufferPointer { aPtr in
-            vForce.pow(bases: aPtr, exponents: b, result: &cPtr)
-        }
-    }
-
-    return c
+    return vForce.pow(bases: aa, exponents: b)
 }
