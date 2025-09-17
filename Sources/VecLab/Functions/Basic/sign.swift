@@ -58,3 +58,12 @@ public func sign(_ x: SplitComplexArray) -> SplitComplexArray {
     validateSize(x)
     return x / abs(x)  // Overloaded
 }
+
+/// Sign function (signum function) of a complex array.
+///
+/// `sign(x)` returns a value of: x./abs(x) if x is complex.
+/// - Parameter x: Complex array.
+/// - Returns: Sign of number.
+public func sign(_ x: [Complex]) -> [Complex] {
+    return x / abs(x)  // Overloaded
+}

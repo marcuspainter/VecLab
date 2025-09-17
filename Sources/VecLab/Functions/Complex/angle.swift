@@ -24,3 +24,10 @@ public func angle(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     return vectorAngleSplitComplexArray(x)
 }
+
+/// Phase angles of a complex array.
+/// - Parameter x:Complex array.
+/// - Returns: The phase angles in radians.
+public func angle(_ x: [Complex]) -> RealArray {
+    return x.map { angle($0) }
+}

@@ -29,3 +29,14 @@ public func prod(_ x: SplitComplexArray) -> Complex {
     }
     return product
 }
+
+/// Product of a complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The product of the array.
+public func prod(_ x: [Complex]) -> Complex {
+    var product = x[0]
+    for k in 1..<x.count {
+        product = product * x[k]
+    }
+    return product
+}

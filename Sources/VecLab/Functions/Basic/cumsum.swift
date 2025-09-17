@@ -35,3 +35,16 @@ public func cumsum(_ x: SplitComplexArray) -> SplitComplexArray {
     }
     return c
 }
+
+/// Cumulative sum of complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The cumulative sum of the array.
+public func cumsum(_ x: [Complex]) -> [Complex] {
+    var c = x
+    var sum = Complex()
+    for k in 0..<x.count {
+        sum = sum + x[k]
+        c[k] = sum
+    }
+    return c
+}

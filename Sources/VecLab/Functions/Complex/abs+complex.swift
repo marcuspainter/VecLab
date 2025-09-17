@@ -19,9 +19,17 @@ public func abs(_ x: Complex) -> Real {
 
 /// Magnitudes  of a complex array.
 ///
-/// - Parameter x:Complex array.
+/// - Parameter x: Split Complex array.
 /// - Returns: Real array of  magnitudes.
 public func abs(_ x: SplitComplexArray) -> RealArray {
     validateSize(x)
     return vectorAbsSplitComplexArray(x)
+}
+
+/// Magnitudes  of a complex array.
+///
+/// - Parameter x:Complex array.
+/// - Returns: Real array of  magnitudes.
+public func abs(_ x: [Complex]) -> [Real] {
+    return x.map { abs($0) }
 }

@@ -30,3 +30,16 @@ public func cumprod(_ x: SplitComplexArray) -> SplitComplexArray {
     }
     return result
 }
+
+/// Cumulative product.
+/// - Parameter x: Complex array.
+/// - Returns: Complex array.
+public func cumprod(_ x: [Complex]) -> [Complex] {
+    guard !x.isEmpty else { return [] }
+    var result = [Complex](repeating: Complex(1, 0), count: x.count)
+    result[0] = x[0]
+    for i in 1..<x.count {
+        result[i] = result[i - 1] * x[i]
+    }
+    return result
+}

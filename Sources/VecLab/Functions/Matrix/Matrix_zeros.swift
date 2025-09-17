@@ -38,5 +38,5 @@ enum xxx {
 func qqq() {
     
     let a = Complex(1,2)
-    let c = xxx.zzz(a)
+    _ = xxx.zzz(a)
 }

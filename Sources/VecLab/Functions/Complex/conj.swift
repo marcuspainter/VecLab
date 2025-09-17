@@ -27,4 +27,11 @@ public func conj(_ x: SplitComplexArray) -> SplitComplexArray {
     return SplitComplexArray(x.real, imag)
 }
 
+/// Complex conjugates of a complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The complex conjugate of `x`.
+public func conj(_ x: [Complex]) -> [Complex] {
+    return x.map { conj($0) }
+}
+
 // Not implemented for reals

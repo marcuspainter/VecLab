@@ -21,3 +21,10 @@ public func length(_ x: SplitComplexArray) -> Int {
     validateSize(x)
     return x.count
 }
+
+/// Length of a complex array.
+/// - Parameter x: Complex array.
+/// - Returns: The length of the array.
+public func length(_ x: [Complex]) -> Int {
+    return x.count
+}

@@ -67,3 +67,4 @@ public func dot(_ a: SplitComplexArray, _ b: RealArray) -> Complex {
     let dotSum = sum(c)
     return dotSum
 }
+
