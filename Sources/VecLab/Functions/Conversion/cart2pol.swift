@@ -14,7 +14,7 @@ import Foundation
 /// - Returns: A tuple containing the angle theta in radians and the radial distance rho from the origin.
 public func cart2pol(_ x: Real, _ y: Real) -> (theta: Real, rho: Real) {
     let theta = Darwin.atan2(y, x)
-    let rho = Darwin.sqrt(x * x + y * y)
+    let rho = Darwin.hypot(x, y)
     return (theta, rho)
 }
 
@@ -50,7 +50,7 @@ public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray) -> (theta: 
 /// and the radial height.
 public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real, z: Real) {
     let theta = Darwin.atan2(y, x)
-    let rho = Darwin.sqrt(x * x + y * y)
+    let rho = Darwin.hypot(x, y)
     return (theta, rho, z)
 }
 
