@@ -1,5 +1,5 @@
 //
-//  VectorCore.swift
+//  CoreVector.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum VectorCore {
+public enum CoreVector {
     
     
     public static func add(_ a: [Double], _ b: [Double]) -> [Double] {

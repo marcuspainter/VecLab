@@ -5,6 +5,60 @@
 //  Created by Marcus Painter on 21/09/2025.
 //
 
+/// Filter with State
+///
+/// Direct Form II IIR filter that maintains the filter state between calls.
+/// - Parameters:
+///   - b: b coefficients.
+///   - a: a coefficients.
+///   - x: Real array input signal.
+///   - state: Real filter state.
+/// - Returns: Filtered signal and filter state arrays as a tuple.
+public func filter(b: RealArray, a: RealArray, x: RealArray, state: RealArray) -> (y: RealArray, newState: RealArray) {
+    precondition(!a.isEmpty && a[0] != 0, "a[0] must be nonzero")
+    let na = a.count
+    let nb = b.count
+    let nfilt = max(na, nb)
+
+    // Pure gain (no state)
+    if nfilt == 1 {
+        let g = b[0] / a[0]
+        return (x.map { $0 * g }, [])
+    }
+
+    var y = RealArray(count: x.count)
+    let stateLen = nfilt - 1
+    var z = state
+    if z.count < stateLen {
+        z.append(contentsOf: repeatElement(0.0, count: stateLen - z.count))
+    } else if z.count > stateLen {
+        z.removeLast(z.count - stateLen)
+    }
+
+    let a0 = a[0]
+
+    for n in 0..<x.count {
+        let xn = x[n]
+        let temp = (b[0] / a0) * xn + z[0]
+        y[n] = temp
+
+        // Middle states
+        if stateLen > 1 {
+            for i in 1..<(nfilt - 1) {
+                let bi = (i < nb) ? b[i] : 0.0
+                let ai = (i < na) ? a[i] : 0.0
+                z[i - 1] = (bi / a0) * xn + z[i] - (ai / a0) * temp
+            }
+        }
+
+        // Last state
+        let bLast = (nb == nfilt) ? b[nb - 1] : 0.0
+        let aLast = (na == nfilt) ? a[na - 1] : 0.0
+        z[nfilt - 2] = (bLast / a0) * xn - (aLast / a0) * temp
+    }
+
+    return (y, z)
+}
 
 public func filterstate(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     let filterOrder = max(a.count, b.count) - 1

@@ -22,22 +22,22 @@ final class VectorSpeedTests: XCTestCase {
         /*
         benchmark {
 
-            VectorCoreNative.add(a, b)
+            CoreVectorNative.add(a, b)
         }
         
         benchmark {
 
-            VectorCoreSIMD.add(a, b)
+            CoreVectorSIMD.add(a, b)
         }
         
         benchmark {
 
-            VectorCoreVDSP.add(a, b)
+            CoreVectorVDSP.add(a, b)
         }
          */
         
         measure(metrics: [XCTClockMetric()]) {
-            VectorCoreSIMD.add(a, b)
+            CoreVectorSIMD.add(a, b)
         }
         print("Done")
 
@@ -52,7 +52,7 @@ final class VectorSpeedTests: XCTestCase {
         var c = vector(1...n)
         
         measure(metrics: [XCTClockMetric()]) {
-            VectorCoreSIMD.add(a, b)
+            CoreVectorSIMD.add(a, b)
         }
         print("Done")
         

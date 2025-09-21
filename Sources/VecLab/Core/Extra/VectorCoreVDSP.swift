@@ -1,5 +1,5 @@
 //
-//  VectorCore.swift
+//  CoreVector.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.
@@ -7,7 +7,7 @@
 
 import Accelerate
 
-public enum VectorCoreVDSP {
+public enum CoreVectorVDSP {
 
     @inlinable
     public static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {

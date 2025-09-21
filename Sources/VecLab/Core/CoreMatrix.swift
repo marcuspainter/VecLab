@@ -1,5 +1,5 @@
 //
-//  MatrixCore.swift
+//  CoreMatrix.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.
@@ -7,34 +7,34 @@
 
 import Accelerate
 
-public enum MatrixCore {
+public enum CoreMatrix {
     
     // MARK: add
 
     public static func add(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(rows: a.rows, cols: b.cols, data: VectorCore.add(a.data, b.data))
+        return Matrix(rows: a.rows, cols: b.cols, data: CoreVector.add(a.data, b.data))
     }
     
     public static func add(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.add(a.data, b))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.add(a.data, b))
     }
     
     public static func add(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(rows: b.rows, cols: b.cols, data: VectorCore.add(a, b.data))
+        return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.add(a, b.data))
     }
     
     // MARK: subtract
     
     public static func subtract(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(rows: a.rows, cols: b.cols, data: VectorCore.subtract(a.data, b.data))
+        return Matrix(rows: a.rows, cols: b.cols, data: CoreVector.subtract(a.data, b.data))
     }
     
     public static func subtract(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.subtract(a.data, b))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.subtract(a.data, b))
     }
     
     public static func subtract(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(rows: b.rows, cols: b.cols, data: VectorCore.subtract(a, b.data))
+        return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.subtract(a, b.data))
     }
     
     // MARK: multiply
@@ -84,29 +84,29 @@ public enum MatrixCore {
     }
 
     public static func multiply(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.multiply(a.data, b))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.multiply(a.data, b))
     }
 
     public static func elementMultiply(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.multiply(a.data, b.data))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.multiply(a.data, b.data))
     }
 
     // MARK: divide
     
     public static func divide(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.divide(a.data, b))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.divide(a.data, b))
     }
 
     public static func divide(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(rows: b.rows, cols: b.cols, data: VectorCore.divide(a, b.data))
+        return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.divide(a, b.data))
     }
 
     public static func elementDivide(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(rows: b.rows, cols: b.cols, data: VectorCore.divide(a.data, b.data))
+        return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.divide(a.data, b.data))
     }
 
     public static func unaryMinus(_ a: Matrix) -> Matrix  {
-        return Matrix(rows: a.rows, cols: a.cols, data: VectorCore.unaryMinus(a.data))
+        return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.unaryMinus(a.data))
     }
 }
 

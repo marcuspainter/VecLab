@@ -1,5 +1,5 @@
 //
-//  ComplexVectorCore.swift
+//  CoreComplexVector.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/09/2025.
@@ -8,7 +8,7 @@
 import Foundation
 import simd
 
-public enum ComplexVectorCoreSIMD {
+public enum CoreComplexVectorSIMD {
     
     public static func multiply(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -252,7 +252,7 @@ public enum ComplexVectorCoreSIMD {
             Complex(1.0, -1.0)   // 1 - 1i
         ]
         
-        let result = ComplexVectorCoreSIMD.multiply(complexArray1, complexArray2)
+        let result = CoreComplexVectorSIMD.multiply(complexArray1, complexArray2)
         
         for i in 0..<result.count {
             let a = complexArray1[i]

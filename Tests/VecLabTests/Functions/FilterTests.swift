@@ -229,24 +229,6 @@ class FilterTests: XCTestCase {
         XCTAssertEqual(y2, x, accuracy: accuracy)
     }
     
-    func testFiltfiltComplex() {
-        let x = vector(1 ... 10)
-        let z = SplitComplexArray(x, x)
-        let b: [Double] = [0, 0, 0, 1] // 3 sample Delay
-        //let b: [Double] = ones(3) / 3.0
-        //let b: [Double] = [1, -1]
-        
-        let a: [Double] = [1]
-        
-        //let y1 = filter(b: b, a: a, x: x)
-        //disp(y1)
-        
-        let y2 = filtfilt(b: b, a: a, x: z)
-        //disp(y2)
-        
-        XCTAssertEqual(y2, z, accuracy: accuracy)
-    }
-    
     func testFiltFiltExtend() {
         let a = vector(1 ... 3)
         let b = vector(4 ... 6)

@@ -1,5 +1,5 @@
 /**
- ComplexCore+Functions
+ CoreComplex+Functions
  
  Complex complex-number functions used by VecLab.
  
@@ -19,7 +19,7 @@
  */
 
 //
-//  ComplexCore+Functions.swift
+//  CoreComplex+Functions.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 19/09/2025.
@@ -27,7 +27,7 @@
 
 import Foundation
 
-extension ComplexCore {
+extension CoreComplex {
     
     // MARK: Sqrt
 

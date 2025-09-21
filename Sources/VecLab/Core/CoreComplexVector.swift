@@ -1,5 +1,5 @@
 //
-//  ComplexVectorCore.swift
+//  CoreComplexVector.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/09/2025.
@@ -8,7 +8,7 @@ import Foundation
 
 typealias ComplexBufferPointer = UnsafeMutableBufferPointer<Complex>
 
-public enum ComplexVectorCore {
+public enum CoreComplexVector {
 
     //. MARK: add
 

@@ -1,5 +1,5 @@
 //
-//  VectorCore.swift
+//  CoreVector.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.
@@ -8,7 +8,7 @@
 import Foundation
 import simd
 
-public enum VectorCoreSIMD {
+public enum CoreVectorSIMD {
 
     public static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in

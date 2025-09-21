@@ -1,5 +1,5 @@
 //
-//  ComplexCore.swift
+//  CoreComplex.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ComplexCore {
+public enum CoreComplex {
 
     @inlinable
     static func add(_ a: Complex, _ b: Complex) -> Complex {

@@ -10,23 +10,23 @@ extension Array where Element == Complex {
     public static func + (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 + $1 }
         //return addComplexComplex(a, b)
-        return ComplexVectorCore.add(a, b)
+        return CoreComplexVector.add(a, b)
     }
     
     public static func - (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 - $1 }
-        return ComplexVectorCore.subtract(a, b)
+        return CoreComplexVector.subtract(a, b)
     }
 
     public static func * (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 * $1 }
         //return multiplyComplexComplex(a, b)
-        return ComplexVectorCore.multiply(a, b)
+        return CoreComplexVector.multiply(a, b)
     }
 
     public static func / (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         //return zip(a, b).map { $0 / $1 }
-        return ComplexVectorCore.divide(a, b)
+        return CoreComplexVector.divide(a, b)
     }
 
 }

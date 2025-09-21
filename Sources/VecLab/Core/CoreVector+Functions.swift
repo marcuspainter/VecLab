@@ -1,5 +1,5 @@
 //
-//  VectorCore+Functions.swift
+//  CoreVector+Functions.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 20/09/2025.
@@ -8,7 +8,7 @@
 import Foundation
 import simd
 
-extension VectorCore {
+extension CoreVector {
     
     @inlinable
     public static func sin(_ a: [Double]) -> [Double] {

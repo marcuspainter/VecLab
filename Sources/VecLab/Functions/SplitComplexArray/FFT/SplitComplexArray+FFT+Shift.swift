@@ -1,11 +1,33 @@
 //
-//  fftsymmetric.swift
+//  SplitComplexArray+FFT+Shift.swift
+//  VecLab
 //
-//
-//  Created by Marcus Painter on 15/09/2023.
+//  Created by Marcus Painter on 22/09/2025.
 //
 
-import Foundation
+/// Shift zero-frequency component to center of spectrum.
+/// - Parameters:
+///   - x: Input array.
+/// - Returns: Shifted array
+public func fftshift(_ x: SplitComplexArray) -> SplitComplexArray {
+    validateSize(x)
+    let real = fftshift(x.real)
+    let imag = fftshift(x.imag)
+
+    return SplitComplexArray(real, imag)
+}
+
+/// Inverse of fftshift.
+/// - Parameters:
+///   - x: Input array.
+/// - Returns: Shifted array
+public func ifftshift(_ x: SplitComplexArray) -> SplitComplexArray {
+    validateSize(x)
+    let real = ifftshift(x.real)
+    let imag = ifftshift(x.imag)
+
+    return SplitComplexArray(real, imag)
+}
 
 /// Make conjugate symmetric.
 /// - Parameter x: Complex  array.
