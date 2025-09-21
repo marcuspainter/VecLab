@@ -9,9 +9,9 @@
 /// Cumulative product.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array.
-public func cumprod(_ x: [Complex]) -> [Complex] {
+public func cumprod(_ x: ComplexArray) -> ComplexArray {
     guard !x.isEmpty else { return [] }
-    var result = [Complex](repeating: Complex(1, 0), count: x.count)
+    var result = ComplexArray(repeating: Complex(1, 0), count: x.count)
     result[0] = x[0]
     for i in 1..<x.count {
         result[i] = result[i - 1] * x[i]
@@ -22,7 +22,7 @@ public func cumprod(_ x: [Complex]) -> [Complex] {
 /// Cumulative sum of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The cumulative sum of the array.
-public func cumsum(_ x: [Complex]) -> [Complex] {
+public func cumsum(_ x: ComplexArray) -> ComplexArray {
     var c = x
     var sum = Complex()
     for k in 0..<x.count {
@@ -35,7 +35,7 @@ public func cumsum(_ x: [Complex]) -> [Complex] {
 /// Product of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The product of the array.
-public func prod(_ x: [Complex]) -> Complex {
+public func prod(_ x: ComplexArray) -> Complex {
     var product = x[0]
     for k in 1..<x.count {
         product = product * x[k]
@@ -48,6 +48,6 @@ public func prod(_ x: [Complex]) -> Complex {
 /// `sign(x)` returns a value of: x./abs(x) if x is complex.
 /// - Parameter x: Complex array.
 /// - Returns: Sign of number.
-public func sign(_ x: [Complex]) -> [Complex] {
+public func sign(_ x: ComplexArray) -> ComplexArray {
     return x / abs(x)  // Overloaded
 }

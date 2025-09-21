@@ -1,5 +1,5 @@
 //
-//  Matrix_rank.swift
+//  Matrix+rank.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 17/09/2025.

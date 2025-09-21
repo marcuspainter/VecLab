@@ -1,5 +1,5 @@
 //
-//  solve.swift
+//  Matrix+solve.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 04/09/2025.

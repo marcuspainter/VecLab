@@ -1,5 +1,5 @@
 //
-//  eye.swift
+//  Matrix+eye.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/09/2025.

@@ -22,7 +22,7 @@ public func cat(_ arrays: ComplexArray...) -> ComplexArray {
     return newArray
 }
 
-public func circshift(_ x: [Complex], _ k: Int) -> [Complex] {
+public func circshift(_ x: ComplexArray, _ k: Int) -> ComplexArray {
     let n = x.count
     if n == 0 { return x }
 
@@ -50,14 +50,14 @@ public func circshift(_ x: [Complex], _ k: Int) -> [Complex] {
 /// Flip order of complex array.
 /// - Parameter x: Complex array.
 /// - Returns: Flipped array with elements reversed.
-public func flip(_ x: [Complex]) -> [Complex] {
+public func flip(_ x: ComplexArray) -> ComplexArray {
     return x.reversed()
 }
 
 /// Length of a complex array.
 /// - Parameter x: Complex array.
 /// - Returns: The length of the array.
-public func length(_ x: [Complex]) -> Int {
+public func length(_ x: ComplexArray) -> Int {
     return x.count
 }
 

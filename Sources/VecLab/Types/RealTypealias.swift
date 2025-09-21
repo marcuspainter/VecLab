@@ -11,7 +11,7 @@ import Foundation
 public typealias Real = Double
 
 /// Type alias for an array of `Real`.
-public typealias RealArray = [Real]
+public typealias RealArray = [Double]
 
 /// Type alias for an array of `Complex`.
 public typealias ComplexArray = [Complex]

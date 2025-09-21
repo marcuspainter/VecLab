@@ -1,11 +1,9 @@
 //
-//  freqz.swift
+//  SplitComplexArray+freqz.swift
+//  VecLab
 //
+//  Created by Marcus Painter on 21/09/2025.
 //
-//  Created by Marcus Painter on 26/08/2024.
-//
-
-import Foundation
 
 /// Transfer function for filter coefficients.
 /// - Parameters:

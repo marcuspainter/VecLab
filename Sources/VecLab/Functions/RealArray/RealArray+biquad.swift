@@ -1,8 +1,8 @@
 //
-//  biquad.swift
+//  RealArray+biquad.swift
+//  VecLab
 //
-//
-//  Created by Marcus Painter on 25/08/2024.
+//  Created by Marcus Painter on 21/09/2025.
 //
 
 import Foundation

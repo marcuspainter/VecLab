@@ -1,8 +1,8 @@
 //
-//  filtfilt.swift
+//  RealArray+filtfilt.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 31/08/2025.
+//  Created by Marcus Painter on 21/09/2025.
 //
 
 /// Zero phase IIR Filter
@@ -44,21 +44,6 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     let output = outputExtended[mirrorLength..<(outputExtendedLength - mirrorLength)]
 
     return output
-}
-
-/// Zero phase IIR Filter
-///
-/// Direct Form II IIR filter.
-/// - Parameters:
-///   - b: b coefficients.
-///   - a: a coefficients.
-///   - x: Complex input signal.
-/// - Returns: Filtered signal.
-public func filtfilt(b: RealArray, a: RealArray, x: SplitComplexArray) -> SplitComplexArray {
-    validateSize(x)
-    let yr = filtfilt(b: b, a: a, x: x.real)
-    let yi = filtfilt(b: b, a: a, x: x.imag)
-    return SplitComplexArray(yr, yi)
 }
 
 fileprivate func mirror(filterLength: Int, x: RealArray) -> RealArray {

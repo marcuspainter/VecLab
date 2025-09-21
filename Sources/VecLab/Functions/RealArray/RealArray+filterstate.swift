@@ -1,9 +1,10 @@
 //
-//  filtersate.swift
+//  RealArray+filterstate.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 05/09/2025.
+//  Created by Marcus Painter on 21/09/2025.
 //
+
 
 public func filterstate(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
     let filterOrder = max(a.count, b.count) - 1
