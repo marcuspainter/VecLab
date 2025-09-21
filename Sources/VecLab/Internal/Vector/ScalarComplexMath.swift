@@ -100,11 +100,11 @@ func complexLog(_ x: Complex) -> Complex {
 // MARK: Abs
 
 func complexAbs(_ x: Complex) -> Real {
-    return Darwin.sqrt(x.real * x.real + x.imag * x.imag)
+    return Darwin.hypot(x.real, x.imag)
 }
 
 func complexAbs(_ a: Real, _ b: Real) -> Real {
-    return Darwin.sqrt(a * a + b * b)
+    return Darwin.hypot(a,b)
 }
 
 // MARK: Angle

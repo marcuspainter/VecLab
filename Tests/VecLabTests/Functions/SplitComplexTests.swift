@@ -22,9 +22,9 @@ class SplitComplexTests: XCTestCase {
     }
 
     func testAbsSplitComplexArray() throws {
-        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0], [4.0, 12.0])
+        let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([3.0, 5.0, 1.0], [4.0, 12.0, 1.0])
         let result: RealArray = abs(SplitComplexArrayA)
-        let expected: RealArray = [5.0, 13.0]
+        let expected: RealArray = [5.0, 13.0, 1.4142135623730951]
         XCTAssertEqual(result, expected, accuracy: accuracy, "abs failed")
     }
 

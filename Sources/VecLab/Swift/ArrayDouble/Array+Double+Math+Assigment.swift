@@ -6,7 +6,7 @@
 //
 
 extension Array where Element == Double {
-
+    
     /// Addition.
     /// - Parameters:
     ///   - lhs: This real array.
@@ -14,7 +14,7 @@ extension Array where Element == Double {
     public static func += (lhs: inout [Double], rhs: Double) {
         lhs = lhs + rhs
     }
-
+    
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This real array.

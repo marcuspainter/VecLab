@@ -36,7 +36,6 @@ public struct Matrix {
             // No transpose
             break
         }
-
     }
 
     public init(_ rows: Int, _ cols: Int, ) {
@@ -47,6 +46,7 @@ public struct Matrix {
 
     public init(_ array: [[Double]]) {
         if array.isEmpty {
+            self.data = []
             return
         }
         self.rows = array.count
@@ -72,6 +72,7 @@ public struct Matrix {
     }
 
     public init() {
+        self.data = []
     }
 
     // Do not convert layout
@@ -86,6 +87,12 @@ public struct Matrix {
         self.rows = rows
         self.cols = cols
         self.data = data
+    }
+    
+    public init(like matrix: Matrix) {
+        self.rows = matrix.rows
+        self.cols = matrix.cols
+        self.data = matrix.data
     }
 }
 

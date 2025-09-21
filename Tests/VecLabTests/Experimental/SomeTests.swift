@@ -197,10 +197,7 @@ final class SomeTests: XCTestCase {
             
         }
                               
-        let t2 = benchmark {
-            c2 = addSimd4(a, a)
-        }
-        
+
         let t3 = benchmark {
             c2 = vDSP.add(a, a)
         }

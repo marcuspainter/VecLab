@@ -508,5 +508,93 @@ final class MatrixTests: XCTestCase {
         let t = trace(b)
         print(t)
     }
+    
+    func testSvd() {
+        let b: Matrix = [[1, 0, 1],[ -1, -2, 0],[0, 1, -1]]
+        let a: Matrix = [[1, 2], [3, 4], [5,6],[7, 8]]
+        let (u,s,v) = svd(a: a.data, rows: a.rows, columns: a.cols)
+        
+        let U = Matrix(rows: a.rows, cols: a.rows, data: u)
+        let S = Matrix(rows: a.cols, cols: 1, data: s)
+        let V = Matrix(rows: a.cols, cols: a.cols, data: v)
+        
+        print(b)
+        print(U)
+        print(S)
+        print(V.T.debugDescription)
+        print(eye(5).debugDescription)
+        
+        
+    }
+    
+    func testFormat() { // Test floating point numbers
+        let floatTests = [
+            "[1.5 2.7; 3.14 4.0]",        // Basic decimals
+            "[1.0, 2.5;   3.14159, 4.7]",   // Mixed with commas
+            "[-1.5 2.7; -3.14 4.0]",      // Negative numbers
+            "[1e-3 2.5e2; 0.001 250.0]",  // Scientific notation
+            "[.5 2.; 3. 4.5]",            // Leading/trailing decimal points
+        ]
+        
+        for test in floatTests {
+            if let result = parseMatrix(test) {
+                print("\(test)")
+                print("→ \(result)")
+                print()
+            } else {
+                print("\(test) → INVALID")
+            }
+        }
+
+    
+    }
+    
+    func testOutput() {
+     
+        // Test with tabs
+        let tabSeparated = """
+        -0.1525 -0.8226 -0.3945  \t -0.3800
+        -0.3499   -0.4214    0.000    0.8007
+        -0.5474   -0.0201    0.6979   -0.4614
+        -0.7448    0.3812   -0.5462    0.0407
+        """
+
+        let mixedSeparators = """
+          -0.1525,  \t  -0.8226   -0.3945,    1234567890.0000
+           -0.3499    0.0,    0.2428   0.8007
+        """
+        
+        let a: Matrix =
+                """
+                  -0.1525,  -0.8226   -0.3945,  1234567890.0000
+                   -0.3499    0.0,    0.2428   0.8007
+                """
+        
+        print(a)
+        
+        /*
+
+        print("Tab-separated:")
+        if let matrix = parseMatrixOutput(tabSeparated) {
+            for row in matrix {
+                print("  \(row)")
+            }
+        }
+
+        print("\nMixed separators (spaces, tabs, commas):")
+        if let matrix = parseMatrixOutput(mixedSeparators) {
+            //for row in matrix {
+            //    print("  \(row)")
+           // }
+            
+            let q = Matrix(matrix)
+            print(q)
+        }
+
+        */
+
+    }
 }
+
+import Foundation
 

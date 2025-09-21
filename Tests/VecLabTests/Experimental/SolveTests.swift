@@ -29,9 +29,9 @@ final class SolveTests2: XCTestCase {
             0, 1, 8, 27, 64,
         ]
 
-        let pinvV = solve(vtv, vt, n: 4, nrhs: 5)
+        let pinvV = solveRowMajor(vtv, vt, n: 4, nrhs: 5)
 
-        print(pinvV)
+        //print(pinvV)
 
         let expected =
             [
@@ -55,8 +55,8 @@ final class SolveTests2: XCTestCase {
             6, 7,
         ]  // 3x2 row-major
 
-        let X = solve(A, B, n: 3, nrhs: 2)
-        print("Solution X =", X)  // 3x2 row-major solution
+        let X = solveRowMajor(A, B, n: 3, nrhs: 2)
+        //print("Solution X =", X)  // 3x2 row-major solution
 
         let Y = [
             6.0, 7.0,
@@ -68,18 +68,28 @@ final class SolveTests2: XCTestCase {
 
         let a = Matrix(A, 3, 3)
         let b = Matrix(B, 3, 2)
+ 
 
         let c = solve(a, b)
 
-        print(c)
+        //print(c)
         
-        print(eye(3))
+        let c2 = solve(a, b)
+        
+        print(c2)
+        
+        let x = Matrix(vtv, 4, 4)
+        let y = Matrix(vt, 4, 5)
+        let e = Matrix(expected,4,5)
+        let q = Matrix(4,5)
+        
+        let c3 = solve(x, y)
+        
+        print(c3)
+        XCTAssertEqual(c3.data, e.data, accuracy: accuracy)
+        
+     
 
     }
 }
 
-func solve(_ A: Matrix, _ B: Matrix) -> Matrix {
-    let data = solve(A.data, B.data, n: A.rows, nrhs: B.cols)
-    let X = Matrix(data, A.rows, B.cols)
-    return X
-}

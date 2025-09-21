@@ -199,7 +199,7 @@ public func pow(_ base: Complex, _ exponent: Complex) -> Complex {
     let (c, d) = (exponent.real, exponent.imag)
 
     // Convert base to polar form
-    let r = hypot(a, b)
+    let r = Darwin.hypot(a, b)
     let theta = atan2(b, a)
 
     // Compute power using exponentiation formula:

@@ -14,7 +14,7 @@ import Foundation
 /// - Returns: Real value of  magnitudes.
 @inlinable
 public func abs(_ x: Complex) -> Real {
-    return sqrt(x.real * x.real + x.imag * x.imag)
+    return Darwin.hypot(x.real, x.imag)
 }
 
 /// Magnitudes  of a complex array.

@@ -9,7 +9,7 @@ import Foundation
 import Accelerate
 
 // U = (M,M)
-// S = (M)
+// S = (M) or (M.L)
 // VT = (L,L)
 // Divide and conquer algorithm
 // This matches Matlab output
@@ -20,7 +20,7 @@ func svd(a: [Double], rows: Int, columns: Int) -> (u: [Double], s: [Double], vt:
     var n = Int(columns)
     var aa = a
     var lda = Int(rows)
-    var s = [Double](repeating: 0.0, count: rows)
+    var s = [Double](repeating: 9.999, count: columns) // Check this rows or columns
     var u = [Double](repeating: 0.0, count: rows*rows)
     var ldu = Int(rows)
     var vt = [Double](repeating: 0.0, count: columns*columns)

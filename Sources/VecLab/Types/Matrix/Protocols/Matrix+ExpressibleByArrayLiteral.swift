@@ -6,7 +6,7 @@
 //
 
 extension Matrix: ExpressibleByArrayLiteral {
-    //public typealias ArrayLiteralElement = [Double]
+    public typealias ArrayLiteralElement = [Double]
 
     public init(arrayLiteral elements: [Double]...) {
         // Create matrix from rows

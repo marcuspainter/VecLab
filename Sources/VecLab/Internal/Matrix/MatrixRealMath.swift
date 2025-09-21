@@ -106,7 +106,7 @@ public func rightDivision(_ A: [Double], _ B: [Double], m: Int, n: Int) -> [Doub
     let BT = matrixTranspose(B, rows: n, cols: n)  // n×n
     
     // Solve B^T * X^T = A^T
-    let XT = solve(BT, AT, n: n, nrhs: m)
+    let XT = solveRowMajor(BT, AT, n: n, nrhs: m)
     
     // Transpose result back
     return matrixTranspose(XT, rows: n, cols: m)  // m×n

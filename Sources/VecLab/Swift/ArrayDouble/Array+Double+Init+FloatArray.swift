@@ -30,13 +30,3 @@ extension Array where Element == Double {
         }
     }
 }
-
-/*
- public extension Array where Element == Double {
-     /// Initialize an array with a float array.
-     /// - Parameter floatArray: Float array.
-     init(floatArray: [Float]) {
-         self = floatArray.map { Double($0) }
-     }
- }
-*/
