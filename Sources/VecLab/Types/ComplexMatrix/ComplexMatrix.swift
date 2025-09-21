@@ -58,7 +58,7 @@ public struct ComplexMatrix {
     init() {
     }
     
-    init(_ matrix: ComplexMatrix, data: [Complex]) {
+    init(like matrix: ComplexMatrix, data: [Complex]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = data
@@ -73,7 +73,7 @@ public struct ComplexMatrix {
         self.data = data
     }
 
-    init(_ matrix: Matrix) {
+    public  init(_ matrix: Matrix) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = matrix.data.map { Complex($0, 0) }

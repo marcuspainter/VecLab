@@ -10,19 +10,19 @@ public extension ComplexMatrix {
     // Element-wise
     static func .** (_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a.data ** b.data
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     // Element-wise
     static func .** (_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
         let c =  a.data ** b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     // Element-wise
     static func .** (_ a: ComplexMatrix, _ b: Matrix) -> ComplexMatrix {
         let c =  a.data ** b.data
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     // MARK: Not implemented

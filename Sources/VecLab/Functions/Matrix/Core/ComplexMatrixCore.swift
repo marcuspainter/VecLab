@@ -84,31 +84,34 @@ public enum ComplexMatrixCore {
         let k = a.cols
         let l = m * n
         let data = [Complex](unsafeUninitializedCapacity: l) { result, initializedCount in
+            // Alpha = 1.0, Beta = 0.0
+            let alpha: [Double] = [1.0, 0.0]
+            let beta: [Double] = [0.0, 0.0]
             
             a.data.withUnsafeBufferPointer { aPtr in
                 b.data.withUnsafeBufferPointer { bPtr in
-                    result.withUnsafeMutableBufferPointer { resultPtr in
-                        
-                        // Alpha = 1.0, Beta = 0.0
-                        var alpha: [Double] = [1.0, 0.0]
-                        var beta: [Double] = [0.0, 0.0]
-                        
-                        cblas_zgemm(
-                            CblasColMajor,                        // ORDER: Row-major storage
-                            CblasNoTrans,                         // TRANSA: Don't transpose A
-                            CblasNoTrans,                         // TRANSB: Don't transpose B
-                            m,                                    // M: Rows of A and C
-                            n,                                    // N: Columns of B and C
-                            k,                                    // K: Columns of A, rows of B
-                            OpaquePointer(alpha),                 // ALPHA: Scaling factor for A*B
-                            OpaquePointer(aPtr.baseAddress),      // A: Matrix A
-                            k,                                    // LDA: Leading dimension of A
-                            OpaquePointer(bPtr.baseAddress),      // B: Matrix B
-                            n,                                    // LDB: Leading dimension of B
-                            OpaquePointer(beta),                  // BETA: Scaling factor for C
-                            OpaquePointer(resultPtr.baseAddress), // C: Result matrix C
-                            n                                     // LDC: Leading dimension of C
-                        )
+                    alpha.withUnsafeBufferPointer { alphaPtr in
+                        beta.withUnsafeBufferPointer { betaPtr in
+                            result.withUnsafeMutableBufferPointer { resultPtr in
+                                
+                                cblas_zgemm(
+                                    CblasColMajor,                        // ORDER: Row-major storage
+                                    CblasNoTrans,                         // TRANSA: Don't transpose A
+                                    CblasNoTrans,                         // TRANSB: Don't transpose B
+                                    m,                                    // M: Rows of A and C
+                                    n,                                    // N: Columns of B and C
+                                    k,                                    // K: Columns of A, rows of B
+                                    OpaquePointer(alphaPtr.baseAddress!),  // ALPHA: Scaling factor for A*B
+                                    OpaquePointer(aPtr.baseAddress),      // A: Matrix A
+                                    k,                                    // LDA: Leading dimension of A
+                                    OpaquePointer(bPtr.baseAddress),      // B: Matrix B
+                                    n,                                    // LDB: Leading dimension of B
+                                    OpaquePointer(betaPtr.baseAddress!),   // BETA: Scaling factor for C
+                                    OpaquePointer(resultPtr.baseAddress), // C: Result matrix C
+                                    n                                     // LDC: Leading dimension of C
+                                )
+                            }
+                        }
                     }
                 }
                 initializedCount = l

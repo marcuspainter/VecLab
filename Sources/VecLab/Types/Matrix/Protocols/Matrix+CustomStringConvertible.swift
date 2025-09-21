@@ -23,7 +23,7 @@ extension Matrix: CustomStringConvertible {
     }
 }
 
-func matlabFormat(_ value: Double) -> String {
+fileprivate func matlabFormat(_ value: Double) -> String {
     let tolerance = 1e-10
     if abs(value.truncatingRemainder(dividingBy: 1)) < tolerance  {
         return  String(format: " % 12.f", value)

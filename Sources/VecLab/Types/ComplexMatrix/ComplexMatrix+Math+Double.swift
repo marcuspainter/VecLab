@@ -9,47 +9,47 @@ extension ComplexMatrix {
     
     public static func + (_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
         let c = a.data + b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     public static func + (_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a + b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
     
     // MARK -
     
     public static func - (_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
         let c = a.data - b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     public static func - (_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a - b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
     
     // MARK *
     
     public static func * (_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
         let c = a.data * b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
     
     public static func * (_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a * b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
     
     // MARK /
     
     public static func / (_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
         let c = a.data / b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
 
     public static func / (_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a / b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
 }

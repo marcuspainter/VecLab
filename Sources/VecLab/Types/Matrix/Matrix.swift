@@ -77,22 +77,16 @@ public struct Matrix {
 
     // Do not convert layout
 
-    public init(_ matrix: Matrix, data: [Double]) {
-        self.rows = matrix.rows
-        self.cols = matrix.cols
-        self.data = data
-    }
-
     public init(rows: Int, cols: Int, data: [Double]) {
         self.rows = rows
         self.cols = cols
         self.data = data
     }
     
-    public init(like matrix: Matrix) {
+    public init(like matrix: Matrix, data: [Double]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
-        self.data = matrix.data
+        self.data = data
     }
 }
 

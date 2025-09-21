@@ -12,13 +12,13 @@ extension Matrix {
     public static func + (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.data + b.data
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
     public static func - (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.data - b.data
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
     public static func * (_ a: Matrix, _ b: Matrix) -> Matrix {
@@ -30,7 +30,7 @@ extension Matrix {
     public static func .* (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.data * b.data
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
     @available(*, unavailable, message: "Use ./")
@@ -42,7 +42,7 @@ extension Matrix {
     public static func ./ (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.data / b.data
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
 }

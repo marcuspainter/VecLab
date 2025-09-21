@@ -57,3 +57,28 @@ public func circshift(_ x: SplitComplexArray, _ k: Int) -> SplitComplexArray {
     validateSize(x)
     return SplitComplexArray(circshift(x.real, k), circshift(x.imag, k))
 }
+
+public func circshift(_ x: [Complex], _ k: Int) -> [Complex] {
+    let n = x.count
+    if n == 0 { return x }
+
+    let shift = ((k % n) + n) % n
+    if shift == 0 { return x }
+
+    let out = Array<Complex>(unsafeUninitializedCapacity: n) { buffer, initializedCount in
+        x.withUnsafeBufferPointer { xPtr in
+            buffer.withUnsafeMutableBufferPointer { outPtr in
+                let xBase = xPtr.baseAddress!
+                let outBase = outPtr.baseAddress!
+
+                // Copy last `shift` elements to the beginning
+                outBase.update(from: xBase + (n - shift), count: shift)
+
+                // Copy first `n - shift` elements after the shifted portion
+                (outBase + shift).update(from: xBase, count: n - shift)
+            }
+        }
+        initializedCount = n
+    }
+    return out
+}

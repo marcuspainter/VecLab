@@ -11,19 +11,19 @@ extension Matrix {
     public static func .** (_ a: Matrix, _ b: Matrix) -> Matrix {
         validateSize(a, b)
         let c = a.data ** b.data
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
     // Element-wise
     public static func .** (_ a: Matrix, _ b: Double) -> Matrix {
         let c = a.data ** b
-        return Matrix(a, data: c)
+        return Matrix(like: a, data: c)
     }
 
     // Element-wise
     public static func .** (_ a: Double, _ b: Matrix) -> Matrix {
         let c = a ** b.data
-        return Matrix(b, data: c)
+        return Matrix(like: b, data: c)
     }
 
     // MARK: Not implemented

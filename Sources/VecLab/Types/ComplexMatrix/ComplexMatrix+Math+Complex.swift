@@ -6,44 +6,44 @@
 //
 
 extension ComplexMatrix {
-    
+
     public static func + (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
         let c = a.data + b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
-    
+
     public static func + (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a + b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
-    
+
     public static func - (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
         let c = a.data - b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
 
     public static func - (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a - b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
-    
-    static func * (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
+
+    public static func * (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
         let c = a.data * b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
-    
-    static func * (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
+
+    public static func * (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a * b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
-    
+
     public static func / (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
         let c = a.data / b
-        return ComplexMatrix(a, data: c)
+        return ComplexMatrix(like: a, data: c)
     }
 
     public static func / (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
         let c = a / b.data
-        return ComplexMatrix(b, data: c)
+        return ComplexMatrix(like: b, data: c)
     }
 }

@@ -33,3 +33,4 @@ public func flip(_ x: SplitComplexArray) -> SplitComplexArray {
     vDSP.reverse(&c.imag)
     return c
 }
+
