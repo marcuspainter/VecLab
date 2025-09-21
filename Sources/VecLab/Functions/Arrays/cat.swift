@@ -17,7 +17,7 @@ public func cat(_ arrays: RealArray...) -> RealArray {
 
 /// Concatenate arrays.
 ///
-/// - Parameter arrays: Array of arrays.
+/// - Parameter arrays:Array of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: [RealArray]) -> RealArray {
     let totalCount = arrays.reduce(0) { $0 + $1.count }
@@ -47,7 +47,7 @@ public func cat(_ arrays: [RealArray]) -> RealArray {
 
 /// Concatenate arrays.
 ///
-/// - Parameter arrays: List of arrays.
+/// - Parameter arrays:List of arrays.
 /// - Returns: A single combined array.
 public func cat(_ arrays: SplitComplexArray...) -> SplitComplexArray {
     let totalCount = arrays.reduce(0) { $0 + $1.count }
@@ -61,11 +61,11 @@ public func cat(_ arrays: SplitComplexArray...) -> SplitComplexArray {
 
 /// Concatenate arrays.
 ///
-/// - Parameter arrays: Array of arrays.
+/// - Parameter arrays:List of arrays.
 /// - Returns: A single combined array.
-public func cat(_ arrays: [SplitComplexArray]) -> SplitComplexArray {
+public func cat(_ arrays: ComplexArray...) -> ComplexArray {
     let totalCount = arrays.reduce(0) { $0 + $1.count }
-    var newArray = SplitComplexArray()
+    var newArray = ComplexArray()
     newArray.reserveCapacity(totalCount)
     for array in arrays {
         newArray.append(contentsOf: array)

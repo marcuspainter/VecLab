@@ -14,7 +14,7 @@ import Accelerate
 // Divide and conquer algorithm
 // This matches Matlab output
 func svd(a: [Double], rows: Int, columns: Int) -> (u: [Double], s: [Double], vt: [Double]) {
-
+    
     var jobz = "A".utf8.map {Int8($0)} // 0x41
     var m = Int(rows)
     var n = Int(columns)

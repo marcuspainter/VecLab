@@ -19,4 +19,13 @@ extension VectorCore {
             initializedCount = a.count
         }
     }
+    
+    @inlinable
+    public static func sin2(_ a: [Double]) -> [Double] {
+        var c = [Double](repeating: 0.0, count: a.count)
+            for i in 0..<a.count {
+                c[i] = Darwin.sin(a[i])
+            }
+        return c
+    }
 }

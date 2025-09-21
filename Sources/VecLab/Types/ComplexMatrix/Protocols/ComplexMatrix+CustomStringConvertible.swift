@@ -9,7 +9,7 @@ extension ComplexMatrix: CustomStringConvertible {
 
     /// String of Matrix value.
     public var description: String {
-        
+
         var text = ""
         for row in 0..<rows {
             for col in 0..<cols {
@@ -23,17 +23,16 @@ extension ComplexMatrix: CustomStringConvertible {
     }
 }
 
-fileprivate func matlabFormat(_ value: Double) -> String {
+private func matlabFormat(_ value: Double) -> String {
     let tolerance = 1e-10
     //if abs(value.truncatingRemainder(dividingBy: 1)) < tolerance  {
-     //   return  String(format: " % 12.f", value)
-     //} else {
-        return String(format: " % 12.8f", value)
-     //}
-    
+    //   return  String(format: " % 12.f", value)
+    //} else {
+    return String(format: " % 12.8f", value)
+    //}
 }
 
-fileprivate func matlabFormat(_ value: Complex) -> String {
+private func matlabFormat(_ value: Complex) -> String {
     let sign = value.imag < 0.0 ? " - " : " + "
     return matlabFormat(value.real) + sign + matlabFormat(value.imag) + "i"
 }

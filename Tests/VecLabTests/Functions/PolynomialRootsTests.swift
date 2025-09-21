@@ -39,31 +39,49 @@ class PolynomialRootsTests: XCTestCase {
             XCTAssertTrue(found, "Root \(expectedRoot) not found in results", file: file, line: line)
         }
     }
+    
+    // Helper function to check if roots array contains expected values (order may vary)
+    func assertRootsContain(
+        _ roots: [Complex],
+        _ expected: [Complex],
+        accuracy: Real = 1e-10,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        XCTAssertEqual(roots.count, expected.count, "Wrong number of roots", file: file, line: line)
+
+        for expectedRoot in expected {
+            let found = roots.contains { root in
+                abs(root.real - expectedRoot.real) < accuracy && abs(root.imag - expectedRoot.imag) < accuracy
+            }
+            XCTAssertTrue(found, "Root \(expectedRoot) not found in results", file: file, line: line)
+        }
+    }
 
     // Test 1: Edge cases
     func testEdgeCases() {
         // Empty array
-        let empty = roots(coefficients: RealArray())
+        let empty: SplitComplexArray = roots(coefficients: RealArray())
         XCTAssertEqual(empty.count, 0)
 
         // Single coefficient (constant)
-        let constant = roots(coefficients: RealArray([5.0]))
+        let constant: SplitComplexArray = roots(coefficients: RealArray([5.0]))
         XCTAssertEqual(constant.count, 0)
 
         // All zeros
-        let allZeros = roots(coefficients: RealArray([0.0, 0.0, 0.0]))
+        let allZeros: SplitComplexArray = roots(coefficients: RealArray([0.0, 0.0, 0.0]))
         XCTAssertEqual(allZeros.count, 0)
     }
 
     // Test 2: Linear polynomials
     func testLinearPolynomials() {
         // x - 3 = 0 → root at x = 3
-        let linear1 = roots(coefficients: RealArray([1.0, -3.0]))
+        let linear1: SplitComplexArray = roots(coefficients: RealArray([1.0, -3.0]))
         XCTAssertEqual(linear1.count, 1)
         assertComplexEqual(linear1[0], Complex(3.0, 0.0))
 
         // 2x + 4 = 0 → root at x = -2
-        let linear2 = roots(coefficients: RealArray([2.0, 4.0]))
+        let linear2: SplitComplexArray = roots(coefficients: RealArray([2.0, 4.0]))
         XCTAssertEqual(linear2.count, 1)
         assertComplexEqual(linear2[0], Complex(-2.0, 0.0))
     }
@@ -71,17 +89,17 @@ class PolynomialRootsTests: XCTestCase {
     // Test 3: Quadratic polynomials
     func testQuadraticPolynomials() {
         // x² - 5x + 6 = 0 → roots at x = 2, 3
-        let quad1 = roots(coefficients: RealArray([1.0, -5.0, 6.0]))
+        let quad1: SplitComplexArray = roots(coefficients: RealArray([1.0, -5.0, 6.0]))
         let expected1 = [Complex(2.0, 0.0), Complex(3.0, 0.0)]
         assertRootsContain(quad1, expected1)
 
         // x² + 1 = 0 → roots at x = ±i
-        let quad2 = roots(coefficients: RealArray([1.0, 0.0, 1.0]))
+        let quad2: SplitComplexArray = roots(coefficients: RealArray([1.0, 0.0, 1.0]))
         let expected2 = [Complex(0.0, 1.0), Complex(0.0, -1.0)]
         assertRootsContain(quad2, expected2)
 
         // x² - 4 = 0 → roots at x = ±2
-        let quad3 = roots(coefficients: RealArray([1.0, 0.0, -4.0]))
+        let quad3: SplitComplexArray = roots(coefficients: RealArray([1.0, 0.0, -4.0]))
         let expected3 = [Complex(2.0, 0.0), Complex(-2.0, 0.0)]
         assertRootsContain(quad3, expected3)
     }
@@ -89,12 +107,12 @@ class PolynomialRootsTests: XCTestCase {
     // Test 4: Cubic polynomials
     func testCubicPolynomials() {
         // x³ - 6x² + 11x - 6 = 0 → roots at x = 1, 2, 3
-        let cubic1 = roots(coefficients: RealArray([1.0, -6.0, 11.0, -6.0]))
+        let cubic1: SplitComplexArray = roots(coefficients: RealArray([1.0, -6.0, 11.0, -6.0]))
         let expected1 = [Complex(1.0, 0.0), Complex(2.0, 0.0), Complex(3.0, 0.0)]
         assertRootsContain(cubic1, expected1)
 
         // x³ - 1 = 0 → roots at x = 1, -1/2 ± i√3/2
-        let cubic2 = roots(coefficients: RealArray([1.0, 0.0, 0.0, -1.0]))
+        let cubic2: SplitComplexArray = roots(coefficients: RealArray([1.0, 0.0, 0.0, -1.0]))
         let expected2 = [
             Complex(1.0, 0.0),
             Complex(-0.5, sqrt(3.0) / 2.0),
@@ -107,13 +125,13 @@ class PolynomialRootsTests: XCTestCase {
     func testLeadingZeros() {
         // 0x³ + 0x² + x - 2 = 0 → equivalent to x - 2 = 0
         // Should have 2 roots at origin plus root at x = 2
-        let leadingZeros1 = roots(coefficients: RealArray([0.0, 0.0, 1.0, -2.0]))
+        let leadingZeros1: SplitComplexArray = roots(coefficients: RealArray([0.0, 0.0, 1.0, -2.0]))
         let expected1 = [Complex(0.0, 0.0), Complex(0.0, 0.0), Complex(2.0, 0.0)]
         assertRootsContain(leadingZeros1, expected1)
 
         // 0x² + x² - 4 = 0 → equivalent to x² - 4 = 0
         // Should have 1 root at origin plus roots at ±2
-        let leadingZeros2 = roots(coefficients: RealArray([0.0, 1.0, 0.0, -4.0]))
+        let leadingZeros2: SplitComplexArray = roots(coefficients: RealArray([0.0, 1.0, 0.0, -4.0]))
         let expected2 = [Complex(0.0, 0.0), Complex(2.0, 0.0), Complex(-2.0, 0.0)]
         assertRootsContain(leadingZeros2, expected2)
     }
@@ -121,8 +139,21 @@ class PolynomialRootsTests: XCTestCase {
     // Test 6: High degree polynomial with known roots
     func testHighDegreePolynomial() {
         // (x-1)(x-2)(x-3)(x-4) = x⁴ - 10x³ + 35x² - 50x + 24
-        let quartic = roots(coefficients: RealArray([1.0, -10.0, 35.0, -50.0, 24.0]))
+        let quartic: SplitComplexArray = roots(coefficients: RealArray([1.0, -10.0, 35.0, -50.0, 24.0]))
         let expected = [
+            Complex(1.0, 0.0),
+            Complex(2.0, 0.0),
+            Complex(3.0, 0.0),
+            Complex(4.0, 0.0),
+        ]
+        assertRootsContain(quartic, expected)
+    }
+    
+    // Test 6A: High degree polynomial with known roots
+    func testHighDegreePolynomialA() {
+        // (x-1)(x-2)(x-3)(x-4) = x⁴ - 10x³ + 35x² - 50x + 24
+        let quartic: [Complex] = roots(coefficients: RealArray([1.0, -10.0, 35.0, -50.0, 24.0]))
+        let expected: [Complex] = [
             Complex(1.0, 0.0),
             Complex(2.0, 0.0),
             Complex(3.0, 0.0),
@@ -135,7 +166,20 @@ class PolynomialRootsTests: XCTestCase {
     func testComplexConjugateRoots() {
         // (x² + 1)(x - 1) = x³ - x² + x - 1
         // Roots: 1, ±i
-        let poly = roots(coefficients: RealArray([1.0, -1.0, 1.0, -1.0]))
+        let poly: SplitComplexArray = roots(coefficients: RealArray([1.0, -1.0, 1.0, -1.0]))
+        let expected = [
+            Complex(1.0, 0.0),
+            Complex(0.0, 1.0),
+            Complex(0.0, -1.0),
+        ]
+        assertRootsContain(poly, expected)
+    }
+    
+    // Test 7A: Polynomial with complex conjugate roots
+    func testComplexConjugateRootsA() {
+        // (x² + 1)(x - 1) = x³ - x² + x - 1
+        // Roots: 1, ±i
+        let poly: ComplexArray = roots(coefficients: RealArray([1.0, -1.0, 1.0, -1.0]))
         let expected = [
             Complex(1.0, 0.0),
             Complex(0.0, 1.0),
@@ -147,7 +191,20 @@ class PolynomialRootsTests: XCTestCase {
     // Test 8: Verify roots by substitution
     func testRootVerification() {
         let coeffs = RealArray([1.0, -3.0, 2.0])  // x² - 3x + 2 = 0
-        let computedRoots = roots(coefficients: coeffs)
+        let computedRoots: SplitComplexArray = roots(coefficients: coeffs)
+
+        // Verify each root by substitution
+        for root in computedRoots {
+            let x = root
+            let result = coeffs[0] * x * x + coeffs[1] * x + coeffs[2]
+            XCTAssertLessThan(abs(result), 1e-10, "Root verification failed for \(root)")
+        }
+    }
+    
+    // Test 8A: Verify roots by substitution
+    func testRootVerificationA() {
+        let coeffs = RealArray([1.0, -3.0, 2.0])  // x² - 3x + 2 = 0
+        let computedRoots: ComplexArray = roots(coefficients: coeffs)
 
         // Verify each root by substitution
         for root in computedRoots {
@@ -158,7 +215,7 @@ class PolynomialRootsTests: XCTestCase {
     }
     
     func testPoly() {
-        let r = roots(coefficients: [1,2,3])
+        let r: SplitComplexArray = roots(coefficients: [1,2,3])
         let p = poly(roots: r)
         
         print(p)
@@ -237,7 +294,7 @@ extension PolynomialRootsTests {
         let coeffs = RealArray((0...20).map { _ in Real.random(in: -10...10) })
 
         measure {
-            _ = roots(coefficients: coeffs)
+            let x: SplitComplexArray = roots(coefficients: coeffs)
         }
     }
 }

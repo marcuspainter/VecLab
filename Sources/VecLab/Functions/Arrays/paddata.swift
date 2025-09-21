@@ -38,3 +38,18 @@ public func paddata(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray 
     }
     return x
 }
+
+/// Pad complex array with zeros.
+/// - Parameters:
+///   - x: Input array.
+///   - m: Length.
+/// - Returns: Array padded to length m.
+public func paddata(_ x: ComplexArray, length m: Int) -> ComplexArray {
+    let n = x.count
+    if m > n {
+        let zeroCount = m - n
+        let zeros = ComplexArray(count: zeroCount)
+        return cat(x, zeros)
+    }
+    return x
+}

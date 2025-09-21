@@ -45,3 +45,22 @@ public func resize(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray {
     }
     return y
 }
+
+/// Resize data by adding or removing elements.
+/// - Parameters:
+///   - x: Input array
+///   - m: Length.
+/// - Returns: Array of new length m.
+public func resize(_ x: ComplexArray, length m: Int) -> ComplexArray {
+    let n = x.count
+    guard m != n else { return x }
+    var y = x
+    if m < n {
+        return Array(x[0..<m])
+    } else {
+        let zeroCount = m - n
+        let zeros = ComplexArray(count: zeroCount)
+        y.append(contentsOf: zeros)
+    }
+    return y
+}

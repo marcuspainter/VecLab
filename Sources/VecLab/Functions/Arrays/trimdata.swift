@@ -33,3 +33,16 @@ public func trimdata(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray
     }
     return x
 }
+
+/// Trim data by removing elements.
+/// - Parameters:
+///   - x: Complex array.
+///   - m: New size.
+/// - Returns: Trimmed array.
+public func trimdata(_ x: ComplexArray, length m: Int) -> ComplexArray {
+    let n = x.count
+    if m < n {
+        return Array(x[0..<m])
+    }
+    return x
+}

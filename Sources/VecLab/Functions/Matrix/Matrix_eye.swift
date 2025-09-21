@@ -9,7 +9,7 @@ public func eye(_ n: Int) -> Matrix {
     return Matrix(rows: n, cols: n, data: eyeMatrix(n))
 }
 
-public func eyeMatrix(_ n: Int) -> [Double] {
+fileprivate func eyeMatrix(_ n: Int) -> [Double] {
     var data = RealArray(count: n * n)
     for row in 0..<n {
         data[row * n + row] = 1

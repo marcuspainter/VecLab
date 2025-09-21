@@ -28,15 +28,3 @@ public func randn(_ rows: Int, _ cols: Int) -> Matrix
     return Matrix(data, rows, cols)
 }
 
-enum xxx {
-    public static func zzz(_ a: some Numeric) -> some Numeric {
-        let b = a + 1
-        return b
-    }
-}
-
-func qqq() {
-    
-    let a = Complex(1,2)
-    _ = xxx.zzz(a)
-}
