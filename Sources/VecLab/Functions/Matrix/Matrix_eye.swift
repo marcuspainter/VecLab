@@ -6,14 +6,13 @@
 //
 
 public func eye(_ n: Int) -> Matrix {
-    let data = dataEye(n)
-    return Matrix(rows: n, cols: n, data: data)
+    return Matrix(rows: n, cols: n, data: eyeMatrix(n))
 }
 
-func dataEye(_ n: Int) -> RealArray {
+public func eyeMatrix(_ n: Int) -> [Double] {
     var data = RealArray(count: n * n)
     for row in 0..<n {
-        data[row * n + row]  = 1
+        data[row * n + row] = 1
     }
     return data
 }

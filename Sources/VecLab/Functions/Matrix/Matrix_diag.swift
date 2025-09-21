@@ -6,15 +6,16 @@
 //
 
 /// Diagonal of matrix.
-/// - Parameter a: Input matrix.
+/// - Parameter a:Input matrix.
 /// - Returns: The diagonal elements as a column vector.
 public func diag(_ a: Matrix) -> Matrix {
     let n = min(a.rows, a.cols)
-    var d = Matrix(n, 1)
-    
+    var data = [Double](repeating: 0, count: n)
+
+    // Column-major
     for i in 0..<n {
-        d[i] = a[i, i]
+        data[i] = a.data[i * n + i]
     }
-    
-    return d
+
+    return Matrix(rows: n, cols: 1, data: data)
 }
