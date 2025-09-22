@@ -90,7 +90,7 @@ public func fftx(_ x: SplitComplexArray) -> SplitComplexArray {
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0...(n / 2 - 1))
-        let w = omega ** k
+        let w: SplitComplexArray = omega ** k
         let u = fftx(slice(x, 0..<n - 1, 2))
         let v = w * fftx(slice(x, 1..<n, 2))
         return cat(u + v, u - v)
@@ -105,7 +105,7 @@ public func fftx2(_ x: SplitComplexArray) -> SplitComplexArray {
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0...(n / 2 - 1))
-        let w = omega ** k
+        let w: SplitComplexArray = omega ** k
         let u = fftx2(x[0..<n - 1, 2])
         let v = w * fftx2(x[1..<n, 2])
         return cat(u + v, u - v)
@@ -120,7 +120,7 @@ public func fftx2(_ x: [Double]) -> SplitComplexArray {
     if rem(n, 2) == 0 {
         // Recursive divide and conquer.
         let k = vector(0...(n / 2 - 1))
-        let w = omega ** k
+        let w : SplitComplexArray = omega ** k
         let u = fftx2(x[0..<n - 1, 2])
         let v = w * fftx2(x[1..<n, 2])
         return cat(u + v, u - v)

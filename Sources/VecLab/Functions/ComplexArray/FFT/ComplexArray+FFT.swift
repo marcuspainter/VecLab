@@ -14,12 +14,14 @@ public func fft(_ input: ComplexArray) -> ComplexArray {
 
     var output = ComplexArray(repeating: .zero, count: count)
 
-    guard let setup = vDSP_DFT_Interleaved_CreateSetupD(
-        nil,
-        vDSP_Length(count),
-        .FORWARD,
-        .interleaved_ComplextoComplex
-    ) else {
+    guard
+        let setup = vDSP_DFT_Interleaved_CreateSetupD(
+            nil,
+            vDSP_Length(count),
+            .FORWARD,
+            .interleaved_ComplextoComplex
+        )
+    else {
         fatalError("Failed to create FFT setup")
     }
 
@@ -45,12 +47,14 @@ public func ifft(_ input: ComplexArray) -> ComplexArray {
 
     var output = ComplexArray(repeating: .zero, count: count)
 
-    guard let setup = vDSP_DFT_Interleaved_CreateSetupD(
-        nil,
-        vDSP_Length(count),
-        .INVERSE,
-        .interleaved_ComplextoComplex
-    ) else {
+    guard
+        let setup = vDSP_DFT_Interleaved_CreateSetupD(
+            nil,
+            vDSP_Length(count),
+            .INVERSE,
+            .interleaved_ComplextoComplex
+        )
+    else {
         fatalError("Failed to create IFFT setup")
     }
 
