@@ -1,5 +1,5 @@
 //
-//  Array+Complex+Math+DoubleArray.swift
+//  ComplexArray+Math+DoubleArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 09/09/2025.
