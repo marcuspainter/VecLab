@@ -51,24 +51,5 @@ extension Complex {
         return pow(a, b)
     }
 
-    /// Complex Power.
-    /// - Parameters:
-    ///   - a: Complex number.
-    ///   - b: Real array.
-    /// - Returns: Raises `a` to the power of `b`.
-    @inlinable
-    public static func ** (_ a: Complex, _ b: [Double]) -> SplitComplexArray {
-        return pow(a, b)
-    }
-
-    /// Complex Power.
-    /// - Parameters:
-    ///   - a: Real array.
-    ///   - b: Complex number.
-    /// - Returns: Raises `a` to the power of `b`.
-    @inlinable
-    public static func ** (_ a: [Double], _ b: Complex) -> SplitComplexArray {
-        return pow(a, b)
-    }
 
 }
