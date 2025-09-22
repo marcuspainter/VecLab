@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import simd
 
 extension CoreVector {
-    
+
     @inlinable
     static func sin(_ a: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -19,13 +18,13 @@ extension CoreVector {
             initializedCount = a.count
         }
     }
-    
+
     @inlinable
     static func sin2(_ a: [Double]) -> [Double] {
         var c = [Double](repeating: 0.0, count: a.count)
-            for i in 0..<a.count {
-                c[i] = Darwin.sin(a[i])
-            }
+        for i in 0..<a.count {
+            c[i] = Darwin.sin(a[i])
+        }
         return c
     }
 }

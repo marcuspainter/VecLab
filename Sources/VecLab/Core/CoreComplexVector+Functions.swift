@@ -7,7 +7,7 @@
 import Foundation
 
 extension CoreComplexVector {
-    
+
     static func sin(_ a: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -17,4 +17,3 @@ extension CoreComplexVector {
         }
     }
 }
-

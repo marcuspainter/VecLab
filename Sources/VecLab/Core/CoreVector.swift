@@ -8,8 +8,9 @@
 import Foundation
 
 enum CoreVector {
-    
-    
+
+    // MARK: add
+
     static func add(_ a: [Double], _ b: [Double]) -> [Double] {
         precondition(a.count == b.count, "Mismatched lengths in add: [Double] + [Double]")
         return [Double](unsafeUninitializedCapacity: a.count) { buffer, initializedCount in
@@ -34,7 +35,6 @@ enum CoreVector {
             }
             initializedCount = a.count
         }
-
     }
 
     @inlinable
@@ -46,7 +46,7 @@ enum CoreVector {
             initializedCount = b.count
         }
     }
-    
+
     // MARK: Subtract
 
     @inlinable
@@ -55,7 +55,7 @@ enum CoreVector {
             initializedCount = subtract(a, b, intoBuffer: buffer)
         }
     }
-    
+
     @inlinable
     static func subtract(_ a: [Double], _ b: [Double], intoBuffer c: UnsafeMutableBufferPointer<Double>) -> Int {
         precondition(a.count == b.count, "Mismatched lengths in add: [Complex] + [Complex]")
@@ -73,7 +73,6 @@ enum CoreVector {
             }
             initializedCount = a.count
         }
-
     }
 
     @inlinable
@@ -85,9 +84,9 @@ enum CoreVector {
             initializedCount = b.count
         }
     }
-    
+
     // MARK: multiply
-    
+
     @inlinable
     static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -118,10 +117,8 @@ enum CoreVector {
         }
     }
 
-
-
     // MARK: divide
-    
+
     @inlinable
     static func divide(_ a: [Double], _ b: Double) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in

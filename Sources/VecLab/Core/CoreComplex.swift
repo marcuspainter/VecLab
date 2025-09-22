@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import simd
 
 enum CoreComplex {
 
@@ -13,7 +14,7 @@ enum CoreComplex {
     static func add(_ a: Complex, _ b: Complex) -> Complex {
         return Complex(a.real + b.real, a.imag + b.imag)
     }
-    
+
     @inlinable
     static func subtract(_ a: Complex, _ b: Complex) -> Complex {
         return Complex(a.real - b.real, a.imag - b.imag)
@@ -62,7 +63,7 @@ enum CoreComplex {
             return Complex((a.real * r + a.imag) / denom, (a.imag * r - a.real) / denom)
         }
     }
-    
+
     @inlinable
     static func divide(_ a: Double, _ b: Complex) -> Complex {
         let x = b.real
@@ -102,36 +103,33 @@ enum CoreComplex {
 
 }
 
-import simd
-
 func complexMultiplyWithFMA(_ z1: SIMD2<Double>, _ z2: SIMD2<Double>) -> SIMD2<Double> {
     let a = z1.x
     let b = z1.y  // z1 = a + bi
     let c = z2.x
     let d = z2.y  // z2 = c + di
-    
+
     // Real part: ac - bd = fma(-b, d, a * c)
     let real = fma(-b, d, a * c)
-    
+
     // Imaginary part: ad + bc = fma(a, d, b * c)
     let imag = fma(a, d, b * c)
-    
+
     return simd_double2(real, imag)
 }
 
 @inline(never)
 public func complexMultiplyWithFMA(_ z1: Complex, _ z2: Complex) -> Complex {
     let a = z1.real
-    let b = z1.imag // z1 = a + bi
+    let b = z1.imag  // z1 = a + bi
     let c = z2.real
-    let d = z2.imag // z2 = c + di
-    
+    let d = z2.imag  // z2 = c + di
+
     // Real part: ac - bd = fma(-b, d, a * c)
     let real = fma(-b, d, a * c)
-    
+
     // Imaginary part: ad + bc = fma(a, d, b * c)
     let imag = fma(a, d, b * c)
-    
+
     return Complex(real, imag)
 }
-

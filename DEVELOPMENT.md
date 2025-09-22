@@ -32,17 +32,3 @@ struct Complex {
     var imag: Double
 }
 
-extension Array where Element == Complex {
-    mutating func withSplitScratch<R>(_ body: (_ real: UnsafeMutablePointer<Double>, _ imag: UnsafeMutablePointer<Double>) throws -> R) rethrows -> R {
-        var reals = [Double](repeating: 0, count: count)
-        var imags = [Double](repeating: 0, count: count)
-        for i in indices { reals[i] = self[i].real; imags[i] = self[i].imag }
-        let result = try reals.withUnsafeMutableBufferPointer { rBuf in
-            try imags.withUnsafeMutableBufferPointer { iBuf in
-                try body(rBuf.baseAddress!, iBuf.baseAddress!)
-            }
-        }
-        for i in indices { self[i].real = reals[i]; self[i].imag = imags[i] }
-        return result
-    }
-}

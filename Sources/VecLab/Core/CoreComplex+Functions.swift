@@ -1,8 +1,8 @@
 /**
  CoreComplex+Functions
- 
+
  Complex complex-number functions used by VecLab.
- 
+
  Design and behavior:
  - Principal branches are used throughout:
    - angle(z) returns arg(z) in (−π, π]
@@ -12,7 +12,7 @@
  - MATLAB compatibility:
    - Functions mirror MATLAB’s principal-branch conventions for angle, log, and sqrt.
    - Power functions follow MATLAB semantics for zero and negative bases, using the principal complex logarithm for negative real bases and explicit handling of 0^b cases.
- 
+
  Notes:
  - Complex exponentiation is multi-valued in theory; this implementation consistently returns the principal value.
  - Edge cases (e.g., 0^0, 0^negative) are handled to match MATLAB’s behavior.
@@ -28,7 +28,7 @@
 import Foundation
 
 extension CoreComplex {
-    
+
     // MARK: Sqrt
 
     /// Returns the principal square root of a complex number.
@@ -97,7 +97,7 @@ extension CoreComplex {
     public static func angle(_ x: Complex) -> Real {
         return Darwin.atan2(x.imag, x.real)
     }
-    
+
     // MARK: Pow
 
     /// Complex power with complex base and real exponent: `a^b`.
@@ -146,13 +146,13 @@ extension CoreComplex {
         // MATLAB-compatible principal value: a^b = exp(b * Log(a))
         // Handle a == 0 explicitly to mirror MATLAB behavior
         if a == 0 {
-            if b.real == 0 && b.imag == 0 { // 0^0
+            if b.real == 0 && b.imag == 0 {  // 0^0
                 return Complex(1, 0)
             }
-            if b.real > 0 && b.imag == 0 { // positive real exponent
+            if b.real > 0 && b.imag == 0 {  // positive real exponent
                 return Complex(0, 0)
             }
-            if b.real < 0 && b.imag == 0 { // negative real exponent
+            if b.real < 0 && b.imag == 0 {  // negative real exponent
                 return Complex(Real.infinity, 0)
             }
             // Complex exponent with a == 0:
@@ -185,16 +185,15 @@ extension CoreComplex {
             return Complex(mag * Darwin.cos(ang), mag * Darwin.sin(ang))
         }
     }
-    
+
     @inlinable
     public static func sin(_ x: Complex) -> Complex {
         let coshx = Darwin.cosh(x.imag)
         let sinhx = Darwin.sinh(x.imag)
         let sinx = Darwin.sin(x.real)
         let cosx = Darwin.cos(x.real)
-        let real = sinx * coshx // sinx0 * coshx1
-        let imag = cosx * sinhx // cosx0 * sinhx1
+        let real = sinx * coshx  // sinx0 * coshx1
+        let imag = cosx * sinhx  // cosx0 * sinhx1
         return Complex(real, imag)
     }
 }
-

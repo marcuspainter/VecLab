@@ -6,19 +6,19 @@
 //
 
 extension Matrix {
-    
-     static func zeros(_ rows: Int, _ cols: Int) -> Matrix {
+
+    static func zeros(_ rows: Int, _ cols: Int) -> Matrix {
         return Matrix()
     }
-    
+
     public static func ones(_ rows: Int, _ cols: Int) -> Matrix {
         return Matrix()
     }
-    
+
     public static func rand(_ rows: Int, _ cols: Int) -> Matrix {
         return Matrix()
     }
-    
+
     public static func randn(_ rows: Int, _ cols: Int) -> Matrix {
         return Matrix()
     }

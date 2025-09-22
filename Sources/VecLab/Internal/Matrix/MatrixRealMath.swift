@@ -112,7 +112,6 @@ public func rightDivision(_ A: [Double], _ B: [Double], m: Int, n: Int) -> [Doub
     return matrixTranspose(XT, rows: n, cols: m)  // m×n
 }
 
-
 func matrixInverse(_ matrix: inout [Double], _ n: Int) {
     // Step 1: LU factorization
     var m = n
