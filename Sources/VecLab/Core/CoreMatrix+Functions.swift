@@ -7,7 +7,7 @@
 
 extension Matrix {
     
-    public static func zeros(_ rows: Int, _ cols: Int) -> Matrix {
+     static func zeros(_ rows: Int, _ cols: Int) -> Matrix {
         return Matrix()
     }
     

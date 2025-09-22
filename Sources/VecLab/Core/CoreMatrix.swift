@@ -7,39 +7,39 @@
 
 import Accelerate
 
-public enum CoreMatrix {
+enum CoreMatrix {
     
     // MARK: add
     
-    public static func add(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func add(_ a: Matrix, _ b: Matrix) -> Matrix {
         return Matrix(like: a, data: CoreVector.add(a.data, b.data))
     }
     
-    public static func add(_ a: Matrix, _ b: Double) -> Matrix {
+    static func add(_ a: Matrix, _ b: Double) -> Matrix {
         return Matrix(like: a, data: CoreVector.add(a.data, b))
     }
     
-    public static func add(_ a: Double, _ b: Matrix) -> Matrix {
+    static func add(_ a: Double, _ b: Matrix) -> Matrix {
         return Matrix(like: b, data: CoreVector.add(a, b.data))
     }
     
     // MARK: subtract
     
-    public static func subtract(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func subtract(_ a: Matrix, _ b: Matrix) -> Matrix {
         return Matrix(like: a,  data: CoreVector.subtract(a.data, b.data))
     }
     
-    public static func subtract(_ a: Matrix, _ b: Double) -> Matrix {
+    static func subtract(_ a: Matrix, _ b: Double) -> Matrix {
         return Matrix(like: a, data: CoreVector.subtract(a.data, b))
     }
     
-    public static func subtract(_ a: Double, _ b: Matrix) -> Matrix {
+    static func subtract(_ a: Double, _ b: Matrix) -> Matrix {
         return Matrix(like: b, data: CoreVector.subtract(a, b.data))
     }
     
     // MARK: multiply
     
-    public static func multiplySwift(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func multiplySwift(_ a: Matrix, _ b: Matrix) -> Matrix {
         var c = Matrix(a.rows, b.cols)
         // Matrix multiplication: C = A * B
         // Assumes column-major storage for `data` arrays.
@@ -78,34 +78,34 @@ public enum CoreMatrix {
         return c
     }
     
-    public static func multiply(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func multiply(_ a: Matrix, _ b: Matrix) -> Matrix {
         let data = matrixMultiply(a.data, b.data, m: a.rows, k: a.cols, n: b.cols)
         return Matrix(rows: a.rows, cols: b.cols, data: data)
     }
     
-    public static func multiply(_ a: Matrix, _ b: Double) -> Matrix {
+    static func multiply(_ a: Matrix, _ b: Double) -> Matrix {
         return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.multiply(a.data, b))
     }
     
-    public static func elementMultiply(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func elementMultiply(_ a: Matrix, _ b: Matrix) -> Matrix {
         return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.multiply(a.data, b.data))
     }
     
     // MARK: divide
     
-    public static func divide(_ a: Matrix, _ b: Double) -> Matrix {
+    static func divide(_ a: Matrix, _ b: Double) -> Matrix {
         return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.divide(a.data, b))
     }
     
-    public static func divide(_ a: Double, _ b: Matrix) -> Matrix {
+    static func divide(_ a: Double, _ b: Matrix) -> Matrix {
         return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.divide(a, b.data))
     }
     
-    public static func elementDivide(_ a: Matrix, _ b: Matrix) -> Matrix {
+    static func elementDivide(_ a: Matrix, _ b: Matrix) -> Matrix {
         return Matrix(rows: b.rows, cols: b.cols, data: CoreVector.divide(a.data, b.data))
     }
     
-    public static func unaryMinus(_ a: Matrix) -> Matrix  {
+    static func unaryMinus(_ a: Matrix) -> Matrix  {
         return Matrix(rows: a.rows, cols: a.cols, data: CoreVector.unaryMinus(a.data))
     }
     

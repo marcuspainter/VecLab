@@ -8,9 +8,9 @@
 import Foundation
 import simd
 
-public enum CoreVectorSIMD {
+enum CoreVectorSIMD {
 
-    public static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
+    static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
@@ -46,7 +46,7 @@ public enum CoreVectorSIMD {
         }
     }
 
-    public static func addScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func addScalar(_ a: [Double], _ b: Double) -> [Double] {
         //var c = [Double](repeating: 0.0, count: a.count)
         //for i in 0..<a.count {
         //    c[i] = a[i] + b
@@ -84,7 +84,7 @@ public enum CoreVectorSIMD {
         }
     }
 
-    public static func subtract(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func subtract(_ a: [Double], _ b: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
@@ -118,7 +118,7 @@ public enum CoreVectorSIMD {
     }
 
     @inlinable
-    public static func subtractScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func subtractScalar(_ a: [Double], _ b: Double) -> [Double] {
         var c = [Double](repeating: 0.0, count: a.count)
         for i in 0..<a.count {
             c[i] = a[i] - b
@@ -127,7 +127,7 @@ public enum CoreVectorSIMD {
     }
 
     @inlinable
-    public static func subtractScalar(_ a: Double, _ b: [Double]) -> [Double] {
+    static func subtractScalar(_ a: Double, _ b: [Double]) -> [Double] {
         var c = [Double](repeating: 0.0, count: b.count)
         for i in 0..<b.count {
             c[i] = a - b[i]
@@ -136,7 +136,7 @@ public enum CoreVectorSIMD {
     }
 
     @inlinable
-    public static func multiplyScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func multiplyScalar(_ a: [Double], _ b: Double) -> [Double] {
         var c = [Double](repeating: 0.0, count: a.count)
         for i in 0..<a.count {
             c[i] = a[i] * b
@@ -144,7 +144,7 @@ public enum CoreVectorSIMD {
         return c
     }
 
-    public static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
@@ -179,7 +179,7 @@ public enum CoreVectorSIMD {
     }
 
     @inlinable
-    public static func divideScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func divideScalar(_ a: [Double], _ b: Double) -> [Double] {
         var c = [Double](repeating: 0.0, count: a.count)
         for i in 0..<a.count {
             c[i] = a[i] / b
@@ -188,7 +188,7 @@ public enum CoreVectorSIMD {
     }
 
     @inlinable
-    public static func divideScalar(_ a: Double, _ b: [Double]) -> [Double] {
+    static func divideScalar(_ a: Double, _ b: [Double]) -> [Double] {
         var c = [Double](repeating: 0.0, count: b.count)
         for i in 0..<b.count {
             c[i] = a / b[i]
@@ -196,7 +196,7 @@ public enum CoreVectorSIMD {
         return c
     }
 
-    public static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
@@ -229,7 +229,7 @@ public enum CoreVectorSIMD {
         }
     }
 
-    public static func unaryMinus(_ a: [Double]) -> [Double] {
+    static func unaryMinus(_ a: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { cPtr, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 let count = a.count
@@ -255,7 +255,7 @@ public enum CoreVectorSIMD {
         }
     }
 
-    public static func sin(_ a: [Double]) -> [Double] {
+    static func sin(_ a: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { cPtr, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 let count = a.count
@@ -281,7 +281,7 @@ public enum CoreVectorSIMD {
         }
     }
     
-    public static func addSIMD(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
+    static func addSIMD(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
         return SimdOp.binaryOp(a, b) { aPtr, bPtr, cPtr, aSimd, bSimd, cSimd, simdCount, count in
             // SIMD loop
             for i in 0..<aSimd.count {

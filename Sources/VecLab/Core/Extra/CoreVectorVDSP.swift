@@ -7,10 +7,10 @@
 
 import Accelerate
 
-public enum CoreVectorVDSP {
+enum CoreVectorVDSP {
 
     @inlinable
-    public static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
+    static func add(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             vDSP.add(a, b, result: &c)
             initializedCount = a.count
@@ -18,55 +18,55 @@ public enum CoreVectorVDSP {
     }
 
     @inlinable
-    public static func subtract(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func subtract(_ a: [Double], _ b: [Double]) -> [Double] {
         vDSP.subtract(a, b)
     }
 
     @inlinable
-    public static func subtractScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func subtractScalar(_ a: [Double], _ b: Double) -> [Double] {
         let bb = [Double](repeating: b, count: a.count)
         return vDSP.subtract(a, bb)
     }
 
     @inlinable
-    public static func subtractScalar(_ a: Double, _ b: [Double]) -> [Double] {
+    static func subtractScalar(_ a: Double, _ b: [Double]) -> [Double] {
         let aa = [Double](repeating: a, count: b.count)
         return vDSP.subtract(aa, b)
     }
 
     @inlinable
-    public static func multiplyScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func multiplyScalar(_ a: [Double], _ b: Double) -> [Double] {
         return vDSP.multiply(b, a)
     }
 
     @inlinable
-    public static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
         return vDSP.multiply(a, b)
     }
 
     @inlinable
-    public static func divideScalar(_ a: [Double], _ b: Double) -> [Double] {
+    static func divideScalar(_ a: [Double], _ b: Double) -> [Double] {
         return vDSP.divide(a, b)
     }
 
     @inlinable
-    public static func divideScalar(_ a: Double, _ b: [Double]) -> [Double] {
+    static func divideScalar(_ a: Double, _ b: [Double]) -> [Double] {
         let aa = [Double](repeating: a, count: b.count)
         return vDSP.divide(aa, b)
     }
 
     @inlinable
-    public static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
+    static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
         vDSP.divide(a, b)
     }
 
     @inlinable
-    public static func unaryMinus(_ a: [Double]) -> [Double] {
+    static func unaryMinus(_ a: [Double]) -> [Double] {
         return vDSP.negative(a)
     }
     
     @inlinable
-    public static func sin(_ a: [Double]) -> [Double] {
+    static func sin(_ a: [Double]) -> [Double] {
         return vForce.sin(a)
     }
 

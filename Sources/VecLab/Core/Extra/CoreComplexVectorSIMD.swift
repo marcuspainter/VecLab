@@ -1,5 +1,5 @@
 //
-//  CoreComplexVector.swift
+//  CoreComplexVectorSIMD.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/09/2025.
@@ -8,9 +8,9 @@
 import Foundation
 import simd
 
-public enum CoreComplexVectorSIMD {
+enum CoreComplexVectorSIMD {
     
-    public static func multiply(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiply(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
@@ -76,7 +76,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyQ(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyQ(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -151,7 +151,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyR(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyR(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -233,7 +233,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func test() {
+    static func test() {
         
         // Example usage
         let complexArray1: [Complex] = [
@@ -262,7 +262,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyX(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyX(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -345,7 +345,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyY(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyY(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -447,7 +447,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyZ(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyZ(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -565,7 +565,7 @@ public enum CoreComplexVectorSIMD {
         }
     }
     
-    public static func multiplyA(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiplyA(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Arrays must have the same count")
         
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in

@@ -8,7 +8,7 @@ import Foundation
 
 extension CoreComplexVector {
     
-    public static func sin(_ a: [Complex]) -> [Complex] {
+    static func sin(_ a: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
                 c[i] = CoreComplex.sin(a[i])

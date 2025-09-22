@@ -8,11 +8,11 @@ import Foundation
 
 typealias ComplexBufferPointer = UnsafeMutableBufferPointer<Complex>
 
-public enum CoreComplexVector {
+enum CoreComplexVector {
 
     //. MARK: add
 
-    public static func add(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func add(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in add: [Complex] + [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -23,7 +23,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func add(_ a: [Complex], _ b: Double) -> [Complex] {
+    static func add(_ a: [Complex], _ b: Double) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
                 c[i].real = a[i].real + b
@@ -33,7 +33,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func add(_ a: Double, _ b: [Complex]) -> [Complex] {
+    static func add(_ a: Double, _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
             for i in 0..<b.count {
                 c[i].real = a + b[i].real
@@ -43,7 +43,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func add(_ a: [Complex], _ b: [Double]) -> [Complex] {
+    static func add(_ a: [Complex], _ b: [Double]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in add: [Complex] + [Double]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -54,7 +54,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func add(_ a: [Double], _ b: [Complex]) -> [Complex] {
+    static func add(_ a: [Double], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in add: [Double] + [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -67,7 +67,7 @@ public enum CoreComplexVector {
 
     // MARK: subtract
 
-    public static func subtract(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func subtract(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in subtract: [Complex] - [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -79,7 +79,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func subtract(_ a: [Complex], _ b: Double) -> [Complex] {
+    static func subtract(_ a: [Complex], _ b: Double) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
                 c[i].real = a[i].real - b
@@ -90,7 +90,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func subtract(_ a: Double, _ b: [Complex]) -> [Complex] {
+    static func subtract(_ a: Double, _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
             for i in 0..<b.count {
                 c[i].real = a - b[i].real
@@ -101,7 +101,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func subtract(_ a: [Complex], _ b: [Double]) -> [Complex] {
+    static func subtract(_ a: [Complex], _ b: [Double]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in subtract: [Complex] - [Double]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -113,7 +113,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func subtract(_ a: [Double], _ b: [Complex]) -> [Complex] {
+    static func subtract(_ a: [Double], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in subtract: [Double] - [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -126,7 +126,7 @@ public enum CoreComplexVector {
 
     // MARK: multiply
 
-    public static func multiply(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func multiply(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in subtract: [Complex] - [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -138,7 +138,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func multiply(_ a: [Complex], _ b: Double) -> [Complex] {
+    static func multiply(_ a: [Complex], _ b: Double) -> [Complex] {
         precondition(a.count == a.count, "Mismatched lengths in multiply: [Complex] * Double")  // This is always true; no length check needed.
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -150,7 +150,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func multiply(_ a: Double, _ b: [Complex]) -> [Complex] {
+    static func multiply(_ a: Double, _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
             for i in 0..<b.count {
                 c[i].real = a * b[i].real
@@ -161,7 +161,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func multiply(_ a: [Complex], _ b: [Double]) -> [Complex] {
+    static func multiply(_ a: [Complex], _ b: [Double]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in multiply: [Complex] * [Double]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -173,7 +173,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func multiply(_ a: [Double], _ b: [Complex]) -> [Complex] {
+    static func multiply(_ a: [Double], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in multiply: [Double] * [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -186,7 +186,7 @@ public enum CoreComplexVector {
 
     // MARK: divide
 
-    public static func divide(_ a: [Complex], _ b: [Complex]) -> [Complex] {
+    static func divide(_ a: [Complex], _ b: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
                 let x = b[i].real
@@ -213,7 +213,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func divide(_ a: [Complex], _ b: Double) -> [Complex] {
+    static func divide(_ a: [Complex], _ b: Double) -> [Complex] {
         precondition(b != 0, "Division by zero scalar in divide: [Complex] / Double")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -224,7 +224,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func divide(_ a: [Complex], _ b: [Double]) -> [Complex] {
+    static func divide(_ a: [Complex], _ b: [Double]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in divide: [Complex] / [Double]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
@@ -237,7 +237,7 @@ public enum CoreComplexVector {
     }
 
     @inlinable
-    public static func divide(_ a: Double, _ b: [Complex]) -> [Complex] {
+    static func divide(_ a: Double, _ b: [Complex]) -> [Complex] {
         precondition(!b.isEmpty, "Empty denominator vector in divide: Double / [Complex]")
         return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
             for i in 0..<b.count {
@@ -260,7 +260,7 @@ public enum CoreComplexVector {
         }
     }
 
-    public static func divide(_ a: [Double], _ b: [Complex]) -> [Complex] {
+    static func divide(_ a: [Double], _ b: [Complex]) -> [Complex] {
         precondition(a.count == b.count, "Mismatched lengths in divide: [Double] / [Complex]")
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
