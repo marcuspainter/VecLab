@@ -9,7 +9,7 @@
 ///
 /// - Parameter x:Complex array.
 /// - Returns: Real array of  magnitudes.
-public func abs(_ x: ComplexArray) -> [Real] {
+public func abs(_ x: ComplexArray) -> RealArray {
     return x.map { abs($0) }
 }
 

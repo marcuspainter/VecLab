@@ -95,3 +95,20 @@ extension SplitComplexArray {
         return vectorDivideRealSplitComplexArray(a, b)
     }
 }
+
+fileprivate func vectorDivideSplitComplexArrayReal(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
+    let real = vDSP.divide(a.real, b)
+    let imag = vDSP.divide(a.imag, b)
+    return SplitComplexArray(real, imag)
+}
+
+fileprivate func vectorDivideRealSplitComplexArray(_ a: Real, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = b
+    let a0 = [Double](repeating: a, count: b.count)
+    let a1 = [Double](repeating: 0.0, count: b.count)
+    let aa = SplitComplexArray(a0, a1)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        vDSP_zvdivD(B, 1, A, 1, C, 1, N)
+    }
+    return c
+}

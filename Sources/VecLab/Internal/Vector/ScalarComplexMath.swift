@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: Multiply
 
+/*
 @inlinable
 func complexMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let a = x.real
@@ -17,6 +18,7 @@ func complexMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let d = y.imag
     return Complex(a * c - b * d, a * d + b * c)
 }
+
 
 // MARK: ConjugateMultiply
 
@@ -28,6 +30,8 @@ func complexConjugateMultiply(_ x: Complex, _ y: Complex) -> Complex {
     let d = y.imag
     return Complex(a * c + b * d, a * d - b * c)
 }
+ 
+
 
 // MARK: Divide
 
@@ -58,6 +62,7 @@ func complexDivide(_ x: Complex, _ y: Complex) -> Complex {
     return Complex(e, f)
 }
 
+ 
 // MARK: Sqrt
 
 func complexSqrt(_ x: Complex) -> Complex {
@@ -148,3 +153,5 @@ func complexRealComplexPow(_ x: Real, _ a: Real, _ b: Real, _ r: inout Real, _ i
     r = ab * Darwin.cos(b * Darwin.log(x))
     i = ab * Darwin.sin(b * Darwin.log(x))
 }
+
+ */

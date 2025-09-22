@@ -123,6 +123,28 @@ enum CoreComplexVector {
             initializedCount = a.count
         }
     }
+    
+    @inlinable
+    static func subtract(_ a: [Complex], _ b: Complex) -> [Complex] {
+        return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
+            for i in 0..<a.count {
+                c[i].real = a[i].real - b.real
+                c[i].imag = a[i].imag - b.imag
+            }
+            initializedCount = a.count
+        }
+    }
+    
+    @inlinable
+    static func subtract(_ a: Complex, _ b: [Complex]) -> [Complex] {
+        return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
+            for i in 0..<b.count {
+                c[i].real = a.real - b[i].real
+                c[i].imag = a.imag - b[i].imag
+            }
+            initializedCount = b.count
+        }
+    }
 
     // MARK: multiply
 
@@ -183,6 +205,29 @@ enum CoreComplexVector {
             initializedCount = a.count
         }
     }
+    
+    @inlinable
+    static func multiply(_ a: [Complex], _ b: Complex) -> [Complex] {
+        return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
+            for i in 0..<a.count {
+                c[i].real = a[i].real * b.real - a[i].imag * b.imag
+                c[i].imag = a[i].real * b.imag + a[i].imag * b.real
+            }
+            initializedCount = a.count
+        }
+    }
+    
+    @inlinable
+    static func multiply(_ a: Complex, _ b: [Complex]) -> [Complex] {
+        return [Complex](unsafeUninitializedCapacity: b.count) { c, initializedCount in
+            for i in 0..<b.count {
+                c[i].real = a.real * b[i].real - a.imag * b[i].imag
+                c[i].imag = a.real * b[i].imag + a.imag * b[i].real
+            }
+            initializedCount = b.count
+        }
+    }
+    
 
     // MARK: divide
 

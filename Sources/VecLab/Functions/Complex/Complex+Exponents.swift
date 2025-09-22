@@ -11,7 +11,8 @@ import Accelerate
 /// - Parameter x: Complex number.
 /// - Returns: The exponential of `x`.
 public func exp(_ x: Complex) -> Complex {
-    return complexExp(x)
+    //return complexExp(x)
+    return CoreComplex.exp(x)
 }
 
 /// Returns a complex number from angle by Euler
@@ -25,7 +26,7 @@ public func expi(_ x: Real) -> Complex {
 /// - Parameter x: Angle in radians
 /// - Returns: Complex number of (cos(x),  sin(x)) equivalent to exp(j\* x) by Euler's formula.
 public func expj(_ x: Real) -> Complex {
-    return expi(x)
+    return Complex(Darwin.cos(x), Darwin.sin(x))
 }
 
 /// Square root of sum of squares (hypotenuse).
@@ -50,30 +51,26 @@ public func hypot(_ a: Complex, _ b: Complex) -> Complex {
 /// - Parameter x: Complex number.
 /// - Returns: The natural logarithm of `x`.
 public func log(_ x: Complex) -> Complex {
-    return complexLog(x)
+    return CoreComplex.log(x)
 }
 
 /// Base 2 logarithm of a complex number.
 /// - Parameter a: Complex number.
 /// - Returns: The base 2 logarithm of `x`.
-public func log2(_ a: Complex) -> Complex {
-    let naturalLog = complexLog(a)
-    let ln2: Real = Darwin.log(2.0)
-    return Complex(naturalLog.real / ln2, naturalLog.imag / ln2)
+public func log2(_ x: Complex) -> Complex {
+    return CoreComplex.log2(x)
 }
 
 
 /// Base 10 logarithm of a complex number.
-public func log10(_ a: Complex) -> Complex {
-    let naturalLog = complexLog(a)
-    let ln10: Real = Darwin.log(10.0)
-    return Complex(naturalLog.real / ln10, naturalLog.imag / ln10)
+public func log10(_ x: Complex) -> Complex {
+    return CoreComplex.log10(x)
 }
 
 /// Square root of a complex number.
 /// - Parameter x: Complex number.
 /// - Returns: The complex square root.
 public func sqrt(_ x: Complex) -> Complex {
-    return complexSqrt(x)
+    return CoreComplex.sqrt(x)
 }
 

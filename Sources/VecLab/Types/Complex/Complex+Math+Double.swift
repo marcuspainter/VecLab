@@ -17,7 +17,7 @@ extension Complex {
     ///   - b: Complex number.
     /// - Returns: The result of the division.
     public static func / (a: Complex, b: Complex) -> Complex {
-        return complexDivide(a, b)
+        return CoreComplex.divide(a, b)
     }
 
     /// Complex addition.
@@ -96,6 +96,6 @@ extension Complex {
     ///   - b: Complex number.
     /// - Returns: The result of the division.
     public static func / (a: Double, b: Complex) -> Complex {
-        return complexDivide(Complex(a, 0), b)
+        return CoreComplex.divide(a, b)
     }
 }

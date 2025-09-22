@@ -101,3 +101,36 @@ public func sqrt(_ x: SplitComplexArray) -> SplitComplexArray {
     }
     return c
 }
+
+fileprivate func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
+    // 1. Calculate e^a for each real part
+    let expReal = vForce.exp(a.real)
+
+    // 2. Simultaneously calculate sine and cosine for each imaginary part
+    var cosImag = [Double](repeating: 0, count: a.count)
+    var sinImag = [Double](repeating: 0, count: a.count)
+    vForce.sincos(a.imag, sinResult: &sinImag, cosResult: &cosImag)
+
+    // 3. Multiply results element-wise
+    let resultReal = vDSP.multiply(expReal, cosImag)
+    let resultImag = vDSP.multiply(expReal, sinImag)
+
+    return SplitComplexArray(resultReal, resultImag)
+}
+
+fileprivate func vectorLogSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
+    var angle = [Double](repeating: 0, count: a.count)
+    var mag = [Double](repeating: 0, count: a.count)
+    var logMag = [Double](repeating: 0, count: a.count)
+    SplitComplexArray.withUnsafeParameters(a, &angle) { A, C, N in
+        vDSP_zvphasD(A, 1, C, 1, N)
+    }
+    SplitComplexArray.withUnsafeParameters(a, &mag) { A, C, N in
+        vDSP_zvabsD(A, 1, C, 1, N)
+    }
+
+    var n = Int32(a.count)
+    vvlog(&logMag, &mag, &n)
+
+    return SplitComplexArray(logMag, angle)
+}

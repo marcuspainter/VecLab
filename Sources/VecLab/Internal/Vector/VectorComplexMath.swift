@@ -21,6 +21,8 @@ extension SplitComplexArray {
 
 // MARK: Clear
 
+/*
+
 func vectorClearRealArray(_ a: inout [Double]) {
     vDSP_vclrD(&a, 1, vDSP_Length(a.count))
 }
@@ -266,3 +268,6 @@ func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
 
     return SplitComplexArray(resultReal, resultImag)
 }
+
+
+*/

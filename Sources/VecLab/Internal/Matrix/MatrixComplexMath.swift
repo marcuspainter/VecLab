@@ -7,6 +7,7 @@
 
 import Accelerate
 
+
 func matrixDivide(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [Complex] {
     // This computes A / B as A * B^(-1) by solving B * X = A for X
     // Where A is m×k, B is k×k (must be square), result X is m×k
@@ -77,6 +78,7 @@ public func matrixConjugateTranspose(_ matrix: [Complex], rows: Int, cols: Int) 
     }
     return result
 }
+
 
 /*
 func matrixMultiply(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [Complex] {

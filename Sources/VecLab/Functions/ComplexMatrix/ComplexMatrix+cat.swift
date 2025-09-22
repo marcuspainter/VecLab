@@ -1,13 +1,13 @@
 //
-//  Matrix+cat.swift
+//  ComplexMatrix+cat.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 21/09/2025.
 //
 
 // Horizontal concatenation: [A | B | C ...]
-public func hcat(_ matrices: Matrix...) -> Matrix {
-    precondition(!matrices.isEmpty, "hcat requires at least one matrix")
+public func hcat(_ matrices: ComplexMatrix...) -> ComplexMatrix {
+    precondition(!matrices.isEmpty, "hcat requires at least one ComplexMatrix")
     if matrices.count == 1 { return matrices[0] }
 
     // All matrices must have same number of rows
@@ -15,7 +15,7 @@ public func hcat(_ matrices: Matrix...) -> Matrix {
     precondition(matrices.allSatisfy { $0.rows == r }, "All matrices must have the same number of rows for hcat")
 
     let totalCols = matrices.reduce(0) { $0 + $1.cols }
-    var result = Matrix(r, totalCols)
+    var result = ComplexMatrix(r, totalCols)
 
     // Column-major layout: copy whole column blocks
     var colOffset = 0
@@ -43,8 +43,8 @@ public func hcat(_ matrices: Matrix...) -> Matrix {
 //  B
 //  C
 //  ...]
-public func vcat(_ matrices: Matrix...) -> Matrix {
-    precondition(!matrices.isEmpty, "vcat requires at least one matrix")
+public func vcat(_ matrices: ComplexMatrix...) -> ComplexMatrix {
+    precondition(!matrices.isEmpty, "vcat requires at least one ComplexMatrix")
     if matrices.count == 1 { return matrices[0] }
 
     // All matrices must have same number of columns
@@ -52,7 +52,7 @@ public func vcat(_ matrices: Matrix...) -> Matrix {
     precondition(matrices.allSatisfy { $0.cols == c }, "All matrices must have the same number of columns for vcat")
 
     let totalRows = matrices.reduce(0) { $0 + $1.rows }
-    var result = Matrix(totalRows, c)
+    var result = ComplexMatrix(totalRows, c)
 
     // Column-major storage: each column is contiguous. Append row blocks per column.
     var rowOffset = 0

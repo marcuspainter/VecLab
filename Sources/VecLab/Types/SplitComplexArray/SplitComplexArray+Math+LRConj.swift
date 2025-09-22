@@ -113,3 +113,13 @@ extension SplitComplexArray {
         return a * conj(b)  // Overloaded
     }
 }
+
+fileprivate func vectorConjugateMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = a
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+        // Conjugate multiply: -1
+        let conjugateFlag = Int32(-1)
+        vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
+    }
+    return c
+}

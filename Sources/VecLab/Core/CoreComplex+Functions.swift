@@ -77,6 +77,30 @@ extension CoreComplex {
         let i = Darwin.atan2(x.imag, x.real)
         return Complex(r, i)
     }
+    
+    // MARK: Log2
+
+    /// Base-2 logarithm of `x` on the principal branch.
+    /// Implements log2(z) = log(z) / ln(2), where log is the principal complex logarithm.
+    /// - Returns: The complex base-2 logarithm.
+    @inlinable
+    public static func log2(_ x: Complex) -> Complex {
+        let ln2 = Darwin.log(2.0)
+        let r = Darwin.log(Darwin.hypot(x.real, x.imag)) / ln2
+        let i = Darwin.atan2(x.imag, x.real) / ln2
+        return Complex(r, i)
+    }
+    
+    /// Base-10 logarithm of `x` on the principal branch.
+    /// Implements log10(z) = log(z) / ln(10), where log is the principal complex logarithm.
+    /// - Returns: The complex base-10 logarithm.
+    @inlinable
+    public static func log10(_ x: Complex) -> Complex {
+        let ln10 = Darwin.log(10.0)
+        let r = Darwin.log(Darwin.hypot(x.real, x.imag)) / ln10
+        let i = Darwin.atan2(x.imag, x.real) / ln10
+        return Complex(r, i)
+    }
 
     // MARK: Abs
 
@@ -99,6 +123,56 @@ extension CoreComplex {
     }
 
     // MARK: Pow
+
+    /// Complex power with complex base and complex exponent: `base^exponent`.
+    ///
+    /// Computes the principal value using polar form. If `base = r * e^{iθ}` and `exponent = c + id`,
+    /// returns `r^c * e^{-dθ} * e^{i(d ln r + cθ)}`.
+    ///
+    /// MATLAB-compatibility notes (principal branch semantics):
+    /// - Zero base handling mirrors MATLAB:
+    ///   - `0^0 = 1`
+    ///   - `0^c` with real `c > 0` returns `0`
+    ///   - `0^c` with real `c < 0` returns `Inf + 0i`
+    ///   - `0^b` with complex `b`: returns `0` if `Re(b) > 0`, `Inf + 0i` if `Re(b) < 0`, and `NaN + NaN i` if `Re(b) == 0` (purely imaginary)
+    /// - Negative real bases are evaluated on the principal branch via `Log(a) = ln(|a|) + iπ`.
+    @inlinable
+    public static func pow(_ base: Complex, _ exponent: Complex) -> Complex {
+        let (a, b) = (base.real, base.imag)
+        let (c, d) = (exponent.real, exponent.imag)
+
+        // Convert base to polar form
+        let r = Darwin.hypot(a, b)
+        let theta = Darwin.atan2(b, a)
+
+        // Handle zero base explicitly to mirror MATLAB behavior
+        if r == 0 {
+            // 0^(0) = 1
+            if c == 0 && d == 0 {
+                return Complex(1, 0)
+            }
+            // Real exponent (imag == 0)
+            if d == 0 {
+                if c > 0 { return Complex(0, 0) }
+                if c < 0 { return Complex(Real.infinity, 0) }
+                // c == 0 handled above
+            }
+            // Complex exponent with a == 0:
+            // MATLAB returns 0 when Re(exponent) > 0, Inf when Re(exponent) < 0,
+            // and NaN + NaN i when Re(exponent) == 0 (purely imaginary)
+            if c > 0 { return Complex(0, 0) }
+            if c < 0 { return Complex(Real.infinity, 0) }
+            let nan = Real.nan
+            return Complex(nan, nan)
+        }
+
+        // Compute power using exponentiation formula:
+        // (r e^(iθ))^(c + di) = r^c * e^(-dθ) * e^(i(d ln r + cθ))
+        let newR = Darwin.pow(r, c) * Darwin.exp(-d * theta)
+        let newTheta = d * Darwin.log(r) + c * theta
+
+        return Complex(newR * Darwin.cos(newTheta), newR * Darwin.sin(newTheta))
+    }
 
     /// Complex power with complex base and real exponent: `a^b`.
     ///
@@ -186,6 +260,7 @@ extension CoreComplex {
         }
     }
 
+
     @inlinable
     public static func sin(_ x: Complex) -> Complex {
         let coshx = Darwin.cosh(x.imag)
@@ -197,3 +272,4 @@ extension CoreComplex {
         return Complex(real, imag)
     }
 }
+

@@ -18,7 +18,6 @@ extension SplitComplexArray {
         validateSize(a)
         let real = vDSP.add(b.real, a.real)
         let imag = vDSP.add(b.imag, a.imag)
-
         return SplitComplexArray(real, imag)
     }
 
@@ -93,4 +92,46 @@ extension SplitComplexArray {
         validateSize(b)
         return vectorDivideComplexSplitComplexArray(a, b)
     }
+}
+
+fileprivate func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
+    var c = a
+    let bb = SplitComplexArray(repeating: b, count: a.count)
+    SplitComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+fileprivate func vectorMultiplyComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = b
+    let aa = SplitComplexArray(repeating: a, count: b.count)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply: 1
+        vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+fileprivate func vectorDivideSplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
+    var c = a
+    let b0 = [Double](repeating: b.real, count: a.count)
+    let b1 = [Double](repeating: b.imag, count: a.count)
+    let bb = SplitComplexArray(b0, b1)
+    SplitComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
+        vDSP_zvdivD(B, 1, A, 1, C, 1, N)
+    }
+    return c
+}
+
+fileprivate func vectorDivideComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = b
+    let a0 = [Double](repeating: a.real, count: b.count)
+    let a1 = [Double](repeating: a.imag, count: b.count)
+    let aa = SplitComplexArray(a0, a1)
+    SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
+        vDSP_zvdivD(B, 1, A, 1, C, 1, N)
+    }
+    return c
 }

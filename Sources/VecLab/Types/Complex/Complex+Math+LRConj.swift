@@ -9,9 +9,9 @@
 // Complex left and right conjugate multiply
 //
 
-extension Complex {
+// MARK: Complex left conjugate multiply
 
-    // MARK: Complex left conjugate multiply
+extension Complex {
 
     /// Left conjugate multiply.
     /// - Parameters:
@@ -20,7 +20,7 @@ extension Complex {
     /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
     @inlinable
     public static func ~* (a: Complex, b: Complex) -> Complex {
-        return complexConjugateMultiply(b, a)
+        return conj(a) * b
     }
 
     /// Left conjugate multiply.
@@ -45,9 +45,9 @@ extension Complex {
 
 }
 
-extension Complex {
+// MARK: Complex right conjugate multiply
 
-    // MARK: Complex right conjugate multiply
+extension Complex {
 
     /// Right conjugate multiply.
     /// - Parameters:
@@ -55,7 +55,7 @@ extension Complex {
     ///   - b: Complex number.
     /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
     public static func *~ (a: Complex, b: Complex) -> Complex {
-        return complexConjugateMultiply(b, a)
+        return a * conj(b)  // Overloaded
     }
 
     /// Right conjugate multiply

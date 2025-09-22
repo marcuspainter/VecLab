@@ -21,8 +21,7 @@ extension Complex {
     /// - Returns: The result of the addition.
     public static func + (a: Complex, b: [Double]) -> SplitComplexArray {
         let real = vDSP.add(a.real, b)
-        var imag = b
-        vectorFillRealArray(a.imag, c: &imag)
+        let imag = [Double](repeating: a.imag, count: b.count)
         return SplitComplexArray(real, imag)
     }
 
@@ -33,8 +32,7 @@ extension Complex {
     /// - Returns: The result of the addition.
     public static func + (a: [Double], b: Complex) -> SplitComplexArray {
         let real = vDSP.add(b.real, a)
-        var imag = a
-        vectorFillRealArray(b.imag, c: &imag)
+        let imag = [Double](repeating: b.imag, count: a.count)
         return SplitComplexArray(real, imag)
     }
 
@@ -88,7 +86,10 @@ extension Complex {
     ///   - b: Real number.
     /// - Returns: The result of the division.
     public static func / (a: Complex, b: [Double]) -> SplitComplexArray {
-        return vectorDivideComplexRealArray(a, b)
+        //return vectorDivideComplexRealArray(a, b)
+        let real = vDSP.divide(a.real, b)
+        let imag = vDSP.divide(a.imag, b)
+        return SplitComplexArray(real, imag)
     }
 
     /// Complex division.
@@ -97,7 +98,19 @@ extension Complex {
     ///   - b: Complex number.
     /// - Returns: The result of the division.
     public static func / (a: [Double], b: Complex) -> SplitComplexArray {
-        return vectorDivideRealArrayComplex(a, b)
+        var c = SplitComplexArray(count: a.count)
+        let b0 = [Double](repeating: b.real, count: a.count)
+        let b1 = [Double](repeating: b.imag, count: a.count)
+        let bb = SplitComplexArray(b0, b1)
+        let a0 = a
+        let a1 = [Double](repeating: 0.0, count: a.count)
+        let aa = SplitComplexArray(a0, a1)
+        validateSize(aa, bb)
+        validateSize(aa, c)
+        SplitComplexArray.withUnsafeParameters(aa, bb, &c) { A, B, C, N in
+            vDSP_zvdivD(B, 1, A, 1, C, 1, N)
+        }
+        return c
     }
     
 }

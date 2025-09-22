@@ -5,6 +5,8 @@
 //  Created by Marcus Painter on 19/04/2025.
 //
 
+import Accelerate
+
 extension SplitComplexArray {
     /// Complex array addition.
     /// - Parameters:
@@ -46,4 +48,37 @@ extension SplitComplexArray {
         validateSize(a, b)
         return vectorDivideSplitComplexArray(a, b)
     }
+}
+
+fileprivate func vectorAddSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = a
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+        vDSP_zvaddD(A, 1, B, 1, C, 1, N)
+    }
+    return c
+}
+
+fileprivate func vectorSubtractSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = a
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+        vDSP_zvsubD(A, 1, B, 1, C, 1, N)
+    }
+    return c
+}
+
+fileprivate func vectorMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = a
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+        let conjugateFlag = Int32(1) // No conjugate multiply
+        vDSP_zvmulD(A, 1, B, 1, C, 1, N, conjugateFlag)
+    }
+    return c
+}
+
+fileprivate func vectorDivideSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+    var c = a
+    SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
+        vDSP_zvdivD(B, 1, A, 1, C, 1, N)
+    }
+    return c
 }

@@ -7,6 +7,7 @@
 
 import VecLab
 import XCTest
+import Accelerate
 
 class SortTests: XCTestCase {
     
@@ -38,13 +39,13 @@ class SortTests: XCTestCase {
     }
 }
 
-fileprivate func matlabSort2(_ arr: SplitComplexArray) -> SplitComplexArray {
-    return arr.sorted { a, b in
-        let magA = sqrt(a.real * a.real + a.imag * a.imag)
-        let magB = sqrt(b.real * b.real + b.imag * b.imag)
-        //if magA != magB {
-        //    return magA < magB
-       // }
+fileprivate func matlabSort2(_ array: SplitComplexArray) -> SplitComplexArray {
+    return array.sorted { a, b in
+        let magA = Darwin.hypot(a.real, a.imag)
+        let magB = Darwin.hypot(b.real, b.imag)
+        if magA != magB {
+            return magA < magB
+        }
         // Tie-break by phase (atan2 returns (-π, π])
         let phaseA = wrapTo2Pi(angle(a))
         let phaseB = wrapTo2Pi(angle(b))

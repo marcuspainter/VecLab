@@ -15,7 +15,7 @@ public func matrixTranspose(_ matrix: RealArray, rows: Int, cols: Int) -> RealAr
             result[i * cols + j] = matrix[j * rows + i]  // Row-major indexing
         }
     }
-    
+        
     return result
 }
 
