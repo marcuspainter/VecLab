@@ -6,15 +6,8 @@
 //
 
 extension ComplexMatrix {
-
-    /// Addition.
-    /// - Parameters:
-    ///   - lhs: This complex matrix.
-    ///   - rhs: A real value.
-    @inlinable
-    public static func += (lhs: inout ComplexMatrix, rhs: Double) {
-        lhs = lhs + rhs
-    }
+    
+    // += Defined elsewhere
     
     /// Subtraction.
     /// - Parameters:
@@ -24,16 +17,7 @@ extension ComplexMatrix {
     public static func -= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs - rhs
     }
-
-    /// Subtraction.
-    /// - Parameters:
-    ///   - lhs: This complex array.
-    ///   - rhs: A real value.
-    @inlinable
-    public static func -= (lhs: inout ComplexMatrix, rhs: Double) {
-        lhs = lhs - rhs
-    }
-
+    
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -51,6 +35,35 @@ extension ComplexMatrix {
     public static func .*= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs .* rhs
     }
+ 
+    /// Division.
+    /// - Parameters:
+    ///   - lhs: This complex array.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func ./= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
+        lhs = lhs ./ rhs
+    }
+    
+    // MARK: Double
+    
+    /// Addition.
+    /// - Parameters:
+    ///   - lhs: This complex matrix.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func += (lhs: inout ComplexMatrix, rhs: Double) {
+        lhs = lhs + rhs
+    }
+
+    /// Subtraction.
+    /// - Parameters:
+    ///   - lhs: This complex array.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func -= (lhs: inout ComplexMatrix, rhs: Double) {
+        lhs = lhs - rhs
+    }
 
     /// Multiplication.
     /// - Parameters:
@@ -66,16 +79,45 @@ extension ComplexMatrix {
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func ./= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
-        lhs = lhs ./ rhs
+    public static func /= (lhs: inout ComplexMatrix, rhs: Double) {
+        lhs = lhs / rhs
+    }
+    
+    // MARK: Complex
+    
+    /// Addition.
+    /// - Parameters:
+    ///   - lhs: This complex matrix.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func += (lhs: inout ComplexMatrix, rhs: Complex) {
+        lhs = lhs + rhs
     }
 
+    /// Subtraction.
+    /// - Parameters:
+    ///   - lhs: This complex array.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func -= (lhs: inout ComplexMatrix, rhs: Complex) {
+        lhs = lhs - rhs
+    }
+
+    /// Multiplication.
+    /// - Parameters:
+    ///   - lhs: This complex array.
+    ///   - rhs: A real value.
+    @inlinable
+    public static func *= (lhs: inout ComplexMatrix, rhs: Complex) {
+        lhs = lhs * rhs
+    }
+    
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.
     ///   - rhs: A real value.
     @inlinable
-    public static func /= (lhs: inout ComplexMatrix, rhs: Double) {
+    public static func /= (lhs: inout ComplexMatrix, rhs: Complex) {
         lhs = lhs / rhs
     }
 

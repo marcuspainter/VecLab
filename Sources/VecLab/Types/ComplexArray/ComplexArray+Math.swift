@@ -31,6 +31,7 @@ extension Array where Element == Complex {
 
 }
 
+/*
 func addComplexComplex(_ a: [Complex], _ b: [Complex]) -> [Complex] {
     let count = a.count
 
@@ -137,3 +138,5 @@ func multiplySplitComplexArraysSIMD(_ a: [Complex], _ b: [Complex]) -> [Complex]
         }
     }
 }
+
+ */
