@@ -8,42 +8,34 @@
 extension ComplexMatrix {
 
     public static func + (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        let c = a.data + b
-        return ComplexMatrix(like: a, data: c)
+        return CoreComplexMatrix.add(a, b)
     }
 
     public static func + (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a + b.data
-        return ComplexMatrix(like: b, data: c)
+        return CoreComplexMatrix.add(a, b)
     }
 
     public static func - (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        let c = a.data - b
-        return ComplexMatrix(like: a, data: c)
+        return CoreComplexMatrix.subtract(a, b)
     }
 
     public static func - (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a - b.data
-        return ComplexMatrix(like: b, data: c)
+        return CoreComplexMatrix.subtract(a, b)
     }
 
     public static func * (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        let c = a.data * b
-        return ComplexMatrix(like: a, data: c)
+        return CoreComplexMatrix.multiply(a, b)
     }
 
     public static func * (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a * b.data
-        return ComplexMatrix(like: b, data: c)
+        return CoreComplexMatrix.multiply(a, b)
     }
 
     public static func / (_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        let c = a.data / b
-        return ComplexMatrix(like: a, data: c)
+        return CoreComplexMatrix.divide(a, b)
     }
 
     public static func / (_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        let c = a / b.data
-        return ComplexMatrix(like: b, data: c)
+        return CoreComplexMatrix.divide(a, b)
     }
 }

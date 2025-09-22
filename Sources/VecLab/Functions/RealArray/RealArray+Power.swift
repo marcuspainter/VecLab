@@ -53,7 +53,7 @@ public func pow(_ a: RealArray, _ b: Int) -> RealArray {
 /// - Returns: Raises `a` to the power of `b`
 public func pow(_ a: RealArray, _ b: RealArray) -> RealArray {
     validateSize(a, b)
-    return vectorPowReal(a, b)
+    return vForce.pow(bases: a, exponents: b)
 }
 
 /// Power.
@@ -73,3 +73,14 @@ public func pow(_ a: RealArray, _ b: Real) -> RealArray {
 public func pow(_ a: Real, _ b: RealArray) -> RealArray {
     return vectorPowReal(a, b)
 }
+
+ private func vectorPowReal(_ a: [Double], _ b: Double) -> [Double] {
+ let bb = [Double](repeating: b, count: a.count)
+ return vForce.pow(bases: a, exponents: bb)
+ }
+
+ private func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
+ let aa = [Double](repeating: a, count: b.count)
+ return vForce.pow(bases: aa, exponents: b)
+ }
+

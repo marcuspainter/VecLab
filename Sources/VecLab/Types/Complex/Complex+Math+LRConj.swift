@@ -32,17 +32,6 @@ extension Complex {
     public static func ~* (a: Complex, b: Real) -> Complex {
         return conj(a) * b
     }
-
-    /// Left conjugate multiply.
-    /// - Parameters:
-    ///   - a: Complex number.
-    ///   - b: Real  array.
-    /// - Returns: The result of the conjugate multiplication `conj(a) * b`.
-    @inlinable
-    public static func ~* (a: Complex, b: RealArray) -> SplitComplexArray {
-        return conj(a) * b
-    }
-
 }
 
 // MARK: Complex right conjugate multiply
@@ -67,15 +56,4 @@ extension Complex {
     public static func *~ (a: Real, b: Complex) -> Complex {
         return a * conj(b)  // Overloaded
     }
-
-    /// Right conjugate multiply.
-    /// - Parameters:
-    ///   - a: Real array.
-    ///   - b: Complex number.
-    /// - Returns: The result of the conjugate multiplication `a * conj(b)`.
-    @inlinable
-    public static func *~ (a: RealArray, b: Complex) -> SplitComplexArray {
-        return a * conj(b)  // Overloaded
-    }
-
 }

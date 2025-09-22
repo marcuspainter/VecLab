@@ -76,5 +76,5 @@ extension Complex {
     public static var j: Complex {
         return Complex(.zero, 1.0)
     }
-    
+
 }

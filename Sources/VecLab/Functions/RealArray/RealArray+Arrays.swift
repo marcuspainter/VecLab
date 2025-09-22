@@ -86,14 +86,6 @@ public func circshift(_ x: RealArray, _ k: Int) -> RealArray {
     }
 }
 
-/// Fills a real array with a value in place.
-/// - Parameters:
-///   - c: Array.
-///   - a: Value.
-public func fill(_ c: RealArray, _ a: Real) {
-    fillRealArray(c, a)
-}
-
 /// Flip order of array.
 /// - Parameter x: Real array.
 /// - Returns: Flipped array with elements reversed.
@@ -234,11 +226,4 @@ public func zeros(_ count: Int) -> RealArray {
 /// - Returns: A real array of length `count`.
 public func zeros(_ count: Real) -> RealArray {
     return RealArray(repeating: 0, count: Int(count))
-}
-
-/// Fills a real array with zeros in place.
-/// - Parameters:
-///   - c: Array.
-public func clear(_ c: RealArray) {
-    vectorClearRealArray(c)
 }

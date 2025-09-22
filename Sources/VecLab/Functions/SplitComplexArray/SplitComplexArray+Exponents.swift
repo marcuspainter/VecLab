@@ -102,7 +102,7 @@ public func sqrt(_ x: SplitComplexArray) -> SplitComplexArray {
     return c
 }
 
-fileprivate func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
+private func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
     // 1. Calculate e^a for each real part
     let expReal = vForce.exp(a.real)
 
@@ -118,7 +118,7 @@ fileprivate func vectorExpSplitComplexArray(_ a: SplitComplexArray) -> SplitComp
     return SplitComplexArray(resultReal, resultImag)
 }
 
-fileprivate func vectorLogSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
+private func vectorLogSplitComplexArray(_ a: SplitComplexArray) -> SplitComplexArray {
     var angle = [Double](repeating: 0, count: a.count)
     var mag = [Double](repeating: 0, count: a.count)
     var logMag = [Double](repeating: 0, count: a.count)

@@ -8,13 +8,13 @@
 import Foundation
 
 extension MatrixOp {
-    
+
     // Y = (N-1,L+1)
     private func hankelMatrix(x: [Double], N: Int, L: Int) -> [Double] {
         let l1 = L + 1 // Columns
         let nl = N - L // Rows
         var y = [Double](repeating: 0.0, count: nl*l1)
-        
+
         var r = 0
         for j in 0..<l1 {
             for i in 0..<nl {
@@ -24,5 +24,5 @@ extension MatrixOp {
         }
         return y
     }
-    
+
 }

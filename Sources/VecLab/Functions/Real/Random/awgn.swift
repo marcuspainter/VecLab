@@ -19,19 +19,19 @@ import Foundation
 public func awgn(_ x: RealArray, snr: Real) -> (signal: RealArray, noise: RealArray) {
     // Calculate the signal power
     let P_signal = vDSP.sumOfSquares(x) / Real(x.count)
-    
+
     // Calculate the noise power based on the desired SNR
     let P_noise = P_signal / pow(10.0, snr / 10.0)
-    
+
     // Generate zero-mean unit-variance Gaussian noise
     let unitNoise = randn(count: x.count)
-    
+
     // Scale noise to have the correct power (multiply by standard deviation)
     let noise = vDSP.multiply(sqrt(P_noise), unitNoise)
-    
+
     // Add the noise to the signal
     let y = vDSP.add(x, noise)
-    
+
     return (signal: y, noise: noise)
 }
 

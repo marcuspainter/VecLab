@@ -12,4 +12,3 @@ extension Array where Element == Double {
         self = [Element](repeating: 0, count: sized.count)
     }
 }
-

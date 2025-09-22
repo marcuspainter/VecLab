@@ -43,7 +43,7 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
     // Zero pad
     y = paddata(y, length: nfft)
     inv_ww = paddata(inv_ww, length: nfft)
-    
+
     var fy = fft(y)
     let fv = fft(inv_ww)
     fy = fy * fv
@@ -53,5 +53,5 @@ func czt(_ x: ComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? = nil)
     g = g[m - 1..<(m + k - 1)] * ww[m - 1..<(m + k - 1)]
 
     return g
- 
+
 }

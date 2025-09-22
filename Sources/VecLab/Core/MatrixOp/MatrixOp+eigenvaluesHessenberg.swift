@@ -9,11 +9,11 @@ import Foundation
 import Accelerate
 
 extension MatrixOp {
-    
+
     static func eigenvaluesHessenberg(x: [Double], size: Int) -> (r: [Double], i: [Double]) {
         let worksize = 6 * size
         var h: [Double] = x
-        
+
         var job: Int8 = 0x45 // 'E'
         var compz: Int8 = 0x4E // 'N'
         var n: Int = Int(size)
@@ -28,19 +28,19 @@ extension MatrixOp {
         var work: [Double] = [0.0]
         var lwork: Int = Int(worksize)
         var info: Int = 999
-        
+
         lwork = -1
         // dhseqr_(&job, &compz, &n, &ilo, &ihi, &h, &ldh, &wr, &wi, &z, &ldz, &work, &lwork, &info)
         dhseqr_(&job, &compz, &n, &ilo, &ihi, nil, &ldh, nil, nil, nil, &ldz, &work, &lwork, &info)
-        
+
         lwork = Int(work[0])
         work = [Double](repeating: 0.0, count: Int(lwork))
-        
+
         // assert(lwork <= worksize)
-        
+
         dhseqr_(&job, &compz, &n, &ilo, &ihi, &h, &ldh, &wr, &wi, &z, &ldz, &work, &lwork, &info)
-        
+
         return (wr, wi)
     }
-    
+
 }

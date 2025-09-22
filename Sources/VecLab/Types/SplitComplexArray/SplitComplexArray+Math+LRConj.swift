@@ -114,7 +114,7 @@ extension SplitComplexArray {
     }
 }
 
-fileprivate func vectorConjugateMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorConjugateMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         // Conjugate multiply: -1

@@ -9,14 +9,14 @@ import Foundation
 import Accelerate
 
 extension MatrixOp {
-    
+
     static func choleskyDecomposition(_ A: [Double], _ n: Int) -> [Double]? {
         var L = [Double](repeating: 0.0, count: n * n)
-        
+
         for i in 0..<n {
             for j in 0...i {
                 var sum = 0.0
-                
+
                 if j == i {  // Diagonal entries
                     for k in 0..<j {
                         sum += L[j * n + k] * L[j * n + k]
@@ -32,7 +32,7 @@ extension MatrixOp {
                 }
             }
         }
-        
+
         return L
     }
 

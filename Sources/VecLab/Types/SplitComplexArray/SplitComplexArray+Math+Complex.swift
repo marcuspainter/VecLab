@@ -94,7 +94,7 @@ extension SplitComplexArray {
     }
 }
 
-fileprivate func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
+private func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
     var c = a
     let bb = SplitComplexArray(repeating: b, count: a.count)
     SplitComplexArray.withUnsafeParameters(a, bb, &c) { A, B, C, N in
@@ -104,7 +104,7 @@ fileprivate func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, 
     return c
 }
 
-fileprivate func vectorMultiplyComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorMultiplyComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let aa = SplitComplexArray(repeating: a, count: b.count)
     SplitComplexArray.withUnsafeParameters(aa, b, &c) { A, B, C, N in
@@ -114,7 +114,7 @@ fileprivate func vectorMultiplyComplexSplitComplexArray(_ a: Complex, _ b: Split
     return c
 }
 
-fileprivate func vectorDivideSplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
+private func vectorDivideSplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
     var c = a
     let b0 = [Double](repeating: b.real, count: a.count)
     let b1 = [Double](repeating: b.imag, count: a.count)
@@ -125,7 +125,7 @@ fileprivate func vectorDivideSplitComplexArrayComplex(_ a: SplitComplexArray, _ 
     return c
 }
 
-fileprivate func vectorDivideComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorDivideComplexSplitComplexArray(_ a: Complex, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a0 = [Double](repeating: a.real, count: b.count)
     let a1 = [Double](repeating: a.imag, count: b.count)

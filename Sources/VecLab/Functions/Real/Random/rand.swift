@@ -35,7 +35,7 @@ private final class GlobalRNG: @unchecked Sendable {
         generator = SeededRandomNumberGenerator(seed: seed)
         self.seed = seed
     }
-    
+
     func getSeed() -> UInt64 {
         lock.lock()
         defer { lock.unlock() }

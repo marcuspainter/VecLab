@@ -47,18 +47,18 @@ public func poly(roots: SplitComplexArray) -> SplitComplexArray {
 }
 
 // Helpers — adjust names/types to match your Complex/SplitComplexArray API
-fileprivate func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) -> Bool {
+private func approxEqual(_ a: Complex, _ b: Complex, tol: Double = 1e-12) -> Bool {
     return abs(a.real - b.real) < tol && abs(a.imag - b.imag) < tol
 }
 
-fileprivate func matlabSortLex(_ array: SplitComplexArray) -> SplitComplexArray {
+private func matlabSortLex(_ array: SplitComplexArray) -> SplitComplexArray {
     return array.sorted { a, b in
         if a.real != b.real { return a.real < b.real }
         return a.imag < b.imag
     }
 }
 
-fileprivate func matlabSort(_ array: SplitComplexArray) -> SplitComplexArray {
+private func matlabSort(_ array: SplitComplexArray) -> SplitComplexArray {
     return array.sorted { a, b in
         let magA = Darwin.hypot(a.real, a.imag)
         let magB = Darwin.hypot(b.real, b.imag)

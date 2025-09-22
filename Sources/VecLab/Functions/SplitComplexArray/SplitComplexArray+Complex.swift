@@ -53,7 +53,7 @@ public func real(_ x: SplitComplexArray) -> RealArray {
     return x.real
 }
 
-fileprivate func vectorAbsSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
+private func vectorAbsSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
     var c = a.real
     SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvabsD(A, 1, C, 1, N)
@@ -61,7 +61,7 @@ fileprivate func vectorAbsSplitComplexArray(_ a: SplitComplexArray) -> RealArray
     return c
 }
 
-fileprivate func vectorAngleSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
+private func vectorAngleSplitComplexArray(_ a: SplitComplexArray) -> RealArray {
     var c = a.real
     SplitComplexArray.withUnsafeParameters(a, &c) { A, C, N in
         vDSP_zvphasD(A, 1, C, 1, N)

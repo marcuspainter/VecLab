@@ -6,7 +6,7 @@
 //
 
 extension Complex {
-    
+
     /// Complex integer addition.
     ///
     /// Allow complex initialization with integer`1 + 2.i`.Right-hand side only. No other integer operations are supported.
@@ -17,5 +17,5 @@ extension Complex {
     public static func + (a: Int, b: Complex) -> Complex {
         return Double(a) + b
     }
-    
+
 }

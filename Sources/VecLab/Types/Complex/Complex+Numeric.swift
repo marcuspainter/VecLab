@@ -6,7 +6,7 @@
 //
 
 extension Complex: Numeric, AdditiveArithmetic {
-    
+
     /// Complex multiplication.
     /// - Parameters:
     ///   - a: Complex number.
@@ -14,8 +14,8 @@ extension Complex: Numeric, AdditiveArithmetic {
     /// - Returns: The result of the multiplication.
     @inlinable
     public static func * (a: Complex, b: Complex) -> Complex {
-        
-        //return complexMultiply(a, b)
+
+        // return complexMultiply(a, b)
         return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real)
     }
 
@@ -38,9 +38,9 @@ extension Complex: Numeric, AdditiveArithmetic {
     public var magnitude: Double {
         return (real * real + imag * imag).squareRoot()
     }
-    
+
     // AdditiveArithmetic
-    
+
     /// Complex addition.
     /// - Parameters:
     ///   - a: Complex number.
@@ -84,9 +84,9 @@ extension Complex: Numeric, AdditiveArithmetic {
     /// The zero value.
     @inlinable
     public static var zero: Complex { .init(0, 0) }
-    
+
     // SignedNumeric
-    
+
     public typealias IntegerLiteralType = Double.IntegerLiteralType
 
     /// Unary minus.

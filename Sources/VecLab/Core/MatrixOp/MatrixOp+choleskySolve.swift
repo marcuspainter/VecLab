@@ -8,7 +8,7 @@
 import Foundation
 
 extension MatrixOp {
-    
+
     static func choleskySolve(_ A: [Double], _ b: [Double], _ n: Int) -> [Double]? {
         guard let L = MatrixOp.choleskyDecomposition(A, n) else {
             print("Matrix is not positive definite.")
@@ -16,8 +16,8 @@ extension MatrixOp {
         }
         let y = MatrixOp.forwardSubstitution(L, b, n)
         let x = MatrixOp.backSubstitution(L, y, n)
-        
+
         return x
     }
-    
+
 }

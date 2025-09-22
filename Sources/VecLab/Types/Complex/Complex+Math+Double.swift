@@ -10,15 +10,6 @@
 //
 
 extension Complex {
-    
-    /// Complex division.
-    /// - Parameters:
-    ///   - a: Complex number.
-    ///   - b: Complex number.
-    /// - Returns: The result of the division.
-    public static func / (a: Complex, b: Complex) -> Complex {
-        return CoreComplex.divide(a, b)
-    }
 
     /// Complex addition.
     /// - Parameters:
@@ -37,7 +28,7 @@ extension Complex {
     /// - Returns: The result of the addition.
     @inlinable
     public static func + (a: Double, b: Complex) -> Complex {
-        return b + a  // Overloaded
+        return Complex(a + b.real, b.imag)
     }
 
     /// Complex subtraction.
@@ -77,9 +68,18 @@ extension Complex {
     /// - Returns: The result of the multiplication.
     @inlinable
     public static func * (a: Double, b: Complex) -> Complex {
-        return b * a  // Overloaded
+        return Complex(a * b.real, a * b.imag)
     }
-    
+
+    /// Complex division.
+    /// - Parameters:
+    ///   - a: Complex number.
+    ///   - b: Complex number.
+    /// - Returns: The result of the division.
+    public static func / (a: Complex, b: Complex) -> Complex {
+        return CoreComplex.divide(a, b)
+    }
+
     /// Complex division.
     /// - Parameters:
     ///   - a: Complex number.

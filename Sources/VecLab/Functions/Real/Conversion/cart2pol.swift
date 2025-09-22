@@ -62,8 +62,7 @@ public func cart2pol(_ x: Real, _ y: Real, _ z: Real) -> (theta: Real, rho: Real
 /// - Returns: A tuple containing an array of the angle theta in radians and the radial distance rho from the
 /// origin and the radial height.
 public func cart2pol(_ x: RealArray, _ y: RealArray, _ z: RealArray)
-    -> (theta: RealArray, rho: RealArray, z: RealArray)
-{
+    -> (theta: RealArray, rho: RealArray, z: RealArray) {
     let n = x.count
     assert(
         y.count == n && z.count == n,

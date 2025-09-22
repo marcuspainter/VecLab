@@ -92,8 +92,7 @@ extension SplitComplexArray {
     }
 }
 
-
-fileprivate func vectorMultiplySplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
+private func vectorMultiplySplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvmulD(A, 1, B, 1, C, 1, N)
@@ -101,7 +100,7 @@ fileprivate func vectorMultiplySplitComplexArrayRealArray(_ a: SplitComplexArray
     return c
 }
 
-fileprivate func vectorDivideSplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
+private func vectorDivideSplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zrvdivD(A, 1, B, 1, C, 1, N)
@@ -109,7 +108,7 @@ fileprivate func vectorDivideSplitComplexArrayRealArray(_ a: SplitComplexArray, 
     return c
 }
 
-fileprivate func vectorDivideRealArraySplitComplexArray(_ a: RealArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorDivideRealArraySplitComplexArray(_ a: RealArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a1 = [Double](repeating: 0.0, count: a.count)
     let aa = SplitComplexArray(a, a1)

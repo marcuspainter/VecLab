@@ -9,14 +9,14 @@ import Foundation
 import Accelerate
 
 extension MatrixOp {
-    
+
     // U = (M,M)
     // S = (M) or (M.L)
     // VT = (L,L)
     // Divide and conquer algorithm
     // This matches Matlab output
     static func svd(a: [Double], rows: Int, columns: Int) -> (u: [Double], s: [Double], vt: [Double]) {
-        
+
         var jobz = "A".utf8.map {Int8($0)} // 0x41
         var m = Int(rows)
         var n = Int(columns)
@@ -31,17 +31,17 @@ extension MatrixOp {
         var lwork = Int(1)
         var iwork = [Int](repeating: 0, count: Int(8 * min(m, n)))
         var info = Int(0)
-        
+
         lwork = -1
         dgesdd_(&jobz, &m, &n, &aa, &lda, &s, &u, &ldu, &vt, &ldvt, &work, &lwork, &iwork, &info)
         assert(info == 0)
-        
+
         lwork = Int(work[0])
         work = [Double](repeating: 0.0, count: Int(lwork))
         dgesdd_(&jobz, &m, &n, &aa, &lda, &s, &u, &ldu, &vt, &ldvt, &work, &lwork, &iwork, &info)
         assert(info == 0)
-        
+
         return (u, s, vt)
     }
-    
+
 }

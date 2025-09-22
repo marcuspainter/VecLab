@@ -8,6 +8,6 @@
 extension Array where Element == Complex {
 
     public static prefix func - (_ a: [Complex]) -> [Complex] {
-        return a.map { -$0 }
+        return CoreComplexVector.unaryMinus(a)
     }
 }

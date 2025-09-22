@@ -69,8 +69,7 @@ extension SplitComplexArray {
 extension SplitComplexArray {
     @inlinable
     public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Complex) -> Result)
-        -> Result
-    {
+        -> Result {
         var result = initialResult
         for element in self {
             result = nextPartialResult(result, element)
@@ -106,8 +105,7 @@ extension SplitComplexArray {
 extension SplitComplexArray {
     @inlinable
     public func split(whereSeparator isSeparator: (Complex) -> Bool, omittingEmptySubsequences: Bool = true)
-        -> [[Complex]]
-    {
+        -> [[Complex]] {
         var result: [[Complex]] = []
         var currentChunk: [Complex] = []
 
@@ -165,8 +163,7 @@ extension SplitComplexArray {
 extension SplitComplexArray {
     @inlinable
     public func elementsEqual(_ other: SplitComplexArray, by areEquivalent: (Complex, Complex) -> Bool)
-        -> Bool
-    {
+        -> Bool {
         guard count == other.count else { return false }
         for i in 0..<count {
             if !areEquivalent(self[i], other[i]) {

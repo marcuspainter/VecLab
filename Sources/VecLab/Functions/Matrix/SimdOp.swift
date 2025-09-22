@@ -139,7 +139,7 @@ public enum SimdOp {
                         cPtr.baseAddress!.withMemoryRebound(to: SIMD4<Double>.self, capacity: simdCount4) {
                             cSimd in
                             var i: Int = 0
-                            //for i in 0..<simdCount4 {
+                            // for i in 0..<simdCount4 {
                             while i < simdCount4 {
 
                                 cSimd[i] = simd.sin(aSimd[i])
@@ -228,7 +228,7 @@ public enum SimdOp {
         }
     }
 
-    //typealias SIMDX = SIMD4<Double>   // or SIMD8<Double>, etc.
+    // typealias SIMDX = SIMD4<Double>   // or SIMD8<Double>, etc.
 
     public static func binaryOpX(_ a: [Double]) -> [Double] {
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
@@ -272,7 +272,7 @@ public enum SimdOp {
 
     public typealias SIMDX = SIMD2<Double>  // swap to SIMD4<Double>, SIMD2<Double>, etc.
 
-    //@inline(__always)
+    // @inline(__always)
     public static func binaryOp4(
         _ a: [Double],
         _ b: [Double],
@@ -346,5 +346,4 @@ public enum SimdOp {
         }
     }
 
-   
 }

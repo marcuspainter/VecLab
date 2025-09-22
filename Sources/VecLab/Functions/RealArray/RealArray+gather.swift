@@ -14,7 +14,7 @@ import Accelerate
 /// - Returns: Real array containing elements of specified indices.
 public func gather(_ x: RealArray, indices: [Int]) -> RealArray {
     precondition(indices.allSatisfy { $0 >= 0 }, "Indices must be non-negative")
-    
+
     let n = indices.count
     return RealArray(unsafeUninitializedCapacity: n) { resultBuffer, initializedCount in
         indices.withUnsafeBufferPointer { ibp in
@@ -30,7 +30,6 @@ public func gather(_ x: RealArray, indices: [Int]) -> RealArray {
         initializedCount = n
     }
 }
-
 
 /// Gather real  array elements using array in indices.
 /// - Parameters:

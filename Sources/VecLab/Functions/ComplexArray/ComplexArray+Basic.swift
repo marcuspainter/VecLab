@@ -5,7 +5,6 @@
 //  Created by Marcus Painter on 21/09/2025.
 //
 
-
 /// Cumulative product.
 /// - Parameter x: Complex array.
 /// - Returns: Complex array.

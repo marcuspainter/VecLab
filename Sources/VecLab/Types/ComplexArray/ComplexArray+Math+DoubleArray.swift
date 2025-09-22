@@ -7,93 +7,35 @@
 
 extension Array where Element == Complex {
     public static func + (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        //return zip(a, b).map { $0 + $1 }
-        return addComplexRealArray(a, b)
+        return CoreComplexVector.add(a, b)
     }
-    
+
     public static func + (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        // return zip(a, b).map { $0 + $1 }
-        return addComplexRealArray(b, a)
+        return CoreComplexVector.add(a, b)
     }
-    
+
     public static func - (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        return zip(a, b).map { $0 - $1 }
+        return CoreComplexVector.subtract(a, b)
     }
 
     public static func - (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        return zip(a, b).map { $0 - $1 }
+        return CoreComplexVector.subtract(a, b)
     }
-    
+
     public static func * (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        //return zip(a, b).map { $0 * $1 }
-        return multiplyComplexRealArray(a, b)
+        return CoreComplexVector.multiply(a, b)
     }
 
     public static func * (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        //return zip(a, b).map { $0 * $1 }
-        return multiplyComplexRealArray(b, a)
+        return CoreComplexVector.multiply(a, b)
     }
-    
+
     public static func / (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        return zip(a, b).map { $0 / $1 }
+        return CoreComplexVector.divide(a, b)
     }
 
     public static func / (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        return zip(a, b).map { $0 / $1 }
+        return CoreComplexVector.divide(a, b)
     }
 
-}
-
-func addComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            b.withUnsafeBufferPointer { ptr2 in
-                for i in 0..<count {
-                    let a = ptr1[i]
-                    let b = ptr2[i]
-                    buffer[i].real = a.real + b
-                    buffer[i].imag = a.imag
-                }
-                initializedCount = count
-            }
-        }
-    }
-}
-
-func multiplyComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            b.withUnsafeBufferPointer { ptr2 in
-                for i in 0..<count {
-                    let a = ptr1[i]
-                    let b = ptr2[i]
-                    buffer[i].real = a.real * b
-                    buffer[i].imag = a.imag * b
-                }
-                initializedCount = count
-            }
-        }
-    }
-}
-
-func divideComplexRealArray(_ a: [Complex], _ b: [Double]) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            b.withUnsafeBufferPointer { ptr2 in
-                for i in 0..<count {
-                    let a = ptr1[i]
-                    let b = ptr2[i]
-                    buffer[i].real = a.real / b
-                    buffer[i].imag = a.imag / b
-                }
-                initializedCount = count
-            }
-        }
-    }
 }

@@ -35,7 +35,6 @@ public func cat(_ arrays: [SplitComplexArray]) -> SplitComplexArray {
     return newArray
 }
 
-
 /// Circularly shift complex array.
 /// - Parameters:
 ///   - x: Complex array.
@@ -44,15 +43,6 @@ public func cat(_ arrays: [SplitComplexArray]) -> SplitComplexArray {
 public func circshift(_ x: SplitComplexArray, _ k: Int) -> SplitComplexArray {
     validateSize(x)
     return SplitComplexArray(circshift(x.real, k), circshift(x.imag, k))
-}
-
-/// Fills a complex array with a value in place.
-/// - Parameters:
-///   - c: Array.
-///   - a: Value.
-public func fill(_ c: SplitComplexArray, _ a: Complex) {
-    validateSize(c)
-    fillSplitComplexArray(c, a)
 }
 
 /// Flip order of complex array.
@@ -110,7 +100,6 @@ public func repelem(_ x: Complex, _ n: Int) -> SplitComplexArray {
     return y
 }
 
-
 /// Repeat a complex array.
 /// - Parameters:
 ///   - x: A complex array.
@@ -160,12 +149,4 @@ public func trimdata(_ x: SplitComplexArray, length m: Int) -> SplitComplexArray
         return x[0..<m]
     }
     return x
-}
-
-/// Fills a complex array with zeros in place.
-/// - Parameters:
-///   - c: Array.
-public func clear(_ c: SplitComplexArray) {
-    validateSize(c)
-    vectorClearSplitComplexArray(c)
 }

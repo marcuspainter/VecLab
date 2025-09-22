@@ -96,13 +96,13 @@ extension SplitComplexArray {
     }
 }
 
-fileprivate func vectorDivideSplitComplexArrayReal(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
+private func vectorDivideSplitComplexArrayReal(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
     let real = vDSP.divide(a.real, b)
     let imag = vDSP.divide(a.imag, b)
     return SplitComplexArray(real, imag)
 }
 
-fileprivate func vectorDivideRealSplitComplexArray(_ a: Real, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorDivideRealSplitComplexArray(_ a: Real, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = b
     let a0 = [Double](repeating: a, count: b.count)
     let a1 = [Double](repeating: 0.0, count: b.count)

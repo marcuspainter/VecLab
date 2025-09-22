@@ -8,7 +8,7 @@
 import Accelerate
 
 public func solve(_ a: Matrix, _ b: Matrix) -> Matrix {
-    
+
     let result = solveColMajor(a.data, b.data, n: a.rows, nrhs: b.cols)
     return Matrix(rows: b.rows, cols: b.cols, data: result)
 }
@@ -38,13 +38,13 @@ public func solveRowMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> 
     precondition(n * n == A.count, "A must be square")
     precondition(B.count % n == 0, "B's row count must match A")
     let nrhs = B.count / n
-    
+
     precondition(A.count == n * n, "A must be n×n")
     precondition(B.count == n * nrhs, "B must be n×nrhs")
 
     var A_col = Matrix.rowToColMajor(A, rows: n, cols: n)
     var B_col = Matrix.rowToColMajor(B, rows: n, cols: nrhs)
-    
+
     var N = n
     var NRHS = nrhs
     var LDA = n
@@ -62,7 +62,7 @@ public func solveRowMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> 
 
     // Convert solution back to row-major
     let X_row = Matrix.colToRowMajor(B_col, rows: n, cols: nrhs)
-    
+
     return X_row
 }
 
@@ -72,13 +72,13 @@ public func solveColMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> 
     precondition(n * n == A.count, "A must be square")
     precondition(B.count % n == 0, "B's row count must match A")
     let nrhs = B.count / n
-    
+
     precondition(A.count == n * n, "A must be n×n")
     precondition(B.count == n * nrhs, "B must be n×nrhs")
 
     var A_col = A
     var B_col = B
-    
+
     var N = n
     var NRHS = nrhs
     var LDA = n
@@ -93,7 +93,6 @@ public func solveColMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> 
         print("Solve failed, INFO = ", INFO)
         return []
     }
-    
+
     return B_col
 }
-

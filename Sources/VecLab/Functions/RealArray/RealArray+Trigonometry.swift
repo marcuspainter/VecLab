@@ -49,8 +49,6 @@ public func atan(_ x: RealArray) -> RealArray {
     return vForce.atan(x)
 }
 
-
-
 /// Four-quadrant inverse tangent  of two arrays.
 /// - Parameters:
 ///   - x: x-coordinate.

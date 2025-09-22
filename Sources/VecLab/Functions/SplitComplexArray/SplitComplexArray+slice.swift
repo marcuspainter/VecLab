@@ -5,7 +5,6 @@
 //  Created by Marcus Painter on 21/09/2025.
 //
 
-
 /// Extract a range from a complex array.
 /// - Parameters:
 ///   - x: The array.

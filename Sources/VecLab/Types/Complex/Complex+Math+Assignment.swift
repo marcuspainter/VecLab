@@ -6,7 +6,7 @@
 //
 
 extension Complex {
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex value.
@@ -15,7 +15,7 @@ extension Complex {
     public static func += (lhs: inout Complex, rhs: Double) {
         lhs = lhs + rhs
     }
-    
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex value.
@@ -51,5 +51,5 @@ extension Complex {
     public static func /= (lhs: inout Complex, rhs: Complex) {
         lhs = lhs / rhs
     }
-    
+
 }

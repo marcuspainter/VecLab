@@ -6,19 +6,19 @@
 //
 
 extension Matrix {
-    
+
     var isColumn: Bool {
         return cols == 1
     }
-        
+
     var isRow: Bool {
         return rows == 1
     }
-    
+
     var isSquare: Bool {
         return rows == cols
     }
-        
+
     var isScalar: Bool {
         return rows == 1 && cols == 1
     }

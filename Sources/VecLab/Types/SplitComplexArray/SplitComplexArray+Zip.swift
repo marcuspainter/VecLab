@@ -15,8 +15,7 @@ extension SplitComplexArray {
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
     public func zipMap(_ other: SplitComplexArray, _ transform: (Complex, Complex) throws -> Complex) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         let minCount = Swift.min(self.count, other.count)
         var result = SplitComplexArray(count: minCount)
 
@@ -33,8 +32,7 @@ extension SplitComplexArray {
     ///   - transform: transform description.
     /// - Returns: A new transformed complex array.
     public func zipCompactMap(_ other: SplitComplexArray, _ transform: (Complex, Complex) throws -> Complex?) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         let minCount = Swift.min(self.count, other.count)
         var tempResults = [Complex?](repeating: nil, count: minCount)
         var resultCount = 0
@@ -67,8 +65,7 @@ extension SplitComplexArray {
     ///   - predicate: Filter criteria.
     /// - Returns: A new transformed complex array.
     public func zipFilter(_ other: SplitComplexArray, _ predicate: (Complex, Complex) throws -> Bool) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         let minCount = Swift.min(self.count, other.count)
         var inclusion = [Bool](repeating: false, count: minCount)
         var resultCount = 0

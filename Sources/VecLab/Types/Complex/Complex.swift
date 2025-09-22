@@ -16,8 +16,7 @@ public struct Complex:
     // CustomDebugStringConvertible,
     // Numeric
     // SignedNumeric,
-    Sendable
-{
+    Sendable {
     /// Real part.
     public var real: Double
 
@@ -38,7 +37,7 @@ public struct Complex:
         self.real = real
         self.imag = imag
     }
-    
+
     /// Initialize a complex number with a real number..
     /// - Parameters:
     ///   - realOnly: Real part.

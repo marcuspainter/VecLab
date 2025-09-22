@@ -9,13 +9,13 @@ import Foundation
 import Accelerate
 
 extension MatrixOp {
-    
+
     // Modify the luDecompose function to return the ipiv array too
     static func luDecomposition(a: [Double], rows: Int, columns: Int) -> (L: [Double], U: [Double], ipiv: [Int]) {
         var matrix = a // A copy of the input matrix
         var ipiv: [Int] = [Int](repeating: 0, count: min(rows, columns))
         var info: Int = 0
-        
+
         // Perform LU decomposition using dgetrf
         ipiv.withUnsafeMutableBufferPointer { ipiv in
             matrix.withUnsafeMutableBufferPointer { matrix in
@@ -38,16 +38,16 @@ extension MatrixOp {
                 }
             }
         }
-        
+
         // Ensure the operation was successful
         guard info == 0 else {
             fatalError("LU decomposition failed!")
         }
-        
+
         // Extract L and U from the combined matrix
         var L = [Double](repeating: 0.0, count: rows * columns)
         var U = [Double](repeating: 0.0, count: rows * columns)
-        
+
         for i in 0..<rows {
             for j in 0..<columns {
                 if i > j {
@@ -60,8 +60,8 @@ extension MatrixOp {
                 }
             }
         }
-        
+
         return (L, U, ipiv)
     }
-    
+
 }

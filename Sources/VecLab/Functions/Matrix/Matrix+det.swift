@@ -19,10 +19,10 @@ func det(_ a: [Double], n: Int) -> Double {
     var lda = N
     var info: Int = 0
     var A = a
-    
+
     dgetrf_(&N, &N, &A, &lda, &ipiv, &info)
     if info != 0 { return .nan } // singular or error
-    
+
     var determinant: Double = 1.0
     var swaps = 0
     for i in 0..<n {
@@ -30,6 +30,6 @@ func det(_ a: [Double], n: Int) -> Double {
         if ipiv[i] != i+1 { swaps += 1 } // row swap check
     }
     if swaps % 2 != 0 { determinant = -determinant }
-    
+
     return determinant
 }

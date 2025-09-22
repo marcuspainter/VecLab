@@ -11,7 +11,7 @@ import Accelerate
 /// - Parameter x: Complex number.
 /// - Returns: The exponential of `x`.
 public func exp(_ x: Complex) -> Complex {
-    //return complexExp(x)
+    // return complexExp(x)
     return CoreComplex.exp(x)
 }
 
@@ -61,7 +61,6 @@ public func log2(_ x: Complex) -> Complex {
     return CoreComplex.log2(x)
 }
 
-
 /// Base 10 logarithm of a complex number.
 public func log10(_ x: Complex) -> Complex {
     return CoreComplex.log10(x)
@@ -73,4 +72,3 @@ public func log10(_ x: Complex) -> Complex {
 public func sqrt(_ x: Complex) -> Complex {
     return CoreComplex.sqrt(x)
 }
-

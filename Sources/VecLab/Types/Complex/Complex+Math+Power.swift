@@ -51,5 +51,4 @@ extension Complex {
         return pow(a, b)
     }
 
-
 }

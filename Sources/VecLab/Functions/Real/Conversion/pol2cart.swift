@@ -56,8 +56,7 @@ public func pol2cart(_ theta: Real, _ rho: Real, _ z: Real) -> (x: Real, y: Real
 ///   - z: Elevation coordinate.
 /// - Returns: A tuple containing arrays of  x, y, and z Cartesian coordinates.
 public func pol2cart(_ theta: RealArray, _ rho: RealArray, _ z: RealArray)
-    -> (x: RealArray, y: RealArray, z: RealArray)
-{
+    -> (x: RealArray, y: RealArray, z: RealArray) {
     let n = theta.count
     assert(
         rho.count == n && z.count == n,

@@ -5,18 +5,17 @@
 //  Created by Marcus Painter on 06/09/2025.
 //
 
-
 @discardableResult
 public func benchmark(
     _ desc: String = "Benchmark",
     iterations: Int = 100,
     function: () throws -> Void
 ) rethrows -> BenchmarkResult {
-    
+
     let clock = ContinuousClock()
     var durations: [Double] = []
     durations.reserveCapacity(iterations)
-    
+
     for _ in 0..<iterations {
         let start = clock.now
         try function()
@@ -25,14 +24,13 @@ public func benchmark(
         let ms = ns / 1_000_000.0
         durations.append(ms)
     }
-    
+
     let result = BenchmarkResult(iterations: iterations, durationsMs: durations)
-    
-    //print("\(desc): avg \(result.average) ms | min \(result.minimum) ms | max \(result.maximum) ms | median \(result.median) ms")
-    
+
+    // print("\(desc): avg \(result.average) ms | min \(result.minimum) ms | max \(result.maximum) ms | median \(result.median) ms")
+
     print("\(desc): median \(result.median) ms| min \(result.minimum) ms | max \(result.maximum) ms")
-  
-    
+
     return result
 }
 

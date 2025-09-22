@@ -328,6 +328,8 @@ class OperatorOverloadTests: XCTestCase {
             Complex(-1.0, 1.0)
         ]
         
+        
+        
         let dataComplexB: [Complex] = [
             Complex(2.0, -1.0),
             Complex(1.0, 2.0),
@@ -376,13 +378,30 @@ class OperatorOverloadTests: XCTestCase {
         ], 2, 2)
         XCTAssertEqual(complexMatrixPlusScalar.data, complexMatrixPlusScalar.data, accuracy: tolerance)
         
+        
+        
         let complexMatrixPlusComplexScalar = matrixComplexA + complexScalar
+        
+
+        
+        
         let expectedComplexMatrixPlusComplexScalar = ComplexMatrix( [
             Complex(2.5, 0.5),
             Complex(3.5, -1.5),
             Complex(4.5, 1.5),
             Complex(0.5, 0.5)
         ], 2, 2)
+        
+        print("---")
+        print(matrixComplexA)
+        print("---")
+        print(complexScalar)
+        print("---")
+        print(complexMatrixPlusComplexScalar)
+        print("---")
+        print(expectedComplexMatrixPlusComplexScalar)
+        print("---")
+        
         XCTAssertEqual(complexMatrixPlusComplexScalar.data, expectedComplexMatrixPlusComplexScalar.data, accuracy: tolerance)
         
         let complexScalarPlusComplexMatrix = complexScalar + matrixComplexA

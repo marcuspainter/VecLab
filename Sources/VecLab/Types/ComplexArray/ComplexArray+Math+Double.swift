@@ -6,85 +6,36 @@
 //
 
 extension Array where Element == Complex {
-    
+
     public static func + (_ a: [Complex], _ b: Double) -> [Complex] {
-        //return a.map { $0 + b }
-        return addComplexReal(a, b)
+        return CoreComplexVector.add(a, b)
     }
-    
+
     public static func + (_ a: Double, _ b: [Complex]) -> [Complex] {
-        //return b.map { a + $0 }
-        return addComplexReal(b, a)
+        return CoreComplexVector.add(a, b)
     }
-    
+
     public static func - (_ a: [Complex], _ b: Double) -> [Complex] {
-        return a.map { $0 - b }
+        return CoreComplexVector.subtract(a, b)
     }
 
     public static func - (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return b.map { a - $0 }
+        return CoreComplexVector.subtract(a, b)
     }
-    
+
     public static func * (_ a: [Complex], _ b: Double) -> [Complex] {
-        //return a.map { $0 * b }
-        return multiplyComplexReal(a, b)
+        return CoreComplexVector.multiply(a, b)
     }
 
     public static func * (_ a: Double, _ b: [Complex]) -> [Complex] {
-        //return b.map { a * $0 }
-        return multiplyComplexReal(b, a)
+        return CoreComplexVector.multiply(a, b)
     }
-    
+
     public static func / (_ a: [Complex], _ b: Double) -> [Complex] {
-        return a.map { $0 / b }
+        return CoreComplexVector.divide(a, b)
     }
 
     public static func / (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return b.map { a / $0 }
-    }
-}
-
-func addComplexReal(_ a: [Complex], _ b: Double) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            for i in 0..<count {
-                let a = ptr1[i]
-                buffer[i].real = a.real + b
-                buffer[i].imag = a.imag
-            }
-            initializedCount = count
-        }
-    }
-}
-
-func multiplyComplexReal(_ a: [Complex], _ b: Double) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            for i in 0..<count {
-                let a = ptr1[i]
-                buffer[i].real = a.real * b
-                buffer[i].imag = a.imag * b
-            }
-            initializedCount = count
-        }
-    }
-}
-
-func divideComplexReal(_ a: [Complex], _ b: Double) -> [Complex] {
-    let count = a.count
-
-    return Array(unsafeUninitializedCapacity: count) { buffer, initializedCount in
-        a.withUnsafeBufferPointer { ptr1 in
-            for i in 0..<count {
-                let a = ptr1[i]
-                buffer[i].real = a.real / b
-                buffer[i].imag = a.imag / b
-            }
-            initializedCount = count
-        }
+        return CoreComplexVector.divide(a, b)
     }
 }

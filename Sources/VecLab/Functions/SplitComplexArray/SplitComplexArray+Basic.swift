@@ -135,7 +135,6 @@ public func sign(_ x: SplitComplexArray) -> SplitComplexArray {
     return x / abs(x)  // Overloaded
 }
 
-
 /// Sort complex array.
 /// - Parameters:
 ///   - x: Complex array.
@@ -171,7 +170,7 @@ public func sort(_ x: SplitComplexArray, order: SortOder = .ascending) -> SplitC
     }
 }
 
-fileprivate func matlabSort2(_ arr: SplitComplexArray) -> SplitComplexArray {
+private func matlabSort2(_ arr: SplitComplexArray) -> SplitComplexArray {
     return arr.sorted { a, b in
         let magA = hypot(a.real, a.imag)
         let magB = hypot(b.real, b.imag)

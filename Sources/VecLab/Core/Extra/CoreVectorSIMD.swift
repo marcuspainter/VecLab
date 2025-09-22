@@ -24,14 +24,14 @@ enum CoreVectorSIMD {
                             bPtr.baseAddress!.withMemoryRebound(to: SIMD4<Double>.self, capacity: simdCount4) { bSimd in
                                 cPtr.baseAddress!.withMemoryRebound(to: SIMD4<Double>.self, capacity: simdCount4) {
                                     cSimd in
-                                    
-                                    //Callback: aPtr, bPtr, cPtr, aSimd, bSimd, cSimd,
-                                    
+
+                                    // Callback: aPtr, bPtr, cPtr, aSimd, bSimd, cSimd,
+
                                     // Direct SIMD operations on reinterpreted memory
                                     for i in 0..<simdCount4 {
                                         cSimd[i] = aSimd[i] + bSimd[i]
                                     }
-                                    
+
                                     // Handle remainder elements
                                     for i in simdCount..<count {
                                         cPtr[i] = aPtr[i] + bPtr[i]
@@ -47,11 +47,11 @@ enum CoreVectorSIMD {
     }
 
     static func addScalar(_ a: [Double], _ b: Double) -> [Double] {
-        //var c = [Double](repeating: 0.0, count: a.count)
-        //for i in 0..<a.count {
+        // var c = [Double](repeating: 0.0, count: a.count)
+        // for i in 0..<a.count {
         //    c[i] = a[i] + b
-        //}
-        //return c
+        // }
+        // return c
 
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             a.withUnsafeBufferPointer { aPtr in
@@ -71,7 +71,7 @@ enum CoreVectorSIMD {
                             for i in 0..<simdCount4 {
                                 cSimd[i] = aSimd[i] + bSimd
                             }
-                            
+
                             // Handle remainder elements
                             for i in simdCount..<count {
                                 cPtr[i] = aPtr[i] + b
@@ -158,7 +158,7 @@ enum CoreVectorSIMD {
                             bPtr.baseAddress!.withMemoryRebound(to: SIMD4<Double>.self, capacity: simdCount4) { bSimd in
                                 cPtr.baseAddress!.withMemoryRebound(to: SIMD4<Double>.self, capacity: simdCount4) {
                                     cSimd in
-                                    
+
                                     // Direct SIMD operations on reinterpreted memory
                                     for i in 0..<simdCount4 {
                                         cSimd[i] = aSimd[i] * bSimd[i]
@@ -280,7 +280,7 @@ enum CoreVectorSIMD {
             initializedCount = a.count
         }
     }
-    
+
     static func addSIMD(_ a: borrowing [Double], _ b: borrowing [Double]) -> [Double] {
         return SimdOp.binaryOp(a, b) { aPtr, bPtr, cPtr, aSimd, bSimd, cSimd, simdCount, count in
             // SIMD loop
@@ -295,4 +295,3 @@ enum CoreVectorSIMD {
     }
 
 }
-

@@ -50,7 +50,7 @@ extension SplitComplexArray {
     }
 }
 
-fileprivate func vectorAddSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorAddSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvaddD(A, 1, B, 1, C, 1, N)
@@ -58,7 +58,7 @@ fileprivate func vectorAddSplitComplexArray(_ a: SplitComplexArray, _ b: SplitCo
     return c
 }
 
-fileprivate func vectorSubtractSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorSubtractSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvsubD(A, 1, B, 1, C, 1, N)
@@ -66,7 +66,7 @@ fileprivate func vectorSubtractSplitComplexArray(_ a: SplitComplexArray, _ b: Sp
     return c
 }
 
-fileprivate func vectorMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         let conjugateFlag = Int32(1) // No conjugate multiply
@@ -75,7 +75,7 @@ fileprivate func vectorMultiplySplitComplexArray(_ a: SplitComplexArray, _ b: Sp
     return c
 }
 
-fileprivate func vectorDivideSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
+private func vectorDivideSplitComplexArray(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in
         vDSP_zvdivD(B, 1, A, 1, C, 1, N)

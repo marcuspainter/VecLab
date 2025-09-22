@@ -372,8 +372,7 @@ extension SplitComplexArray {
     /// - Parameter belongsInSecondPartition: Predicate closure.
     /// - Returns: A new array.
     public func partitioned(by belongsInSecondPartition: (Complex) -> Bool)
-        -> (array: SplitComplexArray, pivot: Int)
-    {
+        -> (array: SplitComplexArray, pivot: Int) {
         var matching = SplitComplexArray()
         var nonMatching = SplitComplexArray()
 

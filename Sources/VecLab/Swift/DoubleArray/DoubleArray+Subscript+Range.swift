@@ -18,10 +18,9 @@ extension Array where Element == Double {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
             // Use type annotation to avoid recursion
-            //let slice: ArraySlice<Double> = self[bounds]
-            //return Array(slice)
-            
-            
+            // let slice: ArraySlice<Double> = self[bounds]
+            // return Array(slice)
+
             let n = bounds.count
             return [Double](unsafeUninitializedCapacity: n) { buffer, initializedCount in
                 self.withUnsafeBufferPointer { src in
@@ -32,8 +31,7 @@ extension Array where Element == Double {
                 }
                 initializedCount = n
             }
-            
-             
+
         }
         set {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
@@ -55,7 +53,7 @@ extension Array where Element == Double {
             // Use type annotation to avoid recursion
             let slice: ArraySlice<Double> = self[bounds]
             return Array(slice)
-            
+
             /*
             let n = bounds.count   // ClosedRange count = upper - lower + 1
             return [Double](unsafeUninitializedCapacity: n) { buffer, initializedCount in

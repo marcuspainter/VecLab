@@ -6,7 +6,7 @@
 //
 
 extension Array where Element == Complex {
-    
+
     public init(real: [Double], imag: [Double]) {
         precondition(real.count == imag.count, "Lengths must match")
         self = .init(unsafeUninitializedCapacity: real.count) { buffer, initializedCount in

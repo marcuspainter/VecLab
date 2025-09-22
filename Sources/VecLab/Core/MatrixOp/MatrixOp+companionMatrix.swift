@@ -8,11 +8,11 @@
 import Foundation
 
 extension MatrixOp {
-    
+
     static func companionMatrix(x: [Double]) -> [Double] {
         let n = x.count
         var matrix = [Double](repeating: .nan, count: n * n) // NaN is a guard value
-        
+
         var index = 0
         for j in 0 ..< n {
             matrix[index] = -x[j]
@@ -22,7 +22,7 @@ extension MatrixOp {
                 index = index + 1
             }
         }
-        
+
         return matrix
     }
 }

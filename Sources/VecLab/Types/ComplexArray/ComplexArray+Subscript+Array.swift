@@ -14,7 +14,7 @@ extension Array where Element == Complex {
             for idx in indices {
                 precondition(idx >= 0 && idx < count, "Index \(idx) out of range")
             }
-            
+
             return indices.map { self[$0] }
         }
         set {

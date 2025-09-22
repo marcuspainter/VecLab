@@ -12,8 +12,7 @@
 ///   - threshold: Threshold of neighbors.
 /// - Returns: Peaks and locations.
 public func findpeaks(_ x: RealArray, minPeakHeight: Real? = nil, threshold: Real? = nil)
-    -> (peaks: RealArray, locations: [Int])
-{
+    -> (peaks: RealArray, locations: [Int]) {
     guard x.count > 2 else {
         return ([], [])
     }

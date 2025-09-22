@@ -6,9 +6,16 @@
 //
 
 extension ComplexMatrix {
-    
-    // += Defined elsewhere
-    
+
+    /// Addition.
+    /// - Parameters:
+    ///   - lhs: This complex matrix.
+    ///   - rhs: A complex matrix.
+    @inlinable
+    public static func += (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
+        lhs = lhs + rhs
+    }
+
     /// Subtraction.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -17,7 +24,7 @@ extension ComplexMatrix {
     public static func -= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs - rhs
     }
-    
+
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -26,7 +33,7 @@ extension ComplexMatrix {
     public static func *= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs * rhs
     }
-    
+
     /// Multiplication.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -35,7 +42,7 @@ extension ComplexMatrix {
     public static func .*= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs .* rhs
     }
- 
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -44,9 +51,9 @@ extension ComplexMatrix {
     public static func ./= (lhs: inout ComplexMatrix, rhs: ComplexMatrix) {
         lhs = lhs ./ rhs
     }
-    
+
     // MARK: Double
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex matrix.
@@ -73,7 +80,7 @@ extension ComplexMatrix {
     public static func *= (lhs: inout ComplexMatrix, rhs: Double) {
         lhs = lhs * rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.
@@ -82,9 +89,9 @@ extension ComplexMatrix {
     public static func /= (lhs: inout ComplexMatrix, rhs: Double) {
         lhs = lhs / rhs
     }
-    
+
     // MARK: Complex
-    
+
     /// Addition.
     /// - Parameters:
     ///   - lhs: This complex matrix.
@@ -111,7 +118,7 @@ extension ComplexMatrix {
     public static func *= (lhs: inout ComplexMatrix, rhs: Complex) {
         lhs = lhs * rhs
     }
-    
+
     /// Division.
     /// - Parameters:
     ///   - lhs: This complex array.

@@ -7,16 +7,6 @@
 
 import Accelerate
 
-private extension Array where Element == Double {
-    
-    init(unsafeUninitializedCount: Int) {
-        self = .init(unsafeUninitializedCapacity: unsafeUninitializedCount) { buffer, initializedCount in
-            initializedCount = unsafeUninitializedCount
-        }
-    }
-    
-}
-
 public struct Matrix {
     public var rows: Int = 0
     public var cols: Int = 0
@@ -30,18 +20,22 @@ public struct Matrix {
 
         switch order {
         case .rowMajor:
-            transposeMatrix(data, rows: rows, cols: cols, result: &self.data)
+                self.data = MatrixOp.transposeMatrix(data, rows: rows, columns: cols)
             break
         case .colMajor:
             // No transpose
             break
         }
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
     public init(_ rows: Int, _ cols: Int, ) {
         self.rows = rows
         self.cols = cols
         self.data = [Double](repeating: 0.0, count: rows * cols)
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
     public init(_ array: [[Double]]) {
@@ -56,17 +50,7 @@ public struct Matrix {
         assert(array.allSatisfy { $0.count == cols }, "All rows must have same length")
 
         let flatData = array.flatMap { $0 }
-
-        self.data = flatData
-        
-        // Unitialized array
-        //self.data = [Double](unsafeUninitializedCapacity: flatData.count) { buffer, initializedCount in
-        //    initializedCount = flatData.count
-        //}
-        
-        //self.data = [Double](unsafeUninitializedCount: flatData.count)
-
-        transposeMatrix(flatData, rows: rows, cols: cols, result: &self.data)
+        self.data = MatrixOp.transposeMatrix(flatData, rows: rows, columns: cols)
 
         assert(data.count == rows * cols, "Matrix init failed")
     }
@@ -81,15 +65,16 @@ public struct Matrix {
         self.rows = rows
         self.cols = cols
         self.data = data
+        precondition(data.count == rows * cols, "Matrix failed")
     }
-    
+
     public init(like matrix: Matrix, data: [Double]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = data
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 }
-
 
 extension Matrix {
 
@@ -128,6 +113,7 @@ extension Matrix {
 
 }
 
+/*
 func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inout [Double]) {
     precondition(src.count == M * N, "Source array size does not match rows * cols")
 
@@ -146,3 +132,4 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inou
     }
 
 }
+*/

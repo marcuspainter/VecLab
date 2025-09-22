@@ -8,6 +8,6 @@
 extension Matrix {
 
     public static prefix func - (_ a: Matrix) -> Matrix {
-        return Matrix(like: a, data: -a.data)
+        return CoreMatrix.unaryMinus(a)
     }
 }

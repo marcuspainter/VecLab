@@ -8,10 +8,10 @@
 import Foundation
 
 extension MatrixOp {
-    
+
     static func forwardSubstitution(_ L: [Double], _ b: [Double], _ n: Int) -> [Double] {
         var y = [Double](repeating: 0.0, count: n)
-        
+
         for i in 0..<n {
             var sum = 0.0
             for j in 0..<i {
@@ -19,8 +19,8 @@ extension MatrixOp {
             }
             y[i] = (b[i] - sum) / L[i * n + i]
         }
-        
+
         return y
     }
-    
+
 }

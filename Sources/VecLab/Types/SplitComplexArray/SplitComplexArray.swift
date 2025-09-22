@@ -24,8 +24,7 @@ public struct SplitComplexArray:
     // CustomDebugStringConvertible,
     // ExpressibleByArrayLiteral
     Codable,
-    Sendable
-{
+    Sendable {
 
     // MARK: - Storage
 

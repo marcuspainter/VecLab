@@ -27,8 +27,7 @@ public func sph2cart(_ azimuth: Real, _ elevation: Real, _ r: Real) -> (x: Real,
 ///   - r: The radial distance from the origin.
 /// - Returns: A tuple containing arrays of  x, y, and z Cartesian coordinates.
 public func sph2cart(_ azimuth: RealArray, _ elevation: RealArray, _ r: RealArray)
-    -> (x: RealArray, y: RealArray, z: RealArray)
-{
+    -> (x: RealArray, y: RealArray, z: RealArray) {
     let n = azimuth.count
     assert(
         elevation.count == n && r.count == n,

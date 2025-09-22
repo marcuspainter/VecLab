@@ -8,12 +8,10 @@
 extension ComplexMatrix {
 
     public var T: ComplexMatrix {
-        let data = matrixTranspose(self.data, rows: self.rows, cols: self.cols)
-        return ComplexMatrix(rows: self.cols, cols: self.rows, data: data)
+        return CoreComplexMatrix.transpose(self)
     }
 
     public var H: ComplexMatrix {
-        let data = matrixConjugateTranspose(self.data, rows: self.rows, cols: self.cols)
-        return ComplexMatrix(rows: self.cols, cols: self.rows, data: data)
+        return CoreComplexMatrix.conjugateTranspose(self)
     }
 }

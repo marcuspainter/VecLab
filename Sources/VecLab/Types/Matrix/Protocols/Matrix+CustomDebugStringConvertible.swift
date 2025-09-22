@@ -11,5 +11,5 @@ extension Matrix: CustomDebugStringConvertible {
         text += self.description + "\n"
         return text
     }
-    
+
 }

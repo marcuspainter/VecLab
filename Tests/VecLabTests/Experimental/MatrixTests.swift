@@ -39,9 +39,9 @@ final class MatrixTests: XCTestCase {
         print(s.data)
         
         let t = r * r
-        
-        c.data = rightDivision(a.data, a.data, m: a.rows, n: a.cols)
-        print(c.data)
+  
+   //     c.data = rightDivision(a.data, a.data, m: a.rows, n: a.cols)
+    //    print(c.data)
         
         var m = Double(1)
         m += m
@@ -446,7 +446,10 @@ final class MatrixTests: XCTestCase {
         
         let z = ComplexMatrix(data, 2, 2)
         
-        let c = a * b - a .* b ./ a
+        //let c = a * b - a .* b ./ a
+        
+        let f = (a * b)
+        let c = f - a
         
         let zz = z * z
         

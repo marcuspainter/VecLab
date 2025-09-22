@@ -6,7 +6,7 @@
 //
 
 extension Array where Element == Complex {
-    
+
     public init(count: Int) {
         self = Array(repeating: .zero, count: count)
     }

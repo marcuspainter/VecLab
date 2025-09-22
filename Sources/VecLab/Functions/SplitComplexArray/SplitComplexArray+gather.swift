@@ -9,7 +9,7 @@ import Accelerate
 
 public func gather(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray {
     precondition(indices.allSatisfy { $0 >= 0 }, "Indices must be non-negative")
-    
+
     let n = indices.count
     let real = RealArray(unsafeUninitializedCapacity: n) { resultBuffer, initializedCount in
         indices.withUnsafeBufferPointer { ibp in
@@ -24,7 +24,7 @@ public func gather(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray 
         }
         initializedCount = n
     }
-    
+
     let imag = RealArray(unsafeUninitializedCapacity: n) { resultBuffer, initializedCount in
         indices.withUnsafeBufferPointer { ibp in
             ibp.withMemoryRebound(to: UInt.self) { uip in
@@ -38,7 +38,6 @@ public func gather(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray 
         }
         initializedCount = n
     }
-    
+
     return SplitComplexArray(real, imag)
 }
-

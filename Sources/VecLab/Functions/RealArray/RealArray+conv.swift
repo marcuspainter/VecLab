@@ -78,4 +78,3 @@ private func convfull(_ x: RealArray, _ y: RealArray) -> RealArray {
     c = Array(c[0..<n])  // Trim to correct length
     return c
 }
-

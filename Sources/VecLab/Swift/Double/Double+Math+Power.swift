@@ -16,7 +16,7 @@ extension Double {
     ///   - b: Real number.
     /// - Returns: Raises `a` to the power of `b`.
     public static func ** (_ a: Double, _ b: Double) -> Double {
-        return pow(a, b)
+        return Darwin.pow(a, b)
     }
 
     /// Power.
@@ -26,7 +26,7 @@ extension Double {
     /// - Returns: Raises `a` to the power of `b`.
     @inlinable
     public static func ** (_ a: Double, _ b: Int) -> Double {
-        return pow(a, b)
+        return Darwin.pow(a, Double(b))
     }
 
     /// Power.
@@ -35,6 +35,6 @@ extension Double {
     ///   - b: Real number.
     /// - Returns: Raises `a` to the power of `b`.
     public static func ** (_ a: Int, _ b: Double) -> Double {
-        return pow(a, b)
+        return Darwin.pow(Double(a), b)
     }
 }

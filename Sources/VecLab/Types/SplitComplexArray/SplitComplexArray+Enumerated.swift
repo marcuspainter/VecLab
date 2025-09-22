@@ -13,8 +13,7 @@ extension SplitComplexArray {
     /// - Parameter transform: transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedMap(_ transform: (Int, Complex) throws -> Complex) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         var result = SplitComplexArray(count: count)
 
         for i in 0..<count {
@@ -27,8 +26,7 @@ extension SplitComplexArray {
     /// - Parameter transform: Transform closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedCompactMap(_ transform: (Int, Complex) throws -> Complex?) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         var tempResults = [Complex?](repeating: nil, count: count)
         var resultCount = 0
 
@@ -58,8 +56,7 @@ extension SplitComplexArray {
     /// - Parameter predicate: Filter closure.
     /// - Returns: A new transformed complex array.
     public func enumeratedFilter(_ predicate: (Int, Complex) throws -> Bool) rethrows
-        -> SplitComplexArray
-    {
+        -> SplitComplexArray {
         var inclusion = [Bool](repeating: false, count: count)
         var resultCount = 0
 

@@ -103,5 +103,3 @@ public func pow(_ a: SplitComplexArray, _ b: SplitComplexArray) -> SplitComplexA
 
     return c
 }
-
-

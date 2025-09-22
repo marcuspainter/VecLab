@@ -47,10 +47,10 @@ public func vector(_ x: [Double]) -> RealArray {
 /// - Returns: A real array.
 public func vector(_ range: Range<Int>, _ step: Int = 1) -> RealArray {
     guard step != 0 else { return [] } // avoid infinite loop
-    
+
     let distance = range.upperBound - range.lowerBound
     let count = max(0, Int(distance / step)) // floor division to stay below upperBound
-    
+
     return vDSP.ramp(withInitialValue: Double(range.lowerBound), increment: Double(step), count: count)
 }
 
@@ -61,10 +61,10 @@ public func vector(_ range: Range<Int>, _ step: Int = 1) -> RealArray {
 /// - Returns: A real array.
 public func vector(_ range: Range<Real>, _ step: Real = 1) -> RealArray {
     guard step != 0 else { return [] } // avoid infinite loop
-    
+
     let distance = range.upperBound - range.lowerBound
     let count = max(0, Int(distance / step)) // floor division to stay below upperBound
-    
+
     return vDSP.ramp(withInitialValue: range.lowerBound, increment: step, count: count)
 }
 
@@ -75,10 +75,10 @@ public func vector(_ range: Range<Real>, _ step: Real = 1) -> RealArray {
 /// - Returns: A real array.
 public func vector(_ range: ClosedRange<Real>, _ step: Real = 1) -> RealArray {
     guard step != 0 else { return [] } // avoid infinite loop
-    
+
     let distance = range.upperBound - range.lowerBound
     let count = max(0, Int(floor(distance / step)) + 1)
-    
+
     return vDSP.ramp(withInitialValue: range.lowerBound, increment: step, count: count)
 }
 
@@ -89,10 +89,10 @@ public func vector(_ range: ClosedRange<Real>, _ step: Real = 1) -> RealArray {
 /// - Returns: A real array.
 public func vector(_ range: ClosedRange<Int>, _ step: Int = 1) -> RealArray {
     guard step != 0 else { return [] } // avoid infinite loop
-    
+
     let distance = Double(range.upperBound - range.lowerBound)
     let count = max(0, Int(floor(distance / Double(step))) + 1)
-    
+
     return vDSP.ramp(withInitialValue: Double(range.lowerBound), increment: Double(step), count: count)
 }
 

@@ -8,36 +8,52 @@
 import Accelerate
 
 enum CoreComplexMatrix {
-    
-    // MARK: add
+
+    // MARK: Add
 
     static func add(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: b.cols, data: CoreComplexVector.add(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b.data))
     }
-    
+
     static func add(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.add(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b))
     }
-    
+
     static func add(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: b.rows, cols: b.cols, data: CoreComplexVector.add(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexVector.add(a, b.data))
     }
-    
-    // MARK: subtract
-    
+
+    static func add(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b))
+    }
+
+    static func add(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: b, data: CoreComplexVector.add(a, b.data))
+    }
+
+    // MARK: Subtract
+
     static func subtract(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: b.cols, data: CoreComplexVector.subtract(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b.data))
     }
-    
+
     static func subtract(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.subtract(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b))
     }
-    
+
     static func subtract(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: b.rows, cols: b.cols, data: CoreComplexVector.subtract(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexVector.subtract(a, b.data))
     }
-    
-    // MARK: multiply
+
+    static func subtract(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b))
+    }
+
+    static func subtract(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: b, data: CoreComplexVector.subtract(a, b.data))
+    }
+
+    // MARK: Multiply
 
     static func multiplySwift(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         var c = ComplexMatrix(a.rows, b.cols)
@@ -53,9 +69,9 @@ enum CoreComplexMatrix {
         assert(c.rows == m && c.cols == n, "Output ComplexMatrix has incorrect dimensions")
 
         // Zero C
-        //for idx in 0..<c.data.count {
+        // for idx in 0..<c.data.count {
         //    c[idx] = 0.0
-        //}
+        // }
 
         // Column-major friendly loops
         // Iterate over columns of B (and C), then over the shared dimension k,
@@ -77,8 +93,9 @@ enum CoreComplexMatrix {
         }
         return c
     }
-    
+
     static func multiply(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
+        validateCompatible(a, b)
         let m = a.rows
         let n = b.cols
         let k = a.cols
@@ -87,13 +104,13 @@ enum CoreComplexMatrix {
             // Alpha = 1.0, Beta = 0.0
             let alpha: [Double] = [1.0, 0.0]
             let beta: [Double] = [0.0, 0.0]
-            
+
             a.data.withUnsafeBufferPointer { aPtr in
                 b.data.withUnsafeBufferPointer { bPtr in
                     alpha.withUnsafeBufferPointer { alphaPtr in
                         beta.withUnsafeBufferPointer { betaPtr in
                             result.withUnsafeMutableBufferPointer { resultPtr in
-                                
+
                                 cblas_zgemm(
                                     CblasColMajor,                        // ORDER: Row-major storage
                                     CblasNoTrans,                         // TRANSA: Don't transpose A
@@ -121,79 +138,67 @@ enum CoreComplexMatrix {
     }
 
     static func multiply(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.multiply(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b))
+    }
+
+    static func multiply(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: b, data: CoreComplexVector.multiply(a, b.data))
+    }
+
+    static func multiply(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b))
+    }
+
+    static func multiply(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: b, data: CoreComplexVector.multiply(a, b.data))
     }
 
     static func elementMultiply(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.multiply(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b.data))
     }
 
-    // MARK: divide
-    
+    // MARK: Divide
+
     static func divide(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.divide(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b))
     }
 
     static func divide(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: b.rows, cols: b.cols, data: CoreComplexVector.divide(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexVector.divide(a, b.data))
+    }
+
+    static func divide(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b))
+    }
+
+    static func divide(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: b, data: CoreComplexVector.divide(a, b.data))
     }
 
     static func elementDivide(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(rows: b.rows, cols: b.cols, data: CoreComplexVector.divide(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b.data))
     }
-    
+
     // MARK: Unary
 
-    static func unaryMinus(_ a: ComplexMatrix) -> ComplexMatrix  {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.unaryMinus(a.data))
+    static func unaryMinus(_ a: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.unaryMinus(a.data))
     }
-    
-    static func conjugate(_ a: ComplexMatrix) -> ComplexMatrix  {
-        return ComplexMatrix(rows: a.rows, cols: a.cols, data: CoreComplexVector.conjugate(a.data))
+
+    static func conjugate(_ a: ComplexMatrix) -> ComplexMatrix {
+        return ComplexMatrix(like: a, data: CoreComplexVector.conjugate(a.data))
     }
-}
 
-private func multiplyComplexMatrix() {
-    
-}
-
-private func transposeComplexMatrix(
-    _ src: [Complex],
-    rows M: Int,
-    cols N: Int,
-    result dst: inout [Complex]
-) {
-    precondition(src.count == M * N)
-    precondition(dst.count == M * N)
-
-    // Safety checks: Complex must be exactly two Doubles, tightly packed
-    precondition(MemoryLayout<Complex>.stride == MemoryLayout<Double>.stride * 2,
-                 "Complex must be two Doubles with no padding")
-    precondition(MemoryLayout<Complex>.size == MemoryLayout<Double>.stride * 2,
-                 "Complex must be exactly 16 bytes")
-    precondition(MemoryLayout<Complex>.alignment == MemoryLayout<Double>.alignment,
-                 "Complex must have same alignment as Double")
-
-    src.withUnsafeBufferPointer { sPtr in
-        dst.withUnsafeMutableBufferPointer { dPtr in
-            let sBase = UnsafeRawPointer(sPtr.baseAddress!).assumingMemoryBound(to: Double.self)
-            let dBase = UnsafeMutableRawPointer(dPtr.baseAddress!).assumingMemoryBound(to: Double.self)
-
-            // Transpose real parts
-            vDSP_mtransD(
-                sBase, 2,
-                dBase, 2,
-                vDSP_Length(N),
-                vDSP_Length(M)
-            )
-
-            // Transpose imaginary parts
-            vDSP_mtransD(
-                sBase + 1, 2,
-                dBase + 1, 2,
-                vDSP_Length(N),
-                vDSP_Length(M)
-            )
-        }
+    static func transpose(_ a: ComplexMatrix) -> ComplexMatrix {
+        let data = MatrixOp.transposeMatrix(a.data, rows: a.rows, columns: a.cols)
+        // Swap
+        return ComplexMatrix(rows: a.cols, cols: a.rows, data: data)
     }
+
+    static func conjugateTranspose(_ a: ComplexMatrix) -> ComplexMatrix {
+        let data = MatrixOp.conjugateTranspose(a.data, rows: a.rows, columns: a.cols)
+        // Swap
+        return ComplexMatrix(rows: a.cols, cols: a.rows, data: data)
+    }
+
 }

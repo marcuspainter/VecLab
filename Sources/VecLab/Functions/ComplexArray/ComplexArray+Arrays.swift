@@ -7,7 +7,6 @@
 
 import Accelerate
 
-
 /// Concatenate arrays.
 ///
 /// - Parameter arrays:List of arrays.

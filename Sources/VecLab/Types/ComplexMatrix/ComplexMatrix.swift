@@ -18,21 +18,25 @@ public struct ComplexMatrix {
         self.rows = rows
         self.cols = cols
         self.data = [Complex](repeating: .zero, count: rows * cols)
-        
+
         switch order {
-            case .rowMajor:
-                transposeComplexMatrix(data, rows: rows, cols: cols, result: &self.data)
-                break
-            case .colMajor:
-                // No transpose
-                break
+        case .rowMajor:
+                self.data = MatrixOp.transposeMatrix(data, rows: rows, columns: cols)
+            break
+        case .colMajor:
+            // No transpose
+            break
         }
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
-    
+
     public init(_ rows: Int, _ cols: Int) {
         self.rows = rows
         self.cols = cols
         self.data = [Complex](repeating: .zero, count: rows * cols)
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
     public init(_ array: [[Complex]]) {
@@ -47,21 +51,20 @@ public struct ComplexMatrix {
 
         let flatData = array.flatMap { $0 }
 
-        self.data = flatData
-        
-        transposeComplexMatrix(flatData, rows: rows, cols: cols, result: &self.data)
+        self.data = MatrixOp.transposeMatrix(flatData, rows: rows, columns: cols)
 
-        assert(data.count == rows * cols, "Matrix failed")
-    
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
     init() {
     }
-    
+
     init(like matrix: ComplexMatrix, data: [Complex]) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = data
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
     init(rows: Int, cols: Int, data: [Complex]) {
@@ -71,19 +74,25 @@ public struct ComplexMatrix {
         self.rows = rows
         self.cols = cols
         self.data = data
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
-    public  init(_ matrix: Matrix) {
+    public init(_ matrix: Matrix) {
         self.rows = matrix.rows
         self.cols = matrix.cols
         self.data = matrix.data.map { Complex($0, 0) }
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
-    
+
     init(real: [Double], imag: [Double], rows: Int, cols: Int) {
         assert(real.count == imag.count, "Real and imaginary parts must have the same length")
         self.rows = rows
         self.cols = cols
         self.data = zip(real, imag).map { Complex($0, $1) }
+
+        precondition(data.count == rows * cols, "Matrix failed")
     }
 
 }
@@ -121,47 +130,5 @@ extension ComplexMatrix {
         }
 
         return output
-    }
-
-}
-
-private func transposeComplexMatrix(
-    _ src: [Complex],
-    rows M: Int,
-    cols N: Int,
-    result dst: inout [Complex]
-) {
-    precondition(src.count == M * N)
-    precondition(dst.count == M * N)
-
-    // Safety checks: Complex must be exactly two Doubles, tightly packed
-    precondition(MemoryLayout<Complex>.stride == MemoryLayout<Double>.stride * 2,
-                 "Complex must be two Doubles with no padding")
-    precondition(MemoryLayout<Complex>.size == MemoryLayout<Double>.stride * 2,
-                 "Complex must be exactly 16 bytes")
-    precondition(MemoryLayout<Complex>.alignment == MemoryLayout<Double>.alignment,
-                 "Complex must have same alignment as Double")
-
-    src.withUnsafeBufferPointer { sPtr in
-        dst.withUnsafeMutableBufferPointer { dPtr in
-            let sBase = UnsafeRawPointer(sPtr.baseAddress!).assumingMemoryBound(to: Double.self)
-            let dBase = UnsafeMutableRawPointer(dPtr.baseAddress!).assumingMemoryBound(to: Double.self)
-
-            // Transpose real parts
-            vDSP_mtransD(
-                sBase, 2,
-                dBase, 2,
-                vDSP_Length(N),
-                vDSP_Length(M)
-            )
-
-            // Transpose imaginary parts
-            vDSP_mtransD(
-                sBase + 1, 2,
-                dBase + 1, 2,
-                vDSP_Length(N),
-                vDSP_Length(M)
-            )
-        }
     }
 }

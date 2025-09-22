@@ -77,7 +77,7 @@ extension CoreComplex {
         let i = Darwin.atan2(x.imag, x.real)
         return Complex(r, i)
     }
-    
+
     // MARK: Log2
 
     /// Base-2 logarithm of `x` on the principal branch.
@@ -90,7 +90,7 @@ extension CoreComplex {
         let i = Darwin.atan2(x.imag, x.real) / ln2
         return Complex(r, i)
     }
-    
+
     /// Base-10 logarithm of `x` on the principal branch.
     /// Implements log10(z) = log(z) / ln(10), where log is the principal complex logarithm.
     /// - Returns: The complex base-10 logarithm.
@@ -260,7 +260,6 @@ extension CoreComplex {
         }
     }
 
-
     @inlinable
     public static func sin(_ x: Complex) -> Complex {
         let coshx = Darwin.cosh(x.imag)
@@ -272,4 +271,3 @@ extension CoreComplex {
         return Complex(real, imag)
     }
 }
-

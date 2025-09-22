@@ -9,8 +9,7 @@ extension SplitComplexArray:
     MutableCollection,
     BidirectionalCollection,
     RandomAccessCollection,
-    RangeReplaceableCollection
-{
+    RangeReplaceableCollection {
 
     /// Reserve storage capacity of array.
     /// - Parameter minimumCapacity: The minimum capacity.

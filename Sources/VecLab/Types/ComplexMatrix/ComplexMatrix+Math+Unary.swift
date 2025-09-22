@@ -6,7 +6,7 @@
 //
 
 public extension ComplexMatrix {
-    
+
     static prefix func - (_ a: ComplexMatrix) -> ComplexMatrix {
         return ComplexMatrix(like: a, data: -a.data)
     }

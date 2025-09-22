@@ -7,5 +7,5 @@
 
 // Matrix operations for column-major order.
 enum MatrixOp {
-    
+
 }

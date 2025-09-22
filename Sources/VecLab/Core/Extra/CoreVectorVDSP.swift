@@ -64,7 +64,7 @@ enum CoreVectorVDSP {
     static func unaryMinus(_ a: [Double]) -> [Double] {
         return vDSP.negative(a)
     }
-    
+
     @inlinable
     static func sin(_ a: [Double]) -> [Double] {
         return vForce.sin(a)

@@ -158,4 +158,3 @@ func idctVDSP(_ x: RealArray) -> RealArray {
      x = real(z(1:N)) * 2;
  end
  */
-

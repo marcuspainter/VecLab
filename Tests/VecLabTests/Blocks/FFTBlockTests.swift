@@ -9,7 +9,7 @@ import Foundation
 import VecLab
 import XCTest
 
-class FFTClassTests: XCTestCase {
+class FFTBlockTests: XCTestCase {
 
     let accuracy: Real = 1e-6
 

@@ -34,7 +34,7 @@ func parseMatrixMatlab(_ matrixStr: String) -> [[Double]]? {
 
     let rows = inner.components(separatedBy: ";")
     var matrix: [[Double]] = []
-    var columnCount: Int? = nil
+    var columnCount: Int?
 
     for row in rows {
         let trimmed = row.trimmingCharacters(in: .whitespaces)
@@ -80,7 +80,7 @@ func parseMatrix(_ matrixStr: String) -> [[Double]]? {
     guard !lines.isEmpty else { return [] }
 
     var matrix: [[Double]] = []
-    var columnCount: Int? = nil
+    var columnCount: Int?
 
     for line in lines {
         // Split by spaces, tabs, and commas

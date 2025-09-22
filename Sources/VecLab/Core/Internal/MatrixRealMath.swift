@@ -7,6 +7,8 @@
 
 import Accelerate
 
+/*
+
 public func matrixTranspose(_ matrix: RealArray, rows: Int, cols: Int) -> RealArray {
     var result = RealArray(repeating: 0.0, count: rows * cols)
     
@@ -142,3 +144,4 @@ func matrixInverse(_ matrix: inout [Double], _ n: Int) {
     }
 }
 
+*/

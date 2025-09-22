@@ -50,19 +50,19 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     var A = Matrix(n, n)
 
     // Set the subdiagonal to ones: diag(ones(n-1,1),-1)
-    //for i in 0..<(n - 1) {
+    // for i in 0..<(n - 1) {
     //    A.data[(i + 1) + i * n] = 1.0
-    //}
-    
+    // }
+
     for i in 0..<(n - 1) {
         A[i+1, i] = 1.0
     }
-    
+
     // Set the first row to -p(2:n+1)./p(1)
-    //for i in 0..<n {
+    // for i in 0..<n {
     //    A.data[i * n] = -p[i + 1] / p[0]
-    //}
-    
+    // }
+
     for i in 0..<n {
         A[0, i] = -p[i + 1] / p[0]
     }
@@ -79,13 +79,13 @@ public func roots(coefficients: RealArray) -> ComplexArray {
     return result
 }
 
-fileprivate func eig(_ a: Matrix) -> ComplexArray {
+private func eig(_ a: Matrix) -> ComplexArray {
     precondition(a.rows == a.cols, "Matrix must be square")
     let values = eigenvalues(a.data, a.rows)
     return ComplexArray(real: values.real, imag: values.imag)
 }
 
-fileprivate func eigenvalues(_ A: [Double], _ n: Int) -> (real: [Double], imag: [Double]) {
+private func eigenvalues(_ A: [Double], _ n: Int) -> (real: [Double], imag: [Double]) {
     // Copy A since LAPACK will overwrite it
     var Acopy = A
     // Prepare variables for eigenvalue computation
@@ -114,4 +114,3 @@ fileprivate func eigenvalues(_ A: [Double], _ n: Int) -> (real: [Double], imag: 
 
     return (wR, wI)
 }
-

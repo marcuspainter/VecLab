@@ -182,4 +182,3 @@ private func eigenvalues(_ A: [Double], _ n: Int) -> ([Double], [Double]) {
 
     return (wR, wI)
 }
-

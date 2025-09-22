@@ -8,42 +8,34 @@
 extension Matrix {
 
     public static func + (_ a: Matrix, _ b: Double) -> Matrix {
-        let c = a.data + b
-        return Matrix(like: a, data: c)
+        return CoreMatrix.add(a, b)
     }
 
     public static func + (_ a: Double, _ b: Matrix) -> Matrix {
-        let c = a + b.data
-        return Matrix(like: b, data: c)
+        return CoreMatrix.add(a, b)
     }
 
     public static func - (_ a: Matrix, _ b: Double) -> Matrix {
-        let c = a.data - b
-        return Matrix(like: a, data: c)
+        return CoreMatrix.subtract(a, b)
     }
 
     public static func - (_ a: Double, _ b: Matrix) -> Matrix {
-        let c = a - b.data
-        return Matrix(like: b, data: c)
+        return CoreMatrix.subtract(a, b)
     }
 
     public static func * (_ a: Matrix, _ b: Double) -> Matrix {
-        let c = a.data * b
-        return Matrix(like: a, data: c)
+        return CoreMatrix.multiply(a, b)
     }
 
     public static func * (_ a: Double, _ b: Matrix) -> Matrix {
-        let c = a * b.data
-        return Matrix(like: b, data: c)
+        return CoreMatrix.multiply(a, b)
     }
 
     public static func / (_ a: Matrix, _ b: Double) -> Matrix {
-        let c = a.data / b
-        return Matrix(like: a, data: c)
+        return CoreMatrix.divide(a, b)
     }
 
     public static func / (_ a: Double, _ b: Matrix) -> Matrix {
-        let c = a / b.data
-        return Matrix(like: b, data: c)
+        return CoreMatrix.divide(a, b)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import simd
 
 extension MatrixOp {
-    
+
     // Roots of polynomial.
     /// - Parameter p: Polynomial coefficients.
     /// - Returns: The complex roots.
@@ -30,7 +30,7 @@ extension MatrixOp {
         let (wr, wi) = MatrixOp.eigenvaluesHessenberg(x: companion, size: size)
         return (wr, wi)
     }
-    
+
 }
 
 public func dft(x: [Double], frequency f: Double, sampleRate fs: Double) -> (magnitude: Double, phase: Double) {

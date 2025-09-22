@@ -8,9 +8,9 @@
 import Accelerate
 
 func rowMajorToColumnMajor(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
-    
+
     return [Double](unsafeUninitializedCapacity: M * N) { dst, initializedCount in
-        
+
         src.withUnsafeBufferPointer { srcPtr in
             dst.withUnsafeMutableBufferPointer { dstPtr in
                 for col in 0..<N {
@@ -85,4 +85,3 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int) -> [Double] {
 
 
 */
-

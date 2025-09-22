@@ -34,5 +34,3 @@ public func ifftshift(_ x: RealArray) -> RealArray {
     }
     return circshift(x, shift)
 }
-
-

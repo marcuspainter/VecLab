@@ -102,34 +102,8 @@ final class SomeTests: XCTestCase {
        // XCTAssertEqual(x1,x2,accuracy: 1e-5)
         
         print("%", (t1.median - t2.median) / t2.median * 100)
-        print("x", (t1.median / t2.median))
-    }
+        print("x", (t1.median / t2.median))}
     
-    func test3() {
-        
-        let n = 1000
-        let a = SplitComplexArray(repeating: (3.0 + 4.j), count: n)
-        let b = SplitComplexArray(repeating: (4.0 + 2.j), count: n)
-        
-        var z1 = SplitComplexArray(repeating: .zero, count: n)
-        var z2 = SplitComplexArray(repeating: .zero, count: n)
-        
-        let t1 = benchmark {
-            z1 = vectorMultiplySplitComplexArray(a, b)
-            
-        }
-                              
-        let t2 = benchmark {
-            z2 = vectorMultiplySplitComplexArray(a, b)
-        }
-    
-        print(z1[n-1])
-        print(z2[n-1])
-        
-        print("%", (t1.median - t2.median) / t2.median * 100)
-        print("x", (t1.median / t2.median))
-        
-    }
     
     func test4() {
         print("Hello, World!")
