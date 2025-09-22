@@ -37,11 +37,11 @@ func iczt(_ x: SplitComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? 
     // Premultiply data
     let kk = vector((-m + 1)...max(k - 1, m - 1))
     let kk2 = (kk ** 2.0) / 2.0
-    let ww = w_inv ** kk2
+    let ww: SplitComplexArray = w_inv ** kk2
 
     // Apply initial twiddle factor
     let nn = vector(0...(m - 1))
-    var aa = a_inv ** nn
+    var aa: SplitComplexArray = a_inv ** nn
 
     aa = aa * ww[m - 1..<m + m - 1]
     let y = x * aa

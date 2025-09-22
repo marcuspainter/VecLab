@@ -31,11 +31,11 @@ func czt(_ x: SplitComplexArray, k: Int? = nil, w: Complex? = nil, a: Complex? =
     // Premultiply data
     let kk = vector((-m + 1)...max(k - 1, m - 1))
     let kk2 = (kk ** 2.0) / 2.0
-    let ww = w ** kk2  // Chirp filter is 1./ww
+    let ww: SplitComplexArray = w ** kk2  // Chirp filter is 1./ww
 
     // Apply initial twiddle factor
     let nn = vector(0...(m - 1))
-    var aa = a ** nn
+    var aa: SplitComplexArray = a ** nn
 
     aa = aa * ww[m - 1..<m + m - 1]
     let y = x * aa
