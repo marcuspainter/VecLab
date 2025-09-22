@@ -6,49 +6,53 @@
 //
 
 import Foundation
-func luSolve(a: [Double], b: [Double], rows: Int, columns: Int) -> [Double] {
-    guard rows == columns else {
-        fatalError("Matrix must be square for LU decomposition-based solving.")
-    }
 
-    // 1. LU Decomposition
-    let (L, U, ipiv) = luDecomposition(a: a, rows: rows, columns: columns)
-
-    // 2. Apply pivots to b
-    let adjustedB = applyPivots(b, pivots: ipiv)
-
-    // 3. Forward substitution
-    var y = [Double](repeating: 0.0, count: rows)
-    for i in 0..<rows {
-        var sum = 0.0
-        for j in 0..<i {
-            sum += L[i + j * rows] * y[j]
+extension MatrixOp {
+    
+    static func luSolve(a: [Double], b: [Double], rows: Int, columns: Int) -> [Double] {
+        guard rows == columns else {
+            fatalError("Matrix must be square for LU decomposition-based solving.")
         }
-        y[i] = (adjustedB[i] - sum) / L[i + i * rows]
-    }
-
-    // 4. Backward substitution
-    var x = [Double](repeating: 0.0, count: rows)
-    for i in (0..<rows).reversed() {
-        var sum = 0.0
-        for j in (i+1)..<rows {
-            sum += U[i + j * rows] * x[j]
+        
+        // 1. LU Decomposition
+        let (L, U, ipiv) = MatrixOp.luDecomposition(a: a, rows: rows, columns: columns)
+        
+        // 2. Apply pivots to b
+        let adjustedB = applyPivots(b, pivots: ipiv)
+        
+        // 3. Forward substitution
+        var y = [Double](repeating: 0.0, count: rows)
+        for i in 0..<rows {
+            var sum = 0.0
+            for j in 0..<i {
+                sum += L[i + j * rows] * y[j]
+            }
+            y[i] = (adjustedB[i] - sum) / L[i + i * rows]
         }
-        x[i] = (y[i] - sum) / U[i + i * rows]
-    }
-
-    return x
-}
-
-func applyPivots(_ vector: [Double], pivots: [Int]) -> [Double] {
-    var result = vector
-    for i in 0..<pivots.count {
-        let pivot = Int(pivots[i]) - 1  // LAPACK indices are 1-based
-        if pivot != i {
-            result.swapAt(i, pivot)
+        
+        // 4. Backward substitution
+        var x = [Double](repeating: 0.0, count: rows)
+        for i in (0..<rows).reversed() {
+            var sum = 0.0
+            for j in (i+1)..<rows {
+                sum += U[i + j * rows] * x[j]
+            }
+            x[i] = (y[i] - sum) / U[i + i * rows]
         }
+        
+        return x
     }
-    return result
+    
+    static func applyPivots(_ vector: [Double], pivots: [Int]) -> [Double] {
+        var result = vector
+        for i in 0..<pivots.count {
+            let pivot = Int(pivots[i]) - 1  // LAPACK indices are 1-based
+            if pivot != i {
+                result.swapAt(i, pivot)
+            }
+        }
+        return result
+    }
 }
 
 /*

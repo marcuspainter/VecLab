@@ -9,26 +9,29 @@ import Accelerate
 import Foundation
 import simd
 
-// Roots of polynomial.
-/// - Parameter p: Polynomial coefficients.
-/// - Returns: The complex roots.
-func roots(_ p: [Double]) -> ([Double], [Double]) {
-    // Input; [1 x x x...]
-    // Copy
-    var p = p
-    // Normalize
-    if p[0] != 1.0 {
-        // p = p / p[0]
-        p = vDSP.divide(p, p[0])
+extension MatrixOp {
+    
+    // Roots of polynomial.
+    /// - Parameter p: Polynomial coefficients.
+    /// - Returns: The complex roots.
+    static func roots(_ p: [Double]) -> ([Double], [Double]) {
+        // Input; [1 x x x...]
+        // Copy
+        var p = p
+        // Normalize
+        if p[0] != 1.0 {
+            // p = p / p[0]
+            p = vDSP.divide(p, p[0])
+        }
+        let slice = p[1 ..< p.count]
+        let e = Array(slice)
+        let size = e.count
+        let companion = MatrixOp.companionMatrix(x: e)
+        let (wr, wi) = MatrixOp.eigenvaluesHessenberg(x: companion, size: size)
+        return (wr, wi)
     }
-    let slice = p[1 ..< p.count]
-    let e = Array(slice)
-    let size = e.count
-    let companion = companionMatrix(x: e)
-    let (wr, wi) = eigenvaluesHessenberg(x: companion, size: size)
-    return (wr, wi)
+    
 }
-
 
 public func dft(x: [Double], frequency f: Double, sampleRate fs: Double) -> (magnitude: Double, phase: Double) {
 
@@ -79,7 +82,7 @@ public func lpc(x: [Double], sampleRate fs: Double, order: Int) -> ([Double], [D
     let filter = armcov(x: x, p: order)
 
     // Roots
-    let (wr, wi) = roots(filter)
+    let (wr, wi) = MatrixOp.roots(filter)
 
     // Stabilize
     // (wr, wi) = stabilizeFilter(wr:wr, wi:wi)
@@ -167,8 +170,8 @@ func getFrequency(wr: [Double], wi: [Double], sampleRate fs: Double) -> (f: [Dou
 
 func armcov(x: [Double], p: Int) -> [Double] {
     // Output: [1 x x x...]
-    let (a, b, rows, columns) = correlationMatrix(x: x, p: p)
-    let result = qrSolve(a: a, b: b, rows: rows, columns: columns)
+    let (a, b, rows, columns) = MatrixOp.correlationMatrix(x: x, p: p)
+    let result = MatrixOp.qrSolve(a: a, b: b, rows: rows, columns: columns)
     var filter: [Double] = [1.0]
     filter.append(contentsOf: result)
     return filter

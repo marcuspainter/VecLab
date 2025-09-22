@@ -117,6 +117,8 @@ func matrixMultiply(_ a: [Complex], _ b: [Complex], m: Int, k: Int, n: Int) -> [
 }
 */
 
+/*
+
 func matrixVectorMultiply(_ matrix: [Complex], _ vector: [Complex], m: Int, n: Int) -> [Complex] {
     // Matrix-vector multiplication: y = A * x
     // Where A is m×n matrix, x is n-length vector, result y is m-length vector
@@ -162,3 +164,5 @@ func matrixVectorMultiply(_ matrix: [Complex], _ vector: [Complex], m: Int, n: I
     
     return result
 }
+
+*/

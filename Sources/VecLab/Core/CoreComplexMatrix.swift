@@ -39,7 +39,7 @@ public enum CoreComplexMatrix {
     
     // MARK: multiply
 
-    public static func multiply(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
+    public static func multiplySwift(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         var c = ComplexMatrix(a.rows, b.cols)
         // ComplexMatrix multiplication: C = A * B
         // Assumes column-major storage for `data` arrays.
@@ -78,7 +78,7 @@ public enum CoreComplexMatrix {
         return c
     }
     
-    public static func multiply2(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
+    public static func multiply(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
         let m = a.rows
         let n = b.cols
         let k = a.cols

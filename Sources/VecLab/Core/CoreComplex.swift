@@ -134,3 +134,4 @@ public func complexMultiplyWithFMA(_ z1: Complex, _ z2: Complex) -> Complex {
     
     return Complex(real, imag)
 }
+

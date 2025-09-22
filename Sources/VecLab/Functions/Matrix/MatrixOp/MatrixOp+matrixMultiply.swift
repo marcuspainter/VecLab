@@ -7,6 +7,7 @@
 
 import Foundation
 
+/*
 func matrixMultiply(_ A: [Double], _ B: [Double], rows: Int, columns: Int, commonDim: Int) -> [Double] {
     var result = [Double](repeating: 0.0, count: rows * columns)
 
@@ -41,3 +42,5 @@ func matrixMultiply2(_ A: [Double], _ B: [Double], rows: Int, columns: Int, comm
 
     return res
 }
+
+*/

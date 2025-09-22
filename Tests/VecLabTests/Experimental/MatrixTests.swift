@@ -512,7 +512,7 @@ final class MatrixTests: XCTestCase {
     func testSvd() {
         let b: Matrix = [[1, 0, 1],[ -1, -2, 0],[0, 1, -1]]
         let a: Matrix = [[1, 2], [3, 4], [5,6],[7, 8]]
-        let (u,s,v) = svd(a: a.data, rows: a.rows, columns: a.cols)
+        let (u,s,v) = MatrixOp.svd(a: a.data, rows: a.rows, columns: a.cols)
         
         let U = Matrix(rows: a.rows, cols: a.rows, data: u)
         let S = Matrix(rows: a.cols, cols: 1, data: s)
