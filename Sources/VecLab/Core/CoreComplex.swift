@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CoreComplex {
+enum CoreComplex {
 
     @inlinable
     static func add(_ a: Complex, _ b: Complex) -> Complex {
