@@ -55,7 +55,7 @@ public func log(_ x: Complex) -> Complex {
 }
 
 /// Base 2 logarithm of a complex number.
-/// - Parameter a: Complex number.
+/// - Parameter x: Complex number.
 /// - Returns: The base 2 logarithm of `x`.
 public func log2(_ x: Complex) -> Complex {
     return CoreComplex.log2(x)

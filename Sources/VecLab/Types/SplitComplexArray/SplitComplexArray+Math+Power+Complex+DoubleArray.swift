@@ -12,9 +12,9 @@ import Accelerate
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the addition.
-public func + (a: Complex, b: [Double]) -> SplitComplexArray {
+public func + (a: Complex, b: RealArray) -> SplitComplexArray {
     let real = vDSP.add(a.real, b)
-    let imag = [Double](repeating: a.imag, count: b.count)
+    let imag = RealArray(repeating: a.imag, count: b.count)
     return SplitComplexArray(real, imag)
 }
 
@@ -23,9 +23,9 @@ public func + (a: Complex, b: [Double]) -> SplitComplexArray {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the addition.
-public func + (a: [Double], b: Complex) -> SplitComplexArray {
+public func + (a: RealArray, b: Complex) -> SplitComplexArray {
     let real = vDSP.add(b.real, a)
-    let imag = [Double](repeating: b.imag, count: a.count)
+    let imag = RealArray(repeating: b.imag, count: a.count)
     return SplitComplexArray(real, imag)
 }
 
@@ -34,7 +34,7 @@ public func + (a: [Double], b: Complex) -> SplitComplexArray {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the subtraction.
-public func - (a: Complex, b: [Double]) -> SplitComplexArray {
+public func - (a: Complex, b: RealArray) -> SplitComplexArray {
     let real = a.real - b
     let imag = RealArray(repeating: Real(a.imag), count: b.count)
     return SplitComplexArray(real, imag)
@@ -45,7 +45,7 @@ public func - (a: Complex, b: [Double]) -> SplitComplexArray {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the subtraction.
-public func - (a: [Double], b: Complex) -> SplitComplexArray {
+public func - (a: RealArray, b: Complex) -> SplitComplexArray {
     let real = a - b.real
     let imag = RealArray(repeating: -Real(b.imag), count: a.count)
     return SplitComplexArray(real, imag)
@@ -56,7 +56,7 @@ public func - (a: [Double], b: Complex) -> SplitComplexArray {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the multiplication.
-public func * (a: Complex, b: [Double]) -> SplitComplexArray {
+public func * (a: Complex, b: RealArray) -> SplitComplexArray {
     let real = vDSP.multiply(a.real, b)
     let imag = vDSP.multiply(a.imag, b)
     return SplitComplexArray(real, imag)
@@ -67,7 +67,7 @@ public func * (a: Complex, b: [Double]) -> SplitComplexArray {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the multiplication.
-public func * (a: [Double], b: Complex) -> SplitComplexArray {
+public func * (a: RealArray, b: Complex) -> SplitComplexArray {
     let real = vDSP.multiply(b.real, a)
     let imag = vDSP.multiply(b.imag, a)
     return SplitComplexArray(real, imag)
@@ -78,7 +78,7 @@ public func * (a: [Double], b: Complex) -> SplitComplexArray {
 ///   - a: Complex number.
 ///   - b: Real number.
 /// - Returns: The result of the division.
-public func / (a: Complex, b: [Double]) -> SplitComplexArray {
+public func / (a: Complex, b: RealArray) -> SplitComplexArray {
     // return vectorDivideComplexRealArray(a, b)
     let real = vDSP.divide(a.real, b)
     let imag = vDSP.divide(a.imag, b)
@@ -90,13 +90,13 @@ public func / (a: Complex, b: [Double]) -> SplitComplexArray {
 ///   - a: Real number.
 ///   - b: Complex number.
 /// - Returns: The result of the division.
-public func / (a: [Double], b: Complex) -> SplitComplexArray {
+public func / (a: RealArray, b: Complex) -> SplitComplexArray {
     var c = SplitComplexArray(count: a.count)
-    let b0 = [Double](repeating: b.real, count: a.count)
-    let b1 = [Double](repeating: b.imag, count: a.count)
+    let b0 = RealArray(repeating: b.real, count: a.count)
+    let b1 = RealArray(repeating: b.imag, count: a.count)
     let bb = SplitComplexArray(b0, b1)
     let a0 = a
-    let a1 = [Double](repeating: 0.0, count: a.count)
+    let a1 = RealArray(repeating: 0.0, count: a.count)
     let aa = SplitComplexArray(a0, a1)
     validateSize(aa, bb)
     validateSize(aa, c)
@@ -112,7 +112,7 @@ public func / (a: [Double], b: Complex) -> SplitComplexArray {
 ///   - b: Real array.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: Complex, _ b: [Double]) -> SplitComplexArray {
+public func ** (_ a: Complex, _ b: RealArray) -> SplitComplexArray {
     return pow(a, b)
 }
 
@@ -122,7 +122,7 @@ public func ** (_ a: Complex, _ b: [Double]) -> SplitComplexArray {
 ///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b`.
 @inlinable
-public func ** (_ a: [Double], _ b: Complex) -> SplitComplexArray {
+public func ** (_ a: RealArray, _ b: Complex) -> SplitComplexArray {
     return pow(a, b)
 }
 

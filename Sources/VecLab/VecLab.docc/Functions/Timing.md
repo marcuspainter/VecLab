@@ -7,3 +7,4 @@ Timing Functions.
 - ``tic()``
 - ``toc()``
 - ``timeit(_:)``
+- ``timer(_:runs:body:)``

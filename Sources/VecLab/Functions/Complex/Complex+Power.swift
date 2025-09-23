@@ -38,8 +38,8 @@ public func pow(_ a: Real, _ b: Complex) -> Complex {
 
 // Power.
 /// - Parameters:
-///   - base: Complex number.
-///   - exponent: Complex number.
+///   - a: Complex number.
+///   - b: Complex number.
 /// - Returns: Raises `a` to the power of `b
 public func pow(_ a: Complex, _ b: Complex) -> Complex {
     return CoreComplex.pow(a, b)

@@ -14,7 +14,6 @@ extension SplitComplexArray {
     ///   - a: Complex array.
     ///   - b: Real number.
     /// - Returns: The result of the addition.
-    @inlinable
     public static func + (a: SplitComplexArray, b: Double) -> SplitComplexArray {
         validateSize(a)
         let real = vDSP.add(b, a.real)

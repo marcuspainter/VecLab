@@ -216,20 +216,19 @@ Overloaded operators for scalar and vectors.
 |Trigonometry| acos, asin, atan, atan2, cos, sin, tan|
 |Window| blackman, blackmanharris, flattopwin, gausswin, hamming, hann, kaiser, tukeywin, rectwin|
 
-
-
 ## Topics
 
 ### Essentials 
 - <doc:GettingStarted>
-- <doc:Migration>
+- <doc:Migration2>
+- <doc:Migration3>
 - <doc:ArrayConcatenation>
 - <doc:ArrayIndexing>
 - <doc:FourierTransforms>
 - <doc:Filters>
 - <doc:DoubleAndFloatTypes>
+- <doc:Matrices>
 - <doc:Notes>
-- <doc:CodingStandard>
 
 ### Vector Creation
 - <doc:RealCreation>
@@ -251,6 +250,7 @@ Overloaded operators for scalar and vectors.
 - <doc:Filter>
 - <doc:Integration>
 - <doc:Interpolation>
+- <doc:Matrix>
 - <doc:Modulo>
 - <doc:Optimization>
 - <doc:Polynomials>
@@ -263,3 +263,6 @@ Overloaded operators for scalar and vectors.
 - <doc:Timing>
 - <doc:Trigonometry>
 - <doc:Windows>
+
+
+

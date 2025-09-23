@@ -21,6 +21,20 @@ public func cat(_ arrays: ComplexArray...) -> ComplexArray {
     return newArray
 }
 
+/// Concatenate arrays.
+///
+/// - Parameter arrays:List of arrays.
+/// - Returns: A single combined array.
+public func cat(_ arrays: [ComplexArray]) -> ComplexArray {
+    let totalCount = arrays.reduce(0) { $0 + $1.count }
+    var newArray = ComplexArray()
+    newArray.reserveCapacity(totalCount)
+    for array in arrays {
+        newArray.append(contentsOf: array)
+    }
+    return newArray
+}
+
 public func circshift(_ x: ComplexArray, _ k: Int) -> ComplexArray {
     let n = x.count
     if n == 0 { return x }

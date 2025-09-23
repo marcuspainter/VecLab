@@ -5,6 +5,8 @@
 //  Created by Marcus Painter on 23/09/2025.
 //
 
+#if canImport(Testing)
+
 import Foundation
 import Testing
 @testable import VecLab
@@ -183,3 +185,5 @@ struct CoreComplexTests {
         #expect(s0 == Complex(0, 0))
     }
 }
+
+#endif

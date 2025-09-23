@@ -4,14 +4,6 @@ New functions.
 
 ## Topics
 
-### Fill and Clear
-- ``clear(_:)-(RealArray)``
-- ``clear(_:)-(SplitComplexArray)``
-
-- ``fill(_:_:)-(_,Real)``
-- ``fill(_:_:)-(_,Complex)``
-
-
 ### Cross-correlation
 
 - ``xcorr(_:)->RealArray``

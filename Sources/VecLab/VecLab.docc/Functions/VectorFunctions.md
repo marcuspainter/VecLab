@@ -9,18 +9,23 @@ Vector functions.
 - ``cat(_:)-([RealArray])``
 - ``cat(_:)-(SplitComplexArray...)``
 - ``cat(_:)-([SplitComplexArray])``
+- ``cat(_:)-(ComplexArray...)``
+- ``cat(_:)-([ComplexArray])``
 
 ### Circular Shift
 - ``circshift(_:_:)->RealArray``
 - ``circshift(_:_:)->SplitComplexArray``
+- ``circshift(_:_:)->ComplexArray``
 
 ### Flip (Reverse)
 - ``flip(_:)->RealArray``
 - ``flip(_:)->SplitComplexArray``
+- ``flip(_:)->ComplexArray``
 
 ### Vector Length (Size)
 - ``length(_:)-(RealArray)``
 - ``length(_:)-(SplitComplexArray)``
+- ``length(_:)-(ComplexArray)``
 
 ### Repeating Element
 - ``repelem(_:_:)-(Real,_)``

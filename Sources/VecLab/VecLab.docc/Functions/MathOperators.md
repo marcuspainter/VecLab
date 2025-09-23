@@ -25,3 +25,4 @@ The `**` operator can be used for power operations. This is the operator equival
 #### Complex Conjugate Multiply
 
 As a shorthand, complex types can use the conjugate multiply operators.
+

@@ -16,7 +16,8 @@ Polynomial functions.
 
 ### Polynomial Roots
 
-- ``roots(coefficients:)``
+- ``roots(coefficients:)->(ComplexArray)``
+- ``roots(coefficients:)->SplitComplexArray``
 
 ### Polynomial From Roots
 

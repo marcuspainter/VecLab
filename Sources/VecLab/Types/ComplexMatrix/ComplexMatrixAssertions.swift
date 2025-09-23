@@ -7,7 +7,7 @@
 
 import Foundation
 
-public func validateSize(_ a: ComplexMatrix, _ b: ComplexMatrix,
+func validateSize(_ a: ComplexMatrix, _ b: ComplexMatrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -24,7 +24,7 @@ public func validateSize(_ a: ComplexMatrix, _ b: ComplexMatrix,
     )
 }
 
-public func validateSize(_ a: ComplexMatrix, _ b: Matrix,
+func validateSize(_ a: ComplexMatrix, _ b: Matrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {
@@ -40,7 +40,7 @@ public func validateSize(_ a: ComplexMatrix, _ b: Matrix,
     )
 }
 
-public func validateSize( _ a: Matrix, _ b: ComplexMatrix,
+func validateSize( _ a: Matrix, _ b: ComplexMatrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {

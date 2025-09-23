@@ -6,7 +6,7 @@
 
 import Foundation
 
-public func validateSize( _ a: RealArray, _ b: RealArray,
+func validateSize( _ a: RealArray, _ b: RealArray,
     file: StaticString = #file,
     line: UInt = #line
 ) {

@@ -8,13 +8,13 @@
 public func timer(
     _ desc: String = "Time",
     runs: Int = 100,
-    function: () throws -> Void
+    body: () throws -> Void
 ) rethrows {
     let clock = ContinuousClock()
     let start = clock.now
 
     for _ in 1...runs {
-        try function()
+        try body()
     }
 
     let duration = start.duration(to: clock.now)

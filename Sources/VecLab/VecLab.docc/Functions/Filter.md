@@ -7,13 +7,14 @@ Filter functions.
 ### Filter
 
 - ``filter(b:a:x:)->RealArray``
-- ``filter(b:a:x:)->SplitComplexArray``
 - ``filter(b:a:x:state:)``
+- ``filterstate(b:a:x:zi:)``
+- ``filterstate(b:a:x:)``
+- ``filterstateMatlab(b:a:x:zi:)``
 
 ### Zero-Phase Filter
 
 - ``filtfilt(b:a:x:)->RealArray``
-- ``filtfilt(b:a:x:)->SplitComplexArray``
 
 ### Biquad Filter
 - ``biquad(f:fs:q:db:type:)``

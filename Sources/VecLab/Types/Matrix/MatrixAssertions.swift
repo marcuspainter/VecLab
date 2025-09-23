@@ -7,7 +7,7 @@
 
 import Foundation
 
-public func validateSize( _ a: Matrix, _ b: Matrix,
+func validateSize( _ a: Matrix, _ b: Matrix,
     file: StaticString = #file,
     line: UInt = #line
 ) {

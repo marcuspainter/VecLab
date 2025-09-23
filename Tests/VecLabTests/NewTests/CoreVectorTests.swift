@@ -5,13 +5,7 @@
 //  Created by Marcus Painter on 23/09/2025.
 //
 
-
-//
-//  CoreVectorTests.swift
-//  VecLabTests
-//
-//  Created by ChatGPT on 23/09/2025.
-//
+#if canImport(Testing)
 
 import Testing
 @testable import VecLab
@@ -92,31 +86,7 @@ struct CoreVectorTests {
     func unaryMinus() {
         #expect(CoreVector.unaryMinus([1, -2, 3]) == [-1, 2, -3])
     }
-
-    // MARK: - Precondition Failures
     
-/*
-    @Test
-    func addMismatchedLengthsPrecondition() {
-        #expect(throws: .preconditionFailure, of: Never.self) {
-            _ = CoreVector.add([1, 2], [1])
-        }
-    }
-
-    @Test
-    func subtractMismatchedLengthsPrecondition() {
-        #expect(throws: .preconditionFailure, of: Never.self) {
-            _ = CoreVector.subtract([1, 2], [1])
-        }
-    }
-
-    @Test
-    func divideMismatchedLengthsPrecondition() {
-        #expect(throws: .preconditionFailure, of: Never.self) {
-            _ = CoreVector.divide([1, 2], [1])
-        }
-    }
-*/
     // MARK: - Edge Cases
 
     @Test
@@ -161,3 +131,5 @@ struct CoreVectorTests {
         #expect(CoreVector.multiply([nan, inf, ninf], [2, 2, 2])[2].isInfinite)
     }
 }
+
+#endif

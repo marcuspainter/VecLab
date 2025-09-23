@@ -27,13 +27,21 @@ Basic functions.
 ### Sums and Products
 - ``sum(_:)->Real``
 - ``sum(_:)->Complex``
+
 - ``cumsum(_:)->RealArray``
+- ``cumsum(_:)->ComplexArray``
 - ``cumsum(_:)->SplitComplexArray``
+
 - ``prod(_:)->Real``
-- ``prod(_:)->Complex``
+- ``prod(_:)-(ComplexArray)->Complex``
+- ``prod(_:)-(ComplexArray)``
+- ``prod(_:)-(SplitComplexArray)``
+
 - ``cumprod(_:)->RealArray``
+- ``cumprod(_:)->ComplexArray``
 - ``cumprod(_:)->SplitComplexArray``
-- ``dot(_:_:)->Real``
+
+- ``dot(_:_:)-(RealArray,RealArray)``
 - ``dot(_:_:)-(RealArray,SplitComplexArray)``
 - ``dot(_:_:)-(SplitComplexArray,RealArray)``
 - ``dot(_:_:)-(SplitComplexArray,SplitComplexArray)``

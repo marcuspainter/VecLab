@@ -8,8 +8,8 @@
 import Accelerate
 
 /// MATLAB-style FFT for quick prototyping.
-public func fft(_ input: ComplexArray) -> ComplexArray {
-    let count = input.count
+public func fft(_ x: ComplexArray) -> ComplexArray {
+    let count = x.count
     precondition(count > 0, "FFT input must not be empty")
 
     var output = ComplexArray(repeating: .zero, count: count)
@@ -25,7 +25,7 @@ public func fft(_ input: ComplexArray) -> ComplexArray {
         fatalError("Failed to create FFT setup")
     }
 
-    input.withUnsafeBufferPointer { inPtr in
+    x.withUnsafeBufferPointer { inPtr in
         output.withUnsafeMutableBufferPointer { outPtr in
             let inBase = UnsafeRawPointer(inPtr.baseAddress!)
                 .assumingMemoryBound(to: DSPDoubleComplex.self)
@@ -41,8 +41,8 @@ public func fft(_ input: ComplexArray) -> ComplexArray {
 }
 
 /// MATLAB-style IFFT for quick prototyping (normalized by N).
-public func ifft(_ input: ComplexArray) -> ComplexArray {
-    let count = input.count
+public func ifft(_ x: ComplexArray) -> ComplexArray {
+    let count = x.count
     precondition(count > 0, "IFFT input must not be empty")
 
     var output = ComplexArray(repeating: .zero, count: count)
@@ -58,7 +58,7 @@ public func ifft(_ input: ComplexArray) -> ComplexArray {
         fatalError("Failed to create IFFT setup")
     }
 
-    input.withUnsafeBufferPointer { inPtr in
+    x.withUnsafeBufferPointer { inPtr in
         output.withUnsafeMutableBufferPointer { outPtr in
             let inBase = UnsafeRawPointer(inPtr.baseAddress!)
                 .assumingMemoryBound(to: DSPDoubleComplex.self)

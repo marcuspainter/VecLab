@@ -6,18 +6,26 @@ Complex functions.
 
 ### Magnitude and Angle
 - ``abs(_:)->Real``
+- ``abs(_:)-(ComplexArray)``
 - ``abs(_:)-(SplitComplexArray)``
+
 - ``angle(_:)->Real``
-- ``angle(_:)->RealArray``
+- ``angle(_:)-(ComplexArray)``
+- ``angle(_:)-(SplitComplexArray)``
+
 
 ### Complex Parts
-- ``real(_:)->Real``
-- ``real(_:)->RealArray``
-- ``imag(_:)->Real``
-- ``imag(_:)->RealArray``
+- ``real(_:)-(Complex)``
+- ``real(_:)-(ComplexArray)``
+- ``real(_:)-(SplitComplexArray)``
+
+- ``imag(_:)-(Complex)``
+- ``imag(_:)-(ComplexArray)``
+- ``imag(_:)-(SplitComplexArray)``
 
 ### Conjugate
 - ``conj(_:)->Complex``
+- ``conj(_:)->ComplexArray``
 - ``conj(_:)->SplitComplexArray``
 
 ### Phase
