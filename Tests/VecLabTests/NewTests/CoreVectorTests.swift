@@ -16,91 +16,91 @@ struct CoreVectorTests {
 
     @Test
     func addArrayArray() {
-        #expect(CoreVector.add([1, 2, 3], [4, 5, 6]) == [5, 7, 9])
+        #expect(CoreArray.add([1, 2, 3], [4, 5, 6]) == [5, 7, 9])
     }
 
     @Test
     func addArrayScalar() {
-        #expect(CoreVector.add([1, 2, 3], 2) == [3, 4, 5])
+        #expect(CoreArray.add([1, 2, 3], 2) == [3, 4, 5])
     }
 
     @Test
     func addScalarArray() {
-        #expect(CoreVector.add(2, [1, 2, 3]) == [3, 4, 5])
+        #expect(CoreArray.add(2, [1, 2, 3]) == [3, 4, 5])
     }
 
     // MARK: - Subtract
 
     @Test
     func subtractArrayArray() {
-        #expect(CoreVector.subtract([5, 7, 9], [1, 2, 3]) == [4, 5, 6])
+        #expect(CoreArray.subtract([5, 7, 9], [1, 2, 3]) == [4, 5, 6])
     }
 
     @Test
     func subtractArrayScalar() {
-        #expect(CoreVector.subtract([5, 7, 9], 1) == [4, 6, 8])
+        #expect(CoreArray.subtract([5, 7, 9], 1) == [4, 6, 8])
     }
 
     @Test
     func subtractScalarArray() {
-        #expect(CoreVector.subtract(10, [1, 2, 3]) == [9, 8, 7])
+        #expect(CoreArray.subtract(10, [1, 2, 3]) == [9, 8, 7])
     }
 
     // MARK: - Multiply
 
     @Test
     func multiplyArrayArray() {
-        #expect(CoreVector.multiply([1, 2, 3], [4, 5, 6]) == [4, 10, 18])
+        #expect(CoreArray.multiply([1, 2, 3], [4, 5, 6]) == [4, 10, 18])
     }
 
     @Test
     func multiplyArrayScalar() {
-        #expect(CoreVector.multiply([1, 2, 3], 2) == [2, 4, 6])
+        #expect(CoreArray.multiply([1, 2, 3], 2) == [2, 4, 6])
     }
 
     @Test
     func multiplyScalarArray() {
-        #expect(CoreVector.multiply(2, [1, 2, 3]) == [2, 4, 6])
+        #expect(CoreArray.multiply(2, [1, 2, 3]) == [2, 4, 6])
     }
 
     // MARK: - Divide
 
     @Test
     func divideArrayArray() {
-        #expect(CoreVector.divide([4, 10, 18], [2, 5, 3]) == [2, 2, 6])
+        #expect(CoreArray.divide([4, 10, 18], [2, 5, 3]) == [2, 2, 6])
     }
 
     @Test
     func divideArrayScalar() {
-        #expect(CoreVector.divide([4, 10, 18], 2) == [2, 5, 9])
+        #expect(CoreArray.divide([4, 10, 18], 2) == [2, 5, 9])
     }
 
     @Test
     func divideScalarArray() {
-        #expect(CoreVector.divide(18, [2, 3, 6]) == [9, 6, 3])
+        #expect(CoreArray.divide(18, [2, 3, 6]) == [9, 6, 3])
     }
 
     // MARK: - Unary Minus
 
     @Test
     func unaryMinus() {
-        #expect(CoreVector.unaryMinus([1, -2, 3]) == [-1, 2, -3])
+        #expect(CoreArray.unaryMinus([1, -2, 3]) == [-1, 2, -3])
     }
     
     // MARK: - Edge Cases
 
     @Test
     func emptyArrays() {
-        #expect(CoreVector.add([], []) == [])
-        #expect(CoreVector.subtract([], []) == [])
-        #expect(CoreVector.multiply([], []) == [])
-        #expect(CoreVector.divide([], []) == [])
-        #expect(CoreVector.unaryMinus([]) == [])
+        #expect(CoreArray.add([], []) == [])
+        #expect(CoreArray.subtract([], []) == [])
+        #expect(CoreArray.multiply([], []) == [])
+        #expect(CoreArray.divide([], []) == [])
+        #expect(CoreArray.unaryMinus([]) == [])
     }
 
     @Test
     func divideByZeroScalar() {
-        let result = CoreVector.divide([1, -2, 0], 0.0)
+        let result = CoreArray.divide([1, -2, 0], 0.0)
         #expect(result[0].isInfinite && result[0] > 0)   // +∞
         #expect(result[1].isInfinite && result[1] < 0)   // -∞
         #expect(result[2].isNaN)                         // 0 / 0 = NaN
@@ -108,7 +108,7 @@ struct CoreVectorTests {
 
     @Test
     func divideByZeroArray() {
-        let result = CoreVector.divide([1, -2, 0], [0, 0, 0])
+        let result = CoreArray.divide([1, -2, 0], [0, 0, 0])
         #expect(result[0].isInfinite && result[0] > 0)   // +∞
         #expect(result[1].isInfinite && result[1] < 0)   // -∞
         #expect(result[2].isNaN)                         // 0 / 0 = NaN
@@ -121,14 +121,14 @@ struct CoreVectorTests {
         let ninf = -Double.infinity
 
         // Add
-        #expect(CoreVector.add([nan, inf, ninf], [1, 1, 1])[0].isNaN)
-        #expect(CoreVector.add([nan, inf, ninf], [1, 1, 1])[1].isInfinite)
-        #expect(CoreVector.add([nan, inf, ninf], [1, 1, 1])[2].isInfinite)
+        #expect(CoreArray.add([nan, inf, ninf], [1, 1, 1])[0].isNaN)
+        #expect(CoreArray.add([nan, inf, ninf], [1, 1, 1])[1].isInfinite)
+        #expect(CoreArray.add([nan, inf, ninf], [1, 1, 1])[2].isInfinite)
 
         // Multiply
-        #expect(CoreVector.multiply([nan, inf, ninf], [2, 2, 2])[0].isNaN)
-        #expect(CoreVector.multiply([nan, inf, ninf], [2, 2, 2])[1].isInfinite)
-        #expect(CoreVector.multiply([nan, inf, ninf], [2, 2, 2])[2].isInfinite)
+        #expect(CoreArray.multiply([nan, inf, ninf], [2, 2, 2])[0].isNaN)
+        #expect(CoreArray.multiply([nan, inf, ninf], [2, 2, 2])[1].isInfinite)
+        #expect(CoreArray.multiply([nan, inf, ninf], [2, 2, 2])[2].isInfinite)
     }
 }
 

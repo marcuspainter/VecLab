@@ -8,34 +8,34 @@
 extension Array where Element == Complex {
 
     public static func + (_ a: [Complex], _ b: Double) -> [Complex] {
-        return CoreComplexVector.add(a, b)
+        return CoreComplexArray.add(a, b)
     }
 
     public static func + (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.add(a, b)
+        return CoreComplexArray.add(a, b)
     }
 
     public static func - (_ a: [Complex], _ b: Double) -> [Complex] {
-        return CoreComplexVector.subtract(a, b)
+        return CoreComplexArray.subtract(a, b)
     }
 
     public static func - (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.subtract(a, b)
+        return CoreComplexArray.subtract(a, b)
     }
 
     public static func * (_ a: [Complex], _ b: Double) -> [Complex] {
-        return CoreComplexVector.multiply(a, b)
+        return CoreComplexArray.multiply(a, b)
     }
 
     public static func * (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.multiply(a, b)
+        return CoreComplexArray.multiply(a, b)
     }
 
     public static func / (_ a: [Complex], _ b: Double) -> [Complex] {
-        return CoreComplexVector.divide(a, b)
+        return CoreComplexArray.divide(a, b)
     }
 
     public static func / (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.divide(a, b)
+        return CoreComplexArray.divide(a, b)
     }
 }

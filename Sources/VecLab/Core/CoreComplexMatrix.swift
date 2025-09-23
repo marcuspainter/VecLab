@@ -12,45 +12,45 @@ enum CoreComplexMatrix {
     // MARK: Add
 
     static func add(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.add(a.data, b.data))
     }
 
     static func add(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.add(a.data, b))
     }
 
     static func add(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.add(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.add(a, b.data))
     }
 
     static func add(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.add(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.add(a.data, b))
     }
 
     static func add(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.add(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.add(a, b.data))
     }
 
     // MARK: Subtract
 
     static func subtract(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.subtract(a.data, b.data))
     }
 
     static func subtract(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.subtract(a.data, b))
     }
 
     static func subtract(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.subtract(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.subtract(a, b.data))
     }
 
     static func subtract(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.subtract(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.subtract(a.data, b))
     }
 
     static func subtract(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.subtract(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.subtract(a, b.data))
     }
 
     // MARK: Multiply
@@ -138,55 +138,55 @@ enum CoreComplexMatrix {
     }
 
     static func multiply(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.multiply(a.data, b))
     }
 
     static func multiply(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.multiply(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.multiply(a, b.data))
     }
 
     static func multiply(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.multiply(a.data, b))
     }
 
     static func multiply(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.multiply(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.multiply(a, b.data))
     }
 
     static func elementMultiply(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.multiply(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.multiply(a.data, b.data))
     }
 
     // MARK: Divide
 
     static func divide(_ a: ComplexMatrix, _ b: Double) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.divide(a.data, b))
     }
 
     static func divide(_ a: Double, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.divide(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.divide(a, b.data))
     }
 
     static func divide(_ a: ComplexMatrix, _ b: Complex) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b))
+        return ComplexMatrix(like: a, data: CoreComplexArray.divide(a.data, b))
     }
 
     static func divide(_ a: Complex, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: b, data: CoreComplexVector.divide(a, b.data))
+        return ComplexMatrix(like: b, data: CoreComplexArray.divide(a, b.data))
     }
 
     static func elementDivide(_ a: ComplexMatrix, _ b: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.divide(a.data, b.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.divide(a.data, b.data))
     }
 
     // MARK: Unary
 
     static func unaryMinus(_ a: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.unaryMinus(a.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.unaryMinus(a.data))
     }
 
     static func conjugate(_ a: ComplexMatrix) -> ComplexMatrix {
-        return ComplexMatrix(like: a, data: CoreComplexVector.conjugate(a.data))
+        return ComplexMatrix(like: a, data: CoreComplexArray.conjugate(a.data))
     }
 
     static func transpose(_ a: ComplexMatrix) -> ComplexMatrix {

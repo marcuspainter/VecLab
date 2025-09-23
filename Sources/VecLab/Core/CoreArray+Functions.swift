@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CoreVector {
+extension CoreArray {
 
     @inlinable
     static func sin(_ a: [Double]) -> [Double] {

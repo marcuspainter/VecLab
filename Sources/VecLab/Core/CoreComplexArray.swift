@@ -8,7 +8,7 @@ import Foundation
 
 typealias ComplexBufferPointer = UnsafeMutableBufferPointer<Complex>
 
-enum CoreComplexVector {
+enum CoreComplexArray {
 
     // . MARK: add
 
@@ -447,7 +447,7 @@ enum CoreComplexVector {
 
 }
 
-extension CoreComplexVector {
+extension CoreComplexArray {
 
     public static func pow (_ a: [Complex], _ b: [Complex]) -> [Complex] {
         return zip(a, b).map { $0 ** $1 }

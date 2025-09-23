@@ -8,31 +8,31 @@
 extension Array where Element == Complex {
 
     public static func ** (_ a: [Complex], _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: [Complex], _ b: Double) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: Double, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: [Complex], _ b: [Double]) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: [Double], _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: [Complex], _ b: Complex) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
     public static func ** (_ a: Complex, _ b: [Complex]) -> [Complex] {
-        return CoreComplexVector.pow(a, b)
+        return CoreComplexArray.pow(a, b)
     }
 
 }

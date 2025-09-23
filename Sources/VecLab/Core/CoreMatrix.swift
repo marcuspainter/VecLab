@@ -12,29 +12,29 @@ enum CoreMatrix {
     // MARK: Add
 
     static func add(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(like: a, data: CoreVector.add(a.data, b.data))
+        return Matrix(like: a, data: CoreArray.add(a.data, b.data))
     }
 
     static func add(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(like: a, data: CoreVector.add(a.data, b))
+        return Matrix(like: a, data: CoreArray.add(a.data, b))
     }
 
     static func add(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(like: b, data: CoreVector.add(a, b.data))
+        return Matrix(like: b, data: CoreArray.add(a, b.data))
     }
 
     // MARK: Subtract
 
     static func subtract(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(like: a, data: CoreVector.subtract(a.data, b.data))
+        return Matrix(like: a, data: CoreArray.subtract(a.data, b.data))
     }
 
     static func subtract(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(like: a, data: CoreVector.subtract(a.data, b))
+        return Matrix(like: a, data: CoreArray.subtract(a.data, b))
     }
 
     static func subtract(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(like: b, data: CoreVector.subtract(a, b.data))
+        return Matrix(like: b, data: CoreArray.subtract(a, b.data))
     }
 
     // MARK: Multiply
@@ -84,35 +84,35 @@ enum CoreMatrix {
     }
 
     static func multiply(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(like: a, data: CoreVector.multiply(a.data, b))
+        return Matrix(like: a, data: CoreArray.multiply(a.data, b))
     }
 
     static func multiply(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(like: b, data: CoreVector.multiply(a, b.data))
+        return Matrix(like: b, data: CoreArray.multiply(a, b.data))
     }
 
     static func elementMultiply(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(like: a, data: CoreVector.multiply(a.data, b.data))
+        return Matrix(like: a, data: CoreArray.multiply(a.data, b.data))
     }
 
     // MARK: Divide
 
     static func divide(_ a: Matrix, _ b: Double) -> Matrix {
-        return Matrix(like: a, data: CoreVector.divide(a.data, b))
+        return Matrix(like: a, data: CoreArray.divide(a.data, b))
     }
 
     static func divide(_ a: Double, _ b: Matrix) -> Matrix {
-        return Matrix(like: b, data: CoreVector.divide(a, b.data))
+        return Matrix(like: b, data: CoreArray.divide(a, b.data))
     }
 
     static func elementDivide(_ a: Matrix, _ b: Matrix) -> Matrix {
-        return Matrix(like: a, data: CoreVector.divide(a.data, b.data))
+        return Matrix(like: a, data: CoreArray.divide(a.data, b.data))
     }
 
     // MARK: Unary
 
     static func unaryMinus(_ a: Matrix) -> Matrix {
-        return Matrix(like: a, data: CoreVector.unaryMinus(a.data))
+        return Matrix(like: a, data: CoreArray.unaryMinus(a.data))
     }
 
     static func transpose(_ a: Matrix) -> Matrix {

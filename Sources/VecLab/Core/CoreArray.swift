@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CoreVector {
+enum CoreArray {
 
     // MARK: Add
 

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-extension CoreComplexVector {
+extension CoreComplexArray {
 
     static func sin(_ a: [Complex]) -> [Complex] {
         return [Complex](unsafeUninitializedCapacity: a.count) { c, initializedCount in
