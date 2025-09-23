@@ -70,7 +70,7 @@ public func fliplr(_ x: ComplexMatrix) -> ComplexMatrix {
             newData[dstIndex] = x.data[srcIndex]
         }
     }
-    return ComplexMatrix(rows: rows, cols: cols, data: newData)
+    return ComplexMatrix(like: x, data: newData)
 }
 
 public func flipud(_ x: ComplexMatrix) -> ComplexMatrix {
@@ -92,5 +92,5 @@ public func flipud(_ x: ComplexMatrix) -> ComplexMatrix {
             newData[dstIndex] = x.data[srcIndex]
         }
     }
-    return ComplexMatrix(rows: rows, cols: cols, data: newData)
+    return ComplexMatrix(like: x, data: newData)
 }

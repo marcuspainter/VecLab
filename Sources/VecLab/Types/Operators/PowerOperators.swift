@@ -9,9 +9,9 @@
 precedencegroup PowerPrecedence {
     higherThan: MultiplicationPrecedence
     // NumPy
-    associativity: right
+    // associativity: right
     // Matlab
-    // associativity: left
+    associativity: left
 }
 
 /// Power operator.

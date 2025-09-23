@@ -8,6 +8,8 @@
 import Foundation
 
 enum CoreComplex {
+    
+    // MARK: Add
 
     @inlinable
     static func add(_ a: Complex, _ b: Complex) -> Complex {
@@ -98,6 +100,8 @@ enum CoreComplex {
             return Complex((a * r) / denom, -a / denom)
         }
     }
+    
+    // MARK: Unary
 
     @inlinable
     static func unaryMinus(_ a: Complex) -> Complex {
@@ -159,40 +163,3 @@ public func complexMultiplyWithFMA(_ z1: Complex, _ z2: Complex) -> Complex {
 }
 */
 
-import Testing
-
-@Suite("CoreComplex arithmetic")
-struct CoreComplexTests {
-    @Test
-    func addSubtract() {
-        let a = Complex(3, 4)
-        let b = Complex(-2, 5)
-        #expect(CoreComplex.add(a,b) == Complex(1, 9))
-        #expect(CoreComplex.subtract(a,b) == Complex(5, -1))
-        #expect(CoreComplex.add(a, 2.0) == Complex(5, 4))
-        #expect(CoreComplex.subtract(2.0, a) == Complex(-1, -4))
-    }
-
-    @Test
-    func multiplyDivide() {
-        let a = Complex(3, 4)
-        let b = Complex(1, -2)
-        let prod = CoreComplex.multiply(a, b)
-        #expect(prod == Complex(11, -2)) // (3 + 4i)(1 - 2i) = 3 - 6i + 4i - 8i^2 = 11 - 2i
-
-        // Round-trip: (a / b) * b ≈ a
-        let q = CoreComplex.divide(a, b)
-        let back = CoreComplex.multiply(q, b)
-        #expect(abs(back.real - a.real) < 1e-12)
-        #expect(abs(back.imag - a.imag) < 1e-12)
-    }
-
-    @Test
-    func conjugates() {
-        let a = Complex(3, 4)
-        let b = Complex(1, 2)
-        #expect(CoreComplex.conjugate(a) == Complex(3, -4))
-        #expect(CoreComplex.leftConjugateMultiply(a,b) == CoreComplex.multiply(CoreComplex.conjugate(a), b))
-        #expect(CoreComplex.rightConjugateMultiply(a,b) == CoreComplex.multiply(a, CoreComplex.conjugate(b)))
-    }
-}

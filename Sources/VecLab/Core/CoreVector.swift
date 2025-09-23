@@ -9,22 +9,16 @@ import Foundation
 
 enum CoreVector {
 
-    // MARK: add
+    // MARK: Add
 
     static func add(_ a: [Double], _ b: [Double]) -> [Double] {
-        precondition(a.count == b.count, "Mismatched lengths in add: [Double] + [Double]")
-        return [Double](unsafeUninitializedCapacity: a.count) { buffer, initializedCount in
-            initializedCount = add(a, b, intoBuffer: buffer)
+        precondition(a.count == b.count, "Mismatched lengths in: [Double] + [Double]")
+        return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
+            for i in 0..<a.count {
+                c[i] = a[i] + b[i]
+            }
+            initializedCount = a.count
         }
-    }
-
-    @inlinable
-    static func add(_ a: [Double], _ b: [Double], intoBuffer c: UnsafeMutableBufferPointer<Double>) -> Int {
-        precondition(a.count == b.count, "Mismatched lengths in add: [Complex] + [Complex]")
-        for i in 0..<a.count {
-            c[i] = a[i] + b[i]
-        }
-        return a.count
     }
 
     @inlinable
@@ -51,18 +45,13 @@ enum CoreVector {
 
     @inlinable
     static func subtract(_ a: [Double], _ b: [Double]) -> [Double] {
-        return [Double](unsafeUninitializedCapacity: a.count) { buffer, initializedCount in
-            initializedCount = subtract(a, b, intoBuffer: buffer)
+        return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
+            precondition(a.count == b.count, "Mismatched lengths in: [Double] - [Double]")
+            for i in 0..<a.count {
+                c[i] = a[i] - b[i]
+            }
+            initializedCount =  a.count
         }
-    }
-
-    @inlinable
-    static func subtract(_ a: [Double], _ b: [Double], intoBuffer c: UnsafeMutableBufferPointer<Double>) -> Int {
-        precondition(a.count == b.count, "Mismatched lengths in add: [Complex] + [Complex]")
-        for i in 0..<a.count {
-            c[i] = a[i] - b[i]
-        }
-        return a.count
     }
 
     @inlinable
@@ -85,10 +74,11 @@ enum CoreVector {
         }
     }
 
-    // MARK: multiply
+    // MARK: Multiply
 
     @inlinable
     static func multiply(_ a: [Double], _ b: [Double]) -> [Double] {
+        precondition(a.count == b.count, "Mismatched lengths in: [Double] * [Double]")
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
             for i in 0..<a.count {
                 c[i] = a[i] * b[i]
@@ -117,7 +107,18 @@ enum CoreVector {
         }
     }
 
-    // MARK: divide
+    // MARK: Divide
+    
+    @inlinable
+    static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
+        precondition(a.count == b.count, "Mismatched lengths in: [Double] / [Double]")
+        return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
+            for i in 0..<a.count {
+                c[i] = a[i] / b[i]
+            }
+            initializedCount = a.count
+        }
+    }
 
     @inlinable
     static func divide(_ a: [Double], _ b: Double) -> [Double] {
@@ -138,16 +139,8 @@ enum CoreVector {
             initializedCount = b.count
         }
     }
-
-    @inlinable
-    static func divide(_ a: [Double], _ b: [Double]) -> [Double] {
-        return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in
-            for i in 0..<a.count {
-                c[i] = a[i] / b[i]
-            }
-            initializedCount = a.count
-        }
-    }
+    
+    // MARK: Unary
 
     @inlinable
     static func unaryMinus(_ a: [Double]) -> [Double] {

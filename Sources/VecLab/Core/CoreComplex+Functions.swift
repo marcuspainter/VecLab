@@ -40,6 +40,7 @@ extension CoreComplex {
     /// - Returns: `sqrt(x)` as a complex number on the principal branch.
     @inlinable
     public static func sqrt(_ x: Complex) -> Complex {
+        guard x != .zero else { return .zero }
         let a = x.real
         let b = x.imag
         let mag = hypot(a, b)
@@ -266,8 +267,6 @@ extension CoreComplex {
         let sinhx = Darwin.sinh(x.imag)
         let sinx = Darwin.sin(x.real)
         let cosx = Darwin.cos(x.real)
-        let real = sinx * coshx  // sinx0 * coshx1
-        let imag = cosx * sinhx  // cosx0 * sinhx1
-        return Complex(real, imag)
+        return Complex(sinx * coshx, cosx * sinhx)
     }
 }
