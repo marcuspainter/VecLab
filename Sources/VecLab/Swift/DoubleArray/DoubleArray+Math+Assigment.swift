@@ -11,6 +11,14 @@ extension Array where Element == Double {
     /// - Parameters:
     ///   - lhs: This real array.
     ///   - rhs: A real value.
+    public static func += (lhs: inout [Double], rhs: [Double]) {
+        lhs = lhs + rhs
+    }
+    
+    /// Addition.
+    /// - Parameters:
+    ///   - lhs: This real array.
+    ///   - rhs: A real value.
     public static func += (lhs: inout [Double], rhs: Double) {
         lhs = lhs + rhs
     }

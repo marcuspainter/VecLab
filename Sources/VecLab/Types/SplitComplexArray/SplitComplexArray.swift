@@ -98,9 +98,9 @@ public struct SplitComplexArray:
     }
 
     /// Initialize a complex array as the same size as any array.
-    /// - Parameter sized: A collection with a count property.
-    public init(sized: any Collection) {
-        self = SplitComplexArray(count: sized.count)
+    /// - Parameter like: A collection with a count property.
+    public init(like: any Collection) {
+        self = SplitComplexArray(count: like.count)
     }
 
 }

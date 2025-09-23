@@ -18,23 +18,23 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(result.count, count, "vector failed")
     }
 
-    func testVectorSizedReal() throws {
+    func testVectorLikeReal() throws {
         let count: Int = 10
         let realArrayA: RealArray = [Real](repeating: 0, count: count)
-        let result: RealArray = vector(sized: realArrayA)
+        let result: RealArray = vector(like: realArrayA)
         XCTAssertEqual(result.count, count, "vector failed")
     }
 
-    func testVectorSizedComplex() throws {
+    func testVectorLikeComplex() throws {
         let count = 10
         let r = RealArray(repeating: 0, count: count)
         let i = RealArray(repeating: 0, count: count)
         let SplitComplexArrayA: SplitComplexArray = SplitComplexArray(r, i)
-        let result: RealArray = vector(sized: SplitComplexArrayA)
+        let result: RealArray = vector(like: SplitComplexArrayA)
         XCTAssertEqual(result.count, count, "vector failed")
     }
 
-    func testComplexSizedReal() throws {
+    func testComplexLikeReal() throws {
         let count: Int = 10
         let realArrayA: RealArray = [Real](repeating: 0, count: count)
         let result: SplitComplexArray = SplitComplexArray(count: realArrayA.count)
@@ -183,7 +183,7 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(result.count, expectedCount, "complex failed")
     }
 
-    func testComplexSized() throws {
+    func testComplexLike() throws {
         let SplitComplexArrayA: SplitComplexArray = SplitComplexArray([1.0, 2.0], [3.0, 4.0])
         let result = SplitComplexArray(count: SplitComplexArrayA.count)
         let expectedCount: Int = 2

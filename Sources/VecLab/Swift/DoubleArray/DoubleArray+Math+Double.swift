@@ -18,21 +18,12 @@ extension Array where Element == Double {
     ///   - b: Double array.
     /// - Returns: The result of the addition.
     public static func + (a: Self, b: Self) -> [Double] {
-        assert(
-            a.count == b.count,
+        assert(a.count == b.count,
             "Incompatible sizes \(a.count) \(b.count). Use cat() to join arrays.",
             file: #file,
             line: #line
         )
         return vDSP.add(a, b)
-    }
-
-    ///  Array addition.
-    /// - Parameters:
-    ///   - lhs: Double array.
-    ///   - rhs:  Double array.
-    public static func += (lhs: inout Self, rhs: [Double]) {
-        lhs = lhs + rhs
     }
 
     /// Double subtraction.
@@ -43,6 +34,7 @@ extension Array where Element == Double {
     public static func - (a: Self, b: Self) -> [Double] {
         validateSize(a, b)
         return vDSP.subtract(a, b)
+
     }
 
     /// Double multiplication.
@@ -91,8 +83,7 @@ extension Array where Element == Double {
     ///   - b: Real number.
     /// - Returns: The result of the subtraction.
     public static func - (a: Self, b: Double) -> [Double] {
-        let minusb = -b
-        return vDSP.add(minusb, a)
+        return vDSP.add(-b, a)
     }
 
     /// Real subtraction.
@@ -101,7 +92,7 @@ extension Array where Element == Double {
     ///   - b: Real array.
     /// - Returns: The result of the subtraction
     public static func - (a: Double, b: Self) -> [Double] {
-        let minusb = -b
+        let minusb = vDSP.negative(b)
         return vDSP.add(a, minusb)
     }
 

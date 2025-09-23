@@ -67,10 +67,10 @@ final class SplitComplexArrayInitTests: XCTestCase {
         XCTAssertEqual(a.imag, [-2.0, -3.0])
     }
 
-    func testInitSized() throws {
+    func testInitLike() throws {
         let b = [Double](repeating: 1.0, count: 10)
 
-        let a = SplitComplexArray(sized: b)
+        let a = SplitComplexArray(like: b)
 
         XCTAssertEqual(a.count, b.count)
         XCTAssert(a.real.allSatisfy { $0 == 0.0 })

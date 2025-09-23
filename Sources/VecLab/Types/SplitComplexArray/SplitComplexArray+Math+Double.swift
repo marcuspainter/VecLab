@@ -96,6 +96,8 @@ extension SplitComplexArray {
     }
 }
 
+// MARK: Private
+
 private func vectorDivideSplitComplexArrayReal(_ a: SplitComplexArray, _ b: Real) -> SplitComplexArray {
     let real = vDSP.divide(a.real, b)
     let imag = vDSP.divide(a.imag, b)

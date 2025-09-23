@@ -94,6 +94,8 @@ extension SplitComplexArray {
     }
 }
 
+// MARK: Private
+
 private func vectorMultiplySplitComplexArrayComplex(_ a: SplitComplexArray, _ b: Complex) -> SplitComplexArray {
     var c = a
     let bb = SplitComplexArray(repeating: b, count: a.count)

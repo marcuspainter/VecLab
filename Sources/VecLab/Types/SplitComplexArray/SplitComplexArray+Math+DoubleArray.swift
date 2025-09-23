@@ -92,6 +92,8 @@ extension SplitComplexArray {
     }
 }
 
+// MARK: Private
+
 private func vectorMultiplySplitComplexArrayRealArray(_ a: SplitComplexArray, _ b: RealArray) -> SplitComplexArray {
     var c = a
     SplitComplexArray.withUnsafeParameters(a, b, &c) { A, B, C, N in

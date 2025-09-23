@@ -96,11 +96,11 @@ public func vector(_ range: ClosedRange<Int>, _ step: Int = 1) -> RealArray {
     return vDSP.ramp(withInitialValue: Double(range.lowerBound), increment: Double(step), count: count)
 }
 
-// MARK: Sized
+// MARK: Like
 
 /// Create a real array of the same size as any array.
-/// - Parameter sized: Real array.
+/// - Parameter like: Real array.
 /// - Returns: A real array the same size the array.
-public func vector(sized: any Collection) -> RealArray {
-    return RealArray(repeating: 0, count: sized.count)
+public func vector(like: any Collection) -> RealArray {
+    return RealArray(repeating: 0, count: like.count)
 }

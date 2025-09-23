@@ -74,13 +74,15 @@ public func pow(_ a: Real, _ b: RealArray) -> RealArray {
     return vectorPowReal(a, b)
 }
 
+// MARK: Private
+
  private func vectorPowReal(_ a: [Double], _ b: Double) -> [Double] {
- let bb = [Double](repeating: b, count: a.count)
- return vForce.pow(bases: a, exponents: bb)
+     let bb = [Double](repeating: b, count: a.count)
+     return vForce.pow(bases: a, exponents: bb)
  }
 
  private func vectorPowReal(_ a: Double, _ b: [Double]) -> [Double] {
- let aa = [Double](repeating: a, count: b.count)
- return vForce.pow(bases: aa, exponents: b)
+     let aa = [Double](repeating: a, count: b.count)
+     return vForce.pow(bases: aa, exponents: b)
  }
 
