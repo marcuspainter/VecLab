@@ -38,3 +38,7 @@ Exponents, logarithms and square root.
 
 - ``expj(_:)->Complex``
 - ``expj(_:)->SplitComplexArray``
+
+### Power of 2
+
+- ``nextpow2(_:)``

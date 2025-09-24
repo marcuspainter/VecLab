@@ -17,6 +17,7 @@ Basic functions.
 - ``sign(_:)->RealArray``
 - ``sign(_:)->Complex``
 - ``sign(_:)->SplitComplexArray``
+- ``sign(_:)->ComplexArray``
 
 ### Print and Display
 - ``disp(_:)-(RealArray)``
@@ -29,17 +30,17 @@ Basic functions.
 - ``sum(_:)->Complex``
 
 - ``cumsum(_:)->RealArray``
-- ``cumsum(_:)->ComplexArray``
 - ``cumsum(_:)->SplitComplexArray``
+- ``cumsum(_:)->ComplexArray``
 
 - ``prod(_:)->Real``
 - ``prod(_:)-(ComplexArray)->Complex``
-- ``prod(_:)-(ComplexArray)``
 - ``prod(_:)-(SplitComplexArray)``
+- ``prod(_:)-(ComplexArray)``
 
 - ``cumprod(_:)->RealArray``
-- ``cumprod(_:)->ComplexArray``
 - ``cumprod(_:)->SplitComplexArray``
+- ``cumprod(_:)->ComplexArray``
 
 - ``dot(_:_:)-(RealArray,RealArray)``
 - ``dot(_:_:)-(RealArray,SplitComplexArray)``

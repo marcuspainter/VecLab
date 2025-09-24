@@ -1,4 +1,4 @@
-# Fourier Transform
+# FFT
 
 FFT, DFT and FFT shift.
 
@@ -6,22 +6,25 @@ FFT, DFT and FFT shift.
 
 ### Fast Fourier Transform
 
-- ``fft(_:length:)``
+- ``fft(_:)-(ComplexArray)``
+- ``fft(_:)-(ComplexArray)``
+- ``fft(_:length:)-(SplitComplexArray,_)``
 - ``fftr(_:length:)``
 
-- ``ifft(_:length:)->SplitComplexArray``
+- ``ifft(_:)-(ComplexArray)``
+- ``ifft(_:)-(ComplexArray)``
+- ``ifft(_:length:)-(SplitComplexArray,_)``
 - ``ifftr(_:length:)->(RealArray)``
-
-- ``fft(_:)->ComplexArray``
-- ``ifft(_:)->ComplexArray``
 
 ### FFT Shift
 
 - ``fftshift(_:)->RealArray``
 - ``fftshift(_:)->SplitComplexArray``
+- ``fftshift(_:)->ComplexArray``
 - ``ifftshift(_:)->RealArray``
 - ``ifftshift(_:)->SplitComplexArray``
-- ``fftsymmetric(_:)``
+- ``ifftshift(_:)->ComplexArray``
+- ``fftsymmetric(_:)->SplitComplexArray``
 
 ### Discrete Fourier Transform 
 
@@ -39,7 +42,4 @@ FFT, DFT and FFT shift.
 - ``dct(_:)``
 - ``idct(_:)``
 
-### FFT Setup
-
-- ``nextpow2(_:)->(Int)``
 

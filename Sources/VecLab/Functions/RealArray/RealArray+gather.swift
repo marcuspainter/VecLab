@@ -36,7 +36,7 @@ public func gather(_ x: RealArray, indices: [Int]) -> RealArray {
 ///   - x: Real array.
 ///   - indices: Array of integer indices.
 /// - Returns: Real array containing elements of specified indices.
-public func gatherSafeish(_ x: RealArray, indices: [Int]) -> RealArray {
+ func gatherSafeish(_ x: RealArray, indices: [Int]) -> RealArray {
     let uindices: [UInt] = indices.map { UInt($0) }
     return vDSP.gather(x, indices: uindices)
 }
@@ -46,7 +46,7 @@ public func gatherSafeish(_ x: RealArray, indices: [Int]) -> RealArray {
 ///   - x: Complex array.
 ///   - indices: Array of integer indices.
 /// - Returns: Complex array containing elements of specified indices.
-public func gather2(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray {
+ func gather2(_ x: SplitComplexArray, indices: [Int]) -> SplitComplexArray {
     let uindices: [UInt] = indices.map { UInt($0) }
     let real = vDSP.gather(x.real, indices: uindices)
     let imag = vDSP.gather(x.imag, indices: uindices)

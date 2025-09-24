@@ -8,3 +8,4 @@ Timing Functions.
 - ``toc()``
 - ``timeit(_:)``
 - ``timer(_:runs:body:)``
+- ``benchmark(_:iterations:function:)``

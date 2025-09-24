@@ -1,5 +1,5 @@
 //
-//  CoreComplexVector.swift
+//  CoreComplexArray.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 18/09/2025.

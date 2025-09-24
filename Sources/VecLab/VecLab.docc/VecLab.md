@@ -246,11 +246,11 @@ Overloaded operators for scalar and vectors.
 - <doc:Conversion>
 - <doc:Discrete>
 - <doc:Exponents>
-- <doc:FFT>
+- <doc:FFTOps>
 - <doc:Filter>
 - <doc:Integration>
 - <doc:Interpolation>
-- <doc:Matrix>
+- <doc:MatrixOps>
 - <doc:Modulo>
 - <doc:Optimization>
 - <doc:Polynomials>

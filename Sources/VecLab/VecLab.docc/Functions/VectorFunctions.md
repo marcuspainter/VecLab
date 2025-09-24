@@ -43,12 +43,15 @@ Vector functions.
 ### Resize
 - ``resize(_:length:)->RealArray``
 - ``resize(_:length:)->SplitComplexArray``
+- ``resize(_:length:)->ComplexArray``
 
 ### Padding and Trimming
 - ``paddata(_:length:)->RealArray``
 - ``paddata(_:length:)->SplitComplexArray``
+- ``paddata(_:length:)->ComplexArray``
 - ``trimdata(_:length:)->RealArray``
 - ``trimdata(_:length:)->SplitComplexArray``
+- ``trimdata(_:length:)->ComplexArray``
 
 ### Gather
 

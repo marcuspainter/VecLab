@@ -11,7 +11,7 @@ import Accelerate
 /// - Parameter coefficients: Array of polynomial coefficients in descending order of power
 ///   (e.g., [1, -5, 6] represents x^2 - 5x + 6)
 /// - Returns: Array of complex values representing the roots of the polynomial
-public func rootsX(coefficients: RealArray) -> SplitComplexArray {
+func rootsX(coefficients: RealArray) -> SplitComplexArray {
     // Handle special cases
     if coefficients.isEmpty {
         return SplitComplexArray()

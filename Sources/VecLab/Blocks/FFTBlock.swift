@@ -8,7 +8,7 @@
 import Accelerate
 
 /// Fast Fourier Transform.
-public final class FFT {
+public final class FFTBlock {
     private var fft: vDSP.DiscreteFourierTransform<Double>
     private var ifft: vDSP.DiscreteFourierTransform<Double>
     private let zeros: [Double]

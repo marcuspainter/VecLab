@@ -1,5 +1,5 @@
 //
-//  CoreVector+Functions.swift
+//  CoreArray+Functions.swift
 //  VecLab
 //
 //  Created by Marcus Painter on 20/09/2025.
