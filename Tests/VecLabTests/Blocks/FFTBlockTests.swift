@@ -16,7 +16,7 @@ class FFTBlockTests: XCTestCase {
     func testFFT() {
 
         let n = 8
-        let fft = try! FFT(length: n)
+        let fft = try! FFTBlock(length: n)
         let x = vector(0..<n)
         let X = fft.fftr(x)
         let y = fft.ifftr(X)
