@@ -7,6 +7,8 @@
 
 import Foundation
 
+//extension Double: RangeStepSubscriptableElement { }
+
 // Extension to provide step functionality for Double arrays.
 
 extension Array where Element == Double {

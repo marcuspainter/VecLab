@@ -10,20 +10,29 @@ import Foundation
 import Accelerate
 
 extension MatrixOp {
+    
+    // precondition(a.cols == b.rows, "Inner dimensions must match: a.cols == b.rows")
+    // let data = MatrixOp.matrixMultiply(a.data, b.data, m: a.rows, k: a.cols, n: b.cols)
 
     static func matrixMultiply(_ a: [Double], _ b: [Double], m: Int, k: Int, n: Int) -> [Double] {
-        let l = m * k
+        precondition(a.count == m * k, "A must be m×k in column-major layout")
+        precondition(b.count == k * n, "B must be k×n in column-major layout")
+        let l = m * n
         let data = [Double](unsafeUninitializedCapacity: l) { result, initializedCount in
 
             // Alpha = 1.0, Beta = 0.0
             let alpha: Double = 1.0
             let beta: Double = 0.0
-
+            
+            let lda = m
+            let ldb = k
+            let ldc = m
+            
             a.withUnsafeBufferPointer { aPtr in
                 b.withUnsafeBufferPointer { bPtr in
                     result.withUnsafeMutableBufferPointer { resultPtr in
                         cblas_dgemm(
-                            CblasColMajor,  // ORDER: Row-major storage
+                            CblasColMajor,  // ORDER: Column-major storage
                             CblasNoTrans,  // TRANSA: Don't transpose A
                             CblasNoTrans,  // TRANSB: Don't transpose B
                             m,  // M: Rows of A and C
@@ -31,12 +40,12 @@ extension MatrixOp {
                             k,  // K: Columns of A, rows of B
                             alpha,  // ALPHA: Scaling factor for A*B
                             aPtr.baseAddress,  // A: Matrix A
-                            k,  // LDA: Leading dimension of A
+                            lda,  // LDA: Leading dimension of A
                             bPtr.baseAddress,  // B: Matrix B
-                            n,  // LDB: Leading dimension of B
+                            ldb,  // LDB: Leading dimension of B
                             beta,  // BETA: Scaling factor for C
                             resultPtr.baseAddress,  // C: Result matrix C
-                            n  // LDC: Leading dimension of C
+                            ldc  // LDC: Leading dimension of C
                         )
                     }
                 }
@@ -85,3 +94,4 @@ extension MatrixOp {
      */
 
 }
+

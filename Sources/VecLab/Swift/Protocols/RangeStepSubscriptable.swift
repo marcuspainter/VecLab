@@ -1,18 +1,35 @@
 //
-//  ComplexArray+Subscript+Array+Step.swift
+//  RangeStepSubscriptable.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 22/09/2025.
+//  Created by Marcus Painter on 24/09/2025.
 //
 
-import Foundation
+/*
 
-//extension Complex: RangeStepSubscriptableElement { }
+public protocol RangeStepSubscriptable: MutableCollection & RangeReplaceableCollection
+where Index == Int {
+    subscript(range: ClosedRange<Int>, step: Int) -> [Element] { get set }
+    subscript(range: Range<Int>, step: Int) -> [Element] { get set }
+    subscript(range: PartialRangeFrom<Int>, step: Int) -> [Element] { get set }
+    subscript(range: PartialRangeThrough<Int>, step: Int) -> [Element] { get set }
+    subscript(range: PartialRangeUpTo<Int>, step: Int) -> [Element] { get set }
+    func helloRangeStepSubscriptable()
+}
+public protocol RangeStepSubscriptableElement { }
 
-// Extension to provide step functionality for Double arrays.
+// Notes:
+// where Element == SomeProtocol → Element must be the protocol type itself
+// where Element: SomeProtocol → Element must conform to the protocol
+extension Array: RangeStepSubscriptable where Element: RangeStepSubscriptableElement { }
 
-
-extension Array where Element == Complex { /// Access elements from a closed range with a step value
+extension RangeStepSubscriptable {
+    
+    public func helloRangeStepSubscriptable() {
+        print("Hello, World!")
+    }
+    
+    /// Access elements from a closed range with a step value
     /// - Parameters:
     ///   - range: The range of indices to access
     ///   - step: The step value (how many indices to skip). Can be positive or negative.
@@ -253,28 +270,4 @@ extension Array where Element == Complex { /// Access elements from a closed ran
     }
 }
 
-// Example usage:
-/*
-var array = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
-
-// Get every second element in the range
-let everySecond = array[0...8, 2]  // [0.0, 2.0, 4.0, 6.0, 8.0]
-
-// Get elements in reverse order with step -1
-let reversed = array[9...0, -1]  // [9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0]
-
-// Get every second element in reverse
-let reverseEverySecond = array[8...0, -2]  // [8.0, 6.0, 4.0, 2.0, 0.0]
-
-// Set every third element
-array.setValues(in: 0...9, step: 3, to: [10.0, 20.0, 30.0, 40.0])
-// array becomes [10.0, 1.0, 2.0, 20.0, 4.0, 5.0, 30.0, 7.0, 8.0, 40.0]
-
-// Set every second element in reverse
-array.setValues(in: 9...1, step: -2, to: [90.0, 70.0, 50.0, 30.0, 10.0])
-// array becomes [10.0, 10.0, 2.0, 30.0, 4.0, 50.0, 30.0, 70.0, 8.0, 90.0]
-
-// This will print an error and not modify the array
-array.setValues(in: 0...9, step: 2, to: [1.0, 2.0, 3.0])
-// ERROR: New values count (3) must match the number of stepped indices (5)
 */

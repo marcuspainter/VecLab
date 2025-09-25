@@ -38,12 +38,13 @@ public func filtfilt(b: RealArray, a: RealArray, x: RealArray) -> RealArray {
 
     // --- Step 6. Flip back
     outputExtended = flip(outputExtended)
-
+    
     // -- Step 7. Trim off the extension
     let outputExtendedLength = outputExtended.count
     let output = outputExtended[mirrorLength..<(outputExtendedLength - mirrorLength)]
 
     return output
+    
 }
 
 private func mirror(filterLength: Int, x: RealArray) -> RealArray {

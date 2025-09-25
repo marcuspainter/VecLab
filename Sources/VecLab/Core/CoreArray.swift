@@ -11,6 +11,7 @@ enum CoreArray {
 
     // MARK: Add
 
+    @inlinable
     static func add(_ a: [Double], _ b: [Double]) -> [Double] {
         precondition(a.count == b.count, "Mismatched lengths in: [Double] + [Double]")
         return [Double](unsafeUninitializedCapacity: a.count) { c, initializedCount in

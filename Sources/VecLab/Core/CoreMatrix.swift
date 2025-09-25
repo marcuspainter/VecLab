@@ -79,6 +79,9 @@ enum CoreMatrix {
     }
 
     static func multiply(_ a: Matrix, _ b: Matrix) -> Matrix {
+        
+        precondition(a.cols == b.rows, "Inner dimensions must match: a.cols == b.rows")
+        validateCompatible(a, b)
         let data = MatrixOp.matrixMultiply(a.data, b.data, m: a.rows, k: a.cols, n: b.cols)
         return Matrix(rows: a.rows, cols: b.cols, data: data)
     }

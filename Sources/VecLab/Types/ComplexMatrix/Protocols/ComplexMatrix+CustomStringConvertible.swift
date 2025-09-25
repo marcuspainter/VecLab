@@ -13,7 +13,7 @@ extension ComplexMatrix: CustomStringConvertible {
         var text = ""
         for row in 0..<rows {
             for col in 0..<cols {
-                text += matlabFormat(self[row, col])
+                text += (self[row, col]).description
             }
             if row < rows - 1 {
                 text += "\n"

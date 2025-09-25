@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable
 import VecLab
 import XCTest
 

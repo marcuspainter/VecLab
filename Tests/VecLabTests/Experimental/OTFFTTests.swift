@@ -9,37 +9,77 @@ import Foundation
 import VecLab
 import XCTest
 
+/*
+ 
+ 136.000000000000e+000 + 0.00000000000000e+000i
+-8.00000000000000e+000 + 40.2187159370068e+000i
+-8.00000000000000e+000 + 19.3137084989848e+000i
+-8.00000000000000e+000 + 11.9728461013239e+000i
+-8.00000000000000e+000 + 8.00000000000000e+000i
+-8.00000000000000e+000 + 5.34542910335439e+000i
+-8.00000000000000e+000 + 3.31370849898476e+000i
+-8.00000000000000e+000 + 1.59129893903727e+000i
+-8.00000000000000e+000 + 0.00000000000000e+000i
+-8.00000000000000e+000 - 1.59129893903727e+000i
+-8.00000000000000e+000 - 3.31370849898476e+000i
+-8.00000000000000e+000 - 5.34542910335439e+000i
+-8.00000000000000e+000 - 8.00000000000000e+000i
+-8.00000000000000e+000 - 11.9728461013239e+000i
+-8.00000000000000e+000 - 19.3137084989848e+000i
+-8.00000000000000e+000 - 40.2187159370068e+000i
+ 
+ */
+
+typealias XComplexArray = [Complex]
+
 final class OTFFTTests: XCTestCase {
-    /*
+    
         func testExample() throws {
-            let r = vector(1...2**14)
-            var z1 = SplitComplexArray(realOnly: r)
-            let z2 = SplitComplexArray(realOnly: r)
+            let n: Int = Int(2**4)
+            let r = vector(1...n)
+            var s = r
+            var z1 = XComplexArray(realOnly: r)
+            var z2 = XComplexArray(realOnly: r)
+            var Z = XComplexArray(realOnly: r)
+            var Z2 = XComplexArray(realOnly: r)
+            
+            var ss = SplitComplexArray(realOnly: r)
+            var zz = SplitComplexArray(count: n)
     
-            tic()
-            fft(n: z1.count, x: &z1)
-            toc()
+            benchmark {
+                //fft(n: z1.count, x: &z1)
+                zz = fft(ss)
+            }
+            //disp(zz)
     
-            tic()
-            var Z = fft(z2)
-            toc()
+            benchmark {
+                //Z = fft(z2)
+                Z = fft(z1)
+            }
+            disp(Z)
+            
+            benchmark {
+                z2 = ifft(Z)
+            }
+            disp(z2)
     
-            tic()
-            _ = ifft(Z)
-            toc()
-    
-            tic()
-            ifft(n: Z.count, x: &Z)
-            toc()
-            disp(Z[0 ... 9])
+            benchmark {
+                ifft(n: Z.count, x: &Z)
+            }
+            disp(r)
         }
-    */
+    /*
+     Elapsed time: 0.167159417 seconds (167.159417 ms)
+     Elapsed time: 0.002971917 seconds (2.971917 ms)
+     Elapsed time: 0.000362208 seconds (0.362208 ms)
+     Elapsed time: 0.178409708 seconds (178.409708 ms)
+     */
 }
 
 // Assuming Complex type exists
 // typealias Complex = Complex<Double>
 
-func fft0(n: Int, s: Int, eo: Bool, x: inout SplitComplexArray, y: inout SplitComplexArray) {
+func fft0(n: Int, s: Int, eo: Bool, x: inout XComplexArray, y: inout XComplexArray) {
     // n  : sequence length
     // s  : stride
     // eo : x is output if eo == false, y is output if eo == true
@@ -79,11 +119,11 @@ func fft0(n: Int, s: Int, eo: Bool, x: inout SplitComplexArray, y: inout SplitCo
     }
 }
 
-func fft(n: Int, x: inout SplitComplexArray) {
+func fft(n: Int, x: inout XComplexArray) {
     // n : sequence length
     // x : input/output sequence
 
-    var y = SplitComplexArray(count: x.count)
+    var y = XComplexArray(count: x.count)
 
     fft0(n: n, s: 1, eo: false, x: &x, y: &y)
 
@@ -93,11 +133,11 @@ func fft(n: Int, x: inout SplitComplexArray) {
     // }
 }
 
-func ifft(n: Int, x: inout SplitComplexArray) {
+func ifft(n: Int, x: inout XComplexArray) {
     // n : sequence length
     // x : input/output sequence
 
-    var y = SplitComplexArray(count: x.count)
+    var y = XComplexArray(count: x.count)
     x = conj(x)
 
     fft0(n: n, s: 1, eo: false, x: &x, y: &y)
@@ -109,3 +149,4 @@ func ifft(n: Int, x: inout SplitComplexArray) {
         x[k] = x[k] / Double(n)
     }
 }
+

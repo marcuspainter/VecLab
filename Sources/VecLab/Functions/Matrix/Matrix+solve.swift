@@ -32,7 +32,7 @@ public func solve(_ a: Matrix, _ b: Matrix) -> Matrix {
 ///   - n: Number of rows/columns (A must be square).
 ///   - nrhs: Number of columns of B (right hand side).
 /// - Returns: Solution vector x
-public func solveRowMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArray {
+ func solveRowMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArray {
     // Infer dimensions
     let n = Int(Double(A.count).squareRoot())
     precondition(n * n == A.count, "A must be square")
@@ -66,7 +66,7 @@ public func solveRowMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> 
     return X_row
 }
 
-public func solveColMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArray {
+func solveColMajor(_ A: RealArray, _ B: RealArray, n: Int, nrhs: Int) -> RealArray {
     // Infer dimensions
     let n = Int(Double(A.count).squareRoot())
     precondition(n * n == A.count, "A must be square")

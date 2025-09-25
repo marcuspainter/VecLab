@@ -494,7 +494,7 @@ final class MatrixTests: XCTestCase {
                  [9,10,11,12],
                  [13,14,15,16]]
         let c = b.T.T
-        print(b)
+        disp(b)
         print(c)
         
     }
@@ -505,11 +505,11 @@ final class MatrixTests: XCTestCase {
                  [9,10,11,12],
                  [13,14,15,16]]
         let c = diag(b)
-        print(b)
-        print(c)
+        disp(b)
+        disp(c)
         
         let t = trace(b)
-        print(t)
+        disp(t)
     }
     
     func testSvd() {
@@ -521,11 +521,11 @@ final class MatrixTests: XCTestCase {
         let S = Matrix(rows: a.cols, cols: 1, data: s)
         let V = Matrix(rows: a.cols, cols: a.cols, data: v)
         
-        print(b)
-        print(U)
-        print(S)
-        print(V.T.debugDescription)
-        print(eye(5).debugDescription)
+        disp(b)
+        disp(U)
+        disp(S)
+        disp(V.T.debugDescription)
+        disp(eye(5).debugDescription)
         
         
     }
@@ -573,7 +573,7 @@ final class MatrixTests: XCTestCase {
                    -0.3499    0.0,    0.2428   0.8007
                 """
         
-        print(a)
+        disp(a)
         
         /*
 
@@ -598,6 +598,4 @@ final class MatrixTests: XCTestCase {
 
     }
 }
-
-import Foundation
 

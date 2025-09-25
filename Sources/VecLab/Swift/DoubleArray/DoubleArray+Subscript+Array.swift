@@ -5,6 +5,9 @@
 //  Created by Marcus Painter on 09/04/2025.
 //
 
+// extension Double: ArraySubscriptableElement { }
+
+
 extension Array where Element == Real {
 
     /// Access elements using an array of indices

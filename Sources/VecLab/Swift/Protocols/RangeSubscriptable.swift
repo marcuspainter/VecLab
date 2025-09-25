@@ -1,46 +1,65 @@
 //
-//  ComplexArray+Subscript+Range.swift
+//  RangeSubscriptable.swift
 //  VecLab
 //
-//  Created by Marcus Painter on 22/09/2025.
-//
-
-//
-//  DoubleArray+Subscript+Range.swift
-//  VecLab
-//
-//  Created by Marcus Painter on 17/04/2025.
+//  Created by Marcus Painter on 24/09/2025.
 //
 
 import Foundation
 import Accelerate
 
-//extension Complex: RangeSubscriptableElement { }
-
 // Extension to make Array<Double> return arrays instead of slices when using range subscripts
 // with size validation matching the pattern from step extensions.
 
+/*
+public protocol RangeSubscriptable: MutableCollection & RangeReplaceableCollection
+where Index == Int {
+    subscript(range: ClosedRange<Int>) -> [Element] { get set }
+    subscript(range: Range<Int>) -> [Element] { get set }
+    subscript(range: PartialRangeFrom<Int>) -> [Element] { get set }
+    subscript(range: PartialRangeThrough<Int>) -> [Element] { get set }
+    subscript(range: PartialRangeUpTo<Int>) -> [Element] { get set }
+    func helloRangeSubscriptable()
+    subscript(bounds: Range<Int>) -> ArraySlice<Element> { get set }
+}
+public protocol RangeSubscriptableElement { }
+// Notes:
+// where Element == SomeProtocol → Element must be the protocol type itself
+// where Element: SomeProtocol → Element must conform to the protocol
+extension Array: RangeSubscriptable where Element: RangeSubscriptableElement { }
 
-extension Array where Element == Complex {
+fileprivate func test() {
+    
+    let a = [Double](repeating: 0.0, count: 10)
+    
+    let c = a[1..<3]
+    c.helloRangeSubscriptable()
+    print(c)
+}
 
-    /// Range subscript that returns Array<Double> instead of ArraySlice<Double>
+extension RangeSubscriptable {
+    
+    public func helloRangeSubscriptable() {
+        print("Hello, World!")
+    }
+    
+    public subscript(bounds: Range<Int>) -> Array<Element> {
+        return Array(self)
+    }
+    
+    /// Range subscript that returns `[Element]` instead of `ArraySlice<Element>`
     public subscript(bounds: Range<Int>) -> [Element] {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
-            // Use type annotation to avoid recursion
-            let slice: ArraySlice<Element> = self[bounds]
-            return Array(slice)
+            let slice: [Element] = self[bounds]
+            return (slice)
         }
         set {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
+            precondition(bounds.count == newValue.count,
+                         "Replacement size must match range size: \(bounds.count) vs \(newValue.count)")
 
-            // Validate replacement size matches range size
-            if bounds.count != newValue.count {
-                print("ERROR: Replacement size must match range size: \(bounds.count) vs \(newValue.count)")
-                return  // Exit without making changes
-            }
-
-            replaceSubrange(bounds, with: newValue)
+            self.replaceSubrange(bounds, with: newValue) // now valid
         }
     }
 
@@ -49,7 +68,7 @@ extension Array where Element == Complex {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
             // Use type annotation to avoid recursion
-            let slice: ArraySlice<Element> = self[bounds]
+            let slice = ArraySlice<Element>(self[bounds])
             return Array(slice)
         }
         set {
@@ -74,7 +93,7 @@ extension Array where Element == Complex {
             precondition(bounds.lowerBound < count, "Lower bound out of range")
 
             // Use type annotation to avoid recursion
-            let slice: ArraySlice<Element> = self[bounds]
+            let slice = self[bounds]
             return Array(slice)
         }
         set {
@@ -100,7 +119,7 @@ extension Array where Element == Complex {
             precondition(bounds.upperBound <= count, "Upper bound out of range")
 
             // Use type annotation to avoid recursion
-            let slice: ArraySlice<Element> = self[bounds]
+            let slice = self[bounds]
             return Array(slice)
         }
         set {
@@ -126,7 +145,7 @@ extension Array where Element == Complex {
             precondition(bounds.upperBound < count, "Upper bound out of range")
 
             // Use type annotation to avoid recursion
-            let slice: ArraySlice<Element> = self[bounds]
+            let slice = self[bounds]
             return Array(slice)
         }
         set {
@@ -146,6 +165,4 @@ extension Array where Element == Complex {
     }
 }
 
-
-
-
+*/

@@ -5,6 +5,9 @@
 //  Created by Marcus Painter on 22/09/2025.
 //
 
+//extension Complex: ArraySubscriptableElement { }
+
+
 extension Array where Element == Complex {
 
     /// Access elements using an array of indices
@@ -34,3 +37,4 @@ extension Array where Element == Complex {
         }
     }
 }
+

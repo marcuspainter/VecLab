@@ -6,6 +6,8 @@
 //
 
 extension Array where Element == Complex {
+    
+    // MARK: Self
 
     /// Addition.
     /// - Parameters:

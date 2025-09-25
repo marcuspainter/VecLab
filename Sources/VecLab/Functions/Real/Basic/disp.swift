@@ -23,12 +23,28 @@ public func disp(_ x: ArraySlice<Real>) {
 /// Prints a real array.
 /// - Parameter x: Real array.
 public func disp(_ x: RealArray) {
-    x.forEach { print(String(format: "% 19.15f", $0)) }
+    let fmt = NumberFormatter()
+    fmt.numberStyle = .decimal
+    fmt.minimumSignificantDigits = 14 // optional depending on needs
+    fmt.maximumSignificantDigits = 14
+    
+    for item in x {
+        let sr = item < 0 ? "-" : " "
+        let r = fmt.string(for: abs(item))!
+        let text =  "\(sr)\(r)"
+        print(text)
+    }
 }
 
 /// Prints a complex array formatted in rows.
 /// - Parameter x: Complex array.
 public func disp(_ x: SplitComplexArray) {
     validateSize(x)
-    x.forEach { print(String(format: "% 19.15f %+19.15fi", $0.real, $0.imag)) }
+    x.forEach { print(Complex($0.real, $0.imag)) }
+}
+
+/// Prints a complex array formatted in rows.
+/// - Parameter x: Complex array.
+public func disp(_ x: ComplexArray) {
+    x.forEach { print($0) }
 }

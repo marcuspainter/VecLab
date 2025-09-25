@@ -6,6 +6,7 @@
 //
 
 extension Array where Element == Complex {
+
     public static func + (_ a: [Complex], _ b: [Double]) -> [Complex] {
         return CoreComplexArray.add(a, b)
     }

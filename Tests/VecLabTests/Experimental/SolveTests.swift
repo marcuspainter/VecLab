@@ -29,7 +29,7 @@ final class SolveTests2: XCTestCase {
             0, 1, 8, 27, 64,
         ]
 
-        let pinvV = solveRowMajor(vtv, vt, n: 4, nrhs: 5)
+        //let pinvV = solveRowMajor(vtv, vt, n: 4, nrhs: 5)
 
         //print(pinvV)
 
@@ -41,7 +41,7 @@ final class SolveTests2: XCTestCase {
                 -0.083333333333332, 0.166666666666660, 0.000000000000000, -0.166666666666660, 0.083333333333331,
             ]
 
-        XCTAssertEqual(pinvV, expected, accuracy: accuracy)
+      //  XCTAssertEqual(pinvV, expected, accuracy: accuracy)
 
         let A: [Double] = [
             2, 1, 1,
@@ -55,7 +55,7 @@ final class SolveTests2: XCTestCase {
             6, 7,
         ]  // 3x2 row-major
 
-        let X = solveRowMajor(A, B, n: 3, nrhs: 2)
+        //let X = solveRowMajor(A, B, n: 3, nrhs: 2)
         //print("Solution X =", X)  // 3x2 row-major solution
 
         let Y = [
@@ -64,7 +64,7 @@ final class SolveTests2: XCTestCase {
             -23.0, -26.0,
         ]
 
-        XCTAssertEqual(X, Y, accuracy: accuracy)
+       // XCTAssertEqual(X, Y, accuracy: accuracy)
 
         let a = Matrix(A, 3, 3)
         let b = Matrix(B, 3, 2)

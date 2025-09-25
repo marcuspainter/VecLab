@@ -17,4 +17,14 @@ extension Array where Element == Complex {
             initializedCount = real.count
         }
     }
+    
+    public init(realOnly: [Double]) {
+        self = .init(unsafeUninitializedCapacity: realOnly.count) { buffer, initializedCount in
+            for i in 0..<realOnly.count {
+                buffer[i].real = realOnly[i]
+                buffer[i].imag = 0.0
+            }
+            initializedCount = realOnly.count
+        }
+    }
 }
