@@ -23,7 +23,7 @@ import Accelerate
 
 extension Array where Element == Complex {
 
-    /// Range subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Range subscript that returns Array<Complex> instead of ArraySlice<Complex>.
     public subscript(bounds: Range<Int>) -> [Element] {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
@@ -44,7 +44,7 @@ extension Array where Element == Complex {
         }
     }
 
-    /// Closed range subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Closed range subscript that returns Array<Complex> instead of ArraySlice<Complex>.
     public subscript(bounds: ClosedRange<Int>) -> [Element] {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
@@ -67,7 +67,7 @@ extension Array where Element == Complex {
         }
     }
 
-    /// Partial range from subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range from subscript that returns Array<Complex> instead of ArraySlice<Complex>.
     public subscript(bounds: PartialRangeFrom<Int>) -> [Element] {
         get {
             precondition(bounds.lowerBound >= 0, "Lower bound must be non-negative")
@@ -93,7 +93,7 @@ extension Array where Element == Complex {
         }
     }
 
-    /// Partial range up to subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range up to subscript that returns Array<Complex> instead of ArraySlice<Complex>.
     public subscript(bounds: PartialRangeUpTo<Int>) -> [Element] {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
@@ -119,7 +119,7 @@ extension Array where Element == Complex {
         }
     }
 
-    /// Partial range through subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range through subscript that returns Array<Complex> instead of ArraySlice<Complex>.
     public subscript(bounds: PartialRangeThrough<Int>) -> [Element] {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
@@ -142,6 +142,26 @@ extension Array where Element == Complex {
             }
 
             replaceSubrange(0...bounds.upperBound, with: newValue)
+        }
+    }
+    
+    /// Unbounded range from subscript that returns Array<Complex> instead of ArraySlice<Complex>.
+    public subscript(bounds: UnboundedRange) -> [Element] {
+        get {
+            // Use type annotation to avoid recursion
+            let slice: ArraySlice<Element> = self[...]
+            return Array(slice)
+        }
+        set {
+            let fullRange = 0..<count
+
+            // Validate replacement size matches range size
+            if fullRange.count != newValue.count {
+                print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
+                return  // Exit without making changes
+            }
+
+            replaceSubrange(fullRange, with: newValue)
         }
     }
 }

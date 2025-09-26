@@ -15,7 +15,7 @@ import Accelerate
 
 extension Array where Element == Double {
 
-    /// Range subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Range subscript that returns Array<Double> instead of ArraySlice<Double>.
     public subscript(bounds: Range<Int>) -> [Double] {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound <= count, "Range out of bounds")
@@ -48,7 +48,7 @@ extension Array where Element == Double {
         }
     }
 
-    /// Closed range subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Closed range subscript that returns Array<Double> instead of ArraySlice<Double>.
     public subscript(bounds: ClosedRange<Int>) -> [Double] {
         get {
             precondition(bounds.lowerBound >= 0 && bounds.upperBound < count, "Range out of bounds")
@@ -86,7 +86,7 @@ extension Array where Element == Double {
         }
     }
 
-    /// Partial range from subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range from subscript that returns Array<Double> instead of ArraySlice<Double>.
     public subscript(bounds: PartialRangeFrom<Int>) -> [Double] {
         get {
             precondition(bounds.lowerBound >= 0, "Lower bound must be non-negative")
@@ -112,7 +112,7 @@ extension Array where Element == Double {
         }
     }
 
-    /// Partial range up to subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range up to subscript that returns Array<Double> instead of ArraySlice<Double>.
     public subscript(bounds: PartialRangeUpTo<Int>) -> [Double] {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
@@ -138,7 +138,7 @@ extension Array where Element == Double {
         }
     }
 
-    /// Partial range through subscript that returns Array<Double> instead of ArraySlice<Double>
+    /// Partial range through subscript that returns Array<Double> instead of ArraySlice<Double>.
     public subscript(bounds: PartialRangeThrough<Int>) -> [Double] {
         get {
             precondition(bounds.upperBound >= 0, "Upper bound must be non-negative")
@@ -161,6 +161,26 @@ extension Array where Element == Double {
             }
 
             replaceSubrange(0...bounds.upperBound, with: newValue)
+        }
+    }
+    
+    /// Unbounded range from subscript that returns Array<Double> instead of ArraySlice<Double>.
+    public subscript(bounds: UnboundedRange) -> [Element] {
+        get {
+            // Use type annotation to avoid recursion
+            let slice: ArraySlice<Element> = self[...]
+            return Array(slice)
+        }
+        set {
+            let fullRange = 0..<count
+
+            // Validate replacement size matches range size
+            if fullRange.count != newValue.count {
+                print("ERROR: Replacement size must match range size: \(fullRange.count) vs \(newValue.count)")
+                return  // Exit without making changes
+            }
+
+            replaceSubrange(fullRange, with: newValue)
         }
     }
 }
