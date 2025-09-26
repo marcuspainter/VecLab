@@ -133,3 +133,30 @@ func transposeMatrix(_ src: [Double], rows M: Int, cols N: Int, result dst: inou
 
 }
 */
+
+extension Matrix {
+    
+    /// - todo: This is a naive implementation, needs to be optimized.
+    subscript <R : Collection, C : Collection>(rowIndices : R, columnIndices : C) -> Matrix where R.Element == Int, C.Element == Int {
+        get {
+            var elems : [Double] = []
+            for c in columnIndices {
+                for r in rowIndices {
+                    elems.append(self[r, c])
+                }
+            }
+            return Matrix(rows: rowIndices.count, cols: columnIndices.count, data: elems)
+        }
+        set {
+            precondition(newValue.rows == rowIndices.count && newValue.cols == columnIndices.count)
+            var index = 0
+            let elems = newValue.data
+            for c in columnIndices {
+                for r in rowIndices {
+                    self[r, c] = elems[index]
+                    index += 1
+                }
+            }
+        }
+    }
+}

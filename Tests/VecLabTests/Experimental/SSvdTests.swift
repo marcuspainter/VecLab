@@ -14,16 +14,37 @@ final class SSvdTests: XCTestCase {
     
     func testSsvd() throws {
         
-        let a = ones(5,2)
+        let m = 5
+        let n = 7
+        let a = ones(m,n)
         let (u,s,vt) = svd(a)
         
-        var sMatrix = Matrix(5,2)
-        let len = min(5,2)
+        var sMatrix = Matrix(m,n)
+        let len = min(m,n)
         for i in 0..<len {
             sMatrix[i,i] = s[i]
         }
         
-        print(u * sMatrix * vt)
+        print(s)
+        
+        print(u * sMatrix * vt * 2.0)
+        
+        let ss = u[[1,2,3], [1]]
+        
+        let w1: [Double] = [1,2,3.0,4.0]
+        var w2: [Double] = [1,2,3.0]
+        
+        w2[...] = w1[...] * 2.0
+        
+        
+        
+        print(type(of:w2))
+        
+        print(w2)
         
     }
+    
+    
+    
 }
+
