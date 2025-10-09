@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "VecLab",
     platforms: [
-        .iOS("17.0"), // LAPACK
+        .iOS("16.6"), // LAPACK
         .macOS("15.0")
     ],
     products: [

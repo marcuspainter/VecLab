@@ -30,7 +30,7 @@ public func fftr(_ x: RealArray, length: Int? = nil) -> ComplexArray {
                             [Real](repeating: Real.nan, count: input.count))
     }
     let zeros = [Real](repeating: 0.0, count: input.count)
-    let splitComplexOutput = dft.transform(real: x, imaginary: zeros)
+    let splitComplexOutput = dft.transform(real: input, imaginary: zeros)
 
     return ComplexArray(splitComplexOutput.real, splitComplexOutput.imaginary)
 }
